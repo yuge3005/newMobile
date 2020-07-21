@@ -18,7 +18,7 @@ package
 	import settings.GameConfigObject;
 	import settings.GameRes;
 	
-	[SWF(frameRate=30,width=1600,height=900)]
+	[SWF(frameRate=30,width=1760,height=900)]
 	public class editForCom extends EditorItem
 	{
 		
@@ -50,10 +50,11 @@ package
 		private function initBackgroundEditor():void{
 			
 			backgroundArea = addItemAt( new BackgroundLayer, 0, 0 ) as BackgroundLayer;
+			backgroundArea.scaleX = backgroundArea.scaleY = 0.5;
 			backgroundArea.addEventListener( EditorEvent.ITEM_MOVE, onItemMove );
 			backgroundArea.addEventListener( EditorEvent.ITEM_CHANGE, onItemChange );
 			
-			backgroundControl = addItemAt( new BakgroundEditorControl, 820, 0 ) as BakgroundEditorControl;
+			backgroundControl = addItemAt( new BakgroundEditorControl, 980, 0 ) as BakgroundEditorControl;
 			backgroundControl.addEventListener( EditorEvent.COLOR_CHANGE, onColorChange );
 			backgroundControl.addEventListener( EditorEvent.TEXTURE_FILE_LOADED, onTextrueFileLoad );
 			backgroundControl.addEventListener( EditorEvent.TEXTURE_PICTURE_LOADED, onTexturePngLoaded );
@@ -70,9 +71,10 @@ package
 		
 		private function initBallEditor():void{
 			ballArea = addItemAt( new BallLayer, 0, 0 ) as BallLayer;
+			ballArea.scaleX = ballArea.scaleY = 0.5;
 			ballArea.addEventListener( EditorEvent.PATH_CHANGE, onPathChange );
 			
-			ballControl = addItemAt( new BallEditorControl, 820, 270 ) as BallEditorControl;
+			ballControl = addItemAt( new BallEditorControl, 980, 270 ) as BallEditorControl;
 			ballControl.addEventListener( EditorEvent.ADD_PATH_POINT, onAddPath );
 			ballControl.addEventListener( EditorEvent.CLEAR_PATH, onClearPath );
 			ballControl.addEventListener( EditorEvent.TEST_BALL_PATH, onTestBallPath );
@@ -80,13 +82,15 @@ package
 		
 		private function initPaytableEditor():void{
 			paytableArea = addItemAt( new PaytableUILayer, 0, 0 ) as PaytableUILayer;
+			paytableArea.scaleX = paytableArea.scaleY = 0.5;
 			
-			paytableControl = addItemAt( new PaytableEditorControl, 820, 670 ) as PaytableEditorControl;
+			paytableControl = addItemAt( new PaytableEditorControl, 980, 670 ) as PaytableEditorControl;
 			paytableControl.addEventListener( EditorEvent.ADD_PAYTABLE_UI, onAddPaytableUI );
 		}
 		
 		private function initCardEditor():void{
 			cardArea = addItemAt( new CardLayer, 0, 0 ) as CardLayer;
+			cardArea.scaleX = cardArea.scaleY = 0.5;
 			cardArea.addEventListener( EditorEvent.CARD_POSITION_CHANGE, onCardPositionChange );
 			
 			cardEditor = addItemAt( new CardEditor, 0, 680 ) as CardEditor;
