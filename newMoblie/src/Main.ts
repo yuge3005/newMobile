@@ -39,7 +39,7 @@ class Main extends egret.DisplayObjectContainer {
             const loadingView = new LoadingUI();
             this.stage.addChild(loadingView);
             await RES.loadConfig("resource/default.res.json", "resource/");
-            await RES.loadGroup("preload", 0, loadingView);
+            await RES.loadGroup("forAll", 0, loadingView);
             this.stage.removeChild(loadingView);
         }
         catch (e) {
@@ -57,8 +57,17 @@ class Main extends egret.DisplayObjectContainer {
         let sky = Com.addBitmapAt( this, "bg_jpg", 0, 0 );
         let stageW = this.stage.stageWidth;
         let stageH = this.stage.stageHeight;
-        sky.width = stageW;
-        sky.height = stageH;
+        let isMobile: boolean = stageW < stageH;
+        if( isMobile ){
+            sky.x = stageW;
+            sky.rotation = 90;
+            sky.width = stageH;
+            sky.height = stageW;
+        }
+        else{
+            sky.width = stageW;
+            sky.height = stageH;
+        }
 
         this.showGame( "SuperLotto", "bin-debug/bingoGames/SuperLotto.js", "resource/default.res.json" );
 		IBingoServer.serverInit();
@@ -84,16 +93,10 @@ class Main extends egret.DisplayObjectContainer {
 	}
 
 	private showGameByClass( fun: Function, assetsPath: string ){
-        alert(444);
 		this.currentGame = eval( "new fun(assetsPath)" );
 
-		// if( this.currentGame.inited )this.addGame();
-		// else this.currentGame.addEventListener( BingoMachine.GENERIC_MODAL_LOADED, this.addGame, this );
-	}
-
-	public stopGame(){
-		this.removeChild( this.currentGame );
-		this.currentGame = null;
+		if( this.currentGame.inited )this.addGame();
+		else this.currentGame.addEventListener( BingoMachine.GENERIC_MODAL_LOADED, this.addGame, this );
 	}
 
 	private addGame(){
@@ -110,10 +113,10 @@ class Main extends egret.DisplayObjectContainer {
 		if (this.currentGame) {
 			if (event.keyCode === 32) {
 				event.preventDefault();
-				// this.currentGame.quickPlay();
+				this.currentGame.quickPlay();
 			} else if (event.keyCode === 67) {
 				event.preventDefault();
-				// this.currentGame.collectCredit();
+				this.currentGame.collectCredit();
 			}
 		}
 	}

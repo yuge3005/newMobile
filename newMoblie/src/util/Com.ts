@@ -9,11 +9,11 @@ class Com {
      * Create a Bitmap object according to name keyword.As for the property of name please refer to the configuration file of resources/resource.json.
      */
     public static createBitmapByName(name: string) {
-        let result = new egret.Bitmap();
-        let texture: egret.Texture = RES.getRes(name);
+		let result = new egret.Bitmap();
+		let texture: egret.Texture = RES.getRes(name);
 		if( !texture )console.error( `picture ${name} does not exist`);
-        result.texture = texture;
-        return result;
+		result.texture = texture;
+		return result;
     }
 
     public static addObjectAt( target: egret.DisplayObjectContainer, obj: egret.DisplayObject, x: number, y: number ): void{
@@ -82,5 +82,20 @@ class Com {
 		}
 		this.addObjectAt( target, bmpText, x, y );
 		return bmpText;
+	}
+
+	public static addButtonAt( target: egret.DisplayObjectContainer, assetName: string, x: number, y: number, onClickCallBack: Function, touchedScale: number = 1, normalScale: number = 1, touchedFilter: egret.Filter = null ): ScaleAbleButton{
+		let bit: ScaleAbleButton = new ScaleAbleButton( assetName, normalScale, touchedScale, touchedFilter );
+		this.addObjectAt( target, bit, x, y );
+		if (typeof onClickCallBack !== "undefined" && onClickCallBack !== null) bit.addEventListener( egret.TouchEvent.TOUCH_TAP, onClickCallBack, target );
+		return bit;
+	}
+
+	public static addDownButtonAt( target: egret.DisplayObjectContainer, assetNormal: string, assetTouched: string, x: number, y: number, onClickCallBack: Function, enableButton: boolean ): TouchDownButton{
+		let bit: TouchDownButton = new TouchDownButton( assetNormal, assetTouched );
+		this.addObjectAt( target, bit, x, y );
+		bit.enabled = enableButton;
+		bit.addEventListener( egret.TouchEvent.TOUCH_TAP, onClickCallBack, target );
+		return bit;
 	}
 }
