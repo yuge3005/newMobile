@@ -8,8 +8,8 @@ package gameUI{
 	
 	public class GameArea extends EditorItem{
 		
-		public static const gameAreaWidth: int = 1920;
-		public static const gameAreaHeight: int = 1080;
+		public static const gameAreaWidth: int = 2560;
+		public static const gameAreaHeight: int = 1440;
 		
 		/**当前选中物体*/
 		protected var currentItem: Sprite;
@@ -52,6 +52,8 @@ package gameUI{
 		
 		protected function onGameAreaItemEndDrag(event:MouseEvent):void{
 			currentItem.stopDrag();
+			currentItem.x = int( currentItem.x );
+			currentItem.y = int( currentItem.y );
 			currentItem = null;
 			stage.removeEventListener( MouseEvent.MOUSE_UP, onGameAreaItemEndDrag );
 		}

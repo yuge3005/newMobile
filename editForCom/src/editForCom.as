@@ -50,7 +50,7 @@ package
 		private function initBackgroundEditor():void{
 			
 			backgroundArea = addItemAt( new BackgroundLayer, 0, 0 ) as BackgroundLayer;
-			backgroundArea.scaleX = backgroundArea.scaleY = 0.5;
+			backgroundArea.scaleX = backgroundArea.scaleY = 0.375;
 			backgroundArea.addEventListener( EditorEvent.ITEM_MOVE, onItemMove );
 			backgroundArea.addEventListener( EditorEvent.ITEM_CHANGE, onItemChange );
 			
@@ -71,7 +71,7 @@ package
 		
 		private function initBallEditor():void{
 			ballArea = addItemAt( new BallLayer, 0, 0 ) as BallLayer;
-			ballArea.scaleX = ballArea.scaleY = 0.5;
+			ballArea.scaleX = ballArea.scaleY = 0.375;
 			ballArea.addEventListener( EditorEvent.PATH_CHANGE, onPathChange );
 			
 			ballControl = addItemAt( new BallEditorControl, 980, 270 ) as BallEditorControl;
@@ -82,7 +82,7 @@ package
 		
 		private function initPaytableEditor():void{
 			paytableArea = addItemAt( new PaytableUILayer, 0, 0 ) as PaytableUILayer;
-			paytableArea.scaleX = paytableArea.scaleY = 0.5;
+			paytableArea.scaleX = paytableArea.scaleY = 0.375;
 			
 			paytableControl = addItemAt( new PaytableEditorControl, 980, 670 ) as PaytableEditorControl;
 			paytableControl.addEventListener( EditorEvent.ADD_PAYTABLE_UI, onAddPaytableUI );
@@ -90,7 +90,7 @@ package
 		
 		private function initCardEditor():void{
 			cardArea = addItemAt( new CardLayer, 0, 0 ) as CardLayer;
-			cardArea.scaleX = cardArea.scaleY = 0.5;
+			cardArea.scaleX = cardArea.scaleY = 0.375;
 			cardArea.addEventListener( EditorEvent.CARD_POSITION_CHANGE, onCardPositionChange );
 			
 			cardEditor = addItemAt( new CardEditor, 0, 680 ) as CardEditor;
