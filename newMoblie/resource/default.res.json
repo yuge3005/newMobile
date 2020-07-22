@@ -1,23 +1,117 @@
 {
-	"groups":[
-	{
-		"keys":"bg_jpg,egret_icon_png,description_json",
-		"name":"preload"
-	}],
-	"resources":[
-	{
-		"name":"bg_jpg",
-		"type":"image",
-		"url":"assets/bg.jpg"
-	},
-	{
-		"name":"egret_icon_png",
-		"type":"image",
-		"url":"assets/egret_icon.png"
-	},
-	{
-		"name":"description_json",
-		"type":"json",
-		"url":"config/description.json"
-	}]
+	"groups": [
+		{
+			"keys": "GameToolBar_json,jackpot_tooltip_json,blank_sound_mp3",
+			"name": "forAll"
+		},
+		{
+			"keys": "superLotto_json,superLotto_conf,superLotto_filt,lotto_eb_mp3,lotto_ball_mp3,lotto_an2_mp3,lotto_an5_mp3,lotto_an4_mp3,lotto_an3_mp3,lotto_gold_mp3,lotto_se1_mp3,lotto_se2_mp3,lotto_se3_mp3,lotto_se4_mp3,lotto_silver_mp3,lotto_se5_mp3,lotto_se6_mp3",
+			"name": "superLotto"
+		}
+	],
+	"resources": [
+		{
+			"url": "game/gameToolBar/GameToolBar.json",
+			"type": "sheet",
+			"name": "GameToolBar_json",
+			"subkeys": "bg,cancel-extra-ball1,cancel-extra-ball2,change-number1,change-number2,close-card1,close-card2,decrease-bet1,decrease-bet2,extra-ball-big1,extra-ball-big2,extra-ball1,extra-ball2,help1,help2,icon_coin,icon_dinero,increase-bet1,increase-bet2,max-bet1,max-bet2,open-card1,open-card2,play1,play2,play_big1,play_big2,savings1,savings2,start-auto1,start-auto2,tooltip"
+		},
+		{
+			"url": "assets/sound/blank_sound.mp3",
+			"type": "sound",
+			"name": "blank_sound_mp3"
+		},
+		{
+			"url": "assets/jackpot_tooltip.json",
+			"type": "sheet",
+			"name": "jackpot_tooltip_json",
+			"subkeys": "tooltip_left,tooltip_right,tooltip_right_flipped"
+		},
+		{
+			"url": "assets/superLotto.json",
+			"type": "sheet",
+			"name": "superLotto_json",
+			"subkeys": "any_light,ball_blue,ball_golden,ball_mega,ball_silver,bar_any,bar_sequence,bg,btn_down,btn_down_press,btn_orange,btn_orange_press,btn_up,btn_up_press,card_back,card_bg,extra_blue,extra_golden,extra_silver,icon_golden,icon_silver,jackpot_lock,mega_blue,mega_golden,mega_silver,sequence_light,tips_en,tips_es,tips_pt"
+		},
+		{
+			"url": "config/superLotto.conf",
+			"type": "json",
+			"name": "superLotto_conf"
+		},
+		{
+			"url": "config/paytableFilter/superLotto.filt",
+			"type": "json",
+			"name": "superLotto_filt"
+		},
+		{
+			"url": "assets/sound/superLotto/lotto_ball.mp3",
+			"type": "sound",
+			"name": "lotto_ball_mp3"
+		},
+		{
+			"url": "assets/sound/superLotto/lotto_eb.mp3",
+			"type": "sound",
+			"name": "lotto_eb_mp3"
+		},
+		{
+			"url": "assets/sound/superLotto/lotto_an2.mp3",
+			"type": "sound",
+			"name": "lotto_an2_mp3"
+		},
+		{
+			"url": "assets/sound/superLotto/lotto_an5.mp3",
+			"type": "sound",
+			"name": "lotto_an5_mp3"
+		},
+		{
+			"url": "assets/sound/superLotto/lotto_an4.mp3",
+			"type": "sound",
+			"name": "lotto_an4_mp3"
+		},
+		{
+			"url": "assets/sound/superLotto/lotto_an3.mp3",
+			"type": "sound",
+			"name": "lotto_an3_mp3"
+		},
+		{
+			"url": "assets/sound/superLotto/lotto_gold.mp3",
+			"type": "sound",
+			"name": "lotto_gold_mp3"
+		},
+		{
+			"url": "assets/sound/superLotto/lotto_se1.mp3",
+			"type": "sound",
+			"name": "lotto_se1_mp3"
+		},
+		{
+			"url": "assets/sound/superLotto/lotto_se2.mp3",
+			"type": "sound",
+			"name": "lotto_se2_mp3"
+		},
+		{
+			"url": "assets/sound/superLotto/lotto_se3.mp3",
+			"type": "sound",
+			"name": "lotto_se3_mp3"
+		},
+		{
+			"url": "assets/sound/superLotto/lotto_se4.mp3",
+			"type": "sound",
+			"name": "lotto_se4_mp3"
+		},
+		{
+			"url": "assets/sound/superLotto/lotto_silver.mp3",
+			"type": "sound",
+			"name": "lotto_silver_mp3"
+		},
+		{
+			"url": "assets/sound/superLotto/lotto_se5.mp3",
+			"type": "sound",
+			"name": "lotto_se5_mp3"
+		},
+		{
+			"url": "assets/sound/superLotto/lotto_se6.mp3",
+			"type": "sound",
+			"name": "lotto_se6_mp3"
+		}
+	]
 }

@@ -1,0 +1,4 @@
+{"file":"jackpot_tooltip.png","frames":{
+"tooltip_right_flipped":{"x":0,"y":310,"w":341,"h":153,"offX":15,"offY":14,"sourceW":370,"sourceH":180},
+"tooltip_left":{"x":0,"y":155,"w":341,"h":153,"offX":14,"offY":13,"sourceW":370,"sourceH":180},
+"tooltip_right":{"x":0,"y":0,"w":341,"h":153,"offX":15,"offY":13,"sourceW":370,"sourceH":180}}}
