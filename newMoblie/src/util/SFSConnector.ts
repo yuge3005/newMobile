@@ -140,6 +140,7 @@ class SFSConnector {
         console.log("SFS Server connection lost!");
         console.log(event);
 
+        alert( "connection lost!" );
         // remove event listeners
         SFSConnector._sfs.removeEventListener(eval("SFS2X.SFSEvent.USER_VARIABLES_UPDATE"), this.onUserVarUpdate);
         SFSConnector._sfs.removeEventListener(eval("SFS2X.SFSEvent.ROOM_VARIABLES_UPDATE"), this.onRoomVarsUpdate, this);

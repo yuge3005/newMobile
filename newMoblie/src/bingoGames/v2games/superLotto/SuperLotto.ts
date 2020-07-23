@@ -60,9 +60,9 @@ class SuperLotto extends V2Game{
         anText.text = anText.text.toUpperCase();
         anText.fontFamily = "Righteous";
 
-        let x2Text: egret.TextField = this.addGameTextCenterShadow( 590, 414, 24, 0xFFFFFF, "sequence", false, 50, false, false );
+        let x2Text: egret.TextField = this.addGameTextCenterShadow( 1647, 863, 38, 0xFFFFFF, "sequence", false, 100, false, false );
         x2Text.text = "x2";
-        let x3Text: egret.TextField = this.addGameTextCenterShadow( 685, 414, 24, 0xFFFFFF, "sequence", false, 50, false, false );
+        let x3Text: egret.TextField = this.addGameTextCenterShadow( 1835, 863, 38, 0xFFFFFF, "sequence", false, 100, false, false );
         x3Text.text = "x3";
 
         this.letsLotto();
