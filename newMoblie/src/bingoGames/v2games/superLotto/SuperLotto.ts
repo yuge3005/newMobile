@@ -49,12 +49,12 @@ class SuperLotto extends V2Game{
 
         this.showNoBetAndCredit();
 
-        let seText: egret.TextField = this.addGameTextCenterShadow( 560, 67, 21, 0x18A4FD, "sequence", true, 182, true, false );
+        let seText: egret.TextField = this.addGameTextCenterShadow( 560 + 1115, 150 + BrowserInfo.textUp, 35, 0x18A4FD, "sequence", true, 182, true, false );
         seText.scaleX = 1;
         seText.stroke = 1.5;
         seText.text = seText.text.toUpperCase();
         seText.fontFamily = "Righteous";
-        let anText: egret.TextField = this.addGameTextCenterShadow( 560, 270, 21, 0xE518FD, "any", true, 182, true, false );
+        let anText: egret.TextField = this.addGameTextCenterShadow( 560 + 1115, 580 + BrowserInfo.textUp, 35, 0xE518FD, "any", true, 182, true, false );
         anText.scaleX = 1;
         anText.stroke = 1.5;
         anText.text = anText.text.toUpperCase();
@@ -64,12 +64,6 @@ class SuperLotto extends V2Game{
         x2Text.text = "x2";
         let x3Text: egret.TextField = this.addGameTextCenterShadow( 685, 414, 24, 0xFFFFFF, "sequence", false, 50, false, false );
         x3Text.text = "x3";
-        // let win1Text: egret.TextField = this.addGameTextCenterShadow( 615, 415, 22, 0xFF7E00, "win", false, 50, false, false );
-        // win1Text.text = win1Text.text.toUpperCase();
-        // win1Text.scaleX = 0.7;
-        // let win2Text: egret.TextField = this.addGameTextCenterShadow( 710, 415, 22, 0xFF7E00, "win", false, 50, false, false );
-        // win2Text.text = win2Text.text.toUpperCase();
-        // win2Text.scaleX = 0.7;
 
         this.letsLotto();
     }
