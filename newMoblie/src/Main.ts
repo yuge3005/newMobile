@@ -81,7 +81,12 @@ class Main extends egret.DisplayObjectContainer {
 		this.currentGame = eval( "new fun(assetsPath)" );
 
 		if( this.currentGame.inited )this.addGame();
-		else this.currentGame.addEventListener( BingoMachine.GENERIC_MODAL_LOADED, this.addGame, this );
+		else{
+            const loadingView = new LoadingUI();
+            this.stage.addChild(loadingView);
+            this.currentGame.preLoader = loadingView;
+            this.currentGame.addEventListener( BingoMachine.GENERIC_MODAL_LOADED, this.addGame, this );
+        }
 	}
 
 	private addGame(){

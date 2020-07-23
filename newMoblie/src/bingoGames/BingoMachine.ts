@@ -1,6 +1,8 @@
 class BingoMachine extends GameUIItem{
 
 	public static GENERIC_MODAL_LOADED: string = "gameLoaded";
+	
+	public preLoader: RES.PromiseTaskReporter;
 
 	protected assetName: string;
 	protected static assetLoaded: Object = {};
@@ -132,7 +134,7 @@ class BingoMachine extends GameUIItem{
 	private loadAsset( assetName: string ){
 		RES.addEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.loaded, this );
 		RES.addEventListener(RES.ResourceEvent.GROUP_PROGRESS, this.loadSoundsProgress, this);
-		RES.loadGroup( assetName );
+		RES.loadGroup( assetName, 0, this.preLoader );
 	}
 	
 	private loaded( event: RES.ResourceEvent ){
@@ -265,6 +267,12 @@ class BingoMachine extends GameUIItem{
 		IBingoServer.jackpotWinCallbak = this.jackpotArea.jackpotWinCallback.bind( this.jackpotArea );
 
 		if( this.needListenToolbarStatus )this.listenToGameToolbarStatus();
+
+		let loader: egret.Sprite = this.preLoader as egret.Sprite;
+		if( loader.parent ){
+			loader.parent.removeChild( loader );
+			this.preLoader = null;
+		}
 	}
 
 	protected listenToGameToolbarStatus(): void{
