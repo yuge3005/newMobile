@@ -14,8 +14,8 @@ class LottoCard extends GameCard{
 	public constructor( cardId: number ) {
 		super( cardId );
 
-		this.addBtn( "btn_orange", 1, 123, this.onIncreaceButtonClick.bind(this), this.cardId, "increase" );
-		this.addBtn( "btn_orange", 130, 123, this.onShuffleButtonClick.bind(this), this.cardId, "shuffle" );
+		this.addBtn( "btn_orange", 0, 232, this.onIncreaceButtonClick.bind(this), this.cardId, "increase" );
+		this.addBtn( "btn_orange", 363, 232, this.onShuffleButtonClick.bind(this), this.cardId, "shuffle" );
 		this.addChangeNumberButtons();
 	}
 
@@ -99,7 +99,7 @@ class LottoCard extends GameCard{
         bt.y = y;
 
         if( buttonString ){
-            let txt: egret.TextField = Com.addTextAt(this, 0, 0, bt.width, bt.height, 14, true, false);
+            let txt: egret.TextField = Com.addTextAt(this, 0, 0, bt.width, bt.height, 35, true, false);
             bt.setText(txt);
             txt.fontFamily = "Righteous";
             txt.stroke = 1;
@@ -112,8 +112,8 @@ class LottoCard extends GameCard{
         let buildUpButton: boolean = true;
 		for( let i: number = 0; i < 6; ){
 			let sp: TouchDownButton;
-			if( buildUpButton ) sp = this.addBtn( "btn_up", 1 + 43 * i, 0, this.onNumberUpButtonClick.bind(this), i );
-			else sp = this.addBtn( "btn_down", 1 + 43 * i, 90, this.onNumberDownButtonClick.bind(this), i );
+			if( buildUpButton ) sp = this.addBtn( "btn_up", 121 * i, 0, this.onNumberUpButtonClick.bind(this), i );
+			else sp = this.addBtn( "btn_down", 121 * i, 165, this.onNumberDownButtonClick.bind(this), i );
 			if( !buildUpButton )i++;
 			buildUpButton = !buildUpButton;
 		}

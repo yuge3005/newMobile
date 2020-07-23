@@ -16,7 +16,7 @@ class SuperLotto extends V2Game{
         PaytableUI.textBold = true;
 
         CardGrid.defaultBgColor = 0;
-        CardGrid.defaultNumberSize = 28;
+        CardGrid.defaultNumberSize = 65;
 
         CardManager.cardType = LottoCard;
         CardManager.gridType = LottoGrid;
