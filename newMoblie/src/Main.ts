@@ -54,21 +54,6 @@ class Main extends egret.DisplayObjectContainer {
      * Create a game scene
      */
     private createGameScene() {
-        let sky = Com.addBitmapAt( this, "bg_jpg", 0, 0 );
-        let stageW = this.stage.stageWidth;
-        let stageH = this.stage.stageHeight;
-        let isMobile: boolean = stageW < stageH;
-        if( isMobile ){
-            sky.x = stageW;
-            sky.rotation = 90;
-            sky.width = stageH;
-            sky.height = stageW;
-        }
-        else{
-            sky.width = stageW;
-            sky.height = stageH;
-        }
-
         this.showGame( "SuperLotto", "bin-debug/bingoGames/SuperLotto.js", "resource/default.res.json" );
 		IBingoServer.serverInit();
     }
@@ -100,8 +85,14 @@ class Main extends egret.DisplayObjectContainer {
 	}
 
 	private addGame(){
+        let stageW = this.stage.stageWidth;
+        let stageH = this.stage.stageHeight;
+        let isMobile: boolean = stageW < stageH;
+        if( isMobile ){
+            this.currentGame.x = stageW;
+            this.currentGame.rotation = 90;
+        }
 		this.addChild( this.currentGame );
-
 		document.addEventListener("keydown", this.keyDown.bind(this) );
 	}
 
