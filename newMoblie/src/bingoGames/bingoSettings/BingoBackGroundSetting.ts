@@ -37,7 +37,7 @@ class BingoBackGroundSetting{
 	}
 
 	private static drawBackgroundOn( target: egret.Sprite ):void{
-		GraphicTool.drawRect( target, new egret.Rectangle( 0, 0, BingoBackGroundSetting.gameAreaWidth, BingoBackGroundSetting.gameAreaHeight ), this.bgColor );
+		GraphicTool.drawRect( target, new egret.Rectangle( 0, 0, BingoBackGroundSetting.gameMask.width, BingoBackGroundSetting.gameMask.height ), this.bgColor );
 	}
 
 	private static buildBGItemsByArray( target: egret.Sprite, mcf: egret.MovieClipDataFactory ): Array<egret.DisplayObject>{

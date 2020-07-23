@@ -37,6 +37,7 @@ class SuperLotto extends V2Game{
         BallManager.ballOffsetY = BrowserInfo.textUp * 2;
         GameToolBar.toolBarY = 474;
         BingoBackGroundSetting.defaultScale = false;
+        BingoBackGroundSetting.gameMask = new egret.Rectangle( 0, 0, 2000, 1125 );
 
         PayTableManager.bingoPaytableName = "se6";
 	}
