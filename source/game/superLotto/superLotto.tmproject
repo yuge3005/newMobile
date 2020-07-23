@@ -1,0 +1,42 @@
+{
+    "options": {
+        "layoutMath": "3",
+        "sizeMode": "2n",
+        "useExtension": 0,
+        "layoutGap": 1,
+        "extend": 0
+    },
+    "projectName": "superLotto",
+    "files": [
+        "./sequence_light.png",
+        "./mega_silver.png",
+        "./mega_golden.png",
+        "./mega_blue.png",
+        "./list_02.png",
+        "./list_01.png",
+        "./jackpot_lock.png",
+        "./jackpot_bg.png",
+        "./icon_silver.png",
+        "./icon_golden.png",
+        "./extra_silver.png",
+        "./extra_golden.png",
+        "./extra_blue.png",
+        "./card_bg.png",
+        "./btn_up_press.png",
+        "./btn_up.png",
+        "./btn_orange_press.png",
+        "./btn_orange.png",
+        "./btn_down_press.png",
+        "./btn_down.png",
+        "./bg_channle.png",
+        "./bg.png",
+        "./bar_sequence.png",
+        "./bar_any.png",
+        "./ball_silver.png",
+        "./ball_mega.png",
+        "./ball_golden.png",
+        "./ball_blue.png",
+        "./any_light.png"
+    ],
+    "version": 5
+}
