@@ -26,6 +26,7 @@ package settings{
 		public static function buildItemByName( name: String ): Sprite{
 			var sp: Sprite = new Sprite;
 			var obj: Object = GameRes.textureData[name];
+			if( !obj ) trace( name );
 			var matrix: Matrix = new Matrix( 1, 0, 0, 1, -obj.x, -obj.y );
 			sp.graphics.beginBitmapFill( GameRes.texturePic, matrix, false, true );
 			sp.graphics.drawRect( 0, 0, obj.w, obj.h );
