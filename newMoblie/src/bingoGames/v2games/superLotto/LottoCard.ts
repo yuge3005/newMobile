@@ -81,12 +81,12 @@ class LottoCard extends GameCard{
 		let tx: egret.TextField;
 		if( isSequence ){
 			Com.addBitmapAt( this.fitEffectLayer, BingoMachine.getAssetStr( "bar_sequence" ), 0, 0 );
-			tx = Com.addTextAt( this.fitEffectLayer, 10, 9 + BrowserInfo.textUp, 200, 18, 18, true );
+			tx = Com.addTextAt( this.fitEffectLayer, 15, 14 + BrowserInfo.textUp, 300, 38, 38, true );
 			tx.text = assetName.replace( "se", ( GameUIItem.languageText["sequence"][GlobelSettings.language] as string ).toUpperCase() + "  ");
 		}
 		else{
-			Com.addBitmapAt( this.fitEffectLayer, BingoMachine.getAssetStr( "bar_any" ), 0, 90 );
-			tx = Com.addTextAt( this.fitEffectLayer, 10, 99 + BrowserInfo.textUp, 200, 18, 18, true );
+			Com.addBitmapAt( this.fitEffectLayer, BingoMachine.getAssetStr( "bar_any" ), 0, 214 );
+			tx = Com.addTextAt( this.fitEffectLayer, 15, 228 + BrowserInfo.textUp, 300, 38, 38, true );
 			tx.text = assetName.replace( "an", ( GameUIItem.languageText["any"][GlobelSettings.language] as string ).toUpperCase() + "  ");
 		}
 		this.lottoCardText( tx, 0xFDFF33 );
