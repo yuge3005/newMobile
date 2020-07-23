@@ -124,7 +124,8 @@ package controler{
 		
 		private function addTextOffsetButton():void{
 			addNumericStepper( 0, 140, 130, "number offset", onSetOffset, 20 ).minimum = -20;
-			btSize = addNumericStepper( 0, 180, 130, "ball size", onSetSize, 100 );
+			btSize = addNumericStepper( 0, 180, 130, "ball size", onSetSize, 300 );
+			btSize.width = 60
 			btBallTextSize = addNumericStepper( 0, 220, 130, "ball text size", onSetBallTextSize, 100 );
 		}
 		
