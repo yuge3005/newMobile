@@ -1,14 +1,6 @@
 {
-    "options": {
-        "layoutMath": "3",
-        "sizeMode": "2n",
-        "useExtension": 0,
-        "layoutGap": 1,
-        "extend": 0
-    },
     "projectName": "superLotto",
     "files": [
-        "./sequence_light.png",
         "./mega_silver.png",
         "./mega_golden.png",
         "./mega_blue.png",
@@ -21,7 +13,9 @@
         "./extra_silver.png",
         "./extra_golden.png",
         "./extra_blue.png",
+        "./card_bg_A.png",
         "./card_bg.png",
+        "./card_back.png",
         "./btn_up_press.png",
         "./btn_up.png",
         "./btn_orange_press.png",
@@ -36,7 +30,15 @@
         "./ball_mega.png",
         "./ball_golden.png",
         "./ball_blue.png",
-        "./any_light.png"
+        "./any_light.png",
+        "./sequence_light.png"
     ],
+    "options": {
+        "layoutMath": "3",
+        "sizeMode": "2n",
+        "useExtension": 0,
+        "layoutGap": 1,
+        "extend": 0
+    },
     "version": 5
 }
