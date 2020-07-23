@@ -85,8 +85,8 @@ class LottoCard extends GameCard{
 			tx.text = assetName.replace( "se", ( GameUIItem.languageText["sequence"][GlobelSettings.language] as string ).toUpperCase() + "  ");
 		}
 		else{
-			Com.addBitmapAt( this.fitEffectLayer, BingoMachine.getAssetStr( "bar_any" ), 0, 214 );
-			tx = Com.addTextAt( this.fitEffectLayer, 15, 228 + BrowserInfo.textUp, 300, 38, 38, true );
+			Com.addBitmapAt( this.fitEffectLayer, BingoMachine.getAssetStr( "bar_any" ), 0, 165 );
+			tx = Com.addTextAt( this.fitEffectLayer, 15, 179 + BrowserInfo.textUp, 300, 38, 38, true );
 			tx.text = assetName.replace( "an", ( GameUIItem.languageText["any"][GlobelSettings.language] as string ).toUpperCase() + "  ");
 		}
 		this.lottoCardText( tx, 0xFDFF33 );

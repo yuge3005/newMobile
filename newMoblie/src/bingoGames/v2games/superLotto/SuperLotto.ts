@@ -211,17 +211,17 @@ class SuperLotto extends V2Game{
         this.anNumbers = [];
         this.anBgs = [];
         for( let i: number = 0; i < 4; i++ ){
-            this.anBgs[i] = Com.addBitmapAt( this, this.assetStr( "any_light" ), 558, 380 - 28 * i );
+            this.anBgs[i] = Com.addBitmapAt( this, this.assetStr( "any_light" ), 1587, 793 - 56 * i );
             this.anBgs[i].visible = false;
-            this.anNumbers[i] = this.addGameTextCenterShadow( 573, 382 - 28 * i, 22, 0xE518FD, "sequence", false, 30, false, false );
+            this.anNumbers[i] = this.addGameTextCenterShadow( 1618, 799 - 56 * i + BrowserInfo.textUp, 40, 0xE518FD, "sequence", false, 30, false, false );
             this.anNumbers[i].text = "" + ( i + 2 );
         }
         this.seNumbers = [];
         this.seBgs = [];
         for( let i: number = 0; i < 6; i++ ){
-            this.seBgs[i] = Com.addBitmapAt( this, this.assetStr( "sequence_light" ), 558, 232 - 28 * i );
+            this.seBgs[i] = Com.addBitmapAt( this, this.assetStr( "sequence_light" ), 1587, 478 - 56 * i );
             this.seBgs[i].visible = false;
-            this.seNumbers[i] = this.addGameTextCenterShadow( 573, 234 - 28 * i, 22, 0x18A4FD, "sequence", false, 30, false, false );
+            this.seNumbers[i] = this.addGameTextCenterShadow( 1618, 484 - 56 * i + BrowserInfo.textUp, 40, 0x18A4FD, "sequence", false, 30, false, false );
             this.seNumbers[i].text = "" + ( i + 1 );
         }
     }
@@ -408,12 +408,12 @@ class SuperLotto extends V2Game{
 			let pos: Object = pts[payTable].position;
             let isSequence: boolean = payTable.indexOf( "se" ) >= 0;
             let y: number = pos["y"] - ( isSequence ? 234 : 382 );
-            y = Math.floor( y / 28 );
-            y = ( isSequence ? 234 : 382 ) + y * 28 + 2;
+            y = Math.floor( y / 56 );
+            y = ( isSequence ? 234 : 382 ) + y * 56 + 32;
 			pts[payTable].UI.y = y;
-            pts[payTable].UI.x = 598;
+            pts[payTable].UI.x = 1745;
             let tx: egret.TextField = pts[payTable].UI["tx"];
-            tx.width = 142;
+            tx.width = 200;
             tx.textAlign = "right";
 		}
 	}
