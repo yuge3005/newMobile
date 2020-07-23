@@ -249,8 +249,8 @@ class BingoMachine extends GameUIItem{
 
 		if( !this.gameToolBar )this.gameToolBar = new GameToolBar;
 		Com.addObjectAt( this, this.gameToolBar, 0, GameToolBar.toolBarY );
-		this.gameToolBar.scaleX = 1 / BingoBackGroundSetting.gameScale.x;
-		this.gameToolBar.scaleY = 1 / BingoBackGroundSetting.gameScale.y;
+		this.gameToolBar.scaleX = BingoBackGroundSetting.gameMask.width / 755;
+		this.gameToolBar.scaleY = this.gameToolBar.scaleX * 0.62;
 		this.gameToolBar.showTip( "" );
 
 		this.resetGameToolBarStatus();
