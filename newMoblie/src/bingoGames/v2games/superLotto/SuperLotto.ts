@@ -228,7 +228,7 @@ class SuperLotto extends V2Game{
 
 /******************************************************************************************************************************************************************/
     protected showJackpot( jackpot: number, jackpotMinBet: number, betConfig: Array<Object> ){
-        this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 570, 16 ), jackpot, jackpotMinBet, betConfig, new egret.Point( -15, -1 ), new egret.Rectangle( 0, 20, 160, 20 ), 16, 0xFF7E00, new egret.Rectangle( 0, 5, 160, 20 ), 16, 0xF6FF00 ) );
+        this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 1345, 14 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 0, 0 ), new egret.Rectangle( 0, 60, 432, 48 ), 45, 0xFF7E00, new egret.Rectangle( 0, 10, 432, 45 ), 40, 0xF6FF00 ) );
         this.jackpotArea.tip.fontFamily = "Righteous";
         this.jackpotArea["jackpotText"].fontFamily = "Righteous";
     }

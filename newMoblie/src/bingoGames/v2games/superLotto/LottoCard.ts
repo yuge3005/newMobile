@@ -162,13 +162,13 @@ class LottoCard extends GameCard{
 
 	private addMultiTimeText( assetName: string, multi: number, isSequence: boolean ){
 		if( multi == 3 || multi == 6 ){
-			Com.addBitmapAt( this.fitEffectLayer, BingoMachine.getAssetStr( "icon_golden" ), 198, isSequence ? 4 : 94 );
-			let tx3: egret.TextField = Com.addTextAt( this.fitEffectLayer, 228, BrowserInfo.textUp + ( isSequence ? 8 : 98 ), 36, 24, 22, true );
+			Com.addBitmapAt( this.fitEffectLayer, BingoMachine.getAssetStr( "icon_golden" ), 610, isSequence ? 5 : 170 );
+			let tx3: egret.TextField = Com.addTextAt( this.fitEffectLayer, 672, BrowserInfo.textUp + ( isSequence ? 14 : 179 ), 50, 38, 38, true );
 			this.lottoCardText( tx3, 0xFFFFFF, "x3" );
 		}
 		if( multi == 2 || multi == 6 ){
-			Com.addBitmapAt( this.fitEffectLayer, BingoMachine.getAssetStr( "icon_silver" ), multi == 6 ? 138 : 198, isSequence ? 4 : 94 );
-			let tx2: egret.TextField = Com.addTextAt( this.fitEffectLayer, multi == 6 ? 168 : 228, BrowserInfo.textUp + ( isSequence ? 8 : 98 ), 36, 24, 22, true );
+			Com.addBitmapAt( this.fitEffectLayer, BingoMachine.getAssetStr( "icon_silver" ), multi == 6 ? 490 : 610, isSequence ? 5 : 170 );
+			let tx2: egret.TextField = Com.addTextAt( this.fitEffectLayer, multi == 6 ? 552 : 672, BrowserInfo.textUp + ( isSequence ? 14 : 179 ), 50, 38, 38, true );
 			this.lottoCardText( tx2, 0xFFFFFF, "x2" );
 		}
 	}
