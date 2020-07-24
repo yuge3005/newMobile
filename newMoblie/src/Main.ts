@@ -27,27 +27,12 @@ class Main extends egret.DisplayObjectContainer {
     }
 
     private async runGame() {
-        await this.loadResource();
+        await RES.loadConfig("resource/default.res.json", "resource/");
         this.createGameScene();
         await platform.login();
         const userInfo = await platform.getUserInfo();
         console.log(userInfo);
     }
-
-    private async loadResource() {
-        try {
-            const loadingView = new LoadingUI();
-            this.stage.addChild(loadingView);
-            await RES.loadConfig("resource/default.res.json", "resource/");
-            await RES.loadGroup("forAll", 0, loadingView);
-            this.stage.removeChild(loadingView);
-        }
-        catch (e) {
-            console.error(e);
-        }
-    }
-
-    private textfield: egret.TextField;
 
     /**
      * 创建游戏场景
