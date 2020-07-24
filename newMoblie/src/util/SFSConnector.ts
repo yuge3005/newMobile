@@ -904,7 +904,7 @@ class SFSConnector {
 
     public static loginTo( zona: string, room: string = null, joinRoomCallback: Function ):void{
         this.gettingRoom = room;
-        this._sfs.send(eval("new SFS2X.LoginRequest('243972732', '', null, '" + zona + "')" ));
+        this._sfs.send(eval("new SFS2X.LoginRequest('" + PlayerConfig.player( "user.id" ) + "', '', null, '" + zona + "')" ));
         this.joinRoomCallback = joinRoomCallback;
     }
 
