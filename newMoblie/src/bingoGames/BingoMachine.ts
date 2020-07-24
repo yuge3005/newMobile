@@ -456,6 +456,17 @@ class BingoMachine extends GameUIItem{
 		this.soundManager.stopAll();
 	}
 
+	protected tileBg(): boolean{
+        let bg: egret.Bitmap = this.getChildAt( 0 ) as egret.Bitmap;
+        if( bg ){
+            bg.fillMode = egret.BitmapFillMode.REPEAT;
+            bg.width = BingoBackGroundSetting.gameMask.width;
+            bg.height = BingoBackGroundSetting.gameMask.height;
+            return true;
+        }
+        return false;
+    }
+
 /******************************************************************************************/
 
 	protected btExtra: boolean;

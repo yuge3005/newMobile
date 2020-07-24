@@ -13,6 +13,7 @@ class SuperLotto extends V2Game{
         this.ptFilterConfig = "superLotto_filt";
 
         this.ballArea = new LottoBallManager;
+        this.ballArea.mask = new egret.Rectangle( 342, 444, 1216, 159 );
         PaytableUI.textBold = true;
 
         CardGrid.defaultBgColor = 0;
@@ -46,6 +47,7 @@ class SuperLotto extends V2Game{
         BallManager["balls"][-1] = BallManager["balls"][0];
 
         super.init();
+        this.tileBg();
 
         this.showNoBetAndCredit();
 
