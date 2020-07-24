@@ -1,6 +1,10 @@
 {
 	"groups": [
 		{
+			"keys": "t90_4corners_mp3,t90_ball_mp3,t90_bet_mp3,t90_bingo_mp3,t90_blink_mp3,t90_card_mp3,t90_double_line_mp3,t90_extra_ball_mp3,t90_extra_loop_mp3,t90_jackpot_mp3,t90_line_mp3,t90_win_mp3,turbo90_json,turbo90Animation_json,turbo90Animation_png,turbo90_conf,GameToolBar_json",
+			"name": "turbo90"
+		},
+		{
 			"keys": "superLotto_json,superLotto_conf,superLotto_filt,lotto_eb_mp3,lotto_ball_mp3,lotto_an2_mp3,lotto_an5_mp3,lotto_an4_mp3,lotto_an3_mp3,lotto_gold_mp3,lotto_se1_mp3,lotto_se2_mp3,lotto_se3_mp3,lotto_se4_mp3,lotto_silver_mp3,lotto_se5_mp3,lotto_se6_mp3,GameToolBar_json",
 			"name": "superLotto"
 		}
@@ -108,6 +112,87 @@
 			"url": "assets/sound/superLotto/lotto_se6.mp3",
 			"type": "sound",
 			"name": "lotto_se6_mp3"
+		},
+		{
+			"url": "game/turbo90/turbo90Animation.png",
+			"type": "image",
+			"name": "turbo90Animation_png"
+		},
+		{
+			"url": "game/turbo90/sound/t90_4corners.mp3",
+			"type": "sound",
+			"name": "t90_4corners_mp3"
+		},
+		{
+			"url": "game/turbo90/sound/t90_ball.mp3",
+			"type": "sound",
+			"name": "t90_ball_mp3"
+		},
+		{
+			"url": "game/turbo90/sound/t90_bet.mp3",
+			"type": "sound",
+			"name": "t90_bet_mp3"
+		},
+		{
+			"url": "game/turbo90/sound/t90_bingo.mp3",
+			"type": "sound",
+			"name": "t90_bingo_mp3"
+		},
+		{
+			"url": "game/turbo90/sound/t90_blink.mp3",
+			"type": "sound",
+			"name": "t90_blink_mp3"
+		},
+		{
+			"url": "game/turbo90/sound/t90_card.mp3",
+			"type": "sound",
+			"name": "t90_card_mp3"
+		},
+		{
+			"url": "game/turbo90/sound/t90_double_line.mp3",
+			"type": "sound",
+			"name": "t90_double_line_mp3"
+		},
+		{
+			"url": "game/turbo90/sound/t90_extra_ball.mp3",
+			"type": "sound",
+			"name": "t90_extra_ball_mp3"
+		},
+		{
+			"url": "game/turbo90/sound/t90_extra_loop.mp3",
+			"type": "sound",
+			"name": "t90_extra_loop_mp3"
+		},
+		{
+			"url": "game/turbo90/sound/t90_jackpot.mp3",
+			"type": "sound",
+			"name": "t90_jackpot_mp3"
+		},
+		{
+			"url": "game/turbo90/sound/t90_line.mp3",
+			"type": "sound",
+			"name": "t90_line_mp3"
+		},
+		{
+			"url": "game/turbo90/sound/t90_win.mp3",
+			"type": "sound",
+			"name": "t90_win_mp3"
+		},
+		{
+			"url": "game/turbo90/turbo90Animation.json",
+			"type": "json",
+			"name": "turbo90Animation_json"
+		},
+		{
+			"url": "game/turbo90/turbo90.json",
+			"type": "sheet",
+			"name": "turbo90_json",
+			"subkeys": "BALL_RAIL 1,CARD_HEADER_BG_white,EXTRA_emptyball,Turbo_90s_New_Layout_ShortDisplay,active-jackpot,ball_blue,ball_blue_small,ball_green,ball_green_small,ball_red,ball_red_small,ball_yellow,ball_yellow_small,card_over_layer,carta_virada,disabled_checkbox,enabled_checkbox,extra_come,jackpot_lock,lotto_gate,lotto_gate_front,mark_pink,mark_red,mark_x,mark_yellow,mask,mega_en,mega_es,mega_pt,path_tip,paytable_bg,paytable_fg,turbo90_1,turbo90_2,turbo90_3,turbo90_corner,wheel_eject"
+		},
+		{
+			"url": "config/turbo90.conf",
+			"type": "json",
+			"name": "turbo90_conf"
 		}
 	]
 }
