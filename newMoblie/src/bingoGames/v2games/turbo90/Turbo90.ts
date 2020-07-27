@@ -14,8 +14,7 @@ class Turbo90 extends V2Game{
 
         PaytableUI.textBold = true;
 
-        GameCard.bgRound = 20;
-        GameCard.gridOnTop = true;
+        CardManager.cardType = Turbo90Card;
 
         GameCard.cardTexPosition = new egret.Point( 10, 2 );
         GameCard.betTexPosition = new egret.Point( 120, 2 );
