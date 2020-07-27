@@ -1,27 +1,12 @@
 {
-    "projectName": "turbo90",
     "options": {
+        "useExtension": 0,
         "layoutGap": 1,
         "extend": 0,
         "layoutMath": "3",
-        "sizeMode": "2n",
-        "useExtension": 0
+        "sizeMode": "2n"
     },
     "files": [
-        "./disabled_checkbox.png",
-        "./carta_virada.png",
-        "./card_over_layer.png",
-        "./CARD_HEADER_BG_white.png",
-        "./ball_yellow_small.png",
-        "./ball_yellow.png",
-        "./ball_red_small.png",
-        "./ball_red.png",
-        "./BALL_RAIL 1.png",
-        "./ball_green_small.png",
-        "./ball_green.png",
-        "./ball_blue_small.png",
-        "./ball_blue.png",
-        "./active-jackpot.png",
         "./wheel_eject.png",
         "./turbo90_corner.png",
         "./turbo90_3.png",
@@ -39,12 +24,21 @@
         "./mark_x.png",
         "./mark_red.png",
         "./mark_pink.png",
-        "./lotto_gate_front.png",
-        "./lotto_gate.png",
         "./jackpot_lock.png",
         "./EXTRA_emptyball.png",
         "./extra_come.png",
-        "./enabled_checkbox.png"
+        "./enabled_checkbox.png",
+        "./disabled_checkbox.png",
+        "./carta_virada.png",
+        "./card_over_layer.png",
+        "./CARD_HEADER_BG_white.png",
+        "./ball_yellow.png",
+        "./ball_red.png",
+        "./BALL_RAIL 1.png",
+        "./ball_green.png",
+        "./ball_blue.png",
+        "./active-jackpot.png"
     ],
-    "version": 5
+    "version": 5,
+    "projectName": "turbo90"
 }

@@ -76,7 +76,7 @@ class Turbo90 extends V2Game{
         for( let i: number = 0; i < 4; i++ ){
             this.arrowMcs[i] = [];
             for( let j: number = 0; j < 3; j++ ){
-                let arrowAnimation: egret.MovieClip = Com.addMovieClipAt( this, this._mcf, "arrowAnimationInT90", this.cardPositions[i]["x"] - 23, this.cardPositions[i]["y"] + 27 * ( j + 1 ) );
+                let arrowAnimation: egret.MovieClip = Com.addMovieClipAt( this, this._mcf, "arrowAnimationInT90", this.cardPositions[i]["x"] - 52, this.cardPositions[i]["y"] + 72 * ( j + 1 ) - 7 );
                 arrowAnimation.stop();
                 arrowAnimation.visible = false;
                 this.arrowMcs[i][j] = arrowAnimation;
