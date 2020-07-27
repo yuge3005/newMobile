@@ -16,9 +16,9 @@ class Turbo90 extends V2Game{
 
         CardManager.cardType = Turbo90Card;
 
-        GameCard.cardTexPosition = new egret.Point( 10, 2 );
-        GameCard.betTexPosition = new egret.Point( 120, 2 );
-        GameCard.texSize = 17;
+        GameCard.cardTexPosition = new egret.Point( 25, 12 );
+        GameCard.betTexPosition = new egret.Point( 270, 12 );
+        GameCard.texSize = 55;
         GameCard.texColor = 0xFFFFFF;
         GameCard.showTitleShadow = new egret.DropShadowFilter(1, 0, 0x000000, 1, 2, 2);
 

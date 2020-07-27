@@ -78,12 +78,12 @@ class GameCard extends GameUIItem{
 
 		if( !GameCard.texSize )return;
 		if( GameCard.cardTexPosition ){
-			this.cardText = this.addGameText(GameCard.cardTexPosition.x, GameCard.cardTexPosition.y + BrowserInfo.textUp, GameCard.texSize, GameCard.texColor, "card", false, 200, ": " + (this.cardId + 1), 0.7);
+			this.cardText = this.addGameText(GameCard.cardTexPosition.x, GameCard.cardTexPosition.y, GameCard.texSize, GameCard.texColor, "card", false, 220, ": " + (this.cardId + 1), 0.9);
 			if (GameCard.showTitleShadow) this.cardText.filters = [GameCard.showTitleShadow];
 			if (GameCard.firstToUpperCase) this.cardText.text = Utils.toFirstUpperCase(this.cardText.text);
 		}
 		if( GameCard.betTexPosition ){
-			this.betText = this.addGameText(GameCard.betTexPosition.x, GameCard.betTexPosition.y + BrowserInfo.textUp, GameCard.texSize, GameCard.texColor, "bet", false, 250, ": ", 0.7);
+			this.betText = this.addGameText(GameCard.betTexPosition.x, GameCard.betTexPosition.y, GameCard.texSize, GameCard.texColor, "bet", false, 320, ": ", 0.9);
 			if (GameCard.showTitleShadow) this.betText.filters = [GameCard.showTitleShadow];
 		}
 	}
