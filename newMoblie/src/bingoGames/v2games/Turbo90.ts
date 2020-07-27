@@ -15,6 +15,7 @@ class Turbo90 extends V2Game{
         PaytableUI.textBold = true;
 
         GameCard.bgRound = 20;
+        GameCard.gridOnTop = true;
 
         GameCard.cardTexPosition = new egret.Point( 10, 2 );
         GameCard.betTexPosition = new egret.Point( 120, 2 );
@@ -39,7 +40,7 @@ class Turbo90 extends V2Game{
         this.tipStatusTextPosition = new egret.Rectangle( 180, 195, 412, 18 );
         this.tipStatusTextColor = 0xCC0000;
 
-        BallManager.ballOffsetY = 3;
+        BallManager.ballOffsetY = 5;
 
         GameToolBar.toolBarY = 920;
         BingoBackGroundSetting.defaultScale = false;
@@ -59,16 +60,11 @@ class Turbo90 extends V2Game{
             t.scaleY = 0.9;
         });
 
-        let betText = this.addGameText(10, 192, GlobelSettings.language === "en"? 24: 20, 0xFEFE00, "bet", true, 100, "", 1);
-        let creditText = this.addGameText(520, 192, GlobelSettings.language === "en"? 24: 20, 0xFEFE00, "credit", true, 100, "", 1);
-        betText.fontFamily = creditText.fontFamily = "fantasy_impact";
-
-        this.betText = this.addGameTextCenterShadow(70, 194, 19, 0xFFFFFF, "bet", true, 120, true, true);
-        this.creditText = this.addGameTextCenterShadow(600, 194, 19, 0xFEFE00, "credit", true, 180, true, true);
+        this.showNoBetAndCredit();
+        this.addChild( this.getChildByName( this.assetStr( "path_tip" ) ) );
 
         this.runningBallContainer = new egret.DisplayObjectContainer;
-        Com.addBitmapAt( this.runningBallContainer, this.assetStr( "lotto_gate" ), 0, 0 );
-        this.coverRunningBall = Com.addBitmapAt( this.runningBallContainer, this.assetStr( "lotto_gate_front" ), 0, 0 );
+        this.coverRunningBall = Com.addBitmapAt( this.runningBallContainer, this.assetStr( "wheel_eject" ), 0, 0 );
 
         this.buildSuperEbArea( "mega_" + GlobelSettings.language, 119, 58 );
 
