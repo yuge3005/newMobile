@@ -36,10 +36,6 @@ class Turbo90 extends V2Game{
         languageText["line"] = { en: "L I N E", es: "L Í N E A", pt: "L I N H A" };
         languageText["four corners"] = { en: "4 C O R N E R S", es: "4 E S Q U I N A S", pt: "4 E S Q U I N A S" };
 
-        this.needListenToolbarStatus = true;
-        this.tipStatusTextPosition = new egret.Rectangle( 180, 195, 412, 18 );
-        this.tipStatusTextColor = 0xCC0000;
-
         BallManager.ballOffsetY = 5;
 
         GameToolBar.toolBarY = 920;
@@ -64,7 +60,9 @@ class Turbo90 extends V2Game{
         this.addChild( this.getChildByName( this.assetStr( "path_tip" ) ) );
 
         this.runningBallContainer = new egret.DisplayObjectContainer;
-        this.coverRunningBall = Com.addBitmapAt( this.runningBallContainer, this.assetStr( "wheel_eject" ), 0, 0 );
+        this.addChild( this.runningBallContainer );
+        this.runningBallContainer.mask = new egret.Rectangle( 255, 68, 270, 270 );
+        this.coverRunningBall = this.getChildByName( this.assetStr("wheel_eject") );
 
         this.buildSuperEbArea( "mega_" + GlobelSettings.language, 119, 58 );
 
@@ -88,40 +86,24 @@ class Turbo90 extends V2Game{
 
     protected showLastBall( ballIndex: number ): void{
         super.showLastBall( ballIndex );
-        this.showLastBallAt( ballIndex, 19, -10 );
+        this.showLastBallAt( ballIndex, 289, 68 );
 
         this.playSound("t90_ball_mp3");
 	}
 
     protected showLastBallAt( ballIndex: number, x: number, y: number, scale: number = 1 ): void{
-		if( this.runningBallUI && ( this.runningBallContainer ).contains( this.runningBallUI ) ){
-			( this.runningBallContainer ).removeChild( this.runningBallUI );
-		}
-		this.runningBallUI = this.ballArea.getABigBall( ballIndex, "_small", 60 );
+		this.clearRunningBallUI();
+		this.runningBallUI = this.ballArea.getABall( ballIndex );
+        this.runningBallUI.scaleX = this.runningBallUI.scaleY = 200 / 68;
 		Com.addObjectAt( this.runningBallContainer, this.runningBallUI, x, y );
 
-        Com.addObjectAt( this.runningBallContainer, this.coverRunningBall, 0, 0 );
-        Com.addObjectAt( this, this.runningBallContainer, 135, 0 );
-
-        this.getChildByName( this.assetStr( "lotto_balls" ) ).visible = false;
+        this.runningBallContainer.addChild( this.coverRunningBall );
 
         clearTimeout( this.timeoutId );
-        this.timeoutId = setTimeout( this.removeBigBall.bind( this ), 3000 );
+        this.timeoutId = setTimeout( this.clearRunningBallUI.bind( this ), 3000 );
 	}
 
     private timeoutId: number;
-
-    private removeBigBall(){
-        if( this.runningBallUI && ( this.runningBallContainer ).contains( this.runningBallUI ) ){
-			( this.runningBallContainer ).removeChild( this.runningBallUI );
-		}
-        if( this.contains( this.runningBallContainer ) )this.removeChild( this.runningBallContainer );
-        this.getChildByName( this.assetStr( "lotto_balls" ) ).visible = true;
-    }
-
-    protected clearRunningBallUI(): void{
-        if( this.runningBallContainer && this.contains( this.runningBallContainer ) )this.removeChild( this.runningBallContainer );
-	}
 
     protected afterCheck( resultList: Array<Object> ): void{
         super.afterCheck( resultList );
