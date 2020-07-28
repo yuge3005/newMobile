@@ -30,12 +30,12 @@ class Turbo90 extends V2Game{
         GameCard.useRedEffect = true;
 
         let languageText = GameUIItem.languageText;
-        languageText["bingo"] = { en: "B I N G O", es: "B I N G O", pt: "B I N G O" };
-        languageText["double line"] = { en: "D O U B L E L I N E", es: "D O B L E L Í N E A", pt: "L I N H A D U P L A" };
-        languageText["line"] = { en: "L I N E", es: "L Í N E A", pt: "L I N H A" };
-        languageText["four corners"] = { en: "4 C O R N E R S", es: "4 E S Q U I N A S", pt: "4 E S Q U I N A S" };
+        languageText["bingo"] = { en: "BINGO", es: "BINGO", pt: "BINGO" };
+        languageText["double line"] = { en: "D.LINE", es: "D.LÍNEA", pt: "LINHA.D" };
+        languageText["line"] = { en: "LINE", es: "LÍNEA", pt: "LINHA" };
+        languageText["four corners"] = { en: "4 CORNERS", es: "4 ESQUINAS", pt: "4 ESQUINAS" };
 
-        BallManager.ballOffsetY = 5;
+        BallManager.ballOffsetY = 2;
 
         GameToolBar.toolBarY = 920;
         BingoBackGroundSetting.defaultScale = false;
@@ -45,15 +45,10 @@ class Turbo90 extends V2Game{
     protected init(){
         super.init();
 
-        let paytableTexts = new Array<egret.TextField>(4);
-        paytableTexts[0] = this.addGameText( 300, 7, 22, 0x46C8F5, "bingo",false, 200, "", 1);
-        paytableTexts[1] = this.addGameText( 300, 28, 22, 0x46C8F5, "double line",false, 200, "", 1);
-        paytableTexts[2] = this.addGameText( 300, 49, 22, 0x46C8F5, "line",false, 200, "", 1);
-        paytableTexts[3] = this.addGameText(300, 70, 22, 0x46C8F5, "four corners", false, 200, "", 1);
-        paytableTexts.map((t) => {
-            t.fontFamily = "fantasy_impact";
-            t.scaleY = 0.9;
-        });
+        this.turbo90Text( "bingo", 405 );
+        this.turbo90Text( "double line", 525 );
+        this.turbo90Text( "line", 645 );
+        this.turbo90Text( "four corners", 765 );
 
         this.showNoBetAndCredit();
         this.addChild( this.getChildByName( this.assetStr( "path_tip" ) ) );
@@ -66,6 +61,17 @@ class Turbo90 extends V2Game{
         this.buildSuperEbArea( "mega_" + GlobelSettings.language, 119, 58 );
 
         this.addLineArrows();
+    }
+
+    private turbo90Text( str: string, yPos: number ): egret.TextField{
+        let tx: egret.TextField = Com.addTextAt( this, 945, yPos, 200, 30, 30, true, false );
+        tx.textColor = 0xECFFAC;
+        tx.bold = true;
+        tx.stroke = 2;
+        tx.strokeColor = 0x213510;
+        tx.scaleX = 0.93;
+        tx.text = GameUIItem.languageText[str][GlobelSettings.language];
+        return tx;
     }
 
     private arrowMcs: Array<Array<egret.MovieClip>>;
