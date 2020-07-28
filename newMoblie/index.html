@@ -29,10 +29,10 @@
 </head>
 
 <body>
-    <div style="font-family: 'Righteous';position: fixed;top:50%;left:50%;margin-left:-183px;margin-top:-173px;text-align:center"><img src="resource/Icons/T90.png"></div>
-    <div style="position: fixed;top:50%;left:50%;margin-left:-345px;margin-top:173px;text-align:center"><img src="resource/assets/proload/loader_bg.png"></div>
-    <div style="position: fixed;top:50%;left:50%;margin-left:-312px;margin-top:188px;text-align:center"><img src="resource/assets/proload/loader_glass.png"></div>
-    <div style="position: fixed;top:50%;left:50%;margin-left:-310px;margin-top:190px;text-align:center;width:10px;overflow-x:hidden" id="loading_progress_div"><img src="resource/assets/proload/loader_balls_fill.png"></div>
+    <div style="font-family: 'Righteous';position: fixed;top:50%;left:50%;margin-left:-93px;margin-top:-86px;text-align:center"><img src="resource/Icons/T90.png" style="width:183px;height:173"></div>
+    <div style="position: fixed;top:50%;left:50%;margin-left:-176px;margin-top:86px;text-align:center"><img src="resource/assets/proload/loader_bg.png" style="width:353px;height:38"></div>
+    <div style="position: fixed;top:50%;left:50%;margin-left:-160px;margin-top:93px;text-align:center"><img src="resource/assets/proload/loader_glass.png" style="width:322px;height:24"></div>
+    <div style="position: fixed;top:50%;left:50%;margin-left:-159px;margin-top:94px;text-align:center;width:5px;overflow-x:hidden" id="loading_progress_div"><img src="resource/assets/proload/loader_balls_fill.png" style="width:320px;height:22"></div>
     <div style="margin: auto;width: 100%;height: 100%;position: fixed" class="egret-player"
          data-entry-class="Main"
          data-orientation="auto"
@@ -59,7 +59,7 @@
         var loadNext = function () {
             loadSingleScript(list[loaded], function () {
                 loaded++;
-                document.getElementById( "loading_progress_div" ).style.width = Math.floor( 639 * Math.min( loaded, 9 ) * 2 / 100 ) + "px";
+                document.getElementById( "loading_progress_div" ).style.width = Math.floor( 320 * Math.min( loaded, 9 ) * 2 / 100 ) + "px";
                 if (loaded >= list.length) {
                     callback();
                 }
