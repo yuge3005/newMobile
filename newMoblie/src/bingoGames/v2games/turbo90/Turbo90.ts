@@ -16,6 +16,13 @@ class Turbo90 extends V2Game{
         PaytableUI.textBold = true;
 
         CardManager.cardType = Turbo90Card;
+        CardManager.gridType = Turbo90Grid;
+
+        TowerGrid.blink1PicName = "mark_yellow";
+        TowerGrid.blink2PicName = "mark_pink";
+        TowerGrid.defaultBgPicName = "mark_white";
+        TowerGrid.onEffBgPicName = "mark_white";
+        TowerGrid.linePicName = "mark_red";
 
         GameCard.cardTexPosition = new egret.Point( 25, 12 );
         GameCard.betTexPosition = new egret.Point( 270, 12 );
