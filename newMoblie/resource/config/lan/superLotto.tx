@@ -1,0 +1,20 @@
+{"bet":{"en":"BET","pt":"APOSTA","es":"APUESTA"}
+,"credit":{"en":"CREDIT", "es":"CRÉDITO","pt":"CRÉDITO"}
+		,"card":{"en":"CARD","es": "TARJETA", "pt":"CARTELA"}
+		,"select cards":{"en":"Select Cards.", "es":"Seleccione Tarjeta.","pt":"Selecione Cartões."}
+		,"pulse game":{"en":"Pulse Game.", "es":"Juego de pulso.","pt": "Pulse Jogue."}
+		,"good luck":{"en": "GOOD LUCK","es": "BUENA SUERTE","pt": "BOA SORTE"}
+		,"extra ball":{"en": "EXTRA BALL ?", "es":"BOLA EXTRA ?","pt": "BOLA EXTRA ?"}
+		,"play extra":{"en": "Play Extra Ball", "es":"Bola del juego extra", "pt":"Aperte Bola Extra"}
+		,"win":{ "en":"WIN","es": "GANÕ","pt": "GANHO"}
+		,"jackpot":{"en":"JACKPOT", "es":"JACKPOT", "pt":"ACUMULADO"}
+		,"prize":{"en":"PRIZE","es": "PRÉMIO", "pt":"PRÉMIO"}
+		,"jackpot_tooltip":{"en":"Your current bet does not qualify\nPlease increase your bet to {1}\nand play {2} cards",
+			"es":"Su apuesta actual no cualifica.\nPor favor,aumente su apuesta\npara {1} y juega con {2} tarjetas.", 
+			"pt":"Sua aposta atual não se qualifica.\nPor favor,aumente sua aporta\npara {1} e jogue com {2} cartas."}
+			,"increase":{ "en": "EQUAL", "es": "IGUALES", "pt": "IGUAIS" }
+        ,"shuffle":{ "en": "SHUFFLE", "es": "BARAJAR", "pt": "SORTEAR" }
+        ,"any":{ "en": "ANY", "es": "CUALQUIER", "pt": "QUALQUER" }
+        ,"sequence":{ "en": "SEQUENCE", "es": "SECUENCIA", "pt": "SEQUÊNCIA" }
+        ,"jp":{ "en": "JP", "es": "JP", "pt": "AC" }
+		}

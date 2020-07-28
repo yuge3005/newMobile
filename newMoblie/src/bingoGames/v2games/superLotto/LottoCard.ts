@@ -82,12 +82,12 @@ class LottoCard extends GameCard{
 		if( isSequence ){
 			Com.addBitmapAt( this.fitEffectLayer, BingoMachine.getAssetStr( "bar_sequence" ), 0, 0 );
 			tx = Com.addTextAt( this.fitEffectLayer, 15, 14 + BrowserInfo.textUp, 300, 38, 38, true );
-			tx.text = assetName.replace( "se", ( GameUIItem.languageText["sequence"][GlobelSettings.language] as string ).toUpperCase() + "  ");
+			tx.text = assetName.replace( "se", MuLang.getText("sequence", MuLang.CASE_UPPER ) + "  ");
 		}
 		else{
 			Com.addBitmapAt( this.fitEffectLayer, BingoMachine.getAssetStr( "bar_any" ), 0, 165 );
 			tx = Com.addTextAt( this.fitEffectLayer, 15, 179 + BrowserInfo.textUp, 300, 38, 38, true );
-			tx.text = assetName.replace( "an", ( GameUIItem.languageText["any"][GlobelSettings.language] as string ).toUpperCase() + "  ");
+			tx.text = assetName.replace( "an", MuLang.getText("any", MuLang.CASE_UPPER ) + "  ");
 		}
 		this.lottoCardText( tx, 0xFDFF33 );
 	}
@@ -103,7 +103,7 @@ class LottoCard extends GameCard{
             bt.setText(txt);
             txt.fontFamily = "Righteous";
             txt.stroke = 1;
-            txt.text = ( GameUIItem.languageText[buttonString][GlobelSettings.language] as string ).toUpperCase();
+			txt.text = MuLang.getText(buttonString, MuLang.CASE_UPPER);
         }
         return bt;
     }

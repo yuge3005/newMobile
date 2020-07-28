@@ -11,6 +11,7 @@ class SuperLotto extends V2Game{
 	public constructor( assetsPath: string ) {
 		super( "superLotto.conf", assetsPath, 71 );
         this.ptFilterConfig = "superLotto_filt";
+        this.languageObjectName = "superLotto_tx";
 
         this.ballArea = new LottoBallManager;
         this.ballArea.mask = new egret.Rectangle( 342, 444, 1216, 159 );
@@ -27,13 +28,6 @@ class SuperLotto extends V2Game{
         GameCard.useRedEffect = true;
 
         BallManager.normalBallInterval = 200;
-
-        let languageText = GameUIItem.languageText;
-        languageText["increase"] = { en: "EQUAL", es: "IGUALES", pt: "IGUAIS" };
-        languageText["shuffle"] = { en: "SHUFFLE", es: "BARAJAR", pt: "SORTEAR" };
-        languageText["any"] = { en: "ANY", es: "CUALQUIER", pt: "QUALQUER" };
-        languageText["sequence"] = { en: "SEQUENCE", es: "SECUENCIA", pt: "SEQUÊNCIA" };
-        languageText["jp"] = { en: "JP", es: "JP", pt: "AC" };
 
         BallManager.ballOffsetY = BrowserInfo.textUp * 2;
         GameToolBar.toolBarY = 920;
@@ -139,7 +133,7 @@ class SuperLotto extends V2Game{
 
         let tx: string = PayTableManager.payTablesDictionary["se6"].UI.tx.text;
         tx = tx.replace( /\D/g, "" );
-        PayTableManager.payTablesDictionary["se6"].UI.tx.text = "x" + tx + "+" + GameUIItem.languageText["jp"][GlobelSettings.language];
+        PayTableManager.payTablesDictionary["se6"].UI.tx.text = "x" + tx + "+" + MuLang.getText("jp");
     }
 
     private ramdonPositionString( oneTimes: number, positions: number ): Array<string>{

@@ -6,10 +6,6 @@ class GameLanguage {
 	public static init(): void{
 	}
 
-	private static setWord( key: string, en: string, es: string, pt: string ): void{
-		GameUIItem.languageText[key] = { en: en, es: es, pt: pt };
-	}
-
 	public static languageTextForGameToolbar(): Object{
 		let languageText = {};
 		languageText["max bet"] = { en: "MAX BET", es: "APUESTA MAX", pt: "APOSTA MAX" };
