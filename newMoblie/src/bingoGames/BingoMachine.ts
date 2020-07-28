@@ -11,6 +11,7 @@ class BingoMachine extends GameUIItem{
 	private gameConfigFile: string;
 	protected ptFilterConfig: string;
 	protected _mcf: egret.MovieClipDataFactory;
+	protected languageObjectName: string;
 
 	protected ballArea: BallManager;
 	protected cardArea: egret.DisplayObjectContainer;
@@ -112,6 +113,11 @@ class BingoMachine extends GameUIItem{
 
 		GameCard.fitEffectNameList = this.getFitEffectNameList();
 		PaytableFilter.filterObject = this.getPaytableFilterObject();
+		MuLang.txt = this.getLanguageObject();
+	}
+
+	protected getLanguageObject(): Object{
+		return RES.getRes( this.languageObjectName );
 	}
 
 	protected getPaytableFilterObject(): Object{

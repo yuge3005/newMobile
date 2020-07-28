@@ -11,6 +11,7 @@ class Turbo90 extends V2Game{
 	public constructor( assetsPath: string ) {
 		super( "turbo90.conf", assetsPath, 39 );
         this.ptFilterConfig = "turbo90_filt";
+        this.languageObjectName = "turbo90_tx";
 
         PaytableUI.textBold = true;
 
@@ -28,12 +29,6 @@ class Turbo90 extends V2Game{
         CardGrid.blinkColors1 = 0xFFFF00;
 	    CardGrid.blinkColors2 = 0xFF00FF;
         GameCard.useRedEffect = true;
-
-        let languageText = GameUIItem.languageText;
-        languageText["bingo"] = { en: "BINGO", es: "BINGO", pt: "BINGO" };
-        languageText["double line"] = { en: "D.LINE", es: "D.LÍNEA", pt: "LINHA.D" };
-        languageText["line"] = { en: "LINE", es: "LÍNEA", pt: "LINHA" };
-        languageText["four corners"] = { en: "4 CORNERS", es: "4 ESQUINAS", pt: "4 ESQUINAS" };
 
         BallManager.ballOffsetY = 2;
 
@@ -70,7 +65,7 @@ class Turbo90 extends V2Game{
         tx.stroke = 2;
         tx.strokeColor = 0x213510;
         tx.scaleX = 0.93;
-        tx.text = GameUIItem.languageText[str][GlobelSettings.language];
+        tx.text = MuLang.getText(str);
         return tx;
     }
 

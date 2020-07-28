@@ -4,23 +4,6 @@ class GameLanguage {
 	}
 
 	public static init(): void{
-		if( !GameUIItem.languageText ) GameUIItem.languageText = {};
-		else return;
-		this.setWord( "bet", "BET", "APUESTA", "APOSTA" );
-		this.setWord( "credit", "CREDIT", "CRÉDITO", "CRÉDITO" );
-		this.setWord( "card", "CARD", "TARJETA", "CARTELA" );
-		this.setWord( "select cards", "Select Cards.", "Seleccione Tarjeta.", "Selecione Cartões." );
-		this.setWord( "pulse game", "Pulse Game.", "Juego de pulso.", "Pulse Jogue." );
-		this.setWord( "good luck", "GOOD LUCK", "BUENA SUERTE", "BOA SORTE" );
-		this.setWord( "extra ball", "EXTRA BALL ?", "BOLA EXTRA ?", "BOLA EXTRA ?" );
-		this.setWord( "play extra", "Play Extra Ball", "Bola del juego extra", "Aperte Bola Extra" );
-		this.setWord( "win", "WIN", "GANÕ", "GANHO" );
-		// languageText["ball"] = { en: "BALL", es: "BOLA", pt: "BOLA" };
-		this.setWord( "jackpot", "JACKPOT", "JACKPOT", "ACUMULADO" );
-		this.setWord( "prize", "PRIZE", "PRÉMIO", "PRÉMIO" );
-		this.setWord( "jackpot_tooltip", "Your current bet does not qualify\nPlease increase your bet to {1}\nand play {2} cards",
-			"Su apuesta actual no cualifica.\nPor favor,aumente su apuesta\npara {1} y juega con {2} tarjetas.", 
-			"Sua aposta atual não se qualifica.\nPor favor,aumente sua aporta\npara {1} e jogue com {2} cartas." );
 	}
 
 	private static setWord( key: string, en: string, es: string, pt: string ): void{

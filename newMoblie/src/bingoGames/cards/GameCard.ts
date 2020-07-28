@@ -40,7 +40,7 @@ class GameCard extends GameUIItem{
 
 	public set bet( value: number ){
 		if( !this.betText )return;
-		let pre = GameUIItem.languageText["bet"][GlobelSettings.language];
+		let pre = MuLang.getText("bet");
 		if (GameCard.firstToUpperCase) pre = Utils.toFirstUpperCase(pre);
 		this.betText.text = pre + ": " + Utils.formatCoinsNumber( value );
 	}

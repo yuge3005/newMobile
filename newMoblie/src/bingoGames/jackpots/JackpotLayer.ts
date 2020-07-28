@@ -24,7 +24,7 @@ class JackpotLayer extends egret.DisplayObjectContainer {
 		if( tipRect ){
 			this.tip = Com.addTextAt( this, tipRect.x, tipRect.y, tipRect.width, tipRect.height, tipTextSize, false, true );
         	this.tip.textColor = tipTextColor;
-        	this.tip.text = GameUIItem.languageText["jackpot"][GlobelSettings.language];
+			this.tip.text = MuLang.getText("jackpot");
 		}
 
 		this.jackpotText = Com.addTextAt( this, jackpotTextRect.x, jackpotTextRect.y, jackpotTextRect.width, jackpotTextRect.height, jackpotTextSize, false, true );
@@ -58,7 +58,7 @@ class JackpotLayer extends egret.DisplayObjectContainer {
 		tooltipText.textAlign = "center";
 		tooltipText.verticalAlign = "middle";
 		let cardNumbers: number = CardManager.cards.length;
-		tooltipText.text = GameUIItem.languageText["jackpot_tooltip"][GlobelSettings.language].replace("{1}", this.jackpotMinBet * cardNumbers + "").replace("{2}", cardNumbers + "");
+		tooltipText.text = MuLang.getText("jackpot_tooltip").replace("{1}", this.jackpotMinBet * cardNumbers + "").replace("{2}", cardNumbers + "");
 
 		Com.addObjectAt(this, this.jackpotTooltip, x, y);
 	}

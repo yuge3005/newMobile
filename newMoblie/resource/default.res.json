@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "t90_4corners_mp3,t90_ball_mp3,t90_bet_mp3,t90_bingo_mp3,t90_blink_mp3,t90_card_mp3,t90_double_line_mp3,t90_extra_ball_mp3,t90_extra_loop_mp3,t90_jackpot_mp3,t90_line_mp3,t90_win_mp3,turbo90_json,turbo90Animation_json,turbo90Animation_png,turbo90_conf,GameToolBar_json",
+			"keys": "t90_4corners_mp3,t90_ball_mp3,t90_bet_mp3,t90_bingo_mp3,t90_blink_mp3,t90_card_mp3,t90_double_line_mp3,t90_extra_ball_mp3,t90_extra_loop_mp3,t90_jackpot_mp3,t90_line_mp3,t90_win_mp3,turbo90_json,turbo90Animation_json,turbo90Animation_png,turbo90_conf,GameToolBar_json,turbo90_tx",
 			"name": "turbo90"
 		},
 		{
@@ -187,12 +187,17 @@
 			"url": "game/turbo90/turbo90.json",
 			"type": "sheet",
 			"name": "turbo90_json",
-			"subkeys": "BALL_RAIL 1,CARD_HEADER_BG_white,EXTRA_emptyball,Turbo_90s_New_Layout_ShortDisplay,active-jackpot,ball_blue,ball_blue_small,ball_green,ball_green_small,ball_red,ball_red_small,ball_yellow,ball_yellow_small,card_over_layer,carta_virada,disabled_checkbox,enabled_checkbox,extra_come,jackpot_lock,lotto_gate,lotto_gate_front,mark_pink,mark_red,mark_x,mark_yellow,mask,mega_en,mega_es,mega_pt,path_tip,paytable_bg,paytable_fg,turbo90_1,turbo90_2,turbo90_3,turbo90_corner,wheel_eject"
+			"subkeys": "BALL_RAIL 1,CARD_HEADER_BG_white,EXTRA_emptyball,Turbo_90s_New_Layout_ShortDisplay,active-jackpot,ball_blue,ball_green,ball_red,ball_yellow,card_over_layer,carta_virada,disabled_checkbox,enabled_checkbox,extra_come,jackpot_lock,mark_pink,mark_red,mark_x,mark_yellow,mask,mega_en,mega_es,mega_pt,path_tip,paytable_bg,paytable_fg,turbo90_1,turbo90_2,turbo90_3,turbo90_corner,wheel_eject"
 		},
 		{
 			"url": "config/turbo90.conf",
 			"type": "json",
 			"name": "turbo90_conf"
+		},
+		{
+			"url": "config/lan/turbo90.tx",
+			"type": "json",
+			"name": "turbo90_tx"
 		}
 	]
 }

@@ -13,7 +13,7 @@ class GameUIItem extends egret.Sprite{
         let tx: egret.TextField = Com.addTextAt( this, x, y + BrowserInfo.textUp, width, size, size, stroke, true );
         tx.textColor = color;
         tx.textAlign = "left";
-        tx.text = GameUIItem.languageText[textItem][GlobelSettings.language] + additionString;
+        tx.text = MuLang.getText(textItem) + additionString;
 		tx.scaleX = scaleX;
         return tx;
     }
