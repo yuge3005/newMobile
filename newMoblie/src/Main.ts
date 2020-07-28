@@ -84,6 +84,8 @@ class Main extends egret.DisplayObjectContainer {
         }
 		this.addChild( this.currentGame );
 		document.addEventListener("keydown", this.keyDown.bind(this) );
+        var loadingBar = document.getElementById( "loading_bar" );
+        if( loadingBar ) loadingBar.parentNode.removeChild( loadingBar );
 	}
 
 	/**
