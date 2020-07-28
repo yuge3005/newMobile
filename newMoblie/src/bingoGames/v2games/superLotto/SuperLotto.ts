@@ -308,8 +308,6 @@ class SuperLotto extends V2Game{
     protected onServerData( data: Object ){
         super.onServerData( data );
 
-        this.gameToolBar.minCardCount = 4;
-
         let remdonNumbers: Array<number>;
         if( localStorage.getItem( "superLotto_numbers" ) ){
             this.resetCardNumbers( this.getNumberFromStorage() );

@@ -329,7 +329,7 @@ class BingoMachine extends GameUIItem{
 	}
 
 	protected resetGameToolBarStatus(){
-		this.gameToolBar.setBet( GameData.currentBet, CardManager.enabledCards, GameData.currentBet == GameData.maxBet, CardManager.enabledCards == CardManager.cards.length );
+		this.gameToolBar.setBet( GameData.currentBet, CardManager.enabledCards, GameData.currentBet == GameData.maxBet );
 		this.betText.text = Utils.formatCoinsNumber( CardManager.setCardBet( GameData.currentBet ) );
 	}
 
@@ -559,13 +559,7 @@ class BingoMachine extends GameUIItem{
 			this.currentGame.gameToolBar.autoPlaying = false;
 		}
 		else{//the rest commands are relatied to bet and card enabled
-			if( cmd == GameCommands.closeCard ){
-				CardManager.cards[CardManager.enabledCards - 1].enabled = false;
-			}
-			else if( cmd == GameCommands.openCard ){
-				CardManager.cards[CardManager.enabledCards].enabled = true;
-			}
-			else if( cmd == GameCommands.decreseBet ){
+			if( cmd == GameCommands.decreseBet ){
 				GameData.betDown();
 				this.currentGame.betChanged( -1 );
 			}

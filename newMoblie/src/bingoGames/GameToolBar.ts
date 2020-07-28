@@ -5,8 +5,6 @@ class GameToolBar extends egret.DisplayObjectContainer{
 	private helpBtn: TouchDownButton;
 	protected decreseBetBtn: TouchDownButton;
 	protected increaseBetBtn: TouchDownButton;
-	private closeCardBtn: TouchDownButton;
-	private openCardBtn: TouchDownButton;
 
 	private changeNumberBtn: TouchDownButton;
 
@@ -25,7 +23,6 @@ class GameToolBar extends egret.DisplayObjectContainer{
 	protected superExtraBtn: TouchDownButton;
 
 	private betText: egret.TextField;
-	private cardText: egret.TextField;
 
 	private winText: egret.TextField;
 
@@ -58,11 +55,6 @@ class GameToolBar extends egret.DisplayObjectContainer{
 		}
 	}
 
-	private _minCardCount: number = 1;
-	public set minCardCount( value: number ){
-		this._minCardCount = value;
-	}
-
 	public constructor() {
 		super();
 
@@ -85,8 +77,6 @@ class GameToolBar extends egret.DisplayObjectContainer{
 		this.helpBtn = this.addBtn( "GameToolBar_json.help", -2, -5, GameCommands.help );
 		this.decreseBetBtn = this.addBtn( "GameToolBar_json.decrease-bet", 61, 42, GameCommands.decreseBet );
 		this.increaseBetBtn = this.addBtn( "GameToolBar_json.increase-bet", 191, 42, GameCommands.increaseBet );
-		this.closeCardBtn = this.addBtn( "GameToolBar_json.close-card", 61, 82, GameCommands.closeCard );
-		this.openCardBtn = this.addBtn( "GameToolBar_json.open-card", 191, 82, GameCommands.openCard );
 
 		this.changeNumberBtn = this.addBtn( "GameToolBar_json.change-number", 108, 83, GameCommands.changeNumber );
 
@@ -149,7 +139,6 @@ class GameToolBar extends egret.DisplayObjectContainer{
 
 	private createTexts(){
 		this.betText = this.addToolBarText( 96, 48, 94, 20, 12 );
-		this.cardText = this.addToolBarText( 125, 88, 36, 20, 18 );
 
 		this.tipExtraText1 = this.addToolBarText( 40, 5, 415, 28, 16 );
 		this.tipExtraText2 = this.addToolBarText( 40, 5, 415, 28, 16 );
@@ -195,18 +184,11 @@ class GameToolBar extends egret.DisplayObjectContainer{
 		return txt;
 	}
 
-	public setBet( bet: number, cardNumber: number, isMaxBet: boolean, isMaxCards: boolean ){
+	public setBet( bet: number, cardNumber: number, isMaxBet: boolean ){
 		this.betNumber = bet * cardNumber;
-		this.cardText.text = "" + cardNumber;
 
-		if( isMaxBet && isMaxCards )this.maxBetBtn.enabled = false;
+		if( isMaxBet )this.maxBetBtn.enabled = false;
 		else this.maxBetBtn.enabled = true;
-
-		if( cardNumber == this._minCardCount )this.closeCardBtn.enabled = false;
-		else this.closeCardBtn.enabled = true;
-
-		if( isMaxCards )this.openCardBtn.enabled = false;
-		else this.openCardBtn.enabled = true;
 
 		if( isMaxBet )this.increaseBetBtn.enabled = false;
 		else this.increaseBetBtn.enabled = true;
@@ -267,7 +249,6 @@ class GameToolBar extends egret.DisplayObjectContainer{
 			this.showExtraButton( true );
 			this.showTip( GameCommands.extra, extraPrice );
 			this.betText.filters = [MatrixTool.colorMatrixLighter( 0.3 )];
-			this.cardText.filters = [MatrixTool.colorMatrixLighter( 0.3 )];
 		}
 		else{
 			if( this.autoPlaying ){
@@ -283,7 +264,6 @@ class GameToolBar extends egret.DisplayObjectContainer{
 			}
 			this.showExtraButton( false );
 			this.betText.filters = [];
-			this.cardText.filters = [];
 		}
 	}
 

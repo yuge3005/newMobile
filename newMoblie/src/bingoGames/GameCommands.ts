@@ -3,8 +3,6 @@ class GameCommands {
 	public static help: string = "help";
 	public static decreseBet: string = "decreseBet";
 	public static increaseBet: string = "increaseBet";
-	public static closeCard: string = "closeCard";
-	public static openCard: string = "openCard";
 
 	public static changeNumber: string = "changeNumber";
 	public static onTurbo: string = "onTurbo";
