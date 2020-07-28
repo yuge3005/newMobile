@@ -23,7 +23,7 @@ class Turbo90 extends V2Game{
         GameCard.showTitleShadow = new egret.DropShadowFilter(1, 0, 0x000000, 1, 2, 2);
 
         CardGrid.defaultBgColor = 0xFFFFFF;
-        CardGrid.defaultNumberSize = 28;
+        CardGrid.defaultNumberSize = 55;
 
         CardGrid.blinkColors1 = 0xFFFF00;
 	    CardGrid.blinkColors2 = 0xFF00FF;

@@ -65,7 +65,7 @@ class CardGrid extends egret.Sprite{
 
 		this.redrawBg( CardGrid.defaultBgColor );
 
-		this.numTxt = Com.addTextAt( this, 0, BrowserInfo.textUp * 2 + CardGrid.gridSize.y - CardGrid.defaultNumberSize >> 1, CardGrid.gridSize.x, CardGrid.defaultNumberSize, CardGrid.defaultNumberSize, false, true );
+		this.numTxt = Com.addTextAt( this, 0, CardGrid.defaultNumberSize * 0.125, CardGrid.gridSize.x, CardGrid.gridSize.y, CardGrid.defaultNumberSize, false, true );
 		this.numTxt.textAlign = "center";
 		this.numTxt.verticalAlign = "middle";
 		this.numTxt.textColor = CardGrid.numberColor;
