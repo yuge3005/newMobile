@@ -523,14 +523,6 @@ class BingoMachine extends GameUIItem{
 			this.currentGame.gameToolBar.enabledStopButton();
 			this.currentGame.ballArea.stopBallRunning();
 		}
-		else if( cmd == GameCommands.onTurbo ){
-			BallManager.turbo = true;
-			this.currentGame.gameToolBar.showTurboButton( false );
-		}
-		else if( cmd == GameCommands.offTurbo ){
-			BallManager.turbo = false;
-			this.currentGame.gameToolBar.showTurboButton( true );
-		}
 		else if (cmd == GameCommands.collect) {
 			this.currentGame.collectExtraBall();
 			this.currentGame.sendCancelExtraReuqest();

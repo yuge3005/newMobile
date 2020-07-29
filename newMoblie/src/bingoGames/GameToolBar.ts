@@ -10,8 +10,6 @@ class GameToolBar extends egret.DisplayObjectContainer{
 
 	protected maxBetBtn: TouchDownButton;
 	private collectBtn: TouchDownButton;
-	private onTurboBtn: TouchDownButton;
-	private offTurboBtn: TouchDownButton;
 
 	protected playBtn: TouchDownButton;
 	protected stopBtn: TouchDownButton;
@@ -223,11 +221,6 @@ class GameToolBar extends egret.DisplayObjectContainer{
 			this.enabledButtons[i].enabled = true;
 		}
 		this.enabledButtons = [];
-	}
-
-	public showTurboButton( show: boolean ): void{
-		this.onTurboBtn.visible = show;
-		this.offTurboBtn.visible = !show;
 	}
 
 	public showExtra( isShow: boolean, extraPrice: number = 0 ): void{

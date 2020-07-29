@@ -9,8 +9,6 @@ class BallManager extends egret.Sprite{
 	private extraBalls: Array<number>;
 	private ballOrder: number;
 
-	public static turbo: boolean;
-
 	public needLightCheck: boolean;
 
 	public static normalBallInterval: number;
@@ -133,7 +131,7 @@ class BallManager extends egret.Sprite{
 	private nextDelayId: number;
 
 	private delayRunNextBall(): void{
-		this.nextDelayId = setTimeout( this.beginRun.bind(this), BallManager.turbo? 15 : BallManager.normalBallInterval );
+		this.nextDelayId = setTimeout( this.beginRun.bind(this), BallManager.normalBallInterval );
 	}
 
 	private recordlightResult( lightResult: Array<Object> ): boolean{
@@ -210,7 +208,7 @@ class BallManager extends egret.Sprite{
 		var targetPoint : egret.Point = pts[0];
 		var distance: number = egret.Point.distance( curruntPoint, targetPoint );
 		let tw: egret.Tween = egret.Tween.get( sp );
-		tw.to( { x:targetPoint.x, y:targetPoint.y }, distance * ( BallManager.turbo ? 0.2 : 0.5 ) );
+		tw.to( { x:targetPoint.x, y:targetPoint.y }, distance * 0.5 );
 		tw.call( this.moveToNextPoint, this, [sp, pts] );
 	}
 

@@ -5,8 +5,6 @@ class GameCommands {
 	public static increaseBet: string = "increaseBet";
 
 	public static changeNumber: string = "changeNumber";
-	public static onTurbo: string = "onTurbo";
-	public static offTurbo: string = "offTurbo";
 	public static maxBet: string = "maxBet";
 	public static collect: string = "collect";
 	public static play: string = "play";
