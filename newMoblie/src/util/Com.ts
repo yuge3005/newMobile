@@ -76,7 +76,7 @@ class Com {
 		tx.maxSize = tx.size = size;
 		tx.textAlign = "center";
 
-		if( bold )tx.fontFamily = "Arial Black";		
+		if( bold )tx.fontFamily = "Arial Black";
 		else tx.fontFamily = "Arial";
 
 		if(stroke){

@@ -24,9 +24,8 @@ class Turbo90 extends V2Game{
         TowerGrid.onEffBgPicName = "mark_white";
         TowerGrid.linePicName = "mark_red";
 
-        GameCard.cardTexPosition = new egret.Point( 25, 12 );
-        GameCard.betTexPosition = new egret.Point( 270, 12 );
-        GameCard.texSize = 35;
+        GameCard.cardTextRect = new egret.Rectangle( 25, 14, 220, 35 );
+        GameCard.betTextRect = new egret.Rectangle( 270, 14, 340, 35 );
         GameCard.texColor = 0xFFFFFF;
         GameCard.showTitleShadow = new egret.DropShadowFilter(1, 0, 0x000000, 1, 2, 2);
 

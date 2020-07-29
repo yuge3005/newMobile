@@ -19,8 +19,8 @@ class GameCard extends GameUIItem{
 	public static currentBgColorIndex: number = 0;
 	
 	public static showTitleShadow: egret.Filter;
-	public static cardTexPosition: egret.Point;
-	public static betTexPosition: egret.Point;
+	public static cardTextRect: egret.Rectangle;
+	public static betTextRect: egret.Rectangle;
 	public static texSize: number;
 	public static texColor: number;
 	public static firstToUpperCase: boolean = false;
@@ -76,9 +76,8 @@ class GameCard extends GameUIItem{
 		
 		this.getBgColor();
 
-		if( !GameCard.texSize )return;
-		if( GameCard.cardTexPosition ){
-			this.cardText = Com.addLabelAt( this, GameCard.cardTexPosition.x, GameCard.cardTexPosition.y, 220, GameCard.texSize, GameCard.texSize, false, true );
+		if( GameCard.cardTextRect ){
+			this.cardText = Com.addLabelAt( this, GameCard.cardTextRect.x, GameCard.cardTextRect.y, GameCard.cardTextRect.width, GameCard.cardTextRect.height, GameCard.cardTextRect.height, false, true );
 			this.cardText.textColor = GameCard.texColor;
 			this.cardText.textAlign = "left";
 			this.cardText.scaleX = 0.9;
@@ -86,8 +85,8 @@ class GameCard extends GameUIItem{
 			
 			if (GameCard.showTitleShadow) this.cardText.filters = [GameCard.showTitleShadow];
 		}
-		if( GameCard.betTexPosition ){
-			this.betText = Com.addLabelAt( this, GameCard.betTexPosition.x, GameCard.betTexPosition.y, 320, GameCard.texSize, GameCard.texSize, false, true );
+		if( GameCard.betTextRect ){
+			this.betText = Com.addLabelAt( this, GameCard.betTextRect.x, GameCard.betTextRect.y, GameCard.betTextRect.width, GameCard.betTextRect.height, GameCard.betTextRect.height, false, true );
 			this.betText.textColor = GameCard.texColor;
 			this.betText.textAlign = "left";
 			this.betText.scaleX = 0.9;

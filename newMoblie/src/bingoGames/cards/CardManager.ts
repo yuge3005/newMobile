@@ -13,14 +13,8 @@ class CardManager{
 	public static cardDefaultSettings(): void{
 		CardManager.cardType = GameCard;
 		CardManager.gridType = CardGrid;
-		GameCard.gridOnTop = false;
-		GameCard.useRedEffect = false;
-		GameCard.cardTexPosition = null;
-		GameCard.betTexPosition = null;
 		GameCard.fitEffectRedLine = true;
 		GameCard.bgRound = 0;
-		GameCard.showTitleShadow = null;
-		GameCard.firstToUpperCase = false;
 	}
 
 	public static getCardData( data: Object, cardNumbers: number ){
