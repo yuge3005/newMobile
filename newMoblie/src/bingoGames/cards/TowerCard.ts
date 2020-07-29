@@ -25,7 +25,7 @@ class TowerCard extends GameCard{
 
 	protected onAdd( event: egret.Event ){
 		this.disabledBg = Com.createBitmapByName( GameCard.disabledBgString );
-		this.betText = this.addGameText( GameCard.betTexPosition.x, GameCard.betTexPosition.y, GameCard.texSize, GameCard.texColor, "bet", false, 200, ": " );
+		this.betText = Com.addLabelAt( this, GameCard.betTexPosition.x, GameCard.betTexPosition.y, 320, GameCard.texSize, GameCard.texSize, false, true );
 		this.betText.visible = false;
 	}
 

@@ -5,8 +5,8 @@ class GameCard extends GameUIItem{
 	protected static bgString: string;
 	protected static disabledBgString: string;
 
-	protected cardText: egret.TextField;
-	protected betText: egret.TextField;
+	protected cardText: TextLabel;
+	protected betText: TextLabel;
 
 	protected grids: Array<CardGrid>;
 
@@ -42,7 +42,7 @@ class GameCard extends GameUIItem{
 		if( !this.betText )return;
 		let pre = MuLang.getText("bet");
 		if (GameCard.firstToUpperCase) pre = Utils.toFirstUpperCase(pre);
-		this.betText.text = pre + ": " + Utils.formatCoinsNumber( value );
+		this.betText.setText( pre + ": " + Utils.formatCoinsNumber( value ) );
 	}
 
 	protected _enabled: boolean = true;
@@ -78,12 +78,21 @@ class GameCard extends GameUIItem{
 
 		if( !GameCard.texSize )return;
 		if( GameCard.cardTexPosition ){
-			this.cardText = this.addGameText(GameCard.cardTexPosition.x, GameCard.cardTexPosition.y, GameCard.texSize, GameCard.texColor, "card", false, 220, ": " + (this.cardId + 1), 0.9);
+			this.cardText = Com.addLabelAt( this, GameCard.cardTexPosition.x, GameCard.cardTexPosition.y, 220, GameCard.texSize, GameCard.texSize, false, true );
+			this.cardText.textColor = GameCard.texColor;
+			this.cardText.textAlign = "left";
+			this.cardText.scaleX = 0.9;
+			this.cardText.setText( MuLang.getText( "card", GameCard.firstToUpperCase ? 3 : 0 ) + ": " + (this.cardId + 1) );
+			
 			if (GameCard.showTitleShadow) this.cardText.filters = [GameCard.showTitleShadow];
-			if (GameCard.firstToUpperCase) this.cardText.text = Utils.toFirstUpperCase(this.cardText.text);
 		}
 		if( GameCard.betTexPosition ){
-			this.betText = this.addGameText(GameCard.betTexPosition.x, GameCard.betTexPosition.y, GameCard.texSize, GameCard.texColor, "bet", false, 320, ": ", 0.9);
+			this.betText = Com.addLabelAt( this, GameCard.betTexPosition.x, GameCard.betTexPosition.y, 320, GameCard.texSize, GameCard.texSize, false, true );
+			this.betText.textColor = GameCard.texColor;
+			this.betText.textAlign = "left";
+			this.betText.scaleX = 0.9;
+			this.betText.setText( MuLang.getText( "bet" ) + ": " );
+
 			if (GameCard.showTitleShadow) this.betText.filters = [GameCard.showTitleShadow];
 		}
 	}
