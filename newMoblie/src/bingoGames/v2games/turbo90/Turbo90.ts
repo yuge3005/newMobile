@@ -33,8 +33,6 @@ class Turbo90 extends V2Game{
         CardGrid.defaultBgColor = 0xFFFFFF;
         CardGrid.defaultNumberSize = 55;
 
-        GameCard.useRedEffect = true;
-
         BallManager.ballOffsetY = 2;
 
         GameToolBar.toolBarY = 920;

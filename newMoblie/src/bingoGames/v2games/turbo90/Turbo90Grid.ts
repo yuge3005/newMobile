@@ -13,7 +13,11 @@ class Turbo90Grid extends TowerGrid{
 			Com.addObjectAt( this, this.forkUI, CardGrid.gridSize.x - this.forkUI.width >> 1, CardGrid.gridSize.y - this.forkUI.height >> 1 );
 		}
 		else {
-			if( this.forkUI && this.contains( this.forkUI ) )this.removeChild( this.forkUI );
+			this.removeFork();
 		}
+	}
+
+	public removeFork(){
+		if( this.forkUI && this.contains( this.forkUI ) )this.removeChild( this.forkUI );
 	}
 }
