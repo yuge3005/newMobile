@@ -105,6 +105,7 @@ class PaytableUI extends egret.Sprite{
 		else{
 			this.focus();
 		}
+		this.dispatchEvent( new egret.Event( "paytableFitEvent" ) );
 	}
 
 	public clearStatus(): void{

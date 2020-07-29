@@ -117,6 +117,7 @@ class Turbo90 extends V2Game{
     private timeoutId: number;
 
     protected afterCheck( resultList: Array<Object> ): void{
+        this.clearPaytableFgs();
         super.afterCheck( resultList );
         this.clearArrow();
         for( let i: number = 0; i < 4; i++ ){
@@ -143,6 +144,7 @@ class Turbo90 extends V2Game{
     protected startPlay(): void {
         super.startPlay();
         this.clearArrow();
+        this.clearPaytableFgs();
     }
 
 /******************************************************************************************************************************************************************/    
@@ -234,6 +236,7 @@ class Turbo90 extends V2Game{
             y = Math.floor( y / 130 ) * 130 + 40;
 			pts[payTable].UI.y = y;
             pts[payTable].UI.x = 957;
+            pts[payTable].UI.addEventListener( "paytableFitEvent", this.payTableFit, this );
             let tx: egret.TextField = pts[payTable].UI["tx"];
             tx.width = 166;
             tx.textAlign = "center";
@@ -252,5 +255,19 @@ class Turbo90 extends V2Game{
         }
         let winBgMask: egret.Bitmap = Com.addBitmapAt( this, this.assetStr("paytable_bg"), 938, 364 );
         winBg.mask = winBgMask;
+    }
+
+    private payTableFit( event: egret.Event ){
+        let str: string = event.target["tx"].text;
+        if( str == "x1000" ) this.paytableFgs[0].visible = true;
+        else if( str == "x100" ) this.paytableFgs[1].visible = true;
+        else if( str == "x4" ) this.paytableFgs[2].visible = true;
+        else if( str == "x1" ) this.paytableFgs[3].visible = true;
+    }
+
+    private clearPaytableFgs(){
+        for( let i: number = 0; i < 4; i++ ){
+            this.paytableFgs[i].visible = false;
+        }
     }
 }
