@@ -23,6 +23,7 @@ class Turbo90 extends V2Game{
         TowerGrid.defaultBgPicName = "mark_white";
         TowerGrid.onEffBgPicName = "mark_white";
         TowerGrid.linePicName = "mark_red";
+        GameCard.usefork = "mark_x";
 
         GameCard.cardTextRect = new egret.Rectangle( 25, 14, 220, 35 );
         GameCard.betTextRect = new egret.Rectangle( 270, 14, 340, 35 );
@@ -32,8 +33,6 @@ class Turbo90 extends V2Game{
         CardGrid.defaultBgColor = 0xFFFFFF;
         CardGrid.defaultNumberSize = 55;
 
-        CardGrid.blinkColors1 = 0xFFFF00;
-	    CardGrid.blinkColors2 = 0xFF00FF;
         GameCard.useRedEffect = true;
 
         BallManager.ballOffsetY = 2;
@@ -63,6 +62,15 @@ class Turbo90 extends V2Game{
 
         this.addLineArrows();
     }
+
+    protected getFitEffectNameList(): Object{
+        let firList: Object = {}
+        firList["line"] = [];
+        firList["line"][0] = "turbo90_1";
+        firList["line"][1] = "turbo90_2";
+        firList["line"][2] = "turbo90_3";
+		return firList;
+	}
 
     private turbo90Text( str: string, yPos: number ): egret.TextField{
         let tx: TextLabel = Com.addLabelAt( this, 957, yPos, 166, 35, 35, true, false );
@@ -215,4 +223,21 @@ class Turbo90 extends V2Game{
             }catch(e){}
         }
     }
+
+    protected addPayTables(){
+		super.addPayTables();
+
+        let pts: Object = PayTableManager.payTablesDictionary;
+        for( let payTable in pts ){
+			let pos: Object = pts[payTable].position;
+            let y: number = pos["y"];
+            y = Math.floor( y / 120 ) * 120 + 82;
+			pts[payTable].UI.y = y;
+            pts[payTable].UI.x = 957;
+            let tx: egret.TextField = pts[payTable].UI["tx"];
+            tx.width = 166;
+            tx.size = 48;
+            tx.textAlign = "center";
+		}
+	}
 }
