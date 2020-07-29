@@ -43,10 +43,10 @@ class Turbo90 extends V2Game{
     protected init(){
         super.init();
 
-        this.turbo90Text( "bingo", 405 );
+        this.turbo90Text( "bingo", 395 );
         this.turbo90Text( "double line", 525 );
-        this.turbo90Text( "line", 645 );
-        this.turbo90Text( "four corners", 765 );
+        this.turbo90Text( "line", 655 );
+        this.turbo90Text( "four corners", 785 );
 
         this.showNoBetAndCredit();
         this.addChild( this.getChildByName( this.assetStr( "path_tip" ) ) );
@@ -223,19 +223,34 @@ class Turbo90 extends V2Game{
     }
 
     protected addPayTables(){
+        this.addPayTableWinBg();
+
 		super.addPayTables();
 
         let pts: Object = PayTableManager.payTablesDictionary;
         for( let payTable in pts ){
 			let pos: Object = pts[payTable].position;
             let y: number = pos["y"];
-            y = Math.floor( y / 120 ) * 120 + 82;
+            y = Math.floor( y / 130 ) * 130 + 40;
 			pts[payTable].UI.y = y;
             pts[payTable].UI.x = 957;
             let tx: egret.TextField = pts[payTable].UI["tx"];
             tx.width = 166;
-            tx.size = 48;
             tx.textAlign = "center";
 		}
 	}
+
+    private paytableFgs: Array<egret.Bitmap>;
+
+    private addPayTableWinBg(){
+        let winBg: egret.DisplayObjectContainer = new egret.DisplayObjectContainer;
+        Com.addObjectAt( this, winBg, 938, 364 );
+        this.paytableFgs = [];
+        for( let i: number = 0; i < 4; i++ ){
+            this.paytableFgs[i] = Com.addBitmapAt( winBg, this.assetStr("paytable_fg"), 0, -8 + 130 * i );
+            this.paytableFgs[i].visible = false;
+        }
+        let winBgMask: egret.Bitmap = Com.addBitmapAt( this, this.assetStr("paytable_bg"), 938, 364 );
+        winBg.mask = winBgMask;
+    }
 }
