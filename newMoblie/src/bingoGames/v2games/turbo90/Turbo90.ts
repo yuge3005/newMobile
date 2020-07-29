@@ -66,13 +66,13 @@ class Turbo90 extends V2Game{
     }
 
     private turbo90Text( str: string, yPos: number ): egret.TextField{
-        let tx: egret.TextField = Com.addTextAt( this, 945, yPos, 200, 30, 30, true, false );
+        let tx: TextLabel = Com.addLabelAt( this, 945, yPos, 200, 50, 50, true, false );
         tx.textColor = 0xECFFAC;
         tx.bold = true;
         tx.stroke = 2;
         tx.strokeColor = 0x213510;
         tx.scaleX = 0.93;
-        tx.text = MuLang.getText(str);
+        tx.setText( MuLang.getText(str) );
         return tx;
     }
 

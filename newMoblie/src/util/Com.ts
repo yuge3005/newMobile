@@ -69,6 +69,24 @@ class Com {
 		return tx;
 	}
 
+	public static addLabelAt( target: egret.DisplayObjectContainer, x: number, y: number, width: number, height: number, size: number, stroke: boolean = false, bold: boolean = false ): TextLabel{
+		let tx: TextLabel = new TextLabel;
+		tx.maxWidth = tx.width = width;
+		tx.height = height;
+		tx.maxSize = tx.size = size;
+		tx.textAlign = "center";
+
+		if( bold )tx.fontFamily = "Arial Black";		
+		else tx.fontFamily = "Arial";
+
+		if(stroke){
+			tx.stroke = 1;
+			tx.strokeColor = 0x000000;
+		}
+		this.addObjectAt( target, tx, x, y );
+		return tx;
+	}
+
 	public static addBitmapTextAt( target: egret.DisplayObjectContainer, fontName: string, x: number, y: number, textAlign: string = "left", size: number = 0, color: number = 0 ): egret.BitmapText{
 		var bmpText: egret.BitmapText = new egret.BitmapText();
 		bmpText.font = RES.getRes(fontName);
