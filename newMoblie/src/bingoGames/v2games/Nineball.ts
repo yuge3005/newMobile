@@ -28,12 +28,9 @@ class Nineball extends V2Game{
 	    CardGrid.blinkColors2 = 0x00FF00;
         GameCard.useRedEffect = true;
 
-        this.needListenToolbarStatus = true;
-        this.tipStatusTextPosition = new egret.Rectangle( 240, 191, 280, 17 );
-        this.tipStatusTextColor = 0xFFFFFF;
-
-        GameToolBar.toolBarY = 474;
+        GameToolBar.toolBarY = 920;
         BingoBackGroundSetting.defaultScale = false;
+        BingoBackGroundSetting.gameMask = new egret.Rectangle( 0, 0, 2000, 1125 );
     }
 
     protected init(){
@@ -43,11 +40,7 @@ class Nineball extends V2Game{
         this.addGameText( 270, 36, 25, 0x585858, "double",false, 200 );
         this.addGameText( 270, 64, 25, 0x585858, "line",false, 200 );
 
-        this.addGameText( 10, 190, 18, 0xFEFE00, "bet", true, 100 );
-        this.addGameText( 487, 190, 18, 0xFEFE00, "credit", true, 100 );
-
-        this.betText = this.addGameTextCenterShadow( 80, 190, 18, 0xFFFFFF, "bet", false, 140 );
-        this.creditText = this.addGameTextCenterShadow( 570, 190, 18, 0xFEFE00, "credit", false, 200 );
+        this.showNoBetAndCredit();
 
         if( this.extraUIObject ) this.extraUIShowNumber();
 
@@ -237,7 +230,7 @@ class Nineball extends V2Game{
         if( localStorage.getItem( "nineball_mega" ) ) return;
         else{
             try{
-                RES.loadGroup( "megaForFirst_" + GlobelSettings.language );
+                // RES.loadGroup( "megaForFirst_" + GlobelSettings.language );
             }catch(e){}
         }
     }

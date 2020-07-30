@@ -296,7 +296,7 @@
 		},
 		{
 			"url": "config/nineball.conf",
-			"type": "bin",
+			"type": "json",
 			"name": "nineball_conf"
 		},
 		{
