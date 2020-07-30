@@ -73,9 +73,9 @@ class Nineball extends V2Game{
     protected showExtraUI( show: boolean = true ){
         if( this.extraUIObject ){
             let tw: egret.Tween = egret.Tween.get( this.extraUIObject );
-            if( !show )tw.to( { x: 1 }, 500 );
+            if( !show )tw.to( { x: 267 }, 500 );
             else{
-                if( this.currentBallIndex == 36 )tw.to( { x: 125 }, 500 );
+                if( this.currentBallIndex == 36 )tw.to( { x: 518 }, 500 );
             }
         }
         if( !show )if( !show && this.gratisUI && this.contains( this.gratisUI ) )this.removeChild( this.gratisUI );
@@ -83,16 +83,16 @@ class Nineball extends V2Game{
 
     protected showLastBall( ballIndex: number ): void{
         super.showLastBall( ballIndex );
-        this.showLastBallAt(ballIndex, 26, 14);
+        this.showLastBallAt(ballIndex, 46, 9);
         
-        this.playSound("nb_ball_wav");
+        this.playSound("nb_ball_mp3");
 	}
 
     protected showLastBallAt( ballIndex: number, x: number, y: number, scale: number = 1 ): void{
         if( this.runningBallUI && ( this.runningBallContainer ).contains( this.runningBallUI ) ){
             ( this.runningBallContainer ).removeChild( this.runningBallUI );
         }
-        this.runningBallUI = this.ballArea.getABigBall( ballIndex, "_small", 36 );
+        this.runningBallUI = this.ballArea.getABall( ballIndex );
         this.runningBallUI.scaleX = this.runningBallUI.scaleY = scale;
         this.runningBallUI.x = x;
         this.runningBallUI.y = y;
@@ -104,7 +104,7 @@ class Nineball extends V2Game{
         if( this.currentBallIndex == 42 ){
             if( balls && balls[0] ){
                 super.showLastBall( balls[0] );
-                this.showLastBallAt( balls[0], 26, 14 );
+                this.showLastBallAt( balls[0], 46, 9 );
 
                 let cross: egret.Shape = new egret.Shape;
                 let a: number = this.runningBallUI.width;
@@ -183,11 +183,11 @@ class Nineball extends V2Game{
     protected onBetChanged(event: egret.Event): void{
         super.onBetChanged(event);
 
-        if (event.data["type"] !== 0) this.playSound("nb_bet_wav");
+        if (event.data["type"] !== 0) this.playSound("nb_bet_mp3");
 	}
 
 	protected hasExtraBallFit(): void {
-		this.stopSound("nb_ball_wav");
+		this.stopSound("nb_ball_mp3");
         if (this.firstHaveExtraBall) {
             this.firstHaveExtraBall = false;
             this.showFreeExtraPosition();
@@ -209,20 +209,20 @@ class Nineball extends V2Game{
     
     protected roundOver(): void {
         super.roundOver();
-        this.stopSound("nb_ball_wav");
+        this.stopSound("nb_ball_mp3");
         this.stopSound("nb_1to_bingo_mp3");
     }
 
 	protected getExtraBallFit(): void {
-		this.playSound("nb_extra_ball_wav");
+		this.playSound("nb_extra_ball_mp3");
 	}
 
 	protected collectExtraBall(): void {
-		this.playSound("nb_collect_wav");
+		this.playSound("nb_collect_mp3");
 	}
 
 	protected changeNumberSound(): void {
-		this.playSound("nb_card_wav");
+		this.playSound("nb_card_mp3");
 	}
         
     protected onServerData( data: Object ){
