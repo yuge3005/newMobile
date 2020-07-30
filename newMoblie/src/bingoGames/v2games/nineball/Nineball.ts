@@ -15,6 +15,15 @@ class Nineball extends V2Game{
 
         PaytableUI.textBold = true;
 
+        CardManager.cardType = NineballCard;
+        CardManager.gridType = NineballGrid;
+
+        TowerGrid.blink1PicName = "card_number_fill_red";
+        TowerGrid.blink2PicName = "card_number_fill_green";
+        TowerGrid.defaultBgPicName = "card_number_fill_white";
+        TowerGrid.onEffBgPicName = "card_number_fill_blue";
+        TowerGrid.linePicName = "card_number_fill_red";
+
         GameCard.cardTextRect = new egret.Rectangle( 25, 17, 220, 35 );
         GameCard.betTextRect = new egret.Rectangle( 270, 17, 340, 35 );
         GameCard.texColor = 0xFFFFFF;
@@ -65,7 +74,7 @@ class Nineball extends V2Game{
             this.arrowMcs[i] = [];
             for( let j: number = 0; j < 3; j++ ){
                 let isLeft: boolean = ( i & 1 ) == 0;
-                let arrowAnimation: egret.MovieClip = Com.addMovieClipAt( this, this._mcf, isLeft ? "nineball_arrow_right" : "nineball_arrow_left", this.cardPositions[i]["x"] + ( isLeft ? 320 : -22 ), this.cardPositions[i]["y"] + 26 * ( j + 1 ) );
+                let arrowAnimation: egret.MovieClip = Com.addMovieClipAt( this, this._mcf, isLeft ? "nineball_arrow_right" : "nineball_arrow_left", this.cardPositions[i]["x"] + ( isLeft ? 600 : -45 ), this.cardPositions[i]["y"] + 70 * ( j + 1 ) + 5 );
                 arrowAnimation.stop();
                 arrowAnimation.visible = false;
                 this.arrowMcs[i][j] = arrowAnimation;

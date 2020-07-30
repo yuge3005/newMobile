@@ -17,7 +17,6 @@ class Turbo90Card extends GameCard{
 		if( !this.titleBg )return;
 		if( GameCard.titleColors ){
 			this.titleBg.filters = [ MatrixTool.colorMatrixPure( GameCard.titleColors[GameCard.currentBgColorIndex] ) ];
-			// GraphicTool.drawRect( this, new egret.Rectangle( 0, 0, this.bg.width, this.bg.height ), GameCard.titleColors[GameCard.currentBgColorIndex], true, 1, GameCard.bgRound );
 		}
 	}
 
