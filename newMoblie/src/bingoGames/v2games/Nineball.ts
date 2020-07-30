@@ -15,9 +15,10 @@ class Nineball extends V2Game{
 
         PaytableUI.textBold = true;
 
-        GameCard.cardTextRect = new egret.Rectangle( 20, 8, 200, 15 );
-        GameCard.betTextRect = new egret.Rectangle( 130, 8, 300, 15 );
-        GameCard.texColor = 0x0;
+        GameCard.cardTextRect = new egret.Rectangle( 25, 17, 220, 35 );
+        GameCard.betTextRect = new egret.Rectangle( 270, 17, 340, 35 );
+        GameCard.texColor = 0xFFFFFF;
+        GameCard.showTitleShadow = new egret.GlowFilter(0, 1, 2, 2, 4, 4);
 
         GameCard.gridOnTop = true;
 
@@ -27,6 +28,8 @@ class Nineball extends V2Game{
         CardGrid.blinkColors1 = 0xFF0000;
 	    CardGrid.blinkColors2 = 0x00FF00;
         GameCard.useRedEffect = true;
+
+        BallManager.ballOffsetY = 8;
 
         GameToolBar.toolBarY = 920;
         BingoBackGroundSetting.defaultScale = false;
