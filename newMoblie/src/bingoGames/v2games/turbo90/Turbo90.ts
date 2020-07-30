@@ -180,7 +180,7 @@ class Turbo90 extends V2Game{
         this.stopSound("t90_ball_mp3");
         if (this.firstHaveExtraBall) {
             this.firstHaveExtraBall = false;
-            this.playSound("t90_extra_loop_wav", -1);
+            this.playSound("t90_extra_loop_mp3");
         }
 
         if( this.isMegaBall ){
