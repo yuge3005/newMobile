@@ -7,6 +7,10 @@
 		{
 			"keys": "superLotto_json,superLotto_conf,superLotto_filt,lotto_eb_mp3,lotto_ball_mp3,lotto_an2_mp3,lotto_an5_mp3,lotto_an4_mp3,lotto_an3_mp3,lotto_gold_mp3,lotto_se1_mp3,lotto_se2_mp3,lotto_se3_mp3,lotto_se4_mp3,lotto_silver_mp3,lotto_se5_mp3,lotto_se6_mp3,GameToolBar_json,superLotto_tx",
 			"name": "superLotto"
+		},
+		{
+			"keys": "nb_1line_mp3,nb_1to_bingo_mp3,nb_2line_mp3,nb_acumulado_mp3,nb_ball_mp3,nb_bet_mp3,nb_bingo_mp3,nb_card_mp3,nb_collect_mp3,nb_extra_ball_mp3,nb_first_extra_mp3,nb_free_extra_mp3,nb_ooc_mp3,nb_win_round_over_mp3,nineball_json,nineballAnimation_png,nineballAnimation_json,nineball_conf,GameToolBar_json,nineball_tx",
+			"name": "nineball"
 		}
 	],
 	"resources": [
@@ -187,7 +191,7 @@
 			"url": "game/turbo90/turbo90.json",
 			"type": "sheet",
 			"name": "turbo90_json",
-			"subkeys": "BALL_RAIL 1,CARD_HEADER_BG_white,EXTRA_emptyball,Turbo_90s_New_Layout_ShortDisplay,active-jackpot,ball_blue,ball_green,ball_red,ball_yellow,card_over_layer,carta_virada,disabled_checkbox,enabled_checkbox,extra_come,jackpot_lock,mark_pink,mark_red,mark_white,mark_x,mark_yellow,mask,mega_en,mega_es,mega_pt,path_tip,paytable_bg,paytable_fg,turbo90_1,turbo90_2,turbo90_3,turbo90_corner,wheel_eject"
+			"subkeys": "BALL_RAIL 1,CARD_HEADER_BG_white,Turbo_90s_New_Layout_ShortDisplay,active-jackpot,ball_blue,ball_green,ball_red,ball_yellow,card_over_layer,carta_virada,extra_come,jackpot_lock,mark_pink,mark_red,mark_white,mark_x,mark_yellow,mask,mega_en,mega_es,mega_pt,path_tip,paytable_bg,paytable_fg,turbo90_1,turbo90_2,turbo90_3,wheel_eject"
 		},
 		{
 			"url": "config/turbo90.conf",
@@ -203,6 +207,102 @@
 			"url": "config/lan/superLotto.tx",
 			"type": "json",
 			"name": "superLotto_tx"
+		},
+		{
+			"url": "game/nineball/nineballAnimation.png",
+			"type": "image",
+			"name": "nineballAnimation_png"
+		},
+		{
+			"url": "game/nineball/sound/nb_1line.mp3",
+			"type": "sound",
+			"name": "nb_1line_mp3"
+		},
+		{
+			"url": "game/nineball/sound/nb_1to_bingo.mp3",
+			"type": "sound",
+			"name": "nb_1to_bingo_mp3"
+		},
+		{
+			"url": "game/nineball/sound/nb_2line.mp3",
+			"type": "sound",
+			"name": "nb_2line_mp3"
+		},
+		{
+			"url": "game/nineball/sound/nb_acumulado.mp3",
+			"type": "sound",
+			"name": "nb_acumulado_mp3"
+		},
+		{
+			"url": "game/nineball/sound/nb_ball.mp3",
+			"type": "sound",
+			"name": "nb_ball_mp3"
+		},
+		{
+			"url": "game/nineball/sound/nb_bet.mp3",
+			"type": "sound",
+			"name": "nb_bet_mp3"
+		},
+		{
+			"url": "game/nineball/sound/nb_bingo.mp3",
+			"type": "sound",
+			"name": "nb_bingo_mp3"
+		},
+		{
+			"url": "game/nineball/sound/nb_card.mp3",
+			"type": "sound",
+			"name": "nb_card_mp3"
+		},
+		{
+			"url": "game/nineball/sound/nb_collect.mp3",
+			"type": "sound",
+			"name": "nb_collect_mp3"
+		},
+		{
+			"url": "game/nineball/sound/nb_extra_ball.mp3",
+			"type": "sound",
+			"name": "nb_extra_ball_mp3"
+		},
+		{
+			"url": "game/nineball/sound/nb_first_extra.mp3",
+			"type": "sound",
+			"name": "nb_first_extra_mp3"
+		},
+		{
+			"url": "game/nineball/sound/nb_free_extra.mp3",
+			"type": "sound",
+			"name": "nb_free_extra_mp3"
+		},
+		{
+			"url": "game/nineball/sound/nb_ooc.mp3",
+			"type": "sound",
+			"name": "nb_ooc_mp3"
+		},
+		{
+			"url": "game/nineball/sound/nb_win_round_over.mp3",
+			"type": "sound",
+			"name": "nb_win_round_over_mp3"
+		},
+		{
+			"url": "game/nineball/nineballAnimation.json",
+			"type": "json",
+			"name": "nineballAnimation_json"
+		},
+		{
+			"url": "game/nineball/nineball.json",
+			"type": "sheet",
+			"name": "nineball_json",
+			"subkeys": "&#032copy-150,&#032copy-152,&#032copy-16,&#032copy-2,&#032copy-2_small,&#032copy-3,&#032copy-3_small,&#032copy-4,&#032copy-4_small,&#032copy-5,&#032copy-5_small,&#032copy-6,&#032copy-6_small,&#032copy-7,&#032copy-7_small,Group-33,active-jackpot,card_number_fill_blue,card_number_fill_green,card_number_fill_red,card_number_fill_white,card_open,card_win_arrow_green,card_win_arrow_red,check,dividi-acumulado-nine,jackpot_lock,mask,mega_en,mega_es,mega_pt,nineball_bg,nineball_top_bolas,paytable_bg,paytable_fg,top_placar"
+		},
+		{
+			"url": "config/nineball.conf",
+			"type": "bin",
+			"name": "nineball_conf"
+		},
+		{
+			"url": "config/lan/nineball.tx",
+			"type": "json",
+			"name": "nineball_tx"
 		}
 	]
 }
