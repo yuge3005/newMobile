@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "t90_4corners_mp3,t90_ball_mp3,t90_bet_mp3,t90_bingo_mp3,t90_blink_mp3,t90_card_mp3,t90_double_line_mp3,t90_extra_ball_mp3,t90_extra_loop_mp3,t90_jackpot_mp3,t90_line_mp3,t90_win_mp3,turbo90_json,turbo90Animation_json,turbo90Animation_png,turbo90_conf,GameToolBar_json,turbo90_tx",
+			"keys": "t90_4corners_mp3,t90_ball_mp3,t90_bet_mp3,t90_bingo_mp3,t90_blink_mp3,t90_card_mp3,t90_double_line_mp3,t90_extra_ball_mp3,t90_extra_loop_mp3,t90_jackpot_mp3,t90_line_mp3,t90_win_mp3,turbo90_json,turbo90Animation_json,turbo90Animation_png,turbo90_conf,GameToolBar_json,turbo90_tx,turbo90_filt",
 			"name": "turbo90"
 		},
 		{
@@ -9,7 +9,7 @@
 			"name": "superLotto"
 		},
 		{
-			"keys": "nb_1line_mp3,nb_1to_bingo_mp3,nb_2line_mp3,nb_acumulado_mp3,nb_ball_mp3,nb_bet_mp3,nb_bingo_mp3,nb_card_mp3,nb_collect_mp3,nb_extra_ball_mp3,nb_first_extra_mp3,nb_free_extra_mp3,nb_ooc_mp3,nb_win_round_over_mp3,nineball_json,nineballAnimation_png,nineballAnimation_json,nineball_conf,GameToolBar_json,nineball_tx",
+			"keys": "nb_1line_mp3,nb_1to_bingo_mp3,nb_2line_mp3,nb_acumulado_mp3,nb_ball_mp3,nb_bet_mp3,nb_bingo_mp3,nb_card_mp3,nb_collect_mp3,nb_extra_ball_mp3,nb_first_extra_mp3,nb_free_extra_mp3,nb_ooc_mp3,nb_win_round_over_mp3,nineball_json,nineballAnimation_png,nineballAnimation_json,nineball_conf,GameToolBar_json,nineball_tx,nineball_filt",
 			"name": "nineball"
 		}
 	],
@@ -303,6 +303,16 @@
 			"url": "config/lan/nineball.tx",
 			"type": "json",
 			"name": "nineball_tx"
+		},
+		{
+			"url": "config/paytableFilter/nineball.filt",
+			"type": "json",
+			"name": "nineball_filt"
+		},
+		{
+			"url": "config/paytableFilter/turbo90.filt",
+			"type": "json",
+			"name": "turbo90_filt"
 		}
 	]
 }

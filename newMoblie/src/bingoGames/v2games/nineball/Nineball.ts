@@ -48,9 +48,9 @@ class Nineball extends V2Game{
     protected init(){
         super.init();
 
-        this.addGameText( 270, 8, 25, 0x585858, "bingo",false, 200 );
-        this.addGameText( 270, 36, 25, 0x585858, "double",false, 200 );
-        this.addGameText( 270, 64, 25, 0x585858, "line",false, 200 );
+        this.nineballText( "bingo", 420 );
+        this.nineballText( "double", 590 );
+        this.nineballText( "line", 760 );
 
         this.showNoBetAndCredit();
 
@@ -64,6 +64,16 @@ class Nineball extends V2Game{
     protected buildSuperEbArea( superEbBgName: string, superEbAreaX: number, superEbAreaY: number ): void{
         this.superExtraBg = Com.addBitmapAt( this.runningBallContainer, this.assetStr( superEbBgName ), superEbAreaX, superEbAreaY );
         this.superExtraBg.visible = false;
+    }
+
+    private nineballText( str: string, yPos: number ): egret.TextField{
+        let tx: TextLabel = Com.addLabelAt( this, 900, yPos, 200, 35, 35, true, false );
+        tx.textColor = 0xECFFAC;
+        tx.bold = true;
+        tx.stroke = 2;
+        tx.strokeColor = 0x213510;
+        tx.setText( MuLang.getText(str) );
+        return tx;
     }
 
     private arrowMcs: Array<Array<egret.MovieClip>>;
@@ -135,7 +145,7 @@ class Nineball extends V2Game{
         }
         if( this.extraUIObject ){
             let tw: egret.Tween = egret.Tween.get( this.extraUIObject );
-            tw.to( { x: 125 }, 200 );
+            tw.to( { x: 518 }, 200 );
         }
     }
 
@@ -144,6 +154,7 @@ class Nineball extends V2Game{
 	}
 
     protected afterCheck( resultList: Array<Object> ): void{
+        this.clearPaytableFgs();
         super.afterCheck( resultList );
         this.clearArrow();
         for( let i: number = 0; i < 4; i++ ){
@@ -170,6 +181,7 @@ class Nineball extends V2Game{
     protected startPlay(): void {
         super.startPlay();
         this.clearArrow();
+        this.clearPaytableFgs();
     }
 
 /******************************************************************************************************************************************************************/    
@@ -244,6 +256,53 @@ class Nineball extends V2Game{
             try{
                 // RES.loadGroup( "megaForFirst_" + GlobelSettings.language );
             }catch(e){}
+        }
+    }
+
+    protected addPayTables(){
+        this.addPayTableWinBg();
+
+		super.addPayTables();
+
+        let pts: Object = PayTableManager.payTablesDictionary;
+        for( let payTable in pts ){
+			let pos: Object = pts[payTable].position;
+            let y: number = pos["y"];
+            y = Math.floor( y / 170 ) * 170 + 120;
+			pts[payTable].UI.y = y;
+            pts[payTable].UI.x = 912;
+            pts[payTable].UI.addEventListener( "paytableFitEvent", this.payTableFit, this );
+            let tx: egret.TextField = pts[payTable].UI["tx"];
+            tx.width = 172;
+            tx.textAlign = "center";
+		}
+	}
+
+    private paytableFgs: Array<egret.Bitmap>;
+
+    private addPayTableWinBg(){
+        let winBg: egret.DisplayObjectContainer = new egret.DisplayObjectContainer;
+        Com.addObjectAt( this, winBg, 896, 360 );
+        this.paytableFgs = [];
+        for( let i: number = 0; i < 3; i++ ){
+            this.paytableFgs[i] = Com.addBitmapAt( winBg, this.assetStr("paytable_fg"), 5, 6 + 173 * i );
+            this.paytableFgs[i].scaleX = this.paytableFgs[i].scaleY = 196 / 249;
+            this.paytableFgs[i].visible = false;
+        }
+        let winBgMask: egret.Bitmap = Com.addBitmapAt( this, this.assetStr("paytable_bg"), 896, 360 );
+        winBg.mask = winBgMask;
+    }
+
+    private payTableFit( event: egret.Event ){
+        let str: string = event.target["tx"].text;
+        if( str == "x1000" ) this.paytableFgs[0].visible = true;
+        else if( str == "x100" ) this.paytableFgs[1].visible = true;
+        else if( str == "x4" ) this.paytableFgs[2].visible = true;
+    }
+
+    private clearPaytableFgs(){
+        for( let i: number = 0; i < this.paytableFgs.length; i++ ){
+            this.paytableFgs[i].visible = false;
         }
     }
 }
