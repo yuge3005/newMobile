@@ -6,8 +6,6 @@ class GameToolBar extends egret.DisplayObjectContainer{
 	protected decreseBetBtn: TouchDownButton;
 	protected increaseBetBtn: TouchDownButton;
 
-	private changeNumberBtn: TouchDownButton;
-
 	protected maxBetBtn: TouchDownButton;
 	private collectBtn: TouchDownButton;
 
@@ -75,8 +73,6 @@ class GameToolBar extends egret.DisplayObjectContainer{
 		this.helpBtn = this.addBtn( "GameToolBar_json.help", -2, -5, GameCommands.help );
 		this.decreseBetBtn = this.addBtn( "GameToolBar_json.decrease-bet", 61, 42, GameCommands.decreseBet );
 		this.increaseBetBtn = this.addBtn( "GameToolBar_json.increase-bet", 191, 42, GameCommands.increaseBet );
-
-		this.changeNumberBtn = this.addBtn( "GameToolBar_json.change-number", 108, 83, GameCommands.changeNumber );
 
 		if( !GameToolBar.languageText )GameToolBar.languageText = GameLanguage.languageTextForGameToolbar();
 

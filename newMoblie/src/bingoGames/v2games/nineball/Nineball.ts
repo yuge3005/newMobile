@@ -28,6 +28,7 @@ class Nineball extends V2Game{
         GameCard.betTextRect = new egret.Rectangle( 270, 17, 340, 35 );
         GameCard.texColor = 0xFFFFFF;
         GameCard.showTitleShadow = new egret.GlowFilter(0, 1, 2, 2, 4, 4);
+        GameCard.clickChangeNumber = true;
 
         GameCard.gridOnTop = true;
 

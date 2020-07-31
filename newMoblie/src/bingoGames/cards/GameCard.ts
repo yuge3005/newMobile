@@ -21,7 +21,7 @@ class GameCard extends GameUIItem{
 	public static showTitleShadow: egret.Filter;
 	public static cardTextRect: egret.Rectangle;
 	public static betTextRect: egret.Rectangle;
-	public static texSize: number;
+	public static clickChangeNumber: boolean;
 	public static texColor: number;
 	public static firstToUpperCase: boolean = false;
 
@@ -94,6 +94,16 @@ class GameCard extends GameUIItem{
 
 			if (GameCard.showTitleShadow) this.betText.filters = [GameCard.showTitleShadow];
 		}
+
+		if( GameCard.clickChangeNumber ){
+			this.touchChildren = false;
+			this.touchEnabled = true;
+			this.addEventListener( egret.TouchEvent.TOUCH_TAP, this.cardNumber, this );
+		}
+	}
+
+	private cardNumber( event: egret.TouchEvent ){
+		BingoMachine.sendCommand( GameCommands.changeNumber );
 	}
 
 	public static getCardData( data: Object ){
