@@ -255,11 +255,11 @@ class BingoMachine extends GameUIItem{
 
 		this.updateCredit( data );
 
-		if( !this.gameToolBar )this.gameToolBar = new BingoGameToolBar;
+		if( !this.gameToolBar )this.gameToolBar = new BingoGameToolbar;
 		Com.addObjectAt( this, this.gameToolBar, 0, GameToolBar.toolBarY );
 		this.gameToolBar.scaleX = BingoBackGroundSetting.gameMask.width / 2000;
 		this.gameToolBar.scaleY = BingoBackGroundSetting.gameMask.height / 1125;
-		this.gameToolBar.showTip( "" );
+		// this.gameToolBar.showTip( "" );
 
 		this.resetGameToolBarStatus();
 
@@ -282,7 +282,7 @@ class BingoMachine extends GameUIItem{
 	}
 
 	protected listenToGameToolbarStatus(): void{
-		let gameToolbar: GameToolBar = this["gameToolBar"];
+		let gameToolbar: BingoGameToolbar = this["gameToolBar"];
 		gameToolbar.addEventListener( "winChange", this.winChange, this );
 		gameToolbar.addEventListener( "tipStatus", this.tipStatus, this );
 
@@ -356,21 +356,21 @@ class BingoMachine extends GameUIItem{
 		if( breakChecked ) return;
 
 		if (this.currentGame.btExtra) {
-			this.currentGame.hasExtraBallFit();
-			this.currentGame.gameToolBar.showStop( false );
-			this.currentGame.gameToolBar.unlockAllButtons();
-			this.currentGame.gameToolBar.showExtra( true, this.currentGame.valorextra );
-			this.currentGame.gameToolBar.showWinResult( this.currentGame.ganho );
+		// 	this.currentGame.hasExtraBallFit();
+		// 	this.currentGame.gameToolBar.showStop( false );
+		// 	this.currentGame.gameToolBar.unlockAllButtons();
+		// 	this.currentGame.gameToolBar.showExtra( true, this.currentGame.valorextra );
+		// 	this.currentGame.gameToolBar.showWinResult( this.currentGame.ganho );
 
-			if( this.currentGame.gameToolBar.autoPlaying ){
-				setTimeout(	this.sendCommand.bind(this), 500, GameCommands.extra );
-			}
+		// 	if( this.currentGame.gameToolBar.autoPlaying ){
+		// 		setTimeout(	this.sendCommand.bind(this), 500, GameCommands.extra );
+		// 	}
 
-			this.currentGame.showExtraUI();
+		// 	this.currentGame.showExtraUI();
 		}
 		else{
-			this.currentGame.sendRoundOverRequest();
-			this.currentGame.gameToolBar.showExtra( false );
+		// 	this.currentGame.sendRoundOverRequest();
+		// 	this.currentGame.gameToolBar.showExtra( false );
 			this.currentGame.gameToolBar.lockAllButtons();
 		}
 	}
@@ -492,20 +492,16 @@ class BingoMachine extends GameUIItem{
 				this.currentGame.setCardDatasWithNumeros( this.currentGame["getCardsGroup"]( CardManager.groupNumber ) );
 				return;
 			}
-			else if( this.currentGame instanceof SuperLotto ){
-				( this.currentGame as SuperLotto ).changeRamdonNumbers();
-				return;
-			}
 			this.currentGame.gameToolBar.lockAllButtons();
 			IBingoServer.changeNumberCallback = this.currentGame.onChangeNumber.bind( this.currentGame );
 			IBingoServer.changeNumber();
 		}
 		else if (cmd == GameCommands.play) {
 			if( Number( this.currentGame.gameCoins ) < GameData.currentBet * CardManager.enabledCards ){
-				if( this.currentGame.gameToolBar.autoPlaying ){
-					this.currentGame.gameToolBar.autoPlaying = false;
-					this.currentGame.gameToolBar.unlockAllButtonsAfterOOC();
-				}
+				// if( this.currentGame.gameToolBar.autoPlaying ){
+				// 	this.currentGame.gameToolBar.autoPlaying = false;
+				// 	this.currentGame.gameToolBar.unlockAllButtonsAfterOOC();
+				// }
 				this.currentGame.dispatchEvent(new egret.Event("out_of_coins_game_id"));
 				return;
 			}
@@ -514,13 +510,13 @@ class BingoMachine extends GameUIItem{
 			this.currentGame.sendPlayRequest();
 			CardManager.clearCardsStatus();
 			PayTableManager.clearPaytablesStatus();
-			this.currentGame.gameToolBar.showTip( cmd );
+			// this.currentGame.gameToolBar.showTip( cmd );
 			this.currentGame.ballArea.clearBalls();
 			this.currentGame.showExtraUI( false );
 			this.currentGame.dispatchEvent( new egret.Event( "onGamePlay" ) );
 		}
 		else if( cmd == GameCommands.stop ){
-			this.currentGame.gameToolBar.enabledStopButton();
+			// this.currentGame.gameToolBar.enabledStopButton();
 			this.currentGame.ballArea.stopBallRunning();
 		}
 		else if (cmd == GameCommands.collect) {
@@ -531,7 +527,7 @@ class BingoMachine extends GameUIItem{
 			
 			// CardManager.clearCardsStatus();
 			// PayTableManager.clearPaytablesStatus();
-			this.currentGame.gameToolBar.showTip( "" );
+			// this.currentGame.gameToolBar.showTip( "" );
 			// this.currentGame.ballArea.clearBalls();
 			this.currentGame.clearRunningBallUI();
 		}
@@ -550,12 +546,12 @@ class BingoMachine extends GameUIItem{
 		else if( cmd == GameCommands.showMini ){
 			this.currentGame.showMiniGame();
 		}
-		else if( cmd == GameCommands.startAuto ){
-			this.currentGame.gameToolBar.autoPlaying = true;
-		}
-		else if( cmd == GameCommands.stopAuto ){
-			this.currentGame.gameToolBar.autoPlaying = false;
-		}
+		// else if( cmd == GameCommands.startAuto ){
+		// 	this.currentGame.gameToolBar.autoPlaying = true;
+		// }
+		// else if( cmd == GameCommands.stopAuto ){
+		// 	this.currentGame.gameToolBar.autoPlaying = false;
+		// }
 		else{//the rest commands are relatied to bet and card enabled
 			if( cmd == GameCommands.decreseBet ){
 				GameData.betDown();
@@ -588,14 +584,14 @@ class BingoMachine extends GameUIItem{
 		if( this.isMegaBall ) isOOC = Number( this.dinero ) < this.valorextra;
 		else isOOC = Number( this.gameCoins ) < this.valorextra;
 		
-		if( isOOC ){
-			if( this.gameToolBar.autoPlaying ){
-				this.gameToolBar.autoPlaying = false;
-				this.gameToolBar.unlockAllButtonsAfterOOCExtra();
-			}
-			if( this.isMegaBall ) this.dispatchEvent(new egret.Event("out_of_dinero"));
-			else this.dispatchEvent(new egret.Event("out_of_coins_game_id"));
-		}
+		// if( isOOC ){
+		// 	if( this.gameToolBar.autoPlaying ){
+		// 		this.gameToolBar.autoPlaying = false;
+		// 		this.gameToolBar.unlockAllButtonsAfterOOCExtra();
+		// 	}
+		// 	if( this.isMegaBall ) this.dispatchEvent(new egret.Event("out_of_dinero"));
+		// 	else this.dispatchEvent(new egret.Event("out_of_coins_game_id"));
+		// }
 		return isOOC;
 	}
 
@@ -632,8 +628,8 @@ class BingoMachine extends GameUIItem{
 
 		this.updateCredit( data );
 
-		this.gameToolBar.showStop( true );
-		this.gameToolBar.showWinResult( 0 );
+		// this.gameToolBar.showStop( true );
+		// this.gameToolBar.showWinResult( 0 );
 
 		this.currentBallIndex = 0;
 		this.btExtra = data["btextra"];
@@ -657,21 +653,21 @@ class BingoMachine extends GameUIItem{
 		
 		this.roundOver();
 
-		this.gameToolBar.showStop( false );
-		this.gameToolBar.unlockAllButtons();
-		if( data["ganho"] != "unexpress" )this.gameToolBar.showWinResult( data["ganho"] );
-		else this.gameToolBar.showWinResult( this.ganho );
+		// this.gameToolBar.showStop( false );
+		// this.gameToolBar.unlockAllButtons();
+		// if( data["ganho"] != "unexpress" )this.gameToolBar.showWinResult( data["ganho"] );
+		// else this.gameToolBar.showWinResult( this.ganho );
 
 		this.updateCredit( data );
 
-		if( !this.gameToolBar.autoPlaying )this.resetGameToolBarStatus();
-		if (this.gameToolBar.autoPlaying) this.gameToolBar.autoPlaying = true;
+		// if( !this.gameToolBar.autoPlaying )this.resetGameToolBarStatus();
+		// if (this.gameToolBar.autoPlaying) this.gameToolBar.autoPlaying = true;
 	}
 
 
 	public onCancelExtra( data: Object ){
 		IBingoServer.cancelExtraCallback = null;
-		this.gameToolBar.unlockAllButtons();
+		// this.gameToolBar.unlockAllButtons();
 		this.gameToolBar.showExtra(false);
 		
 		this.roundOver();
@@ -690,10 +686,10 @@ class BingoMachine extends GameUIItem{
 		this.isMegaBall = data["isMegaBall"];
 
 		if (!data) {//out of coins
-			let needChangeCollectBtnStatus: boolean = this.gameToolBar.autoPlaying;
-			this.gameToolBar.autoPlaying = false;
+			// let needChangeCollectBtnStatus: boolean = this.gameToolBar.autoPlaying;
+			// this.gameToolBar.autoPlaying = false;
 			this.dispatchEvent( new egret.Event( "out_of_coins_game_id" ) );
-			if( needChangeCollectBtnStatus )this.gameToolBar.showCollectButtonAfterOOC();
+			// if( needChangeCollectBtnStatus )this.gameToolBar.showCollectButtonAfterOOC();
 			return;
 		}
 
@@ -843,7 +839,7 @@ class BingoMachine extends GameUIItem{
 	 * quick play
 	 */
 	public quickPlay(): void {
-		this.gameToolBar.quickPlay();
+		// this.gameToolBar.quickPlay();
 	}
 
 	/**
@@ -856,7 +852,7 @@ class BingoMachine extends GameUIItem{
 	 * collect credito
 	 */
 	public collectCredit(): void {
-		this.gameToolBar.collect();
+		// this.gameToolBar.collect();
 	}
 	
 	protected firstHaveExtraBall: boolean;

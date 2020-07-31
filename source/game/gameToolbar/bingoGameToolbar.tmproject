@@ -7,13 +7,16 @@
         "sizeMode": "2n"
     },
     "files": [
+        "./play_press.png",
         "./play_bg.png",
         "./play.png",
+        "./msg_bg.png",
         "./more_games.png",
+        "./middle_bar.png",
         "./max_btn_press.png",
         "./max_btn.png",
         "./Locked.png",
-        "./i_pressed.png",
+        "./i_press.png",
         "./i.png",
         "./btn_mega.png",
         "./btn_go.png",
@@ -26,8 +29,11 @@
         "./BB_EXTRA_collect_btn.png",
         "./BB_EXTRA_buyall.png",
         "./BB_EXTRA_btn_bg.png",
-        "./auto_stop.png",
-        "./play_press.png"
+        "./ballance.png",
+        "./balance_coin.png",
+        "./balance_chip.png",
+        "./back_panel.png",
+        "./auto_stop.png"
     ],
     "version": 5,
     "projectName": "bingoGameToolbar"

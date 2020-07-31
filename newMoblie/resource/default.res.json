@@ -318,7 +318,7 @@
 			"url": "game/gameToolBar/bingoGameToolbar.json",
 			"type": "sheet",
 			"name": "bingoGameToolbar_json",
-			"subkeys": "BB_EXTRA_btn_bg,BB_EXTRA_buyall,BB_EXTRA_collect_btn,BB_EXTRA_extra_btn,Locked,auto_stop,bet_down,bet_down_press,bet_screen,bet_up,bet_up_press,btn_go,btn_mega,i,i_pressed,max_btn,max_btn_press,more_games,play,play_bg,play_press"
+			"subkeys": "BB_EXTRA_btn_bg,BB_EXTRA_buyall,BB_EXTRA_collect_btn,BB_EXTRA_extra_btn,Locked,auto_stop,back_panel,balance_chip,balance_coin,ballance,bet_down,bet_down_press,bet_screen,bet_up,bet_up_press,btn_go,btn_mega,i,i_press,max_btn,max_btn_press,middle_bar,more_games,msg_bg,play,play_bg,play_press"
 		}
 	]
 }
