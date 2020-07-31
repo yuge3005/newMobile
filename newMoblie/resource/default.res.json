@@ -292,7 +292,7 @@
 			"url": "game/nineball/nineball.json",
 			"type": "sheet",
 			"name": "nineball_json",
-			"subkeys": "&#032copy-16,&#032copy-2,&#032copy-3,&#032copy-4,&#032copy-5,&#032copy-6,&#032copy-7,Group-33,active-jackpot,ball_mid,card_number_fill_blue,card_number_fill_green,card_number_fill_red,card_number_fill_white,check,dividi-acumulado-nine,jackpot_lock,mask,mega_en,mega_es,mega_pt,nineball_bg,nineball_top_bolas,paytable_bg,paytable_fg,top_placar"
+			"subkeys": "&#032copy-16,&#032copy-2,&#032copy-3,&#032copy-4,&#032copy-5,&#032copy-6,&#032copy-7,ball_mid,card_number_fill_blue,card_number_fill_green,card_number_fill_red,card_number_fill_white,dividi-acumulado-nine,jackpot_bg,jackpot_lock,mask,mega_en,mega_es,mega_pt,nineball_bg,nineball_top_bolas,paytable_bg,paytable_fg,top_placar"
 		},
 		{
 			"url": "config/nineball.conf",

@@ -33,7 +33,7 @@ class Nineball extends V2Game{
         GameCard.gridOnTop = true;
 
         CardGrid.defaultBgColor = 0xFFFFFF;
-        CardGrid.defaultNumberSize = 26;
+        CardGrid.defaultNumberSize = 55;
 
         CardGrid.blinkColors1 = 0xFF0000;
 	    CardGrid.blinkColors2 = 0x00FF00;
@@ -187,7 +187,8 @@ class Nineball extends V2Game{
 
 /******************************************************************************************************************************************************************/    
     protected showJackpot( jackpot: number, jackpotMinBet: number, betConfig: Array<Object> ){
-        this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 532, 10 ), jackpot, jackpotMinBet, betConfig, new egret.Point( -2, 20 ), new egret.Rectangle( 0, 37, 190, 22 ), 22, 0xFFFFFF, new egret.Rectangle( 0, 0, 190, 20 ), 20, 0x585858 ) );
+        this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 1276, 15 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 0, 0 ), new egret.Rectangle( 85, 42, 320, 40 ), 40, 0xFFFFFF ) );
+        this.jackpotArea["jackpotText"].textAlign = "left";
     }
 
     protected getPaytablesFit( paytabledName: string, callback: Function = null ): void{

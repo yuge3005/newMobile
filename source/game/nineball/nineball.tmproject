@@ -1,11 +1,4 @@
 {
-    "options": {
-        "useExtension": 0,
-        "layoutGap": 1,
-        "extend": 0,
-        "layoutMath": "3",
-        "sizeMode": "2n"
-    },
     "files": [
         "./top_placar.png",
         "./paytable_fg.png",
@@ -17,15 +10,13 @@
         "./mega_en.png",
         "./mask.png",
         "./jackpot_lock.png",
-        "./Group-33.png",
+        "./jackpot_bg.png",
         "./dividi-acumulado-nine.png",
-        "./check.png",
         "./card_number_fill_white.png",
         "./card_number_fill_red.png",
         "./card_number_fill_green.png",
         "./card_number_fill_blue.png",
         "./ball_mid.png",
-        "./active-jackpot.png",
         "./&#032copy-16.png",
         "./&#032copy-7.png",
         "./&#032copy-6.png",
@@ -34,6 +25,13 @@
         "./&#032copy-3.png",
         "./&#032copy-2.png"
     ],
+    "projectName": "nineball",
     "version": 5,
-    "projectName": "nineball"
+    "options": {
+        "extend": 0,
+        "layoutMath": "3",
+        "sizeMode": "2n",
+        "useExtension": 0,
+        "layoutGap": 1
+    }
 }
