@@ -9,7 +9,7 @@
 			"name": "superLotto"
 		},
 		{
-			"keys": "nb_1line_mp3,nb_1to_bingo_mp3,nb_2line_mp3,nb_acumulado_mp3,nb_ball_mp3,nb_bet_mp3,nb_bingo_mp3,nb_card_mp3,nb_collect_mp3,nb_extra_ball_mp3,nb_first_extra_mp3,nb_free_extra_mp3,nb_ooc_mp3,nb_win_round_over_mp3,nineball_json,nineballAnimation_png,nineballAnimation_json,nineball_conf,GameToolBar_json,nineball_tx,nineball_filt",
+			"keys": "nb_1line_mp3,nb_1to_bingo_mp3,nb_2line_mp3,nb_acumulado_mp3,nb_ball_mp3,nb_bet_mp3,nb_bingo_mp3,nb_card_mp3,nb_collect_mp3,nb_extra_ball_mp3,nb_first_extra_mp3,nb_free_extra_mp3,nb_ooc_mp3,nb_win_round_over_mp3,nineball_json,nineballAnimation_png,nineballAnimation_json,nineball_conf,GameToolBar_json,nineball_tx,nineball_filt,bingoGameToolbar_json",
 			"name": "nineball"
 		}
 	],
@@ -313,6 +313,12 @@
 			"url": "config/paytableFilter/turbo90.filt",
 			"type": "json",
 			"name": "turbo90_filt"
+		},
+		{
+			"url": "game/gameToolBar/bingoGameToolbar.json",
+			"type": "sheet",
+			"name": "bingoGameToolbar_json",
+			"subkeys": "BB_EXTRA_btn_bg,BB_EXTRA_buyall,BB_EXTRA_collect_btn,BB_EXTRA_extra_btn,Locked,auto_stop,bet_down,bet_down_press,bet_screen,bet_up,bet_up_press,btn_go,btn_mega,i,i_pressed,max_btn,max_btn_press,more_games,play,play_bg,play_press"
 		}
 	]
 }

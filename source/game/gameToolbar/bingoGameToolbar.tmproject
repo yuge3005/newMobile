@@ -1,0 +1,34 @@
+{
+    "options": {
+        "useExtension": 0,
+        "layoutGap": 1,
+        "extend": 0,
+        "layoutMath": "3",
+        "sizeMode": "2n"
+    },
+    "files": [
+        "./play_bg.png",
+        "./play.png",
+        "./more_games.png",
+        "./max_btn_press.png",
+        "./max_btn.png",
+        "./Locked.png",
+        "./i_pressed.png",
+        "./i.png",
+        "./btn_mega.png",
+        "./btn_go.png",
+        "./bet_up_press.png",
+        "./bet_up.png",
+        "./bet_screen.png",
+        "./bet_down_press.png",
+        "./bet_down.png",
+        "./BB_EXTRA_extra_btn.png",
+        "./BB_EXTRA_collect_btn.png",
+        "./BB_EXTRA_buyall.png",
+        "./BB_EXTRA_btn_bg.png",
+        "./auto_stop.png",
+        "./play_press.png"
+    ],
+    "version": 5,
+    "projectName": "bingoGameToolbar"
+}
