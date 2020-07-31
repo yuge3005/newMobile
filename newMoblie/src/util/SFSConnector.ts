@@ -3,9 +3,6 @@ class SFSConnector {
     private static _config: any;
     private static _sfs: any;
     private static connection: boolean;
-    public static get connected():boolean{
-        return this.connection;
-    }
     private static login: boolean;
 
     private static gettingRoom: string;
@@ -23,15 +20,6 @@ class SFSConnector {
     public static goKartHandlerCallback: Function;
     public static selectNumberCallback: Function;
     public static lemonGameCallback: Function;
-    public static multiPlayerCallback: Function;
-    public static buyCardCallback: Function;
-    public static coinsChangeCallback: Function;
-    public static powerUpCallback: Function;
-    public static triggerpowerUpCallback: Function;
-    public static callBingoCallback: Function;
-    public static existCardCallback: Function;
-    public static otherJoinRoomCallback: Function;
-    public static roomMessageCallback: Function;
 
     constructor() {
         SFSConnector.connection = false;
@@ -71,7 +59,6 @@ class SFSConnector {
                 SFSConnector._sfs.addEventListener(eval("SFS2X.SFSEvent.LOGIN_ERROR"), this.onLoginError, this);
                 SFSConnector._sfs.addEventListener(eval("SFS2X.SFSEvent.ROOM_JOIN"), this.onJoinRoom, this);
                 SFSConnector._sfs.addEventListener(eval("SFS2X.SFSEvent.ROOM_JOIN_ERROR"), this.onJoinRoomError, this);
-                SFSConnector._sfs.addEventListener(eval("SFS2X.SFSEvent.PUBLIC_MESSAGE"), this.onUserMessage, this);
                 
                 // connect
                 SFSConnector._sfs.connect();
@@ -95,7 +82,6 @@ class SFSConnector {
         if (event.success) {
             // success
             console.log("connected to SFS Server 2X " + SFSConnector._sfs.version);
-
             SFSConnector.connection = true;
         } else {
             // failed
@@ -108,7 +94,6 @@ class SFSConnector {
     private onSfsConnectionLost(event): void {
         console.log("SFS Server connection lost!");
         console.log(event);
-
         alert( "connection lost!" );
         // remove event listeners
         SFSConnector._sfs.removeEventListener(eval("SFS2X.SFSEvent.CONNECTION"), this.onSfsConnection);
@@ -118,7 +103,6 @@ class SFSConnector {
         SFSConnector._sfs.removeEventListener(eval("SFS2X.SFSEvent.LOGIN_ERROR"), this.onLoginError);
         SFSConnector._sfs.removeEventListener(eval("SFS2X.SFSEvent.ROOM_JOIN"), this.onJoinRoom);
         SFSConnector._sfs.removeEventListener(eval("SFS2X.SFSEvent.ROOM_JOIN_ERROR"), this.onJoinRoomError);
-        SFSConnector._sfs.removeEventListener(eval("SFS2X.SFSEvent.PUBLIC_MESSAGE"), this.onUserMessage);
         SFSConnector._sfs.logger.removeEventListener(eval("SFS2X.LoggerEvent.DEBUG"), this.showSfsLogs);
         SFSConnector._sfs.logger.removeEventListener(eval("SFS2X.LoggerEvent.INFO"), this.showSfsLogs);
         SFSConnector._sfs.logger.removeEventListener(eval("SFS2X.LoggerEvent.WARNING"), this.showSfsLogs);
@@ -157,29 +141,6 @@ class SFSConnector {
             SFSConnector.joinRoomCallback();
             SFSConnector.joinRoomCallback = null;
         }
-
-        if( SFSConnector.multiPlayerCallback ){
-            let room = SFSConnector._sfs.lastJoinedRoom;
-            let changedObject = room.getVariable( "timePlan" ).value;
-            if( changedObject.getBool( "isLocked" ) == true ){
-                let changeValue: Object = {};
-                changeValue["isLocked"] = changedObject.getBool("isLocked");
-                changeValue["startTime"] = changedObject.getUtfString("startTime");
-                changeValue["endTime"] = changedObject.getUtfString("endTime");
-                SFSConnector.multiPlayerCallback( "timePlan", changeValue );
-                return;
-            }
-
-            let cardPrice = room.getVariable( "cardPrice" ).value;
-            SFSConnector.multiPlayerCallback( "cardPrice", cardPrice );
-
-            let roomVar = room.getVariable( "gamePattern" );
-            let arr = roomVar.value;
-            let cardPrize = arr.get(0).getInt("prize");
-            SFSConnector.multiPlayerCallback( "cardPrize", cardPrize );
-
-            SFSConnector.multiPlayerCallback( "enterGameState", room.getVariable( "gameState" ).value );
-        }
     }
 
     /**
@@ -187,29 +148,6 @@ class SFSConnector {
      **/
     private onJoinRoomError(event): void {
         console.error("join room failed! " + event.errorMessage);
-    }
-
-    public static get userMultiplier(): number{
-        return SFSConnector._sfs.mySelf.getVariable( "multiplier" ).value;
-    }
-
-    public static get multiPlayerPattens(): Array<Object>{
-        let arr = SFSConnector._sfs.lastJoinedRoom.getVariable( "gamePattern" ).value;
-        let changeValue: Array<Object> = [];
-        for( let j: number = 0; j < arr.size(); j++ ){
-            changeValue[j] = {};
-            changeValue[j]["patternName"] = arr.get(j).getUtfString("patternName");
-        }
-        return changeValue;
-    }
-
-    public static get totalWinCount(): number{
-        let winCount: number = SFSConnector._sfs.lastJoinedRoom.getVariable( "totalWinCount" ).value;
-        return winCount;
-    }
-
-    private onUserMessage(event): void{
-        if( SFSConnector.roomMessageCallback ) SFSConnector.roomMessageCallback( event.sender.getVariable("name").value, event.message, event.sender.getVariable("platformId").value );
     }
 
     /**
@@ -592,70 +530,6 @@ class SFSConnector {
 
             SFSConnector.lemonGameCallback(gameData);
         }
-        else if (event.cmd === "numberSelect" && SFSConnector.selectNumberCallback ){
-            var data: any = event.params;
-            var gameData: Object = {};
-            gameData["numberIndex"] = data.getInt("numberIdx");
-            gameData["uuid"] = data.getUtfString("uuid");
-            gameData["energy"] = data.getDouble("energy");
-            gameData["type"] = data.getUtfString("type");
-            SFSConnector.selectNumberCallback(gameData);
-        }
-        else if (event.cmd === "usePowerUp" && SFSConnector.powerUpCallback ){
-            var data: any = event.params;
-            var gameData: Object = {};
-            gameData["state"] = data.getBool("state");
-            if( gameData["state"] ){
-                gameData["auto"] = data.getBool("auto");
-                gameData["powerUpType"] = data.getUtfString("powerUpType");
-                gameData["luckyBall"] = data.getInt("luckyBall");
-
-                let sfsVarCards = data.getSFSArray("cards");
-                if( sfsVarCards ){
-                    gameData["cards"] = [];
-                    for( let i: number = 0; i < sfsVarCards.size(); i++ ){
-                        gameData["cards"][i] = {};
-                        gameData["cards"][i]["indexes"] = sfsVarCards.get(i).getIntArray("indexes");
-                        gameData["cards"][i]["uuid"] = sfsVarCards.get(i).getUtfString("uuid");
-                    }
-                }
-            }
-            SFSConnector.powerUpCallback(gameData);
-        }
-        else if (event.cmd == "triggerPowerUp" && SFSConnector.triggerpowerUpCallback ){
-            var data: any = event.params;
-            var gameData: Object = {};
-            gameData["coins"] = data.getInt("coins");
-            gameData["numberIdx"] = data.getInt("numberIdx");
-            gameData["balance"] = data.getDouble("balance");
-            gameData["powerUpType"] = data.getUtfString("powerUpType");
-            gameData["uuid"] = data.getUtfString("uuid");
-            gameData["statusCode"] = data.getInt("statusCode");
-            SFSConnector.triggerpowerUpCallback(gameData);
-        }
-        else if (event.cmd == "bingo" && SFSConnector.callBingoCallback ){
-            var data: any = event.params;
-            var gameData: Object = {};
-            gameData["uuid"] = data.getUtfString("uuid");
-            gameData["id"] = data.getInt("id");
-            gameData["pattern"] = data.getUtfString("pattern");
-            if( SFSConnector._sfs.lastJoinedRoom ){
-                let room = SFSConnector._sfs.lastJoinedRoom;
-                let winner = room.getUserById( gameData["id"] );
-                if( winner ){
-                    gameData["name"] = winner.getVariable("name").value;
-                    gameData["fbId"] = winner.getVariable("platformId").value;
-                }
-            }
-            SFSConnector.callBingoCallback(gameData);
-        }
-        else if (event.cmd == "exitsCard" && SFSConnector.existCardCallback ){
-            var data: any = event.params;
-            var gameData: Object = {};
-            gameData["selected_multi"] = data.getInt("selected_multi");
-            gameData["amount"] = data.getInt("amount");
-            SFSConnector.existCardCallback( gameData );
-        }
         else if (event.cmd === "erro") {
             let info = event.params.get("mensagem");
             console.log("----   SFSConnector -> onSfsExtensionResponse[erro]:");
@@ -826,60 +700,5 @@ class SFSConnector {
         params.putInt( "box_index", boxIndex );
         trace( params.getDump() );
         SFSConnector._sfs.send(eval("new SFS2X.ExtensionRequest( 'lemon_game_handler', params )"));
-    }
-
-    public static reloadGamesetting( name: string, pass: string ){
-        var params:any = eval( "new SFS2X.SFSObject()" );
-        params.putUtfString( "name", name );
-        params.putUtfString( "pass", pass );
-        trace( params.getDump() );
-        SFSConnector._sfs.send(eval("new SFS2X.ExtensionRequest( 'reload_gamesetting', params )"));
-    }
-
-    public static buyCard( amount: number, multiple: number ){
-        var params:any = eval( "new SFS2X.SFSObject()" );
-        params.putInt( "amount", amount );
-        params.putInt( "multiple", multiple );
-        trace( params.getDump() );
-        SFSConnector._sfs.send(eval("new SFS2X.ExtensionRequest( 'buyCard', params, SFSConnector._sfs.lastJoinedRoom )"));
-    }
-
-    public static numberSelect( uuid: string, gridIndex: number ){
-        var params:any = eval( "new SFS2X.SFSObject()" );
-        params.putUtfString( "uuid", uuid );
-        params.putInt( "index", gridIndex );
-        trace( params.getDump() );
-        SFSConnector._sfs.send(eval("new SFS2X.ExtensionRequest( 'numberSelect', params, SFSConnector._sfs.lastJoinedRoom )"));
-    }
-
-    public static triggerPowerUp( type: string, uuid: string, gridIndex: number ){
-        var params:any = eval( "new SFS2X.SFSObject()" );
-        params.putUtfString( "type", type );
-        if( uuid ){
-            params.putUtfString( "uuid", uuid );
-            params.putInt( "index", gridIndex );
-        }
-        trace( params.getDump() );
-        SFSConnector._sfs.send(eval("new SFS2X.ExtensionRequest( 'triggerPowerUp', params, SFSConnector._sfs.lastJoinedRoom )"));
-    }
-
-    public static powerUp( type: string ){
-        var params:any = eval( "new SFS2X.SFSObject()" );
-        params.putUtfString( "type", type );
-        trace( params.getDump() );
-        SFSConnector._sfs.send(eval("new SFS2X.ExtensionRequest( 'usePowerUp', params, SFSConnector._sfs.lastJoinedRoom )"));
-    }
-
-    public static callBingo( uuid: string ){
-        var params:any = eval( "new SFS2X.SFSObject()" );
-        params.putUtfString( "uuid", uuid );
-        let sfsArr = eval( "new SFS2X.SFSArray()" );
-        params.putSFSArray( "selectedNumbers", sfsArr );
-        trace( params.getDump() );
-        SFSConnector._sfs.send(eval("new SFS2X.ExtensionRequest( 'bingo', params, SFSConnector._sfs.lastJoinedRoom )"));
-    }
-
-    public static sendChatMessage( message: string ){
-        SFSConnector._sfs.send(eval("new SFS2X.PublicMessageRequest( message )"));
     }
 }
