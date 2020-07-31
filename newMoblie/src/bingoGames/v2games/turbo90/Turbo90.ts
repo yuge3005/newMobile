@@ -36,7 +36,6 @@ class Turbo90 extends V2Game{
 
         BallManager.ballOffsetY = 2;
 
-        GameToolBar.toolBarY = 920;
         BingoBackGroundSetting.defaultScale = false;
         BingoBackGroundSetting.gameMask = new egret.Rectangle( 0, 0, 2000, 1125 );
 	}

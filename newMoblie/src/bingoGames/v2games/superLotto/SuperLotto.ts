@@ -30,7 +30,6 @@ class SuperLotto extends V2Game{
         BallManager.normalBallInterval = 200;
 
         BallManager.ballOffsetY = BrowserInfo.textUp * 2;
-        GameToolBar.toolBarY = 920;
         BingoBackGroundSetting.defaultScale = false;
         BingoBackGroundSetting.gameMask = new egret.Rectangle( 0, 0, 2000, 1125 );
 

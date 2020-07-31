@@ -16,7 +16,7 @@ class BingoMachine extends GameUIItem{
 	protected ballArea: BallManager;
 	protected cardArea: egret.DisplayObjectContainer;
 	protected payTableArea: egret.DisplayObjectContainer;
-	protected gameToolBar: GameToolBar;
+	protected gameToolBar: BingoGameToolbar;
 
 	protected betText: egret.TextField;
 	protected creditText: egret.TextField;
@@ -255,10 +255,10 @@ class BingoMachine extends GameUIItem{
 
 		this.updateCredit( data );
 
-		if( !this.gameToolBar )this.gameToolBar = new GameToolBar;
+		if( !this.gameToolBar )this.gameToolBar = new BingoGameToolBar;
 		Com.addObjectAt( this, this.gameToolBar, 0, GameToolBar.toolBarY );
-		this.gameToolBar.scaleX = BingoBackGroundSetting.gameMask.width / 755;
-		this.gameToolBar.scaleY = this.gameToolBar.scaleX * 0.62;
+		this.gameToolBar.scaleX = BingoBackGroundSetting.gameMask.width / 2000;
+		this.gameToolBar.scaleY = BingoBackGroundSetting.gameMask.height / 1125;
 		this.gameToolBar.showTip( "" );
 
 		this.resetGameToolBarStatus();
