@@ -191,7 +191,7 @@
 			"url": "game/turbo90/turbo90.json",
 			"type": "sheet",
 			"name": "turbo90_json",
-			"subkeys": "BALL_RAIL 1,CARD_HEADER_BG_white,Turbo_90s_New_Layout_ShortDisplay,active-jackpot,ball_blue,ball_green,ball_red,ball_yellow,card_over_layer,carta_virada,extra_come,jackpot_lock,mark_pink,mark_red,mark_white,mark_x,mark_yellow,mask,mega_en,mega_es,mega_pt,path_tip,paytable_bg,paytable_fg,turbo90_1,turbo90_2,turbo90_3,wheel_eject"
+			"subkeys": "BALL_RAIL 1,CARD_HEADER_BG_white,Turbo_90s_New_Layout_ShortDisplay,active-jackpot,ball_blue,ball_green,ball_red,ball_yellow,card_over_layer,carta_virada,extra_come,jackpot_lock,mark_pink,mark_red,mark_white,mark_x,mark_yellow,mask,mega_en,mega_es,mega_pt,path_tip,paytable_bg,paytable_fg,turbo90_1,turbo90_2,turbo90_3,turbo90_D_1,turbo90_D_2,turbo90_D_3,wheel_eject"
 		},
 		{
 			"url": "config/turbo90.conf",

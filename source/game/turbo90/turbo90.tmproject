@@ -7,9 +7,10 @@
         "sizeMode": "2n"
     },
     "files": [
-        "./ball_blue.png",
-        "./active-jackpot.png",
         "./wheel_eject.png",
+        "./turbo90_D_3.png",
+        "./turbo90_D_2.png",
+        "./turbo90_D_1.png",
         "./turbo90_3.png",
         "./turbo90_2.png",
         "./turbo90_1.png",
@@ -34,7 +35,9 @@
         "./ball_yellow.png",
         "./ball_red.png",
         "./BALL_RAIL 1.png",
-        "./ball_green.png"
+        "./ball_green.png",
+        "./ball_blue.png",
+        "./active-jackpot.png"
     ],
     "version": 5,
     "projectName": "turbo90"

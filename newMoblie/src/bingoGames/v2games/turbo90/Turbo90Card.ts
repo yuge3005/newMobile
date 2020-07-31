@@ -31,7 +31,7 @@ class Turbo90Card extends GameCard{
 			this.removeFork( PayTableManager.payTablesDictionary[assetName].rule );
 		}
 
-		if( assetName == "line" && fitIndex.length ){
+		if( fitIndex.length ){
 			for( let i: number = 0; i< fitIndex.length; i++ ){
 				if( fitIndex[i] ){
 					Com.addBitmapAt( this.fitEffectLayer, BingoMachine.getAssetStr( GameCard.fitEffectNameList[assetName][i] ), 0, 0 );
