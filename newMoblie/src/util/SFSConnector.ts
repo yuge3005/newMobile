@@ -1,5 +1,3 @@
-let SFSServerCommandHandlerMapping = {};
-let connectionComplete = [];
 //,"src/javascripts/sfs2x-api-1.7.5.js"
 class SFSConnector {
     private static _config: any;
@@ -9,7 +7,6 @@ class SFSConnector {
         return this.connection;
     }
     private static login: boolean;
-    private static connectionComplete: Array<Function>;
 
     private static gettingRoom: string;
     private static waitingForUserVar: boolean;
@@ -39,32 +36,14 @@ class SFSConnector {
     public static cardsAndPlayersCallback: Function;
 
     constructor() {
-        // PlayerConfig.config("host")
-        new Http().instance( "https://" + "staging.doutorbingo.com/xmlconfig/config.xml", "GET", null, true, this.getSFSConfigSuccess.bind(this)).send();
-    }
-
-    /**
-     * get sfs server config
-     **/
-    private getSFSConfigSuccess(data: string): void {
-        let serverConfig: egret.XML = egret.XML.parse(data);
         SFSConnector.connection = false;
         SFSConnector.login = false;
         SFSConnector._config = {
-            host: "",
-            port: 8090,
+            host: "sfs.doutorbingo.com",
+            port: 8443,
             debug: false,
-            useSSL: false
+            useSSL: true
         };
-
-        for (let i = 0; i < serverConfig.children.length; i++) {
-            if ((<egret.XML>serverConfig.children[i]).name === "ip") {
-                SFSConnector._config["host"] = (<egret.XMLText>(<egret.XML>serverConfig.children[i]).children[0]).text;
-            } else if ((<egret.XML>serverConfig.children[i]).name === "porta") {
-                // SFSConnector._config["port"] = Number((<egret.XMLText>(<egret.XML>serverConfig.children[i]).children[0]).text);
-            }
-        }
-
         this.connection();
     }
 
@@ -169,11 +148,6 @@ class SFSConnector {
      **/
     private onLogin(event): void {
         console.log("login success!");
-
-        for (let i = 0; i < connectionComplete.length; i++) {
-            eval("connectionComplete[i]()");
-        }
-        connectionComplete = [];
 
         if( SFSConnector.gettingRoom ){
             SFSConnector._sfs.send(eval("new SFS2X.JoinRoomRequest('" + SFSConnector.gettingRoom + "')"));
@@ -844,10 +818,6 @@ class SFSConnector {
                 }
             }
         }
-
-        if (SFSServerCommandHandlerMapping[event.cmd]) {
-            SFSServerCommandHandlerMapping[event.cmd](event.params);
-        }
     }
 
     /**
@@ -874,17 +844,6 @@ class SFSConnector {
         SFSConnector._sfs.send(eval("new SFS2X.LoginRequest('243972732', '', null, 'Generic')"));
     }
 
-    /**
-     * push sfs server command handler mapping
-     * @param cmd      command name
-     * @param callback handler callback function
-     */
-    public static pushSFSServerCommandHandlerMapping(cmd: string, callback: Function, hard: boolean = false): void {
-        if (!SFSServerCommandHandlerMapping[cmd] || hard) {
-            SFSServerCommandHandlerMapping[cmd] = callback;
-        }
-    }
-
     private getBetConfig( configData: any ): Array<Object>{
         let ar: Array<Object> = [];
         for( let i: number = 0; i < configData.size(); i++ ){
@@ -893,13 +852,6 @@ class SFSConnector {
             ar[i]["jackpotRate"] = configData.get(i).getDouble("jackpotRate");
         }
         return ar;
-    }
-
-    /**
-     * push functions in array that execute it after connection complete
-     */
-    public static onConnectionComplete(func: Function): void {
-        connectionComplete.push(func);
     }
 
     public static loginTo( zona: string, room: string = null, joinRoomCallback: Function ):void{
