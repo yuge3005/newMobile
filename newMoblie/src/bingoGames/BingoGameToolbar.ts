@@ -21,8 +21,8 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 		Com.addBitmapAt( this, "bingoGameToolbar_json.play_bg", 1360, 0 );
 		Com.addBitmapAt( this, "bingoGameToolbar_json.bet_screen", 178, 122 );
 
-		this.createButtons();
 		if( !GameToolBar.languageText )GameToolBar.languageText = GameLanguage.languageTextForGameToolbar();
+		this.createButtons();
 		this.createTexts();
 
 		Com.addBitmapAt( this, "bingoGameToolbar_json.middle_bar", 610, 22 );
@@ -44,9 +44,13 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 		this.decreseBetBtn = this.addBtn( "bingoGameToolbar_json.bet_down", 95, 116, GameCommands.decreseBet );
 		this.increaseBetBtn = this.addBtn( "bingoGameToolbar_json.bet_up", 411, 116, GameCommands.increaseBet );
 		this.maxBetBtn = this.addBtn( "bingoGameToolbar_json.max_btn", 509, 116, GameCommands.maxBet );
+		let lb: TextLabel = this.addButtonText( this.maxBetBtn, 48, "max", 0, -2 );
+		lb.textColor = 0x343433;
+		lb.maxWidth = lb.width = this.maxBetBtn.width - 10;
+		lb.setText( lb.text );
 		this.collectBtn = this.addBtn( "bingoGameToolbar_json.max_btn", 472, 22, GameCommands.collect );
+		this.stopBtn = this.addBtn( "bingoGameToolbar_json.play", 1724, 22, GameCommands.stop );
 		this.playBtn = this.addBtn( "bingoGameToolbar_json.play", 1724, 22, GameCommands.play );
-		this.stopBtn = this.addBtn( "bingoGameToolbar_json.play", 603, 23, GameCommands.stop );
 	}
 
 	private createTexts(){
@@ -87,8 +91,8 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 		BingoMachine.sendCommand( event.target.name );
 	}
 
-	protected addButtonText( terget: TouchDownButton, size: number, text: string, offsetX: number = 0, offsetY: number = 0 ): egret.TextField{
-		let txt: egret.TextField = Com.addTextAt(this, offsetX, offsetY, 10, 10, size, true, false);
+	protected addButtonText( terget: TouchDownButton, size: number, text: string, offsetX: number = 0, offsetY: number = 0 ): TextLabel{
+		let txt: TextLabel = Com.addLabelAt(this, offsetX, offsetY, terget.width, terget.height, size, true, false);
 		terget.setText(txt);
 		txt.fontFamily = "Righteous";
 		txt.stroke = 1;

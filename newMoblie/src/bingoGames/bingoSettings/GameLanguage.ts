@@ -8,7 +8,7 @@ class GameLanguage {
 
 	public static languageTextForGameToolbar(): Object{
 		let languageText = {};
-		languageText["max bet"] = { en: "MAX BET", es: "APUESTA MAX", pt: "APOSTA MAX" };
+		languageText["max"] = { en: "MAX", es: "MAX", pt: "MAX" };
         languageText["play"] = { en: "PLAY", es: "JUGAR", pt: "JOGAR" };
 		languageText["stop"] = { en: "STOP", es: "PARAR", pt: "PARAR" };
         languageText["start auto"] = { en: "START AUTO", es: "INICIO AUTO", pt: "LIGAR AUTO" };
