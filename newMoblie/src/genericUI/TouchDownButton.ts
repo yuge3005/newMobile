@@ -53,7 +53,7 @@ class TouchDownButton extends egret.DisplayObjectContainer {
 		SoundManager.play( "open_list_mp3" );
 	}
 
-	public setText( txt: egret.TextField ){
+	public setButtonText( txt: egret.TextField ){
 		txt.width = this.upState.width;
 		txt.height = this.upState.height;
 		txt.textAlign = "center";

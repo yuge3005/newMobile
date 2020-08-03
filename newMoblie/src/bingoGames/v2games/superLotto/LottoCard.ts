@@ -100,7 +100,7 @@ class LottoCard extends GameCard{
 
         if( buttonString ){
             let txt: egret.TextField = Com.addTextAt(this, 0, 0, bt.width, bt.height, 35, true, false);
-            bt.setText(txt);
+            bt.setButtonText(txt);
             txt.fontFamily = "Righteous";
             txt.stroke = 1;
 			txt.text = MuLang.getText(buttonString, MuLang.CASE_UPPER);

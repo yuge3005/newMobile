@@ -23,4 +23,5 @@
 		,"collect":{"en": "COLLECT", "es": "RECOGER", "pt": "COLETAR" }
 		,"total bet":{"en": "TOTAL BET", "es": "APUETA TOTAL", "pt": "APOSTA TOTAL" }
 		,"free":{"en": "FREE", "es": "GRATIS", "pt": "GRATIS" }
+		,"hold for auto":{"en": "hold for\nautoplay", "es": "hold for\nautoplay", "pt": "hold for\nautoplay" }
 		}

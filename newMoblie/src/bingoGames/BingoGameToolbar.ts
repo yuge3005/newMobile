@@ -46,29 +46,26 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 		this.decreseBetBtn = this.addBtn( "bingoGameToolbar_json.bet_down", 95, 116, GameCommands.decreseBet );
 		this.increaseBetBtn = this.addBtn( "bingoGameToolbar_json.bet_up", 411, 116, GameCommands.increaseBet );
 		this.maxBetBtn = this.addBtn( "bingoGameToolbar_json.max_btn", 509, 116, GameCommands.maxBet );
-		let lb: TextLabel = this.addButtonText( this.maxBetBtn, 48, "max", 0, -2 );
-		lb.textColor = 0x343433;
-		lb.maxWidth = lb.width = this.maxBetBtn.width - 10;
-		lb.setText( lb.text );
+		this.addButtonText( this.maxBetBtn, 48, "max", 0, 0, 0x343433, this.maxBetBtn.width - 10, this.maxBetBtn.height, 1 );
 		this.collectBtn = this.addBtn( "bingoGameToolbar_json.max_btn", 472, 22, GameCommands.collect );
 		this.stopBtn = this.addBtn( "bingoGameToolbar_json.play", 1724, 22, GameCommands.stop );
+		this.addButtonText( this.stopBtn, 72, "stop", 15, 0, 0xFFFFFF, this.stopBtn.width - 30, 186, 4, 0x000093 );
 		this.playBtn = this.addBtn( "bingoGameToolbar_json.play", 1724, 22, GameCommands.play );
+		this.addButtonText( this.playBtn, 72, "play", 15, 0, 0xFFFFFF, this.playBtn.width - 30, 125, 4, 0x000093 );
+		this.addButtonText( this.playBtn, 35, "hold for auto", 15, 100, 0xFFFFFF, this.playBtn.width - 30, 70, 1, 0x000093 );
 	}
 
 	private createTexts(){
-		this.betText = this.addToolBarText( 185, 124, 220, 68, 45 );
+		this.betText = this.addToolBarText( 185, 124, 220, 68, 45, 1 );
 
-		this.tipExtraText = this.addToolBarText( 40, 5, 415, 28, 16 );
-		this.winText = this.addToolBarText( 720, 50, 565, 65, 60 );
-		this.winText.stroke = 2;
-		this.winText.strokeColor = 0x2A1DB5;
+		this.tipExtraText = this.addToolBarText( 40, 5, 415, 28, 16, 1 );
+		this.winText = this.addToolBarText( 720, 50, 565, 65, 60, 2, 0x2A1DB5 );
 
-		this.coinsText = this.addToolBarText( 730, 135, 305, 40, 40 );
-		this.dineroText = this.addToolBarText( 1070, 135, 150, 40, 40 );
+		this.coinsText = this.addToolBarText( 730, 135, 305, 40, 40, 3, 0xAC9418 );
+		this.dineroText = this.addToolBarText( 1070, 135, 150, 40, 40, 3, 0x38AC3d );
 		let tb: TextLabel = this.addToolBarText( 198, 192, 192, 30, 30 );
 		tb.setText( MuLang.getText("total bet") );
 		tb.textColor = 0x343433;
-		tb.stroke = 0;
 
 		// this.coinIcon = Com.addBitmapAt( this, "GameToolBar_json.icon_coin", 0, 3 );
 		// this.coinIcon.visible = false;
@@ -76,9 +73,13 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 		// this.dineroIcon.visible = false;
 	}
 
-	private addToolBarText( x: number, y: number, textWidth: number, textHeight: number, textSize: number ): TextLabel{
-		let tx: TextLabel = Com.addLabelAt(this, x, y, textWidth, textHeight, textSize, true, true);
+	private addToolBarText( x: number, y: number, textWidth: number, textHeight: number, textSize: number, stroke: number = 0, strokeColor: number = 0 ): TextLabel{
+		let tx: TextLabel = Com.addLabelAt(this, x, y, textWidth, textHeight, textSize );
 		tx.fontFamily = "Righteous";
+		if( stroke ){
+			tx.stroke = stroke;
+			tx.strokeColor = strokeColor;
+		}
 		return tx;
 	}
 
@@ -94,13 +95,17 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 		BingoMachine.sendCommand( event.target.name );
 	}
 
-	protected addButtonText( terget: TouchDownButton, size: number, text: string, offsetX: number = 0, offsetY: number = 0 ): TextLabel{
-		let txt: TextLabel = Com.addLabelAt(this, offsetX, offsetY, terget.width, terget.height, size, true, false);
-		terget.setText(txt);
+	protected addButtonText( terget: TouchDownButton, size: number, text: string, offsetX: number = 0, offsetY: number = 0, color: number = 0xFFFFFF, width: number = 0, height: number = 0, stroke: number = 0, strokeColor: number = 0 ): TextLabel{
+		let txt: TextLabel = Com.addLabelAt( this, offsetX, offsetY, width ? width : terget.width, height ? height : terget.height, size );
+		terget.addChild(txt);
 		txt.fontFamily = "Righteous";
-		txt.stroke = 1;
-		txt.text = MuLang.getText(text);
-		txt.lineSpacing = 10;
+		// txt.lineSpacing = 10;
+		if( color != 0xFFFFFF ) txt.textColor = color;
+		if( stroke ){
+			txt.stroke = stroke;
+			txt.strokeColor = strokeColor;
+		}
+		txt.setText( MuLang.getText(text) );
 		return txt;
 	}
 
