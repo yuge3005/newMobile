@@ -133,7 +133,6 @@ class BingoMachine extends GameUIItem{
 	}
 
 	private analyse( result: string ){
-		// RES.parseConfig( result, this.configUrl.replace( "default.res.json", "" ) );
 		this.loadAsset( this.assetName );
 	}
 	
@@ -173,6 +172,7 @@ class BingoMachine extends GameUIItem{
 			this.soundManager.pushSound(resName);
 		}
 	}
+
 	protected init(){
 		this.inited = true;
 		this.dispatchEvent( new egret.Event( BingoMachine.GENERIC_MODAL_LOADED ) );
@@ -184,9 +184,7 @@ class BingoMachine extends GameUIItem{
 		this._mcf = BingoBackGroundSetting.initBackground( this );
 
 		PayTableManager.getPayTableUI();
-
 		this.addChild( this.ballArea );
-
 		this.addPayTables();
 
 		this.sendInitDataRequest();
@@ -412,7 +410,6 @@ class BingoMachine extends GameUIItem{
 			resultList[i] = {};
 			for( let ob in payTablesDictionary ){
 				let result: PaytableCheckResult = payTablesDictionary[ob].check( checkingString[i] );
-				// trace( result.toString() );
 				resultList[i][ob] = result;
 			}
 		}
@@ -524,12 +521,7 @@ class BingoMachine extends GameUIItem{
 			this.currentGame.collectExtraBall();
 			this.currentGame.sendCancelExtraReuqest();
 			this.currentGame.gameToolBar.lockAllButtons();
-			// this.currentGame.showExtraUI( false );
-			
-			// CardManager.clearCardsStatus();
-			// PayTableManager.clearPaytablesStatus();
 			this.currentGame.gameToolBar.showTip( "" );
-			// this.currentGame.ballArea.clearBalls();
 			this.currentGame.clearRunningBallUI();
 		}
 		else if (cmd == GameCommands.extra) {
@@ -585,14 +577,14 @@ class BingoMachine extends GameUIItem{
 		if( this.isMegaBall ) isOOC = Number( this.dinero ) < this.valorextra;
 		else isOOC = Number( this.gameCoins ) < this.valorextra;
 		
-		// if( isOOC ){
-		// 	if( this.gameToolBar.autoPlaying ){
-		// 		this.gameToolBar.autoPlaying = false;
-		// 		this.gameToolBar.unlockAllButtonsAfterOOCExtra();
-		// 	}
-		// 	if( this.isMegaBall ) this.dispatchEvent(new egret.Event("out_of_dinero"));
-		// 	else this.dispatchEvent(new egret.Event("out_of_coins_game_id"));
-		// }
+		if( isOOC ){
+			// if( this.gameToolBar.autoPlaying ){
+			// 	this.gameToolBar.autoPlaying = false;
+			// 	this.gameToolBar.unlockAllButtonsAfterOOCExtra();
+			// }
+			if( this.isMegaBall ) this.dispatchEvent(new egret.Event("out_of_dinero"));
+			else this.dispatchEvent(new egret.Event("out_of_coins_game_id"));
+		}
 		return isOOC;
 	}
 
