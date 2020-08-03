@@ -28,7 +28,7 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 	private playContainer: egret.DisplayObjectContainer;
 	private extraContainer: egret.DisplayObjectContainer;
 
-	private autoPlaying: boolean = false;
+	public autoPlaying: boolean = false;
 
 	public constructor() {
 		super();

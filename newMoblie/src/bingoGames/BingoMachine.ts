@@ -655,14 +655,14 @@ class BingoMachine extends GameUIItem{
 		
 		this.roundOver();
 
-		// this.gameToolBar.showStop( false );
-		// this.gameToolBar.unlockAllButtons();
-		// if( data["ganho"] != "unexpress" )this.gameToolBar.showWinResult( data["ganho"] );
-		// else this.gameToolBar.showWinResult( this.ganho );
+		this.gameToolBar.showStop( false );
+		this.gameToolBar.unlockAllButtons();
+		if( data["ganho"] != "unexpress" )this.gameToolBar.showWinResult( data["ganho"] );
+		else this.gameToolBar.showWinResult( this.ganho );
 
 		this.updateCredit( data );
 
-		// if( !this.gameToolBar.autoPlaying )this.resetGameToolBarStatus();
+		if( !this.gameToolBar.autoPlaying )this.resetGameToolBarStatus();
 		// if (this.gameToolBar.autoPlaying) this.gameToolBar.autoPlaying = true;
 	}
 
