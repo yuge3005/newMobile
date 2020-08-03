@@ -8,6 +8,10 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 	protected playBtn: TouchDownButton;
 	protected stopBtn: TouchDownButton;
 
+	private betText: TextLabel;
+
+	private winText: TextLabel;
+
 	private allButtons: Array<TouchDownButton>;
 
 	public constructor() {
@@ -15,8 +19,11 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 
 		Com.addBitmapAt( this, "bingoGameToolbar_json.back_panel", 0, 96 );
 		Com.addBitmapAt( this, "bingoGameToolbar_json.play_bg", 1360, 0 );
+		Com.addBitmapAt( this, "bingoGameToolbar_json.bet_screen", 178, 122 );
 
 		this.createButtons();
+		if( !GameToolBar.languageText )GameToolBar.languageText = GameLanguage.languageTextForGameToolbar();
+		this.createTexts();
 
 		Com.addBitmapAt( this, "bingoGameToolbar_json.middle_bar", 610, 22 );
 		Com.addBitmapAt( this, "bingoGameToolbar_json.msg_bg", 694, 35 ).height = 86;
@@ -42,6 +49,32 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 		this.stopBtn = this.addBtn( "bingoGameToolbar_json.play", 603, 23, GameCommands.stop );
 	}
 
+	private createTexts(){
+		this.betText = this.addToolBarText( 185, 124, 220, 68, 45 );
+
+		// this.tipExtraText1 = this.addToolBarText( 40, 5, 415, 28, 16 );
+		// this.tipExtraText2 = this.addToolBarText( 40, 5, 415, 28, 16 );
+		// this.tipExtraText2.textAlign = "left";
+		this.winText = this.addToolBarText( 245, 55, 200, 40, 22 );
+		this.winText.textColor = 0xFEFFF5;
+		// this.addToolBarText( 315, 100, 64, 12, 14 ).text = GameToolBar.languageText["win"][GlobelSettings.language];
+		let tb: TextLabel = this.addToolBarText( 198, 191, 192, 30, 30 );
+		tb.text = GameToolBar.languageText["total bet"][GlobelSettings.language];
+		tb.textColor = 0x343433;
+		// this.addToolBarText( 4, 95, 55, 10, GlobelSettings.language === "en"? 14: 12 ).text = GameToolBar.languageText["card"][GlobelSettings.language];
+
+		// this.coinIcon = Com.addBitmapAt( this, "GameToolBar_json.icon_coin", 0, 3 );
+		// this.coinIcon.visible = false;
+		// this.dineroIcon = Com.addBitmapAt( this, "GameToolBar_json.icon_dinero", 0, 5 );
+		// this.dineroIcon.visible = false;
+	}
+
+	private addToolBarText( x: number, y: number, textWidth: number, textHeight: number, textSize: number ): TextLabel{
+		let tx: TextLabel = Com.addLabelAt(this, x, y, textWidth, textHeight, textSize, true, true);
+		tx.fontFamily = "Righteous";
+		return tx;
+	}
+
 	protected addBtn( assets: string, x: number, y: number, name: string ): TouchDownButton{
 		let btn: TouchDownButton = Com.addDownButtonAt( this, assets, assets + "_press", x, y, this.sendCommand, true );
 		btn.name = name;
@@ -54,17 +87,35 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 		BingoMachine.sendCommand( event.target.name );
 	}
 
+	protected addButtonText( terget: TouchDownButton, size: number, text: string, offsetX: number = 0, offsetY: number = 0 ): egret.TextField{
+		let txt: egret.TextField = Com.addTextAt(this, offsetX, offsetY, 10, 10, size, true, false);
+		terget.setText(txt);
+		txt.fontFamily = "Righteous";
+		txt.stroke = 1;
+		txt.text = GameToolBar.languageText[text][GlobelSettings.language];
+		txt.lineSpacing = 10;
+		return txt;
+	}
+
 	public setBet( bet: number, cardNumber: number, isMaxBet: boolean ){
-		// this.betNumber = bet * cardNumber;
+		this.betNumber = bet * cardNumber;
 
-		if( isMaxBet )this.maxBetBtn.enabled = false;
-		else this.maxBetBtn.enabled = true;
-
-		if( isMaxBet )this.increaseBetBtn.enabled = false;
-		else this.increaseBetBtn.enabled = true;
+		if( isMaxBet ){
+			this.maxBetBtn.enabled = false;
+			this.increaseBetBtn.enabled = false;
+		}
+		else{
+			this.maxBetBtn.enabled = true;
+			this.increaseBetBtn.enabled = true;
+		}
 
 		if( bet == GameData.minBet )this.decreseBetBtn.enabled = false;
 		else this.decreseBetBtn.enabled = true;
+	}
+
+	private set betNumber( value: number ){
+		let str: string = Utils.formatCoinsNumber( value );
+		this.betText.setText( str );
 	}
 
 	public lockAllButtons(): void{
