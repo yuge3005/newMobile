@@ -359,17 +359,16 @@ class BingoMachine extends GameUIItem{
 		if( breakChecked ) return;
 
 		if (this.currentGame.btExtra) {
-		// 	this.currentGame.hasExtraBallFit();
-		// 	this.currentGame.gameToolBar.showStop( false );
-		// 	this.currentGame.gameToolBar.unlockAllButtons();
-		// 	this.currentGame.gameToolBar.showExtra( true, this.currentGame.valorextra );
-		// 	this.currentGame.gameToolBar.showWinResult( this.currentGame.ganho );
+			this.currentGame.hasExtraBallFit();
+			this.currentGame.gameToolBar.unlockAllButtons();
+			this.currentGame.gameToolBar.showExtra( true, this.currentGame.valorextra );
+			this.currentGame.gameToolBar.showWinResult( this.currentGame.ganho );
 
 		// 	if( this.currentGame.gameToolBar.autoPlaying ){
 		// 		setTimeout(	this.sendCommand.bind(this), 500, GameCommands.extra );
 		// 	}
 
-		// 	this.currentGame.showExtraUI();
+			this.currentGame.showExtraUI();
 		}
 		else{
 			this.currentGame.sendRoundOverRequest();
