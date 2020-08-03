@@ -259,7 +259,8 @@ class BingoMachine extends GameUIItem{
 		Com.addObjectAt( this, this.gameToolBar, 0, BingoGameToolbar.toolBarY );
 		this.gameToolBar.scaleX = BingoBackGroundSetting.gameMask.width / 2000;
 		this.gameToolBar.scaleY = BingoBackGroundSetting.gameMask.height / 1125;
-		// this.gameToolBar.showTip( "" );
+		this.gameToolBar.showTip( "" );
+		this.gameToolBar.updateCoinsAndXp( this.gameCoins, this.dinero );
 
 		this.resetGameToolBarStatus();
 
@@ -369,8 +370,8 @@ class BingoMachine extends GameUIItem{
 		// 	this.currentGame.showExtraUI();
 		}
 		else{
-		// 	this.currentGame.sendRoundOverRequest();
-		// 	this.currentGame.gameToolBar.showExtra( false );
+			this.currentGame.sendRoundOverRequest();
+			this.currentGame.gameToolBar.showExtra( false );
 			this.currentGame.gameToolBar.lockAllButtons();
 		}
 	}
@@ -503,6 +504,7 @@ class BingoMachine extends GameUIItem{
 				// 	this.currentGame.gameToolBar.unlockAllButtonsAfterOOC();
 				// }
 				this.currentGame.dispatchEvent(new egret.Event("out_of_coins_game_id"));
+				alert( "out of coins" );
 				return;
 			}
 			this.currentGame.startPlay();
@@ -510,7 +512,7 @@ class BingoMachine extends GameUIItem{
 			this.currentGame.sendPlayRequest();
 			CardManager.clearCardsStatus();
 			PayTableManager.clearPaytablesStatus();
-			// this.currentGame.gameToolBar.showTip( cmd );
+			this.currentGame.gameToolBar.showTip( cmd );
 			this.currentGame.ballArea.clearBalls();
 			this.currentGame.showExtraUI( false );
 			this.currentGame.dispatchEvent( new egret.Event( "onGamePlay" ) );
@@ -527,7 +529,7 @@ class BingoMachine extends GameUIItem{
 			
 			// CardManager.clearCardsStatus();
 			// PayTableManager.clearPaytablesStatus();
-			// this.currentGame.gameToolBar.showTip( "" );
+			this.currentGame.gameToolBar.showTip( "" );
 			// this.currentGame.ballArea.clearBalls();
 			this.currentGame.clearRunningBallUI();
 		}
@@ -628,8 +630,8 @@ class BingoMachine extends GameUIItem{
 
 		this.updateCredit( data );
 
-		// this.gameToolBar.showStop( true );
-		// this.gameToolBar.showWinResult( 0 );
+		this.gameToolBar.showStop( true );
+		this.gameToolBar.showWinResult( 0 );
 
 		this.currentBallIndex = 0;
 		this.btExtra = data["btextra"];
@@ -646,6 +648,7 @@ class BingoMachine extends GameUIItem{
 		this.gameCoins = Math.round( data["credito"] );
 		if( !isNaN( data["secondCurrency"] ) )this.dinero = data["secondCurrency"];
 		this.dispatchEvent(new egret.Event("updateCoinsAndXp", false, true, data));
+		if( this.gameToolBar ) this.gameToolBar.updateCoinsAndXp( this.gameCoins, this.dinero );
 	}
 
 	public onRoundOver( data: Object ){
