@@ -250,8 +250,7 @@ class BingoMachine extends GameUIItem{
 	protected onServerData( data: Object ){
 		IBingoServer.gameInitCallback = null;
 
-		this.setCardDatasWithNumeros( data["numerosCartelas"] );
-		CardManager.groupNumber = data["cartela"];
+		this.setCardDatasWithNumeros( data["numerosCartelas"], data["cartela"] );
 
 		this.initToolbar();
 		this.updateCredit( data );
@@ -323,7 +322,7 @@ class BingoMachine extends GameUIItem{
         if( e["winCoins"] && !this.lockWinTip )this.tipStatusText.text = MuLang.getText("win") + ( textDoubleLine ? "\r\n" : ": " ) + e["winCoins"];
     }
 
-	private setCardDatasWithNumeros(numeros: Array<number>){
+	private setCardDatasWithNumeros(numeros: Array<number>, cartela: number){
 		let cards: Array<GameCard> = CardManager.cards;
 		let numbersOnCards: number = numeros.length / cards.length;
 
@@ -335,6 +334,7 @@ class BingoMachine extends GameUIItem{
 		}
 
 		this.changeCardsBg();
+		CardManager.groupNumber = cartela;
 	}
 
 	protected resetGameToolBarStatus(){
@@ -490,9 +490,7 @@ class BingoMachine extends GameUIItem{
 		else if (cmd == GameCommands.changeNumber) {
 			this.currentGame.changeNumberSound();
 			if( this.currentGame instanceof V1Game ){
-				CardManager.groupNumber += 1;
-				if( CardManager.groupNumber > 100 )CardManager.groupNumber = 1;
-				this.currentGame.setCardDatasWithNumeros( this.currentGame["getCardsGroup"]( CardManager.groupNumber ) );
+				this.currentGame.setCardDatasWithNumeros( this.currentGame["getCardsGroup"]( CardManager.groupNumber ), CardManager.groupNumber < 100 ? CardManager.groupNumber + 1 : 1 );
 				return;
 			}
 			this.currentGame.gameToolBar.lockAllButtons();
@@ -613,8 +611,7 @@ class BingoMachine extends GameUIItem{
 	public onChangeNumber( data: Object ){
 		IBingoServer.changeNumberCallback = null;
 
-		this.setCardDatasWithNumeros( data["numerosCartelas"] );
-		CardManager.groupNumber = data["cartela"];
+		this.setCardDatasWithNumeros( data["numerosCartelas"], data["cartela"] );
 		this.gameToolBar.unlockAllButtons();
 		this.changeCardsBg();
 	}
