@@ -253,14 +253,8 @@ class BingoMachine extends GameUIItem{
 		this.setCardDatasWithNumeros( data["numerosCartelas"] );
 		CardManager.groupNumber = data["cartela"];
 
+		this.initToolbar();
 		this.updateCredit( data );
-
-		if( !this.gameToolBar )this.gameToolBar = new BingoGameToolbar;
-		Com.addObjectAt( this, this.gameToolBar, 0, BingoGameToolbar.toolBarY );
-		this.gameToolBar.scaleX = BingoBackGroundSetting.gameMask.width / 2000;
-		this.gameToolBar.scaleY = BingoBackGroundSetting.gameMask.height / 1125;
-		this.gameToolBar.showTip( "" );
-		this.gameToolBar.updateCoinsAndXp( this.gameCoins, this.dinero );
 
 		this.resetGameToolBarStatus();
 
@@ -280,6 +274,14 @@ class BingoMachine extends GameUIItem{
 			loader.parent.removeChild( loader );
 			this.preLoader = null;
 		}
+	}
+
+	protected initToolbar(){
+		this.gameToolBar = new BingoGameToolbar;
+		Com.addObjectAt( this, this.gameToolBar, 0, BingoGameToolbar.toolBarY );
+		this.gameToolBar.scaleX = BingoBackGroundSetting.gameMask.width / 2000;
+		this.gameToolBar.scaleY = BingoBackGroundSetting.gameMask.height / 1125;
+		this.gameToolBar.showTip( "" );
 	}
 
 	protected listenToGameToolbarStatus(): void{
