@@ -518,7 +518,7 @@ class BingoMachine extends GameUIItem{
 			this.currentGame.dispatchEvent( new egret.Event( "onGamePlay" ) );
 		}
 		else if( cmd == GameCommands.stop ){
-			// this.currentGame.gameToolBar.enabledStopButton();
+			this.currentGame.gameToolBar.enabledStopButton();
 			this.currentGame.ballArea.stopBallRunning();
 		}
 		else if (cmd == GameCommands.collect) {

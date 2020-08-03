@@ -1,29 +1,48 @@
 class BingoGameToolbar extends egret.DisplayObjectContainer{
 	public static toolBarY: number;
+
 	private helpBtn: TouchDownButton;
 	protected decreseBetBtn: TouchDownButton;
 	protected increaseBetBtn: TouchDownButton;
+
 	protected maxBetBtn: TouchDownButton;
 	private collectBtn: TouchDownButton;
+	private buyAllBtn: TouchDownButton;
+
 	protected playBtn: TouchDownButton;
 	protected stopBtn: TouchDownButton;
 
-	private betText: TextLabel;
+	protected bigExtraBtn: TouchDownButton;
+	protected stopAutoBtn: TouchDownButton;
+	protected superExtraBtn: TouchDownButton;
 	private coinsText: TextLabel;
 	private dineroText: TextLabel;
+	private betText: TextLabel;
 	private winText: TextLabel;
 
 	protected tipExtraText: egret.TextField;
 
 	private allButtons: Array<TouchDownButton>;
+	private enabledButtons: Array<TouchDownButton>;
+
+	private playContainer: egret.DisplayObjectContainer;
+	private extraContainer: egret.DisplayObjectContainer;
+
+	private autoPlaying: boolean = false;
 
 	public constructor() {
 		super();
 
+		this.allButtons = [];
 		Com.addBitmapAt( this, "bingoGameToolbar_json.back_panel", 0, 96 );
-		Com.addBitmapAt( this, "bingoGameToolbar_json.play_bg", 1360, 0 );
-		Com.addBitmapAt( this, "bingoGameToolbar_json.bet_screen", 178, 122 );
+		this.buildPlayContainer();
+		this.buildExtraContainer();
 
+		this.stopAutoBtn = this.addBtn( "auto_stop", 1724, 22, GameCommands.play, this, true );
+		this.addButtonText( this.stopAutoBtn, 72, "auto", 15, 0, 0xFFFFFF, this.stopAutoBtn.width - 30, 125, 4, 0x000093 );
+		this.addButtonText( this.stopAutoBtn, 35, "click for stop auto", 15, 100, 0xFFFFFF, this.stopAutoBtn.width - 30, 70, 1, 0x000093 );
+		this.stopAutoBtn.visible = false;
+		
 		Com.addBitmapAt( this, "bingoGameToolbar_json.middle_bar", 610, 22 );
 		Com.addBitmapAt( this, "bingoGameToolbar_json.msg_bg", 694, 35 ).height = 86;
 		let bl1: egret.Bitmap = Com.addBitmapAt( this, "bingoGameToolbar_json.ballance", 694, 128 );
@@ -35,24 +54,55 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 		Com.addBitmapAt( this, "bingoGameToolbar_json.balance_coin", 655, 115 );
 		Com.addBitmapAt( this, "bingoGameToolbar_json.balance_chip", 1217, 123 );
 
-		this.createButtons();
 		this.createTexts();
-	}
-	
-	private createButtons(){
-		this.allButtons = [];
 
-		this.helpBtn = this.addBtn( "bingoGameToolbar_json.i", 12, 126, GameCommands.help );
-		this.decreseBetBtn = this.addBtn( "bingoGameToolbar_json.bet_down", 95, 116, GameCommands.decreseBet );
-		this.increaseBetBtn = this.addBtn( "bingoGameToolbar_json.bet_up", 411, 116, GameCommands.increaseBet );
-		this.maxBetBtn = this.addBtn( "bingoGameToolbar_json.max_btn", 509, 116, GameCommands.maxBet );
+		this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onToolbarAdd, this);
+	}
+
+	protected onToolbarAdd( event: egret.Event ): void{
+		//this.startHappyHour();
+	}
+
+	private buildPlayContainer(){
+		this.playContainer = new egret.DisplayObjectContainer;
+		this.addChild( this.playContainer );
+
+		Com.addBitmapAt( this.playContainer, "play_bg", 1360, 0 );
+		Com.addBitmapAt( this.playContainer, "bet_screen", 178, 122 );
+
+		this.helpBtn = this.addBtn( "i", 12, 126, GameCommands.help, this.playContainer );
+		this.decreseBetBtn = this.addBtn( "bet_down", 95, 116, GameCommands.decreseBet, this.playContainer );
+		this.increaseBetBtn = this.addBtn( "bet_up", 411, 116, GameCommands.increaseBet, this.playContainer );
+		this.maxBetBtn = this.addBtn( "max_btn", 509, 116, GameCommands.maxBet, this.playContainer );
 		this.addButtonText( this.maxBetBtn, 48, "max", 0, 0, 0x343433, this.maxBetBtn.width - 10, this.maxBetBtn.height, 1 );
-		this.collectBtn = this.addBtn( "bingoGameToolbar_json.max_btn", 472, 22, GameCommands.collect );
-		this.stopBtn = this.addBtn( "bingoGameToolbar_json.play", 1724, 22, GameCommands.stop );
+
+		this.stopBtn = this.addBtn( "play", 1724, 22, GameCommands.stop, this.playContainer );
 		this.addButtonText( this.stopBtn, 72, "stop", 15, 0, 0xFFFFFF, this.stopBtn.width - 30, 186, 4, 0x000093 );
-		this.playBtn = this.addBtn( "bingoGameToolbar_json.play", 1724, 22, GameCommands.play );
+		this.playBtn = this.addBtn( "play", 1724, 22, GameCommands.play, this.playContainer );
 		this.addButtonText( this.playBtn, 72, "play", 15, 0, 0xFFFFFF, this.playBtn.width - 30, 125, 4, 0x000093 );
 		this.addButtonText( this.playBtn, 35, "hold for auto", 15, 100, 0xFFFFFF, this.playBtn.width - 30, 70, 1, 0x000093 );
+	}
+
+	private buildExtraContainer(){
+		this.extraContainer = new egret.DisplayObjectContainer;
+		this.addChild( this.extraContainer );
+		this.extraContainer.visible = false;
+
+		Com.addBitmapAt( this.extraContainer, "BB_EXTRA_btn_bg", 1360, 0 );		
+
+		this.collectBtn = this.addBtn( "BB_EXTRA_collect_btn", 472, 22, GameCommands.collect, this.extraContainer, true );
+		this.addButtonText( this.collectBtn, 20, "collect" );
+		this.buyAllBtn = this.addBtn( "BB_EXTRA_buyall", 472, 22, GameCommands.collect, this.extraContainer, true );
+		this.addButtonText( this.buyAllBtn, 20, "collect" );
+
+		this.bigExtraBtn = this.addBtn( "BB_EXTRA_extra_btn", 603, 23, GameCommands.extra, this.extraContainer, true );
+		let bigExtraBtnText = this.addButtonText( this.bigExtraBtn, 24, "extra" );
+		this.bigExtraBtn.visible = false;
+		bigExtraBtnText.lineSpacing = 4;
+
+		this.superExtraBtn = this.addBtn( "btn_mega", 603, 23, GameCommands.extra, this.extraContainer, true );
+		this.addButtonText( this.superExtraBtn, GlobelSettings.language == "pt"? 15 : 18, "mega" );
+		this.superExtraBtn.visible = false;
 	}
 
 	private createTexts(){
@@ -83,8 +133,10 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 		return tx;
 	}
 
-	protected addBtn( assets: string, x: number, y: number, name: string ): TouchDownButton{
-		let btn: TouchDownButton = Com.addDownButtonAt( this, assets, assets + "_press", x, y, this.sendCommand, true );
+	protected addBtn( assets: string, x: number, y: number, name: string, container: egret.DisplayObjectContainer, donotHavePressUi: boolean = false ): TouchDownButton{
+		let assetsName: string = "bingoGameToolbar_json." + assets;
+		let pressUi: string = donotHavePressUi ? assetsName : assetsName + "_press";
+		let btn: TouchDownButton = Com.addDownButtonAt( container, assetsName, pressUi, x, y, this.sendCommand, true );
 		btn.name = name;
 		btn.disabledFilter = MatrixTool.colorMatrixLighter( 0.2 );
 		this.allButtons.push( btn );
@@ -132,16 +184,48 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 
 	public lockAllButtons(): void{
 		// if( this.autoPlaying )return;
-		this.touchChildren = false;
+		this.enabledButtons = [];
+		for( let i: number = 0; i < this.allButtons.length; i++ ){
+			if( this.allButtons[i].enabled ){
+				this.allButtons[i].enabled = false;
+				this.enabledButtons.push( this.allButtons[i] );
+			}
+		}
 	}
 
 	public unlockAllButtons(): void{
 		// if( this.autoPlaying )return;
-		this.touchChildren = true;
+		if( !this.enabledButtons )return;
+		for( let i: number = 0; i < this.enabledButtons.length; i++ ){
+			this.enabledButtons[i].enabled = true;
+		}
+		this.enabledButtons = [];
 	}
 
 	public showExtra( isShow: boolean, extraPrice: number = 0 ): void{
-		
+		if( isShow ){
+		}
+		else{
+			if( this.autoPlaying ){
+			}
+			else{
+				this.enableAllButtons( true );
+				this.playBtn.visible = true;
+				this.stopAutoBtn.visible = false;
+			}
+			this.showExtraButton( false );
+		}
+	}
+
+	private enableAllButtons( enabled: boolean ):void{
+		for( let i: number = 0; i < this.allButtons.length; i++ ){
+			this.allButtons[i].enabled = enabled;
+		}
+	}
+
+	private showExtraButton( isShow: boolean ){
+		this.playContainer.visible = !isShow;
+		this.extraContainer.visible = isShow;
 	}
 
 	public showTip( cmd: string, price: number = 0 ){
@@ -184,6 +268,10 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 		this.playBtn.visible = !isStop;
 		this.stopBtn.visible = isStop;
 		this.stopBtn.enabled = isStop;
+	}
+
+	public enabledStopButton(): void{
+		this.stopBtn.enabled = false;
 	}
 
 	public megeExtraOnTop( megaOnTop: boolean ): void{
