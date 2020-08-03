@@ -256,7 +256,7 @@ class BingoMachine extends GameUIItem{
 		this.updateCredit( data );
 
 		if( !this.gameToolBar )this.gameToolBar = new BingoGameToolbar;
-		Com.addObjectAt( this, this.gameToolBar, 0, GameToolBar.toolBarY );
+		Com.addObjectAt( this, this.gameToolBar, 0, BingoGameToolbar.toolBarY );
 		this.gameToolBar.scaleX = BingoBackGroundSetting.gameMask.width / 2000;
 		this.gameToolBar.scaleY = BingoBackGroundSetting.gameMask.height / 1125;
 		// this.gameToolBar.showTip( "" );
@@ -290,26 +290,26 @@ class BingoMachine extends GameUIItem{
 			let rect: egret.Rectangle = this.tipStatusTextPosition;
 			this.tipStatusText = this.addGameText( rect.x, rect.y, rect.height, this.tipStatusTextColor, "bet", false, rect.width );
 			this.tipStatusText.textAlign = "center";
-			this.tipStatusText.text = GameToolBar.languageText["press play"][GlobelSettings.language];
+			this.tipStatusText.text = MuLang.getText("press play");
 		}
 	}
 
 	protected tipStatus( e: egret.Event, textDoubleLine: boolean = false ): void{
         switch( e["status"] ){
 			case GameCommands.play:
-                this.tipStatusText.text = GameToolBar.languageText["good luck"][GlobelSettings.language];
+                this.tipStatusText.text = MuLang.getText("good luck");
 			    break;
 			case GameCommands.extra:
-				let extraStr: string = GameToolBar.languageText["extra ball"][GlobelSettings.language];
+				let extraStr: string = MuLang.getText("extra ball");
 				extraStr += textDoubleLine ? "\r\n" : ": ";
-                if( e["extraPrice"] ) extraStr += Utils.formatCoinsNumber( e["extraPrice"] ) + ( textDoubleLine ? "" : " " + GameToolBar.languageText["credits"][GlobelSettings.language] );
-				else extraStr += GameToolBar.languageText["free"][GlobelSettings.language];
+                if( e["extraPrice"] ) extraStr += Utils.formatCoinsNumber( e["extraPrice"] ) + ( textDoubleLine ? "" : " " + MuLang.getText("credits") );
+				else extraStr += MuLang.getText("free");
 				this.tipStatusText.text = extraStr;
                 this.lockWinTip = true;
                 setTimeout( () => { this.lockWinTip = false }, 10 );
 			    break;
 			default:
-				this.tipStatusText.text = GameToolBar.languageText["press play"][GlobelSettings.language];
+				this.tipStatusText.text = MuLang.getText("press play");
 			    break;
 		}
     }
@@ -317,7 +317,7 @@ class BingoMachine extends GameUIItem{
     private lockWinTip: boolean = false;
 
     protected winChange( e: egret.Event, textDoubleLine: boolean = false ): void{
-        if( e["winCoins"] && !this.lockWinTip )this.tipStatusText.text = GameToolBar.languageText["win"][GlobelSettings.language] + ( textDoubleLine ? "\r\n" : ": " ) + e["winCoins"];
+        if( e["winCoins"] && !this.lockWinTip )this.tipStatusText.text = MuLang.getText("win") + ( textDoubleLine ? "\r\n" : ": " ) + e["winCoins"];
     }
 
 	private setCardDatasWithNumeros(numeros: Array<number>){

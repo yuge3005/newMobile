@@ -15,12 +15,10 @@ class BingoDefaultSetting {
 		CardGrid.winTimesOffset = new egret.Point;
 
 		BallManager.textStroke = false;
-		GameToolBar.toolBarY = 900;
+		BingoGameToolbar.toolBarY = 900;
 
 		BallManager.normalBallInterval = 100;
 		BallManager.ballOffsetY = 0;
-
-		GameLanguage.init();
 
 		BingoBackGroundSetting.defaultScale = true;
 		PayTableManager.bingoPaytableName = "bingo";

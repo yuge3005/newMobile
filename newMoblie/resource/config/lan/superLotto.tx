@@ -17,4 +17,10 @@
         ,"any":{ "en": "ANY", "es": "CUALQUIER", "pt": "QUALQUER" }
         ,"sequence":{ "en": "SEQUENCE", "es": "SECUENCIA", "pt": "SEQUÊNCIA" }
         ,"jp":{ "en": "JP", "es": "JP", "pt": "AC" }
+		,"max":{"en": "MAX", "es": "MAX", "pt": "MAX" }
+        ,"play":{"en": "PLAY", "es": "JUGAR", "pt": "JOGAR" }
+		,"stop":{"en": "STOP", "es": "PARAR", "pt": "PARAR" }
+		,"collect":{"en": "COLLECT", "es": "RECOGER", "pt": "COLETAR" }
+		,"total bet":{"en": "TOTAL BET", "es": "APUETA TOTAL", "pt": "APOSTA TOTAL" }
+		,"free":{"en": "FREE", "es": "GRATIS", "pt": "GRATIS" }
 		}

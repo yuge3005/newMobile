@@ -3,5 +3,10 @@
         ,"double line":{ "en": "D.LINE", "es": "D.LÍNEA", "pt": "LINHA.D" }
         ,"line":{ "en": "LINE", "es": "LÍNEA", "pt": "LINHA" }
         ,"four corners":{ "en": "4 CORNERS", "es": "4 ESQUINAS", "pt": "4 ESQUINAS" }
-
+		,"max":{"en": "MAX", "es": "MAX", "pt": "MAX" }
+        ,"play":{"en": "PLAY", "es": "JUGAR", "pt": "JOGAR" }
+		,"stop":{"en": "STOP", "es": "PARAR", "pt": "PARAR" }
+		,"collect":{"en": "COLLECT", "es": "RECOGER", "pt": "COLETAR" }
+		,"total bet":{"en": "TOTAL BET", "es": "APUETA TOTAL", "pt": "APOSTA TOTAL" }
+		,"free":{"en": "FREE", "es": "GRATIS", "pt": "GRATIS" }
 }

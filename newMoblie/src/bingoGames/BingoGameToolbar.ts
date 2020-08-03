@@ -21,7 +21,6 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 		Com.addBitmapAt( this, "bingoGameToolbar_json.play_bg", 1360, 0 );
 		Com.addBitmapAt( this, "bingoGameToolbar_json.bet_screen", 178, 122 );
 
-		if( !GameToolBar.languageText )GameToolBar.languageText = GameLanguage.languageTextForGameToolbar();
 		this.createButtons();
 		this.createTexts();
 
@@ -62,9 +61,10 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 		this.winText = this.addToolBarText( 245, 55, 200, 40, 22 );
 		this.winText.textColor = 0xFEFFF5;
 		// this.addToolBarText( 315, 100, 64, 12, 14 ).text = GameToolBar.languageText["win"][GlobelSettings.language];
-		let tb: TextLabel = this.addToolBarText( 198, 191, 192, 30, 30 );
-		tb.text = GameToolBar.languageText["total bet"][GlobelSettings.language];
+		let tb: TextLabel = this.addToolBarText( 198, 192, 192, 30, 30 );
+		tb.setText( MuLang.getText("total bet") );
 		tb.textColor = 0x343433;
+		tb.stroke = 0;
 		// this.addToolBarText( 4, 95, 55, 10, GlobelSettings.language === "en"? 14: 12 ).text = GameToolBar.languageText["card"][GlobelSettings.language];
 
 		// this.coinIcon = Com.addBitmapAt( this, "GameToolBar_json.icon_coin", 0, 3 );
@@ -96,7 +96,7 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 		terget.setText(txt);
 		txt.fontFamily = "Righteous";
 		txt.stroke = 1;
-		txt.text = GameToolBar.languageText[text][GlobelSettings.language];
+		txt.text = MuLang.getText(text);
 		txt.lineSpacing = 10;
 		return txt;
 	}

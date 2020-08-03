@@ -15,4 +15,10 @@
 		,"bingo":{ "en": "BINGO", "es": "BINGO", "pt": "BINGO" }
         ,"double":{ "en": "DOUBLE", "es": "DOBLE", "pt": "DUPLA" }
         ,"line":{ "en": "LINE", "es": "LÍNEA", "pt": "LINHA" }
+		,"max":{"en": "MAX", "es": "MAX", "pt": "MAX" }
+        ,"play":{"en": "PLAY", "es": "JUGAR", "pt": "JOGAR" }
+		,"stop":{"en": "STOP", "es": "PARAR", "pt": "PARAR" }
+		,"collect":{"en": "COLLECT", "es": "RECOGER", "pt": "COLETAR" }
+		,"total bet":{"en": "TOTAL BET", "es": "APUETA TOTAL", "pt": "APOSTA TOTAL" }
+		,"free":{"en": "FREE", "es": "GRATIS", "pt": "GRATIS" }
 }
