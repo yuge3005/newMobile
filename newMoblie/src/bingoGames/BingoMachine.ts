@@ -72,6 +72,8 @@ class BingoMachine extends GameUIItem{
 
 	protected ganhoCounter: GanhoCounter;
 
+	public static inRound: boolean = false;
+
 	public constructor( gameConfigFile: string, configUrl: string, gameId: number ) {
 		super();
 
@@ -496,6 +498,7 @@ class BingoMachine extends GameUIItem{
 			}
 			this.currentGame.gameToolBar.lockAllButtons();
 			IBingoServer.changeNumberCallback = this.currentGame.onChangeNumber.bind( this.currentGame );
+			GameCard.changeingCard = true;
 			IBingoServer.changeNumber();
 		}
 		else if (cmd == GameCommands.play) {
@@ -611,6 +614,7 @@ class BingoMachine extends GameUIItem{
 
 	public onChangeNumber( data: Object ){
 		IBingoServer.changeNumberCallback = null;
+		GameCard.changeingCard = false;
 
 		this.setCardDatasWithNumeros( data["numerosCartelas"], data["cartela"] );
 		this.gameToolBar.unlockAllButtons();
@@ -662,6 +666,8 @@ class BingoMachine extends GameUIItem{
 		else this.gameToolBar.showWinResult( this.ganho );
 
 		this.updateCredit( data );
+
+		BingoMachine.inRound = false;
 
 		if( !this.gameToolBar.autoPlaying )this.resetGameToolBarStatus();
 		if (this.gameToolBar.buyAllExtra) this.gameToolBar.buyAllExtra = false;
@@ -719,6 +725,7 @@ class BingoMachine extends GameUIItem{
 	protected sendPlayRequest() {
 		IBingoServer.playCallback = this.onPlay.bind( this );
 		IBingoServer.play( GameData.currentBet, CardManager.enabledCards, CardManager.groupNumber, GameData.currentBetIndex );
+		BingoMachine.inRound = true;
 	}
 
 	protected sendExtraRequest( saving: boolean = false ){

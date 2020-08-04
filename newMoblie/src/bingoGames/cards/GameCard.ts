@@ -102,7 +102,10 @@ class GameCard extends GameUIItem{
 		}
 	}
 
+	public static changeingCard: boolean;
+
 	private cardNumber( event: egret.TouchEvent ){
+		if( GameCard.changeingCard || BingoMachine.inRound ) return;
 		BingoMachine.sendCommand( GameCommands.changeNumber );
 	}
 
