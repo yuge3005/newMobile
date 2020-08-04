@@ -367,9 +367,9 @@ class BingoMachine extends GameUIItem{
 			this.currentGame.gameToolBar.showExtra( true, this.currentGame.valorextra );
 			this.currentGame.gameToolBar.showWinResult( this.currentGame.ganho );
 
-		// 	if( this.currentGame.gameToolBar.autoPlaying ){
-		// 		setTimeout(	this.sendCommand.bind(this), 500, GameCommands.extra );
-		// 	}
+			if( this.currentGame.gameToolBar.autoPlaying ){
+				setTimeout(	this.sendCommand.bind(this), 500, GameCommands.extra );
+			}
 
 			this.currentGame.showExtraUI();
 		}
@@ -544,12 +544,12 @@ class BingoMachine extends GameUIItem{
 		else if( cmd == GameCommands.showMini ){
 			this.currentGame.showMiniGame();
 		}
-		// else if( cmd == GameCommands.startAuto ){
-		// 	this.currentGame.gameToolBar.autoPlaying = true;
-		// }
-		// else if( cmd == GameCommands.stopAuto ){
-		// 	this.currentGame.gameToolBar.autoPlaying = false;
-		// }
+		else if( cmd == GameCommands.startAuto ){
+			this.currentGame.gameToolBar.autoPlaying = true;
+		}
+		else if( cmd == GameCommands.stopAuto ){
+			this.currentGame.gameToolBar.autoPlaying = false;
+		}
 		else{//the rest commands are relatied to bet and card enabled
 			if( cmd == GameCommands.decreseBet ){
 				GameData.betDown();
@@ -659,7 +659,7 @@ class BingoMachine extends GameUIItem{
 		this.updateCredit( data );
 
 		if( !this.gameToolBar.autoPlaying )this.resetGameToolBarStatus();
-		// if (this.gameToolBar.autoPlaying) this.gameToolBar.autoPlaying = true;
+		if (this.gameToolBar.autoPlaying) this.gameToolBar.autoPlaying = true;
 	}
 
 

@@ -26,7 +26,21 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 	private playContainer: egret.DisplayObjectContainer;
 	private extraContainer: egret.DisplayObjectContainer;
 
-	public autoPlaying: boolean = false;
+	private _autoPlaying: boolean = false;
+	public get autoPlaying(): boolean{
+		return this._autoPlaying;
+	}
+	public set autoPlaying( value: boolean ){
+		this._autoPlaying = value;
+		if( value ){
+			this.enableAllButtons( false );
+			this.stopAutoBtn.enabled = this.stopAutoBtn.visible = true;
+			BingoMachine.sendCommand( GameCommands.play );
+		}
+		else{
+			this.stopAutoBtn.visible = false;
+		}
+	}
 
 	public constructor() {
 		super();
@@ -36,10 +50,11 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 		this.buildPlayContainer();
 		this.buildExtraContainer();
 
-		this.stopAutoBtn = this.addBtn( "auto_stop", 1724, 22, GameCommands.play, this, true );
+		this.stopAutoBtn = this.addBtn( "auto_stop", 1724, 22, GameCommands.stopAuto, this, true );
 		this.addButtonText( this.stopAutoBtn, 72, "auto", 15, 0, 0xFFFFFF, this.stopAutoBtn.width - 30, 125, 4, 0x000093 );
 		this.addButtonText( this.stopAutoBtn, 35, "click for stop auto", 15, 100, 0xFFFFFF, this.stopAutoBtn.width - 30, 70, 1, 0x000093 );
 		this.stopAutoBtn.visible = false;
+		this.allButtons.pop();// stopAuto button dont need enabled
 		
 		Com.addBitmapAt( this, "bingoGameToolbar_json.middle_bar", 610, 22 );
 		Com.addBitmapAt( this, "bingoGameToolbar_json.msg_bg", 694, 35 ).height = 86;
@@ -343,6 +358,6 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 	}
 
 	private startAuto(){
-		alert( "startAuto" );
+		BingoMachine.sendCommand( GameCommands.startAuto );
 	}
 }
