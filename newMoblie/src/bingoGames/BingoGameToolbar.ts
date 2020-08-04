@@ -237,7 +237,7 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 			}
 			else{
 				this.enableAllButtons( false );
-				this.collectBtn.enabled = this.superExtraBtn.enabled = this.bigExtraBtn.enabled = true;
+				this.enabledExtraButtons();
 			}
 			this.showExtraButton( true );
 			this.showTip( GameCommands.extra, extraPrice );
@@ -263,6 +263,10 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 	private showExtraButton( isShow: boolean ){
 		this.playContainer.visible = !isShow;
 		this.extraContainer.visible = isShow;
+	}
+
+	private enabledExtraButtons(){
+		this.buyAllBtn.enabled = this.collectBtn.enabled = this.superExtraBtn.enabled = this.bigExtraBtn.enabled = true;
 	}
 
 	public showTip( cmd: string, price: number = 0 ){
@@ -305,7 +309,7 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 	}
 
 	public showCollectButtonAfterOOC(): void{
-		this.collectBtn.enabled = true;
+		this.enabledExtraButtons();
 		this.showExtraButton( true );
 	}
 
@@ -316,7 +320,7 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 
 	public unlockAllButtonsAfterOOCExtra(): void{
 		this.enableAllButtons( false );
-		this.collectBtn.enabled = this.superExtraBtn.enabled = this.bigExtraBtn.enabled = true;
+		this.enabledExtraButtons();
 		this.showExtraButton( true );
 	}
 
