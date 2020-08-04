@@ -102,12 +102,12 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 		this.superExtraBtn = this.addMaskBtn( "btn_mega", 1724, 22, GameCommands.extra, this.extraContainer );
 		this.superExtraBtn.addButtonBigText( 72, "mega" );
 		this.superExtraBtn.addButtonSmallText( 60 );
-		this.superExtraBtn.setIcon( "balance_coin" );
+		this.superExtraBtn.setIcon( "balance_chip" );
 
 		this.bigExtraBtn = this.addMaskBtn( "BB_EXTRA_extra_btn", 1724, 22, GameCommands.extra, this.extraContainer );
 		this.bigExtraBtn.addButtonBigText( 72, "extra" );
 		this.bigExtraBtn.addButtonSmallText( 60 );
-		this.bigExtraBtn.setIcon( "balance_chip" );
+		this.bigExtraBtn.setIcon( "balance_coin" );
 	}
 
 	private createTexts(){
@@ -210,11 +210,7 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 			}
 			else{
 				this.enableAllButtons( false );
-
-				this.bigExtraBtn.enabled = true;
-				this.collectBtn.enabled = true;
-
-				this.stopAutoBtn.visible = false;
+				this.collectBtn.enabled = this.superExtraBtn.enabled = this.bigExtraBtn.enabled = true;
 			}
 			this.showExtraButton( true );
 			this.showTip( GameCommands.extra, extraPrice );
