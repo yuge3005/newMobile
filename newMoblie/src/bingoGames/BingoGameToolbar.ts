@@ -211,7 +211,7 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 	}
 
 	public lockAllButtons(): void{
-		// if( this.autoPlaying )return;
+		if( this.autoPlaying )return;
 		this.enabledButtons = [];
 		for( let i: number = 0; i < this.allButtons.length; i++ ){
 			if( this.allButtons[i].enabled ){
@@ -222,7 +222,7 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 	}
 
 	public unlockAllButtons(): void{
-		// if( this.autoPlaying )return;
+		if( this.autoPlaying )return;
 		if( !this.enabledButtons )return;
 		for( let i: number = 0; i < this.enabledButtons.length; i++ ){
 			this.enabledButtons[i].enabled = true;
@@ -309,6 +309,17 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 		this.showExtraButton( true );
 	}
 
+	public unlockAllButtonsAfterOOC(): void{
+		this.enableAllButtons( true );
+		this.showStop( false );
+	}
+
+	public unlockAllButtonsAfterOOCExtra(): void{
+		this.enableAllButtons( false );
+		this.collectBtn.enabled = this.superExtraBtn.enabled = this.bigExtraBtn.enabled = true;
+		this.showExtraButton( true );
+	}
+
 	public collect():void{
 		if( this.collectBtn.enabled && this.collectBtn.visible ){
 			BingoMachine.sendCommand( GameCommands.collect );
@@ -349,7 +360,7 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 
 	public megeExtraOnTop( megaOnTop: boolean ): void{
 		this.superExtraBtn.visible = megaOnTop;
-		this.bigExtraBtn.visible = !megaOnTop
+		this.bigExtraBtn.visible = !megaOnTop;
 	}
 
 	public updateCoinsAndXp( coins: number, dinero: number ){

@@ -500,10 +500,11 @@ class BingoMachine extends GameUIItem{
 		}
 		else if (cmd == GameCommands.play) {
 			if( Number( this.currentGame.gameCoins ) < GameData.currentBet * CardManager.enabledCards ){
-				// if( this.currentGame.gameToolBar.autoPlaying ){
-				// 	this.currentGame.gameToolBar.autoPlaying = false;
-				// 	this.currentGame.gameToolBar.unlockAllButtonsAfterOOC();
-				// }
+				if( this.currentGame.gameToolBar.autoPlaying ){
+					this.currentGame.gameToolBar.autoPlaying = false;
+					this.currentGame.gameToolBar.unlockAllButtonsAfterOOC();
+					this.currentGame.resetGameToolBarStatus();
+				}
 				this.currentGame.dispatchEvent(new egret.Event("out_of_coins_game_id"));
 				alert( "out of coins" );
 				return;
@@ -583,10 +584,10 @@ class BingoMachine extends GameUIItem{
 		else isOOC = Number( this.gameCoins ) < this.valorextra;
 		
 		if( isOOC ){
-			// if( this.gameToolBar.autoPlaying ){
-			// 	this.gameToolBar.autoPlaying = false;
-			// 	this.gameToolBar.unlockAllButtonsAfterOOCExtra();
-			// }
+			if( this.gameToolBar.autoPlaying ){
+				this.gameToolBar.autoPlaying = false;
+				this.gameToolBar.unlockAllButtonsAfterOOCExtra();
+			}
 			if( this.isMegaBall ) this.dispatchEvent(new egret.Event("out_of_dinero"));
 			else this.dispatchEvent(new egret.Event("out_of_coins_game_id"));
 		}
