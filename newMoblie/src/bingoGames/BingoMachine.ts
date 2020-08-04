@@ -367,7 +367,7 @@ class BingoMachine extends GameUIItem{
 			this.currentGame.gameToolBar.showExtra( true, this.currentGame.valorextra );
 			this.currentGame.gameToolBar.showWinResult( this.currentGame.ganho );
 
-			if( this.currentGame.gameToolBar.autoPlaying ){
+			if( this.currentGame.gameToolBar.autoPlaying || this.currentGame.gameToolBar.buyAllExtra ){
 				setTimeout(	this.sendCommand.bind(this), 500, GameCommands.extra );
 			}
 
@@ -551,6 +551,9 @@ class BingoMachine extends GameUIItem{
 		else if( cmd == GameCommands.stopAuto ){
 			this.currentGame.gameToolBar.autoPlaying = false;
 		}
+		else if( cmd == GameCommands.buyAll ){
+			this.currentGame.gameToolBar.buyAllExtra = true;
+		}
 		else{//the rest commands are relatied to bet and card enabled
 			if( cmd == GameCommands.decreseBet ){
 				GameData.betDown();
@@ -588,6 +591,7 @@ class BingoMachine extends GameUIItem{
 				this.gameToolBar.autoPlaying = false;
 				this.gameToolBar.unlockAllButtonsAfterOOCExtra();
 			}
+			if( this.gameToolBar.buyAllExtra ) this.gameToolBar.buyAllExtra = false;
 			if( this.isMegaBall ) this.dispatchEvent(new egret.Event("out_of_dinero"));
 			else this.dispatchEvent(new egret.Event("out_of_coins_game_id"));
 		}
@@ -660,6 +664,7 @@ class BingoMachine extends GameUIItem{
 		this.updateCredit( data );
 
 		if( !this.gameToolBar.autoPlaying )this.resetGameToolBarStatus();
+		if (this.gameToolBar.buyAllExtra) this.gameToolBar.buyAllExtra = false;
 		if (this.gameToolBar.autoPlaying) this.gameToolBar.autoPlaying = true;
 	}
 
@@ -687,6 +692,7 @@ class BingoMachine extends GameUIItem{
 		if (!data) {//out of coins
 			let needChangeCollectBtnStatus: boolean = this.gameToolBar.autoPlaying;
 			this.gameToolBar.autoPlaying = false;
+			if( this.gameToolBar.buyAllExtra ) this.gameToolBar.buyAllExtra = false;
 			this.dispatchEvent( new egret.Event( "out_of_coins_game_id" ) );
 			if( needChangeCollectBtnStatus )this.gameToolBar.showCollectButtonAfterOOC();
 			return;

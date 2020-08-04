@@ -14,6 +14,7 @@ class GameCommands {
 	public static stopAuto: string = "stopAuto";
 	public static saving: string = "saving";
 	public static showMini: string = "showMini";
+	public static buyAll: string = "buyAll";
 
 	public constructor() {
 	}

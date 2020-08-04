@@ -34,11 +34,26 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 		this._autoPlaying = value;
 		if( value ){
 			this.enableAllButtons( false );
-			this.stopAutoBtn.enabled = this.stopAutoBtn.visible = true;
+			this.stopAutoBtn.visible = true;
 			BingoMachine.sendCommand( GameCommands.play );
 		}
 		else{
 			this.stopAutoBtn.visible = false;
+		}
+	}
+
+	private _buyAllExtra: boolean = false;
+	public get buyAllExtra(): boolean{
+		return this._buyAllExtra;
+	}
+	public set buyAllExtra( value: boolean ){
+		this._buyAllExtra = value;
+		if( value ){
+			this.enabledExtraButtons( false );
+			BingoMachine.sendCommand( GameCommands.extra );
+		}
+		else{
+			this.enabledExtraButtons();
 		}
 	}
 
@@ -110,7 +125,7 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 
 		this.collectBtn = this.addBtn( "BB_EXTRA_collect_btn", 17, 120, GameCommands.collect, this.extraContainer, true );
 		this.addButtonText( this.collectBtn, 50, "collect", 10, 0, 0, this.collectBtn.width - 20 );
-		this.buyAllBtn = this.addBtn( "BB_EXTRA_buyall", 290, 118, GameCommands.collect, this.extraContainer, true );
+		this.buyAllBtn = this.addBtn( "BB_EXTRA_buyall", 290, 118, GameCommands.buyAll, this.extraContainer, true );
 		this.addButtonText( this.buyAllBtn, 50, "buy all", 10, 0, 0, this.buyAllBtn.width - 20 );
 
 		this.superExtraBtn = this.addMaskBtn( "btn_mega", 1724, 22, GameCommands.extra, this.extraContainer );
@@ -248,7 +263,6 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 			else{
 				this.enableAllButtons( true );
 				this.playBtn.visible = true;
-				this.stopAutoBtn.visible = false;
 			}
 			this.showExtraButton( false );
 		}
@@ -265,8 +279,8 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 		this.extraContainer.visible = isShow;
 	}
 
-	private enabledExtraButtons(){
-		this.buyAllBtn.enabled = this.collectBtn.enabled = this.superExtraBtn.enabled = this.bigExtraBtn.enabled = true;
+	private enabledExtraButtons( isAble: boolean = true ){
+		this.buyAllBtn.enabled = this.collectBtn.enabled = this.superExtraBtn.enabled = this.bigExtraBtn.enabled = isAble;
 	}
 
 	public showTip( cmd: string, price: number = 0 ){
