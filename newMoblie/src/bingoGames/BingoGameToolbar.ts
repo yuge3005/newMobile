@@ -20,8 +20,6 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 	private betText: TextLabel;
 	private winText: TextLabel;
 
-	protected tipExtraText: egret.TextField;
-
 	private allButtons: Array<TouchDownButton>;
 	private enabledButtons: Array<TouchDownButton>;
 
@@ -102,23 +100,20 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 		this.addButtonText( this.buyAllBtn, 50, "buy all", 10, 0, 0, this.buyAllBtn.width - 20 );
 
 		this.superExtraBtn = this.addMaskBtn( "btn_mega", 1724, 22, GameCommands.extra, this.extraContainer );
-		this.addButtonText( this.superExtraBtn, GlobelSettings.language == "pt"? 15 : 18, "mega" );
+		this.superExtraBtn.addButtonBigText( 72, "mega" );
+		this.superExtraBtn.addButtonSmallText( 60 );
+		this.superExtraBtn.setIcon( "balance_coin" );
 
 		this.bigExtraBtn = this.addMaskBtn( "BB_EXTRA_extra_btn", 1724, 22, GameCommands.extra, this.extraContainer );
-		let bigExtraBtnText = this.addButtonText( this.bigExtraBtn, 24, "extra" );
+		this.bigExtraBtn.addButtonBigText( 72, "extra" );
+		this.bigExtraBtn.addButtonSmallText( 60 );
+		this.bigExtraBtn.setIcon( "balance_chip" );
 	}
 
 	private createTexts(){
-		this.tipExtraText = this.addToolBarText( 40, 5, 415, 28, 16, 1 );
 		this.winText = this.addToolBarText( 720, 50, 565, 65, 60, 2, 0x2A1DB5 );
-
 		this.coinsText = this.addToolBarText( 730, 135, 305, 40, 40, 3, 0xAC9418 );
 		this.dineroText = this.addToolBarText( 1070, 135, 150, 40, 40, 3, 0x38AC3d );
-
-		// this.coinIcon = Com.addBitmapAt( this, "GameToolBar_json.icon_coin", 0, 3 );
-		// this.coinIcon.visible = false;
-		// this.dineroIcon = Com.addBitmapAt( this, "GameToolBar_json.icon_dinero", 0, 5 );
-		// this.dineroIcon.visible = false;
 	}
 
 	private addToolBarText( x: number, y: number, textWidth: number, textHeight: number, textSize: number, stroke: number = 0, strokeColor: number = 0, target: egret.DisplayObjectContainer = null ): TextLabel{
@@ -248,8 +243,6 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 	}
 
 	public showTip( cmd: string, price: number = 0 ){
-		this.hideIcon();
-		
 		let ev: egret.Event = new egret.Event( "tipStatus" );
 		
 		switch( cmd ){
@@ -261,7 +254,7 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 				ev["status"] = "extra";
 				ev["extraPrice"] = price;
 				this.dispatchEvent( ev );
-				// if( price )	this.showCoinsIconAt( extraStr1, extraStr2 );
+				if( price ) this.showCoinsIconAt( price );
 			break;
 			default:
 				ev["status"] = "ready";
@@ -270,10 +263,9 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 		}
 	}
 
-	protected hideIcon(): void{
-		this.tipExtraText.text = "";
-		this.tipExtraText.x = 40;
-		// this.coinIcon.visible = this.dineroIcon.visible = false;
+	protected showCoinsIconAt( price: number ): void{
+		this.superExtraBtn.setPrice( price );
+		this.bigExtraBtn.setPrice( price );
 	}
 
 	public showWinResult( winPrice: number ){
@@ -328,16 +320,8 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 	}
 
 	public megeExtraOnTop( megaOnTop: boolean ): void{
-		// if( megaOnTop ){
-		// 	if( this.getChildIndex( this.bigExtraBtn ) > this.getChildIndex( this.superExtraBtn ) ){
-		// 		this.setChildIndex( this.bigExtraBtn, this.getChildIndex( this.superExtraBtn ) );
-		// 	}
-		// }
-		// else{
-		// 	if( this.getChildIndex( this.bigExtraBtn ) < this.getChildIndex( this.superExtraBtn ) ){
-		// 		this.setChildIndex( this.superExtraBtn, this.getChildIndex( this.bigExtraBtn ) );
-		// 	}
-		// }
+		this.superExtraBtn.visible = megaOnTop;
+		this.bigExtraBtn.visible = !megaOnTop
 	}
 
 	public updateCoinsAndXp( coins: number, dinero: number ){
