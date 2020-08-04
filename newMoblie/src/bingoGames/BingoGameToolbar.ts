@@ -277,6 +277,11 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 		this.stopBtn.enabled = isStop;
 	}
 
+	public showCollectButtonAfterOOC(): void{
+		this.collectBtn.enabled = true;
+		this.showExtraButton( true );
+	}
+
 	public collect():void{
 		if( this.collectBtn.enabled && this.collectBtn.visible ){
 			BingoMachine.sendCommand( GameCommands.collect );

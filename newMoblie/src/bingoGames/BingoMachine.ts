@@ -665,7 +665,7 @@ class BingoMachine extends GameUIItem{
 
 	public onCancelExtra( data: Object ){
 		IBingoServer.cancelExtraCallback = null;
-		// this.gameToolBar.unlockAllButtons();
+		this.gameToolBar.unlockAllButtons();
 		this.gameToolBar.showExtra(false);
 		
 		this.roundOver();
@@ -684,10 +684,10 @@ class BingoMachine extends GameUIItem{
 		this.isMegaBall = data["isMegaBall"];
 
 		if (!data) {//out of coins
-			// let needChangeCollectBtnStatus: boolean = this.gameToolBar.autoPlaying;
-			// this.gameToolBar.autoPlaying = false;
+			let needChangeCollectBtnStatus: boolean = this.gameToolBar.autoPlaying;
+			this.gameToolBar.autoPlaying = false;
 			this.dispatchEvent( new egret.Event( "out_of_coins_game_id" ) );
-			// if( needChangeCollectBtnStatus )this.gameToolBar.showCollectButtonAfterOOC();
+			if( needChangeCollectBtnStatus )this.gameToolBar.showCollectButtonAfterOOC();
 			return;
 		}
 
