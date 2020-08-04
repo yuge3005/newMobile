@@ -289,6 +289,40 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 		this.stopBtn.enabled = isStop;
 	}
 
+	public collect():void{
+		if( this.collectBtn.enabled && this.collectBtn.visible ){
+			BingoMachine.sendCommand( GameCommands.collect );
+		}
+	}
+
+	private delayKeyboard: number = 500;
+	private _enableKeyboard: boolean = true;
+	private set enableKeyboard( value: boolean ){
+		this._enableKeyboard = value;
+		if( !value ){
+			setTimeout( () => { this.enableKeyboard = true }, this.delayKeyboard );
+		}
+	}
+	private get enableKeyboard(): boolean{
+		return this._enableKeyboard;
+	}
+
+	public quickPlay():void{
+		if( !this.enableKeyboard || this.autoPlaying )return;
+		if( this.playBtn.enabled && this.playBtn.visible ){
+			BingoMachine.sendCommand( GameCommands.play );
+			this.enableKeyboard = false;
+		}
+		else if( this.playContainer.visible && this.stopBtn.enabled && this.stopBtn.visible ){
+			BingoMachine.sendCommand( GameCommands.stop );
+			this.enableKeyboard = false;
+		}
+		else if( this.extraContainer.visible && this.bigExtraBtn.enabled && this.bigExtraBtn.visible ){
+			BingoMachine.sendCommand( GameCommands.extra );
+			this.enableKeyboard = false;
+		}
+	}
+
 	public enabledStopButton(): void{
 		this.stopBtn.enabled = false;
 	}

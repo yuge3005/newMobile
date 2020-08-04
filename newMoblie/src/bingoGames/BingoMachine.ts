@@ -832,7 +832,7 @@ class BingoMachine extends GameUIItem{
 	 * quick play
 	 */
 	public quickPlay(): void {
-		// this.gameToolBar.quickPlay();
+		this.gameToolBar.quickPlay();
 	}
 
 	/**
@@ -845,7 +845,7 @@ class BingoMachine extends GameUIItem{
 	 * collect credito
 	 */
 	public collectCredit(): void {
-		// this.gameToolBar.collect();
+		this.gameToolBar.collect();
 	}
 	
 	protected firstHaveExtraBall: boolean;
