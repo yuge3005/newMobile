@@ -252,7 +252,7 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 			}
 			else{
 				this.enableAllButtons( false );
-				this.enabledExtraButtons();
+				if( !this.buyAllExtra ) this.enabledExtraButtons();
 			}
 			this.showExtraButton( true );
 			this.showTip( GameCommands.extra, extraPrice );
