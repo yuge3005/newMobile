@@ -1,0 +1,18 @@
+{
+    "projectName": "topbar",
+    "files": [
+        "./home_press.png",
+        "./home.png",
+        "./hamburger.png",
+        "./buy-btn.png",
+        "./buy_bg.png"
+    ],
+    "options": {
+        "layoutMath": "3",
+        "sizeMode": "2n",
+        "useExtension": 0,
+        "layoutGap": 1,
+        "extend": 0
+    },
+    "version": 5
+}

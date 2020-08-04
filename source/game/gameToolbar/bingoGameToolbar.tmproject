@@ -1,11 +1,4 @@
 {
-    "options": {
-        "useExtension": 0,
-        "layoutGap": 1,
-        "extend": 0,
-        "layoutMath": "3",
-        "sizeMode": "2n"
-    },
     "files": [
         "./play_press.png",
         "./play_bg.png",
@@ -18,6 +11,7 @@
         "./Locked.png",
         "./i_press.png",
         "./i.png",
+        "./Group-22.png",
         "./btn_mega.png",
         "./btn_go.png",
         "./bet_up_press.png",
@@ -25,6 +19,7 @@
         "./bet_screen.png",
         "./bet_down_press.png",
         "./bet_down.png",
+        "./BB_star_open_bg.png",
         "./BB_EXTRA_extra_btn.png",
         "./BB_EXTRA_collect_btn.png",
         "./BB_EXTRA_buyall.png",
@@ -35,6 +30,13 @@
         "./back_panel.png",
         "./auto_stop.png"
     ],
+    "projectName": "bingoGameToolbar",
     "version": 5,
-    "projectName": "bingoGameToolbar"
+    "options": {
+        "extend": 0,
+        "layoutMath": "3",
+        "sizeMode": "2n",
+        "useExtension": 0,
+        "layoutGap": 1
+    }
 }
