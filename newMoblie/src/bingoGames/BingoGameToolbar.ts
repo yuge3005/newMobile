@@ -9,7 +9,7 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 	private collectBtn: TouchDownButton;
 	private buyAllBtn: TouchDownButton;
 
-	protected playBtn: TouchDownButton;
+	protected playBtn: LongPressButton;
 	protected stopBtn: TouchDownButton;
 
 	protected bigExtraBtn: GameToolbarMaskButton;
@@ -76,9 +76,8 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 
 		this.stopBtn = this.addBtn( "play", 1724, 22, GameCommands.stop, this.playContainer );
 		this.addButtonText( this.stopBtn, 72, "stop", 15, 0, 0xFFFFFF, this.stopBtn.width - 30, 186, 4, 0x000093 );
-		this.playBtn = this.addBtn( "play", 1724, 22, GameCommands.play, this.playContainer );
-		this.addButtonText( this.playBtn, 72, "play", 15, 0, 0xFFFFFF, this.playBtn.width - 30, 125, 4, 0x000093 );
-		this.addButtonText( this.playBtn, 35, "hold for auto", 15, 100, 0xFFFFFF, this.playBtn.width - 30, 70, 1, 0x000093 );
+
+		this.addPlayButton();
 
 		let tb: TextLabel = this.addToolBarText( 198, 192, 192, 30, 30, 0, 0, this.playContainer );
 		tb.setText( MuLang.getText("total bet") );
@@ -108,6 +107,19 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 		this.bigExtraBtn.addButtonBigText( 72, "extra" );
 		this.bigExtraBtn.addButtonSmallText( 60 );
 		this.bigExtraBtn.setIcon( "balance_coin" );
+	}
+
+	private addPlayButton(){
+		this.playBtn = new LongPressButton( "bingoGameToolbar_json.play", "bingoGameToolbar_json.play_press" );
+		Com.addObjectAt( this.playContainer, this.playBtn, 1724, 22 );
+		this.playBtn.addEventListener( egret.TouchEvent.TOUCH_TAP, this.sendCommand, this );
+		this.playBtn.name = GameCommands.play;
+		this.playBtn.disabledFilter = MatrixTool.colorMatrixLighter( 0.2 );
+		this.playBtn.enabled = true;
+		this.allButtons.push( this.playBtn );
+		this.addButtonText( this.playBtn, 72, "play", 15, 0, 0xFFFFFF, this.playBtn.width - 30, 125, 4, 0x000093 );
+		this.addButtonText( this.playBtn, 35, "hold for auto", 15, 100, 0xFFFFFF, this.playBtn.width - 30, 70, 1, 0x000093 );
+		this.playBtn.longPressSetting( 3000, this.startAuto.bind( this ) );
 	}
 
 	private createTexts(){
@@ -141,6 +153,7 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 		Com.addObjectAt( container, btn, x, y );
 		btn.addEventListener( egret.TouchEvent.TOUCH_TAP, this.sendCommand, this );
 		btn.name = name;
+		this.allButtons.push( btn );
 		return btn;
 	}
 
@@ -152,7 +165,6 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 		let txt: TextLabel = Com.addLabelAt( this, offsetX, offsetY, width ? width : terget.width, height ? height : terget.height, size );
 		terget.addChild(txt);
 		txt.fontFamily = "Righteous";
-		// txt.lineSpacing = 10;
 		if( color != 0xFFFFFF ) txt.textColor = color;
 		if( stroke ){
 			txt.stroke = stroke;
@@ -328,5 +340,9 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 	public updateCoinsAndXp( coins: number, dinero: number ){
 		this.coinsText.setText( Utils.formatCoinsNumber( coins ) );
 		this.dineroText.setText( Utils.formatCoinsNumber( dinero ) );
+	}
+
+	private startAuto(){
+		alert( "startAuto" );
 	}
 }

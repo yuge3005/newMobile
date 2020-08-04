@@ -33,7 +33,7 @@ class TouchDownButton extends egret.DisplayObjectContainer {
 		this.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchTap, this);
 	}
 
-	private onTouchBegin(event:egret.TouchEvent){
+	protected onTouchBegin(event:egret.TouchEvent){
 		if( this.contains( this.upState ) )this.removeChild(this.upState);
 		this.addChildAt( this.downState, 0 );
 		this.stage.addEventListener(egret.TouchEvent.TOUCH_END, this.onTouchEnd, this);
@@ -45,7 +45,7 @@ class TouchDownButton extends egret.DisplayObjectContainer {
 		this.stage.removeEventListener(egret.TouchEvent.TOUCH_END, this.onTouchEnd, this);
 	}
 
-	private onTouchTap(event:egret.TouchEvent){
+	protected onTouchTap(event:egret.TouchEvent){
 		if( GlobelSettings.isRightClick ){
 			event.stopImmediatePropagation();
 			return;
