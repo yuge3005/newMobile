@@ -1,0 +1,29 @@
+{
+    "files": [
+        "./Jackpot-Activated.png",
+        "./jackpot_lock.png",
+        "./Image-277-1.png",
+        "./Image-269-1.png",
+        "./Image-264-1.png",
+        "./Image-262-1.png",
+        "./Image-260-1.png",
+        "./Image-241-1.png",
+        "./Image-138.png",
+        "./Image-130-1.png",
+        "./Group-32.png",
+        "./active.png",
+        "./pharos_bg.png",
+        "./mega_pt.png",
+        "./mega_es.png",
+        "./mega_en.png"
+    ],
+    "projectName": "pharos",
+    "version": 5,
+    "options": {
+        "extend": 0,
+        "layoutMath": "3",
+        "sizeMode": "2n",
+        "useExtension": 0,
+        "layoutGap": 1
+    }
+}
