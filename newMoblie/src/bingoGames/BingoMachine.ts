@@ -437,13 +437,6 @@ class BingoMachine extends GameUIItem{
 		if( this.runningBallUI && this.runningBallContainer.contains( this.runningBallUI ) )this.runningBallContainer.removeChild( this.runningBallUI );
 	}
 
-	protected gameUnderLine(){
-		let redLine: egret.Shape = new egret.Shape;
-		GraphicTool.drawRect( redLine, new egret.Rectangle( 0, 0, 800, 3 ), 0xFF0000 );
-		redLine.y = 600;
-		this.addChild( redLine );
-	}
-
 	protected setLetras( letrasData: string ): void{
 		//only for pachinko
 	}

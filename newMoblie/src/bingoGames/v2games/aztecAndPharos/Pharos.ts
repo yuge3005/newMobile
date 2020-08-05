@@ -18,7 +18,10 @@ class Pharos extends AztecPharosSuper{
         TowerGrid.linePicName = "Image-264-1";
 
         CardGrid.defaultBgColor = 0xFFFFFF;
-        CardGrid.defaultNumberSize = 25;
+        CardGrid.defaultNumberSize = 50;
+
+        BingoBackGroundSetting.defaultScale = false;
+        BingoBackGroundSetting.gameMask = new egret.Rectangle( 0, 0, 2000, 1125 );
 	}
 
     protected init(){
@@ -30,13 +33,11 @@ class Pharos extends AztecPharosSuper{
         this.addGameText( 35, 403, 16, 0xE8D4AF, "one side",false, 200 );
 
         this.buildSuperEbArea( "mega_" + GlobelSettings.language, 142, 14 );
-
-        this.gameUnderLine();
     }
 
     protected showLastBall( ballIndex: number ): void{
         super.showLastBall( ballIndex );
-        super.showLastBallAt(ballIndex, 141, 13);
+        super.showLastBallAt(ballIndex, 427, 16);
         
         this.playSound("pr_ball_wav");
         if (this.btExtra && (this.currentBallIndex === this.gratisNumber - 1)) this.playSound("pr_free_extra_ball_mp3");
@@ -75,11 +76,13 @@ class Pharos extends AztecPharosSuper{
 	}
 
     protected hasExtraBallFit(): void {
-        this.stopSound("pr_ball_wav");
+        this.stopSound("pr_ball_mp3");
         if (this.firstHaveExtraBall) {
             this.firstHaveExtraBall = false;
             this.playSound("pr_have_extra_ball_mp3");
             this.showFreeExtraPosition();
+            this.gratisUI.x -= 11;
+            this.gratisUI.y -= 11;
         }
 
         if( this.isMegaBall ){
@@ -99,7 +102,7 @@ class Pharos extends AztecPharosSuper{
     
     protected roundOver(): void {
         super.roundOver();
-        this.stopSound("pr_ball_wav");
+        this.stopSound("pr_ball_mp3");
     }
 
 	protected getExtraBallFit(): void {

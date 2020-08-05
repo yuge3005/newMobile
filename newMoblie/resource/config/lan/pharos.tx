@@ -19,8 +19,8 @@
 		,"total bet":{"en": "TOTAL BET", "es": "APUETA TOTAL", "pt": "APOSTA TOTAL" }
 		,"free":{"en": "FREE", "es": "GRATIS", "pt": "GRATIS" }
 		,"hold for auto":{"en": "hold for\nautoplay", "es": "hold for\nautoplay", "pt": "hold for\nautoplay" }
-		,"bingo"] = { "en": "BINGO", "es": "BINGO", "pt": "BINGO" }
-        ,"three side"] = { "en": "3 SIDES", "es": "3 LADOS", "pt": "3 LADOS" }
-        ,"two side"] = { "en": "2 SIDES", "es": "2 LADOS", "pt": "2 LADOS" }
-        ,"one side"] = { "en": "1 SIDE", "es": "1 LADO", "pt": "1 LADO" }
+		,"bingo":{"en": "BINGO", "es": "BINGO", "pt": "BINGO" }
+        ,"three side":{"en": "3 SIDES", "es": "3 LADOS", "pt": "3 LADOS" }
+        ,"two side":{"en": "2 SIDES", "es": "2 LADOS", "pt": "2 LADOS" }
+        ,"one side":{"en": "1 SIDE", "es": "1 LADO", "pt": "1 LADO" }
 			}
