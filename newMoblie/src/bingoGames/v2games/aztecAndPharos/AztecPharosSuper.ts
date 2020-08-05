@@ -17,7 +17,11 @@ class AztecPharosSuper extends V2Game{
 	protected init(){
         super.init();
 
-        this.showNoBetAndCredit();
+        this.addGameText( 295, 678, 36, 0xFFF9DB, "bet", true, 150 );
+
+        this.betText = this.addGameTextCenterShadow( 425, 678, 36, 0xFFF9DB, "bet", true, 200, true, false );
+        this.betText.textAlign = "right";
+        this.creditText = new TextLabel;
 
         if( this.extraUIObject ) this.extraUIShowNumber();
 	}

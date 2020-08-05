@@ -19,8 +19,8 @@ class BingoMachine extends GameUIItem{
 	protected gameToolBar: BingoGameToolbar;
 	protected topbar: Topbar;
 
-	protected betText: egret.TextField;
-	protected creditText: egret.TextField;
+	protected betText: TextLabel;
+	protected creditText: TextLabel;
 	protected dinero: number;
 	protected _gameCoins: number;
 	protected get gameCoins(): number{
@@ -28,7 +28,7 @@ class BingoMachine extends GameUIItem{
 	}
 	protected set gameCoins( value: number ){
 		this._gameCoins = value;
-		if( this.creditText ) this.creditText.text = Utils.formatCoinsNumber( value );
+		if( this.creditText ) this.creditText.setText( Utils.formatCoinsNumber( value ) );
 	}
 
 	protected connetKeys: Object;
@@ -344,7 +344,7 @@ class BingoMachine extends GameUIItem{
 
 	protected resetGameToolBarStatus(){
 		this.gameToolBar.setBet( GameData.currentBet, CardManager.enabledCards, GameData.currentBet == GameData.maxBet );
-		this.betText.text = Utils.formatCoinsNumber( CardManager.setCardBet( GameData.currentBet ) );
+		this.betText.setText( Utils.formatCoinsNumber( CardManager.setCardBet( GameData.currentBet ) ) );
 	}
 
 	public static runningBall( ballIndex: number ): void{

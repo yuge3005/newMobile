@@ -18,8 +18,8 @@ class V2Game extends BingoMachine{
     }
 
     protected showNoBetAndCredit(){
-        this.creditText = new egret.TextField;
-        this.betText = new egret.TextField;
+        this.creditText = new TextLabel;
+        this.betText = new TextLabel;
     }
 
 /*******************************************************************************************************/
