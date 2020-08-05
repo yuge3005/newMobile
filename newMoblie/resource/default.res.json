@@ -1,15 +1,15 @@
 {
 	"groups": [
 		{
-			"keys": "t90_4corners_mp3,t90_ball_mp3,t90_bet_mp3,t90_bingo_mp3,t90_blink_mp3,t90_card_mp3,t90_double_line_mp3,t90_extra_ball_mp3,t90_extra_loop_mp3,t90_jackpot_mp3,t90_line_mp3,t90_win_mp3,turbo90_json,turbo90Animation_json,turbo90Animation_png,turbo90_conf,turbo90_tx,turbo90_filt,bingoGameToolbar_json,topbar_json",
+			"keys": "t90_4corners_mp3,t90_ball_mp3,t90_bet_mp3,t90_bingo_mp3,t90_blink_mp3,t90_card_mp3,t90_double_line_mp3,t90_extra_ball_mp3,t90_extra_loop_mp3,t90_jackpot_mp3,t90_line_mp3,t90_win_mp3,turbo90_json,turbo90Animation_json,turbo90Animation_png,turbo90_conf,turbo90_tx,turbo90_filt,bingoGameToolbar_json,topbar_json,open_list_mp3",
 			"name": "turbo90"
 		},
 		{
-			"keys": "superLotto_json,superLotto_conf,superLotto_filt,lotto_eb_mp3,lotto_ball_mp3,lotto_an2_mp3,lotto_an5_mp3,lotto_an4_mp3,lotto_an3_mp3,lotto_gold_mp3,lotto_se1_mp3,lotto_se2_mp3,lotto_se3_mp3,lotto_se4_mp3,lotto_silver_mp3,lotto_se5_mp3,lotto_se6_mp3,superLotto_tx,bingoGameToolbar_json,topbar_json",
+			"keys": "superLotto_json,superLotto_conf,superLotto_filt,lotto_eb_mp3,lotto_ball_mp3,lotto_an2_mp3,lotto_an5_mp3,lotto_an4_mp3,lotto_an3_mp3,lotto_gold_mp3,lotto_se1_mp3,lotto_se2_mp3,lotto_se3_mp3,lotto_se4_mp3,lotto_silver_mp3,lotto_se5_mp3,lotto_se6_mp3,superLotto_tx,bingoGameToolbar_json,topbar_json,open_list_mp3",
 			"name": "superLotto"
 		},
 		{
-			"keys": "nb_1line_mp3,nb_1to_bingo_mp3,nb_2line_mp3,nb_acumulado_mp3,nb_ball_mp3,nb_bet_mp3,nb_bingo_mp3,nb_card_mp3,nb_collect_mp3,nb_extra_ball_mp3,nb_first_extra_mp3,nb_free_extra_mp3,nb_ooc_mp3,nb_win_round_over_mp3,nineball_json,nineballAnimation_png,nineballAnimation_json,nineball_conf,nineball_tx,nineball_filt,bingoGameToolbar_json,topbar_json",
+			"keys": "nb_1line_mp3,nb_1to_bingo_mp3,nb_2line_mp3,nb_acumulado_mp3,nb_ball_mp3,nb_bet_mp3,nb_bingo_mp3,nb_card_mp3,nb_collect_mp3,nb_extra_ball_mp3,nb_first_extra_mp3,nb_free_extra_mp3,nb_ooc_mp3,nb_win_round_over_mp3,nineball_json,nineballAnimation_png,nineballAnimation_json,nineball_conf,nineball_tx,nineball_filt,bingoGameToolbar_json,topbar_json,open_list_mp3",
 			"name": "nineball"
 		}
 	],
@@ -319,6 +319,11 @@
 			"type": "sheet",
 			"name": "topbar_json",
 			"subkeys": "buy-btn,buy_bg,hamburger,home,home_press"
+		},
+		{
+			"url": "assets/sound/open_list.mp3",
+			"type": "sound",
+			"name": "open_list_mp3"
 		}
 	]
 }

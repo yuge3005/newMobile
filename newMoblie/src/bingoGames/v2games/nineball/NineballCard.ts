@@ -15,7 +15,7 @@ class NineballCard extends GameCard{
 		for( var i: number = 0; i < numbers.length; i++ ){
 			this.gridLayer.addChild( this.grids[i] );
 		}
-		Com.addObjectAt( this, this.gridLayer, 13, 55 )
+		Com.addObjectAt( this, this.gridLayer, 13, 55 );
 
 		var gridMask: egret.Bitmap = Com.addBitmapAt( this, BingoMachine.getAssetStr( "mask" ), 13, 55 );
 		this.gridLayer.mask = gridMask;
