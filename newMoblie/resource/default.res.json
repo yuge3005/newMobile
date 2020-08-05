@@ -11,6 +11,10 @@
 		{
 			"keys": "nb_1line_mp3,nb_1to_bingo_mp3,nb_2line_mp3,nb_acumulado_mp3,nb_ball_mp3,nb_bet_mp3,nb_bingo_mp3,nb_card_mp3,nb_collect_mp3,nb_extra_ball_mp3,nb_first_extra_mp3,nb_free_extra_mp3,nb_ooc_mp3,nb_win_round_over_mp3,nineball_json,nineballAnimation_png,nineballAnimation_json,nineball_conf,nineball_tx,nineball_filt,bingoGameToolbar_json,topbar_json,open_list_mp3",
 			"name": "nineball"
+		},
+		{
+			"keys": "pr_1side_mp3,pr_2side_mp3,pr_3side_mp3,pr_acumulado_mp3,pr_ball_mp3,pr_bet_mp3,pr_bingo_mp3,pr_card_mp3,pr_collect_mp3,pr_drag_in_mp3,pr_drag_out_mp3,pr_extra_ball_mp3,pr_free_extra_ball_mp3,pr_have_extra_ball_mp3",
+			"name": "pharos"
 		}
 	],
 	"resources": [
@@ -324,6 +328,76 @@
 			"url": "assets/sound/open_list.mp3",
 			"type": "sound",
 			"name": "open_list_mp3"
+		},
+		{
+			"url": "game/pharos/sound/pr_1side.mp3",
+			"type": "sound",
+			"name": "pr_1side_mp3"
+		},
+		{
+			"url": "game/pharos/sound/pr_2side.mp3",
+			"type": "sound",
+			"name": "pr_2side_mp3"
+		},
+		{
+			"url": "game/pharos/sound/pr_3side.mp3",
+			"type": "sound",
+			"name": "pr_3side_mp3"
+		},
+		{
+			"url": "game/pharos/sound/pr_acumulado.mp3",
+			"type": "sound",
+			"name": "pr_acumulado_mp3"
+		},
+		{
+			"url": "game/pharos/sound/pr_ball.mp3",
+			"type": "sound",
+			"name": "pr_ball_mp3"
+		},
+		{
+			"url": "game/pharos/sound/pr_bet.mp3",
+			"type": "sound",
+			"name": "pr_bet_mp3"
+		},
+		{
+			"url": "game/pharos/sound/pr_bingo.mp3",
+			"type": "sound",
+			"name": "pr_bingo_mp3"
+		},
+		{
+			"url": "game/pharos/sound/pr_card.mp3",
+			"type": "sound",
+			"name": "pr_card_mp3"
+		},
+		{
+			"url": "game/pharos/sound/pr_collect.mp3",
+			"type": "sound",
+			"name": "pr_collect_mp3"
+		},
+		{
+			"url": "game/pharos/sound/pr_drag_in.mp3",
+			"type": "sound",
+			"name": "pr_drag_in_mp3"
+		},
+		{
+			"url": "game/pharos/sound/pr_drag_out.mp3",
+			"type": "sound",
+			"name": "pr_drag_out_mp3"
+		},
+		{
+			"url": "game/pharos/sound/pr_extra_ball.mp3",
+			"type": "sound",
+			"name": "pr_extra_ball_mp3"
+		},
+		{
+			"url": "game/pharos/sound/pr_free_extra_ball.mp3",
+			"type": "sound",
+			"name": "pr_free_extra_ball_mp3"
+		},
+		{
+			"url": "game/pharos/sound/pr_have_extra_ball.mp3",
+			"type": "sound",
+			"name": "pr_have_extra_ball_mp3"
 		}
 	]
 }
