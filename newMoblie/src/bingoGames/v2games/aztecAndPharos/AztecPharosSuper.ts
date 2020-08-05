@@ -1,4 +1,7 @@
 class AztecPharosSuper extends V2Game{
+
+    protected pharosPattenTexts: Array<TextLabel>;
+
 	public constructor( gameConfigFile: string, configUrl: string, gameId: number ) {
 		super( gameConfigFile, configUrl, gameId );
         this.ptFilterConfig = "aztec_filt";
@@ -7,9 +10,9 @@ class AztecPharosSuper extends V2Game{
         CardManager.cardType = TowerCard;
         GameCard.useRedEffect = true;
 
-        this.needListenToolbarStatus = true;
-        this.tipStatusTextPosition = new egret.Rectangle( 300, 156, 260, 18 );
-        this.tipStatusTextColor = 0x3b2800;
+        // this.needListenToolbarStatus = true;
+        // this.tipStatusTextPosition = new egret.Rectangle( 300, 156, 260, 18 );
+        // this.tipStatusTextColor = 0x3b2800;
 
         this.ballArea.needLightCheck = true;
 	}
@@ -42,6 +45,22 @@ class AztecPharosSuper extends V2Game{
         if( this.extraUIObject ){
             let tw: egret.Tween = egret.Tween.get( this.extraUIObject );
             tw.to( { x: -190 }, 200 );
+        }
+    }
+
+    protected afterCheck( resultList: Array<Object> ): void{
+        this.clearPaytableFgs();
+        super.afterCheck( resultList );
+    }
+
+    protected startPlay(): void {
+        super.startPlay();
+        this.clearPaytableFgs();
+    }
+
+    private clearPaytableFgs(){
+        for( let i: number = 0; i < 4; i++ ){
+            this.pharosPattenTexts[i].textColor = 0xE8D4AF;
         }
     }
 }
