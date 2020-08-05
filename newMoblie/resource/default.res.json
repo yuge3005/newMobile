@@ -418,7 +418,7 @@
 			"url": "game/pharos/pharos.json",
 			"type": "sheet",
 			"name": "pharos_json",
-			"subkeys": "Group-32,Image-130-1,Image-138,Image-241-1,Image-260-1,Image-262-1,Image-264-1,Image-269-1,Image-277-1,Jackpot-Activated,active,jackpot_lock,mega_en,mega_es,mega_pt,pharos_bg"
+			"subkeys": "Image-138,Image-241-1,Image-260-1,Image-262-1,Image-264-1,Image-269-1,Image-277-1,jackpot_bg,jackpot_lock,mega_en,mega_es,mega_pt,pharos_bg"
 		},
 		{
 			"url": "config/lan/pharos.tx",

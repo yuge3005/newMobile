@@ -21,6 +21,9 @@ class JackpotLayer extends egret.DisplayObjectContainer {
 		this.x = jackpotContainerPosition.x;
 		this.y = jackpotContainerPosition.y;
 
+		this.jackpotLock = Com.addBitmapAt(this, BingoMachine.getAssetStr("jackpot_lock"), lockPosition.x, lockPosition.y);
+		this.jackpotLock.touchEnabled = true;
+
 		if( tipRect ){
 			this.tip = Com.addTextAt( this, tipRect.x, tipRect.y, tipRect.width, tipRect.height, tipTextSize, false, true );
         	this.tip.textColor = tipTextColor;
@@ -32,9 +35,6 @@ class JackpotLayer extends egret.DisplayObjectContainer {
 		this.jackpotText.verticalAlign = "middle";
 		this.jackpotValue = this.countJackpotByRate( Math.round( jackpot ) );
         this.jackpotMinBet = jackpotMinBet;
-
-		this.jackpotLock = Com.addBitmapAt(this, BingoMachine.getAssetStr("jackpot_lock"), lockPosition.x, lockPosition.y);
-		this.jackpotLock.touchEnabled = true;
 
 		this.tryJackpotMinBet();
 	}
