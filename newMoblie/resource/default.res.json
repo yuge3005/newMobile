@@ -13,7 +13,7 @@
 			"name": "nineball"
 		},
 		{
-			"keys": "pr_1side_mp3,pr_2side_mp3,pr_3side_mp3,pr_acumulado_mp3,pr_ball_mp3,pr_bet_mp3,pr_bingo_mp3,pr_card_mp3,pr_collect_mp3,pr_drag_in_mp3,pr_drag_out_mp3,pr_extra_ball_mp3,pr_free_extra_ball_mp3,pr_have_extra_ball_mp3",
+			"keys": "pr_1side_mp3,pr_2side_mp3,pr_3side_mp3,pr_acumulado_mp3,pr_ball_mp3,pr_bet_mp3,pr_bingo_mp3,pr_card_mp3,pr_collect_mp3,pr_drag_in_mp3,pr_drag_out_mp3,pr_extra_ball_mp3,pr_free_extra_ball_mp3,pr_have_extra_ball_mp3,pharos_json,pharosAnimation_png,pharosAnimation_json,pharos_conf,pharos_tx,aztec_filt,bingoGameToolbar_json,topbar_json,open_list_mp3",
 			"name": "pharos"
 		}
 	],
@@ -398,6 +398,37 @@
 			"url": "game/pharos/sound/pr_have_extra_ball.mp3",
 			"type": "sound",
 			"name": "pr_have_extra_ball_mp3"
+		},
+		{
+			"url": "config/pharos.conf",
+			"type": "json",
+			"name": "pharos_conf"
+		},
+		{
+			"url": "game/pharos/pharosAnimation.png",
+			"type": "image",
+			"name": "pharosAnimation_png"
+		},
+		{
+			"url": "game/pharos/pharosAnimation.json",
+			"type": "json",
+			"name": "pharosAnimation_json"
+		},
+		{
+			"url": "game/pharos/pharos.json",
+			"type": "sheet",
+			"name": "pharos_json",
+			"subkeys": "Group-32,Image-130-1,Image-138,Image-241-1,Image-260-1,Image-262-1,Image-264-1,Image-269-1,Image-277-1,Jackpot-Activated,active,jackpot_lock,mega_en,mega_es,mega_pt,pharos_bg"
+		},
+		{
+			"url": "config/lan/pharos.tx",
+			"type": "json",
+			"name": "pharos_tx"
+		},
+		{
+			"url": "config/paytableFilter/aztec.filt",
+			"type": "json",
+			"name": "aztec_filt"
 		}
 	]
 }
