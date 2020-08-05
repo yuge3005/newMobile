@@ -32,7 +32,14 @@ class Pharos extends AztecPharosSuper{
         this.addGameText( 35, 376, 16, 0xE8D4AF, "two side",false, 200 );
         this.addGameText( 35, 403, 16, 0xE8D4AF, "one side",false, 200 );
 
-        this.buildSuperEbArea( "mega_" + GlobelSettings.language, 142, 14 );
+        this.buildSuperEbArea( "mega_" + GlobelSettings.language, 427, 16 );
+    }
+
+    protected buildSuperEbArea( superEbBgName: string, superEbAreaX: number, superEbAreaY: number ): void{
+        this.superExtraBg = Com.addBitmapAt( this.runningBallContainer, this.assetStr( superEbBgName ), superEbAreaX, superEbAreaY );
+        this.superExtraBg.width = 174;
+        this.superExtraBg.height = 174;
+        this.superExtraBg.visible = false;
     }
 
     protected showLastBall( ballIndex: number ): void{
