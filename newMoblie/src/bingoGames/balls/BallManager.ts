@@ -75,13 +75,14 @@ class BallManager extends egret.Sprite{
 
 		let lightResult: Array<Object>;
 		let newFit: boolean;
-		if( this.needLightCheck || !this.ballIndexs.length ) lightResult = BingoMachine.betweenBallRunning();
+		let isLastBall: boolean = this.ballIndexs.length == 0;
+		if( this.needLightCheck || isLastBall ) lightResult = BingoMachine.betweenBallRunning();
 		if( lightResult ){
 			newFit = this.recordlightResult( lightResult );
 		}
 
 		if( newFit ){
-			BingoMachine.runningAnimation( this.delayRunNextBall.bind( this ), lightResult );
+			BingoMachine.runningAnimation( this.delayRunNextBall.bind( this ), lightResult, isLastBall );
 		}
 		else this.delayRunNextBall();
 	}

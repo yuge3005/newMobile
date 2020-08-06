@@ -53,7 +53,7 @@ class Pharos extends AztecPharosSuper{
         super.showLastBall( ballIndex );
         super.showLastBallAt(ballIndex, 427, 16);
         
-        this.playSound("pr_ball_wav");
+        this.playSound("pr_ball_mp3");
         if (this.btExtra && (this.currentBallIndex === this.gratisNumber - 1)) this.playSound("pr_free_extra_ball_mp3");
 	}
 
@@ -76,8 +76,11 @@ class Pharos extends AztecPharosSuper{
             case "three side": soundName = "pr_3side_mp3";break;
             default: break;    
         }
-        if (SoundManager.soundOn && soundName !== "") {
-            this.playSound(soundName, 1, callback);
+        if (soundName !== "") {
+            if( SoundManager.soundOn ){
+                this.playSound(soundName, 1, callback);
+            }
+            else setTimeout( callback, 1000 );
         } else {
             callback();
         }

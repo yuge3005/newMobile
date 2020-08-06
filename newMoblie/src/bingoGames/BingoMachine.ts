@@ -355,8 +355,8 @@ class BingoMachine extends GameUIItem{
 		return this.currentGame.lightCheck();
 	}
 
-	public static runningAnimation( callback: Function, lightResult: Array<Object> ): void{
-		this.currentGame.runningWinAnimation( callback, lightResult );
+	public static runningAnimation( callback: Function, lightResult: Array<Object>, isLastBall: boolean ): void{
+		this.currentGame.runningWinAnimation( callback, lightResult, isLastBall );
 	}
 
 	public static endBallRunning(){
@@ -863,7 +863,7 @@ class BingoMachine extends GameUIItem{
 	protected firstHaveExtraBall: boolean;
 	protected lastLightResult: Array<Object>;
 
-	protected runningWinAnimation(callback: Function, lightResult: Array<Object>): void{
+	protected runningWinAnimation(callback: Function, lightResult: Array<Object>, isLastBall: boolean): void{
 		let paytableName = "";
 		let multiple = 0;
 		for( let i = 0; i < lightResult.length; i++ ){
@@ -879,8 +879,8 @@ class BingoMachine extends GameUIItem{
 		}
 
         this.lastLightResult = lightResult;
-        if (SoundManager.soundOn && paytableName !== "") {
-            if (this.ballArea.needLightCheck) {
+        if(paytableName !== "") {
+            if (!isLastBall) {
                 this.getResultListToCheck( true );
                 this.getPaytablesFit(paytableName, callback);
             } else {
