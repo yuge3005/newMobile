@@ -13,7 +13,7 @@
 			"name": "nineball"
 		},
 		{
-			"keys": "pr_1side_mp3,pr_2side_mp3,pr_3side_mp3,pr_acumulado_mp3,pr_ball_mp3,pr_bet_mp3,pr_bingo_mp3,pr_card_mp3,pr_collect_mp3,pr_drag_in_mp3,pr_drag_out_mp3,pr_extra_ball_mp3,pr_free_extra_ball_mp3,pr_have_extra_ball_mp3,pharos_json,pharosAnimation_png,pharosAnimation_json,pharos_conf,pharos_tx,aztec_filt,bingoGameToolbar_json,topbar_json,open_list_mp3",
+			"keys": "pr_1side_mp3,pr_2side_mp3,pr_3side_mp3,pr_acumulado_mp3,pr_ball_mp3,pr_bet_mp3,pr_bingo_mp3,pr_card_mp3,pr_collect_mp3,pr_drag_in_mp3,pr_drag_out_mp3,pr_extra_ball_mp3,pr_free_extra_ball_mp3,pr_have_extra_ball_mp3,pharos_json,pharosAnimation_png,pharosAnimation_json,pharos_conf,pharos_tx,aztec_filt,bingoGameToolbar_json,topbar_json,open_list_mp3,getCoinsParticle_png,getCoinsParticle_json",
 			"name": "pharos"
 		}
 	],
@@ -429,6 +429,16 @@
 			"url": "config/paytableFilter/aztec.filt",
 			"type": "json",
 			"name": "aztec_filt"
+		},
+		{
+			"url": "game/tropCoins/getCoinsParticle.png",
+			"type": "image",
+			"name": "getCoinsParticle_png"
+		},
+		{
+			"url": "game/tropCoins/getCoinsParticle.json",
+			"type": "json",
+			"name": "getCoinsParticle_json"
 		}
 	]
 }

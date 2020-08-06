@@ -1,6 +1,7 @@
 class AztecPharosSuper extends V2Game{
 
     protected pharosPattenTexts: Array<TextLabel>;
+    protected powerUpParticle: particle.GravityParticleSystem;
 
 	public constructor( gameConfigFile: string, configUrl: string, gameId: number ) {
 		super( gameConfigFile, configUrl, gameId );
