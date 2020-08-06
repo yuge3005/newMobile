@@ -161,10 +161,18 @@ class Turbo90 extends V2Game{
     protected getPaytablesFit( paytabledName: string, callback: Function = null ): void{
 		let soundName = "";
         switch (paytabledName) {
-            case "double line": soundName = "t90_double_line_mp3";break;
-            case "four corners": soundName = "t90_4corners_mp3";break;
-            case "bingo": soundName = "t90_bingo_mp3";break;
-            case "line": soundName = "t90_line_mp3"; break;
+            case "double line": soundName = "t90_double_line_mp3";
+                this.dropCoinsAt( 1036, 560 );
+                break;
+            case "four corners": soundName = "t90_4corners_mp3";
+                this.dropCoinsAt( 1036, 815 );
+                break;
+            case "bingo": soundName = "t90_bingo_mp3";
+                this.dropCoinsAt( 1036, 428 );
+                break;
+            case "line": soundName = "t90_line_mp3";
+                this.dropCoinsAt( 1036, 685 );
+                break;
             default: break;
         }
         if (SoundManager.soundOn && soundName !== "") {

@@ -946,6 +946,10 @@ class BingoMachine extends GameUIItem{
 		// override
 	}
 
+	protected dropCoinsAt( ptX: number, ptY: number ){
+		Com.addObjectAt(this, new DropCoins(), ptX - 100, ptY - 100 );
+	}
+
 /******************************************************************************************/
 
 	protected jackpotArea: JackpotLayer;

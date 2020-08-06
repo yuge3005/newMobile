@@ -69,23 +69,21 @@ class Pharos extends AztecPharosSuper{
 
     protected getPaytablesFit( paytabledName: string, callback: Function = null ): void{
 		let soundName = "";
-        this.powerUpParticle = new particle.GravityParticleSystem(RES.getRes("getCoinsParticle_png"), RES.getRes("getCoinsParticle_json"));
         switch (paytabledName) {
             case "one side": soundName = "pr_1side_mp3";
-                Com.addObjectAt(this, this.powerUpParticle, 346, 547 );
+                this.dropCoinsAt( 446, 647 );
                 break;
             case "two side": soundName = "pr_2side_mp3";
-                Com.addObjectAt(this, this.powerUpParticle, 346, 506 );
+                this.dropCoinsAt( 446, 606 );
                 break;
             case "bingo": soundName = "pr_bingo_mp3";
-                Com.addObjectAt(this, this.powerUpParticle, 346, 424 );
+                this.dropCoinsAt( 446, 524 );
                 break;
             case "three side": soundName = "pr_3side_mp3";
-                Com.addObjectAt(this, this.powerUpParticle, 346, 465 );
+                this.dropCoinsAt( 446, 565 );
                 break;
             default: break;
         }
-        this.powerUpParticle.start( 1000 );
         if (soundName !== "") {
             if( SoundManager.soundOn ){
                 this.playSound(soundName, 1, callback);
