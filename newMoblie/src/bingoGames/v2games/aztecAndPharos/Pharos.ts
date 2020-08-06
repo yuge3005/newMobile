@@ -85,7 +85,7 @@ class Pharos extends AztecPharosSuper{
                 break;
             default: break;
         }
-        this.powerUpParticle.start( 1200 );
+        this.powerUpParticle.start( 1000 );
         if (soundName !== "") {
             if( SoundManager.soundOn ){
                 this.playSound(soundName, 1, callback);

@@ -10,13 +10,13 @@
 ,"startRedVariance":0
 ,"tangentialAcceleration":0
 ,"maxRadiusVariance":30
-,"lifespan":1500
+,"lifespan":1000
 ,"blendFactorDestination":"oneMinusSourceAlpha"
 ,"minRadius":20
 ,"lifespanVariance":200
 ,"maxRadius":100
 ,"minRadiusVariance":10
-,"startSize":40
+,"startSize":50
 ,"rotatePerSecond":30
 ,"endAlpha":1
 ,"rotatePerSecondVariance":10
@@ -37,9 +37,9 @@
 ,"endRotation":263.58
 ,"emitAngle":180
 ,"endRotationVariance":292.07
-,"speed":40
+,"speed":60
 ,"endBlueVariance":0
-,"gravity":{"x":0,"y":250}
+,"gravity":{"x":0,"y":500}
 ,"speedVariance":10
 ,"maxParticles":100
 ,"emitter":{"x":100,"y":100}
