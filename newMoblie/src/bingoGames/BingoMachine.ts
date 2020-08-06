@@ -39,6 +39,7 @@ class BingoMachine extends GameUIItem{
 
 	public static soundManager: GameSoundManager;
 	protected soundManager: GameSoundManager;
+	protected ballRunforStop: boolean;
 
 	protected get cardNumbers(): number{
 		return this.cardPositions.length;
@@ -360,6 +361,7 @@ class BingoMachine extends GameUIItem{
 	}
 
 	public static endBallRunning(){
+		this.currentGame.ballRunforStop = false;
 		let breakChecked: boolean = this.currentGame.getResultListToCheck();
 		if( breakChecked ) return;
 
@@ -516,6 +518,7 @@ class BingoMachine extends GameUIItem{
 			this.currentGame.dispatchEvent( new egret.Event( "onGamePlay" ) );
 		}
 		else if( cmd == GameCommands.stop ){
+			this.currentGame.ballRunforStop = true;
 			this.currentGame.gameToolBar.enabledStopButton();
 			this.currentGame.ballArea.stopBallRunning();
 		}

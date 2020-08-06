@@ -103,7 +103,7 @@ class Turbo90 extends V2Game{
         super.showLastBall( ballIndex );
         this.showLastBallAt( ballIndex, 289, 68 );
 
-        this.playSound("t90_ball_mp3");
+        if( !this.ballRunforStop )this.playSound("t90_ball_mp3");
 	}
 
     protected showLastBallAt( ballIndex: number, x: number, y: number, scale: number = 1 ): void{

@@ -53,7 +53,7 @@ class Pharos extends AztecPharosSuper{
         super.showLastBall( ballIndex );
         super.showLastBallAt(ballIndex, 427, 16);
         
-        this.playSound("pr_ball_mp3");
+        if( !this.ballRunforStop )this.playSound("pr_ball_mp3");
         if (this.btExtra && (this.currentBallIndex === this.gratisNumber - 1)) this.playSound("pr_free_extra_ball_mp3");
 	}
 

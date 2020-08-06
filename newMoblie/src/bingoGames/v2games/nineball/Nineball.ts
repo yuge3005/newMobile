@@ -109,7 +109,7 @@ class Nineball extends V2Game{
         super.showLastBall( ballIndex );
         this.showLastBallAt(ballIndex, 46, 9);
         
-        this.playSound("nb_ball_mp3");
+        if( !this.ballRunforStop )this.playSound("nb_ball_mp3");
 	}
 
     protected showLastBallAt( ballIndex: number, x: number, y: number, scale: number = 1 ): void{
