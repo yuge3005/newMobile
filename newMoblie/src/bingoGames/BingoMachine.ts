@@ -182,8 +182,8 @@ class BingoMachine extends GameUIItem{
 		this.inited = true;
 		this.dispatchEvent( new egret.Event( BingoMachine.GENERIC_MODAL_LOADED ) );
 
-		this.scaleX = 960 / BingoBackGroundSetting.gameMask.width;
-		this.scaleY = 540 / BingoBackGroundSetting.gameMask.height;
+		this.scaleX = Main.gameSize.x / BingoBackGroundSetting.gameMask.width;
+		this.scaleY = Main.gameSize.y / BingoBackGroundSetting.gameMask.height;
 		this.mask = BingoBackGroundSetting.gameMask;
 
 		this._mcf = BingoBackGroundSetting.initBackground( this );
@@ -277,17 +277,18 @@ class BingoMachine extends GameUIItem{
 			this.preLoader = null;
 		}
 
-		this.loadMegaGroup();
+		this.loadOtherGroup();
 	}
 
-	private loadMegaGroup(){
-		if( !this.megaName ) return;
-		if( localStorage.getItem( this.megaName ) ) return;
-        else{
-            try{
-                RES.loadGroup( "megaForFirst_" + GlobelSettings.language );
-            }catch(e){}
-        }
+	private loadOtherGroup(){
+		RES.loadGroup( "generic" );
+		if( this.megaName ){
+			if( !localStorage.getItem( this.megaName ) ){
+				try{
+					RES.loadGroup( "megaForFirst_" + GlobelSettings.language );
+				}catch(e){}
+			}
+		}
 	}
 
 	protected initToolbar(){
@@ -1000,6 +1001,8 @@ class BingoMachine extends GameUIItem{
 		if( localStorage.getItem( this.megaName ) ) return;
 		else{
 			localStorage.setItem( this.megaName, "true" );
+			if( this.gameToolBar.autoPlaying ) this.gameToolBar.autoPlaying = false;
+			else if( this.gameToolBar.buyAllExtra ) this.gameToolBar.buyAllExtra = false;
 			let ev: egret.Event = new egret.Event( "megaFirst" );
 			ev.data = rect;
 			this.dispatchEvent( ev );

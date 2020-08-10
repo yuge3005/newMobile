@@ -15,6 +15,22 @@
 		{
 			"keys": "pr_1side_mp3,pr_2side_mp3,pr_3side_mp3,pr_acumulado_mp3,pr_ball_mp3,pr_bet_mp3,pr_bingo_mp3,pr_card_mp3,pr_collect_mp3,pr_drag_in_mp3,pr_drag_out_mp3,pr_extra_ball_mp3,pr_free_extra_ball_mp3,pr_have_extra_ball_mp3,pharos_json,pharosAnimation_png,pharosAnimation_json,pharos_conf,pharos_tx,aztec_filt,bingoGameToolbar_json,topbar_json,open_list_mp3,getCoinsParticle_png,getCoinsParticle_json",
 			"name": "pharos"
+		},
+		{
+			"keys": "megaForFirst_en_json",
+			"name": "megaForFirst_en"
+		},
+		{
+			"keys": "megaForFirst_es_json",
+			"name": "megaForFirst_es"
+		},
+		{
+			"keys": "megaForFirst_pt_json",
+			"name": "megaForFirst_pt"
+		},
+		{
+			"keys": "modalGeneric_json",
+			"name": "generic"
 		}
 	],
 	"resources": [
@@ -22,12 +38,6 @@
 			"url": "assets/sound/blank_sound.mp3",
 			"type": "sound",
 			"name": "blank_sound_mp3"
-		},
-		{
-			"url": "assets/jackpot_tooltip.json",
-			"type": "sheet",
-			"name": "jackpot_tooltip_json",
-			"subkeys": "tooltip_left,tooltip_right,tooltip_right_flipped"
 		},
 		{
 			"url": "assets/superLotto.json",
@@ -439,6 +449,30 @@
 			"url": "game/tropCoins/getCoinsParticle.json",
 			"type": "json",
 			"name": "getCoinsParticle_json"
+		},
+		{
+			"url": "assets/megaForFirstTime/megaForFirst_es.json",
+			"type": "sheet",
+			"name": "megaForFirst_es_json",
+			"subkeys": "dialog_es,doctor,firstMega_bg,light,megaball_es"
+		},
+		{
+			"url": "assets/megaForFirstTime/megaForFirst_en.json",
+			"type": "sheet",
+			"name": "megaForFirst_en_json",
+			"subkeys": "dialog_en,doctor,firstMega_bg,light,megaball_en"
+		},
+		{
+			"url": "assets/megaForFirstTime/megaForFirst_pt.json",
+			"type": "sheet",
+			"name": "megaForFirst_pt_json",
+			"subkeys": "dialog_pt,doctor,firstMega_bg,light,megaball_pt"
+		},
+		{
+			"url": "assets/modalGeneric.json",
+			"type": "sheet",
+			"name": "modalGeneric_json",
+			"subkeys": "closePopUpBtn1,closePopUpBtn2,loader"
 		}
 	]
 }

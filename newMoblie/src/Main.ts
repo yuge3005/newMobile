@@ -1,6 +1,9 @@
 class Main extends egret.DisplayObjectContainer {
 
     private currentGame: BingoMachine;
+	private currentPo: GenericPo;
+
+    public static gameSize: egret.Point = new egret.Point( 960, 540 );
 
     public constructor() {
         super();
@@ -106,8 +109,66 @@ class Main extends egret.DisplayObjectContainer {
 	}
 
     private showMegaFirst( event: egret.Event ){
+		this.showShadow();
+
         MegaForFirstTime.lastRect = event.data;
-        let po: GenericPo = new MegaForFirstTime;
-		this.addChild( po );
+        this.currentPo = new MegaForFirstTime;
+		if (this.currentPo.inited) this.addPo();
+		else this.currentPo.addEventListener( GenericModal.GENERIC_MODAL_LOADED, this.addPo, this );
     }
+
+    private shadow: egret.Shape;
+    private modalPreloader: egret.Bitmap;
+
+    private showShadow(){
+		if( !this.shadow ){
+			this.shadow = new egret.Shape;
+			GraphicTool.drawRect( this.shadow, new egret.Rectangle( 0, 0, Main.gameSize.x, Main.gameSize.y ), 0, false, 0.5 );
+			this.shadow.touchEnabled = true;
+		}
+		this.stage.addChild( this.shadow );
+
+		if( !this.modalPreloader ){
+			this.modalPreloader = Com.addBitmapAt( this.stage, "modalGeneric_json.loader", Main.gameSize.x >> 1, Main.gameSize.y >> 1 );
+			this.modalPreloader.anchorOffsetX = this.modalPreloader.width >> 1;
+			this.modalPreloader.anchorOffsetY = this.modalPreloader.height >> 1;
+		}
+		this.stage.addChild( this.modalPreloader );
+		this.modalPreloader.addEventListener( egret.Event.ENTER_FRAME, this.onLoadingAnimation, this, false );
+	}
+
+	private onLoadingAnimation(event: egret.Event) {
+		( event.currentTarget as egret.Bitmap ).rotation += 5;
+	}
+
+	private addPo( event:egret.Event = null ){
+		this.currentPo.x = Main.gameSize.x >> 1;
+		this.currentPo.y = Main.gameSize.y >> 1;
+		this.currentPo.scaleX = 0.2;
+		this.currentPo.scaleY = 0.2;
+		this.currentPo.addEventListener( GenericModal.CLOSE_MODAL, this.closeCurrentPo, this );
+		// this.currentPo.addEventListener( GenericModal.MODAL_COMMAND, this.onModalCommand, this );
+
+		this.stage.addChild( this.currentPo );
+		let tw: egret.Tween = egret.Tween.get( this.currentPo );
+		tw.to( {"scaleX": 1, "scaleY" : 1}, 300 );
+
+		this.modalPreloader.removeEventListener( egret.Event.ENTER_FRAME, this.onLoadingAnimation, this, false );
+		this.stage.removeChild( this.modalPreloader );
+	}
+
+	public closeCurrentPo() {
+		if (!this.currentPo) return;
+		let tw: egret.Tween = egret.Tween.get( this.currentPo );
+		tw.to( {"scaleX": 0.2, "scaleY" : 0.2}, 300 );
+		tw.call(function() {
+			this.stage.removeChild( this.currentPo );
+			this.stage.removeChild( this.shadow );
+		}, this);
+		tw.wait(100);
+		tw.call(function() {
+			this.currentPo = null;
+			// this.showFirstWaitingModal();
+		}, this);
+	}
 }
