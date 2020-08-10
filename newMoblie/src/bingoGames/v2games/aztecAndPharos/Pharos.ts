@@ -10,6 +10,7 @@ class Pharos extends AztecPharosSuper{
 
 	public constructor( assetsPath: string ) {
 		super( "pharos.conf", assetsPath, 42 );
+        this.megaName = "pharo_mega";
 
         TowerGrid.blink1PicName = "Image-262-1";
         TowerGrid.blink2PicName = "Image-264-1";
@@ -115,7 +116,7 @@ class Pharos extends AztecPharosSuper{
             this.gameToolBar.megeExtraOnTop( true );
             this.runningBallContainer.addChild( this.superExtraBg );
 
-            this.tryFirstMega( new egret.Rectangle( 212, 157, 95, 77 ) );
+            this.tryFirstMega( new egret.Rectangle( 74, 85, 88, 88 ) );
         }
     }
     
