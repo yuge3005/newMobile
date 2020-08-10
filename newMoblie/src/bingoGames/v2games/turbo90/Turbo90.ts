@@ -12,6 +12,7 @@ class Turbo90 extends V2Game{
 		super( "turbo90.conf", assetsPath, 39 );
         this.ptFilterConfig = "turbo90_filt";
         this.languageObjectName = "turbo90_tx";
+        this.megaName = "turbo90_mega";
 
         PaytableUI.textBold = true;
 
@@ -199,7 +200,7 @@ class Turbo90 extends V2Game{
             this.superExtraBg.visible = true;
             this.gameToolBar.megeExtraOnTop( true );
 
-            this.tryFirstMega( "turbo90_mega", new egret.Rectangle( 287, 196, 45, 45 ) );
+            this.tryFirstMega( new egret.Rectangle( 287, 196, 45, 45 ) );
         }
     }
     
@@ -220,16 +221,6 @@ class Turbo90 extends V2Game{
 	protected changeNumberSound(): void {
 		this.playSound("t90_card_mp3");
 	}
-
-    protected onServerData( data: Object ){
-        super.onServerData( data );
-        if( localStorage.getItem( "turbo90_mega" ) ) return;
-        else{
-            try{
-                // RES.loadGroup( "megaForFirst_" + GlobelSettings.language );
-            }catch(e){}
-        }
-    }
 
     protected addPayTables(){
         this.addPayTableWinBg();

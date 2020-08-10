@@ -12,6 +12,7 @@ class BingoMachine extends GameUIItem{
 	protected ptFilterConfig: string;
 	protected _mcf: egret.MovieClipDataFactory;
 	protected languageObjectName: string;
+	protected megaName: string;
 
 	protected ballArea: BallManager;
 	protected cardArea: egret.DisplayObjectContainer;
@@ -275,6 +276,18 @@ class BingoMachine extends GameUIItem{
 			loader.parent.removeChild( loader );
 			this.preLoader = null;
 		}
+
+		this.loadMegaGroup();
+	}
+
+	private loadMegaGroup(){
+		if( !this.megaName ) return;
+		if( localStorage.getItem( this.megaName ) ) return;
+        else{
+            try{
+                RES.loadGroup( "megaForFirst_" + GlobelSettings.language );
+            }catch(e){}
+        }
 	}
 
 	protected initToolbar(){
@@ -982,10 +995,11 @@ class BingoMachine extends GameUIItem{
 		this.setChildIndex( this.superExtraBg, this.getChildIndex( this.ballArea ) );
 	}
 
-	protected tryFirstMega( name: string, rect: egret.Rectangle ){
-		if( localStorage.getItem( name ) ) return;
+	protected tryFirstMega( rect: egret.Rectangle ){
+		if( !this.megaName ) return;
+		if( localStorage.getItem( this.megaName ) ) return;
 		else{
-			localStorage.setItem( name, "true" );
+			localStorage.setItem( this.megaName, "true" );
 			let ev: egret.Event = new egret.Event( "megaFirst" );
 			ev.data = rect;
 			this.dispatchEvent( ev );

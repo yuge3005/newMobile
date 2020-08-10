@@ -12,6 +12,7 @@ class Nineball extends V2Game{
         super( "nineball.conf", assetsPath, 38 );
         this.ptFilterConfig = "nineball_filt";
         this.languageObjectName = "nineball_tx";
+        this.megaName = "nineball_mega";
 
         PaytableUI.textBold = true;
 
@@ -230,7 +231,7 @@ class Nineball extends V2Game{
             this.superExtraBg.visible = true;
             this.gameToolBar.megeExtraOnTop( true );
 
-            this.tryFirstMega( "nineball_mega", new egret.Rectangle( 318, 150, 67, 67 ) );
+            this.tryFirstMega( new egret.Rectangle( 318, 150, 67, 67 ) );
         }
     }
     
@@ -251,16 +252,6 @@ class Nineball extends V2Game{
 	protected changeNumberSound(): void {
 		this.playSound("nb_card_mp3");
 	}
-        
-    protected onServerData( data: Object ){
-        super.onServerData( data );
-        if( localStorage.getItem( "nineball_mega" ) ) return;
-        else{
-            try{
-                // RES.loadGroup( "megaForFirst_" + GlobelSettings.language );
-            }catch(e){}
-        }
-    }
 
     protected addPayTables(){
         this.addPayTableWinBg();
