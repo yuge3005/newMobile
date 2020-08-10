@@ -71,7 +71,7 @@ class Main extends egret.DisplayObjectContainer {
 		if( this.currentGame.inited )this.addGame();
 		else{
             const loadingView = new LoadingUI();
-            this.stage.addChild(loadingView);
+            this.addChild(loadingView);
             this.currentGame.preLoader = loadingView;
             this.currentGame.addEventListener( BingoMachine.GENERIC_MODAL_LOADED, this.addGame, this );
             this.currentGame.addEventListener("megaFirst", this.showMegaFirst, this);
@@ -83,8 +83,8 @@ class Main extends egret.DisplayObjectContainer {
         let stageH = this.stage.stageHeight;
         let isMobile: boolean = stageW < stageH;
         if( isMobile ){
-            this.currentGame.x = stageW;
-            this.currentGame.rotation = 90;
+            this.x = stageW;
+            this.rotation = 90;
         }
 		this.addChild( this.currentGame );
 		document.addEventListener("keydown", this.keyDown.bind(this) );
@@ -126,14 +126,14 @@ class Main extends egret.DisplayObjectContainer {
 			GraphicTool.drawRect( this.shadow, new egret.Rectangle( 0, 0, Main.gameSize.x, Main.gameSize.y ), 0, false, 0.5 );
 			this.shadow.touchEnabled = true;
 		}
-		this.stage.addChild( this.shadow );
+		this.addChild( this.shadow );
 
 		if( !this.modalPreloader ){
-			this.modalPreloader = Com.addBitmapAt( this.stage, "modalGeneric_json.loader", Main.gameSize.x >> 1, Main.gameSize.y >> 1 );
+			this.modalPreloader = Com.addBitmapAt( this, "modalGeneric_json.loader", Main.gameSize.x >> 1, Main.gameSize.y >> 1 );
 			this.modalPreloader.anchorOffsetX = this.modalPreloader.width >> 1;
 			this.modalPreloader.anchorOffsetY = this.modalPreloader.height >> 1;
 		}
-		this.stage.addChild( this.modalPreloader );
+		this.addChild( this.modalPreloader );
 		this.modalPreloader.addEventListener( egret.Event.ENTER_FRAME, this.onLoadingAnimation, this, false );
 	}
 
@@ -149,12 +149,12 @@ class Main extends egret.DisplayObjectContainer {
 		this.currentPo.addEventListener( GenericModal.CLOSE_MODAL, this.closeCurrentPo, this );
 		// this.currentPo.addEventListener( GenericModal.MODAL_COMMAND, this.onModalCommand, this );
 
-		this.stage.addChild( this.currentPo );
+		this.addChild( this.currentPo );
 		let tw: egret.Tween = egret.Tween.get( this.currentPo );
 		tw.to( {"scaleX": 1, "scaleY" : 1}, 300 );
 
 		this.modalPreloader.removeEventListener( egret.Event.ENTER_FRAME, this.onLoadingAnimation, this, false );
-		this.stage.removeChild( this.modalPreloader );
+		this.removeChild( this.modalPreloader );
 	}
 
 	public closeCurrentPo() {
@@ -162,8 +162,8 @@ class Main extends egret.DisplayObjectContainer {
 		let tw: egret.Tween = egret.Tween.get( this.currentPo );
 		tw.to( {"scaleX": 0.2, "scaleY" : 0.2}, 300 );
 		tw.call(function() {
-			this.stage.removeChild( this.currentPo );
-			this.stage.removeChild( this.shadow );
+			this.removeChild( this.currentPo );
+			this.removeChild( this.shadow );
 		}, this);
 		tw.wait(100);
 		tw.call(function() {
