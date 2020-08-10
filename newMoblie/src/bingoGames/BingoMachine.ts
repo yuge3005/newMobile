@@ -981,4 +981,14 @@ class BingoMachine extends GameUIItem{
 		this.superExtraBg.visible = false;
 		this.setChildIndex( this.superExtraBg, this.getChildIndex( this.ballArea ) );
 	}
+
+	protected tryFirstMega( name: string, rect: egret.Rectangle ){
+		if( localStorage.getItem( name ) ) return;
+		else{
+			localStorage.setItem( name, "true" );
+			let ev: egret.Event = new egret.Event( "megaFirst" );
+			ev.data = rect;
+			this.dispatchEvent( ev );
+		}
+	}
 }

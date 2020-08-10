@@ -230,13 +230,7 @@ class Nineball extends V2Game{
             this.superExtraBg.visible = true;
             this.gameToolBar.megeExtraOnTop( true );
 
-            if( localStorage.getItem( "nineball_mega" ) ) return;
-            else{
-                localStorage.setItem( "nineball_mega", "true" );
-                let ev: egret.Event = new egret.Event( "megaFirst" );
-                ev.data = new egret.Rectangle( 318, 150, 67, 67 );
-                this.dispatchEvent( ev );
-            }
+            this.tryFirstMega( "nineball_mega", new egret.Rectangle( 318, 150, 67, 67 ) );
         }
     }
     

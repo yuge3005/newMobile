@@ -199,13 +199,7 @@ class Turbo90 extends V2Game{
             this.superExtraBg.visible = true;
             this.gameToolBar.megeExtraOnTop( true );
 
-            if( localStorage.getItem( "turbo90_mega" ) ) return;
-            else{
-                localStorage.setItem( "turbo90_mega", "true" );
-                let ev: egret.Event = new egret.Event( "megaFirst" );
-                ev.data = new egret.Rectangle( 287, 196, 45, 45 );
-                this.dispatchEvent( ev );
-            }
+            this.tryFirstMega( "turbo90_mega", new egret.Rectangle( 287, 196, 45, 45 ) );
         }
     }
     

@@ -39,7 +39,7 @@ class Main extends egret.DisplayObjectContainer {
      * Create a game scene
      */
     private createGameScene() {
-        this.showGame( "Pharos", "bin-debug/bingoGames/Pharos.js", "resource/default.res.json" );
+        this.showGame( "Nineball", "bin-debug/bingoGames/Nineball.js", "resource/default.res.json" );
 		IBingoServer.serverInit();
     }
 
@@ -71,6 +71,7 @@ class Main extends egret.DisplayObjectContainer {
             this.stage.addChild(loadingView);
             this.currentGame.preLoader = loadingView;
             this.currentGame.addEventListener( BingoMachine.GENERIC_MODAL_LOADED, this.addGame, this );
+            this.currentGame.addEventListener("megaFirst", this.showMegaFirst, this);
         }
 	}
 
@@ -103,4 +104,10 @@ class Main extends egret.DisplayObjectContainer {
 			}
 		}
 	}
+
+    private showMegaFirst( event: egret.Event ){
+        MegaForFirstTime.lastRect = event.data;
+        let po: GenericPo = new MegaForFirstTime;
+		this.addChild( po );
+    }
 }

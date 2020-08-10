@@ -115,13 +115,7 @@ class Pharos extends AztecPharosSuper{
             this.gameToolBar.megeExtraOnTop( true );
             this.runningBallContainer.addChild( this.superExtraBg );
 
-            if( localStorage.getItem( "pharo_mega" ) ) return;
-            else{
-                localStorage.setItem( "pharo_mega", "true" );
-                let ev: egret.Event = new egret.Event( "megaFirst" );
-                ev.data = new egret.Rectangle( 212, 157, 95, 77 );
-                this.dispatchEvent( ev );
-            }
+            this.tryFirstMega( "pharo_mega", new egret.Rectangle( 212, 157, 95, 77 ) );
         }
     }
     
