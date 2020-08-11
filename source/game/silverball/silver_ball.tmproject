@@ -1,0 +1,21 @@
+{
+    "options": {
+        "useExtension": 0,
+        "layoutGap": 1,
+        "extend": 0,
+        "layoutMath": "0",
+        "sizeMode": "free"
+    },
+    "files": [
+        "./BOLA_small.png",
+        "./BOLA.png",
+        "./bg.png",
+        "./table.png",
+        "./Mark_Orange.png",
+        "./Mark_Blue.png",
+        "./jackpot_lock.png",
+        "./image390.png"
+    ],
+    "version": 5,
+    "projectName": "silver_ball"
+}
