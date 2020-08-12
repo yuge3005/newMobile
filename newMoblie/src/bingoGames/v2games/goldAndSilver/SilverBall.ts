@@ -23,7 +23,9 @@ class SilverBall extends GoldSilverSuper{
         GameCard.texColor = 0xFFFFFF;
 
         CardGrid.defaultBgColor = 0xE9E9E9;
-        CardGrid.defaultNumberSize = 23;
+        CardGrid.defaultNumberSize = 52;
+
+        BallManager.ballOffsetY = 10;
 
         CardGrid.blinkColors1 = 0xC4770D;
 	    CardGrid.blinkColors2 = 0xE9E9E9;
@@ -48,21 +50,20 @@ class SilverBall extends GoldSilverSuper{
         this.betText.textAlign = "right";
         this.creditText = this.addGameText(580, 111, 18, 0xF9CC15, "credit", false, 200);
         this.creditText.textAlign = "right";
+
+        let mc: egret.MovieClip = this.getChildByName( "silver_ball_json.silverball" ) as egret.MovieClip;
+        mc.scaleX = mc.scaleY = 1.3;
+        mc.x = 790;
+        mc.y = 25;
     }
 
     protected showExtraUI( show: boolean = true ){
-        if( this.extraUIObject ){
-            let tw: egret.Tween = egret.Tween.get( this.extraUIObject );
-            if( !show )tw.to( { x: 312, y: 15, scaleX: 1, scaleY: 1 }, 500 );
-            else{
-                tw.to( { x: 332, y: 38, scaleX: 0.70, scaleY: 0.70 }, 500 );
-            }
-        }
+        // do nothing
     }
 
     protected showLastBall( ballIndex: number ): void{
         super.showLastBall( ballIndex );
-        super.showLastBallAt(ballIndex, 0, 0);
+        super.showLastBallAt(ballIndex, 0, 0, 23/13 );
         
         this.playSound("slb_ball_wav");
 	}
