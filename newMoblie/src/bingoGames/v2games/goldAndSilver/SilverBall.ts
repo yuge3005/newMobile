@@ -38,23 +38,22 @@ class SilverBall extends GoldSilverSuper{
     protected init() {
         super.init();
 
-        let bingo = this.addGameText(22, 9, 18, 0xF9CC15, "bingo", false, 120);
-        let double = this.addGameText(22, 30, 18, 0xF9CC15, "double", false, 120);
-        let line = this.addGameText(22, 51, 18, 0xF9CC15, "line", false, 120);
+        let bingo = this.addGameText(242, 30, 33, 0xF9CC15, "bingo", false, 170);
+        let double = this.addGameText(242, 70, 33, 0xF9CC15, "double", false, 170);
+        let line = this.addGameText(242, 110, 33, 0xF9CC15, "line", false, 170);
 
-        this.addGameText(22, 80, 18, 0x585858, "extraball", false, 120);
-        this.addGameText(22, 111, 18, 0xF9CC15, "bet", false, 120);
-        this.addGameText(522, 111, 18, 0xF9CC15, "credit", false, 120);
+        this.addGameText(242, 170, 33, 0x585858, "extraball", false, 170);
+        this.addGameText(242, 235, 33, 0xF9CC15, "bet", false, 170);
 
-        this.betText = this.addGameText(116, 111, 18, 0xF9CC15, "bet", false, 150);
+        this.betText = this.addGameText(400, 235, 33, 0xF9CC15, "bet", false, 250, "", 0.9 );
         this.betText.textAlign = "right";
-        this.creditText = this.addGameText(580, 111, 18, 0xF9CC15, "credit", false, 200);
-        this.creditText.textAlign = "right";
+        this.creditText = this.addGameText(1370, 235, 33, 0xF9CC15, "credit", false, 378, "", 1 );
+        this.creditText.textAlign = "center";
 
         let mc: egret.MovieClip = this.getChildByName( "silver_ball_json.silverball" ) as egret.MovieClip;
         mc.scaleX = mc.scaleY = 1.3;
         mc.x = 790;
-        mc.y = 25;
+        mc.y = 15;
     }
 
     protected showExtraUI( show: boolean = true ){
@@ -65,12 +64,12 @@ class SilverBall extends GoldSilverSuper{
         super.showLastBall( ballIndex );
         super.showLastBallAt(ballIndex, 0, 0, 23/13 );
         
-        this.playSound("slb_ball_wav");
+        this.playSound("slb_ball_mp3");
 	}
 
 /******************************************************************************************************************************************************************/
     protected showJackpot( jackpot: number, jackpotMinBet: number, betConfig: Array<Object> ){
-        this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 527, 10 ), jackpot, jackpotMinBet, betConfig, new egret.Point( -20, -6 ), new egret.Rectangle( 0, 35, 200, 22 ), 20, 0x00FF00, new egret.Rectangle( 0, 0, 200, 26 ), 24, 0x00FF00 ) );
+        this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 1355, 27 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 0, 4 ), new egret.Rectangle( 0, 79, 414, 41 ), 37, 0x00FF00, new egret.Rectangle( 20, 0, 374, 79 ), 56, 0x00FF00, true ) );
     }
 
     protected getPaytablesFit( paytabledName: string, callback: Function = null ): void{
@@ -93,7 +92,7 @@ class SilverBall extends GoldSilverSuper{
 	}
 
     protected hasExtraBallFit(): void {
-        this.stopSound("slb_ball_wav");
+        this.stopSound("slb_ball_mp3");
         if (this.firstHaveExtraBall) {
             this.firstHaveExtraBall = false;
             this.playSound("slb_have_extra_ball_wav");
@@ -102,7 +101,7 @@ class SilverBall extends GoldSilverSuper{
     
     protected roundOver(): void {
         super.roundOver();
-        this.stopSound("slb_ball_wav");
+        this.stopSound("slb_ball_mp3");
     }
 
 	protected getExtraBallFit(): void {
