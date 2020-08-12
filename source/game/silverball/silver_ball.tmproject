@@ -1,21 +1,22 @@
 {
-    "options": {
-        "useExtension": 0,
-        "layoutGap": 1,
-        "extend": 0,
-        "layoutMath": "0",
-        "sizeMode": "free"
-    },
     "files": [
-        "./BOLA_small.png",
+        "./jackpot_lock.png",
         "./BOLA.png",
         "./bg.png",
         "./table.png",
+        "./Mark_White.png",
+        "./Mark_Red.png",
         "./Mark_Orange.png",
-        "./Mark_Blue.png",
-        "./jackpot_lock.png",
-        "./image390.png"
+        "./Mark_Green.png",
+        "./Mark_Blue.png"
     ],
+    "projectName": "silver_ball",
     "version": 5,
-    "projectName": "silver_ball"
+    "options": {
+        "extend": 0,
+        "layoutMath": "0",
+        "sizeMode": "free",
+        "useExtension": 0,
+        "layoutGap": 1
+    }
 }
