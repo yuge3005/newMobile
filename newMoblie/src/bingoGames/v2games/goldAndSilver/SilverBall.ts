@@ -18,8 +18,8 @@ class SilverBall extends GoldSilverSuper{
         TowerGrid.onEffBgPicName = "Mark_Blue";
         TowerGrid.linePicName = "Mark_Red";
 
-        GameCard.cardTextRect = new egret.Rectangle( 15, 6, 220, 35 );
-        GameCard.betTextRect = new egret.Rectangle( 120, 6, 340, 35 );
+        GameCard.cardTextRect = new egret.Rectangle( 30, 25, 220, 35 );
+        GameCard.betTextRect = new egret.Rectangle( 300, 25, 340, 35 );
         GameCard.texColor = 0xFFFFFF;
 
         CardGrid.defaultBgColor = 0xE9E9E9;
