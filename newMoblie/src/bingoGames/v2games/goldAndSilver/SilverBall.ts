@@ -7,6 +7,8 @@ class SilverBall extends GoldSilverSuper{
 		return "silver_animation";
 	}
 
+    private extraPriceText: TextLabel;
+
     public constructor(assetsPath: string) {
         super("silver_ball.conf", assetsPath, 49 );
 
@@ -31,7 +33,7 @@ class SilverBall extends GoldSilverSuper{
 	    CardGrid.blinkColors2 = 0xE9E9E9;
 
         this.needListenToolbarStatus = true;
-        this.tipStatusTextPosition = new egret.Rectangle( 512, 80, 288, 18 );
+        this.tipStatusTextPosition = new egret.Rectangle( 1375, 164, 374 * 1.25, 48 );
         this.tipStatusTextColor = 0xF9CC15;
     }
 
@@ -42,7 +44,7 @@ class SilverBall extends GoldSilverSuper{
         let double = this.addGameText(242, 70, 33, 0xF9CC15, "double", false, 170);
         let line = this.addGameText(242, 110, 33, 0xF9CC15, "line", false, 170);
 
-        this.addGameText(242, 170, 33, 0x585858, "extraball", false, 170);
+        this.addGameText(242, 170, 33, 0xF9CC15, "extraball", false, 170);
         this.addGameText(242, 235, 33, 0xF9CC15, "bet", false, 170);
 
         this.betText = this.addGameText(400, 235, 33, 0xF9CC15, "bet", false, 250, "", 0.9 );
@@ -50,10 +52,20 @@ class SilverBall extends GoldSilverSuper{
         this.creditText = this.addGameText(1370, 235, 33, 0xF9CC15, "credit", false, 378, "", 1 );
         this.creditText.textAlign = "center";
 
+        this.extraPriceText = this.addGameText(400, 170, 33, 0xF9CC15, "extraball", false, 250, "", 0.9 );
+        this.extraPriceText.textAlign = "right";
+        this.extraPriceText.text = "";
+
         let mc: egret.MovieClip = this.getChildByName( "silver_ball_json.silverball" ) as egret.MovieClip;
         mc.scaleX = mc.scaleY = 1.3;
         mc.x = 790;
         mc.y = 15;
+    }
+
+    protected onServerData( data: Object ){
+        super.onServerData( data );
+        this.tipStatusText.maxSize = this.tipStatusText.size = 35;
+        this.tipStatusText.verticalAlign = "middle";
     }
 
     protected showExtraUI( show: boolean = true ){
@@ -66,6 +78,17 @@ class SilverBall extends GoldSilverSuper{
         
         this.playSound("slb_ball_mp3");
 	}
+
+    protected tipStatus( e: egret.Event, textDoubleLine: boolean = false ): void{
+        super.tipStatus( e, textDoubleLine );
+        if( e["status"] == GameCommands.extra ){
+            let extraStr: string = "";
+            if( e["extraPrice"] ) extraStr += Utils.formatCoinsNumber( e["extraPrice"] );
+            else extraStr += MuLang.getText("free");
+            this.extraPriceText.setText( extraStr );
+        }
+        else this.extraPriceText.text = "";
+    }
 
 /******************************************************************************************************************************************************************/
     protected showJackpot( jackpot: number, jackpotMinBet: number, betConfig: Array<Object> ){

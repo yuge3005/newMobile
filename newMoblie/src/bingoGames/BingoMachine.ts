@@ -64,7 +64,7 @@ class BingoMachine extends GameUIItem{
 	protected needSmallWinTimesOnCard: boolean;
 
 	protected needListenToolbarStatus: boolean;
-	protected tipStatusText: egret.TextField;
+	protected tipStatusText: TextLabel;
 	protected tipStatusTextPosition: egret.Rectangle;
 	protected tipStatusTextColor: number;
 	protected prizeText: egret.TextField;
@@ -304,9 +304,8 @@ class BingoMachine extends GameUIItem{
 	}
 
 	protected listenToGameToolbarStatus(): void{
-		let gameToolbar: BingoGameToolbar = this["gameToolBar"];
-		gameToolbar.addEventListener( "winChange", this.winChange, this );
-		gameToolbar.addEventListener( "tipStatus", this.tipStatus, this );
+		this.gameToolBar.addEventListener( "winChange", this.winChange, this );
+		this.gameToolBar.addEventListener( "tipStatus", this.tipStatus, this );
 
 		if( this.tipStatusTextPosition ){
 			let rect: egret.Rectangle = this.tipStatusTextPosition;
@@ -324,9 +323,9 @@ class BingoMachine extends GameUIItem{
 			case GameCommands.extra:
 				let extraStr: string = MuLang.getText("extra ball");
 				extraStr += textDoubleLine ? "\r\n" : ": ";
-                if( e["extraPrice"] ) extraStr += Utils.formatCoinsNumber( e["extraPrice"] ) + ( textDoubleLine ? "" : " " + MuLang.getText("credits") );
+                if( e["extraPrice"] ) extraStr += Utils.formatCoinsNumber( e["extraPrice"] );
 				else extraStr += MuLang.getText("free");
-				this.tipStatusText.text = extraStr;
+				this.tipStatusText.setText( extraStr );
                 this.lockWinTip = true;
                 setTimeout( () => { this.lockWinTip = false }, 10 );
 			    break;

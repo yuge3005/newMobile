@@ -149,7 +149,7 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 		this.allButtons.push( this.playBtn );
 		this.addButtonText( this.playBtn, 72, "play", 15, 0, 0xFFFFFF, this.playBtn.width - 30, 125, 4, 0x000093 );
 		this.addButtonText( this.playBtn, 35, "hold for auto", 15, 100, 0xFFFFFF, this.playBtn.width - 30, 70, 1, 0x000093 );
-		this.playBtn.longPressSetting( 3000, this.startAuto.bind( this ) );
+		this.playBtn.longPressSetting( 1000, this.startAuto.bind( this ) );
 	}
 
 	private createTexts(){
