@@ -93,14 +93,16 @@ class SilverBall extends GoldSilverSuper{
     protected sendRoundOverRequest(){
 		super.sendRoundOverRequest();
 
-        let lastBall: egret.Sprite = this.ballArea.getChildAt( this.ballArea.numChildren - 1 ) as egret.Sprite;
-        egret.Tween.removeTweens(lastBall);
-        TweenerTool.tweenTo( lastBall, { x: 963, y: 305 }, 20 );
+        if( this.firstHaveExtraBall ){//此处用是否发生过extraball来判断，是否是没有extraball就roundover了
+            let lastBall: egret.Sprite = this.ballArea.getChildAt( this.ballArea.numChildren - 1 ) as egret.Sprite;
+            egret.Tween.removeTweens(lastBall);
+            TweenerTool.tweenTo( lastBall, { x: 963, y: 305 }, 20 );
+        }
 	}
 
 /******************************************************************************************************************************************************************/
     protected showJackpot( jackpot: number, jackpotMinBet: number, betConfig: Array<Object> ){
-        this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 1355, 27 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 0, 4 ), new egret.Rectangle( 0, 79, 414, 41 ), 37, 0x00FF00, new egret.Rectangle( 20, 0, 374, 79 ), 56, 0x00FF00, true ) );
+        this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 1355, 27 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 3, 4 ), new egret.Rectangle( 0, 79, 414, 41 ), 37, 0x00FF00, new egret.Rectangle( 20, 0, 374, 79 ), 56, 0x00FF00, true ) );
     }
 
     protected getPaytablesFit( paytabledName: string, callback: Function = null ): void{
