@@ -33,7 +33,7 @@ class GameToolbarMaskButton extends TouchDownButton{
 		let txt: TextLabel = Com.addLabelAt( this.scrollLayer, 10, 0, this.width - 20, this.mask.height, size );
 		txt.fontFamily = "Righteous";
 		txt.textColor = this.textColor;
-		txt.setText( MuLang.getText(text) );
+		txt.setText( MuLang.getText(text, MuLang.CASE_UPPER) );
 		return txt;
 	}
 
