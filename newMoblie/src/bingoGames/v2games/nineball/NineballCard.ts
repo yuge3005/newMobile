@@ -28,4 +28,9 @@ class NineballCard extends GameCard{
 		this.addChild( grid );
 		return grid;
 	}
+
+	public blinkAt( index: number ){
+		super.blinkAt( index );
+		this.grids[index]["numTxt"].textColor = CardGrid.numberColorOnEffect
+	}
 }
