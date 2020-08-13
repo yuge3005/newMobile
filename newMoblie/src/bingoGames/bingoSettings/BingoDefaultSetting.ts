@@ -7,10 +7,6 @@ class BingoDefaultSetting {
 	 */
 	public static defaultSetting(): void{
 		CardManager.cardDefaultSettings();
-		PaytableUI.effectWithBg = null;
-		PaytableUI.effectForMenton = null;
-		PaytableUI.textBold = false;
-		PaytableUI.textLeft = false;
 		PaytableUI.focusColor = 0xFFFF88;
 		CardGrid.winTimesOffset = new egret.Point;
 

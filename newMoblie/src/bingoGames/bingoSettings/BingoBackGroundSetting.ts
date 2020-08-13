@@ -62,11 +62,9 @@ class BingoBackGroundSetting{
 	public static set defaultScale( value: boolean ){
 		if( value ){
 			BingoBackGroundSetting.gameScale = new egret.Point( 151 / 160, 0.77 );
-			BingoBackGroundSetting.gameMask = new egret.Rectangle( 0, 0, 800, 780 );
 		}
 		else{//unScale
 			BingoBackGroundSetting.gameScale = new egret.Point( 1, 1 );
-			BingoBackGroundSetting.gameMask = new egret.Rectangle( 0, 0, 755, 600 );
 		}
 	}
 }
