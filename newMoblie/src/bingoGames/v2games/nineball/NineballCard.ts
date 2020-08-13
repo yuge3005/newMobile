@@ -22,15 +22,10 @@ class NineballCard extends GameCard{
 	}
 
 	protected createGrid( gridIndex: number ): CardGrid{
-		let grid: CardGrid = new NineballGrid;
+		let grid: CardGrid = new TowerGrid;
 		grid.x = ( gridIndex % GameCard.gridNumbers.x ) * CardGrid.gridSpace.x + 2;
 		grid.y = Math.floor( gridIndex / GameCard.gridNumbers.x ) * CardGrid.gridSpace.y + 2;
 		this.addChild( grid );
 		return grid;
-	}
-
-	public blinkAt( index: number ){
-		super.blinkAt( index );
-		this.grids[index]["numTxt"].textColor = CardGrid.numberColorOnEffect
 	}
 }

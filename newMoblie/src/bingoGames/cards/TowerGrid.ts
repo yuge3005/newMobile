@@ -29,6 +29,7 @@ class TowerGrid extends CardGrid{
 		if( this._blink == value )return;
 		this._blink = value;
 		if( !value )this.currentBgPic = this.defaultBgPic;
+		else this.numTxt.textColor = CardGrid.numberColorOnEffect;
 	}
 
 	public constructor() {

@@ -18,7 +18,6 @@ class Nineball extends V2Game{
         PaytableUI.needBlick = false;
 
         CardManager.cardType = NineballCard;
-        CardManager.gridType = NineballGrid;
 
         TowerGrid.blink1PicName = "card_number_fill_red";
         TowerGrid.blink2PicName = "card_number_fill_green";
