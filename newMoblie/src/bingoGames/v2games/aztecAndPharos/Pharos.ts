@@ -103,8 +103,6 @@ class Pharos extends AztecPharosSuper{
             this.firstHaveExtraBall = false;
             this.playSound("pr_have_extra_ball_mp3");
             this.showFreeExtraPosition();
-            this.gratisUI.x -= 11;
-            this.gratisUI.y -= 11;
         }
 
         if( this.isMegaBall ){
