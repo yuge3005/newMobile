@@ -295,7 +295,7 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 				ev["status"] = "extra";
 				ev["extraPrice"] = price;
 				this.dispatchEvent( ev );
-				if( price ) this.showCoinsIconAt( price );
+				this.showCoinsIconAt( price );
 			break;
 			default:
 				ev["status"] = "ready";

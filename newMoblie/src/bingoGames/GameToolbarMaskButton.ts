@@ -3,6 +3,8 @@ class GameToolbarMaskButton extends TouchDownButton{
 	private maskBit: egret.Bitmap;
 	private scrollLayer: egret.DisplayObjectContainer;
 	private priceText: TextLabel;
+	private freeText: TextLabel;
+	private icon: egret.Bitmap;
 
 	private stayTime: number = 2500;
 	private moveTime: number = 800;
@@ -38,12 +40,15 @@ class GameToolbarMaskButton extends TouchDownButton{
 	public addButtonSmallText( size: number ){
 		this.priceText = this.buildBigText( size, "" );
 		this.priceText.y = -150;
+		this.freeText = this.buildBigText( size, "free" );
+		this.freeText.y = -175;
+		this.freeText.visible = false;
 	}
 
 	public setIcon( assetName: string ){
-		let icon: egret.Bitmap = Com.addBitmapAt( this.scrollLayer, "bingoGameToolbar_json." + assetName, 0, 0 );
-		icon.x = this.maskBit.width - icon.width >> 1;
-		icon.y = -87 - icon.height;
+		this.icon = Com.addBitmapAt( this.scrollLayer, "bingoGameToolbar_json." + assetName, 0, 0 );
+		this.icon.x = this.maskBit.width - this.icon.width >> 1;
+		this.icon.y = -87 - this.icon.height;
 	}
 
 	public setPrice( price: number ){
@@ -51,6 +56,8 @@ class GameToolbarMaskButton extends TouchDownButton{
 		egret.Tween.removeTweens( this.scrollLayer );
 		this.scrollLayer.y = 0;
 		TweenerTool.tweenTo( this.scrollLayer, { y: this.maskBit.height }, this.moveTime, this.stayTime, this.extraStep1.bind(this), null, egret.Ease.backInOut );
+		this.icon.visible = this.priceText.visible = price > 0;
+		this.freeText.visible = !this.icon.visible;
 	}
 
 	private extraStep1(){
