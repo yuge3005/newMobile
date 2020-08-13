@@ -90,6 +90,14 @@ class SilverBall extends GoldSilverSuper{
         else this.extraPriceText.text = "";
     }
 
+    protected sendRoundOverRequest(){
+		super.sendRoundOverRequest();
+
+        let lastBall: egret.Sprite = this.ballArea.getChildAt( this.ballArea.numChildren - 1 ) as egret.Sprite;
+        egret.Tween.removeTweens(lastBall);
+        TweenerTool.tweenTo( lastBall, { x: 963, y: 305 }, 20 );
+	}
+
 /******************************************************************************************************************************************************************/
     protected showJackpot( jackpot: number, jackpotMinBet: number, betConfig: Array<Object> ){
         this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 1355, 27 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 0, 4 ), new egret.Rectangle( 0, 79, 414, 41 ), 37, 0x00FF00, new egret.Rectangle( 20, 0, 374, 79 ), 56, 0x00FF00, true ) );
@@ -136,6 +144,22 @@ class SilverBall extends GoldSilverSuper{
 	}
 
 	protected changeNumberSound(): void {
-		this.playSound("slb_crad_wav");
+		this.playSound("slb_crad_mp3");
+	}
+
+    protected addPayTables(){
+		super.addPayTables();
+
+        let pts: Object = PayTableManager.payTablesDictionary;
+        for( let payTable in pts ){
+			let pos: Object = pts[payTable].position;
+            let y: number = pos["y"];
+            y = Math.floor( y / 40) * 40 + 30;
+			pts[payTable].UI.y = y;
+            pts[payTable].UI.x = 500;
+            let tx: egret.TextField = pts[payTable].UI["tx"];
+            tx.width = 128;
+            tx.textAlign = "right";
+		}
 	}
 }
