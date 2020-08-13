@@ -128,7 +128,7 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 		this.buyAllBtn = this.addBtn( "BB_EXTRA_buyall", 290, 118, GameCommands.buyAll, this.extraContainer, true );
 		this.addButtonText( this.buyAllBtn, 50, "buy all", 10, 0, 0, this.buyAllBtn.width - 20 );
 
-		this.superExtraBtn = this.addMaskBtn( "btn_mega", 1724, 22, GameCommands.extra, this.extraContainer );
+		this.superExtraBtn = this.addMaskBtn( "btn_mega", 1724, 22, GameCommands.extra, this.extraContainer, 0xFFFFFF );
 		this.superExtraBtn.addButtonBigText( 72, "mega" );
 		this.superExtraBtn.addButtonSmallText( 60 );
 		this.superExtraBtn.setIcon( "balance_chip" );
@@ -178,8 +178,8 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 		return btn;
 	}
 
-	protected addMaskBtn( assets: string, x: number, y: number, name: string, container: egret.DisplayObjectContainer ): GameToolbarMaskButton{
-		let btn: GameToolbarMaskButton = new GameToolbarMaskButton( "bingoGameToolbar_json." + assets );
+	protected addMaskBtn( assets: string, x: number, y: number, name: string, container: egret.DisplayObjectContainer, textColor: number = 0 ): GameToolbarMaskButton{
+		let btn: GameToolbarMaskButton = new GameToolbarMaskButton( "bingoGameToolbar_json." + assets, textColor );
 		Com.addObjectAt( container, btn, x, y );
 		btn.addEventListener( egret.TouchEvent.TOUCH_TAP, this.sendCommand, this );
 		btn.name = name;

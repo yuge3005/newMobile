@@ -7,7 +7,9 @@ class GameToolbarMaskButton extends TouchDownButton{
 	private stayTime: number = 2500;
 	private moveTime: number = 800;
 
-	public constructor( assetsString: string ) {
+	private textColor: number;
+
+	public constructor( assetsString: string, textColor: number ) {
 		super( assetsString, assetsString );
 
 		this.maskBit = Com.addBitmapAt( this, assetsString, 0, 0 );
@@ -15,6 +17,8 @@ class GameToolbarMaskButton extends TouchDownButton{
 
 		this.scrollLayer = new egret.DisplayObjectContainer;
 		this.addChild( this.scrollLayer );
+
+		this.textColor = textColor;
 	}
 
 	public addButtonBigText( size: number, text: string ){
@@ -26,7 +30,7 @@ class GameToolbarMaskButton extends TouchDownButton{
 	private buildBigText( size: number, text: string ): TextLabel{
 		let txt: TextLabel = Com.addLabelAt( this.scrollLayer, 10, 0, this.width - 20, this.mask.height, size );
 		txt.fontFamily = "Righteous";
-		txt.textColor = 0;
+		txt.textColor = this.textColor;
 		txt.setText( MuLang.getText(text) );
 		return txt;
 	}
