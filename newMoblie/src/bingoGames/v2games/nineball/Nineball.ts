@@ -269,6 +269,8 @@ class Nineball extends V2Game{
             let tx: egret.TextField = pts[payTable].UI["tx"];
             tx.width = 172;
             tx.textAlign = "center";
+            tx.stroke = 1;
+            tx.strokeColor = 0;
 		}
 	}
 

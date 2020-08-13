@@ -70,7 +70,7 @@ class PaytableUI extends egret.Sprite{
 	protected onFrame(event:egret.Event):void{
 		this.currentEffect++;
 		if( !this.useBg ){
-			this.tx.filters = [ this._winEffects[(this.currentEffect>>4)%this._winEffects.length] ];
+			// this.tx.filters = [ this._winEffects[(this.currentEffect>>4)%this._winEffects.length] ];
 		}
 		else{
 			for( var i: number = 0; i < this.blinkGridsIndexs.length; i++ ){
