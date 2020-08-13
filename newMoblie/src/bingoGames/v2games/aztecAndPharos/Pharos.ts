@@ -72,16 +72,16 @@ class Pharos extends AztecPharosSuper{
 		let soundName = "";
         switch (paytabledName) {
             case "one side": soundName = "pr_1side_mp3";
-                this.dropCoinsAt( 446, 647 );
+                this.dropCoinsAt( 446, 647, 1 );
                 break;
             case "two side": soundName = "pr_2side_mp3";
-                this.dropCoinsAt( 446, 606 );
+                this.dropCoinsAt( 446, 606, 2 );
                 break;
             case "bingo": soundName = "pr_bingo_mp3";
-                this.dropCoinsAt( 446, 524 );
+                this.dropCoinsAt( 446, 524, 4 );
                 break;
             case "three side": soundName = "pr_3side_mp3";
-                this.dropCoinsAt( 446, 565 );
+                this.dropCoinsAt( 446, 565, 3 );
                 break;
             default: break;
         }

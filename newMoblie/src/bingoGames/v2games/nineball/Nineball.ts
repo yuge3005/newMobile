@@ -197,13 +197,13 @@ class Nineball extends V2Game{
 		let soundName = "";
         switch (paytabledName) {
             case "double": soundName = "nb_2line_mp3";
-                this.dropCoinsAt( 1000, 628 );
+                this.dropCoinsAt( 1000, 628, 2 );
                 break;
             case "bingo": soundName = "nb_bingo_mp3";
-                this.dropCoinsAt( 1000, 455 );
+                this.dropCoinsAt( 1000, 455, 3 );
                 break;
             case "line": soundName = "nb_1line_mp3";
-                this.dropCoinsAt( 1000, 792 );
+                this.dropCoinsAt( 1000, 792, 1 );
                 break;
             default: break;    
         }
