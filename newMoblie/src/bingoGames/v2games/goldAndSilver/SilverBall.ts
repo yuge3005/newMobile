@@ -23,6 +23,7 @@ class SilverBall extends GoldSilverSuper{
         GameCard.cardTextRect = new egret.Rectangle( 30, 27, 220, 40 );
         GameCard.betTextRect = new egret.Rectangle( 300, 27, 300, 40 );
         GameCard.texColor = 0xFFFFFF;
+        GameCard.clickChangeNumber = true;
 
         CardGrid.defaultBgColor = 0xE9E9E9;
         CardGrid.defaultNumberSize = 52;
