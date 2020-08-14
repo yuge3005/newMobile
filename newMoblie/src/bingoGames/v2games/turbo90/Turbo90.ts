@@ -15,6 +15,7 @@ class Turbo90 extends V2Game{
         this.megaName = "turbo90_mega";
 
         PaytableUI.textBold = true;
+        PaytableUI.needBlick = false;
 
         CardManager.cardType = Turbo90Card;
         CardManager.gridType = Turbo90Grid;
@@ -29,7 +30,7 @@ class Turbo90 extends V2Game{
         GameCard.cardTextRect = new egret.Rectangle( 25, 14, 220, 35 );
         GameCard.betTextRect = new egret.Rectangle( 270, 14, 340, 35 );
         GameCard.texColor = 0xFFFFFF;
-        GameCard.showTitleShadow = new egret.DropShadowFilter(1, 0, 0x000000, 1, 2, 2);
+        GameCard.showTitleShadow = new egret.GlowFilter(0, 1, 2, 2, 4 );
         GameCard.clickChangeNumber = true;
 
         CardGrid.defaultBgColor = 0xFFFFFF;
@@ -245,6 +246,8 @@ class Turbo90 extends V2Game{
             let tx: egret.TextField = pts[payTable].UI["tx"];
             tx.width = 166;
             tx.textAlign = "center";
+            tx.stroke = 1;
+            tx.strokeColor = 0;
 		}
 	}
 
