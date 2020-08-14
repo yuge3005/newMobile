@@ -21,6 +21,9 @@ class Pharos extends AztecPharosSuper{
         CardGrid.defaultBgColor = 0xFFFFFF;
         CardGrid.defaultNumberSize = 50;
 
+        BallManager.ballOffsetY = 8;
+        BallManager.textBold = true;
+
         BingoBackGroundSetting.defaultScale = false;
         BingoBackGroundSetting.gameMask = new egret.Rectangle( 0, 0, 2000, 1125 );
 	}

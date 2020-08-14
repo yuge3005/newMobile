@@ -4,6 +4,7 @@ class BallManager extends egret.Sprite{
 	private ballSize: number;
 	private ballTextSize: number;
 	public static textStroke: boolean;
+	public static textBold: boolean;
 
 	private ballIndexs: Array<number>;
 	private extraBalls: Array<number>;
@@ -172,6 +173,9 @@ class BallManager extends egret.Sprite{
 			tx.stroke = 2;
 			tx.strokeColor = 0x000000;
 			tx.filters = [new egret.GlowFilter( 0, 1, 1, 1, 5 )];
+		}
+		if( BallManager.textBold ){
+			tx.fontFamily = "Arial Black";
 		}
 		if( ballObj["offsetX"] )tx.x = ballObj["offsetX"];
 		if( BallManager.ballOffsetY )tx.y += BallManager.ballOffsetY;
