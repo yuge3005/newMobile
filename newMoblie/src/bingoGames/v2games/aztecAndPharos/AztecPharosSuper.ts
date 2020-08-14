@@ -20,10 +20,15 @@ class AztecPharosSuper extends V2Game{
 	protected init(){
         super.init();
 
-        this.addGameText( 295, 678, 36, 0xFFF9DB, "bet", true, 150 );
+        let betTip: TextLabel = this.addGameText( 295, 678, 36, 0xE8D4AF, "bet", true, 150, "", 0.9 );
+        betTip.fontFamily = "Arial";
+        betTip.bold = true;
 
-        this.betText = this.addGameTextCenterShadow( 425, 678, 36, 0xFFF9DB, "bet", true, 200, true, false );
+        this.betText = this.addGameTextCenterShadow( 425, 678, 36, 0xE8D4AF, "bet", true, 178, true, false );
         this.betText.textAlign = "right";
+        this.betText.fontFamily = "Arial";
+        this.betText.bold = true;
+        this.betText.scaleX = 0.9;
         this.creditText = new TextLabel;
 
         if( this.extraUIObject ) this.extraUIShowNumber();
