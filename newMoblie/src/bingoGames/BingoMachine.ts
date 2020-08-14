@@ -661,7 +661,6 @@ class BingoMachine extends GameUIItem{
 	protected updateCredit( data: Object ): void{
 		this.gameCoins = Math.round( data["credito"] );
 		if( !isNaN( data["secondCurrency"] ) )this.dinero = data["secondCurrency"];
-		this.dispatchEvent(new egret.Event("updateCoinsAndXp", false, true, data));
 		if( this.gameToolBar ) this.gameToolBar.updateCoinsAndXp( this.gameCoins, this.dinero );
 	}
 

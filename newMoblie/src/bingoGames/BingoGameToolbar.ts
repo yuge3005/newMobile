@@ -310,7 +310,8 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 	}
 
 	public showWinResult( winPrice: number ){
-		this.winText.setText( winPrice ? Utils.formatCoinsNumber( winPrice ) : ""  );
+		if( winPrice ) TweenerTool.tweenTo( this, {win: winPrice}, 500 );
+		else this.win = winPrice;
 		let ev: egret.Event = new egret.Event( "winChange" );
 		ev["winCoins"] = winPrice;
 		this.dispatchEvent( ev );
@@ -382,11 +383,38 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 	}
 
 	public updateCoinsAndXp( coins: number, dinero: number ){
-		this.coinsText.setText( Utils.formatCoinsNumber( coins ) );
-		this.dineroText.setText( Utils.formatCoinsNumber( dinero ) );
+		TweenerTool.tweenTo( this, { coins: coins, dinero: dinero }, 500 );
 	}
 
 	private startAuto(){
 		BingoMachine.sendCommand( GameCommands.startAuto );
+	}
+
+	private _coins: number = 0;
+	private get coins(): number{
+		return this._coins;
+	}
+	private set coins( value: number ){
+		this._coins = value;
+		this.coinsText.setText( Utils.formatCoinsNumber( Math.floor(value) ) );
+	}
+
+	private _dinero: number = 0;
+	private get dinero(): number{
+		return this._dinero;
+	}
+	private set dinero( value: number ){
+		this._dinero = value;
+		this.dineroText.setText( Utils.formatCoinsNumber( Math.floor(value) ) );
+	}
+
+	private _win: number = 0;
+	private get win(): number{
+		return this._win;
+	}
+	private set win( value: number ){
+		this._win = value;
+		if( value )	this.winText.setText( Utils.formatCoinsNumber( Math.floor(value) ) );
+		else this.winText.setText("");
 	}
 }
