@@ -117,6 +117,8 @@ class Pharos extends AztecPharosSuper{
     protected roundOver(): void {
         super.roundOver();
         this.stopSound("pr_ball_mp3");
+
+        CardManager.stopAllBlink();
     }
 
 	protected getExtraBallFit(): void {

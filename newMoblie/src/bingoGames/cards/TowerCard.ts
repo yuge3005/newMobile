@@ -58,4 +58,13 @@ class TowerCard extends GameCard{
 		else this.addChildAt( grid, 0 );
 		return grid;
 	}
+
+	public stopBlink(){
+		for( let i: number = 0; i < this.grids.length; i++ ){
+			if( this.grids[i].blink ){
+				this.grids[i].blink = false;
+				this.grids[i].showBlink( true );
+			}
+		}
+	}
 }
