@@ -66,6 +66,7 @@ class Pharos extends AztecPharosSuper{
 
     protected showJackpot( jackpot: number, jackpotMinBet: number, betConfig: Array<Object> ){
         this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 261, 374 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 0, 0 ), new egret.Rectangle( 70, 30, 260, 38 ), 30, 0xFFFFE3 ) );
+        this.jackpotArea.textBold = false;
     }
 
     protected getPaytablesFit( paytabledName: string, callback: Function = null ): void{

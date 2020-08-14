@@ -1,15 +1,16 @@
 {
     "options": {
+        "layoutMath": "3",
+        "sizeMode": "2n",
         "useExtension": 0,
         "layoutGap": 1,
-        "extend": 0,
-        "layoutMath": "3",
-        "sizeMode": "2n"
+        "extend": 0
     },
+    "projectName": "pharos",
     "files": [
         "./mega_es.png",
         "./mega_en.png",
-        "./Jackpot_lock.png",
+        "./jackpot_lock.png",
         "./jackpot_bg.png",
         "./Image-277-1.png",
         "./Image-269-1.png",
@@ -21,6 +22,5 @@
         "./pharos_bg.png",
         "./mega_pt.png"
     ],
-    "version": 5,
-    "projectName": "pharos"
+    "version": 5
 }
