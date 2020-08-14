@@ -157,4 +157,9 @@ class Pharos extends AztecPharosSuper{
         else if( str == "x70" ) this.pharosPattenTexts[2].textColor = 0xFF0000;
         else if( str == "x3" ) this.pharosPattenTexts[3].textColor = 0xFF0000;
     }
+
+    protected showFreeExtraPosition(){
+        super.showFreeExtraPosition();
+        this.addChildAt( this.gratisUI, this.getChildIndex( this.ballArea ) );
+    }
 }

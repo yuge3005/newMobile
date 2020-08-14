@@ -31,7 +31,10 @@ class AztecPharosSuper extends V2Game{
         this.betText.scaleX = 0.9;
         this.creditText = new TextLabel;
 
-        if( this.extraUIObject ) this.extraUIShowNumber();
+        if( this.extraUIObject ){
+            this.extraUIShowNumber();
+            this.addChild( this.extraUIObject );
+        }
 	}
 	
 	protected showExtraUI( show: boolean = true ){
