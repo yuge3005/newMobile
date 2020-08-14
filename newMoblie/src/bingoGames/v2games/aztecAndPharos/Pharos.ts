@@ -156,10 +156,25 @@ class Pharos extends AztecPharosSuper{
 
     private payTableFit( event: egret.Event ){
         let str: string = event.target["tx"].text;
-        if( str == "x1000" ) this.pharosPattenTexts[0].textColor = 0xFF0000;
-        else if( str == "x200" ) this.pharosPattenTexts[1].textColor = 0xFF0000;
-        else if( str == "x70" ) this.pharosPattenTexts[2].textColor = 0xFF0000;
-        else if( str == "x3" ) this.pharosPattenTexts[3].textColor = 0xFF0000;
+        if( !this.pharosPattenBlickCount ) this.pharosPattenBlickCount = [];
+        if( str == "x1000" ) this.pharosPattenBlickCount[0] = 0;
+        else if( str == "x200" ) this.pharosPattenBlickCount[1] = 0;
+        else if( str == "x70" ) this.pharosPattenBlickCount[2] = 0;
+        else if( str == "x3" ) this.pharosPattenBlickCount[3] = 0;
+        this.addEventListener( egret.Event.ENTER_FRAME, this.onPaytableBlink, this );
+    }
+
+    protected onPaytableBlink( egret: egret.Event ){
+        for( let i: number = 0; i < 4; i++ ){
+            if( isNaN( this.pharosPattenBlickCount[i] ) ) continue;
+            this.pharosPattenBlickCount[i] ++;
+            if( (this.pharosPattenBlickCount[i]>>4) % 2 ){
+                this.pharosPattenTexts[i].textColor = 0xE8D4AF;
+            }
+            else{
+                this.pharosPattenTexts[i].textColor = 0xFF0000;
+            }
+        }
     }
 
     protected showFreeExtraPosition(){

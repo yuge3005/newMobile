@@ -1,6 +1,7 @@
 class AztecPharosSuper extends V2Game{
 
     protected pharosPattenTexts: Array<TextLabel>;
+    protected pharosPattenBlickCount: Array<number>;
 
 	public constructor( gameConfigFile: string, configUrl: string, gameId: number ) {
 		super( gameConfigFile, configUrl, gameId );
@@ -70,5 +71,10 @@ class AztecPharosSuper extends V2Game{
         for( let i: number = 0; i < 4; i++ ){
             this.pharosPattenTexts[i].textColor = 0xE8D4AF;
         }
+        this.pharosPattenBlickCount = null;
+        this.removeEventListener( egret.Event.ENTER_FRAME, this.onPaytableBlink, this );
+    }
+
+    protected onPaytableBlink( egret: egret.Event ){
     }
 }
