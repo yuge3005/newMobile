@@ -14,6 +14,7 @@ class BallManager extends egret.Sprite{
 
 	public static normalBallInterval: number;
 	public static ballOffsetY: number;
+	public static rotateBall: boolean;
 
 	private lightResult: Array<Object>;
 
@@ -103,7 +104,13 @@ class BallManager extends egret.Sprite{
 			pts[i] = new egret.Point( path[i]["x"], path[i]["y"] );
 		}
 		var sp: egret.Sprite = this.buildBallWithIndex( index - 1, index );
-		Com.addObjectAt( this, sp, pts[0]["x"], pts[0]["y"] );
+		if( BallManager.rotateBall ){
+			let half: number = this.ballSize >> 1;
+			sp.anchorOffsetX = half;
+			sp.anchorOffsetY = half;
+			Com.addObjectAt( this, sp, pts[0]["x"] + half, pts[0]["y"] + half);
+		}
+		else Com.addObjectAt( this, sp, pts[0]["x"], pts[0]["y"] );
 		this.moveToNextPoint( sp, pts );
 		CardManager.getBall( index );
 		BingoMachine.runningBall( index );
@@ -213,7 +220,11 @@ class BallManager extends egret.Sprite{
 		var targetPoint : egret.Point = pts[0];
 		var distance: number = egret.Point.distance( curruntPoint, targetPoint );
 		let tw: egret.Tween = egret.Tween.get( sp );
-		tw.to( { x:targetPoint.x, y:targetPoint.y }, distance * 0.5 );
+		if( BallManager.rotateBall ){
+			let half: number = this.ballSize >> 1;
+			tw.to( { x:targetPoint.x + half, y:targetPoint.y + half, rotation: sp.rotation + 360 }, distance * 0.5 );
+		}
+		else tw.to( { x:targetPoint.x, y:targetPoint.y }, distance * 0.5 );
 		tw.call( this.moveToNextPoint, this, [sp, pts] );
 	}
 
