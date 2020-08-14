@@ -67,7 +67,7 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 
 		this.stopAutoBtn = this.addBtn( "auto_stop", 1724, 22, GameCommands.stopAuto, this, true );
 		this.addButtonText( this.stopAutoBtn, 72, "auto", 15, 0, 0xFFFFFF, this.stopAutoBtn.width - 30, 125, 4, 0x000093 );
-		this.addButtonText( this.stopAutoBtn, 35, "click for stop auto", 15, 100, 0xFFFFFF, this.stopAutoBtn.width - 30, 70, 1, 0x000093 );
+		this.addButtonText( this.stopAutoBtn, 35, "click to stop", 15, 100, 0xFFFFFF, this.stopAutoBtn.width - 30, 70, 1, 0x000093 );
 		this.stopAutoBtn.visible = false;
 		this.allButtons.pop();// stopAuto button dont need enabled
 		
@@ -124,7 +124,7 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 		Com.addBitmapAt( this.extraContainer, "BB_EXTRA_btn_bg", 1360, 0 );		
 
 		this.collectBtn = this.addBtn( "BB_EXTRA_collect_btn", 17, 120, GameCommands.collect, this.extraContainer, true );
-		this.addButtonText( this.collectBtn, 50, "collect", 10, 0, 0, this.collectBtn.width - 20 );
+		this.addButtonText( this.collectBtn, 50, "credit", 10, 0, 0, this.collectBtn.width - 20 );
 		this.buyAllBtn = this.addBtn( "BB_EXTRA_buyall", 290, 118, GameCommands.buyAll, this.extraContainer, true );
 		this.addButtonText( this.buyAllBtn, 50, "buy all", 10, 0, 0, this.buyAllBtn.width - 20 );
 
@@ -200,7 +200,7 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 			txt.stroke = stroke;
 			txt.strokeColor = strokeColor;
 		}
-		txt.setText( MuLang.getText(text) );
+		txt.setText( MuLang.getText(text, MuLang.CASE_UPPER) );
 		return txt;
 	}
 

@@ -18,7 +18,7 @@ class Topbar extends egret.DisplayObjectContainer{
 		txt.fontFamily = "Righteous";
 		txt.stroke = 2;
 		txt.strokeColor = 0;
-		txt.setText( MuLang.getText("bank") );
+		txt.setText( MuLang.getText("bank", MuLang.CASE_UPPER) );
 	}
 
 	private onButtonClick( event: egret.TouchEvent ){

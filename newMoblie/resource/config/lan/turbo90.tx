@@ -10,4 +10,10 @@
 		,"total bet":{"en": "TOTAL BET", "es": "APUETA TOTAL", "pt": "APOSTA TOTAL" }
 		,"free":{"en": "FREE", "es": "GRATIS", "pt": "GRATIS" }
 		,"hold for auto":{"en": "hold for\nautoplay", "es": "hold for\nautoplay", "pt": "hold for\nautoplay" }
+		,"extra":{ "en": "Extra", "es": "Extra", "pt": "Extra" }
+		,"mega":{ "en": "mega", "es": "mega", "pt": "mega" }
+		,"click to stop":{ "en": "click to stop", "es": "click to stop", "pt": "click to stop" }
+		,"auto":{ "en": "auto", "es": "auto", "pt": "auto" }
+		,"bank":{ "en": "bank", "es": "bank", "pt": "bank" }
+		,"buy all":{ "en": "buy all", "es": "buy all", "pt": "buy all" }
 }
