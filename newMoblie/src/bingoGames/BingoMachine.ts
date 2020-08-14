@@ -563,6 +563,7 @@ class BingoMachine extends GameUIItem{
 		}
 		else if( cmd == GameCommands.stopAuto ){
 			this.currentGame.gameToolBar.autoPlaying = false;
+			clearTimeout( this.currentGame.autoPlayTimeoutId );
 		}
 		else if( cmd == GameCommands.buyAll ){
 			this.currentGame.gameToolBar.buyAllExtra = true;
@@ -680,9 +681,24 @@ class BingoMachine extends GameUIItem{
 
 		if( !this.gameToolBar.autoPlaying )this.resetGameToolBarStatus();
 		if (this.gameToolBar.buyAllExtra) this.gameToolBar.buyAllExtra = false;
-		if (this.gameToolBar.autoPlaying) this.gameToolBar.autoPlaying = true;
+		if (this.gameToolBar.autoPlaying){
+			this.gameToolBar.lockAllButtons();
+			this.autoPlayTimeoutId = setTimeout( this.aotoNextRound.bind(this), 1000 );
+		}
 	}
 
+	private autoPlayTimeoutId: number;
+
+	private aotoNextRound(){
+		if( this.waitingForEffect ) this.autoPlayTimeoutId = setTimeout( this.aotoNextRound.bind(this), 500 );
+		else this.gameToolBar.autoPlaying = true;
+	}
+
+	protected waitingForEffect: boolean;
+
+	protected waitForEffect (){
+		this.waitingForEffect = false;
+	}
 
 	public onCancelExtra( data: Object ){
 		IBingoServer.cancelExtraCallback = null;

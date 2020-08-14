@@ -248,8 +248,14 @@ class SuperLotto extends V2Game{
             case "se2": soundName = "lotto_" + paytabledName +"_mp3";break;
             default: break;
         }
-        if (SoundManager.soundOn && soundName !== "") {
-            this.playSound(soundName, 1, callback);
+        if (soundName !== "") {
+            this.waitingForEffect = true;
+            if( SoundManager.soundOn ){
+                this.playSound(soundName, 1, this.waitForEffect.bind(this));
+            }
+            else{
+                setTimeout( this.waitForEffect.bind(this), 1500 );
+            }
         } else {
             //callback();
         }

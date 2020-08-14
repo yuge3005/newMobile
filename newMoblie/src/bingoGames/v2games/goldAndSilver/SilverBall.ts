@@ -111,11 +111,17 @@ class SilverBall extends GoldSilverSuper{
         switch (paytabledName) {
             case "line": soundName = "slb_1line_mp3"; break;
             case "double": soundName = "slb_2line_mp3"; break;
-            case "bingo": soundName = "slb_bingo_mp3";break;    
+            case "bingo": soundName = "slb_bingo_mp3";break;
             default: break;
         }
-        if (SoundManager.soundOn && soundName !== "") {
-            this.playSound(soundName, 1, callback);
+        if (soundName !== "") {
+            this.waitingForEffect = true;
+            if( SoundManager.soundOn ){
+                this.playSound(soundName, 1, this.waitForEffect.bind(this));
+            }
+            else{
+                setTimeout( this.waitForEffect.bind(this), 1500 );
+            }
         } else {
             callback();
         }

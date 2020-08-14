@@ -39,6 +39,7 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 		}
 		else{
 			this.stopAutoBtn.visible = false;
+			this.playBtn.enabled = true;
 		}
 	}
 
