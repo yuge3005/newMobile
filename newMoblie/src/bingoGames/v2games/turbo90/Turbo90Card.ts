@@ -27,7 +27,7 @@ class Turbo90Card extends GameCard{
 			}
 		}
 		else{
-			if( assetName = "four corners" ) this.setGridsToRed( PayTableManager.payTablesDictionary[assetName].rule );
+			this.setGridsToRed( PayTableManager.payTablesDictionary[assetName].rule );
 			this.removeFork( PayTableManager.payTablesDictionary[assetName].rule );
 		}
 
