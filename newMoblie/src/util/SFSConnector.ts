@@ -25,10 +25,10 @@ class SFSConnector {
         SFSConnector.connection = false;
         SFSConnector.login = false;
         SFSConnector._config = {
-            host: "sfs.doutorbingo.com",
-            port: 8443,
+            host: "52.2.190.227",
+            port: 8090,
             debug: false,
-            useSSL: true
+            useSSL: false
         };
         this.connection();
     }
