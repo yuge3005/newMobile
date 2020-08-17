@@ -11,9 +11,9 @@ class AztecPharosSuper extends V2Game{
         CardManager.cardType = TowerCard;
         GameCard.useRedEffect = true;
 
-        // this.needListenToolbarStatus = true;
-        // this.tipStatusTextPosition = new egret.Rectangle( 300, 156, 260, 18 );
-        // this.tipStatusTextColor = 0x3b2800;
+        this.needListenToolbarStatus = true;
+        this.tipStatusTextPosition = new egret.Rectangle( 430, 85, 169, 45 );
+        this.tipStatusTextColor = 0x0;
 
         this.ballArea.needLightCheck = true;
 	}
@@ -76,5 +76,45 @@ class AztecPharosSuper extends V2Game{
     }
 
     protected onPaytableBlink( egret: egret.Event ){
+    }
+
+    private tipStatusCoinTypeText: TextLabel;
+
+    protected listenToGameToolbarStatus(): void{
+        this.gameToolBar.addEventListener( "tipStatus", this.tipStatus, this );
+
+        let rect: egret.Rectangle = this.tipStatusTextPosition;
+        this.tipStatusText = this.addGameText( rect.x, rect.y, rect.height, this.tipStatusTextColor, "bet", false, rect.width );
+        this.tipStatusText.textAlign = "center";
+        this.tipStatusText.verticalAlign = "middle";
+        this.tipStatusText.scaleX = 1;
+        this.tipStatusText.text = "";
+        Com.addObjectAt( this.runningBallContainer, this.tipStatusText, rect.x, rect.y );
+
+        this.tipStatusCoinTypeText = this.addGameText( 0, 0, 35, this.tipStatusTextColor, "bet", false, rect.width - 40 );
+        this.tipStatusCoinTypeText.textAlign = "center";
+        this.tipStatusCoinTypeText.verticalAlign = "middle";
+        this.tipStatusCoinTypeText.scaleX = 1;
+        this.tipStatusCoinTypeText.text = "";
+        Com.addObjectAt( this.runningBallContainer, this.tipStatusCoinTypeText, rect.x + 20, rect.y + 45 );
+	}
+
+    protected tipStatus( e: egret.Event, textDoubleLine: boolean = false ): void{
+        trace( "status:" + e["status"] );
+        switch( e["status"] ){
+			case GameCommands.extra:
+				let extraStr: string = "";
+                if( e["extraPrice"] ) extraStr += Utils.formatCoinsNumber( e["extraPrice"] );
+				else extraStr += MuLang.getText("free");
+				this.tipStatusText.setText( extraStr );
+                this.tipStatusCoinTypeText.setText( MuLang.getText( "coins" ) );
+			    break;
+            case "ready":
+                break;
+			default:
+				this.tipStatusText.text = "";
+                this.tipStatusCoinTypeText.text = "";
+			    break;
+		}
     }
 }
