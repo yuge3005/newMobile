@@ -22,7 +22,6 @@ class BingoMachine extends GameUIItem{
 
 	protected betText: TextLabel;
 	protected creditText: TextLabel;
-	protected dinero: number;
 	protected _gameCoins: number;
 	protected get gameCoins(): number{
 		return this._gameCoins;
@@ -597,8 +596,7 @@ class BingoMachine extends GameUIItem{
 
 	protected checkOOCWhenExtra(): boolean{
 		let isOOC: boolean;
-		if( this.isMegaBall ) isOOC = Number( this.dinero ) < this.valorextra;
-		else isOOC = Number( this.gameCoins ) < this.valorextra;
+		isOOC = Number( this.gameCoins ) < this.valorextra;
 		
 		if( isOOC ){
 			if( this.gameToolBar.autoPlaying ){
@@ -606,8 +604,7 @@ class BingoMachine extends GameUIItem{
 				this.gameToolBar.unlockAllButtonsAfterOOCExtra();
 			}
 			if( this.gameToolBar.buyAllExtra ) this.gameToolBar.buyAllExtra = false;
-			if( this.isMegaBall ) this.dispatchEvent(new egret.Event("out_of_dinero"));
-			else this.dispatchEvent(new egret.Event("out_of_coins_game_id"));
+			this.dispatchEvent(new egret.Event("out_of_coins_game_id"));
 		}
 		return isOOC;
 	}
@@ -636,7 +633,6 @@ class BingoMachine extends GameUIItem{
 		IBingoServer.playCallback = null;
 		this.firstHaveExtraBall = true;
 		this.lastLightResult = [];
-		this.isMegaBall = false;
 
 		if (!data) {//out of coins
 			this.dispatchEvent(new egret.Event("out_of_coins_game_id"));
@@ -661,8 +657,7 @@ class BingoMachine extends GameUIItem{
 
 	protected updateCredit( data: Object ): void{
 		this.gameCoins = Math.round( data["credito"] );
-		if( !isNaN( data["secondCurrency"] ) )this.dinero = data["secondCurrency"];
-		if( this.gameToolBar ) this.gameToolBar.updateCoinsAndXp( this.gameCoins, this.dinero );
+		if( this.gameToolBar ) this.gameToolBar.updateCoinsAndXp( this.gameCoins );
 	}
 
 	public onRoundOver( data: Object ){
@@ -716,9 +711,6 @@ class BingoMachine extends GameUIItem{
 
 	public onExtra( data: Object ){
 		IBingoServer.extraCallback = null;
-
-		data["btextra"] = data["btextra"] || data["isMegaBall"];
-		this.isMegaBall = data["isMegaBall"];
 
 		if (!data) {//out of coins
 			let needChangeCollectBtnStatus: boolean = this.gameToolBar.autoPlaying;
@@ -953,8 +945,6 @@ class BingoMachine extends GameUIItem{
 	protected startPlay(): void {
 		this.stopAllSound();
 		CardManager.stopAllBlink();
-		if( this.superExtraBg && this.superExtraBg.visible ) this.superExtraBg.visible = false;
-		this.gameToolBar.megeExtraOnTop( false );
 		if( this.ganhoCounter ) this.ganhoCounter.clearGanhoData();
 	}
 
@@ -991,36 +981,8 @@ class BingoMachine extends GameUIItem{
 		this.gameCoins = Math.round( coins );
 	}
 
-	public refreshGameDinero( dinero: number ): void{
-		this.dinero = dinero;
-	}
-
 	public static get jackpotMin(): number{
 		if( this.currentGame && this.currentGame.jackpotArea ) return this.currentGame.jackpotArea.jackpotMinBet;
 		else return 0;
-	}
-
-/***********************************************************************************************************************************/
-
-	protected superExtraBg: egret.Bitmap;
-	protected isMegaBall: boolean;
-
-	protected buildSuperEbArea( superEbBgName: string, superEbAreaX: number, superEbAreaY: number ): void{
-		this.superExtraBg = Com.addBitmapAt( this, this.assetStr( superEbBgName ), superEbAreaX, superEbAreaY );
-		this.superExtraBg.visible = false;
-		this.setChildIndex( this.superExtraBg, this.getChildIndex( this.ballArea ) );
-	}
-
-	protected tryFirstMega( rect: egret.Rectangle ){
-		if( !this.megaName ) return;
-		if( localStorage.getItem( this.megaName ) ) return;
-		else{
-			localStorage.setItem( this.megaName, "true" );
-			if( this.gameToolBar.autoPlaying ) this.gameToolBar.autoPlaying = false;
-			else if( this.gameToolBar.buyAllExtra ) this.gameToolBar.buyAllExtra = false;
-			let ev: egret.Event = new egret.Event( "megaFirst" );
-			ev.data = rect;
-			this.dispatchEvent( ev );
-		}
 	}
 }

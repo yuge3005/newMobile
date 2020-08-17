@@ -32,8 +32,6 @@ class Pharos extends AztecPharosSuper{
         super.init();
 
         this.buildPattenText( ["bingo", "three side", "two side", "one side" ] );
-
-        this.buildSuperEbArea( "mega_" + GlobelSettings.language, 427, 16 );
     }
 
     private buildPattenText( pattenNames: Array<string> ){
@@ -44,13 +42,6 @@ class Pharos extends AztecPharosSuper{
             this.pharosPattenTexts[i].stroke = 2;
             this.pharosPattenTexts[i].strokeColor = 0x6F5D2D;
         }
-    }
-
-    protected buildSuperEbArea( superEbBgName: string, superEbAreaX: number, superEbAreaY: number ): void{
-        this.superExtraBg = Com.addBitmapAt( this.runningBallContainer, this.assetStr( superEbBgName ), superEbAreaX, superEbAreaY );
-        this.superExtraBg.width = 174;
-        this.superExtraBg.height = 174;
-        this.superExtraBg.visible = false;
     }
 
     protected showLastBall( ballIndex: number ): void{
@@ -107,14 +98,6 @@ class Pharos extends AztecPharosSuper{
             this.firstHaveExtraBall = false;
             this.playSound("pr_have_extra_ball_mp3");
             this.showFreeExtraPosition();
-        }
-
-        if( this.isMegaBall ){
-            this.superExtraBg.visible = true;
-            this.gameToolBar.megeExtraOnTop( true );
-            this.runningBallContainer.addChild( this.superExtraBg );
-
-            this.tryFirstMega( new egret.Rectangle( 74, 85, 88, 88 ) );
         }
     }
     

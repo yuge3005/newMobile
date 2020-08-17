@@ -57,16 +57,7 @@ class Nineball extends V2Game{
 
         if( this.extraUIObject ) this.extraUIShowNumber();
 
-        this.buildSuperEbArea( "mega_" + GlobelSettings.language, 54, 19 );
-
         this.addLineArrows();
-    }
-
-    protected buildSuperEbArea( superEbBgName: string, superEbAreaX: number, superEbAreaY: number ): void{
-        this.superExtraBg = Com.addBitmapAt( this.runningBallContainer, this.assetStr( superEbBgName ), superEbAreaX, superEbAreaY );
-        this.superExtraBg.width = 115;
-        this.superExtraBg.height = 115;
-        this.superExtraBg.visible = false;
     }
 
     private nineballText( str: string, yPos: number ): egret.TextField{
@@ -231,13 +222,6 @@ class Nineball extends V2Game{
         if (this.firstHaveExtraBall) {
             this.firstHaveExtraBall = false;
             this.showFreeExtraPosition();
-        }
-
-        if( this.isMegaBall ){
-            this.superExtraBg.visible = true;
-            this.gameToolBar.megeExtraOnTop( true );
-
-            this.tryFirstMega( new egret.Rectangle( 280, 102, 54, 54 ) );
         }
     }
     

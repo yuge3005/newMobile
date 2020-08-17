@@ -90,7 +90,6 @@ class SuperLotto extends V2Game{
         ( this.ballArea as LottoBallManager ).setPrizeBalls( data["prizeBalls"] );
         data["btextra"] = data["btextra"] || data["isMegaBall"];
 		super.onPlay( data );
-        this.isMegaBall = data["isMegaBall"];
         this.ebPosition = data["ebPosition"];
     }
 
@@ -270,10 +269,6 @@ class SuperLotto extends V2Game{
             this.firstHaveExtraBall = false;
         }
         this.addEbBg();
-
-        if( this.isMegaBall ){
-            this.gameToolBar.megeExtraOnTop( true );
-        }
     }
 
     private addEbBg(): void{
@@ -290,7 +285,7 @@ class SuperLotto extends V2Game{
     private get lottoExtraBgName(): string{
         let lastName: string = ( this.ballArea as LottoBallManager ).getUINameAt( this.ebPosition );
         lastName = lastName.replace( "ball_", "" );
-        let firstName: string = this.isMegaBall ? "mega" : "extra";
+        let firstName: string = "extra";
         return firstName + "_" + lastName;
     }
     

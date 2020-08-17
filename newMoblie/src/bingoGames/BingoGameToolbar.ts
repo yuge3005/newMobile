@@ -14,9 +14,7 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 
 	protected bigExtraBtn: GameToolbarMaskButton;
 	protected stopAutoBtn: TouchDownButton;
-	protected superExtraBtn: GameToolbarMaskButton;
 	private coinsText: TextLabel;
-	private dineroText: TextLabel;
 	private betText: TextLabel;
 	private winText: TextLabel;
 
@@ -75,13 +73,9 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 		Com.addBitmapAt( this, "bingoGameToolbar_json.middle_bar", 610, 22 );
 		Com.addBitmapAt( this, "bingoGameToolbar_json.msg_bg", 694, 35 ).height = 86;
 		let bl1: egret.Bitmap = Com.addBitmapAt( this, "bingoGameToolbar_json.ballance", 694, 128 );
-		bl1.width = 355;
+		bl1.width = 620;
 		bl1.height = 50;
-		let bl2: egret.Bitmap = Com.addBitmapAt( this, "bingoGameToolbar_json.ballance", 1054, 128 );
-		bl2.width = 225;
-		bl2.height = 50;
 		Com.addBitmapAt( this, "bingoGameToolbar_json.balance_coin", 655, 115 );
-		Com.addBitmapAt( this, "bingoGameToolbar_json.balance_chip", 1217, 123 );
 
 		this.createTexts();
 
@@ -129,11 +123,6 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 		this.buyAllBtn = this.addBtn( "BB_EXTRA_buyall", 290, 118, GameCommands.buyAll, this.extraContainer, true );
 		this.addButtonText( this.buyAllBtn, 50, "buy all", 10, 0, 0, this.buyAllBtn.width - 20 );
 
-		this.superExtraBtn = this.addMaskBtn( "btn_mega", 1724, 22, GameCommands.extra, this.extraContainer, 0xFFFFFF );
-		this.superExtraBtn.addButtonBigText( 72, "mega" );
-		this.superExtraBtn.addButtonSmallText( 60 );
-		this.superExtraBtn.setIcon( "balance_chip" );
-
 		this.bigExtraBtn = this.addMaskBtn( "BB_EXTRA_extra_btn", 1724, 22, GameCommands.extra, this.extraContainer );
 		this.bigExtraBtn.addButtonBigText( 72, "extra" );
 		this.bigExtraBtn.addButtonSmallText( 60 );
@@ -155,8 +144,7 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 
 	private createTexts(){
 		this.winText = this.addToolBarText( 720, 50, 565, 65, 60, 2, 0x2A1DB5 );
-		this.coinsText = this.addToolBarText( 730, 135, 305, 40, 40, 3, 0xAC9418 );
-		this.dineroText = this.addToolBarText( 1070, 135, 150, 40, 40, 3, 0x38AC3d );
+		this.coinsText = this.addToolBarText( 730, 135, 545, 40, 40, 3, 0xAC9418 );
 	}
 
 	private addToolBarText( x: number, y: number, textWidth: number, textHeight: number, textSize: number, stroke: number = 0, strokeColor: number = 0, target: egret.DisplayObjectContainer = null ): TextLabel{
@@ -281,7 +269,7 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 	}
 
 	private enabledExtraButtons( isAble: boolean = true ){
-		this.buyAllBtn.enabled = this.collectBtn.enabled = this.superExtraBtn.enabled = this.bigExtraBtn.enabled = isAble;
+		this.buyAllBtn.enabled = this.collectBtn.enabled = this.bigExtraBtn.enabled = isAble;
 	}
 
 	public showTip( cmd: string, price: number = 0 ){
@@ -306,7 +294,6 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 	}
 
 	protected showCoinsIconAt( price: number ): void{
-		this.superExtraBtn.setPrice( price );
 		this.bigExtraBtn.setPrice( price );
 	}
 
@@ -378,13 +365,8 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 		this.stopBtn.enabled = false;
 	}
 
-	public megeExtraOnTop( megaOnTop: boolean ): void{
-		this.superExtraBtn.visible = megaOnTop;
-		this.bigExtraBtn.visible = !megaOnTop;
-	}
-
-	public updateCoinsAndXp( coins: number, dinero: number ){
-		TweenerTool.tweenTo( this, { coins: coins, dinero: dinero }, 500 );
+	public updateCoinsAndXp( coins: number ){
+		TweenerTool.tweenTo( this, { coins: coins }, 500 );
 	}
 
 	private startAuto(){
@@ -398,15 +380,6 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 	private set coins( value: number ){
 		this._coins = value;
 		this.coinsText.setText( Utils.formatCoinsNumber( Math.floor(value) ) );
-	}
-
-	private _dinero: number = 0;
-	private get dinero(): number{
-		return this._dinero;
-	}
-	private set dinero( value: number ){
-		this._dinero = value;
-		this.dineroText.setText( Utils.formatCoinsNumber( Math.floor(value) ) );
 	}
 
 	private _win: number = 0;

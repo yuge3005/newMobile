@@ -59,16 +59,7 @@ class Turbo90 extends V2Game{
         this.runningBallContainer.mask = new egret.Rectangle( 255, 68, 270, 270 );
         this.coverRunningBall = this.getChildByName( this.assetStr("wheel_eject") );
 
-        this.buildSuperEbArea( "mega_" + GlobelSettings.language, 447, 222 );
-
         this.addLineArrows();
-    }
-
-    protected buildSuperEbArea( superEbBgName: string, superEbAreaX: number, superEbAreaY: number ): void{
-        this.superExtraBg = Com.addBitmapAt( this.runningBallContainer, this.assetStr( superEbBgName ), superEbAreaX, superEbAreaY );
-        this.superExtraBg.width = 68;
-        this.superExtraBg.height = 68;
-        this.superExtraBg.visible = false;
     }
 
     protected getFitEffectNameList(): Object{
@@ -209,13 +200,6 @@ class Turbo90 extends V2Game{
         if (this.firstHaveExtraBall) {
             this.firstHaveExtraBall = false;
             this.playSound("t90_extra_loop_mp3");
-        }
-
-        if( this.isMegaBall ){
-            this.superExtraBg.visible = true;
-            this.gameToolBar.megeExtraOnTop( true );
-
-            this.tryFirstMega( new egret.Rectangle( 245, 226, 33, 33 ) );
         }
     }
     
