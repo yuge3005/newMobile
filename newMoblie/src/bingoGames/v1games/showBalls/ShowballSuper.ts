@@ -33,7 +33,7 @@ class ShowballSuper extends V1Game{
 		
 		this.needListenToolbarStatus = true;
 
-		BallManager.ballOffsetY = 2;
+		BallManager.ballOffsetY = 5;
 
 		BingoBackGroundSetting.defaultScale = false;
 		BingoBackGroundSetting.gameMask = new egret.Rectangle( 0, 0, 2000, 1125 );
@@ -83,11 +83,8 @@ class ShowballSuper extends V1Game{
 		this.ballCountText.textAlign = "center";
 		this.ballCountText.text = "";
 
-		let ballContainer: egret.Sprite = new egret.Sprite;
-		this.runningBallContainer = ballContainer;
-		GraphicTool.drawRect( ballContainer, new egret.Rectangle( 0, 0, 75, 75 ), 0x888888 );
-		Com.addObjectAt( this, ballContainer, 420, 6 );
-		ballContainer.visible = false;
+		this.runningBallContainer = new egret.Sprite;
+		Com.addObjectAt( this, this.runningBallContainer, 1395, 28 );
 
 		this.buildSuperEbArea( "mega_" + GlobelSettings.language, 371, 8 );
 
@@ -98,16 +95,20 @@ class ShowballSuper extends V1Game{
 
 	protected showLastBall( ballIndex: number ): void{
 		super.showLastBall( ballIndex );
-		this.showLastBallAt( ballIndex, 2, 2 );
+		this.showLastBallAt( ballIndex, 0, 0 );
 
-		this.runningBallContainer.visible = true;
+		let ballLotto: egret.MovieClip = this.getChildByName( this.assetStr("showball_bolas") ) as egret.MovieClip;
+		if( ballLotto.visible ){
+			ballLotto.stop();
+			ballLotto.visible = false;
+		}
 	}
 
 	protected showLastBallAt( ballIndex: number, x: number, y: number, scale: number = 1 ): void{
 		if( this.runningBallUI && ( this.runningBallContainer ).contains( this.runningBallUI ) ){
 			( this.runningBallContainer ).removeChild( this.runningBallUI );
 		}
-		this.runningBallUI = this.ballArea.getABigBall( ballIndex, "_small", 35 );
+		this.runningBallUI = this.ballArea.getABigBall( ballIndex, "_small", 67 );
 		Com.addObjectAt( this.runningBallContainer, this.runningBallUI, x, y );
 	}
 
@@ -117,8 +118,10 @@ class ShowballSuper extends V1Game{
 
 	protected clearRunningBallUI(): void{
 		super.clearRunningBallUI();
-		this.runningBallContainer.visible = false;
 		this.ballCountText.text = "";
+		let ballLotto: egret.MovieClip = this.getChildByName( this.assetStr("showball_bolas") ) as egret.MovieClip;
+		ballLotto.play();
+		ballLotto.visible = true;
 	}
 
 	protected winChange( event: egret.Event ): void{
