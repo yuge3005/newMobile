@@ -7,14 +7,6 @@
         "sizeMode": "2n"
     },
     "files": [
-        "./showball_green.png",
-        "./showball_extra.png",
-        "./showball_dark_green_small.png",
-        "./showball_dark_green.png",
-        "./showball_cyan_small.png",
-        "./showball_cyan.png",
-        "./showball_cardBg.png",
-        "./showball_blue_small.png",
         "./showball_blue.png",
         "./pt_xx.png",
         "./pt_x.png",
@@ -63,7 +55,6 @@
         "./Bitma1.png",
         "./ball_reveal.png",
         "./ball_machine_eb.png",
-        "./VersoCartela.png",
         "./TelaFundo1.png",
         "./showball_yellow_small.png",
         "./showball_yellow.png",
@@ -76,7 +67,15 @@
         "./showball_orange_small.png",
         "./showball_orange.png",
         "./showball_JP.png",
-        "./showball_green_small.png"
+        "./showball_green_small.png",
+        "./showball_green.png",
+        "./showball_extra.png",
+        "./showball_dark_green_small.png",
+        "./showball_dark_green.png",
+        "./showball_cyan_small.png",
+        "./showball_cyan.png",
+        "./showball_cardBg.png",
+        "./showball_blue_small.png"
     ],
     "version": 5,
     "projectName": "showball3"
