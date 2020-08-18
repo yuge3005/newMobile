@@ -9,8 +9,18 @@ class ShowballSuper extends V1Game{
 		GameCard.betTextRect = new egret.Rectangle( 300, 12, 280, 48 );
 		GameCard.texColor = 0xFFFFFF;
 		GameCard.showTitleShadow = new egret.GlowFilter( 0, 1, 4, 4, 4, 2 );
+		GameCard.clickChangeNumber = true;
+
+		GameCard.gridOnTop = true;
 
 		CardManager.cardType = ShowballCard;
+		CardManager.gridType = TowerGrid;
+
+		TowerGrid.blink1PicName = "kavkav1";
+        TowerGrid.blink2PicName = "kavkav2";
+        TowerGrid.defaultBgPicName = "card_white_selection";
+        TowerGrid.onEffBgPicName = "card_black_selection";
+        TowerGrid.linePicName = "card_red_selection";
 
 		CardGrid.defaultBgColor = 0xFFFFFF;
 		CardGrid.defaultNumberSize = 25;
@@ -147,10 +157,10 @@ class ShowballSuper extends V1Game{
 
 		this.extraBallText = Com.addTextAt( this, 30, 130, 97, 18, 15, true );
 		this.extraBallText.textColor = 0xFFFF00;
-		this.extraBallText.text = GameUIItem.languageText["extra ball"][GlobelSettings.language];
+		this.extraBallText.text = MuLang.getText("extra ball");
 		this.creditTipText = Com.addTextAt( this, 30, 170, 97, 18, 12, true );
 		this.creditTipText.textColor = 0xFFFF00;
-		this.creditTipText.text = GameUIItem.languageText["credit"][GlobelSettings.language];
+		this.creditTipText.text = MuLang.getText("credit");
 		this.extraPriceText = Com.addTextAt( this, 30, 147, 97, 20, 18, true );
 		this.extraPriceText.verticalAlign = "middle";
 
@@ -225,7 +235,7 @@ class ShowballSuper extends V1Game{
 		target.visible = visible;
 		target.textColor = color;
 		target.filters = [new egret.GlowFilter( 0xFFFF00, 1, 10, 10, 1, 1 )];
-		target.text = GameUIItem.languageText[text][GlobelSettings.language];
+		target.text = MuLang.getText(text);
 	}
 
 	protected afterCheck( resultList: Array<Object> ): void{
