@@ -11,6 +11,7 @@ class Showball3 extends ShowballSuper{
     public constructor( assetsPath: string ) {
         super( "showball3.conf", assetsPath, 20 );
         this.ptFilterConfig = "showball3_filt";
+        this.languageObjectName = "showball3_tx";
     }
     
 	protected getFitEffectNameList(): Object{

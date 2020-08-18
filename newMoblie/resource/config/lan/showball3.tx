@@ -1,0 +1,39 @@
+{"bet":{"en":"BET","pt":"APOSTA","es":"APUESTA"}
+,"credit":{"en":"CREDIT", "es":"CRÉDITO","pt":"CRÉDITO"}
+		,"card":{"en":"CARD","es": "TARJETA", "pt":"CARTELA"}
+		,"select cards":{"en":"Select Cards.", "es":"Seleccione Tarjeta.","pt":"Selecione Cartões."}
+		,"pulse game":{"en":"Pulse Game.", "es":"Juego de pulso.","pt": "Pulse Jogue."}
+		,"good luck":{"en": "GOOD LUCK","es": "BUENA SUERTE","pt": "BOA SORTE"}
+		,"extra ball":{"en": "EXTRA BALL ?", "es":"BOLA EXTRA ?","pt": "BOLA EXTRA ?"}
+		,"play extra":{"en": "Play Extra Ball", "es":"Bola del juego extra", "pt":"Aperte Bola Extra"}
+		,"win":{ "en":"WIN","es": "GANÕ","pt": "GANHO"}
+		,"jackpot":{"en":"JACKPOT", "es":"JACKPOT", "pt":"ACUMULADO"}
+		,"prize":{"en":"PRIZE","es": "PRÉMIO", "pt":"PRÉMIO"}
+		,"jackpot_tooltip":{"en":"Your current bet does not qualify\nPlease increase your bet to {1}\nand play {2} cards",
+			"es":"Su apuesta actual no cualifica.\nPor favor,aumente su apuesta\npara {1} y juega con {2} tarjetas.", 
+			"pt":"Sua aposta atual não se qualifica.\nPor favor,aumente sua aporta\npara {1} e jogue com {2} cartas."}
+		,"max":{"en": "MAX", "es": "MAX", "pt": "MAX" }
+        ,"play":{"en": "PLAY", "es": "JUGAR", "pt": "JOGAR" }
+		,"stop":{"en": "STOP", "es": "PARAR", "pt": "PARAR" }
+		,"collect":{"en": "COLLECT", "es": "RECOGER", "pt": "COLETAR" }
+		,"total bet":{"en": "TOTAL BET", "es": "APUETA TOTAL", "pt": "APOSTA TOTAL" }
+		,"free":{"en": "FREE", "es": "GRATIS", "pt": "GRATIS" }
+		,"hold for auto":{"en": "hold for\nautoplay", "es": "hold for\nautoplay", "pt": "hold for\nautoplay" }
+		,"bingo":{ "en": "Bingo", "es": "Bingo", "pt": "Bingo" }
+		,"double":{ "en": "Double", "es": "Doble", "pt": "Dupla" }
+		,"line":{ "en": "Line", "es": "Línea", "pt": "Linha" }
+		,"extraball":{ "en": "Extra Ball", "es": "Pelota Extra", "pt": "Bola Extra" }
+		,"extra":{ "en": "Extra", "es": "Extra", "pt": "Extra" }
+		,"mega":{ "en": "mega", "es": "mega", "pt": "mega" }
+		,"click to stop":{ "en": "click to stop", "es": "click to stop", "pt": "click to stop" }
+		,"auto":{ "en": "auto", "es": "auto", "pt": "auto" }
+		,"bank":{ "en": "bank", "es": "bank", "pt": "bank" }
+		,"buy all":{ "en": "buy all", "es": "buy all", "pt": "buy all" }
+		,"ball":{ "en": "BALL", "es": "BOLA", "pt": "BOLA" }
+		,"win":{ "en": "WON", "es": "CANADO", "pt": "CANHO" }
+		,"press":{ "en": "PRESS", "es": "PULSE", "pt": "TECLE" }
+		,"play":{ "en": "PLAY", "es": "JUGAR", "pt": "JOGAR" }
+		,"shuffling":{ "en": "SHUFFLING", "es": "SORTEANDO", "pt": "JOGAR" }
+		,"balls":{ "en": "BALLS", "es": "BOLAS", "pt": "JOGAR" }
+		,"free":{ "en": "FREE", "es": "GRATIS", "pt": "GRATIS" }
+			}

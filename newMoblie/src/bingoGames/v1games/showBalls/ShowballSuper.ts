@@ -1,6 +1,6 @@
 class ShowballSuper extends V1Game{
 
-	private winText: egret.TextField;
+	private winText: TextLabel;
 
 	public constructor( gameConfigFile: string, configUrl: string, gameId: number ) {
 		super( gameConfigFile, configUrl, gameId );
@@ -17,15 +17,6 @@ class ShowballSuper extends V1Game{
 
 		CardGrid.blinkColors1 = 0xFFFFFF;
 		CardGrid.blinkColors2 = 0xFF0000;
-
-		let languageText = GameUIItem.languageText;
-		languageText["ball"] = { en: "BALL", es: "BOLA", pt: "BOLA" };
-		languageText["win"] = { en: "WON", es: "CANADO", pt: "CANHO" };
-		languageText["press"] = { en: "PRESS", es: "PULSE", pt: "TECLE" };
-		languageText["play"] = { en: "PLAY", es: "JUGAR", pt: "JOGAR" };
-		languageText["shuffling"] = { en: "SHUFFLING", es: "SORTEANDO", pt: "JOGAR" };
-		languageText["balls"] = { en: "BALLS", es: "BOLAS", pt: "JOGAR" };
-		languageText["free"] = { en: "FREE", es: "GRATIS", pt: "GRATIS" };
 
 		this.needSmallWinTimesOnCard = true;
 		this.ballArea.needLightCheck = true;
@@ -71,11 +62,12 @@ class ShowballSuper extends V1Game{
 		this.winText.text = "0";
 
 		this.addGameText( 510, 20, 15, 0xFFFFFF, "ball", true, 60 ).textAlign = "center";
-		let jackpotText: egret.TextField = this.addGameText( 171, 120, 10, 0xFE0000, "jackpot", true, 10 );
+		let jackpotText: TextLabel = this.addGameText( 171, 120, 10, 0xFE0000, "", true, 10 );
 		jackpotText.textAlign = "center";
 		jackpotText.height = 105;
 		jackpotText.filters = [new egret.GlowFilter( 0xFFFF00, 0.5, 4, 4, 2 )];
 		this.addChildAt( jackpotText, this.getChildIndex( this.ballArea ) );
+		jackpotText.text = MuLang.getText( "jackpot" );
 
 		this.ballCountText = this.addGameText( 515, 48, 22, 0x88FF88, "ball", false, 50 );
 		this.ballCountText.textAlign = "center";

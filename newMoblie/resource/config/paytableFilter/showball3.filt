@@ -1,0 +1,1 @@
+{"plus":["pt_line"],"double_line":["pt_line"],"pt_round":["double_line"],"pt_xx":["double_line","pt_mouse","pt_x","pt_trangle"],"pt_m":["pt_v"],"pt_fly":["pt_v","pt_m","pt_x"],"pt_bingo":["pt_round","pt_xx","pt_fly","plus"],"pt_x":["pt_v"],"pt_trangle":["pt_line","pt_v"]}
