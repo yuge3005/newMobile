@@ -10,6 +10,7 @@ package gameUI{
 		
 		public static const gameAreaWidth: int = 2560;
 		public static const gameAreaHeight: int = 1440;
+		public static const gameAreaScale: Number = 0.375
 		
 		/**当前选中物体*/
 		protected var currentItem: Sprite;
@@ -18,6 +19,8 @@ package gameUI{
 			var msk: Sprite = new Sprite;
 			drawBackgroundOn( 0, msk );
 			this.mask = msk;
+			
+			this.scaleX = this.scaleY = gameAreaScale;
 		}
 		
 		protected function drawBackgroundOn( color: uint, target: Sprite = null ):void{
