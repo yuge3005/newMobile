@@ -18,7 +18,7 @@ package
 	import settings.GameConfigObject;
 	import settings.GameRes;
 	
-	[SWF(frameRate=30,width=1760,height=900)]
+	[SWF(frameRate=30,width=1760,height=880)]
 	public class editForCom extends EditorItem
 	{
 		
@@ -81,7 +81,7 @@ package
 		private function initPaytableEditor():void{
 			paytableArea = addItemAt( new PaytableUILayer, 0, 0 ) as PaytableUILayer;
 			
-			paytableControl = addItemAt( new PaytableEditorControl, 980, 670 ) as PaytableEditorControl;
+			paytableControl = addItemAt( new PaytableEditorControl, 20, 540 ) as PaytableEditorControl;
 			paytableControl.addEventListener( EditorEvent.ADD_PAYTABLE_UI, onAddPaytableUI );
 		}
 		
@@ -89,7 +89,7 @@ package
 			cardArea = addItemAt( new CardLayer, 0, 0 ) as CardLayer;
 			cardArea.addEventListener( EditorEvent.CARD_POSITION_CHANGE, onCardPositionChange );
 			
-			cardEditor = addItemAt( new CardEditor, 0, 680 ) as CardEditor;
+			cardEditor = addItemAt( new CardEditor, 960, 660 ) as CardEditor;
 			cardEditor.addEventListener( EditorEvent.ADD_CARD_POSITION, onAddCard );
 			cardEditor.addEventListener( EditorEvent.CLEAR_CARD_POSITIONS, onCardPositionClear );
 		}
