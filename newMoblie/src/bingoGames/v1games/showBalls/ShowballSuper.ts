@@ -80,8 +80,6 @@ class ShowballSuper extends V1Game{
 		this.runningBallContainer = new egret.Sprite;
 		Com.addObjectAt( this, this.runningBallContainer, 1395, 28 );
 
-		this.buildSuperEbArea( "mega_" + GlobelSettings.language, 371, 8 );
-
 		this.showTipStatus();
 
 		this.ganhoCounter = new GanhoCounter( this.showWinAnimationAt.bind( this ) );
@@ -333,19 +331,6 @@ class ShowballSuper extends V1Game{
 		if (this.firstHaveExtraBall) {
 			this.firstHaveExtraBall = false;
 			this.playSound("shb_have_extra_ball_wav");
-		}
-
-		if( this.isMegaBall ){
-			this.superExtraBg.visible = true;
-			this.gameToolBar.megeExtraOnTop( true );
-
-			if( localStorage.getItem( this.assetStr( "mega" ) ) ) return;
-			else{
-				localStorage.setItem( this.assetStr( "mega" ), "true" );
-				let ev: egret.Event = new egret.Event( "megaFirst" );
-				ev.data = new egret.Rectangle( 536, 148, 43, 35 );
-				this.dispatchEvent( ev );
-			}
 		}
 	}
 
