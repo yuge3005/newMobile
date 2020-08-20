@@ -321,12 +321,10 @@ class SuperLotto extends V2Game{
         }
     }
 
-    private getNumbersOnCards( needAll: boolean = false ): Array<number>{
+    private getNumbersOnCards(): Array<number>{
         let numbersOnCard: Array<number> = [];
         for( let i: number = 0; i < CardManager.cards.length; i++ ){
-            if( CardManager.cards[i].enabled || needAll ){
-                numbersOnCard = numbersOnCard.concat( ( CardManager.cards[i] as LottoCard ).getCardNumbers() );
-            }
+            numbersOnCard = numbersOnCard.concat( ( CardManager.cards[i] as LottoCard ).getCardNumbers() );
         }
         return numbersOnCard;
     }
@@ -359,7 +357,7 @@ class SuperLotto extends V2Game{
     }
 
     private onCardNumberChange( event: egret.Event ): void{
-        this.changeRamdonNumbers( this.getNumbersOnCards( true ) );
+        this.changeRamdonNumbers( this.getNumbersOnCards() );
     }
 
     private onCardFitPaytable( event: egret.Event ): void{

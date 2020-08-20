@@ -1,9 +1,7 @@
 class GameCard extends GameUIItem{
 
 	protected bg: egret.Bitmap;
-	protected disabledBg: egret.Bitmap;
 	protected static bgString: string;
-	protected static disabledBgString: string;
 
 	protected cardText: TextLabel;
 	protected betText: TextLabel;
@@ -45,20 +43,6 @@ class GameCard extends GameUIItem{
 		this.betText.setText( pre + ": " + Utils.formatCoinsNumber( value ) );
 	}
 
-	protected _enabled: boolean = true;
-	public get enabled(): boolean{
-		return this._enabled;
-	}
-	public set enabled( value: boolean ){
-		this._enabled = value;
-		if( value ){
-			if( this.disabledBg && this.contains( this.disabledBg ) )this.removeChild( this.disabledBg );
-		}
-		else{
-			this.addChild( this.disabledBg );
-		}
-	}
-
 	public constructor( cardId: number ) {
 		super();
 
@@ -69,7 +53,6 @@ class GameCard extends GameUIItem{
 
 	protected onAdd( event: egret.Event ){
 		if( !this.bg )this.bg = Com.addBitmapAt( this, BingoMachine.getAssetStr( GameCard.bgString ), 0, 0 );
-		if( !this.disabledBg )this.disabledBg = Com.createBitmapByName( BingoMachine.getAssetStr( GameCard.disabledBgString ) );
 		
 		this.fitEffectLayer = new egret.DisplayObjectContainer;
 		this.addChild( this.fitEffectLayer );
@@ -112,7 +95,6 @@ class GameCard extends GameUIItem{
 	public static getCardData( data: Object ){
 		this.titleColors = data["titleColors"];
 		this.bgString = data["cardBg"];
-		this.disabledBgString = data["disabledBg"];
 
 		let colors: Object = data["colors"];
 		let size: Object = data["size"];

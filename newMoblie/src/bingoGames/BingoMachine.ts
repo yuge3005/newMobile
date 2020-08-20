@@ -578,7 +578,6 @@ class BingoMachine extends GameUIItem{
 				this.currentGame.betChanged( 1 );
 			}
 			else if( cmd == GameCommands.maxBet ){
-				CardManager.enabledAllCards();
 				GameData.setBetToMax();
 				this.currentGame.betChanged( 0 );
 			}

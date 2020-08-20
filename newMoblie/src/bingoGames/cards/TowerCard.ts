@@ -1,30 +1,10 @@
 class TowerCard extends GameCard{
 
-	public get enabled(): boolean{
-		return this._enabled;
-	}
-	public set enabled( value: boolean ){
-		this._enabled = value;
-		if( value ){
-			if( this.disabledBg && this.contains( this.disabledBg ) )this.removeChild( this.disabledBg );
-			for( let i: number = 0; i < this.grids.length; i++ ){
-				this.grids[i].visible = true;
-			}
-		}
-		else{
-			this.addChild( this.disabledBg );
-			for( let i: number = 0; i < this.grids.length; i++ ){
-				this.grids[i].visible = false;
-			}
-		}
-	}
-
 	public constructor( cardId: number ) {
 		super( cardId );
 	}
 
 	protected onAdd( event: egret.Event ){
-		this.disabledBg = Com.createBitmapByName( GameCard.disabledBgString );
 		this.betText = new TextLabel;
 		this.betText.visible = false;
 	}
