@@ -25,10 +25,6 @@ package controler{
 			return GameConfigObject.card.cardBg ? GameConfigObject.card.cardBg : "";
 		}
 		
-		public function get disabledBg(): String{
-			return GameConfigObject.card.disabledBg ? GameConfigObject.card.disabledBg : "";
-		}
-		
 		public function CardPositionInfo(){
 			cardPositionList = addItemAt( new List, 0, 85, 130 ) as List;
 			cardPositionList.height = 70;
@@ -75,16 +71,12 @@ package controler{
 			}
 		}
 		
-		public function showEnalbedUI( show: Boolean ): void{
+		public function showEnalbedUI(): void{
 			if( cardUI && this.contains( cardUI ) ){
 				cardUI.removeEventListener( MouseEvent.MOUSE_DOWN, onDrag );
 				removeChild( cardUI );
 			}
-			
-			if( show )
-				showBg( GameConfigObject.card.cardBg );
-			else
-				showBg( GameConfigObject.card.disabledBg );
+			showBg( GameConfigObject.card.cardBg );
 		}
 		
 		private function showBg( name: String ): void{

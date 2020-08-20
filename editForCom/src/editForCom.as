@@ -89,7 +89,7 @@ package
 			cardArea = addItemAt( new CardLayer, 0, 0 ) as CardLayer;
 			cardArea.addEventListener( EditorEvent.CARD_POSITION_CHANGE, onCardPositionChange );
 			
-			cardEditor = addItemAt( new CardEditor, 960, 660 ) as CardEditor;
+			cardEditor = addItemAt( new CardEditor, 800, 660 ) as CardEditor;
 			cardEditor.addEventListener( EditorEvent.ADD_CARD_POSITION, onAddCard );
 			cardEditor.addEventListener( EditorEvent.CLEAR_CARD_POSITIONS, onCardPositionClear );
 		}

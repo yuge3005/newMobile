@@ -17,9 +17,14 @@ package controler{
 	
 	public class CardEditor extends EditorControl	{
 		
-		private var isEditingBg: CheckBox;
 		private var bgPicture: TextInput;
-		private var disabledPicture: TextInput;
+		
+		private var defaultBgPicture: TextInput;
+		private var onEffBgPicture: TextInput;
+		private var linePicNamePicture: TextInput;
+		private var blink1PicPicture: TextInput;
+		private var blink2PicPicture: TextInput;
+		private var useforkPicture: TextInput;
 		
 		private var numberColor:ColorPicker;
 		private var numberColorOnEffect:ColorPicker;
@@ -41,20 +46,22 @@ package controler{
 		private var cardTitleColors: ColorPicker;
 		private var colorList: List;
 		
-		private var isCardEnabled: CheckBox;
 		private var cardPositionInfo: CardPositionInfo;
 		
 		public function CardEditor(){
-			drawBackground( 0xFFFFEE, new Rectangle( 0, 0, 800, 220 ) );
+			drawBackground( 0xFFFFEE, new Rectangle( 0, 0, 960, 220 ) );
 			
 			textureList = createComboBox( 20, 20 );
 			animationList = createComboBox( 20, 60 );
 			
-			isEditingBg = addCheckBox( 20, 100, 130, "is editing bg", null );
-			bgPicture = addTextInputWithLabel( 20, 140, 130, "normal bg:", 60 );
-			bgPicture.enabled = false;
-			disabledPicture = addTextInputWithLabel( 20, 180, 130, "disabled bg:", 60 ) as TextInput;
-			disabledPicture.enabled = false;
+			bgPicture = addTextInputWithLabel( 20, 140, 130, "normal bg:" );
+			
+			defaultBgPicture = addTextInputWithLabel( 800, 20, 130, "defaultBg:" );
+			onEffBgPicture = addTextInputWithLabel( 800, 60, 130, "onEffBg:" );
+			linePicNamePicture = addTextInputWithLabel( 800, 100, 130, "linePicName:" );
+			blink1PicPicture = addTextInputWithLabel( 800, 140, 130, "blink1Pic:" );
+			blink2PicPicture = addTextInputWithLabel( 800, 180, 130, "blink2Pic:" );
+			useforkPicture = addTextInputWithLabel( 350, 180, 130, "usefork:" );
 			
 			numberColor = addColorChooser( 170, 20, 146, "numColor:", onColorChange );
 			
@@ -81,14 +88,9 @@ package controler{
 			colorList.height = 80;
 			colorList.addEventListener( KeyboardEvent.KEY_DOWN, onColorListKeyDown );
 			
-			isCardEnabled = addCheckBox( 650, 20, 120, "enable card", onCardEnableBoxClick );
 			cardPositionInfo = addItemAt( new CardPositionInfo, 650, 50 ) as CardPositionInfo;
 			cardPositionInfo.addEventListener( EditorEvent.ADD_CARD_POSITION, bubbleEvent );
 			cardPositionInfo.addEventListener( EditorEvent.CLEAR_CARD_POSITIONS, bubbleEvent );
-		}
-		
-		private function onCardEnableBoxClick( event: Event ):void{
-			cardPositionInfo.showEnalbedUI( isCardEnabled.selected );
 		}
 		
 		private function onSetSize( event: Event ):void{
@@ -132,12 +134,7 @@ package controler{
 		}
 		
 		override protected function onTextureItemSellect(event:Event):void{
-			if( isEditingBg.selected ){
-				GameConfigObject.card.cardBg = textureList.selectedItem.label;
-			}
-			else{
-				GameConfigObject.card.disabledBg = textureList.selectedItem.label;
-			}
+			GameConfigObject.card.cardBg = textureList.selectedItem.label;
 			resetBg();
 		}
 		
@@ -190,8 +187,7 @@ package controler{
 		
 		private function resetBg():void{
 			bgPicture.text = cardPositionInfo.cardBg;
-			disabledPicture.text = cardPositionInfo.disabledBg;
-			cardPositionInfo.showEnalbedUI( isCardEnabled.selected );
+			cardPositionInfo.showEnalbedUI();
 		}
 		
 		private function resetSizeNumbers():void{
@@ -209,6 +205,12 @@ package controler{
 		
 		public function refreshCardPositionList( positionList: Array ):void{
 			cardPositionInfo.refreshCardPositionList( positionList );
+		}
+		
+		protected override function addTextInputWithLabel( x: int, y: int, width: int, labelText: String, textInputWidth: int = 70 ) : TextInput{
+			var ti: TextInput = super.addTextInputWithLabel( x, y, width, labelText, 60 );
+			ti.enabled = false;
+			return ti;
 		}
 	}
 }
