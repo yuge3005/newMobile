@@ -200,7 +200,7 @@ class BallManager extends egret.Sprite{
 		tx.size = textSize;
 		tx.bold = true;
 		tx.textAlign = "center";
-		tx.textColor = ballObj["color"];
+		tx.textColor = Number( ballObj["color"] );
 		tx.text = "" + ( num ? num : index + 1 );
 		tx.y = ball.height - tx.textHeight >> 1;
 		if( BallManager.textStroke ){

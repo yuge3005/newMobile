@@ -9,6 +9,7 @@ package controler{
 	import fl.controls.ColorPicker;
 	import fl.controls.List;
 	import fl.controls.NumericStepper;
+	import fl.controls.RadioButton;
 	import fl.controls.TextInput;
 	import fl.events.ColorPickerEvent;
 	
@@ -17,9 +18,15 @@ package controler{
 	
 	public class CardEditor extends EditorControl	{
 		
-		private var isEditingBg: CheckBox;
-		private var bgPicture: TextInput;
-		private var disabledPicture: TextInput;
+		private var cardBgPicture: TextInput;		
+		private var defaultBgPicture: TextInput;
+		private var onEffBgPicture: TextInput;
+		private var linePicture: TextInput;
+		private var blink1Picture: TextInput;
+		private var blink2Picture: TextInput;
+		private var useforkPicture: TextInput;
+		
+		private var radio: RadioButton;
 		
 		private var numberColor:ColorPicker;
 		private var numberColorOnEffect:ColorPicker;
@@ -41,20 +48,21 @@ package controler{
 		private var cardTitleColors: ColorPicker;
 		private var colorList: List;
 		
-		private var isCardEnabled: CheckBox;
 		private var cardPositionInfo: CardPositionInfo;
 		
 		public function CardEditor(){
-			drawBackground( 0xFFFFEE, new Rectangle( 0, 0, 800, 220 ) );
+			drawBackground( 0xFFFFEE, new Rectangle( 0, 0, 960, 220 ) );
 			
 			textureList = createComboBox( 20, 20 );
 			animationList = createComboBox( 20, 60 );
 			
-			isEditingBg = addCheckBox( 20, 100, 130, "is editing bg", null );
-			bgPicture = addTextInputWithLabel( 20, 140, 130, "normal bg:", 60 );
-			bgPicture.enabled = false;
-			disabledPicture = addTextInputWithLabel( 20, 180, 130, "disabled bg:", 60 ) as TextInput;
-			disabledPicture.enabled = false;
+			cardBgPicture = addTextInputWithRadioButtonAndLabel( 20, 140, "cardBg:" );
+			defaultBgPicture = addTextInputWithRadioButtonAndLabel( 800, 20, "defaultBg:" );
+			onEffBgPicture = addTextInputWithRadioButtonAndLabel( 800, 60, "onEffBg:" );
+			linePicture = addTextInputWithRadioButtonAndLabel( 800, 100, "line:" );
+			blink1Picture = addTextInputWithRadioButtonAndLabel( 800, 140, "blink1:" );
+			blink2Picture = addTextInputWithRadioButtonAndLabel( 800, 180, "blink2:" );
+			useforkPicture = addTextInputWithRadioButtonAndLabel( 20, 180, "usefork:" );
 			
 			numberColor = addColorChooser( 170, 20, 146, "numColor:", onColorChange );
 			
@@ -81,14 +89,9 @@ package controler{
 			colorList.height = 80;
 			colorList.addEventListener( KeyboardEvent.KEY_DOWN, onColorListKeyDown );
 			
-			isCardEnabled = addCheckBox( 650, 20, 120, "enable card", onCardEnableBoxClick );
 			cardPositionInfo = addItemAt( new CardPositionInfo, 650, 50 ) as CardPositionInfo;
 			cardPositionInfo.addEventListener( EditorEvent.ADD_CARD_POSITION, bubbleEvent );
 			cardPositionInfo.addEventListener( EditorEvent.CLEAR_CARD_POSITIONS, bubbleEvent );
-		}
-		
-		private function onCardEnableBoxClick( event: Event ):void{
-			cardPositionInfo.showEnalbedUI( isCardEnabled.selected );
 		}
 		
 		private function onSetSize( event: Event ):void{
@@ -132,12 +135,8 @@ package controler{
 		}
 		
 		override protected function onTextureItemSellect(event:Event):void{
-			if( isEditingBg.selected ){
-				GameConfigObject.card.cardBg = textureList.selectedItem.label;
-			}
-			else{
-				GameConfigObject.card.disabledBg = textureList.selectedItem.label;
-			}
+			var itemName: String = radio.group.selection.label.replace( ":", "" );
+			GameConfigObject.card[itemName] = textureList.selectedItem.label;
 			resetBg();
 		}
 		
@@ -189,9 +188,19 @@ package controler{
 		}
 		
 		private function resetBg():void{
-			bgPicture.text = cardPositionInfo.cardBg;
-			disabledPicture.text = cardPositionInfo.disabledBg;
-			cardPositionInfo.showEnalbedUI( isCardEnabled.selected );
+			cardBgPicture.text = cardPositionInfo.cardBg;
+			defaultBgPicture.text = cardObjectText( "defaultBg" );
+			onEffBgPicture.text = cardObjectText( "onEffBg" );
+			linePicture.text = cardObjectText( "line" );
+			blink1Picture.text = cardObjectText( "blink1" );
+			blink2Picture.text = cardObjectText( "blink2" );
+			useforkPicture.text = cardObjectText( "usefork" );
+			cardPositionInfo.showEnalbedUI();
+		}
+		
+		private function cardObjectText( itemName: String ): String{
+			 var str: String = GameConfigObject.card[itemName];
+			return str ? str : "";
 		}
 		
 		private function resetSizeNumbers():void{
@@ -209,6 +218,16 @@ package controler{
 		
 		public function refreshCardPositionList( positionList: Array ):void{
 			cardPositionInfo.refreshCardPositionList( positionList );
+		}
+		
+		protected function addTextInputWithRadioButtonAndLabel( x: int, y: int, labelText: String, textInputWidth: int = 70 ) : TextInput{
+			var ti: TextInput = this.addTextInputWithLabel( x, y, 120, labelText, 60 );
+			ti.enabled = false;
+			radio = new RadioButton();
+			radio.groupName = "cardAssets";
+			addItemAt( radio, x + 120, y, 20 );
+			radio.label = labelText;
+			return ti;
 		}
 	}
 }

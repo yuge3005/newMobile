@@ -14,12 +14,6 @@ class SilverBall extends GoldSilverSuper{
 
         CardManager.gridType = TowerGrid;
 
-        TowerGrid.blink1PicName = "Mark_Green";
-        TowerGrid.blink2PicName = "Mark_Orange";
-        TowerGrid.defaultBgPicName = "Mark_White";
-        TowerGrid.onEffBgPicName = "Mark_Blue";
-        TowerGrid.linePicName = "Mark_Red";
-
         GameCard.cardTextRect = new egret.Rectangle( 30, 27, 220, 40 );
         GameCard.betTextRect = new egret.Rectangle( 300, 27, 300, 40 );
         GameCard.texColor = 0xFFFFFF;

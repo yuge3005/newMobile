@@ -26,11 +26,7 @@ class CardManager{
 	}
 
 	public static get enabledCards(): number{
-		let num: number = 0;
-		for( let i: number = 0; i < this.cards.length; i++ ){
-			if( this.cards[i].enabled )num ++;
-		}
-		return num;
+		return this.cards.length;
 	}
 
 	public static setCardBet( bet: number ): number{
@@ -40,15 +36,8 @@ class CardManager{
 		return bet * this.enabledCards;
 	}
 
-	public static enabledAllCards(): void{
-		for( let i: number = 0; i < this.cards.length; i++ ){
-			this.cards[i].enabled = true;
-		}
-	}
-
 	public static getBall( ballIndex: number ){
 		for( let i: number = 0; i < this.cards.length; i++ ){
-			if( !this.cards[i].enabled )break;
 			this.cards[i].checkNumber( ballIndex );
 		}
 	}

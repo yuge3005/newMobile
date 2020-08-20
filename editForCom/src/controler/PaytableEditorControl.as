@@ -55,7 +55,7 @@ package controler{
 		private var paytableInfo: PaytableInfo;
 		
 		public function PaytableEditorControl(){
-			drawBackground( 0xEEEEFF, new Rectangle( -20, 0, 800, 230 ) );
+			drawBackground( 0xEEEEFF, new Rectangle( -20, 0, 960, 340 ) );
 			
 			textureList = createComboBox( 0, 20 );
 			

@@ -19,12 +19,6 @@ class Nineball extends V2Game{
 
         CardManager.cardType = NineballCard;
 
-        TowerGrid.blink1PicName = "card_number_fill_red";
-        TowerGrid.blink2PicName = "card_number_fill_green";
-        TowerGrid.defaultBgPicName = "card_number_fill_white";
-        TowerGrid.onEffBgPicName = "card_number_fill_blue";
-        TowerGrid.linePicName = "card_number_fill_red";
-
         GameCard.cardTextRect = new egret.Rectangle( 25, 17, 220, 35 );
         GameCard.betTextRect = new egret.Rectangle( 270, 17, 340, 35 );
         GameCard.texColor = 0xFFFFFF;

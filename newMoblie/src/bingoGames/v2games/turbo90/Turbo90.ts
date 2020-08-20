@@ -20,13 +20,6 @@ class Turbo90 extends V2Game{
         CardManager.cardType = Turbo90Card;
         CardManager.gridType = Turbo90Grid;
 
-        TowerGrid.blink1PicName = "mark_yellow";
-        TowerGrid.blink2PicName = "mark_pink";
-        TowerGrid.defaultBgPicName = "mark_white";
-        TowerGrid.onEffBgPicName = "mark_white";
-        TowerGrid.linePicName = "mark_red";
-        GameCard.usefork = "mark_x";
-
         GameCard.cardTextRect = new egret.Rectangle( 25, 14, 220, 35 );
         GameCard.betTextRect = new egret.Rectangle( 270, 14, 340, 35 );
         GameCard.texColor = 0xFFFFFF;

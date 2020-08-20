@@ -14,7 +14,7 @@ package gameUI{
 		}
 		
 		public function addCardPosition( data: Point ):void{
-			var sp: Sprite = GameRes.buildItemByName( GameConfigObject.card.disabledBg );
+			var sp: Sprite = GameRes.buildItemByName( GameConfigObject.card.cardBg );
 			addGameAreaItem( sp, data, EditorEvent.CARD_POSITION_CHANGE );
 		}
 		
