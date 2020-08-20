@@ -109,6 +109,13 @@ class GameCard extends GameUIItem{
 		CardGrid.gridSize = new egret.Point( size["numberSizeX"], size["numberSizeY"] );
 		CardGrid.gridSpace = new egret.Point( CardGrid.gridSize.x + this.gapSize.x, CardGrid.gridSize.y + this.gapSize.y );
 		this.gridInitPosition = new egret.Point( size["numberInitialPositionX"], size["numberInitialPositionY"] );
+
+		TowerGrid.blink1PicName = data["blink1"];
+        TowerGrid.blink2PicName = data["blink2"];
+        TowerGrid.defaultBgPicName = data["defaultBg"];
+        TowerGrid.onEffBgPicName = data["onEffBg"];
+        TowerGrid.linePicName = data["line"];
+		GameCard.usefork = data["usefork"];
 	}
 
 	public static changeBgColor(){

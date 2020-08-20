@@ -16,12 +16,6 @@ class ShowballSuper extends V1Game{
 		CardManager.cardType = ShowballCard;
 		CardManager.gridType = TowerGrid;
 
-		TowerGrid.blink1PicName = "kavkav1";
-        TowerGrid.blink2PicName = "kavkav2";
-        TowerGrid.defaultBgPicName = "card_white_selection";
-        TowerGrid.onEffBgPicName = "card_black_selection";
-        TowerGrid.linePicName = "card_red_selection";
-
 		CardGrid.defaultBgColor = 0xFFFFFF;
 		CardGrid.defaultNumberSize = 25;
 
