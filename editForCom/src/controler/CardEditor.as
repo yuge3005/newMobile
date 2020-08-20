@@ -137,7 +137,6 @@ package controler{
 		override protected function onTextureItemSellect(event:Event):void{
 			var itemName: String = radio.group.selection.label.replace( ":", "" );
 			GameConfigObject.card[itemName] = textureList.selectedItem.label;
-			this[itemName+"Picture"].text = textureList.selectedItem.label;
 			resetBg();
 		}
 		
@@ -190,7 +189,18 @@ package controler{
 		
 		private function resetBg():void{
 			cardBgPicture.text = cardPositionInfo.cardBg;
+			defaultBgPicture.text = cardObjectText( "defaultBg" );
+			onEffBgPicture.text = cardObjectText( "onEffBg" );
+			linePicture.text = cardObjectText( "line" );
+			blink1Picture.text = cardObjectText( "blink1" );
+			blink2Picture.text = cardObjectText( "blink2" );
+			useforkPicture.text = cardObjectText( "usefork" );
 			cardPositionInfo.showEnalbedUI();
+		}
+		
+		private function cardObjectText( itemName: String ): String{
+			 var str: String = GameConfigObject.card[itemName];
+			return str ? str : "";
 		}
 		
 		private function resetSizeNumbers():void{
