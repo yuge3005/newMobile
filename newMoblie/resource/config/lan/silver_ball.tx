@@ -18,11 +18,13 @@
 		,"collect":{"en": "COLLECT", "es": "RECOGER", "pt": "COLETAR" }
 		,"total bet":{"en": "TOTAL BET", "es": "APUETA TOTAL", "pt": "APOSTA TOTAL" }
 		,"free":{"en": "FREE", "es": "GRATIS", "pt": "GRATIS" }
-		,"hold for auto":{"en": "hold for\nautoplay", "es": "hold for\nautoplay", "pt": "hold for\nautoplay" }
+		,"hold for auto":{"en": "HOLD FOR\nAUTOPLAY", "es": "PRESSIONE\nPARA AUTO", "pt": "PRESSIONE\nPARA AUTO" }
 		,"extra":{ "en": "Extra", "es": "Extra", "pt": "Extra" }
 		,"mega":{ "en": "mega", "es": "mega", "pt": "mega" }
-		,"click to stop":{ "en": "click to stop", "es": "click to stop", "pt": "click to stop" }
+		,"click to stop":{ "en": "CLICK TO STOP", "es": "HAGA CLIC PARA PARAR AUTO", "pt": "CLIQUE PARA PARAR AUTO" }
 		,"auto":{ "en": "auto", "es": "auto", "pt": "auto" }
-		,"bank":{ "en": "bank", "es": "bank", "pt": "bank" }
-		,"buy all":{ "en": "buy all", "es": "buy all", "pt": "buy all" }
+		,"bank":{ "en": "BANK", "es": "BANCO", "pt": "BANCO" }
+		,"buy all":{ "en": "BUY ALL", "es": "COMPRAR TODAS", "pt": "COMPRAR TODAS" }
+		,"coins":{ "en": "COINS", "es": "MONEDAS", "pt": "MOEDAS" }
+		,"dinero":{ "en": "DINERO", "es": "PLATAS", "pt": "DOLETAS" }
 			}
