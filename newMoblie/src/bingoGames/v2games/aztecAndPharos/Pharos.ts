@@ -12,12 +12,6 @@ class Pharos extends AztecPharosSuper{
 		super( "pharos.conf", assetsPath, 42 );
         this.megaName = "pharo_mega";
 
-        TowerGrid.blink1PicName = "Image-262-1";
-        TowerGrid.blink2PicName = "Image-264-1";
-        TowerGrid.defaultBgPicName = "Image-260-1";
-        TowerGrid.onEffBgPicName = "Image-269-1";
-        TowerGrid.linePicName = "Image-264-1";
-
         CardGrid.defaultBgColor = 0xFFFFFF;
         CardGrid.defaultNumberSize = 50;
 
