@@ -9,6 +9,7 @@ package controler{
 	import fl.controls.ColorPicker;
 	import fl.controls.List;
 	import fl.controls.NumericStepper;
+	import fl.controls.RadioButton;
 	import fl.controls.TextInput;
 	import fl.events.ColorPickerEvent;
 	
@@ -17,14 +18,15 @@ package controler{
 	
 	public class CardEditor extends EditorControl	{
 		
-		private var bgPicture: TextInput;
-		
+		private var cardBgPicture: TextInput;		
 		private var defaultBgPicture: TextInput;
 		private var onEffBgPicture: TextInput;
-		private var linePicNamePicture: TextInput;
-		private var blink1PicPicture: TextInput;
-		private var blink2PicPicture: TextInput;
+		private var linePicture: TextInput;
+		private var blink1Picture: TextInput;
+		private var blink2Picture: TextInput;
 		private var useforkPicture: TextInput;
+		
+		private var radio: RadioButton;
 		
 		private var numberColor:ColorPicker;
 		private var numberColorOnEffect:ColorPicker;
@@ -54,14 +56,13 @@ package controler{
 			textureList = createComboBox( 20, 20 );
 			animationList = createComboBox( 20, 60 );
 			
-			bgPicture = addTextInputWithLabel( 20, 140, 130, "normal bg:" );
-			
-			defaultBgPicture = addTextInputWithLabel( 800, 20, 130, "defaultBg:" );
-			onEffBgPicture = addTextInputWithLabel( 800, 60, 130, "onEffBg:" );
-			linePicNamePicture = addTextInputWithLabel( 800, 100, 130, "linePicName:" );
-			blink1PicPicture = addTextInputWithLabel( 800, 140, 130, "blink1Pic:" );
-			blink2PicPicture = addTextInputWithLabel( 800, 180, 130, "blink2Pic:" );
-			useforkPicture = addTextInputWithLabel( 350, 180, 130, "usefork:" );
+			cardBgPicture = addTextInputWithRadioButtonAndLabel( 20, 140, "cardBg:" );
+			defaultBgPicture = addTextInputWithRadioButtonAndLabel( 800, 20, "defaultBg:" );
+			onEffBgPicture = addTextInputWithRadioButtonAndLabel( 800, 60, "onEffBg:" );
+			linePicture = addTextInputWithRadioButtonAndLabel( 800, 100, "line:" );
+			blink1Picture = addTextInputWithRadioButtonAndLabel( 800, 140, "blink1:" );
+			blink2Picture = addTextInputWithRadioButtonAndLabel( 800, 180, "blink2:" );
+			useforkPicture = addTextInputWithRadioButtonAndLabel( 20, 180, "usefork:" );
 			
 			numberColor = addColorChooser( 170, 20, 146, "numColor:", onColorChange );
 			
@@ -134,7 +135,9 @@ package controler{
 		}
 		
 		override protected function onTextureItemSellect(event:Event):void{
-			GameConfigObject.card.cardBg = textureList.selectedItem.label;
+			var itemName: String = radio.group.selection.label.replace( ":", "" );
+			GameConfigObject.card[itemName] = textureList.selectedItem.label;
+			this[itemName+"Picture"].text = textureList.selectedItem.label;
 			resetBg();
 		}
 		
@@ -186,7 +189,7 @@ package controler{
 		}
 		
 		private function resetBg():void{
-			bgPicture.text = cardPositionInfo.cardBg;
+			cardBgPicture.text = cardPositionInfo.cardBg;
 			cardPositionInfo.showEnalbedUI();
 		}
 		
@@ -207,9 +210,13 @@ package controler{
 			cardPositionInfo.refreshCardPositionList( positionList );
 		}
 		
-		protected override function addTextInputWithLabel( x: int, y: int, width: int, labelText: String, textInputWidth: int = 70 ) : TextInput{
-			var ti: TextInput = super.addTextInputWithLabel( x, y, width, labelText, 60 );
+		protected function addTextInputWithRadioButtonAndLabel( x: int, y: int, labelText: String, textInputWidth: int = 70 ) : TextInput{
+			var ti: TextInput = this.addTextInputWithLabel( x, y, 120, labelText, 60 );
 			ti.enabled = false;
+			radio = new RadioButton();
+			radio.groupName = "cardAssets";
+			addItemAt( radio, x + 120, y, 20 );
+			radio.label = labelText;
 			return ti;
 		}
 	}
