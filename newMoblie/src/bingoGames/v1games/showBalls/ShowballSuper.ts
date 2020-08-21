@@ -14,9 +14,6 @@ class ShowballSuper extends V1Game{
 		CardGrid.defaultBgColor = 0xFFFFFF;
 		CardGrid.defaultNumberSize = 25;
 
-		CardGrid.blinkColors1 = 0xFFFFFF;
-		CardGrid.blinkColors2 = 0xFF0000;
-
 		this.needSmallWinTimesOnCard = true;
 		this.ballArea.needLightCheck = true;
 		

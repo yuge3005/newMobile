@@ -19,9 +19,6 @@ class SilverBall extends GoldSilverSuper{
 
         BallManager.ballOffsetY = 10;
 
-        CardGrid.blinkColors1 = 0xC4770D;
-	    CardGrid.blinkColors2 = 0xE9E9E9;
-
         this.needListenToolbarStatus = true;
         this.tipStatusTextPosition = new egret.Rectangle( 1375, 164, 374 * 1.25, 48 );
         this.tipStatusTextColor = 0xF9CC15;

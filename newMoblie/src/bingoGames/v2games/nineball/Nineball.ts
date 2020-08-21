@@ -25,8 +25,6 @@ class Nineball extends V2Game{
         CardGrid.defaultBgColor = 0xFFFFFF;
         CardGrid.defaultNumberSize = 55;
 
-        CardGrid.blinkColors1 = 0xFF0000;
-	    CardGrid.blinkColors2 = 0x00FF00;
         GameCard.useRedEffect = true;
 
         BallManager.ballOffsetY = 8;
