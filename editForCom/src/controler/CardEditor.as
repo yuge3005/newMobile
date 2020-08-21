@@ -43,8 +43,18 @@ package controler{
 		
 		private var numberInitialPositionX:NumericStepper;
 		private var numberInitialPositionY:NumericStepper;
-		private var numberSizeY:NumericStepper;
 		private var numberSizeX:NumericStepper;
+		private var numberSizeY:NumericStepper;
+		
+		private var cardTextPositionX:NumericStepper;
+		private var cardTextPositionY:NumericStepper;
+		private var cardTextSizeX:NumericStepper;
+		private var cardTextSizeY:NumericStepper;
+		
+		private var betTextPositionX:NumericStepper;
+		private var betTextPositionY:NumericStepper;
+		private var betTextSizeX:NumericStepper;
+		private var betTextSizeY:NumericStepper;
 		
 		private var cardTitleColors: ColorPicker;
 		private var colorList: List;
@@ -57,13 +67,13 @@ package controler{
 			textureList = createComboBox( 20, 20 );
 			animationList = createComboBox( 20, 60 );
 			
-			cardBgPicture = addTextInputWithRadioButtonAndLabel( 20, 140, "cardBg:" );
+			cardBgPicture = addTextInputWithRadioButtonAndLabel( 20, 100, "cardBg:" );
 			defaultBgPicture = addTextInputWithRadioButtonAndLabel( 800, 20, "defaultBg:" );
 			onEffBgPicture = addTextInputWithRadioButtonAndLabel( 800, 60, "onEffBg:" );
 			linePicture = addTextInputWithRadioButtonAndLabel( 800, 100, "line:" );
 			blink1Picture = addTextInputWithRadioButtonAndLabel( 800, 140, "blink1:" );
 			blink2Picture = addTextInputWithRadioButtonAndLabel( 800, 180, "blink2:" );
-			useforkPicture = addTextInputWithRadioButtonAndLabel( 20, 180, "usefork:" );
+			useforkPicture = addTextInputWithRadioButtonAndLabel( 650, 180, "usefork:" );
 			
 			numberColor = addColorChooser( 170, 20, 146, "numColor:", onColorChange );
 			
@@ -73,7 +83,7 @@ package controler{
 			numberBackgroundColorOnEffect = addColorChooser( 166, 100, 150, "", onColorChange );
 			colorNumberBackgroundOnEffect = addCheckBox( 166, 100, 150, "numBgColorOnEff", onCheckBoxClick );
 			
-			textColor = addColorChooser( 350, 150, 130, "textColor:", onColorChange );
+			textColor = addColorChooser( 350, 140, 130, "textColor:", onColorChange );
 			
 			vertSize = addNumericStepper( 510, 20, 120, "vertSize:", onSetSize );
 			horzSize = addNumericStepper( 510, 60, 120, "horzSize:", onSetSize );
@@ -89,10 +99,10 @@ package controler{
 			
 			cardTitleColors = addColorChooser( 350, 20, 130, "cardTitleColors", onTitleColorAdd );
 			colorList = addItemAt( new List, 350, 60, 130 ) as List;
-			colorList.height = 80;
+			colorList.height = 70;
 			colorList.addEventListener( KeyboardEvent.KEY_DOWN, onColorListKeyDown );
 			
-			cardPositionInfo = addItemAt( new CardPositionInfo, 650, 50 ) as CardPositionInfo;
+			cardPositionInfo = addItemAt( new CardPositionInfo, 650, 18 ) as CardPositionInfo;
 			cardPositionInfo.addEventListener( EditorEvent.ADD_CARD_POSITION, bubbleEvent );
 			cardPositionInfo.addEventListener( EditorEvent.CLEAR_CARD_POSITIONS, bubbleEvent );
 		}
