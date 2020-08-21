@@ -20,9 +20,6 @@ class Turbo90 extends V2Game{
         CardManager.cardType = Turbo90Card;
         CardManager.gridType = Turbo90Grid;
 
-        GameCard.cardTextRect = new egret.Rectangle( 25, 14, 220, 35 );
-        GameCard.betTextRect = new egret.Rectangle( 270, 14, 340, 35 );
-        GameCard.texColor = 0xFFFFFF;
         GameCard.showTitleShadow = new egret.GlowFilter(0, 1, 2, 2, 4 );
         GameCard.clickChangeNumber = true;
 

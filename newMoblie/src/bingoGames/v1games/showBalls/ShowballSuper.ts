@@ -5,9 +5,6 @@ class ShowballSuper extends V1Game{
 	public constructor( gameConfigFile: string, configUrl: string, gameId: number ) {
 		super( gameConfigFile, configUrl, gameId );
 
-		GameCard.cardTextRect = new egret.Rectangle( 22, 12, 205, 48 );
-		GameCard.betTextRect = new egret.Rectangle( 300, 12, 280, 48 );
-		GameCard.texColor = 0xFFFFFF;
 		GameCard.showTitleShadow = new egret.GlowFilter( 0, 1, 4, 4, 4, 2 );
 		GameCard.clickChangeNumber = true;
 

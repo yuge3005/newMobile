@@ -103,6 +103,7 @@ class GameCard extends GameUIItem{
 		CardGrid.numberBackgroundColorOnEffect = colors["numberBackgroundColorOnEffect"];
 		CardGrid.colorNumberOnEffect = colors["colorNumberOnEffect"];
 		CardGrid.colorNumberBackgroundOnEffect = colors["colorNumberBackgroundOnEffect"];
+		GameCard.texColor = colors["textColor"];
 
 		this.gridNumbers = new egret.Point( size["vertSize"], size["horzSize"] );
 		this.gapSize = new egret.Point( size["vertGap"], size["horzGap"] );
@@ -116,6 +117,11 @@ class GameCard extends GameUIItem{
         TowerGrid.onEffBgPicName = data["onEffBg"];
         TowerGrid.linePicName = data["line"];
 		GameCard.usefork = data["usefork"];
+
+		let cardTextRect: egret.Rectangle = new egret.Rectangle( size["cardTextPositionX"], size["cardTextPositionY"], size["cardTextSizeX"], size["cardTextSizeY"] );
+		if( cardTextRect.width > 1 ) GameCard.cardTextRect = cardTextRect;
+		let betTextRect: egret.Rectangle = new egret.Rectangle( size["betTextPositionX"], size["betTextPositionY"], size["betTextSizeX"], size["betTextSizeY"] );
+		if( betTextRect.width > 1 ) GameCard.betTextRect = betTextRect;
 	}
 
 	public static changeBgColor(){
