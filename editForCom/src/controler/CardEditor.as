@@ -97,6 +97,16 @@ package controler{
 			numberSizeY = addNumericStepper( 170, 180, 146, "", onSetSize, 200 );
 			numberSizeX = addNumericStepper( 170, 180, 106, "numSizeWH", onSetSize, 200 );
 			
+			cardTextPositionY = addNumericStepper( 20, 140, 140, "", onSetSize, 500 );
+			cardTextPositionX = addNumericStepper( 20, 140, 100, "textPosition", onSetSize, 500 );
+			cardTextSizeY = addNumericStepper( 20, 180, 140, "", onSetSize, 500 );
+			cardTextSizeX = addNumericStepper( 20, 180, 100, "textSize", onSetSize, 500 );
+			
+			betTextPositionY = addNumericStepper( 350, 180, 135, "", onSetSize, 500 );
+			betTextPositionX = addNumericStepper( 350, 180, 95, "betPosition", onSetSize, 500 );
+			betTextSizeY = addNumericStepper( 510, 180, 125, "", onSetSize, 500 );
+			betTextSizeX = addNumericStepper( 510, 180, 85, "betSize", onSetSize, 500 );
+			
 			cardTitleColors = addColorChooser( 350, 20, 130, "cardTitleColors", onTitleColorAdd );
 			colorList = addItemAt( new List, 350, 60, 130 ) as List;
 			colorList.height = 70;
@@ -118,6 +128,14 @@ package controler{
 			sizeObj.numberInitialPositionX = numberInitialPositionX.value;
 			sizeObj.numberSizeY = numberSizeY.value;
 			sizeObj.numberSizeX = numberSizeX.value;
+			sizeObj.cardTextPositionX = cardTextPositionX.value;
+			sizeObj.cardTextPositionY = cardTextPositionY.value;
+			sizeObj.cardTextSizeX = cardTextSizeX.value;
+			sizeObj.cardTextSizeY = cardTextSizeY.value;
+			sizeObj.betTextPositionX = betTextPositionX.value;
+			sizeObj.betTextPositionY = betTextPositionY.value;
+			sizeObj.betTextSizeX = betTextSizeX.value;
+			sizeObj.betTextSizeY = betTextSizeY.value;
 		}
 		
 		private function onCheckBoxClick( event: Event ):void{
@@ -229,6 +247,14 @@ package controler{
 			numberInitialPositionX.value = sizeObj.numberInitialPositionX;
 			numberSizeY.value = sizeObj.numberSizeY;
 			numberSizeX.value = sizeObj.numberSizeX;
+			cardTextPositionX.value = sizeObj.cardTextPositionX;
+			cardTextPositionY.value = sizeObj.cardTextPositionY;
+			cardTextSizeX.value = sizeObj.cardTextSizeX;
+			cardTextSizeY.value = sizeObj.cardTextSizeY;
+			betTextPositionX.value = sizeObj.betTextPositionX;
+			betTextPositionY.value = sizeObj.betTextPositionY;
+			betTextSizeX.value = sizeObj.betTextSizeX;
+			betTextSizeY.value = sizeObj.betTextSizeY;
 		}
 		
 		public function refreshCardPositionList( positionList: Array ):void{
