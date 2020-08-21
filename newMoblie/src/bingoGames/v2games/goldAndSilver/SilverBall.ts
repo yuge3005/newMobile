@@ -14,8 +14,6 @@ class SilverBall extends GoldSilverSuper{
 
         CardManager.gridType = TowerGrid;
 
-        GameCard.clickChangeNumber = true;
-
         CardGrid.defaultBgColor = 0xE9E9E9;
         CardGrid.defaultNumberSize = 52;
 

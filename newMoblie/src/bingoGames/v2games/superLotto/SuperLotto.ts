@@ -17,6 +17,7 @@ class SuperLotto extends V2Game{
         this.ballArea.mask = new egret.Rectangle( 342, 444, 1216, 159 );
         PaytableUI.textBold = true;
 
+        GameCard.clickChangeNumber = false;
         CardGrid.defaultBgColor = 0;
         CardGrid.defaultNumberSize = 65;
 

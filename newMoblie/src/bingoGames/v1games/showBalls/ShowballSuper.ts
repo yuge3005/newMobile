@@ -6,8 +6,6 @@ class ShowballSuper extends V1Game{
 		super( gameConfigFile, configUrl, gameId );
 
 		GameCard.showTitleShadow = new egret.GlowFilter( 0, 1, 4, 4, 4, 2 );
-		GameCard.clickChangeNumber = true;
-
 		GameCard.gridOnTop = true;
 
 		CardManager.cardType = ShowballCard;

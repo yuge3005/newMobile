@@ -19,7 +19,7 @@ class GameCard extends GameUIItem{
 	public static showTitleShadow: egret.Filter;
 	public static cardTextRect: egret.Rectangle;
 	public static betTextRect: egret.Rectangle;
-	public static clickChangeNumber: boolean;
+	public static clickChangeNumber: boolean = true;
 	public static texColor: number;
 	public static firstToUpperCase: boolean = false;
 
