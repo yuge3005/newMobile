@@ -31,6 +31,7 @@ package controler{
 		private var numberColor:ColorPicker;
 		private var numberColorOnEffect:ColorPicker;
 		private var numberBackgroundColorOnEffect:ColorPicker;
+		private var textColor:ColorPicker;
 		
 		private var colorNumberOnEffect:CheckBox;
 		private var colorNumberBackgroundOnEffect:CheckBox;
@@ -71,6 +72,8 @@ package controler{
 			
 			numberBackgroundColorOnEffect = addColorChooser( 166, 100, 150, "", onColorChange );
 			colorNumberBackgroundOnEffect = addCheckBox( 166, 100, 150, "numBgColorOnEff", onCheckBoxClick );
+			
+			textColor = addColorChooser( 350, 150, 130, "textColor:", onColorChange );
 			
 			vertSize = addNumericStepper( 510, 20, 120, "vertSize:", onSetSize );
 			horzSize = addNumericStepper( 510, 60, 120, "horzSize:", onSetSize );
@@ -123,6 +126,7 @@ package controler{
 			colorObject.numberBackgroundColorOnEffect = numberBackgroundColorOnEffect.selectedColor;
 			colorObject.colorNumberOnEffect = colorNumberOnEffect.selected;
 			colorObject.colorNumberBackgroundOnEffect = colorNumberBackgroundOnEffect.selected;
+			colorObject.textColor = textColor.selectedColor;
 		}
 		
 		private function refreshTileColorList():void{
@@ -185,6 +189,7 @@ package controler{
 			numberBackgroundColorOnEffect.selectedColor = colorObject.numberBackgroundColorOnEffect;
 			colorNumberOnEffect.selected = colorObject.colorNumberOnEffect;
 			colorNumberBackgroundOnEffect.selected = colorObject.colorNumberBackgroundOnEffect;
+			textColor.selectedColor = colorObject.textColor;
 		}
 		
 		private function resetBg():void{
