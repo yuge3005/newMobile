@@ -23,7 +23,7 @@ class Topbar extends egret.DisplayObjectContainer{
 
 	private onButtonClick( event: egret.TouchEvent ){
 		if( event.target == this.backToLobbyBtn ){
-			document.location.href = "../newMobile?id=" + PlayerConfig.player( "user.id" );
+			document.location.href = "../?id=" + PlayerConfig.player( "user.id" );
 		}
 	}
 }
