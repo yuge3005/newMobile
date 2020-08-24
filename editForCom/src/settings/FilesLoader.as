@@ -26,7 +26,7 @@ package settings{
 				var filters: Array = [];
 				var filterStr: Array = filter.split( "," );
 				for( var i: int = 0; i < filterStr.length; i++ ){
-					filters[i] = new FileFilter( filters[i], "*." + filters[i] );
+					filters[i] = new FileFilter( filterStr[i], "*." + filterStr[i] );
 				}
 				browser.browse( filters );
 			}
