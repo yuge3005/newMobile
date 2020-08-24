@@ -22,7 +22,7 @@ package paytable.paytableConfigEditors.paytableFilter{
 			paytablesChildList = new Vector.<Vector.<String>>;
 			paytablesChildListUIContainer = new Vector.<Sprite>;
 			for( var ob: String in paytableData ){
-				var sp: PaytableItem = new PaytableItem( ob );
+				var sp: PaytableFilterItem = new PaytableFilterItem( ob );
 				sp.y = 20 + 40 * i;
 				this.addChild( sp );
 				sp.addEventListener( "dragEnd", onDragEnd );
@@ -34,7 +34,7 @@ package paytable.paytableConfigEditors.paytableFilter{
 		}
 		
 		private function onDragEnd( event: Event ): void{
-			var ptItem: PaytableItem = event.target as PaytableItem;
+			var ptItem: PaytableFilterItem = event.target as PaytableFilterItem;
 			var index: int = ptItem.y / 40;
 			paytablesChildList[index].push( ptItem.name );
 			this.rebuildChildListUIContainer( index );

@@ -57,8 +57,12 @@ package settings{
 		/**清除卡片位置*/
 		public static const CLEAR_CARD_POSITIONS: String = "clearCardPosition";
 		
-		/**打开paytable编辑面板*/
+		/**打开paytableFilter编辑面板*/
 		public static const OPEN_PAYTABLE_FILTER_EDITOR: String = "openPaytableFilterEditor";
+		/**打开paytableSound编辑面板*/
+		public static const OPEN_PAYTABLE_SOUND_EDITOR: String = "openPaytableSoundEditor";
+		/**选择声音*/
+		public static const PAYTABLE_SOUND_CHOSEN: String = "paytableSoundChosen";
 		
 		public function EditorEvent(type:String, data: * = null ){
 			super( type );

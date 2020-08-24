@@ -3,11 +3,11 @@ package paytable.paytableConfigEditors.paytableFilter{
 	import flash.events.MouseEvent;
 	import flash.geom.Point;
 	
-	public class PaytableItem extends PaytableFilterUI{
+	public class PaytableFilterItem extends PaytableFilterUI{
 		
 		private var dragStartPosition: Point;
 		
-		public function PaytableItem( ptName: String ){
+		public function PaytableFilterItem( ptName: String ){
 			super( ptName );
 			
 			this.x = 20;

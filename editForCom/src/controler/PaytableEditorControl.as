@@ -56,6 +56,7 @@ package controler{
 		private var paytableInfo: PaytableInfo;
 		
 		private var filterEditorButton: Button;
+		private var soundEditorButton: Button;
 		
 		public function PaytableEditorControl(){
 			drawBackground( 0xEEEEFF, new Rectangle( -20, 0, 960, 340 ) );
@@ -99,7 +100,9 @@ package controler{
 			paytableInfo.addEventListener( EditorEvent.ADD_PAYTABLE_UI, bubbleEvent );
 			
 			filterEditorButton = addItemAt( new Button, 780, 20, 120, "paytableFilter" ) as Button;
-			filterEditorButton.addEventListener( MouseEvent.CLICK, onfilterButtonClick );
+			filterEditorButton.addEventListener( MouseEvent.CLICK, onFilterButtonClick );
+			soundEditorButton = addItemAt( new Button, 780, 60, 120, "paytableSound" ) as Button;
+			soundEditorButton.addEventListener( MouseEvent.CLICK, onSoundButtonClick );
 		}
 		
 		private function addRuleTextInputAt( x: int, y: int, lebalString: String ): TextInput{
@@ -219,8 +222,12 @@ package controler{
 			else txt.text = "";
 		}
 		
-		private function onfilterButtonClick( event: MouseEvent ): void{
-			dispatchEvent( new Event( EditorEvent.OPEN_PAYTABLE_FILTER_EDITOR ) );
+		private function onFilterButtonClick( event: MouseEvent ): void{
+			report( EditorEvent.OPEN_PAYTABLE_FILTER_EDITOR );
+		}
+		
+		private function onSoundButtonClick( event: MouseEvent ): void{
+			report( EditorEvent.OPEN_PAYTABLE_SOUND_EDITOR );
 		}
 	}
 }

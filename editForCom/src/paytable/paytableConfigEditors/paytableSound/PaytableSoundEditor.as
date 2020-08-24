@@ -1,17 +1,16 @@
-package paytable.paytableConfigEditors.paytableEffect{
+package paytable.paytableConfigEditors.paytableSound{
 	import flash.display.Sprite;
 	
 	import paytable.paytableConfigEditors.PaytableConfigEditor;
-	import paytable.paytableConfigEditors.paytableFilter.PaytableFilterItem;
 	
 	import settings.GameConfigObject;
 	
-	public class PaytableEffectEditor extends PaytableConfigEditor{
+	public class PaytableSoundEditor extends PaytableConfigEditor{
 		
 		private var paytablesRulesList: Vector.<Vector.<String>>;
 		private var paytablesRulesListUIContainer: Vector.<Sprite>;
 		
-		public function PaytableEffectEditor(){
+		public function PaytableSoundEditor(){
 		}
 		
 		protected override function getPaytables():void{
@@ -21,10 +20,10 @@ package paytable.paytableConfigEditors.paytableEffect{
 			paytablesRulesList = new Vector.<Vector.<String>>;
 			paytablesRulesListUIContainer = new Vector.<Sprite>;
 			for( var ob: String in paytableData ){
-				var sp: PaytableFilterItem = new PaytableFilterItem( ob );
+				var sp: PaytableSoundItem = new PaytableSoundItem( ob );
 				sp.y = 20 + 40 * i;
 				this.addChild( sp );
-//				sp.addEventListener( "dragEnd", onDragEnd );
+				//				sp.addEventListener( "dragEnd", onDragEnd );
 				paytables[i] = ob;
 				paytablesRulesList[i] = new Vector.<String>;
 				paytablesRulesListUIContainer[i] = new Sprite;

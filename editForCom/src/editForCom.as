@@ -14,6 +14,7 @@ package
 	import gameUI.PaytableUILayer;
 	
 	import paytable.paytableConfigEditors.paytableFilter.PaytableFilterEditor;
+	import paytable.paytableConfigEditors.paytableSound.PaytableSoundEditor;
 	
 	import settings.EditorEvent;
 	import settings.EditorItem;
@@ -87,7 +88,8 @@ package
 			
 			paytableControl = addItemAt( new PaytableEditorControl, 20, 540 ) as PaytableEditorControl;
 			paytableControl.addEventListener( EditorEvent.ADD_PAYTABLE_UI, onAddPaytableUI );
-			paytableControl.addEventListener( EditorEvent.OPEN_PAYTABLE_FILTER_EDITOR, onOpenPaytableEditor );
+			paytableControl.addEventListener( EditorEvent.OPEN_PAYTABLE_FILTER_EDITOR, onOpenPaytableFilterEditor );
+			paytableControl.addEventListener( EditorEvent.OPEN_PAYTABLE_SOUND_EDITOR, onOpenPaytableSoundEditor );
 		}
 		
 		private function initCardEditor():void{
@@ -223,8 +225,12 @@ package
 			paytableArea.addPaytable( event.data.paytableName, event.data.point, event.data.paytableObject );
 		}
 		
-		protected function onOpenPaytableEditor(event:Event):void{
+		protected function onOpenPaytableFilterEditor(event:Event):void{
 			this.addChild( new PaytableFilterEditor );
+		}
+		
+		protected function onOpenPaytableSoundEditor(event:Event):void{
+			this.addChild( new PaytableSoundEditor );
 		}
 	}
 }
