@@ -117,11 +117,20 @@ class BingoMachine extends GameUIItem{
 
 		GameCard.fitEffectNameList = this.getFitEffectNameList();
 		PaytableFilter.filterObject = obj["payTablesFilter"];
+		PaytableFilter.soundObject = obj["payTablesSound"];
 		MuLang.txt = this.getLanguageObject();
 	}
 
 	protected getLanguageObject(): Object{
 		return RES.getRes( this.languageObjectName );
+	}
+
+	protected getSoundName( paytalbeName: string ): string{
+		if( PaytableFilter.soundObject ){
+			let name: string = PaytableFilter.soundObject[paytalbeName];
+			if( name ) return name;
+		}
+		return "";
 	}
 
 	protected onRemove( event: egret.Event ): void{

@@ -1,6 +1,7 @@
 class PaytableFilter {
 
 	public static filterObject: Object;
+	public static soundObject: Object;
 
 	public constructor() {
 	}
