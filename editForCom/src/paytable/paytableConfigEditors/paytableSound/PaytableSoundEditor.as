@@ -1,5 +1,6 @@
 package paytable.paytableConfigEditors.paytableSound{
 	import flash.events.Event;
+	import flash.events.MouseEvent;
 	
 	import fl.controls.TextInput;
 	
@@ -10,7 +11,7 @@ package paytable.paytableConfigEditors.paytableSound{
 	
 	public class PaytableSoundEditor extends PaytableConfigEditor{
 		
-		private var paytablesSoundNamest: Vector.<TextInput>;
+		private var paytablesSoundNames: Vector.<TextInput>;
 		
 		public function PaytableSoundEditor(){
 		}
@@ -19,7 +20,7 @@ package paytable.paytableConfigEditors.paytableSound{
 			var paytableData: Object = GameConfigObject.payTables;
 			var i: int = 0;
 			paytables = new Vector.<String>;
-			paytablesSoundNamest = new Vector.<TextInput>;
+			paytablesSoundNames = new Vector.<TextInput>;
 			for( var ob: String in paytableData ){
 				var sp: PaytableSoundItem = new PaytableSoundItem( ob );
 				sp.y = 20 + 40 * i;
@@ -27,8 +28,8 @@ package paytable.paytableConfigEditors.paytableSound{
 				sp.addEventListener( EditorEvent.PAYTABLE_SOUND_CHOSEN, onSoundChosen );
 				sp.addEventListener( "deleteItem", onDelete );
 				paytables[i] = ob;
-				paytablesSoundNamest[i] = addItemAt( new TextInput, 150, sp.y, 150 );
-				paytablesSoundNamest[i].enabled = false;
+				paytablesSoundNames[i] = addItemAt( new TextInput, 150, sp.y, 150 );
+				paytablesSoundNames[i].enabled = false;
 				i++;
 			}
 		}
@@ -36,13 +37,37 @@ package paytable.paytableConfigEditors.paytableSound{
 		private function onSoundChosen( event: EditorEvent ): void{
 			var ptSound: PaytableSoundItem = event.target as PaytableSoundItem;
 			var index: int = ( ptSound.y + 1 ) / 40;
-			paytablesSoundNamest[index].text = event.data;
+			paytablesSoundNames[index].text = event.data;
 		}
 		
 		private function onDelete( event: Event ): void{
 			var ptSound: PaytableSoundItem = event.target as PaytableSoundItem;
 			var index: int = ( ptSound.parent.y + 1 ) / 40;
-			var childIndex: int = paytablesSoundNamest[index].text = "";
+			var childIndex: int = paytablesSoundNames[index].text = "";
+		}
+		
+		protected override function onSave( event: MouseEvent ): void{
+			var soundObject: Object = {};
+			for( var i: int = 0; i < paytables.length; i++ ){
+				if( paytablesSoundNames[i].text != "" ){
+					soundObject[paytables[i]] = paytablesSoundNames[i].text;
+				}
+			}
+			GameConfigObject.payTablesSound = soundObject;
+		}
+		
+		protected override function onLoad( event: MouseEvent ): void{
+			if( GameConfigObject.payTablesSound ){
+				var soundObject: Object = GameConfigObject.payTablesSound;
+				for( var ob: String in soundObject ){
+					var index: int = paytables.indexOf( ob );
+					paytablesSoundNames[index].text = soundObject[ob];
+				}
+			}
+		}
+		
+		protected override function onDeleteFilter( event: MouseEvent ): void{
+			GameConfigObject.payTablesSound = null;
 		}
 	}
 }

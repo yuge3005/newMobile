@@ -22,6 +22,7 @@ package settings{
 		
 		public static var payTables: Object = {};
 		public static var payTablesFilter: Object;
+		public static var payTablesSound: Object;
 		
 		public static var card: Object = {};
 		
@@ -44,6 +45,7 @@ package settings{
 			obj.ballNumber = ballNumber;
 			obj.payTables = payTables;
 			obj.payTablesFilter = payTablesFilter;
+			obj.payTablesSound = payTablesSound;
 			obj.card = card;
 			return obj;
 		}
@@ -85,6 +87,7 @@ package settings{
 			if( obj.ballNumber ) ballNumber = obj.ballNumber;
 			if( obj.payTables ) payTables = obj.payTables;
 			if( obj.payTablesFilter ) payTablesFilter = obj.payTablesFilter;
+			if( obj.payTablesSound ) payTablesSound = obj.payTablesSound;
 			if( obj.card )card = obj.card;
 			if( obj.extraUIName )extraUIName = obj.extraUIName;
 			successCallback();
