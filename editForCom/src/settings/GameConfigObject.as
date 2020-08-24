@@ -21,7 +21,7 @@ package settings{
 		public static var ballNumber: int;
 		
 		public static var payTables: Object = {};
-		public static var payTablesFilter: Object = {};
+		public static var payTablesFilter: Object;
 		
 		public static var card: Object = {};
 		

@@ -95,8 +95,7 @@ package paytable.paytableFilter{
 					filterObj[paytables[i]] = paytablesChildList[i];
 				}
 			}
-			var str: String = JSON.stringify( filterObj );
-			GameConfigObject.payTablesFilter = str;
+			GameConfigObject.payTablesFilter = filterObj;
 		}
 		
 		protected function onLoad( event: MouseEvent ): void{
