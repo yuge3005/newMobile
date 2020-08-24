@@ -6,6 +6,7 @@ package controler{
 	import flash.geom.Rectangle;
 	import flash.ui.Keyboard;
 	
+	import fl.controls.Button;
 	import fl.controls.CheckBox;
 	import fl.controls.ColorPicker;
 	import fl.controls.List;
@@ -54,6 +55,8 @@ package controler{
 		
 		private var paytableInfo: PaytableInfo;
 		
+		private var filterEditorButton: Button;
+		
 		public function PaytableEditorControl(){
 			drawBackground( 0xEEEEFF, new Rectangle( -20, 0, 960, 340 ) );
 			
@@ -94,6 +97,9 @@ package controler{
 			paytableInfo = addItemAt( new PaytableInfo, 620, 20 ) as PaytableInfo;
 			paytableInfo.visible = false;
 			paytableInfo.addEventListener( EditorEvent.ADD_PAYTABLE_UI, bubbleEvent );
+			
+			filterEditorButton = addItemAt( new Button, 780, 20, 120, "paytableFilter" ) as Button;
+			filterEditorButton.addEventListener( MouseEvent.CLICK, onfilterButtonClick );
 		}
 		
 		private function addRuleTextInputAt( x: int, y: int, lebalString: String ): TextInput{
@@ -211,6 +217,10 @@ package controler{
 		private function getTextByRule( rule: String, txt: TextInput ):void{
 			if( rule )txt.text = rule;
 			else txt.text = "";
+		}
+		
+		private function onfilterButtonClick( event: MouseEvent ): void{
+			dispatchEvent( new Event( EditorEvent.OPEN_PAYTABLE_FILTER_EDITOR ) );
 		}
 	}
 }

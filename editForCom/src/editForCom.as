@@ -83,6 +83,7 @@ package
 			
 			paytableControl = addItemAt( new PaytableEditorControl, 20, 540 ) as PaytableEditorControl;
 			paytableControl.addEventListener( EditorEvent.ADD_PAYTABLE_UI, onAddPaytableUI );
+			paytableControl.addEventListener( EditorEvent.OPEN_PAYTABLE_FILTER_EDITOR, onOpenPaytableEditor );
 		}
 		
 		private function initCardEditor():void{
@@ -216,6 +217,11 @@ package
 		
 		protected function onAddPaytableUI(event:EditorEvent):void{
 			paytableArea.addPaytable( event.data.paytableName, event.data.point, event.data.paytableObject );
-		}		
+		}
+		
+		protected function onOpenPaytableEditor(event:Event):void{
+			// TODO Auto-generated method stub
+			trace( "open" )
+		}
 	}
 }
