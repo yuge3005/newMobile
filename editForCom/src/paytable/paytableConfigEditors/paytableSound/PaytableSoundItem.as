@@ -13,15 +13,20 @@ package paytable.paytableConfigEditors.paytableSound{
 			super( ptName );
 			
 			this.x = 20;
-			this.addEventListener( MouseEvent.DOUBLE_CLICK, onClick );
+			this.addEventListener( MouseEvent.CLICK, onClick );
+			this.addEventListener( MouseEvent.RIGHT_CLICK, onRightClick );
 		}
 		
 		protected function onClick( event: MouseEvent ): void{
 			new FilesLoader().selectFile( onSoundFileSellect, "mp3,wav" );
 		}
 		
-		protected function onSoundFileSellect(event:Event):void{
+		protected function onSoundFileSellect(event:Event): void{
 			report( EditorEvent.PAYTABLE_SOUND_CHOSEN, event.target.name );
+		}
+		
+		protected function onRightClick(event:MouseEvent): void{
+			report( "deleteItem" );
 		}
 	}
 }
