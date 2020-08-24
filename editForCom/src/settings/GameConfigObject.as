@@ -21,6 +21,7 @@ package settings{
 		public static var ballNumber: int;
 		
 		public static var payTables: Object = {};
+		public static var payTablesFilter: Object = {};
 		
 		public static var card: Object = {};
 		
@@ -42,6 +43,7 @@ package settings{
 			obj.ballTextSize = ballTextSize;
 			obj.ballNumber = ballNumber;
 			obj.payTables = payTables;
+			obj.payTablesFilter = payTablesFilter;
 			obj.card = card;
 			return obj;
 		}
@@ -82,6 +84,7 @@ package settings{
 			if( obj.ballTextSize )ballTextSize = obj.ballTextSize;
 			if( obj.ballNumber ) ballNumber = obj.ballNumber;
 			if( obj.payTables ) payTables = obj.payTables;
+			if( obj.payTablesFilter ) payTablesFilter = obj.payTablesFilter;
 			if( obj.card )card = obj.card;
 			if( obj.extraUIName )extraUIName = obj.extraUIName;
 			successCallback();

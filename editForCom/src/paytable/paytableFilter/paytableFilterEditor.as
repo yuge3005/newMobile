@@ -96,12 +96,12 @@ package paytable.paytableFilter{
 				}
 			}
 			var str: String = JSON.stringify( filterObj );
-			GameConfigObject.payTables.filter = str;
+			GameConfigObject.payTablesFilter = str;
 		}
 		
 		protected function onLoad( event: MouseEvent ): void{
-			if( GameConfigObject.payTables.filter ){
-				var filterObject: Object = GameConfigObject.payTables.filter;
+			if( GameConfigObject.payTablesFilter ){
+				var filterObject: Object = GameConfigObject.payTablesFilter;
 				for( var ob: String in filterObject ){
 					var index: int = paytables.indexOf( ob );
 					for( var i: int = 0; i < filterObject[ob].length; i++ ){
@@ -113,7 +113,7 @@ package paytable.paytableFilter{
 		}
 		
 		protected function onDeleteFilter( event: MouseEvent ): void{
-			GameConfigObject.payTables.filter = null;
+			GameConfigObject.payTablesFilter = null;
 		}
 	}
 }
