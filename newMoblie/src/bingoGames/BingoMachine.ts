@@ -9,7 +9,6 @@ class BingoMachine extends GameUIItem{
 	public inited: boolean = false;
 	private configUrl: string;
 	private gameConfigFile: string;
-	protected ptFilterConfig: string;
 	protected _mcf: egret.MovieClipDataFactory;
 	protected languageObjectName: string;
 	protected megaName: string;
@@ -117,16 +116,12 @@ class BingoMachine extends GameUIItem{
 		this.addEventListener(egret.Event.REMOVED_FROM_STAGE, this.onRemove, this);
 
 		GameCard.fitEffectNameList = this.getFitEffectNameList();
-		PaytableFilter.filterObject = this.getPaytableFilterObject();
+		PaytableFilter.filterObject = obj["payTablesFilter"];
 		MuLang.txt = this.getLanguageObject();
 	}
 
 	protected getLanguageObject(): Object{
 		return RES.getRes( this.languageObjectName );
-	}
-
-	protected getPaytableFilterObject(): Object{
-		return RES.getRes( this.ptFilterConfig );
 	}
 
 	protected onRemove( event: egret.Event ): void{

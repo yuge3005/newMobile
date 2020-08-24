@@ -37,7 +37,7 @@
 			"name": "silver_ball"
 		},
 		{
-			"keys": "shb_win_wav,shb_w_mp3,shb_round_mp3,shb_m_mp3,shb_m_w_mp3,shb_jackpot_mp3,shb_have_extra_ball_wav,shb_free_extra_mp3,shb_extra_ball_mp3,shb_double_line_mp3,shb_card_mp3,shb_bingo_mp3,shb_bet_mp3,shb_ball_mp3,shb_2trangle_mp3,shb_1to_bingo_mp3,shb_1line_mp3,showball3_json,showballAnimation_png,showballAnimation_json,showball3_conf,showball3_tx,showball3_filt,bingoGameToolbar_json,topbar_json,open_list_mp3,getCoinsParticle_png,getCoinsParticle_json,v1gameDefault_json",
+			"keys": "shb_win_wav,shb_w_mp3,shb_round_mp3,shb_m_mp3,shb_m_w_mp3,shb_jackpot_mp3,shb_have_extra_ball_wav,shb_free_extra_mp3,shb_extra_ball_mp3,shb_double_line_mp3,shb_card_mp3,shb_bingo_mp3,shb_bet_mp3,shb_ball_mp3,shb_2trangle_mp3,shb_1to_bingo_mp3,shb_1line_mp3,showball3_json,showballAnimation_png,showballAnimation_json,showball3_conf,showball3_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,getCoinsParticle_png,getCoinsParticle_json,v1gameDefault_json",
 			"name": "showball3"
 		}
 	],
@@ -652,7 +652,7 @@
 			"url": "game/showball/showball3.json",
 			"type": "sheet",
 			"name": "showball3_json",
-			"subkeys": "Bitma1,TelaFundo1,VersoCartela,ball_machine_eb,ball_reveal,card_black_selection,card_plus,card_pt_bingo,card_pt_dbline1,card_pt_dbline2,card_pt_dbline3,card_pt_fly,card_pt_line1,card_pt_line2,card_pt_line3,card_pt_m,card_pt_mouse,card_pt_round,card_pt_trangle,card_pt_trangle2,card_pt_v,card_pt_v2,card_pt_w,card_pt_xx,card_red_selection,card_white_selection,disable-jackpot,heartbg,jackpot_lock,kavkav1,kavkav2,logo_rails,mega_en,mega_es,mega_pt,outline,paytable_red_patch,plus,pt_bingo,pt_double_line,pt_fly,pt_line,pt_m,pt_mouse,pt_round,pt_trangle,pt_v,pt_x,pt_xx,showball_JP,showball_blue,showball_blue_small,showball_cardBg,showball_cyan,showball_cyan_small,showball_dark_green,showball_dark_green_small,showball_extra,showball_green,showball_green_small,showball_orange,showball_orange_small,showball_pink,showball_pink_small,showball_purple,showball_purple_small,showball_red,showball_red_small,showball_yellow,showball_yellow_small"
+			"subkeys": "Bitma1,TelaFundo1,ball_machine_eb,ball_reveal,card_black_selection,card_plus,card_pt_bingo,card_pt_dbline1,card_pt_dbline2,card_pt_dbline3,card_pt_fly,card_pt_line1,card_pt_line2,card_pt_line3,card_pt_m,card_pt_mouse,card_pt_round,card_pt_trangle,card_pt_trangle2,card_pt_v,card_pt_v2,card_pt_w,card_pt_xx,card_red_selection,card_white_selection,disable-jackpot,heartbg,jackpot_lock,kavkav1,kavkav2,logo_rails,mega_en,mega_es,mega_pt,outline,paytable_red_patch,plus,pt_bingo,pt_double_line,pt_fly,pt_line,pt_m,pt_mouse,pt_round,pt_trangle,pt_v,pt_x,pt_xx,showball_JP,showball_blue,showball_cardBg,showball_cyan,showball_dark_green,showball_extra,showball_green,showball_orange,showball_pink,showball_purple,showball_red,showball_yellow"
 		},
 		{
 			"url": "config/showball3.conf",
@@ -663,11 +663,6 @@
 			"url": "config/lan/showball3.tx",
 			"type": "json",
 			"name": "showball3_tx"
-		},
-		{
-			"url": "config/paytableFilter/showball3.filt",
-			"type": "json",
-			"name": "showball3_filt"
 		},
 		{
 			"url": "config/cartoesConfig/v1gameDefault.json",
