@@ -1,8 +1,9 @@
 package paytable.paytableConfigEditors.paytableFilter{
-	import flash.display.Sprite;
 	import flash.text.TextField;
 	
-	public class PaytableFilterUI extends Sprite{
+	import settings.EditorItem;
+	
+	public class PaytableFilterUI extends EditorItem{
 		
 		public function PaytableFilterUI(  ptName: String ){
 			super();

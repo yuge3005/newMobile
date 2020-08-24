@@ -20,7 +20,17 @@ package settings{
 		 */		
 		public function selectFile( callback: Function, filter: String = "json" ):void{
 			var browser: FileReference = new FileReference;
-			browser.browse( [new FileFilter( filter, "*." + filter )] );
+			
+			if( filter.indexOf(",") < 0 ) browser.browse( [new FileFilter( filter, "*." + filter )] );
+			else{
+				var filters: Array = [];
+				var filterStr: Array = filter.split( "," );
+				for( var i: int = 0; i < filterStr.length; i++ ){
+					filters[i] = new FileFilter( filters[i], "*." + filters[i] );
+				}
+				browser.browse( filters );
+			}
+			
 			browser.addEventListener( Event.SELECT, onSellect );
 			this.callBack = callback;
 		}
