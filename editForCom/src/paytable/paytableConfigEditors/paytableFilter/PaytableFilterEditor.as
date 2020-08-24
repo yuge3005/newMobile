@@ -1,44 +1,22 @@
-package paytable.paytableFilter{
+package paytable.paytableConfigEditors.paytableFilter{
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 	
-	import fl.controls.Button;
+	import paytable.paytableConfigEditors.PaytableConfigEditor;
 	
-	import settings.EditorItem;
 	import settings.GameConfigObject;
 
-	public class PaytableFilterEditor extends EditorItem{
+	public class PaytableFilterEditor extends PaytableConfigEditor{
 		
 		private var paytables: Vector.<String>;
 		private var paytablesChildList: Vector.<Vector.<String>>;
 		private var paytablesChildListUIContainer: Vector.<Sprite>;
 		
-		private var fileName: String;
-		
-		private var closeBtn: Button;
-		private var loadBtn: Button;
-		private var saveBtn: Button;
-		private var deleteBtn: Button;
-		
 		public function PaytableFilterEditor(){
-			graphics.beginFill( 0xFFFFFF );
-			graphics.drawRect( 0, 0, editForCom.editorWidth, editForCom.editorHeight );
-			graphics.endFill();
-			
-			getPaytables();
-			
-			closeBtn = addItemAt( new Button, editForCom.editorWidth - 140, 20, 120, "close" ) as Button;
-			closeBtn.addEventListener( MouseEvent.CLICK, onClose );
-			loadBtn = addItemAt( new Button, editForCom.editorWidth - 140, 60, 120, "load" ) as Button;
-			loadBtn.addEventListener( MouseEvent.CLICK, onLoad );
-			saveBtn = addItemAt( new Button, editForCom.editorWidth - 140, 100, 120, "save" ) as Button;
-			saveBtn.addEventListener( MouseEvent.CLICK, onSave );
-			deleteBtn = addItemAt( new Button, editForCom.editorWidth - 140, 140, 120, "delete" ) as Button;
-			deleteBtn.addEventListener( MouseEvent.CLICK, onDeleteFilter );
 		}
 		
-		protected function getPaytables():void{
+		protected override function getPaytables():void{
 			var paytableData: Object = GameConfigObject.payTables;
 			var i: int = 0;
 			paytables = new Vector.<String>;
@@ -84,11 +62,7 @@ package paytable.paytableFilter{
 			this.rebuildChildListUIContainer( index );
 		}
 		
-		protected function onClose( event: MouseEvent ): void{
-			this.parent.removeChild( this );
-		}
-		
-		protected function onSave( event: MouseEvent ): void{
+		protected override function onSave( event: MouseEvent ): void{
 			var filterObj: Object = {};
 			for( var i: int = 0; i < paytablesChildList.length; i++ ){
 				if( paytablesChildList[i].length > 0 ){
@@ -98,7 +72,7 @@ package paytable.paytableFilter{
 			GameConfigObject.payTablesFilter = filterObj;
 		}
 		
-		protected function onLoad( event: MouseEvent ): void{
+		protected override function onLoad( event: MouseEvent ): void{
 			if( GameConfigObject.payTablesFilter ){
 				var filterObject: Object = GameConfigObject.payTablesFilter;
 				for( var ob: String in filterObject ){
@@ -111,7 +85,7 @@ package paytable.paytableFilter{
 			}
 		}
 		
-		protected function onDeleteFilter( event: MouseEvent ): void{
+		protected override function onDeleteFilter( event: MouseEvent ): void{
 			GameConfigObject.payTablesFilter = null;
 		}
 	}

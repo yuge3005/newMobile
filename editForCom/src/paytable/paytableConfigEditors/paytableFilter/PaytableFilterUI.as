@@ -1,4 +1,4 @@
-package paytable.paytableFilter{
+package paytable.paytableConfigEditors.paytableFilter{
 	import flash.display.Sprite;
 	import flash.text.TextField;
 	

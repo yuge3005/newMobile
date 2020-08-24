@@ -13,7 +13,7 @@ package
 	import gameUI.CardLayer;
 	import gameUI.PaytableUILayer;
 	
-	import paytable.paytableFilter.PaytableFilterEditor;
+	import paytable.paytableConfigEditors.paytableFilter.PaytableFilterEditor;
 	
 	import settings.EditorEvent;
 	import settings.EditorItem;
