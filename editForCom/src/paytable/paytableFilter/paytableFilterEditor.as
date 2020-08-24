@@ -2,13 +2,17 @@ package paytable.paytableFilter{
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.KeyboardEvent;
+	import flash.events.MouseEvent;
 	import flash.net.FileReference;
 	import flash.ui.Keyboard;
 	
-	import settings.FilesLoader;
+	import fl.controls.Button;
 	
-	[SWF(frameRate=30,width=800,height=600)]
-	public class paytableFilterEditor extends Sprite{
+	import settings.EditorItem;
+	import settings.FilesLoader;
+	import settings.GameConfigObject;
+
+	public class PaytableFilterEditor extends EditorItem{
 		
 		private var paytables: Vector.<String>;
 		private var paytablesChildList: Vector.<Vector.<String>>;
@@ -16,22 +20,30 @@ package paytable.paytableFilter{
 		
 		private var fileName: String;
 		
-		public function paytableFilterEditor(){
-			new FilesLoader().selectFile( onTextureFileSellect, "conf" );
+		private var closeBtn: Button;
+		private var deleteBtn: Button;
+		private var saveBtn: Button;
+		
+		public function PaytableFilterEditor(){
+			graphics.beginFill( 0xFFFFFF );
+			graphics.drawRect( 0, 0, editForCom.editorWidth, editForCom.editorHeight );
+			graphics.endFill();
+			
+			getPaytables();
+			
+			closeBtn = addItemAt( new Button, editForCom.editorWidth - 140, 20, 120, "close" ) as Button;
+			closeBtn.addEventListener( MouseEvent.CLICK, onClose );
+			deleteBtn = addItemAt( new Button, editForCom.editorWidth - 140, 60, 120, "delete" ) as Button;
+			saveBtn = addItemAt( new Button, editForCom.editorWidth - 140, 100, 120, "save" ) as Button;
 		}
 		
-		protected function onTextureFileSellect(event:Event):void{
-			fileName = event.target.name;
-			new FilesLoader().loadFile( fileName, onTextureJsonLoaded );
-		}
-		
-		protected function onTextureJsonLoaded(event:Event):void{
-			var textureObject: Object = JSON.parse( event.target.data );
+		protected function getPaytables():void{
+			var paytableData: Object = GameConfigObject.payTables;
 			var i: int = 0;
 			paytables = new Vector.<String>;
 			paytablesChildList = new Vector.<Vector.<String>>;
 			paytablesChildListUIContainer = new Vector.<Sprite>;
-			for( var ob: String in textureObject.payTables ){
+			for( var ob: String in paytableData ){
 				var sp: PaytableItem = new PaytableItem( ob );
 				sp.y = 20 + 40 * i;
 				this.addChild( sp );
@@ -41,8 +53,6 @@ package paytable.paytableFilter{
 				paytablesChildListUIContainer[i] = new Sprite;
 				i++;
 			}
-			
-			stage.addEventListener( KeyboardEvent.KEY_DOWN, onKey );
 		}
 		
 		private function onDragEnd( event: Event ): void{
@@ -104,6 +114,10 @@ package paytable.paytableFilter{
 				}
 				this.rebuildChildListUIContainer( index );
 			}
+		}
+		
+		protected function onClose( event: MouseEvent ): void{
+			this.parent.removeChild( this );
 		}
 	}
 }

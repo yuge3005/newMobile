@@ -13,6 +13,8 @@ package
 	import gameUI.CardLayer;
 	import gameUI.PaytableUILayer;
 	
+	import paytable.paytableFilter.PaytableFilterEditor;
+	
 	import settings.EditorEvent;
 	import settings.EditorItem;
 	import settings.GameConfigObject;
@@ -21,6 +23,8 @@ package
 	[SWF(frameRate=30,width=1760,height=880)]
 	public class editForCom extends EditorItem
 	{
+		public static const editorWidth: int = 1760;
+		public static const editorHeight: int = 880;
 		
 		/**背景区域*/
 		private var backgroundArea: BackgroundLayer;
@@ -220,8 +224,7 @@ package
 		}
 		
 		protected function onOpenPaytableEditor(event:Event):void{
-			// TODO Auto-generated method stub
-			trace( "open" )
+			this.addChild( new PaytableFilterEditor );
 		}
 	}
 }
