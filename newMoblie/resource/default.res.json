@@ -9,11 +9,11 @@
 			"name": "superLotto"
 		},
 		{
-			"keys": "nb_1line_mp3,nb_1to_bingo_mp3,nb_2line_mp3,nb_acumulado_mp3,nb_ball_mp3,nb_bet_mp3,nb_bingo_mp3,nb_card_mp3,nb_collect_mp3,nb_extra_ball_mp3,nb_first_extra_mp3,nb_free_extra_mp3,nb_ooc_mp3,nb_win_round_over_mp3,nineball_json,nineballAnimation_png,nineballAnimation_json,nineball_conf,nineball_tx,nineball_filt,bingoGameToolbar_json,topbar_json,open_list_mp3,getCoinsParticle_png,getCoinsParticle_json",
+			"keys": "nb_1line_mp3,nb_1to_bingo_mp3,nb_2line_mp3,nb_acumulado_mp3,nb_ball_mp3,nb_bet_mp3,nb_bingo_mp3,nb_card_mp3,nb_collect_mp3,nb_extra_ball_mp3,nb_first_extra_mp3,nb_free_extra_mp3,nb_ooc_mp3,nb_win_round_over_mp3,nineball_json,nineballAnimation_png,nineballAnimation_json,nineball_conf,nineball_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,getCoinsParticle_png,getCoinsParticle_json",
 			"name": "nineball"
 		},
 		{
-			"keys": "pr_1side_mp3,pr_2side_mp3,pr_3side_mp3,pr_acumulado_mp3,pr_ball_mp3,pr_bet_mp3,pr_bingo_mp3,pr_card_mp3,pr_collect_mp3,pr_drag_in_mp3,pr_drag_out_mp3,pr_extra_ball_mp3,pr_free_extra_ball_mp3,pr_have_extra_ball_mp3,pharos_json,pharosAnimation_png,pharosAnimation_json,pharos_conf,pharos_tx,aztec_filt,bingoGameToolbar_json,topbar_json,open_list_mp3,getCoinsParticle_png,getCoinsParticle_json",
+			"keys": "pr_1side_mp3,pr_2side_mp3,pr_3side_mp3,pr_acumulado_mp3,pr_ball_mp3,pr_bet_mp3,pr_bingo_mp3,pr_card_mp3,pr_collect_mp3,pr_drag_in_mp3,pr_drag_out_mp3,pr_extra_ball_mp3,pr_free_extra_ball_mp3,pr_have_extra_ball_mp3,pharos_json,pharosAnimation_png,pharosAnimation_json,pharos_conf,pharos_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,getCoinsParticle_png,getCoinsParticle_json",
 			"name": "pharos"
 		},
 		{
@@ -33,7 +33,7 @@
 			"name": "generic"
 		},
 		{
-			"keys": "slb_1line_mp3,slb_2line_mp3,slb_ball_mp3,slb_bingo_mp3,slb_card_mp3,slb_extra_ball_mp3,slb_have_extra_ball_wav,slb_jackpot_mp3,silver_ball_json,silver_animation_png,silver_animation_json,silver_ball_conf,silver_ball_tx,goldball_filt,bingoGameToolbar_json,topbar_json,open_list_mp3,getCoinsParticle_json,getCoinsParticle_png",
+			"keys": "slb_1line_mp3,slb_2line_mp3,slb_ball_mp3,slb_bingo_mp3,slb_card_mp3,slb_extra_ball_mp3,slb_have_extra_ball_wav,slb_jackpot_mp3,silver_ball_json,silver_animation_png,silver_animation_json,silver_ball_conf,silver_ball_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,getCoinsParticle_json,getCoinsParticle_png",
 			"name": "silver_ball"
 		},
 		{
@@ -316,11 +316,6 @@
 			"name": "nineball_tx"
 		},
 		{
-			"url": "config/paytableFilter/nineball.filt",
-			"type": "json",
-			"name": "nineball_filt"
-		},
-		{
 			"url": "game/gameToolBar/bingoGameToolbar.json",
 			"type": "sheet",
 			"name": "bingoGameToolbar_json",
@@ -434,11 +429,6 @@
 			"name": "pharos_tx"
 		},
 		{
-			"url": "config/paytableFilter/aztec.filt",
-			"type": "json",
-			"name": "aztec_filt"
-		},
-		{
 			"url": "game/tropCoins/getCoinsParticle.png",
 			"type": "image",
 			"name": "getCoinsParticle_png"
@@ -527,11 +517,6 @@
 			"type": "sheet",
 			"name": "silver_ball_json",
 			"subkeys": "BOLA,Mark_Blue,Mark_Green,Mark_Orange,Mark_Red,Mark_White,bg,jackpot_lock,table"
-		},
-		{
-			"url": "config/paytableFilter/goldball.filt",
-			"type": "json",
-			"name": "goldball_filt"
 		},
 		{
 			"url": "config/lan/silver_ball.tx",

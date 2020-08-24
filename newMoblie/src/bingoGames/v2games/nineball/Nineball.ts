@@ -10,7 +10,6 @@ class Nineball extends V2Game{
 
     public constructor( assetsPath: string ) {
         super( "nineball.conf", assetsPath, 38 );
-        this.ptFilterConfig = "nineball_filt";
         this.languageObjectName = "nineball_tx";
         this.megaName = "nineball_mega";
 

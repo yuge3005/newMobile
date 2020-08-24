@@ -5,7 +5,6 @@ class AztecPharosSuper extends V2Game{
 
 	public constructor( gameConfigFile: string, configUrl: string, gameId: number ) {
 		super( gameConfigFile, configUrl, gameId );
-        this.ptFilterConfig = "aztec_filt";
         this.languageObjectName = "pharos_tx";
 
         CardManager.cardType = TowerCard;

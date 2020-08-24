@@ -1,7 +1,6 @@
 class GoldSilverSuper extends V2Game{
 	public constructor( gameConfigFile: string, configUrl: string, gameId: number ) {
 		super( gameConfigFile, configUrl, gameId );
-		this.ptFilterConfig = "goldball_filt";
 		this.languageObjectName = "silver_ball_tx";
 
 		PaytableUI.textBold = true;
