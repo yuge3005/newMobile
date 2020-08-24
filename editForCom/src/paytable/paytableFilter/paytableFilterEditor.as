@@ -1,15 +1,11 @@
 package paytable.paytableFilter{
 	import flash.display.Sprite;
 	import flash.events.Event;
-	import flash.events.KeyboardEvent;
 	import flash.events.MouseEvent;
-	import flash.net.FileReference;
-	import flash.ui.Keyboard;
 	
 	import fl.controls.Button;
 	
 	import settings.EditorItem;
-	import settings.FilesLoader;
 	import settings.GameConfigObject;
 
 	public class PaytableFilterEditor extends EditorItem{
@@ -21,8 +17,9 @@ package paytable.paytableFilter{
 		private var fileName: String;
 		
 		private var closeBtn: Button;
-		private var deleteBtn: Button;
+		private var loadBtn: Button;
 		private var saveBtn: Button;
+		private var deleteBtn: Button;
 		
 		public function PaytableFilterEditor(){
 			graphics.beginFill( 0xFFFFFF );
@@ -33,8 +30,12 @@ package paytable.paytableFilter{
 			
 			closeBtn = addItemAt( new Button, editForCom.editorWidth - 140, 20, 120, "close" ) as Button;
 			closeBtn.addEventListener( MouseEvent.CLICK, onClose );
-			deleteBtn = addItemAt( new Button, editForCom.editorWidth - 140, 60, 120, "delete" ) as Button;
+			loadBtn = addItemAt( new Button, editForCom.editorWidth - 140, 60, 120, "load" ) as Button;
+			loadBtn.addEventListener( MouseEvent.CLICK, onLoad );
 			saveBtn = addItemAt( new Button, editForCom.editorWidth - 140, 100, 120, "save" ) as Button;
+			saveBtn.addEventListener( MouseEvent.CLICK, onSave );
+			deleteBtn = addItemAt( new Button, editForCom.editorWidth - 140, 140, 120, "delete" ) as Button;
+			deleteBtn.addEventListener( MouseEvent.CLICK, onDeleteFilter );
 		}
 		
 		protected function getPaytables():void{
@@ -83,41 +84,36 @@ package paytable.paytableFilter{
 			this.rebuildChildListUIContainer( index );
 		}
 		
-		private function onKey( event: KeyboardEvent ): void{
-			if( event.keyCode == Keyboard.S && event.ctrlKey ){
-				var filterObj: Object = {};
-				for( var i: int = 0; i < paytablesChildList.length; i++ ){
-					if( paytablesChildList[i].length > 0 ){
-						filterObj[paytables[i]] = paytablesChildList[i];
-					}
-				}
-				var str: String = JSON.stringify( filterObj );
-				var file: FileReference = new FileReference;
-				file.save( str, fileName.replace( ".conf", "" ) + ".filt" );
-			}
-			else if( event.keyCode == Keyboard.E && event.ctrlKey ){
-				new FilesLoader().selectFile( onFilterFileSellect, "filt" );
-			}
-		}
-		
-		protected function onFilterFileSellect(event:Event):void{
-			var filterFileName: String = event.target.name;
-			new FilesLoader().loadFile( filterFileName, onFilterFileJsonLoaded );
-		}
-		
-		protected function onFilterFileJsonLoaded(event:Event):void{
-			var filterObject: Object = JSON.parse( event.target.data );
-			for( var ob: String in filterObject ){
-				var index: int = paytables.indexOf( ob );
-				for( var i: int = 0; i < filterObject[ob].length; i++ ){
-					paytablesChildList[index].push( filterObject[ob][i] );
-				}
-				this.rebuildChildListUIContainer( index );
-			}
-		}
-		
 		protected function onClose( event: MouseEvent ): void{
 			this.parent.removeChild( this );
+		}
+		
+		protected function onSave( event: MouseEvent ): void{
+			var filterObj: Object = {};
+			for( var i: int = 0; i < paytablesChildList.length; i++ ){
+				if( paytablesChildList[i].length > 0 ){
+					filterObj[paytables[i]] = paytablesChildList[i];
+				}
+			}
+			var str: String = JSON.stringify( filterObj );
+			GameConfigObject.payTables.filter = str;
+		}
+		
+		protected function onLoad( event: MouseEvent ): void{
+			if( GameConfigObject.payTables.filter ){
+				var filterObject: Object = GameConfigObject.payTables.filter;
+				for( var ob: String in filterObject ){
+					var index: int = paytables.indexOf( ob );
+					for( var i: int = 0; i < filterObject[ob].length; i++ ){
+						paytablesChildList[index].push( filterObject[ob][i] );
+					}
+					this.rebuildChildListUIContainer( index );
+				}
+			}
+		}
+		
+		protected function onDeleteFilter( event: MouseEvent ): void{
+			GameConfigObject.payTables.filter = null;
 		}
 	}
 }
