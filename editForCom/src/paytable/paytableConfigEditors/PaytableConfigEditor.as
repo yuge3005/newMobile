@@ -4,9 +4,10 @@ package paytable.paytableConfigEditors{
 	import fl.controls.Button;
 	
 	import settings.EditorItem;
-	import settings.GameConfigObject;
 	
 	public class PaytableConfigEditor extends EditorItem{
+		
+		protected var paytables: Vector.<String>;
 		
 		protected var closeBtn: Button;
 		protected var loadBtn: Button;

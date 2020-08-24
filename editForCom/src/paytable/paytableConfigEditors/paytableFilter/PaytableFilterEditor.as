@@ -9,7 +9,6 @@ package paytable.paytableConfigEditors.paytableFilter{
 
 	public class PaytableFilterEditor extends PaytableConfigEditor{
 		
-		private var paytables: Vector.<String>;
 		private var paytablesChildList: Vector.<Vector.<String>>;
 		private var paytablesChildListUIContainer: Vector.<Sprite>;
 		
