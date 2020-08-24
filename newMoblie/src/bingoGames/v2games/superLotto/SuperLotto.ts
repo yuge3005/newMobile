@@ -10,7 +10,6 @@ class SuperLotto extends V2Game{
 
 	public constructor( assetsPath: string ) {
 		super( "superLotto.conf", assetsPath, 71 );
-        this.ptFilterConfig = "superLotto_filt";
         this.languageObjectName = "superLotto_tx";
 
         this.ballArea = new LottoBallManager;

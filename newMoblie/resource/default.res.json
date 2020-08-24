@@ -1,11 +1,11 @@
 {
 	"groups": [
 		{
-			"keys": "t90_4corners_mp3,t90_ball_mp3,t90_bet_mp3,t90_bingo_mp3,t90_blink_mp3,t90_card_mp3,t90_double_line_mp3,t90_extra_ball_mp3,t90_extra_loop_mp3,t90_jackpot_mp3,t90_line_mp3,t90_win_mp3,turbo90_json,turbo90Animation_json,turbo90Animation_png,turbo90_conf,turbo90_tx,turbo90_filt,bingoGameToolbar_json,topbar_json,open_list_mp3,getCoinsParticle_png,getCoinsParticle_json",
+			"keys": "t90_4corners_mp3,t90_ball_mp3,t90_bet_mp3,t90_bingo_mp3,t90_blink_mp3,t90_card_mp3,t90_double_line_mp3,t90_extra_ball_mp3,t90_extra_loop_mp3,t90_jackpot_mp3,t90_line_mp3,t90_win_mp3,turbo90_json,turbo90Animation_json,turbo90Animation_png,turbo90_conf,turbo90_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,getCoinsParticle_png,getCoinsParticle_json",
 			"name": "turbo90"
 		},
 		{
-			"keys": "superLotto_json,superLotto_conf,superLotto_filt,lotto_eb_mp3,lotto_ball_mp3,lotto_an2_mp3,lotto_an5_mp3,lotto_an4_mp3,lotto_an3_mp3,lotto_gold_mp3,lotto_se1_mp3,lotto_se2_mp3,lotto_se3_mp3,lotto_se4_mp3,lotto_silver_mp3,lotto_se5_mp3,lotto_se6_mp3,superLotto_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,getCoinsParticle_png,getCoinsParticle_json",
+			"keys": "superLotto_json,superLotto_conf,lotto_eb_mp3,lotto_ball_mp3,lotto_an2_mp3,lotto_an5_mp3,lotto_an4_mp3,lotto_an3_mp3,lotto_gold_mp3,lotto_se1_mp3,lotto_se2_mp3,lotto_se3_mp3,lotto_se4_mp3,lotto_silver_mp3,lotto_se5_mp3,lotto_se6_mp3,superLotto_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,getCoinsParticle_png,getCoinsParticle_json",
 			"name": "superLotto"
 		},
 		{
@@ -57,11 +57,6 @@
 			"url": "config/superLotto.conf",
 			"type": "json",
 			"name": "superLotto_conf"
-		},
-		{
-			"url": "config/paytableFilter/superLotto.filt",
-			"type": "json",
-			"name": "superLotto_filt"
 		},
 		{
 			"url": "assets/sound/superLotto/lotto_ball.mp3",
@@ -324,11 +319,6 @@
 			"url": "config/paytableFilter/nineball.filt",
 			"type": "json",
 			"name": "nineball_filt"
-		},
-		{
-			"url": "config/paytableFilter/turbo90.filt",
-			"type": "json",
-			"name": "turbo90_filt"
 		},
 		{
 			"url": "game/gameToolBar/bingoGameToolbar.json",

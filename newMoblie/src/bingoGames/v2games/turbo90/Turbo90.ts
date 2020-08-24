@@ -10,7 +10,6 @@ class Turbo90 extends V2Game{
 
 	public constructor( assetsPath: string ) {
 		super( "turbo90.conf", assetsPath, 39 );
-        this.ptFilterConfig = "turbo90_filt";
         this.languageObjectName = "turbo90_tx";
         this.megaName = "turbo90_mega";
 
