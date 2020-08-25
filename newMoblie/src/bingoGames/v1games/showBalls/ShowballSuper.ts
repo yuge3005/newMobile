@@ -98,6 +98,8 @@ class ShowballSuper extends V1Game{
 			ballLotto.stop();
 			ballLotto.visible = false;
 		}
+
+		this.playSound("shb_ball_mp3");
 	}
 
 	protected showLastBallAt( ballIndex: number, x: number, y: number, scale: number = 1 ): void{
@@ -256,6 +258,7 @@ class ShowballSuper extends V1Game{
 
 	protected changeNumberSound(): void {
 		this.clearCardWinTimes();
+		this.playSound("shb_card_mp3");
 	}
 
 	protected startPlay(): void {
@@ -266,6 +269,7 @@ class ShowballSuper extends V1Game{
 	protected onBetChanged( event: egret.Event ): void{
 		super.onBetChanged( event );
         this.clearCardWinTimes();
+		if (event.data["type"] !== 0) this.playSound("shb_bet_mp3");
 	}
 
 	private clearCardWinTimes(): void{
@@ -328,6 +332,9 @@ class ShowballSuper extends V1Game{
 		super.roundOver();
 
 		this.showPressPlay();
+
+		this.stopSound("shb_ball_mp3");
+        this.stopSound("shb_1to_bingo_mp3");
 	}
 
 	protected hasExtraBallFit(): void {
@@ -349,6 +356,10 @@ class ShowballSuper extends V1Game{
 				this.dispatchEvent( ev );
 			}
 		}
+	}
+
+	protected getExtraBallFit(): void {
+		this.playSound("shb_extra_ball_mp3");
 	}
 
 	protected winBingo(): void {
