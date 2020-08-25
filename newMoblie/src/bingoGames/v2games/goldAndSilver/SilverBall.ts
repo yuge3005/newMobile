@@ -93,13 +93,7 @@ class SilverBall extends GoldSilverSuper{
     }
 
     protected getPaytablesFit( paytabledName: string, callback: Function = null ): void{
-		let soundName = "";
-        switch (paytabledName) {
-            case "line": soundName = "slb_1line_mp3"; break;
-            case "double": soundName = "slb_2line_mp3"; break;
-            case "bingo": soundName = "slb_bingo_mp3";break;
-            default: break;
-        }
+		let soundName = this.getSoundName( paytabledName );
         if (soundName !== "") {
             this.waitingForEffect = true;
             if( SoundManager.soundOn ){

@@ -67,18 +67,7 @@ class Pharos extends AztecPharosSuper{
     }
 
     protected getPaytablesFit( paytabledName: string, callback: Function = null ): void{
-		let soundName = "";
-        switch (paytabledName) {
-            case "one side": soundName = "pr_1side_mp3";
-                break;
-            case "two side": soundName = "pr_2side_mp3";
-                break;
-            case "bingo": soundName = "pr_bingo_mp3";
-                break;
-            case "three side": soundName = "pr_3side_mp3";
-                break;
-            default: break;
-        }
+		let soundName = this.getSoundName( paytabledName );
         if (soundName !== "") {
             if( SoundManager.soundOn ){
                 this.playSound(soundName, 1, callback);

@@ -128,7 +128,7 @@ class BingoMachine extends GameUIItem{
 	protected getSoundName( paytalbeName: string ): string{
 		if( PaytableFilter.soundObject ){
 			let name: string = PaytableFilter.soundObject[paytalbeName];
-			if( name ) return name;
+			if( name ) return name.replace( ".", "_" );
 		}
 		return "";
 	}
