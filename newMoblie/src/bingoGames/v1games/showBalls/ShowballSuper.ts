@@ -67,7 +67,10 @@ class ShowballSuper extends V1Game{
 		this.winText.bold = true;
 		this.winText.text = "0";
 
-		this.addGameText( 510, 20, 15, 0xFFFFFF, "ball", true, 60 ).textAlign = "center";
+		let ballText: TextLabel = this.addGameText( 1603, 52, 32, 0x0, "ball", false, 125, "", 1 );
+		ballText.textAlign = "center";
+		ballText.fontFamily = "Righteous";
+		
 		let jackpotText: TextLabel = this.addGameText( 171, 120, 10, 0xFE0000, "", true, 10 );
 		jackpotText.textAlign = "center";
 		jackpotText.height = 105;
@@ -75,9 +78,11 @@ class ShowballSuper extends V1Game{
 		this.addChildAt( jackpotText, this.getChildIndex( this.ballArea ) );
 		jackpotText.text = MuLang.getText( "jackpot" );
 
-		this.ballCountText = this.addGameText( 515, 48, 22, 0x88FF88, "ball", false, 50 );
+		this.ballCountText = this.addGameText( 1603, 85, 100, 0x88FF88, "ball", false, 125, "", 1 );
 		this.ballCountText.textAlign = "center";
+		this.ballCountText.fontFamily = "Righteous";
 		this.ballCountText.text = "";
+		this.ballCountText.verticalAlign = "middle";
 
 		this.runningBallContainer = new egret.Sprite;
 		Com.addObjectAt( this, this.runningBallContainer, 1395, 28 );
