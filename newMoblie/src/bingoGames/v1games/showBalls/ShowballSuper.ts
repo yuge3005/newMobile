@@ -82,7 +82,6 @@ class ShowballSuper extends V1Game{
 		this.ballCountText.textAlign = "center";
 		this.ballCountText.fontFamily = "Righteous";
 		this.ballCountText.text = "";
-		this.ballCountText.verticalAlign = "middle";
 
 		this.runningBallContainer = new egret.Sprite;
 		Com.addObjectAt( this, this.runningBallContainer, 1395, 28 );

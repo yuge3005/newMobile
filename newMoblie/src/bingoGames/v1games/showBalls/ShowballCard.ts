@@ -8,15 +8,13 @@ class ShowballCard extends GameCard{
         
         this.cardText.scaleX = 0.95;
         this.betText.scaleX = 0.95;
-
-		this.cardText.textColor = 0xFFFF33;
 		this.cardText.fontFamily = "Arial";
+        this.betText.fontFamily = "Arial";
 		this.cardText.bold = true;
-		this.cardText.filters = [];
-		this.cardText.text = MuLang.getText("prize") + ":";
+        this.betText.bold = true;
     }
 
 	public showWinCount( winNumber: number ): void{
-		this.cardText.text = MuLang.getText("prize") + ": " + ( winNumber ? Utils.formatCoinsNumber( winNumber ) : "" );
+		if( winNumber > 0 ) this.betText.setText( MuLang.getText("win") + ": " + ( winNumber ? Utils.formatCoinsNumber( winNumber ) : "" ) );
 	}
 }
