@@ -10,17 +10,7 @@ class Showball3 extends ShowballSuper{
 
     public constructor( assetsPath: string ) {
         super( "showball3.conf", assetsPath, 20 );
-        this.languageObjectName = "showball3_tx";
     }
-    
-    protected getPaytablesFit( paytabledName: string, callback: Function = null ): void{
-        let soundName = this.getSoundName( paytabledName );
-        if (SoundManager.soundOn && soundName !== "") {
-            this.playSound(soundName, 1, callback);
-        } else {
-            callback();
-        }
-	}
 
 	protected onBetChanged( event: egret.Event ): void{
         super.onBetChanged(event);

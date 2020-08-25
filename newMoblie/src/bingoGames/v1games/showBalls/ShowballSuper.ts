@@ -4,6 +4,7 @@ class ShowballSuper extends V1Game{
 
 	public constructor( gameConfigFile: string, configUrl: string, gameId: number ) {
 		super( gameConfigFile, configUrl, gameId );
+		this.languageObjectName = "showball3_tx";
 
 		GameCard.showTitleShadow = new egret.GlowFilter( 0, 1, 4, 4, 4, 2 );
 		GameCard.gridOnTop = true;
@@ -25,6 +26,15 @@ class ShowballSuper extends V1Game{
 		BingoBackGroundSetting.gameMask = new egret.Rectangle( 0, 0, 2000, 1125 );
 
 		PayTableManager.bingoPaytableName = "pt_bingo";
+	}
+   
+    protected getPaytablesFit( paytabledName: string, callback: Function = null ): void{
+		let soundName = this.getSoundName( paytabledName );
+        if (SoundManager.soundOn && soundName !== "") {
+            this.playSound(soundName, 1, callback);
+        } else {
+            callback();
+        }
 	}
 
 	protected combinString( str: string ){

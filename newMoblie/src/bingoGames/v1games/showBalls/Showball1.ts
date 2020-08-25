@@ -11,31 +11,6 @@ class Showball1 extends ShowballSuper{
     public constructor( assetsPath: string ) {
         super( "showball1.conf", assetsPath, 22 );
     }
-    
-    protected getPaytablesFit( paytabledName: string, callback: Function = null ): void{
-		let soundName = "";
-        switch (paytabledName) {
-            case "pt_x": 
-            case "pt_v": 
-            case "plus": 
-            case "pt_line": 
-            case "pt_mouse": 
-            case "pt_trangle": soundName = "shb_win_wav"; break;
-            case "pt_bingo": soundName = "shb_bingo_mp3"; break;
-            case "pt_xx": soundName = "shb_2trangle_wav"; break;
-            case "pt_w": soundName = "shb_w_mp3"; break;    
-            case "pt_m": soundName = "shb_m_mp3"; break;
-            case "pt_fly": soundName = "shb_m_w_mp3"; break; 
-            case "pt_round": soundName = "shb_round_wav"; break;
-            case "double_line": soundName = "shb_double_line_mp3"; break; 
-            default: break;
-        }
-        if (SoundManager.soundOn && soundName !== "") {
-            this.playSound(soundName, 1, callback);
-        } else {
-            callback();
-        }
-	}
 
 	protected onBetChanged( event: egret.Event ): void{
         super.onBetChanged(event);
