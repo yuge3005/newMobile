@@ -10,10 +10,10 @@ class ShowballSuper extends V1Game{
 		GameCard.gridOnTop = true;
 
 		CardManager.cardType = ShowballCard;
-		CardManager.gridType = TowerGrid;
+		CardManager.gridType = ShowballGrid;
 
 		CardGrid.defaultBgColor = 0xFFFFFF;
-		CardGrid.defaultNumberSize = 25;
+		CardGrid.defaultNumberSize = 64;
 
 		this.needSmallWinTimesOnCard = true;
 		this.ballArea.needLightCheck = true;
@@ -339,6 +339,8 @@ class ShowballSuper extends V1Game{
 
 		this.stopSound("shb_ball_mp3");
         this.stopSound("shb_1to_bingo_mp3");
+
+		ShowballGrid.extraBink = false;
 	}
 
 	protected hasExtraBallFit(): void {
@@ -352,14 +354,10 @@ class ShowballSuper extends V1Game{
 			this.superExtraBg.visible = true;
 			this.gameToolBar.megeExtraOnTop( true );
 
-			if( localStorage.getItem( this.assetStr( "mega" ) ) ) return;
-			else{
-				localStorage.setItem( this.assetStr( "mega" ), "true" );
-				let ev: egret.Event = new egret.Event( "megaFirst" );
-				ev.data = new egret.Rectangle( 536, 148, 43, 35 );
-				this.dispatchEvent( ev );
-			}
+			this.tryFirstMega( new egret.Rectangle( 280, 102, 54, 54 ) );
 		}
+
+		ShowballGrid.extraBink = true;
 	}
 
 	protected getExtraBallFit(): void {

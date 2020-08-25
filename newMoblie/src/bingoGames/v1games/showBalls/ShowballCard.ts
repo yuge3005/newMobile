@@ -14,6 +14,14 @@ class ShowballCard extends GameCard{
         this.betText.bold = true;
     }
 
+	public getNumbers( numbers: Array<number> ){
+		super.getNumbers( numbers );
+
+		for( let i: number = 0; i < this.grids.length; i++ ){
+			( this.grids[i] as ShowballGrid ).extraBlinkNumber = numbers[i];
+		}
+	}
+
 	public showWinCount( winNumber: number ): void{
 		if( winNumber > 0 ) this.betText.setText( MuLang.getText("win") + ": " + ( winNumber ? Utils.formatCoinsNumber( winNumber ) : "" ) );
 	}

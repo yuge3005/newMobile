@@ -10,5 +10,6 @@ class Showball1 extends ShowballSuper{
 
     public constructor( assetsPath: string ) {
         super( "showball1.conf", assetsPath, 22 );
+        this.megaName = "showball1_mega";
     }
 }
