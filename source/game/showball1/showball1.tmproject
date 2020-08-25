@@ -8,9 +8,6 @@
     },
     "projectName": "showball1",
     "files": [
-        "./TelaFundo1.png",
-        "./showball_yellow.png",
-        "./showball_red.png",
         "./showball_purple.png",
         "./showball_pink.png",
         "./showball_orange.png",
@@ -72,7 +69,10 @@
         "./card_black_selection.png",
         "./Bitma1.png",
         "./ball_reveal.png",
-        "./ball_machine_eb.png"
+        "./ball_machine_eb.png",
+        "./TelaFundo1.png",
+        "./showball_yellow.png",
+        "./showball_red.png"
     ],
     "version": 5
 }
