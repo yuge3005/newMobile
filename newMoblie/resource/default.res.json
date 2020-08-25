@@ -59,72 +59,72 @@
 			"name": "superLotto_conf"
 		},
 		{
-			"url": "assets/sound/superLotto/lotto_ball.mp3",
+			"url": "game/superLotto/sound/lotto_ball.mp3",
 			"type": "sound",
 			"name": "lotto_ball_mp3"
 		},
 		{
-			"url": "assets/sound/superLotto/lotto_eb.mp3",
+			"url": "game/superLotto/sound/lotto_eb.mp3",
 			"type": "sound",
 			"name": "lotto_eb_mp3"
 		},
 		{
-			"url": "assets/sound/superLotto/lotto_an2.mp3",
+			"url": "game/superLotto/sound/lotto_an2.mp3",
 			"type": "sound",
 			"name": "lotto_an2_mp3"
 		},
 		{
-			"url": "assets/sound/superLotto/lotto_an5.mp3",
+			"url": "game/superLotto/sound/lotto_an5.mp3",
 			"type": "sound",
 			"name": "lotto_an5_mp3"
 		},
 		{
-			"url": "assets/sound/superLotto/lotto_an4.mp3",
+			"url": "game/superLotto/sound/lotto_an4.mp3",
 			"type": "sound",
 			"name": "lotto_an4_mp3"
 		},
 		{
-			"url": "assets/sound/superLotto/lotto_an3.mp3",
+			"url": "game/superLotto/sound/lotto_an3.mp3",
 			"type": "sound",
 			"name": "lotto_an3_mp3"
 		},
 		{
-			"url": "assets/sound/superLotto/lotto_gold.mp3",
+			"url": "game/superLotto/sound/lotto_gold.mp3",
 			"type": "sound",
 			"name": "lotto_gold_mp3"
 		},
 		{
-			"url": "assets/sound/superLotto/lotto_se1.mp3",
+			"url": "game/superLotto/sound/lotto_se1.mp3",
 			"type": "sound",
 			"name": "lotto_se1_mp3"
 		},
 		{
-			"url": "assets/sound/superLotto/lotto_se2.mp3",
+			"url": "game/superLotto/sound/lotto_se2.mp3",
 			"type": "sound",
 			"name": "lotto_se2_mp3"
 		},
 		{
-			"url": "assets/sound/superLotto/lotto_se3.mp3",
+			"url": "game/superLotto/sound/lotto_se3.mp3",
 			"type": "sound",
 			"name": "lotto_se3_mp3"
 		},
 		{
-			"url": "assets/sound/superLotto/lotto_se4.mp3",
+			"url": "game/superLotto/sound/lotto_se4.mp3",
 			"type": "sound",
 			"name": "lotto_se4_mp3"
 		},
 		{
-			"url": "assets/sound/superLotto/lotto_silver.mp3",
+			"url": "game/superLotto/sound/lotto_silver.mp3",
 			"type": "sound",
 			"name": "lotto_silver_mp3"
 		},
 		{
-			"url": "assets/sound/superLotto/lotto_se5.mp3",
+			"url": "game/superLotto/sound/lotto_se5.mp3",
 			"type": "sound",
 			"name": "lotto_se5_mp3"
 		},
 		{
-			"url": "assets/sound/superLotto/lotto_se6.mp3",
+			"url": "game/superLotto/sound/lotto_se6.mp3",
 			"type": "sound",
 			"name": "lotto_se6_mp3"
 		},

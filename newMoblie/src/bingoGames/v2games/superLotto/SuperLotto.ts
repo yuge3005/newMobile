@@ -234,20 +234,7 @@ class SuperLotto extends V2Game{
 	}
 
     protected getPaytablesFit( paytabledName: string, callback: Function = null ): void{
-		let soundName = "";
-        switch (paytabledName) {
-            case "se6": 
-            case "se5":
-            case "an5": 
-            case "an4":
-            case "an3":
-            case "se4":
-            case "se3": 
-            case "an2":
-            case "se1":
-            case "se2": soundName = "lotto_" + paytabledName +"_mp3";break;
-            default: break;
-        }
+		let soundName = this.getSoundName( paytabledName );
         if (soundName !== "") {
             this.waitingForEffect = true;
             if( SoundManager.soundOn ){
