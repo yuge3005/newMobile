@@ -1,5 +1,7 @@
 class ShowballSuper extends V1Game{
 
+	private showballLogo: egret.Bitmap;
+
 	public constructor( gameConfigFile: string, configUrl: string, gameId: number ) {
 		super( gameConfigFile, configUrl, gameId );
 		this.languageObjectName = "showball3_tx";
@@ -63,6 +65,8 @@ class ShowballSuper extends V1Game{
 		// this.showTipStatus();
 
 		this.ganhoCounter = new GanhoCounter( this.showWinAnimationAt.bind( this ) );
+
+		this.showballLogo = this.getChildByName( this.assetStr("logo_rails") ) as egret.Bitmap;
 	}
 
 	protected showLastBall( ballIndex: number ): void{
@@ -244,7 +248,7 @@ class ShowballSuper extends V1Game{
 	protected roundOver(): void {
 		super.roundOver();
 
-		this.showPressPlay();
+		// this.showPressPlay();
 
 		this.stopSound("shb_ball_mp3");
         this.stopSound("shb_1to_bingo_mp3");
@@ -276,6 +280,11 @@ class ShowballSuper extends V1Game{
 	protected winBingo(): void {
 		super.winBingo();
 		this.clearHeartAnimation();
+	}
+
+	protected showExtraUI( show: boolean = true ){
+		super.showExtraUI( show );
+		this.showballLogo.alpha = show ? 0.5 : 1;
 	}
 
 	protected getFitEffectNameList(): Object{
