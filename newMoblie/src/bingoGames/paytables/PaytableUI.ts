@@ -22,12 +22,12 @@ class PaytableUI extends egret.Sprite{
 	protected grids: Array<egret.Shape>;
 
 	private textColor: number;
-	private blinkGridsIndexs: Array<number>;
+	protected blinkGridsIndexs: Array<number>;
 
 	private _winEffects: Array<egret.Filter>;
-	private currentEffect: number;
+	protected currentEffect: number;
 
-	private _blink: Boolean;
+	protected _blink: Boolean;
 	public set blink(value:Boolean){
 		this._blink = value;
 		this.currentEffect = 0;

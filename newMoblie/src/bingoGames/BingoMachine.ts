@@ -192,7 +192,6 @@ class BingoMachine extends GameUIItem{
 
 		this._mcf = BingoBackGroundSetting.initBackground( this );
 
-		PayTableManager.getPayTableUI();
 		this.addChild( this.ballArea );
 		this.addPayTables();
 
@@ -216,6 +215,7 @@ class BingoMachine extends GameUIItem{
 	}
 
 	protected addPayTables(){
+		PayTableManager.getPayTableUI();
 		this.payTableArea = new egret.DisplayObjectContainer;
 		this.addChild( this.payTableArea );
 		let pts: Object = PayTableManager.payTablesDictionary;
