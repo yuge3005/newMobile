@@ -27,6 +27,7 @@ class ShowballSuper extends V1Game{
 
 		PayTableManager.bingoPaytableName = "pt_bingo";
 		PayTableManager.paytableUIType = ShowballPaytableUI;
+		PaytableUI.textBold = true;
 	}
    
     protected getPaytablesFit( paytabledName: string, callback: Function = null ): void{
