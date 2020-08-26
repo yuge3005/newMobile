@@ -176,7 +176,7 @@ class Nineball extends V2Game{
 /******************************************************************************************************************************************************************/    
     protected showJackpot( jackpot: number, jackpotMinBet: number, betConfig: Array<Object> ){
         this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 1276, 15 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 0, 0 ), new egret.Rectangle( 85, 42, 320, 40 ), 40, 0xFFFFFF ) );
-        this.jackpotArea["jackpotText"].textAlign = "left";
+        this.jackpotArea.jackpotText.textAlign = "left";
     }
 
     protected getPaytablesFit( paytabledName: string, callback: Function = null ): void{

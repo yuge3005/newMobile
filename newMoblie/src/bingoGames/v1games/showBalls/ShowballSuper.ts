@@ -315,15 +315,4 @@ class ShowballSuper extends V1Game{
         firList["pt_bingo"] = this.combinString( "bingo" );
 		return firList;
 	}
-
-/******************************************************************************************************************************************************************/    
-
-	protected showJackpot( jackpot: number, jackpotMinBet: number, betConfig: Array<Object> ){
-		this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 617, -2 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 2, 23 ), new egret.Rectangle( 0, 26, 120, 20 ), 20, 0xFF0000, new egret.Rectangle( 0, 10, 120, 14 ), 14, 0xFFFFFF ) );
-		this.jackpotArea.tip.fontFamily = "verdana";
-		this.jackpotArea.tip.bold = true;
-		this.jackpotArea.tip.text = Utils.toFirstUpperCase(this.jackpotArea.tip.text);
-
-		this.jackpotArea["jackpotText"].fontFamily = "Quicksand Bold";
-	}
 }

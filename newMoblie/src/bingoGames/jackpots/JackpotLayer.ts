@@ -1,6 +1,6 @@
 class JackpotLayer extends egret.DisplayObjectContainer {
 	public tip: TextLabel;
-    private jackpotText: egret.TextField;
+    public jackpotText: egret.TextField;
 	public jackpotMinBet: number;
 	protected jackpotLock: egret.Bitmap;
 

@@ -152,7 +152,7 @@ class Turbo90 extends V2Game{
     protected showJackpot( jackpot: number, jackpotMinBet: number, betConfig: Array<Object> ){
         this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 1318, -2 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 0, 0 ), new egret.Rectangle( 110, 50, 300, 40 ), 40, 0xFFC609 ) );
         this.jackpotArea.textBold = false;
-        this.jackpotArea["jackpotText"].textAlign = "left";
+        this.jackpotArea.jackpotText.textAlign = "left";
     }
 
     protected getPaytablesFit( paytabledName: string, callback: Function = null ): void{
