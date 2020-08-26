@@ -1,0 +1,77 @@
+{"mc":{
+	"showball_heart":{
+		"frameRate":24,
+		"events":[
+			
+			],
+		"frames":[
+			
+			{
+			"res":"9C9EAC1F",
+			"x":0,
+			"y":0,
+			"duration":12
+			},
+			{
+			"res":"4F26EFEC",
+			"x":28,
+			"y":25,
+			"duration":12
+			}
+			]
+},"showball1Jackpot":{
+		"frameRate":24,
+		"events":[
+			
+			],
+		"frames":[
+			
+			{
+			"res":"DFB9D397",
+			"x":0,
+			"y":0,
+			"duration":5
+			},
+			{
+			"res":"2CB52F7E",
+			"x":0,
+			"y":0,
+			"duration":5
+			}
+			]
+},"showball_bolas":{
+		"frameRate":24,
+		"events":[
+			
+			],
+		"frames":[
+			
+			{
+			"res":"A171C804",
+			"x":0,
+			"y":0,
+			"duration":4
+			},
+			{
+			"res":"CF9FD6E6",
+			"x":0,
+			"y":0,
+			"duration":4
+			},
+			{
+			"res":"6D62EAEB",
+			"x":0,
+			"y":0,
+			"duration":4
+			}
+			]
+}},
+	"res":{
+		"4F26EFEC":{"x":1,"y":322,"w":159,"h":140},
+		"9C9EAC1F":{"x":793,"y":160,"w":215,"h":189},
+		"6D62EAEB":{"x":265,"y":160,"w":262,"h":160},
+		"2CB52F7E":{"x":1,"y":1,"w":445,"h":157},
+		"A171C804":{"x":1,"y":160,"w":262,"h":160},
+		"DFB9D397":{"x":448,"y":1,"w":445,"h":157},
+		"CF9FD6E6":{"x":529,"y":160,"w":262,"h":160}
+	}}

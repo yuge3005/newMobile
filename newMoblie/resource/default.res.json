@@ -41,7 +41,7 @@
 			"name": "showball3"
 		},
 		{
-			"keys": "shb_win_wav,shb_w_mp3,shb_round_mp3,shb_m_mp3,shb_m_w_mp3,shb_jackpot_mp3,shb_have_extra_ball_wav,shb_free_extra_mp3,shb_extra_ball_mp3,shb_double_line_mp3,shb_card_mp3,shb_bingo_mp3,shb_bet_mp3,shb_ball_mp3,shb_2trangle_mp3,shb_1to_bingo_mp3,shb_1line_mp3,showball1_json,showballAnimation_png,showballAnimation_json,showball1_conf,showball3_tx,bingoGameToolbar_json,topbar_json,getCoinsParticle_png,getCoinsParticle_json,v1gameDefault_json",
+			"keys": "shb_win_wav,shb_w_mp3,shb_round_mp3,shb_m_mp3,shb_m_w_mp3,shb_jackpot_mp3,shb_have_extra_ball_wav,shb_free_extra_mp3,shb_extra_ball_mp3,shb_double_line_mp3,shb_card_mp3,shb_bingo_mp3,shb_bet_mp3,shb_ball_mp3,shb_2trangle_mp3,shb_1to_bingo_mp3,shb_1line_mp3,showball1_json,showball1Animation_png,showball1Animation_json,showball1_conf,showball3_tx,bingoGameToolbar_json,topbar_json,getCoinsParticle_png,getCoinsParticle_json,v1gameDefault_json",
 			"name": "showball1"
 		}
 	],
@@ -658,6 +658,16 @@
 			"url": "config/showball1.conf",
 			"type": "json",
 			"name": "showball1_conf"
+		},
+		{
+			"url": "game/showball1/showball1Animation.png",
+			"type": "image",
+			"name": "showball1Animation_png"
+		},
+		{
+			"url": "game/showball1/showball1Animation.json",
+			"type": "json",
+			"name": "showball1Animation_json"
 		}
 	]
 }
