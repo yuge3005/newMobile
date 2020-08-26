@@ -17,11 +17,6 @@ class V2Game extends BingoMachine{
         this.extraUIObject = this.runningBallContainer;
     }
 
-    protected showNoBetAndCredit(){
-        this.creditText = new TextLabel;
-        this.betText = new TextLabel;
-    }
-
 /*******************************************************************************************************/
     protected getIndexOnCard( index: number ): egret.Point{
         let cardIndex: number = Math.floor( index / 15 );

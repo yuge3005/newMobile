@@ -982,6 +982,11 @@ class BingoMachine extends GameUIItem{
 		Com.addObjectAt(this, new DropCoins( coinsLevel ), ptX - 100, ptY - 100 );
 	}
 
+    protected showNoBetAndCredit(){
+        this.creditText = new TextLabel;
+        this.betText = new TextLabel;
+    }
+
 /******************************************************************************************/
 
 	protected jackpotArea: JackpotLayer;

@@ -1,7 +1,5 @@
 class ShowballSuper extends V1Game{
 
-	private winText: TextLabel;
-
 	public constructor( gameConfigFile: string, configUrl: string, gameId: number ) {
 		super( gameConfigFile, configUrl, gameId );
 		this.languageObjectName = "showball3_tx";
@@ -18,7 +16,7 @@ class ShowballSuper extends V1Game{
 		this.needSmallWinTimesOnCard = true;
 		this.ballArea.needLightCheck = true;
 		
-		this.needListenToolbarStatus = true;
+		// this.needListenToolbarStatus = true;
 
 		BallManager.ballOffsetY = 5;
 
@@ -46,28 +44,7 @@ class ShowballSuper extends V1Game{
 	protected init(){
 		super.init();
 
-		let t1: egret.TextField = this.addGameTextCenterShadow( 10, 13, 14, 0xFFFFFF, "credit", false, 130, true, false );
-		let t2: egret.TextField = this.addGameTextCenterShadow( 10, 48, 14, 0xFFFFFF, "bet", false, 130, true, false );
-		let t3: egret.TextField = this.addGameTextCenterShadow( 10, 83, 14, 0xFFFFFF, "win", false, 130, true, false );
-		t1.scaleX = t2.scaleX = t3.scaleX = 1;
-		t1.scaleY = t2.scaleY = t3.scaleY = 0.85;
-		t1.fontFamily = t2.fontFamily = t3.fontFamily = "Arial";
-		t1.stroke = t2.stroke = t3.stroke = 1;
-
-		this.betText = this.addGameTextCenterShadow( 10, 60, 17, 0xFEFE00, "bet", false, 130, true, false );
-		this.betText.scaleX = 1;
-		this.betText.fontFamily = "Arial";
-		this.betText.bold = true;
-		this.creditText = this.addGameTextCenterShadow( 10, 25, 15, 0xFEFE00, "credit", false, 130, true, false );
-		this.creditText.scaleX = 1;
-		this.creditText.fontFamily = "Arial";
-		this.creditText.bold = true;
-
-		this.winText = this.addGameTextCenterShadow( 10, 97, 19, 0xFEFE00, "win", false, 130, true, false );
-		this.winText.scaleX = 1;
-		this.winText.fontFamily = "Arial";
-		this.winText.bold = true;
-		this.winText.text = "0";
+		this.showNoBetAndCredit();
 
 		let ballText: TextLabel = this.addGameText( 1603, 52, 32, 0x0, "ball", false, 125, "", 1 );
 		ballText.textAlign = "center";
@@ -83,7 +60,7 @@ class ShowballSuper extends V1Game{
 
 		this.buildSuperEbArea( "mega_" + GlobelSettings.language, 371, 8 );
 
-		this.showTipStatus();
+		// this.showTipStatus();
 
 		this.ganhoCounter = new GanhoCounter( this.showWinAnimationAt.bind( this ) );
 	}
@@ -121,40 +98,25 @@ class ShowballSuper extends V1Game{
 		ballLotto.visible = true;
 	}
 
-	protected winChange( event: egret.Event ): void{
-		this.winText.text = Utils.formatCoinsNumber( event["winCoins"] );
-	}
-
-	protected tipStatus( event: egret.Event ): void{
-		switch( event["status"] ){
-			case "play":
-				this.showShuffling();
-				break;
-			case "extra":
-				this.showExtraPrice( event["extraPrice"] );
-				break;
-			case "ready":
-				this.showPressPlay();
-				break;
-		}
-	}
-
-	private pressText: egret.TextField;
-	private playText: egret.TextField;
+	// protected tipStatus( event: egret.Event ): void{
+	// 	switch( event["status"] ){
+	// 		case "play":
+	// 			this.showShuffling();
+	// 			break;
+	// 		case "extra":
+	// 			this.showExtraPrice( event["extraPrice"] );
+	// 			break;
+	// 		case "ready":
+	// 			this.showPressPlay();
+	// 			break;
+	// 	}
+	// }
 
 	private extraBallText: egret.TextField;
 	private creditTipText: egret.TextField;
 	private extraPriceText: egret.TextField;
 
-	private timer: egret.Timer;
-
 	private showTipStatus(): void{
-		this.pressText = Com.addTextAt( this, 20, 133, 112, 25, 19, false, true );
-		this.pressText.verticalAlign = "middle";
-		this.playText = Com.addTextAt( this, 20, 158, 112, 25, 19, false, true );
-		this.playText.verticalAlign = "middle";
-		this.pressText.scaleY = this.playText.scaleY = 0.82;
-
 		this.extraBallText = Com.addTextAt( this, 30, 130, 97, 18, 15, true );
 		this.extraBallText.textColor = 0xFFFF00;
 		this.extraBallText.text = MuLang.getText("extra ball");
@@ -169,73 +131,25 @@ class ShowballSuper extends V1Game{
 
 	protected onRemove( event: egret.Event ): void{
 		super.onRemove( event );
-		this.resetTimer();
 	}
 
 	private showPressPlay(): void{
-		this.resetTimer();
 		this.isShowingExtra( false );
-
-		this.setTipText( this.pressText, 18, true, 0xFFFF00, "press" );
-		this.setTipText( this.playText, 18, true, 0xFFFF00, "play" );
-
-		this.timer = new egret.Timer( 500, 0 );
-		this.timer.addEventListener( egret.TimerEvent.TIMER, this.onTimer, this );
-		this.timer.start();
-	}
-
-	private resetTimer(): void{
-		if( this.timer ){
-			this.timer.reset();
-			this.timer.stop();
-			this.timer.removeEventListener( egret.TimerEvent.TIMER, this.onTimer, this );
-		}
-	}
-
-	private onTimer( event: egret.TimerEvent ): void{
-		if( ( event.target as egret.Timer ).currentCount & 1 ){
-			this.pressText.textColor = 0xFFFF00;
-			this.playText.textColor = 0xFFFF00;
-			this.pressText.filters = [];
-			this.playText.filters = [];
-		}
-		else{
-			this.pressText.textColor = 0;
-			this.playText.textColor = 0;
-			this.pressText.filters = [ new egret.GlowFilter( 0xFFFF00, 1, 10, 10, 1, 1 ) ];
-			this.playText.filters = [ new egret.GlowFilter( 0xFFFF00, 1, 10, 10, 1, 1 ) ];
-		}
 	}
 
 	private showShuffling(): void{
-		this.resetTimer();
 		this.isShowingExtra( false );
-
-		this.setTipText( this.pressText, 14, true, 0xFFFF00, "shuffling" );
-		this.setTipText( this.playText, 14, true, 0xFFFF00, "balls" );
 	}
 
 	protected showExtraPrice( price: number ): void{
-		this.resetTimer();
 		this.isShowingExtra( true );
 		this.extraPriceText.text = Utils.formatCoinsNumber( price );
 	}
 
 	private isShowingExtra( isShow: boolean ): void{
-		this.pressText.visible = !isShow;
-		this.playText.visible = !isShow;
-
 		this.extraBallText.visible = isShow;
 		this.creditTipText.visible = isShow;
 		this.extraPriceText.visible = isShow;
-	}
-
-	private setTipText( target: egret.TextField, size: number, visible: boolean, color: number, text: string ){
-		target.size = size;
-		target.visible = visible;
-		target.textColor = color;
-		target.filters = [new egret.GlowFilter( 0xFFFF00, 1, 10, 10, 1, 1 )];
-		target.text = MuLang.getText(text);
 	}
 
 	protected afterCheck( resultList: Array<Object> ): void{
