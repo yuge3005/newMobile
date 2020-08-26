@@ -26,6 +26,7 @@ class ShowballSuper extends V1Game{
 		BingoBackGroundSetting.gameMask = new egret.Rectangle( 0, 0, 2000, 1125 );
 
 		PayTableManager.bingoPaytableName = "pt_bingo";
+		PayTableManager.paytableUIType = ShowballPaytableUI;
 	}
    
     protected getPaytablesFit( paytabledName: string, callback: Function = null ): void{
@@ -70,13 +71,6 @@ class ShowballSuper extends V1Game{
 		let ballText: TextLabel = this.addGameText( 1603, 52, 32, 0x0, "ball", false, 125, "", 1 );
 		ballText.textAlign = "center";
 		ballText.fontFamily = "Righteous";
-		
-		let jackpotText: TextLabel = this.addGameText( 171, 120, 10, 0xFE0000, "", true, 10 );
-		jackpotText.textAlign = "center";
-		jackpotText.height = 105;
-		jackpotText.filters = [new egret.GlowFilter( 0xFFFF00, 0.5, 4, 4, 2 )];
-		this.addChildAt( jackpotText, this.getChildIndex( this.ballArea ) );
-		jackpotText.text = MuLang.getText( "jackpot" );
 
 		this.ballCountText = this.addGameText( 1603, 85, 100, 0x88FF88, "ball", false, 125, "", 1 );
 		this.ballCountText.textAlign = "center";

@@ -47,7 +47,10 @@ class ShowballGrid extends TowerGrid{
 			this.currentBgPic = this.defaultBgPic;
 			this.extraBinkSp.visible = isShow;
 		}
-		else super.showBlink( isShow );
+		else{
+			super.showBlink( isShow );
+			this.extraBinkSp.visible = false;
+		}
 		this.numTxt.textColor = CardGrid.numberColor;
 	}
 }

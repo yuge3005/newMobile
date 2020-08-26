@@ -4,6 +4,8 @@ class PayTableManager extends egret.Sprite{
 
 	public static bingoPaytableName: string;
 
+	public static paytableUIType: Function;
+
 	private rule: string;
 	private rules: Array<string>;
 
@@ -37,9 +39,10 @@ class PayTableManager extends egret.Sprite{
 		if( rule.length == 1 )this.rule = rule[0];
 		else if( rule.length > 1 )this.rules = rule;
 
-		if( PaytableUI.effectWithBg ) this.ui = new PaytableUIWithBg( paytableObject["useBckgroundPicture"] );
-		else if( PaytableUI.effectForMenton ) this.ui = new PaytableUIForMenton( paytableObject["useBckgroundPicture"], this.rules );
-		else this.ui = new PaytableUI( paytableObject["useBckgroundPicture"] );
+		// if( PaytableUI.effectWithBg ) this.ui = new PaytableUIWithBg( paytableObject["useBckgroundPicture"] );
+		// else if( PaytableUI.effectForMenton ) this.ui = new PaytableUIForMenton( paytableObject["useBckgroundPicture"], this.rules );
+		// else this.ui = new PaytableUI( paytableObject["useBckgroundPicture"] );
+		this.ui = this.createPaytableUI( paytableObject["useBckgroundPicture"] );
 		this.ui.setText( paytableObject["UItext"], paytableObject["textColor"], paytableObject["textSize"] );
 		this.ui.setBackground( paytableObject["bgPicture"] );
 
@@ -74,6 +77,13 @@ class PayTableManager extends egret.Sprite{
 		for( let payTableObj in this.payTablesDictionary ){
 			this.payTablesDictionary[payTableObj].ui.initUI();
 		}
+	}
+
+	private createPaytableUI( useBg: boolean ): PaytableUI{
+		let ptUI: PaytableUI;
+		if( PayTableManager.paytableUIType ) ptUI = eval( "new PayTableManager.paytableUIType(" + useBg + ")" );
+		else ptUI = new PaytableUI( useBg );
+		return ptUI;
 	}
 
 	public check( testRule: string ): PaytableCheckResult{
