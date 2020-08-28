@@ -12,7 +12,6 @@ class ShowballSuper extends V1Game{
 		CardManager.cardType = ShowballCard;
 		CardManager.gridType = ShowballGrid;
 
-		CardGrid.defaultBgColor = 0xFFFFFF;
 		CardGrid.defaultNumberSize = 64;
 
 		this.needSmallWinTimesOnCard = true;

@@ -12,7 +12,6 @@ class Pharos extends AztecPharosSuper{
 		super( "pharos.conf", assetsPath, 42 );
         this.megaName = "pharo_mega";
 
-        CardGrid.defaultBgColor = 0xFFFFFF;
         CardGrid.defaultNumberSize = 50;
 
         BallManager.ballOffsetY = 8;

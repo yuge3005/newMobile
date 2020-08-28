@@ -15,7 +15,6 @@ class DoubleTurbo90 extends V2Game{
 
 		GameCard.gridOnTop = true;
 
-        CardGrid.defaultBgColor = 0xFFFFFF;
         CardManager.cardType = Turbo90Card;
         CardManager.gridType = Turbo90Grid;
         

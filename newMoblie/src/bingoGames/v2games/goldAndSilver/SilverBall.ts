@@ -14,7 +14,6 @@ class SilverBall extends GoldSilverSuper{
 
         CardManager.gridType = TowerGrid;
 
-        CardGrid.defaultBgColor = 0xE9E9E9;
         CardGrid.defaultNumberSize = 52;
 
         BallManager.ballOffsetY = 10;
