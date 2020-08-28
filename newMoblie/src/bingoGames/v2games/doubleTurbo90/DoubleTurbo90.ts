@@ -10,16 +10,8 @@ class DoubleTurbo90 extends V2Game{
 
 	public constructor( assetsPath: string ) {
 		super( "doubleTurbo90.conf", assetsPath, 57 );
-        this.ptFilterConfig = "doubleTurbo90_filt";
 
         PaytableUI.textBold = true;
-
-        GameCard.bgRound = 20;
-
-        GameCard.cardTexPosition = new egret.Point( 10, 1 );
-        GameCard.betTexPosition = new egret.Point( 100, 1 );
-        GameCard.texSize = 15;
-        GameCard.texColor = 0xFFFFFF;
 
 		GameCard.gridOnTop = true;
 
@@ -36,7 +28,6 @@ class DoubleTurbo90 extends V2Game{
         languageText["line"] = { en: "LINE", es: "LÍNEA", pt: "LINHA" };
         languageText["four corners"] = { en: "4 CORNERS", es: "4 ESQUINAS", pt: "4 ESQUINAS" };
 
-        GameToolBar.toolBarY = 560;
         this.ballArea.needLightCheck = true;
 
         this.needListenToolbarStatus = true;

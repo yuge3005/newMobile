@@ -1,20 +1,28 @@
 {
     "options": {
-        "useExtension": 0,
         "layoutGap": 1,
         "extend": 0,
         "layoutMath": "3",
-        "sizeMode": "2n"
+        "sizeMode": "2n",
+        "useExtension": 0
     },
     "files": [
+        "./rainbow.png",
+        "./rails.png",
+        "./paytable_winline.png",
+        "./paytable_rainbow_frame.png",
+        "./paytable_mask.png",
+        "./paytable_frame.png",
+        "./paytable_bg.png",
+        "./mark_x.png",
+        "./mark_white.png",
+        "./mark_red.png",
         "./mark_purple.png",
         "./mark_orange.png",
         "./lotto_gate_front.png",
         "./lotto_gate.png",
         "./jackpot_lock.png",
         "./jackpot_enable.png",
-        "./Extra.png",
-        "./Closed_Card.png",
         "./cards_background.png",
         "./Card3.png",
         "./card_frame.png",
@@ -24,17 +32,8 @@
         "./ball_green.png",
         "./ball_eject.png",
         "./ball_blue.png",
-        "./Background-1.png",
-        "./rainbow.png",
-        "./rails.png",
-        "./paytable_winline.png",
-        "./paytable_rainbow_frame.png",
-        "./paytable_mask.png",
-        "./paytable_frame.png",
-        "./paytable_bg.png",
-        "./mark_x.png",
-        "./mark_red.png"
+        "./Background-1.png"
     ],
-    "version": 5,
-    "projectName": "doubleTurbo90"
+    "projectName": "doubleTurbo90",
+    "version": 5
 }
