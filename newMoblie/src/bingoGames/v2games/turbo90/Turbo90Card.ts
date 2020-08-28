@@ -1,6 +1,6 @@
 class Turbo90Card extends GameCard{
 
-	private titleBg: egret.Bitmap;
+	protected titleBg: egret.Bitmap;
 
 	public constructor( cardId: number ) {
 		super( cardId );

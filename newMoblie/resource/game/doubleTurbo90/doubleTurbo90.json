@@ -6,7 +6,7 @@
 "ball_red":{"x":1850,"y":1508,"w":58,"h":59,"offX":0,"offY":0,"sourceW":58,"sourceH":59},
 "ball_yellow":{"x":1880,"y":1447,"w":58,"h":59,"offX":0,"offY":0,"sourceW":58,"sourceH":59},
 "card_background":{"x":501,"y":1600,"w":420,"h":135,"offX":0,"offY":0,"sourceW":420,"sourceH":135},
-"card_frame":{"x":952,"y":1514,"w":429,"h":173,"offX":0,"offY":0,"sourceW":429,"sourceH":173},
+"CARD_HEADER_BG_white":{"x":952,"y":1514,"w":429,"h":173,"offX":0,"offY":0,"sourceW":429,"sourceH":173},
 "Card3":{"x":952,"y":1322,"w":445,"h":190,"offX":0,"offY":0,"sourceW":445,"sourceH":190},
 "cards_background":{"x":1912,"y":1128,"w":80,"h":80,"offX":0,"offY":0,"sourceW":80,"sourceH":80},
 "jackpot_enable":{"x":1,"y":1628,"w":480,"h":139,"offX":0,"offY":0,"sourceW":480,"sourceH":139},

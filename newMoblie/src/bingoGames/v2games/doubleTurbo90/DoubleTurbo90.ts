@@ -10,31 +10,28 @@ class DoubleTurbo90 extends V2Game{
 
 	public constructor( assetsPath: string ) {
 		super( "doubleTurbo90.conf", assetsPath, 57 );
+        this.languageObjectName = "turbo90_tx";
 
         PaytableUI.textBold = true;
 
 		GameCard.gridOnTop = true;
 
-        CardManager.cardType = Turbo90Card;
+        CardManager.cardType = DoubleTurbo90Card;
         CardManager.gridType = Turbo90Grid;
         
-        CardGrid.defaultNumberSize = 20;
+        CardGrid.defaultNumberSize = 32;
 
         CardGrid.blinkColors1 = 0xFFFFFF;
 	    CardGrid.blinkColors2 = 0xFF00FF;
         GameCard.useRedEffect = true;
-
-        let languageText = GameUIItem.languageText;
-        languageText["bingo"] = { en: "BINGO", es: "BINGO", pt: "BINGO" };
-        languageText["double line"] = { en: "DOUBLE LINE", es: "DOBLE LÍNEA", pt: "LINHA DUPLA" };
-        languageText["line"] = { en: "LINE", es: "LÍNEA", pt: "LINHA" };
-        languageText["four corners"] = { en: "4 CORNERS", es: "4 ESQUINAS", pt: "4 ESQUINAS" };
 
         this.ballArea.needLightCheck = true;
 
         this.needListenToolbarStatus = true;
         this.tipStatusTextPosition = new egret.Rectangle( 30, 487, 306, 18 );
         this.tipStatusTextColor = 0xFEFE00;
+
+        BingoBackGroundSetting.gameMask = new egret.Rectangle( 0, 0, 2000, 1125 );
     }
 
     protected init(){

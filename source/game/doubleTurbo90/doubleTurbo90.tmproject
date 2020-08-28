@@ -1,10 +1,10 @@
 {
     "options": {
+        "useExtension": 0,
         "layoutGap": 1,
         "extend": 0,
         "layoutMath": "3",
-        "sizeMode": "2n",
-        "useExtension": 0
+        "sizeMode": "2n"
     },
     "files": [
         "./rainbow.png",
@@ -25,7 +25,7 @@
         "./jackpot_enable.png",
         "./cards_background.png",
         "./Card3.png",
-        "./card_frame.png",
+        "./CARD_HEADER_BG_white.png",
         "./card_background.png",
         "./ball_yellow.png",
         "./ball_red.png",
@@ -34,6 +34,6 @@
         "./ball_blue.png",
         "./Background-1.png"
     ],
-    "projectName": "doubleTurbo90",
-    "version": 5
+    "version": 5,
+    "projectName": "doubleTurbo90"
 }
