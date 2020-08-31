@@ -26,10 +26,8 @@ class DoubleTurbo90 extends V2Game{
         GameCard.useRedEffect = true;
 
         this.ballArea.needLightCheck = true;
-
-        this.needListenToolbarStatus = true;
-        this.tipStatusTextPosition = new egret.Rectangle( 30, 487, 306, 18 );
-        this.tipStatusTextColor = 0xFEFE00;
+        BallManager.ballOffsetY = 3;
+        BallManager.textBold = true;
 
         BingoBackGroundSetting.gameMask = new egret.Rectangle( 0, 0, 2000, 1125 );
     }
@@ -53,8 +51,7 @@ class DoubleTurbo90 extends V2Game{
         cardAreaBg.height = 810;
 
         this.runningBallContainer = new egret.DisplayObjectContainer;
-        Com.addBitmapAt( this.runningBallContainer, this.assetStr( "lotto_gate" ), 0, 0 );
-        this.coverRunningBall = Com.addBitmapAt( this.runningBallContainer, this.assetStr( "lotto_gate_front" ), 0, 0 );
+        this.coverRunningBall = Com.addBitmapAt( this.runningBallContainer, this.assetStr( "ball_eject" ), 0, 0 );
     }
 
     private addDouble90GameText( yPos: number, textItem: string ){
@@ -65,9 +62,9 @@ class DoubleTurbo90 extends V2Game{
 
     protected showLastBall( ballIndex: number ): void{
         super.showLastBall( ballIndex );
-        super.showLastBallAt( ballIndex, 19, -10 );
+        super.showLastBallAt( ballIndex, 24, 5, 2.8 );
         Com.addObjectAt( this.runningBallContainer, this.coverRunningBall, 0, 0 );
-        Com.addObjectAt(this, this.runningBallContainer, 128, 0);
+        Com.addObjectAt(this, this.runningBallContainer, 401, 252);
         
         this.playSound("dt_ball_mp3");
 	}
