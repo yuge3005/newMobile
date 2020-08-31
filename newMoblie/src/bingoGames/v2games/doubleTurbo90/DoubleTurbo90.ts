@@ -50,6 +50,11 @@ class DoubleTurbo90 extends V2Game{
         this.betText.textAlign = "right";
         this.creditText.textAlign = "right";
 
+        let cardAreaBg: egret.Bitmap = Com.addBitmapAt( this, "cards_background_png", 814, 127 );
+        this.setChildIndex( cardAreaBg, this.getChildIndex( this.cardArea ) );
+        cardAreaBg.width = 968;
+        cardAreaBg.height = 810;
+
         this.runningBallContainer = new egret.DisplayObjectContainer;
         Com.addBitmapAt( this.runningBallContainer, this.assetStr( "lotto_gate" ), 0, 0 );
         this.coverRunningBall = Com.addBitmapAt( this.runningBallContainer, this.assetStr( "lotto_gate_front" ), 0, 0 );
