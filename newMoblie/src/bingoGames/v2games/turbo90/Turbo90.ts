@@ -208,7 +208,7 @@ class Turbo90 extends V2Game{
     protected roundOver(): void {
         super.roundOver();
         this.stopSound("t90_ball_mp3");
-        this.stopSound("t90_extra_loop_wav");
+        this.stopSound("t90_extra_loop_mp3");
     }
 
 	protected getExtraBallFit(): void {

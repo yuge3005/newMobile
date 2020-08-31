@@ -69,7 +69,7 @@ class DoubleTurbo90 extends V2Game{
         Com.addObjectAt( this.runningBallContainer, this.coverRunningBall, 0, 0 );
         // Com.addObjectAt(this, this.runningBallContainer, 401, 252);
         
-        this.playSound("dt_ball_mp3");
+        this.playSound("t90_ball_mp3");
 	}
 
     protected afterCheck( resultList: Array<Object> ): void{
@@ -90,10 +90,10 @@ class DoubleTurbo90 extends V2Game{
     protected getPaytablesFit( paytabledName: string, callback: Function = null ): void{
 		let soundName = "";
         switch (paytabledName) {
-            case "line": soundName = "dt_1line_mp3"; break;
-            case "double line": soundName = "dt_2line_mp3"; break;
-            case "four corners": soundName = "dt_4corners_mp3"; break;
-            case "bingo": soundName = "dt_bingo_mp3"; break;
+            case "line": soundName = "t90_line_mp3"; break;
+            case "double line": soundName = "t90_double_line_mp3"; break;
+            case "four corners": soundName = "t90_4corners_mp3"; break;
+            case "bingo": soundName = "t90_bingo_mp3"; break;
             default: break;
         }
         if (SoundManager.soundOn && soundName !== "") {
@@ -106,27 +106,24 @@ class DoubleTurbo90 extends V2Game{
 	protected onBetChanged( event: egret.Event ): void{
         super.onBetChanged(event);
 
-        if (event.data["type"] !== 0) this.playSound("dt_bet_mp3");
+        if (event.data["type"] !== 0) this.playSound("t90_bet_mp3");
 	}
 
     protected hasExtraBallFit(): void {
-        this.stopSound("dt_ball_mp3");
+        this.stopSound("t90_ball_mp3");
         if (this.firstHaveExtraBall) {
             this.firstHaveExtraBall = false;
-            this.playSound("dt_extra_loop_mp3", -1);
-            this.playSound("dt_have_extra_ball_mp3");
+            this.playSound("t90_extra_loop_mp3", -1);
         }
     }
     
     protected roundOver(): void {
         super.roundOver();
-        this.playSound("dt_round_over_mp3");
-        this.stopSound("dt_ball_mp3");
-        this.stopSound("dt_extra_loop_mp3");
+        this.stopSound("t90_extra_loop_mp3");
     }
 
     protected getExtraBallFit(): void {
-		this.playSound("dt_extra_ball_mp3");
+		this.playSound("t90_extra_ball_mp3");
 	}
 
 	protected collectExtraBall(): void {
@@ -134,7 +131,7 @@ class DoubleTurbo90 extends V2Game{
 	}
 
 	protected changeNumberSound(): void {
-		this.playSound("dt_card_mp3");
+		this.playSound("t90_card_mp3");
 	}
 
     protected addPayTables(){
