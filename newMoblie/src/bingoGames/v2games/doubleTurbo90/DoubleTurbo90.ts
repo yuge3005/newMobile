@@ -10,7 +10,7 @@ class DoubleTurbo90 extends V2Game{
 
 	public constructor( assetsPath: string ) {
 		super( "doubleTurbo90.conf", assetsPath, 57 );
-        this.languageObjectName = "turbo90_tx";
+        this.languageObjectName = "doubleTurbo90_tx";
 
         PaytableUI.textBold = true;
 
@@ -40,10 +40,10 @@ class DoubleTurbo90 extends V2Game{
         let paytableBg: DoubleTurbo90PTBG = new DoubleTurbo90PTBG;
         Com.addObjectAt( this, paytableBg, 283, 16 );
 
-        this.addGameText( 315, 16, 16, 0x46C8F5, "bingo",false, 200 );
-        this.addGameText( 315, 36, 16, 0x46C8F5, "double line",false, 200 );
-        this.addGameText( 315, 56, 16, 0x46C8F5, "line",false, 200 );
-        this.addGameText( 315, 76, 16, 0x46C8F5, "four corners",false, 200 );
+        this.addGameText( 315, 34, 30, 0x46C8F5, "bingo",false, 200 );
+        this.addGameText( 315, 74, 30, 0x46C8F5, "double line",false, 200 );
+        this.addGameText( 315, 110, 30, 0x46C8F5, "line",false, 200 );
+        this.addGameText( 315, 150, 30, 0x46C8F5, "four corners",false, 200 );
 
         this.showNoBetAndCredit();
 

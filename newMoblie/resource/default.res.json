@@ -45,7 +45,7 @@
 			"name": "showball1"
 		},
 		{
-			"keys": "t90_4corners_mp3,t90_ball_mp3,t90_bet_mp3,t90_bingo_mp3,t90_blink_mp3,t90_card_mp3,t90_double_line_mp3,t90_extra_ball_mp3,t90_extra_loop_mp3,t90_jackpot_mp3,t90_line_mp3,t90_win_mp3,doubleTurbo90_json,turbo90Animation_json,turbo90Animation_png,doubleTurbo90_conf,turbo90_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,getCoinsParticle_png,getCoinsParticle_json,cards_background_png",
+			"keys": "t90_4corners_mp3,t90_ball_mp3,t90_bet_mp3,t90_bingo_mp3,t90_blink_mp3,t90_card_mp3,t90_double_line_mp3,t90_extra_ball_mp3,t90_extra_loop_mp3,t90_jackpot_mp3,t90_line_mp3,t90_win_mp3,doubleTurbo90_json,turbo90Animation_json,turbo90Animation_png,doubleTurbo90_conf,doubleTurbo90_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,getCoinsParticle_png,getCoinsParticle_json,cards_background_png",
 			"name": "doubleTurbo90"
 		}
 	],
@@ -689,6 +689,11 @@
 			"type": "image",
 			"name": "cards_background_png",
 			"scale9grid": "28,28,24,24"
+		},
+		{
+			"url": "config/lan/doubleTurbo90.tx",
+			"type": "json",
+			"name": "doubleTurbo90_tx"
 		}
 	]
 }
