@@ -75,7 +75,7 @@ class DoubleTurbo90 extends V2Game{
 
 /******************************************************************************************************************************************************************/    
     protected showJackpot( jackpot: number, jackpotMinBet: number, betConfig: Array<Object> ){
-        this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 567, 15 ), jackpot, jackpotMinBet, betConfig, new egret.Point( -20, -9 ), new egret.Rectangle( 0, 40, 200, 26 ), 22, 0xd6c576, new egret.Rectangle( 0, 0, 200, 24), 24, 0xd6c576 ) );
+        this.addChild( this.jackpotArea = new JackpotLayerForDoubleTurbo90( new egret.Point( 1300, 0 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 0, 0 ), new egret.Rectangle( 76, 80, 320, 50 ), 40, 0xFFC123 ) );
     }
 
     protected getPaytablesFit( paytabledName: string, callback: Function = null ): void{
