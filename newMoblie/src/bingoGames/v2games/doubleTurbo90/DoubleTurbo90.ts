@@ -40,10 +40,10 @@ class DoubleTurbo90 extends V2Game{
         let paytableBg: DoubleTurbo90PTBG = new DoubleTurbo90PTBG;
         Com.addObjectAt( this, paytableBg, 283, 16 );
 
-        this.addGameText( 315, 34, 30, 0x46C8F5, "bingo",false, 200 );
-        this.addGameText( 315, 74, 30, 0x46C8F5, "double line",false, 200 );
-        this.addGameText( 315, 110, 30, 0x46C8F5, "line",false, 200 );
-        this.addGameText( 315, 150, 30, 0x46C8F5, "four corners",false, 200 );
+        this.addDouble90GameText( 34, "bingo");
+        this.addDouble90GameText( 74, "double line");
+        this.addDouble90GameText( 110, "line");
+        this.addDouble90GameText( 150, "four corners");
 
         this.showNoBetAndCredit();
 
@@ -55,6 +55,12 @@ class DoubleTurbo90 extends V2Game{
         this.runningBallContainer = new egret.DisplayObjectContainer;
         Com.addBitmapAt( this.runningBallContainer, this.assetStr( "lotto_gate" ), 0, 0 );
         this.coverRunningBall = Com.addBitmapAt( this.runningBallContainer, this.assetStr( "lotto_gate_front" ), 0, 0 );
+    }
+
+    private addDouble90GameText( yPos: number, textItem: string ){
+        let tx: TextLabel = this.addGameText( 315, yPos, 30, 0x46C8F5, textItem, false, 200, "", 0.9 );
+        tx.fontFamily = "Arial";
+        tx.bold = true;
     }
 
     protected showLastBall( ballIndex: number ): void{
