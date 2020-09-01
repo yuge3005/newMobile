@@ -1,7 +1,6 @@
 class PaytableUI extends egret.Sprite{
 
 	public static textBold: boolean = false;
-	public static textLeft: boolean = false;
 	public static effectWithBg: string;
 	public static effectForMenton: string;
 	public static focusColor: number;
@@ -139,15 +138,8 @@ class PaytableUI extends egret.Sprite{
 		}
 
 		if( this.tx ){
-			if( PaytableUI.textLeft ){
-				this.tx.x = this.bg.width;
-				this.tx.y = this.bg.height - this.tx.size >> 1;
-				this.tx.width = this.bg.width - 10;
-			}
-			else{
-				this.tx.width = this.bg.width;
-				this.tx.y = this.bg.height + 3;
-			}
+			this.tx.width = this.bg.width;
+			this.tx.y = this.bg.height + 3;
 			this.tx.textAlign = "center";
 			this.addChild( this.tx );
 		}

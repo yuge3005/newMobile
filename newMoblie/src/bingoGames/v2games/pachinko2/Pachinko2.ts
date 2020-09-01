@@ -14,12 +14,11 @@ class Pachinko2 extends V2Game{
 
         CardManager.gridType = TowerGrid;
         GameCard.gridOnTop = true;
-        CardGrid.defaultBgColor = 0xFFFFFF;
         CardGrid.defaultNumberSize = 55;
 
         CardGrid.winTimesOffset = new egret.Point( -1, -1 );
 
-        PaytableUI.textLeft = true;
+        PayTableManager.paytableUIType = Pachinko2PaytableUI;
 
         this.needSmallWinTimesOnCard = true;
         BingoBackGroundSetting.gameMask = new egret.Rectangle( 0, 0, 2000, 1125 );
