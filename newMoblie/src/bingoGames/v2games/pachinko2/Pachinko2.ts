@@ -15,10 +15,12 @@ class Pachinko2 extends V2Game{
         CardManager.gridType = TowerGrid;
         GameCard.gridOnTop = true;
         CardGrid.defaultNumberSize = 55;
+        BallManager.textBold = true;
 
         CardGrid.winTimesOffset = new egret.Point( -1, -1 );
 
         PayTableManager.paytableUIType = Pachinko2PaytableUI;
+        BallManager.ballOffsetY = 5;
 
         this.needSmallWinTimesOnCard = true;
         BingoBackGroundSetting.gameMask = new egret.Rectangle( 0, 0, 2000, 1125 );
@@ -97,6 +99,7 @@ class Pachinko2 extends V2Game{
         this.extraUIObject = Com.addMovieClipAt( this, this._mcf, "pachinko2Extra", 851, 344 );
         this.extraUIObject.visible = false;
         this.addChildAt( this.extraUIObject, this.getChildIndex( this.ballArea ) );
+        this.addChildAt( this.runningBallContainer, this.getChildIndex( this.ballArea ) + 1 );
         ( this.extraUIObject as egret.MovieClip ).stop();
     }
 
