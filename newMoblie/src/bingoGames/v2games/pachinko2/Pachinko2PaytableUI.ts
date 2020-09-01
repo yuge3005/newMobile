@@ -38,4 +38,22 @@ class Pachinko2PaytableUI extends PaytableUI{
 			this.p2Grids[i].y = Math.floor( i / 5 ) * 19 + 2;
 		}
 	}
+
+	public focus(){
+		super.focus();
+		this.tx.textColor = 0xFF0000;
+	}
+
+	public clearStatus(): void{
+		super.clearStatus();
+		this.tx.textColor = 0xFFFFFF;
+	}
+
+	protected onFrame(event:egret.Event):void{
+		this.currentEffect++;
+		let isShow: boolean = Boolean( (this.currentEffect>>4) & 1 );
+		for( var i: number = 0; i < this.blinkGridsIndexs.length; i++ ){
+			this.p2Grids[this.blinkGridsIndexs[i]].visible = isShow;
+		}
+	}
 }

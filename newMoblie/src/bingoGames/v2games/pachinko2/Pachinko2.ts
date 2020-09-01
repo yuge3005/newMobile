@@ -115,7 +115,9 @@ class Pachinko2 extends V2Game{
 
 /******************************************************************************************************************************************************************/    
     protected showJackpot( jackpot: number, jackpotMinBet: number, betConfig: Array<Object> ){
-        this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 607, 25 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 0, -1 ), new egret.Rectangle( 0, 0, 160, 20 ), 20, 0xd6c576, new egret.Rectangle( 0, -22, 160, 18 ), 18, 0xFFFFFF ) );
+        this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 1290, 55 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 0, 0 ), new egret.Rectangle( 10, 20, 420, 48 ), 48, 0xFFFFFF, new egret.Rectangle( 0, -44, 430, 36 ), 36, 0xFFFFFF ) );
+        this.jackpotArea.jackpotText.textAlign = "left";
+        this.jackpotArea.jackpotText.fontFamily = "Arail";
     }
 
     protected getPaytablesFit( paytabledName: string, callback: Function = null ): void{
