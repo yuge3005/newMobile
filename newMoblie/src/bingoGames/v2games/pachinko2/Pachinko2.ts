@@ -10,29 +10,25 @@ class Pachinko2 extends V2Game{
 
 	public constructor( assetsPath: string ) {
         super( "pachinko2.conf", assetsPath, 61 );
-        this.languageObjectName = "pachinko2_tx";
+        this.languageObjectName = "forAll_tx";
 
+        CardManager.gridType = TowerGrid;
+        GameCard.gridOnTop = true;
         CardGrid.defaultBgColor = 0xFFFFFF;
-        CardGrid.defaultNumberSize = 22;
-
-        CardGrid.blinkColors1 = 0xFFFF00;
-        CardGrid.blinkColors2 = 0xFF00FF;
+        CardGrid.defaultNumberSize = 55;
 
         CardGrid.winTimesOffset = new egret.Point( -1, -1 );
 
         PaytableUI.textLeft = true;
 
         this.needSmallWinTimesOnCard = true;
+        BingoBackGroundSetting.gameMask = new egret.Rectangle( 0, 0, 2000, 1125 );
 	}
 
     protected init(){
         super.init();
 
-        this.addGameTextCenterShadow( 417, 3, 20, 0xFEFEFE, "bet", true, 200, true, false );
-        this.addGameTextCenterShadow( 113, 3, 20, 0xFEFEFE, "credit", true, 200, true, false );
-
-        this.betText = this.addGameTextCenterShadow( 417, 28, 20, 0xFEFE00, "bet", false, 200, true, false );
-        this.creditText = this.addGameTextCenterShadow( 113, 28, 20, 0xFEFE00, "credit", false, 200, true, false );
+        this.showNoBetAndCredit();
 
         if( this.extraUIObject ) this.extraUIShowNumber();
     }

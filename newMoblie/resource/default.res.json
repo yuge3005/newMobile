@@ -49,7 +49,7 @@
 			"name": "doubleTurbo90"
 		},
 		{
-			"keys": "CASH_Any_Win_End_of_Round_mp3,ball_come_out_mp3,change_cards_mp3,extra_ball_come_out_mp3,extra_mode_start_mp3,win_bingo_mp3,win_cross_mp3,win_double_line_mp3,win_double_triangle_mp3,win_double_v_mp3,win_line_mp3,win_m_mp3,win_mw_mp3,win_perimeter_mp3,win_square_mp3,win_triangle_mp3,win_v_mp3,win_w_mp3",
+			"keys": "CASH_Any_Win_End_of_Round_mp3,ball_come_out_mp3,change_cards_mp3,extra_ball_come_out_mp3,extra_mode_start_mp3,win_bingo_mp3,win_cross_mp3,win_double_line_mp3,win_double_triangle_mp3,win_double_v_mp3,win_line_mp3,win_m_mp3,win_mw_mp3,win_perimeter_mp3,win_square_mp3,win_triangle_mp3,win_v_mp3,win_w_mp3,pachinko2_json,pachinko2Animation_png,pachinko2Animation_json,pachinko2_conf,forAll_tx,bingoGameToolbar_json,topbar_json,open_list_mp3",
 			"name": "pachinko2"
 		}
 	],
@@ -788,6 +788,32 @@
 			"url": "game/pachinko2/sound/win_w.mp3",
 			"type": "sound",
 			"name": "win_w_mp3"
+		},
+		{
+			"url": "game/pachinko2/pachinko2Animation.png",
+			"type": "image",
+			"name": "pachinko2Animation_png"
+		},
+		{
+			"url": "game/pachinko2/pachinko2Animation.json",
+			"type": "json",
+			"name": "pachinko2Animation_json"
+		},
+		{
+			"url": "game/pachinko2/pachinko2.json",
+			"type": "sheet",
+			"name": "pachinko2_json",
+			"subkeys": "BG_new,Ball_01,Ball_02,Ball_03,Ball_04,Ball_05,Ball_06,Ball_07,Ball_08,Ball_09,Ball_eject_body,Card_black_tile,Card_frame,Card_red_tile,Card_white_tile,Card_yellow_tile,JACKPOT,JACKPOT_active,Paytable_one_left,jackpot_lock,pattern1,pattern10,pattern11_1,pattern11_2,pattern12_1,pattern12_2,pattern12_3,pattern2,pattern3,pattern4,pattern5_1,pattern5_2,pattern5_3,pattern6_1,pattern6_2,pattern7,pattern8,pattern9_1,pattern9_2,x10,x100,x100_02,x1500,x200,x3,x3_02,x40,x40_02,x500,x750,x8"
+		},
+		{
+			"url": "config/pachinko2.conf",
+			"type": "json",
+			"name": "pachinko2_conf"
+		},
+		{
+			"url": "config/lan/forAll.tx",
+			"type": "json",
+			"name": "forAll_tx"
 		}
 	]
 }

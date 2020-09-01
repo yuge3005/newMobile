@@ -23,9 +23,6 @@ class DoubleTurbo90 extends V2Game{
         CardManager.gridType = Turbo90Grid;
         
         CardGrid.defaultNumberSize = 32;
-
-        CardGrid.blinkColors1 = 0xFFFFFF;
-	    CardGrid.blinkColors2 = 0xFF00FF;
         GameCard.useRedEffect = true;
 
         this.ballArea.needLightCheck = true;
