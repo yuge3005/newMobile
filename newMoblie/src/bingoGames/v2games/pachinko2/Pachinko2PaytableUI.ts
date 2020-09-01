@@ -29,7 +29,7 @@ class Pachinko2PaytableUI extends PaytableUI{
 
 		this.tx.x = this.bg.width + 10;
 		this.tx.y = this.bg.height - this.tx.size >> 1;
-		this.tx.textAlign = "left";
+		this.tx.bold = true;
 		
 		this.p2Grids = [];
 		for( let i: number = 0; i < 15; i++ ){

@@ -123,37 +123,14 @@ class Pachinko2 extends V2Game{
         extraUI.gotoAndStop( extraUI.totalFrames );
         extraUI.removeEventListener( egret.Event.LOOP_COMPLETE, this.onAnimationComp, this );
     }
-
-    private changeCardNumberFirstTime: boolean = true;
-
-    public changeCardsBg(){
-        super.changeCardsBg();
-        
-        if( this.changeCardNumberFirstTime )this.changeCardNumberFirstTime = false;
-        else this.playSound("change_cards_mp3");
-	}
+    
 /******************************************************************************************************************************************************************/    
     protected showJackpot( jackpot: number, jackpotMinBet: number, betConfig: Array<Object> ){
         this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 607, 25 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 0, -1 ), new egret.Rectangle( 0, 0, 160, 20 ), 20, 0xd6c576, new egret.Rectangle( 0, -22, 160, 18 ), 18, 0xFFFFFF ) );
     }
 
     protected getPaytablesFit( paytabledName: string, callback: Function = null ): void{
-		let soundName = "";
-        switch (paytabledName) {
-            case "bingo": soundName = "win_bingo_mp3";break;
-            case "round": soundName = "win_perimeter_mp3";break;
-            case "II": soundName = "win_double_triangle_mp3";break;
-            case "fly": soundName = "win_mw_mp3";break;
-            case "double_line": soundName = "win_double_line_mp3";break;
-            case "m": soundName = "win_m_mp3";break;
-            case "mouse": soundName = "win_square_mp3";break;
-            case "xx": soundName = "win_double_v_mp3"; break;
-            case "trangle": soundName = "win_triangle_mp3"; break;
-            case "plus": soundName = "win_cross_mp3"; break;
-            case "v": soundName = "win_v_mp3"; break;
-            case "line": soundName = "win_line_mp3"; break;
-            default: break;
-        }
+		let soundName = this.getSoundName( paytabledName );
         if (SoundManager.soundOn && soundName !== "") {
             this.playSound(soundName, 1, callback);
         } else {
@@ -161,12 +138,7 @@ class Pachinko2 extends V2Game{
         }
 	}
 
-    protected onBetChanged(event: egret.Event): void{
-        super.onBetChanged(event);
-	}
-
     protected hasExtraBallFit(): void {
-        this.stopSound("extra_ball_come_out_mp3");
         if (this.firstHaveExtraBall) {
             this.firstHaveExtraBall = false;
             this.playSound("extra_mode_start_mp3");
@@ -175,18 +147,11 @@ class Pachinko2 extends V2Game{
 
     public onRoundOver( data: Object ){
         super.onRoundOver( data );
-
         if( data["ganho"] ) this.playSound( "CASH_Any_Win_End_of_Round_mp3" );
-    }
-    
-    protected roundOver(): void {
-        super.roundOver();
-        // this.stopSound("t90_ball_mp3");
-        // this.stopSound("t90_extra_loop_wav");
     }
 
 	protected getExtraBallFit(): void {
-		// this.playSound("t90_extra_ball_mp3");
+		this.playSound("extra_ball_come_out_mp3");
 	}
 
 	protected collectExtraBall(): void {
@@ -194,6 +159,19 @@ class Pachinko2 extends V2Game{
 	}
 
 	protected changeNumberSound(): void {
-		// this.playSound("t90_card_mp3");
+		this.playSound("change_cards_mp3");
+	}
+
+    protected addPayTables(){
+		super.addPayTables();
+
+        let pts: Object = PayTableManager.payTablesDictionary;
+        for( let payTable in pts ){
+			let pos: Object = pts[payTable].position;
+            let y: number = pos["y"];
+            y = Math.floor( y / 60 ) * 60 + 47 ;
+			pts[payTable].UI.y = y;
+            pts[payTable].UI.x = 1805;
+		}
 	}
 }
