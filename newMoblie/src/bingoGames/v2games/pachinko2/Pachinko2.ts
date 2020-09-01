@@ -63,7 +63,7 @@ class Pachinko2 extends V2Game{
 
     protected showLastBall( ballIndex: number ): void{
         super.showLastBall( ballIndex );
-        super.showLastBallAt( ballIndex, 14, 267, 73 / 45 );
+        super.showLastBallAt( ballIndex, 45, 16, 190 / 96 );
 
         this.playSound("ball_come_out_mp3");
 
@@ -93,10 +93,11 @@ class Pachinko2 extends V2Game{
         this.addChildAt( this.runningBallContainer, this.getChildIndex( this.extraUIObject ) );
         Com.addObjectAt( this.runningBallContainer, this.extraUIObject, 0, 0 );
 
-        Com.addMovieClipAt( this.runningBallContainer, this._mcf, "pachinko2_cat", 25, 275 );
-        this.extraUIObject = Com.addMovieClipAt( this, this._mcf, "pachinko2Extra", 287, 158 );
+        Com.addMovieClipAt( this.runningBallContainer, this._mcf, "pachinko2_cat", 927 - this.runningBallContainer.x, 125 - this.runningBallContainer.y );
+        this.extraUIObject = Com.addMovieClipAt( this, this._mcf, "pachinko2Extra", 851, 344 );
         this.extraUIObject.visible = false;
         this.addChildAt( this.extraUIObject, this.getChildIndex( this.ballArea ) );
+        ( this.extraUIObject as egret.MovieClip ).stop();
     }
 
     protected showExtraUI( show: boolean = true ){
@@ -104,26 +105,11 @@ class Pachinko2 extends V2Game{
             let extraUI : egret.MovieClip = this.extraUIObject as egret.MovieClip;
             if( extraUI.visible != show ){
                 extraUI.visible = show;
-                if( show ){
-                    extraUI.gotoAndPlay( 1 );
-                    extraUI.addEventListener( egret.Event.LOOP_COMPLETE, this.onAnimationComp, this );
-                    var tw: egret.Tween = egret.Tween.get( this.runningBallContainer );
-                    tw.to( { y: -240 }, 500 );
-                }
-                else{
-                    var tw: egret.Tween = egret.Tween.get( this.runningBallContainer );
-                    tw.to( { y: -7 }, 500 );
-                }
+                if( show ) extraUI.gotoAndPlay( 1, 1 );
             }
         }
 	}
 
-    private onAnimationComp( event: egret.Event ): void{
-        let extraUI : egret.MovieClip = this.extraUIObject as egret.MovieClip;
-        extraUI.gotoAndStop( extraUI.totalFrames );
-        extraUI.removeEventListener( egret.Event.LOOP_COMPLETE, this.onAnimationComp, this );
-    }
-    
 /******************************************************************************************************************************************************************/    
     protected showJackpot( jackpot: number, jackpotMinBet: number, betConfig: Array<Object> ){
         this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 607, 25 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 0, -1 ), new egret.Rectangle( 0, 0, 160, 20 ), 20, 0xd6c576, new egret.Rectangle( 0, -22, 160, 18 ), 18, 0xFFFFFF ) );
