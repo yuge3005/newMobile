@@ -1,4 +1,11 @@
 {
+    "options": {
+        "useExtension": 0,
+        "layoutGap": 1,
+        "extend": 0,
+        "layoutMath": "0",
+        "sizeMode": "free"
+    },
     "files": [
         "./super_line.png",
         "./sub_line.png",
@@ -11,7 +18,6 @@
         "./Mark_white.png",
         "./Mark_red.png",
         "./Mark_pink.png",
-        "./Mark_line.png",
         "./Jackpot_star.png",
         "./Jackpot_lock_pt.png",
         "./jackpot_lock.png",
@@ -25,18 +31,17 @@
         "./Image-215.png",
         "./Image-214.png",
         "./Image-213.png",
+        "./hotbingo_D_3.png",
+        "./hotbingo_D_2.png",
+        "./hotbingo_D_1.png",
+        "./hotbingo_3.png",
+        "./hotbingo_2.png",
+        "./hotbingo_1.png",
         "./Bitmap-2.png",
         "./Bitmap-1.png",
         "./Backdrop_ENG-1-1.png",
         "./Backdrop_ENG.png"
     ],
-    "options": {
-        "useExtension": 0,
-        "layoutGap": 1,
-        "extend": 0,
-        "layoutMath": "0",
-        "sizeMode": "free"
-    },
     "version": 5,
     "projectName": "hotbingo"
 }

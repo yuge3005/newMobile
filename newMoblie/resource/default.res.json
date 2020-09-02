@@ -913,7 +913,7 @@
 			"url": "game/hotbingo/hotbingo.json",
 			"type": "sheet",
 			"name": "hotbingo_json",
-			"subkeys": "Backdrop_ENG,Backdrop_ENG-1-1,Bitmap-1,Bitmap-2,Image-213,Image-214,Image-215,Image-216,Image-217,Image-218,Image-219,Image-220,Jackpot_enable,Jackpot_enable_pt,Jackpot_lock_pt,Jackpot_star,Mark_line,Mark_pink,Mark_red,Mark_white,Mark_x,Mark_yellow,Paytable_bg,Paytable_body,Paytable_body_blue,Shiny_flow,jackpot_lock,sub_line,super_line"
+			"subkeys": "Backdrop_ENG,Backdrop_ENG-1-1,Bitmap-1,Bitmap-2,Image-213,Image-214,Image-215,Image-216,Image-217,Image-218,Image-219,Image-220,Jackpot_enable,Jackpot_enable_pt,Jackpot_lock_pt,Jackpot_star,Mark_pink,Mark_red,Mark_white,Mark_x,Mark_yellow,Paytable_bg,Paytable_body,Paytable_body_blue,Shiny_flow,hotbingo_1,hotbingo_2,hotbingo_3,hotbingo_D_1,hotbingo_D_2,hotbingo_D_3,jackpot_lock,sub_line,super_line"
 		}
 	]
 }
