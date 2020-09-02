@@ -58,7 +58,8 @@ class Hotbingo extends V2Game{
         for( let i: number = 0; i < 4; i++ ){
             this.arrowMcs[i] = [];
             for( let j: number = 0; j < 3; j++ ){
-                let arrowAnimation: egret.MovieClip = Com.addMovieClipAt( this, this._mcf, "arrowAnimationInT90", this.cardPositions[i]["x"] - 23, this.cardPositions[i]["y"] + 35 * ( j + 1 ) );
+                let arrowAnimation: egret.MovieClip = Com.addMovieClipAt( this, this._mcf, "arrowAnimationInT90", this.cardPositions[i]["x"] - 47, this.cardPositions[i]["y"] + 64 * ( j + 1 ) );
+                arrowAnimation.scaleX = 0.92;
                 arrowAnimation.stop();
                 arrowAnimation.visible = false;
                 this.arrowMcs[i][j] = arrowAnimation;
