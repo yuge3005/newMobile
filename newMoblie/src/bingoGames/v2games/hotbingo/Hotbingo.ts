@@ -15,9 +15,8 @@ class Hotbingo extends V2Game{
 
         PaytableUI.textBold = true;
 
-        GameCard.bgRound = 20;
-
-        CardGrid.defaultNumberSize = 25;
+        CardManager.gridType = TowerGrid;
+        CardGrid.defaultNumberSize = 55;
 
         GameCard.gridOnTop = true;
         GameCard.useRedEffect = true;
@@ -33,12 +32,9 @@ class Hotbingo extends V2Game{
         this.addGameText( 505, 61, 20, 0xFFFF00, "line",false, 200 );
         this.addGameText( 505, 86, 20, 0xFFFF00, "four corners",false, 200 );
 
-        this.addGameText( 20, 105, 20, 0xFFFFFF, "bet", false, 100 );
-        this.addGameText( 20, 135, 20, 0xFFFFFF, "credit", false, 100 );
         this.addGameText( 485, 135, 20, 0xFEFE00, "prize", true, 140 );
 
-        this.betText = this.addGameTextCenterShadow( 130, 105, 20, 0xFFFF00, "bet", false, 200, false );
-        this.creditText = this.addGameTextCenterShadow( 130, 135, 20, 0xFFFF00, "credit", false, 200, false );
+        this.showNoBetAndCredit();
         this.prizeText = this.addGameText( 565, 135, 20, 0xFFFFFF, "prize", false, 140 );
         this.prizeText.text = "0";
 
