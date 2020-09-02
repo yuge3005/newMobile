@@ -12,7 +12,8 @@ class Pachinko2 extends V2Game{
         super( "pachinko2.conf", assetsPath, 61 );
         this.languageObjectName = "forAll_tx";
 
-        CardManager.gridType = TowerGrid;
+        CardManager.cardType = Pachinko2Card;
+		CardManager.gridType = Pachinko2Grid;
         GameCard.gridOnTop = true;
         CardGrid.defaultNumberSize = 55;
         BallManager.textBold = true;
@@ -134,11 +135,19 @@ class Pachinko2 extends V2Game{
             this.firstHaveExtraBall = false;
             this.playSound("extra_mode_start_mp3");
         }
+
+        Pachinko2Grid.extraBink = true;
     }
 
     public onRoundOver( data: Object ){
         super.onRoundOver( data );
         if( data["ganho"] ) this.playSound( "CASH_Any_Win_End_of_Round_mp3" );
+    }
+
+    protected roundOver(): void {
+		super.roundOver();
+        
+        Pachinko2Grid.extraBink = false;
     }
 
 	protected getExtraBallFit(): void {
