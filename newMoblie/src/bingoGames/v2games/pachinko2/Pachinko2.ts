@@ -25,7 +25,6 @@ class Pachinko2 extends V2Game{
         BallManager.ballOffsetY = 5;
 
         this.needSmallWinTimesOnCard = true;
-        BingoBackGroundSetting.gameMask = new egret.Rectangle( 0, 0, 2000, 1125 );
 	}
 
     protected init(){

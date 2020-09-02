@@ -18,7 +18,6 @@ class Pharos extends AztecPharosSuper{
         BallManager.textBold = true;
 
         BingoBackGroundSetting.defaultScale = false;
-        BingoBackGroundSetting.gameMask = new egret.Rectangle( 0, 0, 2000, 1125 );
 	}
 
     protected init(){

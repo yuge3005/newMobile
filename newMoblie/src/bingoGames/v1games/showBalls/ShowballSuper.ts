@@ -22,7 +22,6 @@ class ShowballSuper extends V1Game{
 		BallManager.ballOffsetY = 5;
 
 		BingoBackGroundSetting.defaultScale = false;
-		BingoBackGroundSetting.gameMask = new egret.Rectangle( 0, 0, 2000, 1125 );
 
 		PayTableManager.bingoPaytableName = "pt_bingo";
 		PayTableManager.paytableUIType = ShowballPaytableUI;

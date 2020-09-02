@@ -28,8 +28,6 @@ class DoubleTurbo90 extends V2Game{
         this.ballArea.needLightCheck = true;
         BallManager.ballOffsetY = 3;
         BallManager.textBold = true;
-
-        BingoBackGroundSetting.gameMask = new egret.Rectangle( 0, 0, 2000, 1125 );
     }
 
     protected init(){

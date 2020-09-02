@@ -28,7 +28,6 @@ class Nineball extends V2Game{
         BallManager.ballOffsetY = 8;
 
         BingoBackGroundSetting.defaultScale = false;
-        BingoBackGroundSetting.gameMask = new egret.Rectangle( 0, 0, 2000, 1125 );
     }
 
     protected init(){

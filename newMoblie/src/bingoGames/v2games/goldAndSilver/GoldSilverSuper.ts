@@ -8,7 +8,6 @@ class GoldSilverSuper extends V2Game{
 		GameCard.useRedEffect = true;
 
 		BingoBackGroundSetting.defaultScale = false;
-		BingoBackGroundSetting.gameMask = new egret.Rectangle( 0, 0, 2000, 1125 );
 	}
 
 	protected init(){
