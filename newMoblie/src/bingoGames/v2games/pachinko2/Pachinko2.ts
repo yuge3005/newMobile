@@ -15,6 +15,7 @@ class Pachinko2 extends V2Game{
         CardManager.cardType = Pachinko2Card;
 		CardManager.gridType = Pachinko2Grid;
         GameCard.gridOnTop = true;
+        GameCard.useRedEffect = true;
         CardGrid.defaultNumberSize = 55;
         BallManager.textBold = true;
 
@@ -136,7 +137,7 @@ class Pachinko2 extends V2Game{
             this.playSound("extra_mode_start_mp3");
         }
 
-        Pachinko2Grid.extraBink = true;
+        ExtraBlinkGrid.extraBink = true;
     }
 
     public onRoundOver( data: Object ){
@@ -147,7 +148,7 @@ class Pachinko2 extends V2Game{
     protected roundOver(): void {
 		super.roundOver();
         
-        Pachinko2Grid.extraBink = false;
+        ExtraBlinkGrid.extraBink = false;
     }
 
 	protected getExtraBallFit(): void {

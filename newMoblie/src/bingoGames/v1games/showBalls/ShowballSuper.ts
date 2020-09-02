@@ -252,7 +252,7 @@ class ShowballSuper extends V1Game{
 		this.stopSound("shb_ball_mp3");
         this.stopSound("shb_1to_bingo_mp3");
 
-		ShowballGrid.extraBink = false;
+		ExtraBlinkGrid.extraBink = false;
 	}
 
 	protected hasExtraBallFit(): void {
@@ -269,7 +269,7 @@ class ShowballSuper extends V1Game{
 			this.tryFirstMega( new egret.Rectangle( 280, 102, 54, 54 ) );
 		}
 
-		ShowballGrid.extraBink = true;
+		ExtraBlinkGrid.extraBink = true;
 	}
 
 	protected getExtraBallFit(): void {
