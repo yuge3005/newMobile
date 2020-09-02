@@ -1,0 +1,43 @@
+{
+    "files": [
+        "./super_line.png",
+        "./sub_line.png",
+        "./Shiny_flow.png",
+        "./Paytable_body_blue.png",
+        "./Paytable_body.png",
+        "./Paytable_bg.png",
+        "./Mark_yellow.png",
+        "./Mark_x.png",
+        "./Mark_white.png",
+        "./Mark_red.png",
+        "./Mark_pink.png",
+        "./Mark_line.png",
+        "./Jackpot_star.png",
+        "./Jackpot_lock_pt.png",
+        "./jackpot_lock.png",
+        "./Jackpot_enable_pt.png",
+        "./Jackpot_enable.png",
+        "./Image-220.png",
+        "./Image-219.png",
+        "./Image-218.png",
+        "./Image-217.png",
+        "./Image-216.png",
+        "./Image-215.png",
+        "./Image-214.png",
+        "./Image-213.png",
+        "./Bitmap-3.png",
+        "./Bitmap-2.png",
+        "./Bitmap-1.png",
+        "./Backdrop_ENG-1-1.png",
+        "./Backdrop_ENG.png"
+    ],
+    "projectName": "hotbingo",
+    "version": 5,
+    "options": {
+        "extend": 0,
+        "layoutMath": "0",
+        "sizeMode": "free",
+        "useExtension": 0,
+        "layoutGap": 1
+    }
+}

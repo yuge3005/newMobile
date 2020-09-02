@@ -54,7 +54,7 @@
 		},
 		{
 			"keys": "hb_1line_mp3,hb_2line_mp3,hb_4corner_mp3,hb_ball_mp3,hb_bet_mp3,hb_bingo_mp3,hb_card_mp3,hb_card1_mp3,hb_card2_mp3,hb_card3_mp3,hb_card4_mp3,hb_extra_ball_wav,hb_extra_loop_mp3,hb_have_extra_ball_mp3,hb_jackpot_mp3,hb_super_line_wav",
-			"name": "hotBingo"
+			"name": "hotbingo"
 		}
 	],
 	"resources": [
