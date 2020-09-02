@@ -51,6 +51,10 @@
 		{
 			"keys": "CASH_Any_Win_End_of_Round_mp3,ball_come_out_mp3,change_cards_mp3,extra_ball_come_out_mp3,extra_mode_start_mp3,win_bingo_mp3,win_cross_mp3,win_double_line_mp3,win_double_triangle_mp3,win_double_v_mp3,win_line_mp3,win_m_mp3,win_mw_mp3,win_perimeter_mp3,win_square_mp3,win_triangle_mp3,win_v_mp3,win_w_mp3,pachinko2_json,pachinko2Animation_png,pachinko2Animation_json,pachinko2_conf,forAll_tx,bingoGameToolbar_json,topbar_json,open_list_mp3",
 			"name": "pachinko2"
+		},
+		{
+			"keys": "hb_1line_mp3,hb_2line_mp3,hb_4corner_mp3,hb_ball_mp3,hb_bet_mp3,hb_bingo_mp3,hb_card_mp3,hb_card1_mp3,hb_card2_mp3,hb_card3_mp3,hb_card4_mp3,hb_extra_ball_wav,hb_extra_loop_mp3,hb_have_extra_ball_mp3,hb_jackpot_mp3,hb_super_line_wav",
+			"name": "hotBingo"
 		}
 	],
 	"resources": [
@@ -814,6 +818,86 @@
 			"url": "config/lan/forAll.tx",
 			"type": "json",
 			"name": "forAll_tx"
+		},
+		{
+			"url": "game/hotbingo/sound/hb_1line.mp3",
+			"type": "sound",
+			"name": "hb_1line_mp3"
+		},
+		{
+			"url": "game/hotbingo/sound/hb_2line.mp3",
+			"type": "sound",
+			"name": "hb_2line_mp3"
+		},
+		{
+			"url": "game/hotbingo/sound/hb_4corner.mp3",
+			"type": "sound",
+			"name": "hb_4corner_mp3"
+		},
+		{
+			"url": "game/hotbingo/sound/hb_ball.mp3",
+			"type": "sound",
+			"name": "hb_ball_mp3"
+		},
+		{
+			"url": "game/hotbingo/sound/hb_bet.mp3",
+			"type": "sound",
+			"name": "hb_bet_mp3"
+		},
+		{
+			"url": "game/hotbingo/sound/hb_bingo.mp3",
+			"type": "sound",
+			"name": "hb_bingo_mp3"
+		},
+		{
+			"url": "game/hotbingo/sound/hb_card.mp3",
+			"type": "sound",
+			"name": "hb_card_mp3"
+		},
+		{
+			"url": "game/hotbingo/sound/hb_card1.mp3",
+			"type": "sound",
+			"name": "hb_card1_mp3"
+		},
+		{
+			"url": "game/hotbingo/sound/hb_card2.mp3",
+			"type": "sound",
+			"name": "hb_card2_mp3"
+		},
+		{
+			"url": "game/hotbingo/sound/hb_card3.mp3",
+			"type": "sound",
+			"name": "hb_card3_mp3"
+		},
+		{
+			"url": "game/hotbingo/sound/hb_card4.mp3",
+			"type": "sound",
+			"name": "hb_card4_mp3"
+		},
+		{
+			"url": "game/hotbingo/sound/hb_extra_ball.wav",
+			"type": "sound",
+			"name": "hb_extra_ball_wav"
+		},
+		{
+			"url": "game/hotbingo/sound/hb_extra_loop.mp3",
+			"type": "sound",
+			"name": "hb_extra_loop_mp3"
+		},
+		{
+			"url": "game/hotbingo/sound/hb_have_extra_ball.mp3",
+			"type": "sound",
+			"name": "hb_have_extra_ball_mp3"
+		},
+		{
+			"url": "game/hotbingo/sound/hb_jackpot.mp3",
+			"type": "sound",
+			"name": "hb_jackpot_mp3"
+		},
+		{
+			"url": "game/hotbingo/sound/hb_super_line.wav",
+			"type": "sound",
+			"name": "hb_super_line_wav"
 		}
 	]
 }
