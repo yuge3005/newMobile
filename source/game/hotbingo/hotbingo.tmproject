@@ -25,19 +25,18 @@
         "./Image-215.png",
         "./Image-214.png",
         "./Image-213.png",
-        "./Bitmap-3.png",
         "./Bitmap-2.png",
         "./Bitmap-1.png",
         "./Backdrop_ENG-1-1.png",
         "./Backdrop_ENG.png"
     ],
-    "projectName": "hotbingo",
-    "version": 5,
     "options": {
+        "useExtension": 0,
+        "layoutGap": 1,
         "extend": 0,
         "layoutMath": "0",
-        "sizeMode": "free",
-        "useExtension": 0,
-        "layoutGap": 1
-    }
+        "sizeMode": "free"
+    },
+    "version": 5,
+    "projectName": "hotbingo"
 }
