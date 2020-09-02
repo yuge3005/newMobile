@@ -15,7 +15,7 @@ class Hotbingo extends V2Game{
 
         PaytableUI.textBold = true;
 
-        CardManager.gridType = TowerGrid;
+        CardManager.gridType = ForkGrid;
         CardGrid.defaultNumberSize = 55;
 
         GameCard.gridOnTop = true;

@@ -43,7 +43,7 @@ class Turbo90Card extends GameCard{
 	protected removeFork( str: string ): void{
 		for( let j: number = 0; j < str.length; j++ ){
 			if( str[j] == "1" ){
-				(this.grids[j] as Turbo90Grid).removeFork();
+				(this.grids[j] as ForkGrid).removeFork();
 			}
 		}
 	}

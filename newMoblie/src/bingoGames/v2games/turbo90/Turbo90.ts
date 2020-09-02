@@ -17,7 +17,7 @@ class Turbo90 extends V2Game{
         PaytableUI.needBlick = false;
 
         CardManager.cardType = Turbo90Card;
-        CardManager.gridType = Turbo90Grid;
+        CardManager.gridType = ForkGrid;
 
         GameCard.showTitleShadow = new egret.GlowFilter(0, 1, 2, 2, 4 );
         CardGrid.defaultNumberSize = 55;

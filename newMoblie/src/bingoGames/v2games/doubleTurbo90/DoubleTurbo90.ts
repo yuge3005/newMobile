@@ -20,7 +20,7 @@ class DoubleTurbo90 extends V2Game{
 		GameCard.gridOnTop = true;
 
         CardManager.cardType = DoubleTurbo90Card;
-        CardManager.gridType = Turbo90Grid;
+        CardManager.gridType = ForkGrid;
         
         CardGrid.defaultNumberSize = 32;
         GameCard.useRedEffect = true;

@@ -1,7 +1,7 @@
-class ForkGrid extends CardGrid{
-	
+class ForkGrid extends TowerGrid{
+
 	private forkUI: egret.Bitmap;
-	
+
 	public constructor() {
 		super();
 	}
@@ -13,16 +13,11 @@ class ForkGrid extends CardGrid{
 			Com.addObjectAt( this, this.forkUI, CardGrid.gridSize.x - this.forkUI.width >> 1, CardGrid.gridSize.y - this.forkUI.height >> 1 );
 		}
 		else {
-			if( this.forkUI && this.contains( this.forkUI ) )this.removeChild( this.forkUI );
+			this.removeFork();
 		}
 	}
 
-	protected redrawBg( color: number ){
-		if( color == CardGrid.defaultBgColor )this.graphics.clear();
-		else super.redrawBg( color );
-	}
-
-	public showRedEffect(){
+	public removeFork(){
 		if( this.forkUI && this.contains( this.forkUI ) )this.removeChild( this.forkUI );
 	}
 }
