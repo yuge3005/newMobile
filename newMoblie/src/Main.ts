@@ -42,40 +42,17 @@ class Main extends egret.DisplayObjectContainer {
      * Create a game scene
      */
     private createGameScene() {
-        this.showGame( "Hotbingo", "bin-debug/bingoGames/Hotbingo.js", "resource/default.res.json" );
+        this.showGame();
 		IBingoServer.serverInit();
     }
 
-    public showGame( gameClassName: string, jsFilePath: string, assetsPath: string ){
-		let fun: any = egret.getDefinitionByName( gameClassName );
-		if( typeof(fun) == "function" ){
-			this.showGameByClass( fun, assetsPath );
-		}
-		else{
-			var s = document.createElement('script');
-			s.async = false;
-			s.src = jsFilePath;
-			s.addEventListener('load', function () {
-				s.parentNode.removeChild(s);
-				s.removeEventListener('load', eval("arguments.callee"), false);
-				console.log( "build game by classfile" );
-				this.showGame( gameClassName, null, assetsPath );
-			}.bind(this), false);
-			document.head.appendChild(s);
-		}
-	}
+	private showGame(){
+		this.currentGame = new Hotbingo("resource/default.res.json");
 
-	private showGameByClass( fun: Function, assetsPath: string ){
-		this.currentGame = eval( "new fun(assetsPath)" );
-
-		if( this.currentGame.inited )this.addGame();
-		else{
-            const loadingView = new LoadingUI();
-            this.addChild(loadingView);
-            this.currentGame.preLoader = loadingView;
-            this.currentGame.addEventListener( BingoMachine.GENERIC_MODAL_LOADED, this.addGame, this );
-            this.currentGame.addEventListener("megaFirst", this.showMegaFirst, this);
-        }
+		const loadingView = new LoadingUI();
+		this.currentGame.preLoader = loadingView;
+		this.currentGame.addEventListener( BingoMachine.GENERIC_MODAL_LOADED, this.addGame, this );
+		this.currentGame.addEventListener("megaFirst", this.showMegaFirst, this);
 	}
 
 	private addGame(){
@@ -96,7 +73,6 @@ class Main extends egret.DisplayObjectContainer {
 	 * key down
 	 */
 	private keyDown(event): void {
-		// if (Trigger.keyboard) return;
 		if (this.currentGame) {
 			if (event.keyCode === 32) {
 				event.preventDefault();

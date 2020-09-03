@@ -275,11 +275,7 @@ class BingoMachine extends GameUIItem{
 
 		if( this.needListenToolbarStatus )this.listenToGameToolbarStatus();
 
-		let loader: egret.Sprite = this.preLoader as egret.Sprite;
-		if( loader.parent ){
-			loader.parent.removeChild( loader );
-			this.preLoader = null;
-		}
+		this.preLoader = null;
 
 		this.loadOtherGroup();
 	}
