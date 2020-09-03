@@ -176,29 +176,12 @@ class Nineball extends V2Game{
     }
 
     protected getPaytablesFit( paytabledName: string, callback: Function = null ): void{
-		let soundName = "";
+        super.getPaytablesFit( paytabledName, callback );
         switch (paytabledName) {
-            case "double": soundName = "nb_2line_mp3";
-                this.dropCoinsAt( 1000, 628, 2 );
-                break;
-            case "bingo": soundName = "nb_bingo_mp3";
-                this.dropCoinsAt( 1000, 455, 3 );
-                break;
-            case "line": soundName = "nb_1line_mp3";
-                this.dropCoinsAt( 1000, 792, 1 );
-                break;
+            case "double": this.dropCoinsAt( 1000, 628, 2 ); break;
+            case "bingo": this.dropCoinsAt( 1000, 455, 3 ); break;
+            case "line": this.dropCoinsAt( 1000, 792, 1 ); break;
             default: break;    
-        }
-        if (soundName !== "") {
-            this.waitingForEffect = true;
-            if( SoundManager.soundOn ){
-                this.playSound(soundName, 1, this.waitForEffect.bind(this));
-            }
-            else{
-                setTimeout( this.waitForEffect.bind(this), 1500 );
-            }
-        } else {
-            callback();
         }
 	}
 
