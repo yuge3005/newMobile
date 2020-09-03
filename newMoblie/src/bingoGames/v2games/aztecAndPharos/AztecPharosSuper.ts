@@ -20,11 +20,11 @@ class AztecPharosSuper extends V2Game{
 	protected init(){
         super.init();
 
-        let betTip: TextLabel = this.addGameText( 295, 678, 36, 0xE8D4AF, "bet", true, 150, "", 0.9 );
+        let betTip: TextLabel = MDS.addGameText( this, 295, 678, 36, 0xE8D4AF, "bet", true, 150, "", 0.9 );
         betTip.fontFamily = "Arial";
         betTip.bold = true;
 
-        this.betText = this.addGameTextCenterShadow( 425, 678, 36, 0xE8D4AF, "bet", true, 178, true, false );
+        this.betText = MDS.addGameTextCenterShadow( this, 425, 678, 36, 0xE8D4AF, "bet", true, 178, true, false );
         this.betText.textAlign = "right";
         this.betText.fontFamily = "Arial";
         this.betText.bold = true;
@@ -83,14 +83,14 @@ class AztecPharosSuper extends V2Game{
         this.gameToolBar.addEventListener( "tipStatus", this.tipStatus, this );
 
         let rect: egret.Rectangle = this.tipStatusTextPosition;
-        this.tipStatusText = this.addGameText( rect.x, rect.y, rect.height, this.tipStatusTextColor, "bet", false, rect.width );
+        this.tipStatusText = MDS.addGameText( this, rect.x, rect.y, rect.height, this.tipStatusTextColor, "bet", false, rect.width );
         this.tipStatusText.textAlign = "center";
         this.tipStatusText.verticalAlign = "middle";
         this.tipStatusText.scaleX = 1;
         this.tipStatusText.text = "";
         Com.addObjectAt( this.runningBallContainer, this.tipStatusText, rect.x, rect.y );
 
-        this.tipStatusCoinTypeText = this.addGameText( 0, 0, 35, this.tipStatusTextColor, "bet", false, rect.width - 40 );
+        this.tipStatusCoinTypeText = MDS.addGameText( this, 0, 0, 35, this.tipStatusTextColor, "bet", false, rect.width - 40 );
         this.tipStatusCoinTypeText.textAlign = "center";
         this.tipStatusCoinTypeText.verticalAlign = "middle";
         this.tipStatusCoinTypeText.scaleX = 1;

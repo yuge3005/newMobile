@@ -12,7 +12,7 @@ class PachinkoCard extends GameCard {
     protected onAdd(event: egret.Event) {
         super.onAdd(event);
 
-        if (this.cardText) this.cardText.text = GameUIItem.languageText["bet"][GlobelSettings.language];
+        if (this.cardText) this.cardText.text = MuLang.getText( "bet" );
         if (this.betText) this.betText.textColor = 0xFFFF00;
     }
 }

@@ -289,7 +289,7 @@ class BingoMachine extends GameUIItem{
 
 		if( this.tipStatusTextPosition ){
 			let rect: egret.Rectangle = this.tipStatusTextPosition;
-			this.tipStatusText = this.addGameText( rect.x, rect.y, rect.height, this.tipStatusTextColor, "bet", false, rect.width );
+			this.tipStatusText = MDS.addGameText( this, rect.x, rect.y, rect.height, this.tipStatusTextColor, "bet", false, rect.width );
 			this.tipStatusText.textAlign = "center";
 			this.tipStatusText.text = MuLang.getText("press play");
 		}

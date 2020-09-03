@@ -35,11 +35,11 @@ class ShowballSuper extends V1Game{
 
 		this.showNoBetAndCredit();
 
-		let ballText: TextLabel = this.addGameText( 1603, 52, 32, 0x0, "ball", false, 125, "", 1 );
+		let ballText: TextLabel = MDS.addGameText( this, 1603, 52, 32, 0x0, "ball", false, 125, "", 1 );
 		ballText.textAlign = "center";
 		ballText.fontFamily = "Righteous";
 
-		this.ballCountText = this.addGameText( 1603, 85, 100, 0x88FF88, "ball", false, 125, "", 1 );
+		this.ballCountText = MDS.addGameText( this, 1603, 85, 100, 0x88FF88, "ball", false, 125, "", 1 );
 		this.ballCountText.textAlign = "center";
 		this.ballCountText.fontFamily = "Righteous";
 		this.ballCountText.text = "";

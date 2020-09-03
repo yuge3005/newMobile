@@ -42,20 +42,20 @@ class SuperLotto extends V2Game{
 
         this.showNoBetAndCredit();
 
-        let seText: egret.TextField = this.addGameTextCenterShadow( 560 + 1115, 150 + BrowserInfo.textUp, 35, 0x18A4FD, "sequence", true, 182, true, false );
+        let seText: egret.TextField = MDS.addGameTextCenterShadow( this, 560 + 1115, 150 + BrowserInfo.textUp, 35, 0x18A4FD, "sequence", true, 182, true, false );
         seText.scaleX = 1;
         seText.stroke = 1.5;
         seText.text = seText.text.toUpperCase();
         seText.fontFamily = "Righteous";
-        let anText: egret.TextField = this.addGameTextCenterShadow( 560 + 1115, 580 + BrowserInfo.textUp, 35, 0xE518FD, "any", true, 182, true, false );
+        let anText: egret.TextField = MDS.addGameTextCenterShadow( this, 560 + 1115, 580 + BrowserInfo.textUp, 35, 0xE518FD, "any", true, 182, true, false );
         anText.scaleX = 1;
         anText.stroke = 1.5;
         anText.text = anText.text.toUpperCase();
         anText.fontFamily = "Righteous";
 
-        let x2Text: egret.TextField = this.addGameTextCenterShadow( 1647, 863, 38, 0xFFFFFF, "sequence", false, 100, false, false );
+        let x2Text: egret.TextField = MDS.addGameTextCenterShadow( this, 1647, 863, 38, 0xFFFFFF, "sequence", false, 100, false, false );
         x2Text.text = "x2";
-        let x3Text: egret.TextField = this.addGameTextCenterShadow( 1835, 863, 38, 0xFFFFFF, "sequence", false, 100, false, false );
+        let x3Text: egret.TextField = MDS.addGameTextCenterShadow( this, 1835, 863, 38, 0xFFFFFF, "sequence", false, 100, false, false );
         x3Text.text = "x3";
 
         this.letsLotto();
@@ -200,7 +200,7 @@ class SuperLotto extends V2Game{
         for( let i: number = 0; i < 4; i++ ){
             this.anBgs[i] = Com.addBitmapAt( this, this.assetStr( "any_light" ), 1587, 793 - 56 * i );
             this.anBgs[i].visible = false;
-            this.anNumbers[i] = this.addGameTextCenterShadow( 1618, 799 - 56 * i + BrowserInfo.textUp, 40, 0xE518FD, "sequence", false, 30, false, false );
+            this.anNumbers[i] = MDS.addGameTextCenterShadow( this, 1618, 799 - 56 * i + BrowserInfo.textUp, 40, 0xE518FD, "sequence", false, 30, false, false );
             this.anNumbers[i].text = "" + ( i + 2 );
         }
         this.seNumbers = [];
@@ -208,7 +208,7 @@ class SuperLotto extends V2Game{
         for( let i: number = 0; i < 6; i++ ){
             this.seBgs[i] = Com.addBitmapAt( this, this.assetStr( "sequence_light" ), 1587, 478 - 56 * i );
             this.seBgs[i].visible = false;
-            this.seNumbers[i] = this.addGameTextCenterShadow( 1618, 484 - 56 * i + BrowserInfo.textUp, 40, 0x18A4FD, "sequence", false, 30, false, false );
+            this.seNumbers[i] = MDS.addGameTextCenterShadow( this, 1618, 484 - 56 * i + BrowserInfo.textUp, 40, 0x18A4FD, "sequence", false, 30, false, false );
             this.seNumbers[i].text = "" + ( i + 1 );
         }
     }

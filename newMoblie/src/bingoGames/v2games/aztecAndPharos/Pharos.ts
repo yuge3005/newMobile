@@ -29,7 +29,7 @@ class Pharos extends AztecPharosSuper{
     private buildPattenText( pattenNames: Array<string> ){
         this.pharosPattenTexts = [];
         for( let i: number = 0; i < pattenNames.length; i++ ){
-            this.pharosPattenTexts[i] = this.addGameText( 295, 505 + i * 41, 35, 0xE8D4AF, pattenNames[i], false, 180, "", 0.9 );
+            this.pharosPattenTexts[i] = MDS.addGameText( this, 295, 505 + i * 41, 35, 0xE8D4AF, pattenNames[i], false, 180, "", 0.9 );
             this.pharosPattenTexts[i].fontFamily = "Arial";
             this.pharosPattenTexts[i].stroke = 2;
             this.pharosPattenTexts[i].strokeColor = 0x6F5D2D;

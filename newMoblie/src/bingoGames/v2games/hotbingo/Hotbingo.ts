@@ -31,15 +31,15 @@ class Hotbingo extends V2Game{
     protected init(){
         super.init();
 
-        this.addGameText( 1310, 51, 30, 0x033E78, "bingo",false, 300 );
-        this.addGameText( 1310, 84, 30, 0x033E78, "double line",false, 300 );
-        this.addGameText( 1310, 117, 30, 0x033E78, "line",false, 300 );
-        this.addGameText( 1310, 150, 30, 0x033E78, "four corners",false, 300 );
+        MDS.addGameText( this, 1310, 51, 30, 0x033E78, "bingo",false, 300 );
+        MDS.addGameText( this, 1310, 84, 30, 0x033E78, "double line",false, 300 );
+        MDS.addGameText( this, 1310, 117, 30, 0x033E78, "line",false, 300 );
+        MDS.addGameText( this, 1310, 150, 30, 0x033E78, "four corners",false, 300 );
 
-        this.addGameText( 485, 135, 20, 0xFEFE00, "prize", true, 140 );
+        MDS.addGameText( this, 485, 135, 20, 0xFEFE00, "prize", true, 140 );
 
         this.showNoBetAndCredit();
-        this.prizeText = this.addGameText( 565, 135, 20, 0xFFFFFF, "prize", false, 140 );
+        this.prizeText = MDS.addGameText( this, 565, 135, 20, 0xFFFFFF, "prize", false, 140 );
         this.prizeText.text = "0";
 
         this.runningBallContainer = new egret.DisplayObjectContainer;

@@ -26,19 +26,19 @@ class SilverBall extends GoldSilverSuper{
     protected init() {
         super.init();
 
-        let bingo = this.addGameText(242, 30, 33, 0xF9CC15, "bingo", false, 170);
-        let double = this.addGameText(242, 70, 33, 0xF9CC15, "double", false, 170);
-        let line = this.addGameText(242, 110, 33, 0xF9CC15, "line", false, 170);
+        let bingo = MDS.addGameText( this, 242, 30, 33, 0xF9CC15, "bingo", false, 170);
+        let double = MDS.addGameText( this, 242, 70, 33, 0xF9CC15, "double", false, 170);
+        let line = MDS.addGameText( this, 242, 110, 33, 0xF9CC15, "line", false, 170);
 
-        this.addGameText(242, 170, 33, 0xF9CC15, "extraball", false, 170);
-        this.addGameText(242, 235, 33, 0xF9CC15, "bet", false, 170);
+        MDS.addGameText( this, 242, 170, 33, 0xF9CC15, "extraball", false, 170);
+        MDS.addGameText( this, 242, 235, 33, 0xF9CC15, "bet", false, 170);
 
-        this.betText = this.addGameText(400, 235, 33, 0xF9CC15, "bet", false, 250, "", 0.9 );
+        this.betText = MDS.addGameText( this, 400, 235, 33, 0xF9CC15, "bet", false, 250, "", 0.9 );
         this.betText.textAlign = "right";
-        this.creditText = this.addGameText(1370, 235, 33, 0xF9CC15, "credit", false, 378, "", 1 );
+        this.creditText = MDS.addGameText( this, 1370, 235, 33, 0xF9CC15, "credit", false, 378, "", 1 );
         this.creditText.textAlign = "center";
 
-        this.extraPriceText = this.addGameText(400, 170, 33, 0xF9CC15, "extraball", false, 250, "", 0.9 );
+        this.extraPriceText = MDS.addGameText( this, 400, 170, 33, 0xF9CC15, "extraball", false, 250, "", 0.9 );
         this.extraPriceText.textAlign = "right";
         this.extraPriceText.text = "";
 

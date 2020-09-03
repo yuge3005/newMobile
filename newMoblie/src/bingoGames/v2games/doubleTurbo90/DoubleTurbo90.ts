@@ -52,7 +52,7 @@ class DoubleTurbo90 extends V2Game{
     }
 
     private addDouble90GameText( yPos: number, textItem: string ): TextLabel{
-        let tx: TextLabel = this.addGameText( 315, yPos, 30, 0x46C8F5, textItem, false, 200, "", 0.9 );
+        let tx: TextLabel = MDS.addGameText( this, 315, yPos, 30, 0x46C8F5, textItem, false, 200, "", 0.9 );
         tx.fontFamily = "Arial";
         tx.bold = true;
         return tx;
