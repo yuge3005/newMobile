@@ -15,7 +15,7 @@ class CardGrid extends egret.Sprite{
 	public static blinkColors1: number;
 	public static blinkColors2: number;
 
-	public static winTimesOffset: egret.Point;
+	public static winTimesOffset: egret.Point = new egret.Point;
 
 	protected numTxt: egret.TextField;
 
@@ -110,13 +110,6 @@ class CardGrid extends egret.Sprite{
 		this.smallWinTimesText.textAlign = "right";
 		this.smallWinTimesText.text = "x" + winTimes;
 		this.smallWinTimesText.textColor = CardGrid.numberColor;
-
-		if( BingoBackGroundSetting.gameScale.x == 1 ){
-			this.smallWinTimesText.scaleX = this.smallWinTimesText.scaleY = 0.9;
-			this.smallWinTimesText.x += CardGrid.gridSize.x * 0.1;
-			this.smallWinTimesText.y += 2;
-			this.smallWinTimesText.bold = true;
-		}
 	}
 
 	public setSmallIcon( winIcon: egret.DisplayObjectContainer ): void{

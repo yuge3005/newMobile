@@ -26,8 +26,6 @@ class Nineball extends V2Game{
         GameCard.useRedEffect = true;
 
         BallManager.ballOffsetY = 8;
-
-        BingoBackGroundSetting.defaultScale = false;
     }
 
     protected init(){

@@ -5,7 +5,6 @@ class BingoBackGroundSetting{
 	private static bgColor: number;
 	private static bgItems: Array<string>;
 
-	public static gameScale: egret.Point;
 	public static gameMask: egret.Rectangle = new egret.Rectangle( 0, 0, 2000, 1125 );
 
 	public static assetName: string;
@@ -57,14 +56,5 @@ class BingoBackGroundSetting{
 			items.push(sp);
 		}
 		return items;
-	}
-
-	public static set defaultScale( value: boolean ){
-		if( value ){
-			BingoBackGroundSetting.gameScale = new egret.Point( 151 / 160, 0.77 );
-		}
-		else{//unScale
-			BingoBackGroundSetting.gameScale = new egret.Point( 1, 1 );
-		}
 	}
 }

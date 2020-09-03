@@ -21,8 +21,6 @@ class ShowballSuper extends V1Game{
 
 		BallManager.ballOffsetY = 5;
 
-		BingoBackGroundSetting.defaultScale = false;
-
 		PayTableManager.bingoPaytableName = "pt_bingo";
 		PayTableManager.paytableUIType = ShowballPaytableUI;
 		PaytableUI.textBold = true;

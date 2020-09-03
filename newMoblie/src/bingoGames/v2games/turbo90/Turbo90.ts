@@ -24,8 +24,6 @@ class Turbo90 extends V2Game{
 
         BallManager.ballOffsetY = 2;
         BallManager.rotateBall = true;
-
-        BingoBackGroundSetting.defaultScale = false;
 	}
 
     protected init(){

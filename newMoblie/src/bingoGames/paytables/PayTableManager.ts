@@ -2,7 +2,7 @@ class PayTableManager extends egret.Sprite{
 
 	public static payTablesDictionary: Object;
 
-	public static bingoPaytableName: string;
+	public static bingoPaytableName: string = "bingo";
 
 	public static paytableUIType: Function;
 

@@ -12,8 +12,8 @@ class BallManager extends egret.Sprite{
 
 	public needLightCheck: boolean;
 
-	public static normalBallInterval: number;
-	public static ballOffsetY: number;
+	public static normalBallInterval: number = 100;
+	public static ballOffsetY: number = 0;
 	public static rotateBall: boolean;
 
 	private lightResult: Array<Object>;

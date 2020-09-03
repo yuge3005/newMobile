@@ -16,8 +16,6 @@ class Pharos extends AztecPharosSuper{
 
         BallManager.ballOffsetY = 8;
         BallManager.textBold = true;
-
-        BingoBackGroundSetting.defaultScale = false;
 	}
 
     protected init(){

@@ -30,7 +30,6 @@ class SuperLotto extends V2Game{
         BallManager.normalBallInterval = 200;
 
         BallManager.ballOffsetY = BrowserInfo.textUp * 2;
-        BingoBackGroundSetting.defaultScale = false;
 
         PayTableManager.bingoPaytableName = "se6";
 	}

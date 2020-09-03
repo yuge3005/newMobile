@@ -6,8 +6,6 @@ class GoldSilverSuper extends V2Game{
 		PaytableUI.textBold = true;
 
 		GameCard.useRedEffect = true;
-
-		BingoBackGroundSetting.defaultScale = false;
 	}
 
 	protected init(){
