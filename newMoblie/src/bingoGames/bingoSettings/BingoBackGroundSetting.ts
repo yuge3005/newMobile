@@ -7,18 +7,12 @@ class BingoBackGroundSetting{
 
 	public static gameMask: egret.Rectangle = new egret.Rectangle( 0, 0, 2000, 1125 );
 
-	public static assetName: string;
-	public static getAssetStr( str: string ): string{
-		return this.assetName + "_json." + str;
-	}
-
 	public constructor() {
 	}
 
-	public static getBackgroundData( bgColor: number, bgItems: Array<string>, assetName: string ): void{
+	public static getBackgroundData( bgColor: number, bgItems: Array<string> ): void{
 		this.bgColor = bgColor;
 		this.bgItems = bgItems;
-		this.assetName = assetName;
 	}
 
 	public static initBackground( target: egret.Sprite ): egret.MovieClipDataFactory{
@@ -44,13 +38,13 @@ class BingoBackGroundSetting{
 		let bgItemNames: Array<string> = this.bgItems;
 		for( let i: number = 0; i < bgItemNames.length; i++ ){
 			let sp: egret.DisplayObject;
-			if( RES.getRes( this.getAssetStr( bgItemNames[i]["name"] ) ) ){
-				sp = Com.addBitmapAt( target, this.getAssetStr( bgItemNames[i]["name"] ), bgItemNames[i]["x"], bgItemNames[i]["y"] );
-				sp.name = this.getAssetStr(  bgItemNames[i]["name"] );
+			if( RES.getRes( BingoMachine.getAssetStr( bgItemNames[i]["name"] ) ) ){
+				sp = Com.addBitmapAt( target, BingoMachine.getAssetStr( bgItemNames[i]["name"] ), bgItemNames[i]["x"], bgItemNames[i]["y"] );
+				sp.name = BingoMachine.getAssetStr(  bgItemNames[i]["name"] );
 			}
 			else{
 				sp = Com.addMovieClipAt( target, mcf, bgItemNames[i]["name"], bgItemNames[i]["x"], bgItemNames[i]["y"] );
-				sp.name = this.getAssetStr( bgItemNames[i]["name"] );
+				sp.name = BingoMachine.getAssetStr( bgItemNames[i]["name"] );
 			}
 			target.addChild( sp );
 			items.push(sp);
