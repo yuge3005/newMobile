@@ -5,7 +5,6 @@ class BingoMachine extends GameUIItem{
 	public preLoader: RES.PromiseTaskReporter;
 
 	protected assetName: string;
-	protected static assetLoaded: Object = {};
 	public inited: boolean = false;
 	private configUrl: string;
 	private gameConfigFile: string;
@@ -94,8 +93,7 @@ class BingoMachine extends GameUIItem{
 		if (!BingoMachine.soundManager) BingoMachine.soundManager = new GameSoundManager();
 		this.soundManager = BingoMachine.soundManager;
 
-		if( BingoMachine.assetLoaded[this.assetName] )this.assetReady = true;
-		else RES.getResByUrl( this.configUrl, this.analyse, this );
+		RES.getResByUrl( this.configUrl, this.analyse, this );
 
 		this.loginToServer();
 	}
@@ -153,7 +151,6 @@ class BingoMachine extends GameUIItem{
 	
 	private loaded( event: RES.ResourceEvent ){
 		if( event.groupName != this.assetName )return;
-		BingoMachine.assetLoaded[this.assetName] = true;
 		RES.removeEventListener(RES.ResourceEvent.GROUP_PROGRESS, this.loadSoundsProgress, this);
 		RES.removeEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.loaded, this );
 
@@ -185,6 +182,7 @@ class BingoMachine extends GameUIItem{
 	protected init(){
 		this.inited = true;
 		this.dispatchEvent( new egret.Event( BingoMachine.GENERIC_MODAL_LOADED ) );
+		this.preLoader = null;
 
 		this.scaleX = Main.gameSize.x / BingoBackGroundSetting.gameMask.width;
 		this.scaleY = Main.gameSize.y / BingoBackGroundSetting.gameMask.height;
@@ -274,8 +272,6 @@ class BingoMachine extends GameUIItem{
 		IBingoServer.jackpotWinCallbak = this.jackpotArea.jackpotWinCallback.bind( this.jackpotArea );
 
 		if( this.needListenToolbarStatus )this.listenToGameToolbarStatus();
-
-		this.preLoader = null;
 
 		this.loadOtherGroup();
 	}
