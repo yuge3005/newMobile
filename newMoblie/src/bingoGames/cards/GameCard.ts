@@ -13,7 +13,7 @@ class GameCard extends GameUIItem{
 	public static gridInitPosition: egret.Point;
 
 	public static titleColors: Array<number>;
-	public static bgRound: number;
+	public static bgRound: number = 0;
 	public static currentBgColorIndex: number = 0;
 	
 	public static showTitleShadow: egret.Filter;
@@ -31,7 +31,7 @@ class GameCard extends GameUIItem{
 	protected fitEffectLayer: egret.DisplayObjectContainer;
 	public static fitEffectNameList: Object;
 	public static useRedEffect: boolean;
-	public static fitEffectRedLine: boolean;
+	public static fitEffectRedLine: boolean = true;
 
 	protected cardId: number;
 	protected numbers: Array<number>;

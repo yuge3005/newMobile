@@ -5,8 +5,6 @@ class BingoMachine extends GameUIItem{
 	public preLoader: RES.PromiseTaskReporter;
 
 	protected assetName: string;
-	public inited: boolean = false;
-	private configUrl: string;
 	private gameConfigFile: string;
 	protected _mcf: egret.MovieClipDataFactory;
 	protected languageObjectName: string;
@@ -81,10 +79,7 @@ class BingoMachine extends GameUIItem{
 		this.tokenObject = {};
 		this.tokenObject["value"] = { tipo:"jogar", version: GlobelSettings.serverVertion };
 
-		BingoDefaultSetting.defaultSetting();
-
 		this.gameConfigFile = gameConfigFile;
-		this.configUrl = configUrl;
 		this.ballArea = new BallManager;
 
 		this.assetName = egret.getDefinitionByName( egret.getQualifiedClassName(this) ).classAssetName;
@@ -93,7 +88,7 @@ class BingoMachine extends GameUIItem{
 		if (!BingoMachine.soundManager) BingoMachine.soundManager = new GameSoundManager();
 		this.soundManager = BingoMachine.soundManager;
 
-		RES.getResByUrl( this.configUrl, this.analyse, this );
+		RES.getResByUrl( configUrl, this.analyse, this );
 
 		this.loginToServer();
 	}
@@ -180,7 +175,6 @@ class BingoMachine extends GameUIItem{
 	}
 
 	protected init(){
-		this.inited = true;
 		this.dispatchEvent( new egret.Event( BingoMachine.GENERIC_MODAL_LOADED ) );
 		this.preLoader = null;
 

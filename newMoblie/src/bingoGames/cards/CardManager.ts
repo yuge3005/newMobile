@@ -4,17 +4,10 @@ class CardManager{
 
 	public static groupNumber: number;
 
-	public static cardType: Function;
-	public static gridType: Function;
+	public static cardType: Function = GameCard;
+	public static gridType: Function = CardGrid;
 
 	public constructor() {
-	}
-
-	public static cardDefaultSettings(): void{
-		CardManager.cardType = GameCard;
-		CardManager.gridType = CardGrid;
-		GameCard.fitEffectRedLine = true;
-		GameCard.bgRound = 0;
 	}
 
 	public static getCardData( data: Object, cardNumbers: number ){

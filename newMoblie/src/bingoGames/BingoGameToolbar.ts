@@ -1,5 +1,5 @@
 class BingoGameToolbar extends egret.DisplayObjectContainer{
-	public static toolBarY: number;
+	public static toolBarY: number = 900;
 
 	private helpBtn: TouchDownButton;
 	protected decreseBetBtn: TouchDownButton;
