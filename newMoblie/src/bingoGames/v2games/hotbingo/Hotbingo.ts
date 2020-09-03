@@ -22,6 +22,7 @@ class Hotbingo extends V2Game{
         CardGrid.defaultNumberSize = 55;
 
         GameCard.gridOnTop = true;
+        BallManager.ballOffsetY = 4;
 
         this.needListenToolbarStatus = true;
 	}
