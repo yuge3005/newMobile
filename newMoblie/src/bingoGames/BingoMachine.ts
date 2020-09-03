@@ -12,7 +12,7 @@ class BingoMachine extends GameUIItem{
 
 	protected ballArea: BallManager;
 	protected cardArea: egret.DisplayObjectContainer;
-	protected payTableArea: egret.DisplayObjectContainer;
+	protected payTableArea: PaytableLayer;
 	protected gameToolBar: BingoGameToolbar;
 	protected topbar: Topbar;
 
@@ -208,18 +208,8 @@ class BingoMachine extends GameUIItem{
 
 	protected addPayTables(){
 		PayTableManager.getPayTableUI();
-		this.payTableArea = new egret.DisplayObjectContainer;
+		this.payTableArea = new PaytableLayer;
 		this.addChild( this.payTableArea );
-		let pts: Object = PayTableManager.payTablesDictionary;
-		for( let ob in pts ){
-			this.payTableArea.addChild( pts[ob].UI );
-		}
-
-		for( let payTable in PayTableManager.payTablesDictionary ){
-			let pos: Object = PayTableManager.payTablesDictionary[payTable].position;
-			pts[payTable].UI.x = pos["x"];
-			pts[payTable].UI.y = pos["y"];
-		}
 	}
 
     private loginToServer(){
