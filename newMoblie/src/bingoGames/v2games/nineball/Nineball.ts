@@ -14,7 +14,7 @@ class Nineball extends V2Game{
         this.megaName = "nineball_mega";
 
         PaytableUI.textBold = true;
-        PaytableUI.needBlick = false;
+        PaytableUI.needBlink = false;
 
         CardManager.cardType = NineballCard;
 

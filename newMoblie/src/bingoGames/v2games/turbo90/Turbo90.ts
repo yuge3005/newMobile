@@ -14,7 +14,7 @@ class Turbo90 extends V2Game{
         this.megaName = "turbo90_mega";
 
         PaytableUI.textBold = true;
-        PaytableUI.needBlick = false;
+        PaytableUI.needBlink = false;
 
         CardManager.cardType = Turbo90Card;
         CardManager.gridType = ForkGrid;

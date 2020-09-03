@@ -209,12 +209,7 @@ class Hotbingo extends V2Game{
     }
 
     protected getPaytablesFit( paytabledName: string, callback: Function = null ): void{
-		let soundName = this.getSoundName( paytabledName );
-        if (SoundManager.soundOn && soundName !== "") {
-            this.playSound(soundName, 1, callback);
-        } else {
-            callback();
-        }
+        super.getPaytablesFit( paytabledName, callback );
         if( paytabledName == "line" ) this.testSuperLine();
 	}
 

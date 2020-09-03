@@ -4,7 +4,7 @@ class PaytableUI extends egret.Sprite{
 	public static effectWithBg: string;
 	public static effectForMenton: string;
 	public static focusColor: number = 0xFFFF88;
-	public static needBlick: boolean = true;
+	public static needBlink: boolean = true;
 
 	private useBg: boolean;
 
@@ -70,7 +70,7 @@ class PaytableUI extends egret.Sprite{
 	protected onFrame(event:egret.Event):void{
 		this.currentEffect++;
 		if( !this.useBg ){
-			if( PaytableUI.needBlick ) this.tx.filters = [ this._winEffects[(this.currentEffect>>4)%this._winEffects.length] ];
+			if( PaytableUI.needBlink ) this.tx.filters = [ this._winEffects[(this.currentEffect>>4)%this._winEffects.length] ];
 		}
 		else{
 			for( var i: number = 0; i < this.blinkGridsIndexs.length; i++ ){

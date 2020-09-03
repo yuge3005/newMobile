@@ -231,21 +231,6 @@ class SuperLotto extends V2Game{
 		super.afterCheck( resultList );
 	}
 
-    protected getPaytablesFit( paytabledName: string, callback: Function = null ): void{
-		let soundName = this.getSoundName( paytabledName );
-        if (soundName !== "") {
-            this.waitingForEffect = true;
-            if( SoundManager.soundOn ){
-                this.playSound(soundName, 1, this.waitForEffect.bind(this));
-            }
-            else{
-                setTimeout( this.waitForEffect.bind(this), 1500 );
-            }
-        } else {
-            //callback();
-        }
-	}
-
     protected onBetChanged(event: egret.Event): void{
         super.onBetChanged(event);
 	}

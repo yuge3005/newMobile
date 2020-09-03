@@ -685,8 +685,9 @@ class BingoMachine extends GameUIItem{
 
 	protected waitingForEffect: boolean;
 
-	protected waitForEffect (){
+	protected waitForEffect( callback: Function ){
 		this.waitingForEffect = false;
+		if( callback )callback();
 	}
 
 	public onCancelExtra( data: Object ){
@@ -912,7 +913,18 @@ class BingoMachine extends GameUIItem{
 	}
 
 	protected getPaytablesFit( paytabledName: string, callback: Function = null ): void{
-		//sub class override
+		let soundName = this.getSoundName( paytabledName );
+        if (soundName !== "") {
+            this.waitingForEffect = true;
+            if( SoundManager.soundOn ){
+                this.playSound(soundName, 1, this.waitForEffect.bind(this, callback));
+            }
+            else{
+                setTimeout( this.waitForEffect.bind(this, callback), 1500 );
+            }
+        } else {
+            if( callback )callback();
+        }
 	}
 
 	protected onBetChanged( event: egret.Event ): void{

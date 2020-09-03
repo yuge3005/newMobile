@@ -62,18 +62,6 @@ class Pharos extends AztecPharosSuper{
         this.jackpotArea.textBold = false;
     }
 
-    protected getPaytablesFit( paytabledName: string, callback: Function = null ): void{
-		let soundName = this.getSoundName( paytabledName );
-        if (soundName !== "") {
-            if( SoundManager.soundOn ){
-                this.playSound(soundName, 1, callback);
-            }
-            else setTimeout( callback, 1000 );
-        } else {
-            callback();
-        }
-	}
-
     protected onBetChanged(event: egret.Event): void{
         super.onBetChanged(event);
         

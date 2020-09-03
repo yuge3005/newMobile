@@ -25,15 +25,6 @@ class ShowballSuper extends V1Game{
 		PayTableManager.paytableUIType = ShowballPaytableUI;
 		PaytableUI.textBold = true;
 	}
-   
-    protected getPaytablesFit( paytabledName: string, callback: Function = null ): void{
-		let soundName = this.getSoundName( paytabledName );
-        if (SoundManager.soundOn && soundName !== "") {
-            this.playSound(soundName, 1, callback);
-        } else {
-            callback();
-        }
-	}
 
 	protected combinString( str: string ){
 		return "card_pt_" + str;

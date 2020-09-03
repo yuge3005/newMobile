@@ -91,21 +91,6 @@ class SilverBall extends GoldSilverSuper{
         this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 1355, 27 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 3, 4 ), new egret.Rectangle( 0, 79, 414, 41 ), 37, 0x00FF00, new egret.Rectangle( 20, 0, 374, 79 ), 56, 0x00FF00, true ) );
     }
 
-    protected getPaytablesFit( paytabledName: string, callback: Function = null ): void{
-		let soundName = this.getSoundName( paytabledName );
-        if (soundName !== "") {
-            this.waitingForEffect = true;
-            if( SoundManager.soundOn ){
-                this.playSound(soundName, 1, this.waitForEffect.bind(this));
-            }
-            else{
-                setTimeout( this.waitForEffect.bind(this), 1500 );
-            }
-        } else {
-            callback();
-        }
-	}
-
 	protected onBetChanged( event: egret.Event ): void{
         super.onBetChanged(event);
 	}

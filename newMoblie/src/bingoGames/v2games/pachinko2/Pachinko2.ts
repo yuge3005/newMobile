@@ -121,15 +121,6 @@ class Pachinko2 extends V2Game{
         this.jackpotArea.jackpotText.fontFamily = "Arail";
     }
 
-    protected getPaytablesFit( paytabledName: string, callback: Function = null ): void{
-		let soundName = this.getSoundName( paytabledName );
-        if (SoundManager.soundOn && soundName !== "") {
-            this.playSound(soundName, 1, callback);
-        } else {
-			if( callback )callback();
-        }
-	}
-
     protected hasExtraBallFit(): void {
         if (this.firstHaveExtraBall) {
             this.firstHaveExtraBall = false;
