@@ -209,21 +209,13 @@ class Hotbingo extends V2Game{
     }
 
     protected getPaytablesFit( paytabledName: string, callback: Function = null ): void{
-		let soundName = "";
-        switch (paytabledName) {
-            case "line": soundName = "hb_1line_mp3";
-                this.testSuperLine();
-                break;
-            case "double line": soundName = "hb_2line_mp3"; break;
-            case "four corners": soundName = "hb_4corner_mp3"; break;
-            case "bingo": soundName = "hb_bingo_mp3"; break;
-            default: break;
-        }
+		let soundName = this.getSoundName( paytabledName );
         if (SoundManager.soundOn && soundName !== "") {
             this.playSound(soundName, 1, callback);
         } else {
             callback();
         }
+        if( paytabledName == "line" ) this.testSuperLine();
 	}
 
     protected testSuperLine(): void{
