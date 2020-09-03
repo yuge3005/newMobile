@@ -83,17 +83,13 @@ class AztecPharosSuper extends V2Game{
         this.gameToolBar.addEventListener( "tipStatus", this.tipStatus, this );
 
         let rect: egret.Rectangle = this.tipStatusTextPosition;
-        this.tipStatusText = MDS.addGameText( this, rect.x, rect.y, rect.height, this.tipStatusTextColor, "bet", false, rect.width );
-        this.tipStatusText.textAlign = "center";
+        this.tipStatusText = MDS.addGameTextCenterShadow( this, rect.x, rect.y, rect.height, this.tipStatusTextColor, "bet", false, rect.width, true, false );
         this.tipStatusText.verticalAlign = "middle";
-        this.tipStatusText.scaleX = 1;
         this.tipStatusText.text = "";
         Com.addObjectAt( this.runningBallContainer, this.tipStatusText, rect.x, rect.y );
 
-        this.tipStatusCoinTypeText = MDS.addGameText( this, 0, 0, 35, this.tipStatusTextColor, "bet", false, rect.width - 40 );
-        this.tipStatusCoinTypeText.textAlign = "center";
+        this.tipStatusCoinTypeText = MDS.addGameTextCenterShadow( this, 0, 0, 35, this.tipStatusTextColor, "bet", false, rect.width - 40, true, false );
         this.tipStatusCoinTypeText.verticalAlign = "middle";
-        this.tipStatusCoinTypeText.scaleX = 1;
         this.tipStatusCoinTypeText.text = "";
         Com.addObjectAt( this.runningBallContainer, this.tipStatusCoinTypeText, rect.x + 20, rect.y + 45 );
 	}

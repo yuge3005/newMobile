@@ -35,8 +35,7 @@ class SilverBall extends GoldSilverSuper{
 
         this.betText = MDS.addGameText( this, 400, 235, 33, 0xF9CC15, "bet", false, 250, "", 0.9 );
         this.betText.textAlign = "right";
-        this.creditText = MDS.addGameText( this, 1370, 235, 33, 0xF9CC15, "credit", false, 378, "", 1 );
-        this.creditText.textAlign = "center";
+        this.creditText = MDS.addGameTextCenterShadow( this, 1370, 235, 33, 0xF9CC15, "credit", false, 378, true, false );
 
         this.extraPriceText = MDS.addGameText( this, 400, 170, 33, 0xF9CC15, "extraball", false, 250, "", 0.9 );
         this.extraPriceText.textAlign = "right";
