@@ -1,4 +1,5 @@
 class Hotbingo extends V2Game{
+
     private superLineAnimation: egret.MovieClip;
 
 	protected static get classAssetName(){
@@ -42,7 +43,10 @@ class Hotbingo extends V2Game{
         this.prizeText.text = "0";
 
         this.runningBallContainer = new egret.DisplayObjectContainer;
-        Com.addBitmapAt(this.runningBallContainer, this.assetStr("Backdrop_ENG-1-1"), 0, 0);
+        Com.addObjectAt(this, this.runningBallContainer, 901, 170);
+        
+        this.addChildAt( this.getChildByName( this.assetStr("Backdrop_ENG-1-1") ), this.getChildIndex( this.ballArea ) + 1 );
+        this.playingUI( false );
         
         let superLineAnimationFactory = new egret.MovieClipDataFactory(RES.getRes("superline_animation_json"), RES.getRes("superline_animation_png"));
         this.superLineAnimation = new egret.MovieClip(superLineAnimationFactory.generateMovieClipData("superline_animation"));
@@ -52,6 +56,12 @@ class Hotbingo extends V2Game{
         this.ballArea.needLightCheck = true;
         
         this.addLineArrows();
+    }
+
+    private playingUI( isPlaying: boolean ){
+        this.getChildByName( this.assetStr("Backdrop_ENG-1-1") ).visible = isPlaying;
+        this.getChildByName( this.assetStr("lotto_balls") ).visible = !isPlaying;
+        this.getChildByName( this.assetStr("lotto_balls_up") ).visible = !isPlaying;
     }
 
     protected getFitEffectNameList(): Object{
@@ -85,16 +95,11 @@ class Hotbingo extends V2Game{
 
     protected showLastBall( ballIndex: number ): void{
         super.showLastBall( ballIndex );
-        super.showLastBallAt( ballIndex, 10, 55 );
-        Com.addObjectAt(this, this.runningBallContainer, 325, 0);
+        super.showLastBallAt( ballIndex, 0, 0, 199/66 );
         
         this.hotLastBallIndex = ballIndex;
         this.playSound("hb_ball_mp3");
 	}
-
-    protected clearRunningBallUI(): void{
-        if( this.runningBallContainer && this.contains( this.runningBallContainer ) )this.removeChild( this.runningBallContainer );
-    }
 
     protected tipStatus( e: egret.Event ): void{
     }
@@ -262,6 +267,7 @@ class Hotbingo extends V2Game{
         super.roundOver();
         this.stopSound("hb_ball_mp3");
         this.stopSound("hb_extra_loop_mp3");
+        this.playingUI( false );
     }
 
     protected getExtraBallFit(): void {
@@ -280,6 +286,7 @@ class Hotbingo extends V2Game{
         super.startPlay();
         this.clearArrow();
 
+        this.playingUI( true );
         if( this.superLineUI && this.contains( this.superLineUI ) )this.removeChild( this.superLineUI );
 	}
 }
