@@ -207,9 +207,9 @@ class BingoMachine extends GameUIItem{
 	}
 
 	protected addPayTables(){
-		PayTableManager.getPayTableUI();
-		this.payTableArea = new PaytableLayer;
+		this.payTableArea = eval( "new PayTableManager.layerType()" );
 		this.addChild( this.payTableArea );
+		this.payTableArea.addPaytableUI();
 	}
 
     private loginToServer(){

@@ -4,7 +4,8 @@ class PayTableManager extends egret.Sprite{
 
 	public static bingoPaytableName: string = "bingo";
 
-	public static paytableUIType: Function;
+	public static paytableUIType: Function = PaytableUI;
+	public static layerType: Function = PaytableLayer;
 
 	private rule: string;
 	private rules: Array<string>;
@@ -81,8 +82,7 @@ class PayTableManager extends egret.Sprite{
 
 	private createPaytableUI( useBg: boolean ): PaytableUI{
 		let ptUI: PaytableUI;
-		if( PayTableManager.paytableUIType ) ptUI = eval( "new PayTableManager.paytableUIType(" + useBg + ")" );
-		else ptUI = new PaytableUI( useBg );
+		ptUI = eval( "new PayTableManager.paytableUIType(" + useBg + ")" );
 		return ptUI;
 	}
 
