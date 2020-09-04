@@ -15,6 +15,7 @@ class Hotbingo extends V2Game{
         this.languageObjectName = "hotbingo_tx";
 
         PaytableUI.textBold = true;
+        PayTableManager.layerType = HotbingoPaytalbeLayer;
 
         CardManager.cardType = HotbingoCard;
         CardManager.gridType = ForkGrid;
@@ -30,11 +31,6 @@ class Hotbingo extends V2Game{
 
     protected init(){
         super.init();
-
-        MDS.addGameText( this, 1310, 51, 30, 0x033E78, "bingo",false, 300 );
-        MDS.addGameText( this, 1310, 84, 30, 0x033E78, "double line",false, 300 );
-        MDS.addGameText( this, 1310, 117, 30, 0x033E78, "line",false, 300 );
-        MDS.addGameText( this, 1310, 150, 30, 0x033E78, "four corners",false, 300 );
 
         MDS.addGameText( this, 485, 135, 20, 0xFEFE00, "prize", true, 140 );
 
@@ -179,6 +175,7 @@ class Hotbingo extends V2Game{
     }
 
     protected afterCheck( resultList: Array<Object> ): void{
+        this.payTableArea.clearPaytableFgs();
         super.afterCheck( resultList );
         this.clearArrow();
         for( let i: number = 0; i < 4; i++ ){
@@ -272,49 +269,8 @@ class Hotbingo extends V2Game{
     protected startPlay(): void {
         super.startPlay();
         this.clearArrow();
-
         this.playingUI( true );
+        this.payTableArea.clearPaytableFgs();
         if( this.superLineUI && this.contains( this.superLineUI ) )this.removeChild( this.superLineUI );
 	}
-
-    protected addPayTables(){
-        this.addPayTableWinBg();
-
-		super.addPayTables();
-
-        let pts: Object = PayTableManager.payTablesDictionary;
-        for( let payTable in pts ){
-			let pos: Object = pts[payTable].position;
-            let y: number = pos["y"];
-            y = Math.floor( y / 33 ) * 33 + 18;
-			pts[payTable].UI.y = y;
-            pts[payTable].UI.x = 1658;
-            pts[payTable].UI.addEventListener( "paytableFitEvent", this.payTableFit, this );
-            let tx: egret.TextField = pts[payTable].UI["tx"];
-            tx.width = 84;
-            tx.textAlign = "right";
-		}
-	}
-
-    private paytableFgs: Array<HotbingoPaytableBg>;
-
-    private addPayTableWinBg(){
-        let winBg: egret.DisplayObjectContainer = new egret.DisplayObjectContainer;
-        let ptBg: egret.Bitmap = this.getChildByName( this.assetStr( "Paytable_bg" ) ) as egret.Bitmap;
-        Com.addObjectAt( this, winBg, ptBg.x, ptBg.y );
-        Com.addObjectAt( winBg, ptBg, 0, 0 );
-        this.paytableFgs = [];
-        for( let i: number = 0; i < 4; i++ ){
-            this.paytableFgs[i] = new HotbingoPaytableBg;
-            Com.addObjectAt( winBg, this.paytableFgs[i], 4, 2 + 34 * i );
-        }
-    }
-
-    private payTableFit( event: egret.Event ){
-        let str: string = event.target["tx"].text;
-        if( str == "x1000" ) this.paytableFgs[0].visible = true;
-        else if( str == "x100" ) this.paytableFgs[1].visible = true;
-        else if( str == "x4" ) this.paytableFgs[2].visible = true;
-        else if( str == "x1" ) this.paytableFgs[3].visible = true;
-    }
 }

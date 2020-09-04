@@ -12,6 +12,8 @@ class SilverBall extends GoldSilverSuper{
     public constructor(assetsPath: string) {
         super("silver_ball.conf", assetsPath, 49 );
 
+        PayTableManager.layerType = SilverBallPaytableLayer;
+
         CardManager.gridType = TowerGrid;
 
         CardGrid.defaultNumberSize = 52;
@@ -25,10 +27,6 @@ class SilverBall extends GoldSilverSuper{
 
     protected init() {
         super.init();
-
-        let bingo = MDS.addGameText( this, 242, 30, 33, 0xF9CC15, "bingo", false, 170);
-        let double = MDS.addGameText( this, 242, 70, 33, 0xF9CC15, "double", false, 170);
-        let line = MDS.addGameText( this, 242, 110, 33, 0xF9CC15, "line", false, 170);
 
         MDS.addGameText( this, 242, 170, 33, 0xF9CC15, "extraball", false, 170);
         MDS.addGameText( this, 242, 235, 33, 0xF9CC15, "bet", false, 170);
@@ -117,21 +115,5 @@ class SilverBall extends GoldSilverSuper{
 
 	protected changeNumberSound(): void {
 		this.playSound("slb_crad_mp3");
-	}
-
-    protected addPayTables(){
-		super.addPayTables();
-
-        let pts: Object = PayTableManager.payTablesDictionary;
-        for( let payTable in pts ){
-			let pos: Object = pts[payTable].position;
-            let y: number = pos["y"];
-            y = Math.floor( y / 40) * 40 + 30;
-			pts[payTable].UI.y = y;
-            pts[payTable].UI.x = 500;
-            let tx: egret.TextField = pts[payTable].UI["tx"];
-            tx.width = 128;
-            tx.textAlign = "right";
-		}
 	}
 }
