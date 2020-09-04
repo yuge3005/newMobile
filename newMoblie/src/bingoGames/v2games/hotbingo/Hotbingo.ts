@@ -32,11 +32,7 @@ class Hotbingo extends V2Game{
     protected init(){
         super.init();
 
-        MDS.addGameText( this, 485, 135, 20, 0xFEFE00, "prize", true, 140 );
-
         this.showNoBetAndCredit();
-        this.prizeText = MDS.addGameText( this, 565, 135, 20, 0xFFFFFF, "prize", false, 140 );
-        this.prizeText.text = "0";
 
         this.runningBallContainer = new egret.DisplayObjectContainer;
         Com.addObjectAt(this, this.runningBallContainer, 901, 170);
@@ -101,7 +97,6 @@ class Hotbingo extends V2Game{
     }
 
     protected winChange( e: egret.Event ): void{
-        this.prizeText.text = "" + e["winCoins"];
     }
     
     /**
@@ -202,7 +197,7 @@ class Hotbingo extends V2Game{
 /******************************************************************************************************************************************************************/    
 
     protected showJackpot( jackpot: number, jackpotMinBet: number, betConfig: Array<Object> ){
-        this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 60, 20 ), jackpot, jackpotMinBet, betConfig, new egret.Point( -10, -12 ), new egret.Rectangle( 0, 30, 215, 22 ), 22, 0xd6c576, new egret.Rectangle( 0, 0, 215, 18), 18, 0xFF0000 ) );
+        this.addChild( this.jackpotArea = new JackpotLayerForHotbingo( new egret.Point( 192, 30 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 0, 0 ), new egret.Rectangle( 86, 92, 437, 40 ), 40, 0xFFFFFF ) );
     }
 
     protected getPaytablesFit( paytabledName: string, callback: Function = null ): void{
@@ -252,6 +247,7 @@ class Hotbingo extends V2Game{
         this.stopSound("hb_ball_mp3");
         this.stopSound("hb_extra_loop_mp3");
         this.playingUI( false );
+        ( this.jackpotArea as JackpotLayerForHotbingo ).running( false );
     }
 
     protected getExtraBallFit(): void {
@@ -270,6 +266,7 @@ class Hotbingo extends V2Game{
         super.startPlay();
         this.clearArrow();
         this.playingUI( true );
+        ( this.jackpotArea as JackpotLayerForHotbingo ).running( true );
         this.payTableArea.clearPaytableFgs();
         if( this.superLineUI && this.contains( this.superLineUI ) )this.removeChild( this.superLineUI );
 	}
