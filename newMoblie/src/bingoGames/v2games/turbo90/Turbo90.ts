@@ -15,6 +15,7 @@ class Turbo90 extends V2Game{
 
         PaytableUI.textBold = true;
         PaytableUI.needBlink = false;
+        PayTableManager.layerType = Turbo90PaytableLayer;
 
         CardManager.cardType = Turbo90Card;
         CardManager.gridType = ForkGrid;
@@ -28,11 +29,6 @@ class Turbo90 extends V2Game{
 
     protected init(){
         super.init();
-
-        this.turbo90Text( "bingo", 395 );
-        this.turbo90Text( "double line", 525 );
-        this.turbo90Text( "line", 655 );
-        this.turbo90Text( "four corners", 785 );
 
         this.showNoBetAndCredit();
         this.addChild( this.getChildByName( this.assetStr( "path_tip" ) ) );
@@ -66,16 +62,6 @@ class Turbo90 extends V2Game{
         firList["double line"][2] = "turbo90_D_3";
 		return firList;
 	}
-
-    private turbo90Text( str: string, yPos: number ): egret.TextField{
-        let tx: TextLabel = Com.addLabelAt( this, 957, yPos, 166, 35, 35, true, false );
-        tx.textColor = 0xECFFAC;
-        tx.bold = true;
-        tx.stroke = 2;
-        tx.strokeColor = 0x213510;
-        tx.setText( MuLang.getText(str) );
-        return tx;
-    }
 
     private arrowMcs: Array<Array<egret.MovieClip>>;
 
@@ -114,7 +100,7 @@ class Turbo90 extends V2Game{
     private timeoutId: number;
 
     protected afterCheck( resultList: Array<Object> ): void{
-        this.clearPaytableFgs();
+        this.payTableArea.clearPaytableFgs();
         super.afterCheck( resultList );
         this.clearArrow();
         for( let i: number = 0; i < 4; i++ ){
@@ -141,7 +127,7 @@ class Turbo90 extends V2Game{
     protected startPlay(): void {
         super.startPlay();
         this.clearArrow();
-        this.clearPaytableFgs();
+        this.payTableArea.clearPaytableFgs();
     }
 
 /******************************************************************************************************************************************************************/    
@@ -200,53 +186,4 @@ class Turbo90 extends V2Game{
 	protected changeNumberSound(): void {
 		this.playSound("t90_card_mp3");
 	}
-
-    protected addPayTables(){
-        this.addPayTableWinBg();
-
-		super.addPayTables();
-
-        let pts: Object = PayTableManager.payTablesDictionary;
-        for( let payTable in pts ){
-			let pos: Object = pts[payTable].position;
-            let y: number = pos["y"];
-            y = Math.floor( y / 130 ) * 130 + 40;
-			pts[payTable].UI.y = y;
-            pts[payTable].UI.x = 957;
-            pts[payTable].UI.addEventListener( "paytableFitEvent", this.payTableFit, this );
-            let tx: egret.TextField = pts[payTable].UI["tx"];
-            tx.width = 166;
-            tx.textAlign = "center";
-            tx.stroke = 1;
-            tx.strokeColor = 0;
-		}
-	}
-
-    private paytableFgs: Array<egret.Bitmap>;
-
-    private addPayTableWinBg(){
-        let winBg: egret.DisplayObjectContainer = new egret.DisplayObjectContainer;
-        Com.addObjectAt( this, winBg, 938, 364 );
-        this.paytableFgs = [];
-        for( let i: number = 0; i < 4; i++ ){
-            this.paytableFgs[i] = Com.addBitmapAt( winBg, this.assetStr("paytable_fg"), 0, -8 + 130 * i );
-            this.paytableFgs[i].visible = false;
-        }
-        let winBgMask: egret.Bitmap = Com.addBitmapAt( this, this.assetStr("paytable_bg"), 938, 364 );
-        winBg.mask = winBgMask;
-    }
-
-    private payTableFit( event: egret.Event ){
-        let str: string = event.target["tx"].text;
-        if( str == "x1000" ) this.paytableFgs[0].visible = true;
-        else if( str == "x100" ) this.paytableFgs[1].visible = true;
-        else if( str == "x4" ) this.paytableFgs[2].visible = true;
-        else if( str == "x1" ) this.paytableFgs[3].visible = true;
-    }
-
-    private clearPaytableFgs(){
-        for( let i: number = 0; i < 4; i++ ){
-            this.paytableFgs[i].visible = false;
-        }
-    }
 }

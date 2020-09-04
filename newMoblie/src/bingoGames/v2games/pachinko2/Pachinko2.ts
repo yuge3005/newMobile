@@ -152,17 +152,4 @@ class Pachinko2 extends V2Game{
 	protected changeNumberSound(): void {
 		this.playSound("change_cards_mp3");
 	}
-
-    protected addPayTables(){
-		super.addPayTables();
-
-        let pts: Object = PayTableManager.payTablesDictionary;
-        for( let payTable in pts ){
-			let pos: Object = pts[payTable].position;
-            let y: number = pos["y"];
-            y = Math.floor( y / 60 ) * 60 + 47 ;
-			pts[payTable].UI.y = y;
-            pts[payTable].UI.x = 1805;
-		}
-	}
 }
