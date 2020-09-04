@@ -31,4 +31,8 @@ class PaytableLayer extends egret.DisplayObjectContainer{
 	protected buildTitleText(){
 		//sub class override
 	}
+
+	protected payTableFit( event: egret.Event ){
+		//sub class override
+	}
 }

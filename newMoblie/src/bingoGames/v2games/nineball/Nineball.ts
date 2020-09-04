@@ -15,6 +15,7 @@ class Nineball extends V2Game{
 
         PaytableUI.textBold = true;
         PaytableUI.needBlink = false;
+        PayTableManager.layerType = NineballPaytableLayer;
 
         CardManager.cardType = NineballCard;
 
@@ -31,10 +32,6 @@ class Nineball extends V2Game{
     protected init(){
         super.init();
 
-        this.nineballText( "bingo", 420 );
-        this.nineballText( "double", 590 );
-        this.nineballText( "line", 760 );
-
         this.showNoBetAndCredit();
 
         if( this.extraUIObject ) this.extraUIShowNumber();
@@ -49,16 +46,6 @@ class Nineball extends V2Game{
         this.superExtraBg.width = 115;
         this.superExtraBg.height = 115;
         this.superExtraBg.visible = false;
-    }
-
-    private nineballText( str: string, yPos: number ): egret.TextField{
-        let tx: TextLabel = Com.addLabelAt( this, 900, yPos, 200, 35, 35, true, false );
-        tx.textColor = 0xECFFAC;
-        tx.bold = true;
-        tx.stroke = 2;
-        tx.strokeColor = 0x213510;
-        tx.setText( MuLang.getText(str) );
-        return tx;
     }
 
     private arrowMcs: Array<Array<egret.MovieClip>>;
@@ -139,7 +126,7 @@ class Nineball extends V2Game{
 	}
 
     protected afterCheck( resultList: Array<Object> ): void{
-        this.clearPaytableFgs();
+        this.payTableArea.clearPaytableFgs();
         super.afterCheck( resultList );
         this.clearArrow();
         for( let i: number = 0; i < 4; i++ ){
@@ -166,7 +153,7 @@ class Nineball extends V2Game{
     protected startPlay(): void {
         super.startPlay();
         this.clearArrow();
-        this.clearPaytableFgs();
+        this.payTableArea.clearPaytableFgs();
     }
 
 /******************************************************************************************************************************************************************/    
@@ -223,53 +210,4 @@ class Nineball extends V2Game{
 	protected changeNumberSound(): void {
 		this.playSound("nb_card_mp3");
 	}
-
-    protected addPayTables(){
-        this.addPayTableWinBg();
-
-		super.addPayTables();
-
-        let pts: Object = PayTableManager.payTablesDictionary;
-        for( let payTable in pts ){
-			let pos: Object = pts[payTable].position;
-            let y: number = pos["y"];
-            y = Math.floor( y / 170 ) * 170 + 120;
-			pts[payTable].UI.y = y;
-            pts[payTable].UI.x = 912;
-            pts[payTable].UI.addEventListener( "paytableFitEvent", this.payTableFit, this );
-            let tx: egret.TextField = pts[payTable].UI["tx"];
-            tx.width = 172;
-            tx.textAlign = "center";
-            tx.stroke = 1;
-            tx.strokeColor = 0;
-		}
-	}
-
-    private paytableFgs: Array<egret.Bitmap>;
-
-    private addPayTableWinBg(){
-        let winBg: egret.DisplayObjectContainer = new egret.DisplayObjectContainer;
-        Com.addObjectAt( this, winBg, 896, 360 );
-        this.paytableFgs = [];
-        for( let i: number = 0; i < 3; i++ ){
-            this.paytableFgs[i] = Com.addBitmapAt( winBg, this.assetStr("paytable_fg"), 5, 6 + 173 * i );
-            this.paytableFgs[i].scaleX = this.paytableFgs[i].scaleY = 196 / 249;
-            this.paytableFgs[i].visible = false;
-        }
-        let winBgMask: egret.Bitmap = Com.addBitmapAt( this, this.assetStr("paytable_bg"), 896, 360 );
-        winBg.mask = winBgMask;
-    }
-
-    private payTableFit( event: egret.Event ){
-        let str: string = event.target["tx"].text;
-        if( str == "x1000" ) this.paytableFgs[0].visible = true;
-        else if( str == "x100" ) this.paytableFgs[1].visible = true;
-        else if( str == "x4" ) this.paytableFgs[2].visible = true;
-    }
-
-    private clearPaytableFgs(){
-        for( let i: number = 0; i < this.paytableFgs.length; i++ ){
-            this.paytableFgs[i].visible = false;
-        }
-    }
 }
