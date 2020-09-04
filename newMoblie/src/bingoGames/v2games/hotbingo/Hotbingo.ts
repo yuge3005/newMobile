@@ -1,6 +1,6 @@
 class Hotbingo extends V2Game{
 
-    private superLineAnimation: egret.MovieClip;
+    private superLineUI: SuperLineUI;
     private lastLineUI: HotbingoLastLineBg;
 
 	protected static get classAssetName(){
@@ -41,10 +41,8 @@ class Hotbingo extends V2Game{
         this.addChildAt( this.getChildByName( this.assetStr("Backdrop_ENG-1-1") ), this.getChildIndex( this.ballArea ) + 1 );
         this.playingUI( false );
         
-        let superLineAnimationFactory = new egret.MovieClipDataFactory(RES.getRes("superline_animation_json"), RES.getRes("superline_animation_png"));
-        this.superLineAnimation = new egret.MovieClip(superLineAnimationFactory.generateMovieClipData("superline_animation"));
-        this.superLineAnimation.visible = false;
-        Com.addObjectAt(this, this.superLineAnimation, 300, 386);
+        this.superLineUI = new SuperLineUI;
+        Com.addObjectAt(this, this.superLineUI, 1000, 575);
 
         this.lastLineUI = new HotbingoLastLineBg;
         Com.addObjectAt( this, this.lastLineUI, 420, 845 );
@@ -110,49 +108,33 @@ class Hotbingo extends V2Game{
      */
     private showSuperLineAnimation(multiple: number): void {
         if ([2, 5, 10, 25].indexOf(multiple) === -1) return;
-        this.superLineAnimation.once(egret.Event.COMPLETE, this.showSuperLineMultiple.bind(this, multiple), this);
-        this.superLineAnimation.gotoAndPlay(1);
-        this.superLineAnimation.visible = true;
+        this.superLineUI.once(egret.Event.COMPLETE, this.showSuperLineMultiple.bind(this, multiple), this);
+        this.superLineUI.gotoAndPlay(1);
+        this.superLineUI.visible = true;
 
         this.showSuperLineOnCard();
     }
 
-    private superLineUI: egret.Bitmap;
+    private superLineIcon: egret.Bitmap;
 
     private showSuperLineOnCard(): void{
-        let checkingString: Array<string> = CardManager.getCheckingStrings();
-        let superLineCardIndex: number;
-        let superLineLineIndex: number;
-        for( let i: number = 0; i < checkingString.length; i++ ){
-            superLineCardIndex = i;
-            if( checkingString[i].substr( 0, 5 ) == "11111" ){
-                superLineLineIndex = 0;
-                break;
-            }
-            else if( checkingString[i].substr( 5, 5 ) == "11111" ){
-                superLineLineIndex = 1;
-                break;
-            }
-            else if( checkingString[i].substr( 10 ) == "11111" ){
-                superLineLineIndex = 2;
-                break;
-            }
-        }
-        if( isNaN(superLineCardIndex) || isNaN(superLineLineIndex) ){
-            alert( "no superLine" );
+        let pt: egret.Point = this.superLineUI.getLinePosition( CardManager.getCheckingStrings() );
+
+        if( pt ){
+            let linePosition: egret.Point = this.positionOnCard( pt.x, pt.y );
+            this.superLineIcon = Com.addBitmapAt( this, this.assetStr("super_line"), linePosition.x, linePosition.y );
+            this.superLineIcon.alpha = 0.2;
+            let tw: egret.Tween = egret.Tween.get( this.superLineIcon );
+            tw.to( {alpha: 1}, 300 );
+            tw.wait( 500 );
+            tw.to( {alpha: 0.2}, 200 );
+            tw.to( {alpha: 1}, 300 );
+            tw.wait( 500 );
+            tw.to( {alpha: 0.2}, 200 );
+            tw.to( {alpha: 1}, 300 );
         }
         else{
-            let cardPosition: egret.Point = new egret.Point( this.cardPositions[superLineCardIndex]["x"], this.cardPositions[superLineCardIndex]["y"] );
-            this.superLineUI = Com.addBitmapAt( this, this.assetStr("super_line"), cardPosition.x + 14, cardPosition.y + superLineLineIndex * 37 + 40 );
-            this.superLineUI.alpha = 0.2;
-            let tw: egret.Tween = egret.Tween.get( this.superLineUI );
-            tw.to( {alpha: 1}, 300 );
-            tw.wait( 500 );
-            tw.to( {alpha: 0.2}, 200 );
-            tw.to( {alpha: 1}, 300 );
-            tw.wait( 500 );
-            tw.to( {alpha: 0.2}, 200 );
-            tw.to( {alpha: 1}, 300 );
+            alert( "super line index error" );
         }
     }
 
@@ -168,9 +150,9 @@ class Hotbingo extends V2Game{
             case 25: stopPosition = 75; break;
             default: break;
         }
-        this.superLineAnimation.gotoAndStop(stopPosition);
+        this.superLineUI.gotoAndStop(stopPosition);
         egret.setTimeout(function () {
-            this.superLineAnimation.visible = false;
+            this.superLineUI.visible = false;
         }, this, 500);
     }
 
@@ -273,6 +255,6 @@ class Hotbingo extends V2Game{
         this.playingUI( true );
         ( this.jackpotArea as JackpotLayerForHotbingo ).running( true );
         this.payTableArea.clearPaytableFgs();
-        if( this.superLineUI && this.contains( this.superLineUI ) )this.removeChild( this.superLineUI );
+        if( this.superLineIcon && this.contains( this.superLineIcon ) )this.removeChild( this.superLineIcon );
 	}
 }
