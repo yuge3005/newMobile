@@ -1,6 +1,7 @@
 class Hotbingo extends V2Game{
 
     private superLineAnimation: egret.MovieClip;
+    private lastLineUI: HotbingoLastLineBg;
 
 	protected static get classAssetName(){
 		return "hotbingo";
@@ -44,6 +45,10 @@ class Hotbingo extends V2Game{
         this.superLineAnimation = new egret.MovieClip(superLineAnimationFactory.generateMovieClipData("superline_animation"));
         this.superLineAnimation.visible = false;
         Com.addObjectAt(this, this.superLineAnimation, 300, 386);
+
+        this.lastLineUI = new HotbingoLastLineBg;
+        Com.addObjectAt( this, this.lastLineUI, 420, 845 );
+        this.setChildIndex( this.lastLineUI, this.getChildIndex( this.ballArea ) );
 
         this.ballArea.needLightCheck = true;
         

@@ -53,7 +53,7 @@
 			"name": "pachinko2"
 		},
 		{
-			"keys": "hb_1line_mp3,hb_2line_mp3,hb_4corner_mp3,hb_ball_mp3,hb_bet_mp3,hb_bingo_mp3,hb_card_mp3,hb_card1_mp3,hb_card2_mp3,hb_card3_mp3,hb_card4_mp3,hb_extra_ball_wav,hb_extra_loop_mp3,hb_have_extra_ball_mp3,hb_jackpot_mp3,hb_super_line_wav,hotbingo_json,turbo90Animation_png,turbo90Animation_json,hotbingo_conf,hotbingo_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,getCoinsParticle_png,getCoinsParticle_json",
+			"keys": "hb_1line_mp3,hb_2line_mp3,hb_4corner_mp3,hb_ball_mp3,hb_bet_mp3,hb_bingo_mp3,hb_card_mp3,hb_card1_mp3,hb_card2_mp3,hb_card3_mp3,hb_card4_mp3,hb_extra_ball_wav,hb_extra_loop_mp3,hb_have_extra_ball_mp3,hb_jackpot_mp3,hb_super_line_wav,hotbingo_json,turbo90Animation_png,turbo90Animation_json,hotbingo_conf,hotbingo_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,getCoinsParticle_png,getCoinsParticle_json,superLine_json",
 			"name": "hotbingo"
 		}
 	],
@@ -914,6 +914,12 @@
 			"type": "sheet",
 			"name": "hotbingo_json",
 			"subkeys": "Backdrop_ENG,Backdrop_ENG-1-1,Bitmap-1,Bitmap-2,Image-213,Image-214,Image-215,Image-216,Image-217,Image-218,Image-219,Image-220,Jackpot_enable,Jackpot_enable_pt,Jackpot_lock_pt,Jackpot_star,Mark_pink,Mark_red,Mark_white,Mark_x,Mark_yellow,Paytable_bg,Paytable_body,Paytable_body_blue,Shiny_flow,hotbingo_1,hotbingo_2,hotbingo_3,hotbingo_D_1,hotbingo_D_2,hotbingo_D_3,jackpot_lock,sub_line,super_line"
+		},
+		{
+			"url": "game/hotbingo/superLine.json",
+			"type": "sheet",
+			"name": "superLine_json",
+			"subkeys": "Arrow1,Arrow2,Pointer,Superline1_en,Superline1_es,Superline1_pt,Superline2_en,Superline2_es,Superline2_pt,Title_en,Title_pt,Wheel"
 		}
 	]
 }

@@ -1,0 +1,25 @@
+{
+    "options": {
+        "useExtension": 0,
+        "layoutGap": 1,
+        "extend": 0,
+        "layoutMath": "0",
+        "sizeMode": "free"
+    },
+    "files": [
+        "./Wheel.png",
+        "./Title_pt.png",
+        "./Title_en.png",
+        "./Superline2_pt.png",
+        "./Superline2_es.png",
+        "./Superline2_en.png",
+        "./Superline1_pt.png",
+        "./Superline1_es.png",
+        "./Superline1_en.png",
+        "./Pointer.png",
+        "./Arrow2.png",
+        "./Arrow1.png"
+    ],
+    "version": 5,
+    "projectName": "superLine"
+}

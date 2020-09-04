@@ -1,0 +1,13 @@
+{"file":"superLine.png","frames":{
+"Arrow1":{"x":51,"y":966,"w":48,"h":52,"offX":0,"offY":0,"sourceW":48,"sourceH":52},
+"Arrow2":{"x":0,"y":966,"w":49,"h":52,"offX":0,"offY":0,"sourceW":49,"sourceH":52},
+"Pointer":{"x":1926,"y":0,"w":92,"h":222,"offX":0,"offY":0,"sourceW":92,"sourceH":222},
+"Superline1_en":{"x":708,"y":0,"w":211,"h":37,"offX":0,"offY":0,"sourceW":211,"sourceH":37},
+"Superline1_es":{"x":0,"y":928,"w":173,"h":36,"offX":19,"offY":0,"sourceW":211,"sourceH":37},
+"Superline1_pt":{"x":708,"y":115,"w":204,"h":35,"offX":4,"offY":1,"sourceW":211,"sourceH":37},
+"Superline2_en":{"x":708,"y":39,"w":211,"h":37,"offX":0,"offY":0,"sourceW":211,"sourceH":37},
+"Superline2_es":{"x":0,"y":890,"w":173,"h":36,"offX":19,"offY":0,"sourceW":211,"sourceH":37},
+"Superline2_pt":{"x":708,"y":78,"w":204,"h":35,"offX":4,"offY":1,"sourceW":211,"sourceH":37},
+"Title_en":{"x":997,"y":0,"w":927,"h":173,"offX":0,"offY":0,"sourceW":927,"sourceH":173},
+"Title_pt":{"x":0,"y":708,"w":995,"h":180,"offX":0,"offY":0,"sourceW":995,"sourceH":180},
+"Wheel":{"x":0,"y":0,"w":706,"h":706,"offX":0,"offY":0,"sourceW":706,"sourceH":706}}}
