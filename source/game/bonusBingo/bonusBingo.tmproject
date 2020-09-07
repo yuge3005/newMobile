@@ -1,13 +1,10 @@
 {
-    "options": {
-        "useExtension": 0,
-        "layoutGap": 1,
-        "extend": 0,
-        "layoutMath": "0",
-        "sizeMode": "free"
-    },
+    "projectName": "bonusBingo",
     "files": [
-        "./ball_blue31.png",
+        "./ball_yellow.png",
+        "./ball_red.png",
+        "./ball_purple.png",
+        "./ball_green.png",
         "./ball_blue.png",
         "./x3000.png",
         "./x500.png",
@@ -74,16 +71,14 @@
         "./card_center02.png",
         "./card_center.png",
         "./card_back.png",
-        "./bg.png",
-        "./ball_yellow31.png",
-        "./ball_yellow.png",
-        "./ball_red31.png",
-        "./ball_red.png",
-        "./ball_purple31.png",
-        "./ball_purple.png",
-        "./ball_green31.png",
-        "./ball_green.png"
+        "./bg.png"
     ],
-    "version": 5,
-    "projectName": "bonusBingo"
+    "options": {
+        "layoutMath": "0",
+        "sizeMode": "free",
+        "useExtension": 0,
+        "layoutGap": 1,
+        "extend": 0
+    },
+    "version": 5
 }
