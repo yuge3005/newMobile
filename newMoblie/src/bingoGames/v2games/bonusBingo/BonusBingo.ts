@@ -749,28 +749,6 @@ class BonusBingo extends V2Game{
         this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 530, 4 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 25, 16 ), new egret.Rectangle( 0, 20, 200, 20 ), 16, 0xFEFEFE, new egret.Rectangle( 0, 0, 200, 20 ), 16, 0xFEFEFE ) );
     }
 
-    protected getPaytablesFit( paytabledName: string, callback: Function = null ): void{
-		let soundName = "";
-        switch (paytabledName) {
-            case "letter_x": soundName = "bonusBingo_1_mp3";break;
-            case "letter_t": soundName = "bonusBingo_1_mp3";break;
-            case "four_corners": soundName = "bonusBingo_10_mp3";break;
-            case "diagonal_0": soundName = "bonusBingo_10_mp3";break;
-            case "diagonal_2": soundName = "bonusBingo_10_mp3";break;
-            case "double_line": soundName = "bonusBingo_10_mp3";break;
-            case "triple_line": soundName = "bonusBingo_40_mp3";break;
-            case "round": soundName = "bonusBingo_250_mp3";break;
-            case "four_line": soundName = "bonusBingo_500_mp3";break;
-            case "bingo": soundName = "bonusBingo_3000_mp3"; break;
-            default: break;
-        }
-        if (SoundManager.soundOn && soundName !== "") {
-            this.playSound(soundName, 1, callback);
-        } else {
-            callback();
-        }
-	}
-
     protected hasExtraBallFit(): void {
         // this.stopSound("t90_ball_mp3");
         if (this.firstHaveExtraBall) {
