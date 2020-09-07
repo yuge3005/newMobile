@@ -106,13 +106,10 @@ class Hotbingo extends V2Game{
      * show super line animation
      * @param multiple the multiple of coins.(2 5 10 25)
      */
-    private showSuperLineAnimation(multiple: number): void {
+    private showSuperLineAnimation(multiple: number, callback: Function): void {
         if ([2, 5, 10, 25].indexOf(multiple) === -1) return;
-        this.superLineUI.once(egret.Event.COMPLETE, this.showSuperLineMultiple.bind(this, multiple), this);
-        this.superLineUI.gotoAndPlay(1);
-        this.superLineUI.visible = true;
-
         this.showSuperLineOnCard();
+        this.superLineUI.playWheel(multiple, callback);
     }
 
     private superLineIcon: egret.Bitmap;
@@ -188,24 +185,22 @@ class Hotbingo extends V2Game{
     }
 
     protected getPaytablesFit( paytabledName: string, callback: Function = null ): void{
-        super.getPaytablesFit( paytabledName, callback );
-        if( paytabledName == "line" ) this.testSuperLine();
+        if( paytabledName == "line" && this.currentBallIndex <= 18 ) this.playSuperLine( callback );
+        else super.getPaytablesFit( paytabledName, callback );
 	}
 
-    protected testSuperLine(): void{
-        if( this.currentBallIndex <= 18 ){
-            let strArr: Array<string> = this.hotbingoData.getUtfStringArray( "" + this.hotLastBallIndex );
-            let item: string;
-            for( let i: number = 0; i < strArr.length; i++ ){
-                if( strArr[i].indexOf( "superlinha" ) >= 0 ){
-                    item = strArr[i];
-                    break;
-                }
+    protected playSuperLine( callback: Function ): void{
+        let strArr: Array<string> = this.hotbingoData.getUtfStringArray( "" + this.hotLastBallIndex );
+        let item: string;
+        for( let i: number = 0; i < strArr.length; i++ ){
+            if( strArr[i].indexOf( "superlinha" ) >= 0 ){
+                item = strArr[i];
+                break;
             }
-            item = item.substr( 0, item.indexOf( ")" ) );
-            item = item.substr( item.indexOf( "(" ) + 1 );
-            this.showSuperLineAnimation( parseInt( item ) );
         }
+        item = item.substr( 0, item.indexOf( ")" ) );
+        item = item.substr( item.indexOf( "(" ) + 1 );
+        this.showSuperLineAnimation( parseInt( item ), callback );
     }
 
 	protected onBetChanged( event: egret.Event ): void{

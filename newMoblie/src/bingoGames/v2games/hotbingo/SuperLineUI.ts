@@ -1,13 +1,36 @@
 class SuperLineUI extends egret.DisplayObjectContainer{
+
+    private pointer: egret.Bitmap;
+    private superLineCallback: Function;
+
 	public constructor() {
 		super();
 
 		this.visible = false;
+        let wheel: egret.Bitmap = Com.addBitmapAt( this,  "superLine_json.Wheel", 0, 0 );
+        wheel.anchorOffsetX = 345;
+        wheel.anchorOffsetY = 349;
+
+        this.pointer = Com.addBitmapAt( this,  "superLine_json.Pointer", 0, 0 );
+        this.pointer.anchorOffsetX = 46;
+        this.pointer.anchorOffsetY = 162;
 	}
 
-	public gotoAndPlay( num: number ){
-
+	public playWheel( multiple: number, callback: Function ){
+        this.visible = true;
+        this.alpha = 0;
+        this.pointer.rotation = 0;
+        this.superLineCallback = callback;
+        TweenerTool.tweenTo( this, { alpha: 1 }, 500, 0, this.runWheel.bind(this,multiple) );
 	}
+
+    private runWheel(multiple: number){
+        let an: number = Math.floor( multiple / 3 ) * 90;
+        if( multiple == 25 ) an = 180;
+        let randomAn: number = Math.random() * 60;
+        an += 1080 + 295 + randomAn;
+        TweenerTool.tweenTo( this.pointer, { rotation: an }, 2500, 0, this.superLineCallback, null, egret.Ease.circOut );
+    }
 
 	public gotoAndStop( num: number ){
 		
