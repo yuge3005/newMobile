@@ -21,7 +21,8 @@ class SuperLineUI extends egret.DisplayObjectContainer{
         this.alpha = 0;
         this.pointer.rotation = 0;
         this.superLineCallback = callback;
-        TweenerTool.tweenTo( this, { alpha: 1 }, 500, 0, this.runWheel.bind(this,multiple) );
+        if( this.parent )this.parent.addChild( this );
+        TweenerTool.tweenTo( this, { alpha: 1 }, 300, 1000, this.runWheel.bind(this,multiple) );
 	}
 
     private runWheel(multiple: number){
@@ -29,12 +30,12 @@ class SuperLineUI extends egret.DisplayObjectContainer{
         if( multiple == 25 ) an = 180;
         let randomAn: number = Math.random() * 60;
         an += 1080 + 295 + randomAn;
-        TweenerTool.tweenTo( this.pointer, { rotation: an }, 2500, 0, this.superLineCallback, null, egret.Ease.circOut );
+        TweenerTool.tweenTo( this.pointer, { rotation: an }, 2200, 0, this.hideWheel.bind(this), null, egret.Ease.circOut );
     }
 
-	public gotoAndStop( num: number ){
-		
-	}
+    private hideWheel(){
+        TweenerTool.tweenTo( this, { alpha: 0 }, 300, 0, this.superLineCallback );
+    }
 
 	public getLinePosition( checkingString: Array<string> ): egret.Point{
 		let superLineCardIndex: number;

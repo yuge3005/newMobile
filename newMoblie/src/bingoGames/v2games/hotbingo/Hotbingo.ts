@@ -135,24 +135,6 @@ class Hotbingo extends V2Game{
         }
     }
 
-    /**
-     * show super line multiple
-     */
-    private showSuperLineMultiple(multiple: number): void {
-        let stopPosition = 1;
-        switch (multiple) {
-            case 2: stopPosition = 30; break;
-            case 5: stopPosition = 45;break;
-            case 10: stopPosition = 60;break;
-            case 25: stopPosition = 75; break;
-            default: break;
-        }
-        this.superLineUI.gotoAndStop(stopPosition);
-        egret.setTimeout(function () {
-            this.superLineUI.visible = false;
-        }, this, 500);
-    }
-
     protected afterCheck( resultList: Array<Object> ): void{
         this.payTableArea.clearPaytableFgs();
         super.afterCheck( resultList );
@@ -201,6 +183,7 @@ class Hotbingo extends V2Game{
         item = item.substr( 0, item.indexOf( ")" ) );
         item = item.substr( item.indexOf( "(" ) + 1 );
         this.showSuperLineAnimation( parseInt( item ), callback );
+        this.playSound( "hb_super_line_wav" );
     }
 
 	protected onBetChanged( event: egret.Event ): void{
