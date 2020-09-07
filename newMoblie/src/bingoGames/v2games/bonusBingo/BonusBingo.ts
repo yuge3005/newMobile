@@ -10,7 +10,7 @@ class BonusBingo extends V2Game{
 
 	public constructor( assetsPath: string ) {
 		super( "bonusBingo.conf", assetsPath, 65 );
-        this.ptFilterConfig = "bonusBingo_filt";
+        this.languageObjectName = "bonusBingo_tx";
 
         this.blinkSpArray = new Array<egret.Sprite>();
         this.superWinMcArray = new Array<egret.MovieClip>();
@@ -19,12 +19,7 @@ class BonusBingo extends V2Game{
         PaytableUI.effectWithBg = "highlight";
 
         GameCard.bgRound = 20;
-
-        GameCard.betTexPosition = new egret.Point( 8, 4 );
-        GameCard.texSize = 15;
-        GameCard.texColor = 0x0;
         GameCard.zeroUI = "card_center";
-        GameCard.usefork = "fork";
 
         GameCard.gridOnTop = true;
         GameCard.useRedEffect = true;
@@ -33,36 +28,18 @@ class BonusBingo extends V2Game{
         CardManager.cardType = BonusBingoCard;
         CardManager.gridType = ForkGrid;
 
-        CardGrid.defaultBgColor = 0xFFFFFF;
-        CardGrid.defaultNumberSize = 18;
-
-        CardGrid.blinkColors1 = 0x92E4A8;
-        CardGrid.blinkColors2 = 0x92E4A8;
+        CardGrid.defaultNumberSize = 36;
 
         this.needSmallWinTimesOnCard = true;
         this.ballArea.needLightCheck = true;
 
         BallManager.normalBallInterval = 70;
-
-        let languageText = GameUIItem.languageText;
-        languageText["choose a card"] = { en: "Choose a card", es: "Elija una Tarjeta", pt: "Escolha uma Cartela" };
-        languageText["win multiplier"] = { en: "You've won a Multiplier!", es: "Usted Ganó Multiplicado por!", pt: "Você Ganhou Multiplicado por!" };
-
-        languageText["win"] = { en: "WIN", es: "CANADO", pt: "CANHO" };
-
-        GameToolBar.toolBarY = 474;
-        BingoBackGroundSetting.defaultScale = false;
 	}
 
     protected init(){
         super.init();
 
-        this.addGameTextCenterShadow( 298, 2, 16, 0xFEFEFE, "bet", true, 200, true, false );
-        this.addGameTextCenterShadow( 42, 3, 16, 0xFEFEFE, "credit", true, 200, true, false );
-
-        this.betText = this.addGameTextCenterShadow( 298, 24, 15, 0xFEFEFE, "bet", true, 200, true, false );
-        this.creditText = this.addGameTextCenterShadow( 42, 24, 15, 0xFEFEFE, "credit", true, 200, true, false );
-
+        this.showNoBetAndCredit();
         this.runningBallContainer = new egret.DisplayObjectContainer;
 
         this.letsBonus();
@@ -649,7 +626,7 @@ class BonusBingo extends V2Game{
         let winTimes: number = 1;
         if( this.isSuper ) winTimes = 50;
         else if( this.luckMultiTimes && cardId == this.luckMultiCardId - 1 ) winTimes = this.luckMultiTimes;
-        tx.text = GameUIItem.languageText["win"][GlobelSettings.language] + " " + ( win * GameData.currentBet * winTimes );
+        tx.text = MuLang.getText( "win" ) + " " + ( win * GameData.currentBet * winTimes );
         this.blinkSpArray.push(blinkSp);
         tx.textColor = 0;
         let tw: egret.Tween = egret.Tween.get( lightEf );
@@ -694,13 +671,13 @@ class BonusBingo extends V2Game{
         Com.addObjectAt( dtContainer, dtAnimation, 0, 140 );
         GraphicTool.drawRect( dtAnimation, new egret.Rectangle( -110, 0, 335, 140 ), 0, false, 0.5 );
         Com.addBitmapAt( dtAnimation, this.assetStr( "doctor_multiplier" ), 0, 0 );
-        let tx1: egret.TextField = this.addGameTextCenterShadow( -50, 104, 18, 0xFFFFFF, "choose a card", false, 260, true, false );
+        let tx1: TextLabel = MDS.addGameTextCenterShadow( this, -50, 104, 18, 0xFFFFFF, "choose a card", false, 260, true, false );
         dtAnimation.addChild( tx1 );
         Com.addBitmapAt( dtAnimation, this.assetStr( "txt_bg" ), -110, -40 );
         let tx2: egret.TextField = Com.addTextAt( dtAnimation, -40, 0, 100, 40, 40, false, true );
         tx2.textColor = 0xFEFE00;
         tx2.text = "X" + luckMultiTimes;
-        let tx3: egret.TextField = this.addGameTextCenterShadow( -110, -27, 22, 0x0, "win multiplier", false, 415, true, false );
+        let tx3: TextLabel = MDS.addGameTextCenterShadow( this, -110, -27, 22, 0x0, "win multiplier", false, 415, true, false );
         dtAnimation.addChild( tx3 );
         let tw: egret.Tween = egret.Tween.get( dtAnimation );
         tw.to( { y: 0 }, 600, egret.Ease.bounceOut );

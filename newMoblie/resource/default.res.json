@@ -57,7 +57,7 @@
 			"name": "hotbingo"
 		},
 		{
-			"keys": "bgm_bounes_mode_mp3,bonusBingo_1_mp3,bonusBingo_10_mp3,bonusBingo_250_mp3,bonusBingo_3000_mp3,bonusBingo_40_mp3,bonusBingo_500_mp3,bonusBingo_EB_mp3,bonusBingo_ball_fall_mp3,bonusBingo_get_all_mp3,bonusBingo_get_ball_wav,bonusBingo_missone_mp3,bonusBingo_mutiplay_mp3,bonusBingo_super_miss_mp3",
+			"keys": "bgm_bounes_mode_mp3,bonusBingo_1_mp3,bonusBingo_10_mp3,bonusBingo_250_mp3,bonusBingo_3000_mp3,bonusBingo_40_mp3,bonusBingo_500_mp3,bonusBingo_EB_mp3,bonusBingo_ball_fall_mp3,bonusBingo_get_all_mp3,bonusBingo_get_ball_wav,bonusBingo_missone_mp3,bonusBingo_mutiplay_mp3,bonusBingo_super_miss_mp3,bonusBingo_json,bonusBingoAnimation_png,bonusBingoAnimation_json,bonusBingo_conf,bonusBingo_tx,bingoGameToolbar_json,topbar_json,open_list_mp3",
 			"name": "bonusBingo"
 		}
 	],
@@ -994,6 +994,32 @@
 			"url": "game/bonusBingo/sound/bonusBingo_super_miss.mp3",
 			"type": "sound",
 			"name": "bonusBingo_super_miss_mp3"
+		},
+		{
+			"url": "config/lan/bonusBingo.tx",
+			"type": "json",
+			"name": "bonusBingo_tx"
+		},
+		{
+			"url": "game/bonusBingo/bonusBingoAnimation.png",
+			"type": "image",
+			"name": "bonusBingoAnimation_png"
+		},
+		{
+			"url": "game/bonusBingo/bonusBingoAnimation.json",
+			"type": "json",
+			"name": "bonusBingoAnimation_json"
+		},
+		{
+			"url": "game/bonusBingo/bonusBingo.json",
+			"type": "sheet",
+			"name": "bonusBingo_json",
+			"subkeys": "ball_blue,ball_green,ball_purple,ball_red,ball_yellow,bg,card_back,card_blink,card_center,card_center02,card_color,card_front,card_head_bg,card_head_outerlight,card_light,card_outlight,card_special,dark_B,dark_N,dark_O,dark_S,dark_U,dark_bg,doctor_bonus,doctor_multiplier,fireworks_01,fiveball_bg,fiveball_bg_cover,fiveball_bg_special,fiveball_bg_special_cover,fiveball_light,fork,highlight,jackpot_lock,light_B,light_B_02,light_N,light_N_02,light_O,light_O_02,light_S,light_S_02,light_U,light_U_02,light_bg,line_1th,line_2th,line_3th,line_4th,line_5th,line_x1,line_x10,line_x1_02,line_x2,line_x250,line_x3000,line_x8,small_block,txt_bg,x1,x10,x1_02,x2,x250,x2_small,x3000,x3_small,x4,x500,x50_small,x6,x8"
+		},
+		{
+			"url": "config/bonusBingo.conf",
+			"type": "json",
+			"name": "bonusBingo_conf"
 		}
 	]
 }
