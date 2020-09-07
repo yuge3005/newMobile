@@ -47,7 +47,7 @@ class Main extends egret.DisplayObjectContainer {
     }
 
 	private showGame(){
-		this.currentGame = new Hotbingo("resource/default.res.json");
+		this.currentGame = new BonusBingo("resource/default.res.json");
 
 		const loadingView = new LoadingUI();
 		this.currentGame.preLoader = loadingView;

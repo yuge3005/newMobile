@@ -55,6 +55,10 @@
 		{
 			"keys": "hb_1line_mp3,hb_2line_mp3,hb_4corner_mp3,hb_ball_mp3,hb_bet_mp3,hb_bingo_mp3,hb_card_mp3,hb_card1_mp3,hb_card2_mp3,hb_card3_mp3,hb_card4_mp3,hb_extra_ball_wav,hb_extra_loop_mp3,hb_have_extra_ball_mp3,hb_jackpot_mp3,hb_super_line_wav,hotbingo_json,turbo90Animation_png,turbo90Animation_json,hotbingo_conf,hotbingo_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,getCoinsParticle_png,getCoinsParticle_json,superLine_json",
 			"name": "hotbingo"
+		},
+		{
+			"keys": "bgm_bounes_mode_mp3,bonusBingo_1_mp3,bonusBingo_10_mp3,bonusBingo_250_mp3,bonusBingo_3000_mp3,bonusBingo_40_mp3,bonusBingo_500_mp3,bonusBingo_EB_mp3,bonusBingo_ball_fall_mp3,bonusBingo_get_all_mp3,bonusBingo_get_ball_wav,bonusBingo_missone_mp3,bonusBingo_mutiplay_mp3,bonusBingo_super_miss_mp3",
+			"name": "bonusBingo"
 		}
 	],
 	"resources": [
@@ -920,6 +924,76 @@
 			"type": "sheet",
 			"name": "superLine_json",
 			"subkeys": "Arrow1,Arrow2,Pointer,Superline1_en,Superline1_es,Superline1_pt,Superline2_en,Superline2_es,Superline2_pt,Title_en,Title_pt,Wheel"
+		},
+		{
+			"url": "game/bonusBingo/sound/bgm_bounes_mode.mp3",
+			"type": "sound",
+			"name": "bgm_bounes_mode_mp3"
+		},
+		{
+			"url": "game/bonusBingo/sound/bonusBingo_1.mp3",
+			"type": "sound",
+			"name": "bonusBingo_1_mp3"
+		},
+		{
+			"url": "game/bonusBingo/sound/bonusBingo_10.mp3",
+			"type": "sound",
+			"name": "bonusBingo_10_mp3"
+		},
+		{
+			"url": "game/bonusBingo/sound/bonusBingo_250.mp3",
+			"type": "sound",
+			"name": "bonusBingo_250_mp3"
+		},
+		{
+			"url": "game/bonusBingo/sound/bonusBingo_3000.mp3",
+			"type": "sound",
+			"name": "bonusBingo_3000_mp3"
+		},
+		{
+			"url": "game/bonusBingo/sound/bonusBingo_40.mp3",
+			"type": "sound",
+			"name": "bonusBingo_40_mp3"
+		},
+		{
+			"url": "game/bonusBingo/sound/bonusBingo_500.mp3",
+			"type": "sound",
+			"name": "bonusBingo_500_mp3"
+		},
+		{
+			"url": "game/bonusBingo/sound/bonusBingo_EB.mp3",
+			"type": "sound",
+			"name": "bonusBingo_EB_mp3"
+		},
+		{
+			"url": "game/bonusBingo/sound/bonusBingo_ball_fall.mp3",
+			"type": "sound",
+			"name": "bonusBingo_ball_fall_mp3"
+		},
+		{
+			"url": "game/bonusBingo/sound/bonusBingo_get_all.mp3",
+			"type": "sound",
+			"name": "bonusBingo_get_all_mp3"
+		},
+		{
+			"url": "game/bonusBingo/sound/bonusBingo_get_ball.wav",
+			"type": "sound",
+			"name": "bonusBingo_get_ball_wav"
+		},
+		{
+			"url": "game/bonusBingo/sound/bonusBingo_missone.mp3",
+			"type": "sound",
+			"name": "bonusBingo_missone_mp3"
+		},
+		{
+			"url": "game/bonusBingo/sound/bonusBingo_mutiplay.mp3",
+			"type": "sound",
+			"name": "bonusBingo_mutiplay_mp3"
+		},
+		{
+			"url": "game/bonusBingo/sound/bonusBingo_super_miss.mp3",
+			"type": "sound",
+			"name": "bonusBingo_super_miss_mp3"
 		}
 	]
 }
