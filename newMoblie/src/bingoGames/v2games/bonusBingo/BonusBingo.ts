@@ -29,6 +29,7 @@ class BonusBingo extends V2Game{
         CardManager.gridType = ForkGrid;
 
         CardGrid.defaultNumberSize = 36;
+        BallManager.ballOffsetY = 4;
 
         this.needSmallWinTimesOnCard = true;
         this.ballArea.needLightCheck = true;
@@ -41,6 +42,7 @@ class BonusBingo extends V2Game{
 
         this.showNoBetAndCredit();
         this.runningBallContainer = new egret.DisplayObjectContainer;
+        Com.addObjectAt( this, this.runningBallContainer, 978, 725 );
 
         this.letsBonus();
 
@@ -67,25 +69,12 @@ class BonusBingo extends V2Game{
 
     protected showLastBall( ballIndex: number ): void{
         super.showLastBall( ballIndex );
-        this.showLastBallAt( ballIndex, 0, 0 );
-        Com.addObjectAt( this, this.runningBallContainer, 327, 290 );
+        this.showLastBallAt( ballIndex, 0, 0, 182 / 88 );
 
         this.removeLuckMultiAnimations();
 
         if( this.currentBallIndex > 44 )this.playSound("bonusBingo_EB_mp3");
         else this.playSound("bonusBingo_ball_fall_mp3");
-	}
-
-    protected showLastBallAt( ballIndex: number, x: number, y: number, scale: number = 1 ): void{
-		if( this.runningBallUI && ( this.runningBallContainer ).contains( this.runningBallUI ) ){
-			( this.runningBallContainer ).removeChild( this.runningBallUI );
-		}
-		this.runningBallUI = this.ballArea.getABigBall( ballIndex, "31", 60 );
-		Com.addObjectAt( this.runningBallContainer, this.runningBallUI, x, y );
-	}
-
-    protected clearRunningBallUI(): void{
-        if( this.runningBallContainer && this.contains( this.runningBallContainer ) )this.removeChild( this.runningBallContainer );
 	}
 
 /******************************************************************************************************************************************************************/
