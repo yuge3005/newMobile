@@ -79,14 +79,7 @@ class BonusBingo extends V2Game{
 
 /******************************************************************************************************************************************************************/
 
-    private static bonusString: string = "BONUS"
-    private bonusLetters: Array<egret.Bitmap>;
-    private bonusLightLetters: Array<egret.Bitmap>;
-    private bonusLetterContainer: egret.DisplayObjectContainer;
-
-    private betProgress: Object;
-    private betBonusRounds: Object;
-    private betLuckMultis: Object;
+    private bonusLetter: BonusLetterLayer;
 
     private luckMultiCardId: number;
 
@@ -101,15 +94,15 @@ class BonusBingo extends V2Game{
     private winTimesTip: Array<egret.DisplayObjectContainer>;
 
     private letsBonus(): void{
-        this.getBonusLetes();
-        this.bonusLetterContainer = new egret.DisplayObjectContainer;
-        this.addChild( this.bonusLetterContainer );
+        this.bonusLetter = new BonusLetterLayer;
+        this.addChild( this.bonusLetter );
+        this.bonusLetter.getBonusLetes();
 
         this.bonusCoverBgYellow = this.getChildByName( this.assetStr( "fiveball_bg_special" ) ) as egret.Bitmap;
         this.bonusCoverUpRed = this.getChildByName( this.assetStr( "fiveball_bg_cover" ) ) as egret.Bitmap;
-        this.bonusLetterContainer.addChild( this.bonusCoverUpRed );
+        this.bonusLetter.addChild( this.bonusCoverUpRed );
         this.bonusCoverUpYellow = this.getChildByName( this.assetStr( "fiveball_bg_special_cover" ) ) as egret.Bitmap;
-        this.bonusLetterContainer.addChild( this.bonusCoverUpYellow );
+        this.bonusLetter.addChild( this.bonusCoverUpYellow );
         this.bonusLightBg = this.getChildByName( this.assetStr( "light_bg" ) ) as egret.Bitmap;
         this.bonusLight = this.getChildByName( this.assetStr( "fiveball_light" ) ) as egret.Bitmap;
 
@@ -138,23 +131,6 @@ class BonusBingo extends V2Game{
         else{
             localStorage.setItem( "BonusBingoTT", "true" );
             this.dispatchEvent( new egret.Event( "new_game_tutorail" ) );
-        }
-    }
-    
-    private getBonusLetes(): void{
-        this.bonusLetters = [];
-        this.bonusLightLetters = [];
-        for( let i: number = 0; i < 5; i++ ){
-            let bonusLetter: egret.Bitmap = this.getChildByName( this.assetStr( "light_" + BonusBingo.bonusString[i] ) ) as egret.Bitmap;
-            bonusLetter.visible = false;
-            bonusLetter.anchorOffsetX = bonusLetter.width >> 1;
-            bonusLetter.x += bonusLetter.width >> 1;
-            bonusLetter.anchorOffsetY = bonusLetter.height >> 1;
-            bonusLetter.y += bonusLetter.height >> 1;
-            this.bonusLetters[i] = bonusLetter;
-            let bonusLightLetter: egret.Bitmap = this.getChildByName( this.assetStr( "light_" + BonusBingo.bonusString[i] + "_02" ) ) as egret.Bitmap;
-            bonusLightLetter.visible = false;
-            this.bonusLightLetters[i] = bonusLightLetter;
         }
     }
 
@@ -239,107 +215,37 @@ class BonusBingo extends V2Game{
 
     protected onServerData( data: Object ){
 		super.onServerData( data );
-        this.betProgress = this.getProgressData( data["bonusBalls"] );
-        this.betBonusRounds = this.getBonusRounds( data["bonusRounds"] );
-        this.betLuckMultis = this.getLuckMultis( data["luckmultis"] );
+        this.bonusLetter.getServerData( data["bonusBalls"], data["bonusRounds"], data["luckmultis"] );
         this.setbonusByBet();
-        this.checkLuckMulti( this.luckMultiTimes );
+        this.checkLuckMulti( this.bonusLetter.luckMultiTimes );
 	}
 
-    private getProgressData( bonusBalls: string ): Object {
-        let bonusBallsArr: Array<string> = bonusBalls.split( ";" );
-        let betProgress: Object = {};
-        for( let i: number = 0; i < bonusBallsArr.length; i++ ){
-            let tempAr: Array<string> = bonusBallsArr[i].split( "-" );
-            if( tempAr.length == 2 ){
-                let lettersAready: Array<string> = tempAr[1].split( "," );
-                betProgress[tempAr[0]] = [];
-                for( let j: number = 0; j < lettersAready.length; j++ ){
-                    betProgress[tempAr[0]][parseInt( lettersAready[j] )] = true;
-                }
-            }
-        }
-        return betProgress;
-    }
-
-    private getBonusRounds( bonusRounds: string ): Object {
-        let bonusRoundArr: Array<string> = bonusRounds.split( ";" );
-        let betBonusRounds: Object = {};
-        for( let i: number = 0; i < bonusRoundArr.length; i++ ){
-            let tempAr: Array<string> = bonusRoundArr[i].split( "-" );
-            if( tempAr.length == 2 ){
-                betBonusRounds[tempAr[0]] = parseInt( tempAr[1] );
-            }
-        }
-        return betBonusRounds;
-    }
-
-    private getLuckMultis( luckmultis: string ): Object{
-        let luckmultiArr: Array<string> = luckmultis.split( ";" );
-        let betLuckMultis: Object = {};
-        for( let i: number = 0; i < luckmultiArr.length; i++ ){
-            let tempAr: Array<string> = luckmultiArr[i].split( "-" );
-            if( tempAr.length == 2 ){
-                betLuckMultis[tempAr[0]] = parseInt( tempAr[1] );
-            }
-        }
-        return betLuckMultis;
-    }
-
     private setbonusByBet(): void{
-        let bonusRoundLeft: number = this.betBonusRounds[ GameData.currentBet ];
+        let bonusRoundLeft: number = this.bonusLetter.betBonusRounds[ GameData.currentBet ];
         if( bonusRoundLeft ){
             this.superGame( true );
-            this.setBonusLetters( true, bonusRoundLeft );
+            this.bonusLetter.setBonusLetters( true, bonusRoundLeft );
         }
         else{
             this.superGame( false );
-            this.setBonusLetters( false, bonusRoundLeft );
-        }
-    }
-
-    private setBonusLetters( status: boolean, bonusRoundLeft: number ): void{
-        if( status ){
-            for( let i: number = 0; i < 5; i++ ){
-                if( i < bonusRoundLeft )this.bonusLetters[i].visible = this.bonusLightLetters[i].visible = true;
-                else this.bonusLetters[i].visible = this.bonusLightLetters[i].visible = false;
-            }
-        }
-        else{
-            let bonusPregress: Array<boolean> = this.betProgress[ GameData.currentBet ];
-            if( !bonusPregress ) bonusPregress = [ false, false, false, false, false ];
-            for( let j: number = 0; j < 5; j++ ){
-                if( bonusPregress[j] )this.bonusLetters[j].visible = true;
-                else this.bonusLetters[j].visible = false;
-                this.bonusLightLetters[j].visible = false;
-            }
+            this.bonusLetter.setBonusLetters( false, bonusRoundLeft );
         }
     }
 
     public onExtra( data: Object ){
         super.onExtra( data );
         if( data && data["bonusBall"] ){
-            let bonusPregress: Array<boolean> = this.betProgress[ GameData.currentBet ];
+            let bonusPregress: Array<boolean> = this.bonusLetter.betProgress[ GameData.currentBet ];
             if( !bonusPregress ) bonusPregress = [ false, false, false, false, false ];
             let bonusBallIndex: number = parseInt(data["bonusBall"]) - 1;
             bonusPregress[ bonusBallIndex ] = true;
-            this.betProgress[ GameData.currentBet ] = bonusPregress;
+            this.bonusLetter.betProgress[ GameData.currentBet ] = bonusPregress;
             this.setbonusByBet();
             
             this.playSound( "bonusBingo_get_ball_wav" );
 
-            this.letLetterBlink( bonusBallIndex );
+            this.bonusLetter.letLetterBlink( bonusBallIndex );
         }
-    }
-
-    private letLetterBlink( bonusBallIndex: number ){
-        this.addChild( this.bonusLetters[ bonusBallIndex ] );
-        this.addChild( this.bonusLightLetters[ bonusBallIndex ] );
-        let tw: egret.Tween = egret.Tween.get( this.bonusLetters[ bonusBallIndex ] );
-        tw.to( { scaleX : 3, scaleY : 3 }, 300 );
-        tw.to( { scaleX : 1, scaleY : 1 }, 300 );
-        tw.to( { scaleX : 3, scaleY : 3 }, 300 );
-        tw.to( { scaleX : 1, scaleY : 1 }, 300 );
     }
 
     private bonusResultFilter( resultList: Array<Object> ): void{
@@ -375,7 +281,7 @@ class BonusBingo extends V2Game{
 
     protected onBetChanged( event: egret.Event ): void{
         this.setbonusByBet();
-        this.checkLuckMulti( this.luckMultiTimes );
+        this.checkLuckMulti( this.bonusLetter.luckMultiTimes );
         super.onBetChanged(event);
 
         // if (event.data["type"] !== 0) this.playSound("pck_bet_mp3");
@@ -471,57 +377,12 @@ class BonusBingo extends V2Game{
     private curtain1AnimationFrameCounter( event: egret.Event ): void{
         let curtains1: egret.MovieClip = event.currentTarget as egret.MovieClip;
         if( curtains1.currentFrame == 20 && this.waitForCurtain1Animation ){
-            this.showLightLetters();
+            this.bonusLetter.showLightLetters();
             this.waitForCurtain1Animation = false;
             curtains1.removeEventListener( egret.Event.ENTER_FRAME, this.curtain1AnimationFrameCounter, this );
             for( let i: number = 0; i < 4; i++ ){
                 if( this.curtains1[i] )this.curtains1[i].stop();
             }
-        }
-    }
-
-    private showLightLetters(): void{
-        let tw: egret.Tween = egret.Tween.get( this );
-        let letterDelay: number = 500;
-        for( let i: number = 0; i < 5; i++ ){
-            tw.wait( letterDelay );
-            tw.call( () => { this.bonusLightLetters[i].visible = true } );
-        }
-        tw.wait( letterDelay );
-        tw.call( this.showCurtain2Animation.bind( this ) );
-    }
-
-    private curtains2: Array<egret.MovieClip>;
-
-    private showCurtain2Animation(): void{
-        let curtains: Array<egret.MovieClip> = [];
-        this.setbonusByBet();
-        for( let i: number = 0; i < 4; i++ ){
-            let offsetX: number = ( i & 1 ) ? 553 : 31;
-            let offsetY: number = Math.floor( i / 2 ) ? 254 : 55;
-            curtains[i] = Com.addMovieClipAt( this, this._mcf, "bonusBingo_curtains_02", offsetX, offsetY );
-            curtains[i].gotoAndPlay(1);
-            if( this.curtains1[i].parent ){
-                this.curtains1[i].parent.removeChild( this.curtains1[i] );
-            }
-        }
-        curtains[0].addEventListener( egret.Event.ENTER_FRAME, this.curtain2AnimationFrameCounter, this );
-        this.curtains2 = curtains;
-        this.waitForCurtain2Animation = true;
-    }
-
-    private curtain2AnimationFrameCounter( event: egret.Event ): void{
-        let curtains2: egret.MovieClip = event.currentTarget as egret.MovieClip;
-        if( curtains2.currentFrame == 25 && this.waitForCurtain2Animation ){
-            this.waitForCurtain2Animation = false;
-            for( let i: number = 0; i < 4; i++ ){
-                if( this.curtains2[i].parent ){
-                    this.curtains2[i].stop();
-                    this.curtains2[i].parent.removeChild( this.curtains2[i] );
-                }
-            }
-            curtains2.removeEventListener( egret.Event.ENTER_FRAME, this.curtain2AnimationFrameCounter, this );
-            this.returnToNormalGame();
         }
     }
 
@@ -560,27 +421,27 @@ class BonusBingo extends V2Game{
         }
         else{
             this.luckMultiCardId = 0;
-            this.luckMultiTimes = 0;
+            this.bonusLetter.luckMultiTimes = 0;
             this.givePlayerChanceToChooseCard( false );
         }
     }
 
     private resetCurrentBetBonusRound( bonusRoundLeft: number, ganho: number ): boolean{
         if( this.isSuper ){
-            if( bonusRoundLeft != this.betBonusRounds[ GameData.currentBet ] - 1 ) console.error( "bonusRoundLeft did not match: " + this.betBonusRounds[ GameData.currentBet ] );
+            if( bonusRoundLeft != this.bonusLetter.betBonusRounds[ GameData.currentBet ] - 1 ) console.error( "bonusRoundLeft did not match: " + this.bonusLetter.betBonusRounds[ GameData.currentBet ] );
             if( bonusRoundLeft ){
-                this.betBonusRounds[ GameData.currentBet ] = bonusRoundLeft;
+                this.bonusLetter.betBonusRounds[ GameData.currentBet ] = bonusRoundLeft;
             }
             else{
-                this.betProgress[ GameData.currentBet ] = [ false, false, false, false, false ];
-                this.betBonusRounds[ GameData.currentBet ] = 0;
+                this.bonusLetter.betProgress[ GameData.currentBet ] = [ false, false, false, false, false ];
+                this.bonusLetter.betBonusRounds[ GameData.currentBet ] = 0;
             }
             if( !ganho ) this.playSound( "bonusBingo_super_miss_mp3" );
         }
         else{
             if( bonusRoundLeft && bonusRoundLeft != 5 ) console.error( "bonusRoundLeft did not match: " + 5 );
             if( bonusRoundLeft ){
-                this.betBonusRounds[ GameData.currentBet ] = bonusRoundLeft;
+                this.bonusLetter.betBonusRounds[ GameData.currentBet ] = bonusRoundLeft;
                 return false;
             }
         }
@@ -614,7 +475,7 @@ class BonusBingo extends V2Game{
         tx.scaleX = 0.9;
         let winTimes: number = 1;
         if( this.isSuper ) winTimes = 50;
-        else if( this.luckMultiTimes && cardId == this.luckMultiCardId - 1 ) winTimes = this.luckMultiTimes;
+        else if( this.bonusLetter.luckMultiTimes && cardId == this.luckMultiCardId - 1 ) winTimes = this.bonusLetter.luckMultiTimes;
         tx.text = MuLang.getText( "win" ) + " " + ( win * GameData.currentBet * winTimes );
         this.blinkSpArray.push(blinkSp);
         tx.textColor = 0;
@@ -642,17 +503,9 @@ class BonusBingo extends V2Game{
 
     private luckMultiAnimation: egret.DisplayObjectContainer;
     private luckMultiOnCards: Array<egret.DisplayObjectContainer>;
-    private get luckMultiTimes(){
-        if( this.betLuckMultis[ GameData.currentBet ] )return this.betLuckMultis[ GameData.currentBet ];
-        else return 0;
-    }
-    private set luckMultiTimes( value: number ){
-        if( value )this.betLuckMultis[ GameData.currentBet ] = value;
-        else this.betLuckMultis[ GameData.currentBet ] = 0;
-    }
 
     private showLuckMulti( luckMultiTimes: number ): void{
-        this.luckMultiTimes = luckMultiTimes;
+        this.bonusLetter.luckMultiTimes = luckMultiTimes;
         let dtContainer: egret.DisplayObjectContainer = new egret.DisplayObjectContainer;
         Com.addObjectAt( this, dtContainer, 320, 350 );
         dtContainer.mask = new egret.Rectangle( -110, -50, 335, 172 );
@@ -684,7 +537,7 @@ class BonusBingo extends V2Game{
 
     private showLuckTimeAt( luckMultiCardIndex: number ){
         this.winTimesTip[ luckMultiCardIndex ].removeChildren();
-        Com.addBitmapAt( this.winTimesTip[ luckMultiCardIndex ], this.assetStr( "x" + this.luckMultiTimes + "_small" ), 0, 2 );
+        Com.addBitmapAt( this.winTimesTip[ luckMultiCardIndex ], this.assetStr( "x" + this.bonusLetter.luckMultiTimes + "_small" ), 0, 2 );
     }
 
     private givePlayerChanceToChooseCard( letPlayerChoose: boolean ): void{
