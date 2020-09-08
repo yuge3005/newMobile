@@ -96,9 +96,9 @@ class BonusBingo extends V2Game{
         for( let i: number = 0; i < 4; i++ ){
             let offsetX: number = this.cardPositions[i]["x"];
             let offsetY: number = this.cardPositions[i]["y"];
-            this.chooseCardButtons[i] = Com.addDownButtonAt( this, this.assetStr( "card_front" ), this.assetStr( "card_front" ), offsetX, offsetY, this.onCardChoose, false );
-            this.chooseCardButtons[i].filters = [ MatrixTool.colorMatrixPure( 0xffc200 ) ];
-            this.chooseCardButtons[i].alpha = 0.0;
+            this.chooseCardButtons[i] = Com.addDownButtonAt( this, this.assetStr( "card_front" ), this.assetStr( "card_front" ), offsetX, offsetY, this.onCardChoose, true );
+            this.chooseCardButtons[i].filters = [ MatrixTool.colorMatrixPure( 0xffc200 ), new egret.GlowFilter( 0xffc200, 1, 15, 15, 5, 2 ) ];
+            this.addChildAt( this.chooseCardButtons[i], 1 );
             this.winTimesTip[i] = new egret.DisplayObjectContainer;
             Com.addObjectAt( this, this.winTimesTip[i], 62 + offsetX, 82 + offsetY );
         }
@@ -517,10 +517,10 @@ class BonusBingo extends V2Game{
     }
 
     private givePlayerChanceToChooseCard( letPlayerChoose: boolean ): void{
-        this.chooseCardButtons[0].enabled = letPlayerChoose;
-        this.chooseCardButtons[1].enabled = letPlayerChoose;
-        this.chooseCardButtons[2].enabled = letPlayerChoose;
-        this.chooseCardButtons[3].enabled = letPlayerChoose;
+        for( let i: number = 0; i < 4; i++ ){
+            this.chooseCardButtons[i].visible = letPlayerChoose;
+            CardManager.cards[i].touchEnabled = !letPlayerChoose;
+        }
         if( !letPlayerChoose ){
             this.removeLuckMultiAnimations();
         }
