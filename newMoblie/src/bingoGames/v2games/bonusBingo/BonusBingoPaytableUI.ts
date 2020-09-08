@@ -19,18 +19,14 @@ class BonusBingoPaytableUI extends PaytableUI {
 		this.addChildAt( this.effectBg, 0 );
 		this.effectBg.visible = false;
 
-		let ar: Array<string> = this.gridRuleString.split( "*" );
-		let row: number = parseInt( ar[0] );
-		let line: number = parseInt( ar[1] );
-		let num: number = row * line;
-		let width: number = Math.floor( this.bg.width / row ) - 1;
-		let height: number = Math.floor( this.bg.height / line ) - 1;
+		let len: number = 68 * 0.2;
+		let gap: number = len + 1;
 		this.grids = [];
-		for( let i: number = 0; i < num; i++ ){
+		for( let i: number = 0; i < 25; i++ ){
 			this.grids[i] = new egret.Shape;
-			this.grids[i].x = i % row * ( width + 1 ) + 1;
-			this.grids[i].y = Math.floor( i / row ) * ( height + 1 ) + 1;
-			GraphicTool.drawRect( this.grids[i], new egret.Rectangle( 0, 0, width, height ) );
+			this.grids[i].x = i % 5 * gap + 1;
+			this.grids[i].y = Math.floor( i / 5 ) * gap + 1;
+			GraphicTool.drawRect( this.grids[i], new egret.Rectangle( 0, 0, len, len ) );
 		}
 	}
 
