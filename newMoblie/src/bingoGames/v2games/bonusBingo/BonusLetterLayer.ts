@@ -5,10 +5,10 @@ class BonusLetterLayer extends egret.DisplayObjectContainer{
     private bonusLightLetters: Array<egret.Bitmap>;
 
 	private curtains2: Array<egret.MovieClip>;
-	
+
 	public betProgress: Object;
 	public betBonusRounds: Object;
-	public betLuckMultis: Object;
+	private betLuckMultis: Object;
 
 	public get luckMultiTimes(){
         if( this.betLuckMultis[ GameData.currentBet ] )return this.betLuckMultis[ GameData.currentBet ];
@@ -19,11 +19,18 @@ class BonusLetterLayer extends egret.DisplayObjectContainer{
         else this.betLuckMultis[ GameData.currentBet ] = 0;
     }
 
+	private bonusCoverBgYellow: egret.Bitmap;
+    private bonusCoverUpYellow: egret.Bitmap;
+    private bonusCoverUpRed: egret.Bitmap;
+    private bonusLightBg: egret.Bitmap;
+    private bonusLight: egret.Bitmap;
+
 	public constructor() {
 		super();
 	}
 
 	public getBonusLetes(): void{
+		if( !this.parent ) alert( "must on stage" );
         this.bonusLetters = [];
         this.bonusLightLetters = [];
         for( let i: number = 0; i < 5; i++ ){
@@ -40,10 +47,28 @@ class BonusLetterLayer extends egret.DisplayObjectContainer{
         }
     }
 
+	public getCovers(){
+		if( !this.parent ) alert( "must on stage" );
+		this.bonusCoverBgYellow = this.parent.getChildByName( BingoMachine.getAssetStr( "fiveball_bg_special" ) ) as egret.Bitmap;
+        this.bonusCoverUpRed = this.parent.getChildByName( BingoMachine.getAssetStr( "fiveball_bg_cover" ) ) as egret.Bitmap;
+        this.addChild( this.bonusCoverUpRed );
+        this.bonusCoverUpYellow = this.parent.getChildByName( BingoMachine.getAssetStr( "fiveball_bg_special_cover" ) ) as egret.Bitmap;
+        this.addChild( this.bonusCoverUpYellow );
+        this.bonusLightBg = this.parent.getChildByName( BingoMachine.getAssetStr( "light_bg" ) ) as egret.Bitmap;
+        this.bonusLight = this.parent.getChildByName( BingoMachine.getAssetStr( "fiveball_light" ) ) as egret.Bitmap;
+	}
+
 	public getServerData( bonusBalls: string, bonusRounds: string, luckmultis: string ){
 		this.betProgress = BonusDataSetting.getProgressData( bonusBalls );
 		this.betBonusRounds = BonusDataSetting.getBonusRounds( bonusRounds );
         this.betLuckMultis = BonusDataSetting.getLuckMultis( luckmultis );
+	}
+
+	public superMode( status: boolean ){
+		this.bonusLightBg.visible = status;
+        this.bonusLight.visible = status;
+        this.bonusCoverBgYellow.visible = status;
+        this.bonusCoverUpYellow.visible = status;
 	}
 
 	public setBonusLetters( status: boolean, bonusRoundLeft: number ): void{

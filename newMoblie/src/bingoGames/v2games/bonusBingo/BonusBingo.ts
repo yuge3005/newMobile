@@ -83,12 +83,6 @@ class BonusBingo extends V2Game{
 
     private luckMultiCardId: number;
 
-    private bonusCoverBgYellow: egret.Bitmap;
-    private bonusCoverUpYellow: egret.Bitmap;
-    private bonusCoverUpRed: egret.Bitmap;
-    private bonusLightBg: egret.Bitmap;
-    private bonusLight: egret.Bitmap;
-
     private chooseCardButtons: Array<ScaleAbleButton>;
     private cardBgLight: Array<egret.Bitmap>;
     private winTimesTip: Array<egret.DisplayObjectContainer>;
@@ -97,14 +91,7 @@ class BonusBingo extends V2Game{
         this.bonusLetter = new BonusLetterLayer;
         this.addChild( this.bonusLetter );
         this.bonusLetter.getBonusLetes();
-
-        this.bonusCoverBgYellow = this.getChildByName( this.assetStr( "fiveball_bg_special" ) ) as egret.Bitmap;
-        this.bonusCoverUpRed = this.getChildByName( this.assetStr( "fiveball_bg_cover" ) ) as egret.Bitmap;
-        this.bonusLetter.addChild( this.bonusCoverUpRed );
-        this.bonusCoverUpYellow = this.getChildByName( this.assetStr( "fiveball_bg_special_cover" ) ) as egret.Bitmap;
-        this.bonusLetter.addChild( this.bonusCoverUpYellow );
-        this.bonusLightBg = this.getChildByName( this.assetStr( "light_bg" ) ) as egret.Bitmap;
-        this.bonusLight = this.getChildByName( this.assetStr( "fiveball_light" ) ) as egret.Bitmap;
+        this.bonusLetter.getCovers();
 
         this.cardBgLight = [];
         this.chooseCardButtons = [];
@@ -197,10 +184,7 @@ class BonusBingo extends V2Game{
     }
 
     private superGame( status: boolean ): void{
-        this.bonusLightBg.visible = status;
-        this.bonusLight.visible = status;
-        this.bonusCoverBgYellow.visible = status;
-        this.bonusCoverUpYellow.visible = status;
+        this.bonusLetter.superMode( status );
         for( let i: number = 0; i < 4; i++ ){
             this.cardBgLight[i].visible = status;
             this.winTimesTip[i].removeChildren();
