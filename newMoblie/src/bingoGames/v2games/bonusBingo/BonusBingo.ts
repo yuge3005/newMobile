@@ -18,7 +18,6 @@ class BonusBingo extends V2Game{
         PaytableUI.textBold = true;
         PaytableUI.effectWithBg = "highlight";
 
-        GameCard.bgRound = 20;
         GameCard.zeroUI = "card_center";
 
         GameCard.gridOnTop = true;
@@ -83,8 +82,7 @@ class BonusBingo extends V2Game{
 
     private luckMultiCardId: number;
 
-    private chooseCardButtons: Array<ScaleAbleButton>;
-    private cardBgLight: Array<egret.Bitmap>;
+    private chooseCardButtons: Array<TouchDownButton>;
     private winTimesTip: Array<egret.DisplayObjectContainer>;
 
     private letsBonus(): void{
@@ -93,17 +91,14 @@ class BonusBingo extends V2Game{
         this.bonusLetter.getBonusLetes();
         this.bonusLetter.getCovers();
 
-        this.cardBgLight = [];
         this.chooseCardButtons = [];
         this.winTimesTip = [];
         for( let i: number = 0; i < 4; i++ ){
-            let offsetX: number = ( i & 1 ) ? 553 : 31;
-            let offsetY: number = Math.floor( i / 2 ) ? 254 : 55;
-            this.cardBgLight[i] = Com.addBitmapAt( this, this.assetStr( "card_outlight" ), ( 167 - 238 ) * 0.5 + offsetX, ( 189 - 268 ) * 0.5 + offsetY );
-            this.addChildAt( this.cardBgLight[i], 1 );
-            this.chooseCardButtons[i] = Com.addButtonAt( this, this.assetStr( "card_light" ), 167 * 0.5 + offsetX, 189 * 0.5 + offsetY, this.onCardChoose, 1, 1 );
-            this.addChildAt( this.chooseCardButtons[i], 1 );
+            let offsetX: number = this.cardPositions[i]["x"];
+            let offsetY: number = this.cardPositions[i]["y"];
+            this.chooseCardButtons[i] = Com.addDownButtonAt( this, this.assetStr( "card_front" ), this.assetStr( "card_front" ), offsetX, offsetY, this.onCardChoose, false );
             this.chooseCardButtons[i].filters = [ MatrixTool.colorMatrixPure( 0xffc200 ) ];
+            this.chooseCardButtons[i].alpha = 0.0;
             this.winTimesTip[i] = new egret.DisplayObjectContainer;
             Com.addObjectAt( this, this.winTimesTip[i], 62 + offsetX, 82 + offsetY );
         }
@@ -167,12 +162,11 @@ class BonusBingo extends V2Game{
 
     private fiveBallBlink(): void{
         if( !this.stage )clearInterval( this.fiveBallBlinkId );
-        if( this.bonusLight.visible ){
-            this.setAlphaFromTo( this.bonusLight, 1, 0.5 );
-            this.setAlphaFromTo( this.cardBgLight[0], 1, 0.5 );
-            this.setAlphaFromTo( this.cardBgLight[1], 1, 0.5 );
-            this.setAlphaFromTo( this.cardBgLight[2], 1, 0.5 );
-            this.setAlphaFromTo( this.cardBgLight[3], 1, 0.5 );
+        if( this.bonusLetter.bonusLight.visible ){
+            this.setAlphaFromTo( this.bonusLetter.bonusLight, 1, 0.5 );
+            for( let i: number = 0; i < 4; i++ ){
+                this.setAlphaFromTo( (CardManager.cards[i] as BonusBingoCard).cardBgLight, 1, 0.5 );
+            }
         }
     }
 
@@ -186,7 +180,7 @@ class BonusBingo extends V2Game{
     private superGame( status: boolean ): void{
         this.bonusLetter.superMode( status );
         for( let i: number = 0; i < 4; i++ ){
-            this.cardBgLight[i].visible = status;
+            (CardManager.cards[i] as BonusBingoCard).cardBgLight.visible = status;
             this.winTimesTip[i].removeChildren();
             if( status ) Com.addBitmapAt( this.winTimesTip[i], this.assetStr( "x50_small" ), 0, 0 );
             if( i > CardManager.enabledCards - 1 )this.winTimesTip[i].visible = false;
@@ -267,8 +261,6 @@ class BonusBingo extends V2Game{
         this.setbonusByBet();
         this.checkLuckMulti( this.bonusLetter.luckMultiTimes );
         super.onBetChanged(event);
-
-        // if (event.data["type"] !== 0) this.playSound("pck_bet_mp3");
     }
 
     public onRoundOver( data: Object ){
@@ -525,10 +517,10 @@ class BonusBingo extends V2Game{
     }
 
     private givePlayerChanceToChooseCard( letPlayerChoose: boolean ): void{
-        this.chooseCardButtons[0].visible = letPlayerChoose;
-        this.chooseCardButtons[1].visible = letPlayerChoose;
-        this.chooseCardButtons[2].visible = letPlayerChoose;
-        this.chooseCardButtons[3].visible = letPlayerChoose;
+        this.chooseCardButtons[0].enabled = letPlayerChoose;
+        this.chooseCardButtons[1].enabled = letPlayerChoose;
+        this.chooseCardButtons[2].enabled = letPlayerChoose;
+        this.chooseCardButtons[3].enabled = letPlayerChoose;
         if( !letPlayerChoose ){
             this.removeLuckMultiAnimations();
         }

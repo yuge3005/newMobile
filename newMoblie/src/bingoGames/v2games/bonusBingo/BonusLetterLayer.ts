@@ -23,7 +23,7 @@ class BonusLetterLayer extends egret.DisplayObjectContainer{
     private bonusCoverUpYellow: egret.Bitmap;
     private bonusCoverUpRed: egret.Bitmap;
     private bonusLightBg: egret.Bitmap;
-    private bonusLight: egret.Bitmap;
+    public bonusLight: egret.Bitmap;
 
 	public constructor() {
 		super();

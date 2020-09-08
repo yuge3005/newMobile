@@ -1,7 +1,12 @@
 class BonusBingoCard extends GameCard{
 
+    public cardBgLight: egret.Bitmap;
+
 	public constructor( cardId: number ) {
 		super( cardId );
+
+		this.cardBgLight = Com.addBitmapAt( this, BingoMachine.getAssetStr( "card_outlight" ), -74, -80 );
+		this.addChildAt( this.cardBgLight, 0 );
 	}
 
 	private superBg: egret.Bitmap;
