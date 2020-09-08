@@ -100,7 +100,7 @@ class BonusBingo extends V2Game{
             this.chooseCardButtons[i].filters = [ MatrixTool.colorMatrixPure( 0xffc200 ), new egret.GlowFilter( 0xffc200, 1, 15, 15, 5, 2 ) ];
             this.addChildAt( this.chooseCardButtons[i], 1 );
             this.winTimesTip[i] = new egret.DisplayObjectContainer;
-            Com.addObjectAt( this, this.winTimesTip[i], 62 + offsetX, 82 + offsetY );
+            Com.addObjectAt( this, this.winTimesTip[i], offsetX, offsetY );
         }
         this.superGame( false );
         this.givePlayerChanceToChooseCard( false );
@@ -444,9 +444,9 @@ class BonusBingo extends V2Game{
     protected showWinAnimationAt(cardId: number, win: number): void{
         let blinkSp: egret.Sprite = new egret.Sprite;
         Com.addObjectAt( this, blinkSp, CardManager.cards[cardId].x, CardManager.cards[cardId].y );
-        Com.addBitmapAt( blinkSp, BingoMachine.getAssetStr( "card_head_bg" ), 2, 0 );
-        let lightEf: egret.Bitmap = Com.addBitmapAt( blinkSp, BingoMachine.getAssetStr( "card_head_outerlight" ), -6, -7 );
-        let tx: egret.TextField = Com.addTextAt( blinkSp, 5, 4, 220, 14, 14, false, true );
+        Com.addBitmapAt( blinkSp, BingoMachine.getAssetStr( "card_head_bg" ), 0, 0 );
+        let lightEf: egret.Bitmap = Com.addBitmapAt( blinkSp, BingoMachine.getAssetStr( "card_head_outerlight" ), -15, -15 );
+        let tx: egret.TextField = Com.addTextAt( blinkSp, 12, 12, 300, 30, 30, false, true );
         tx.textAlign = "left";
         tx.scaleX = 0.9;
         let winTimes: number = 1;
