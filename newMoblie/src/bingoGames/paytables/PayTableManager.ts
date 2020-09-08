@@ -40,8 +40,7 @@ class PayTableManager extends egret.Sprite{
 		if( rule.length == 1 )this.rule = rule[0];
 		else if( rule.length > 1 )this.rules = rule;
 
-		// if( PaytableUI.effectWithBg ) this.ui = new PaytableUIWithBg( paytableObject["useBckgroundPicture"] );
-		// else if( PaytableUI.effectForMenton ) this.ui = new PaytableUIForMenton( paytableObject["useBckgroundPicture"], this.rules );
+		// if( PaytableUI.effectForMenton ) this.ui = new PaytableUIForMenton( paytableObject["useBckgroundPicture"], this.rules );
 		// else this.ui = new PaytableUI( paytableObject["useBckgroundPicture"] );
 		this.ui = this.createPaytableUI( paytableObject["useBckgroundPicture"] );
 		this.ui.setText( paytableObject["UItext"], paytableObject["textColor"], paytableObject["textSize"] );

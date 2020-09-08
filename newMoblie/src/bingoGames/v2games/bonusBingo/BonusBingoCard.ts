@@ -22,4 +22,48 @@ class BonusBingoCard extends GameCard{
 			if( this.superBg && this.contains( this.superBg ) )this.removeChild( this.superBg );
 		}
 	}
+
+	public showfitEffect( assetName: string, fitIndex: Array<boolean> ){
+		if( fitIndex.length ){
+			for( let i: number = 0; i < fitIndex.length; i++ ){
+				if( fitIndex[i] ) {
+					this.setGridsToRed( PayTableManager.payTablesDictionary[assetName].rules[i] );
+					this.removeFork( PayTableManager.payTablesDictionary[assetName].rules[i] );
+				}
+			}
+		}
+		else{
+			this.setGridsToRed( PayTableManager.payTablesDictionary[assetName].rule );
+			this.removeFork( PayTableManager.payTablesDictionary[assetName].rule );
+		}
+		
+		if( !GameCard.fitEffectNameList )return;
+
+		try{
+			let effectImage: egret.Bitmap;
+			if( fitIndex.length ){
+				for( let i: number = 0; i< fitIndex.length; i++ ){
+					if( fitIndex[i] ){
+						effectImage = Com.addBitmapAt( this.fitEffectLayer, BingoMachine.getAssetStr( GameCard.fitEffectNameList[assetName][i] ), 0, 0 );
+						if( GameCard.fitEffectRedLine )effectImage.filters = [ MatrixTool.colorMatrixPure( 0xFF0000 ) ];
+					}
+				}
+			}
+			else{
+				effectImage = Com.addBitmapAt( this.fitEffectLayer, BingoMachine.getAssetStr( GameCard.fitEffectNameList[assetName] ), 0, 0 );
+				if( GameCard.fitEffectRedLine )effectImage.filters = [ MatrixTool.colorMatrixPure( 0xFF0000 ) ];
+			}
+		}
+		catch( e ){
+			trace( "showfitEffect ignore:" + assetName );
+		}
+	}
+
+	protected removeFork( str: string ): void{
+		for( let j: number = 0; j < str.length; j++ ){
+			if( str[j] == "1" ){
+				(this.grids[j] as ForkGrid).removeFork();
+			}
+		}
+	}
 }

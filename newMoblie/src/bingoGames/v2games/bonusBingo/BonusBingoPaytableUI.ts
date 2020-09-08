@@ -1,4 +1,4 @@
-class PaytableUIWithBg extends PaytableUI {
+class BonusBingoPaytableUI extends PaytableUI {
 
 	private effectBg: egret.Bitmap;
 
@@ -13,7 +13,7 @@ class PaytableUIWithBg extends PaytableUI {
 
 		this.drawNormalBg();
 
-		this.effectBg = Com.createBitmapByName( BingoMachine.getAssetStr( PaytableUI.effectWithBg ) );
+		this.effectBg = Com.createBitmapByName( BingoMachine.getAssetStr( "highlight" ) );
 		let offset: number = this.effectBg.width - this.bg.width >> 1;
 		this.effectBg.x = this.effectBg.y = - offset;
 		this.addChildAt( this.effectBg, 0 );

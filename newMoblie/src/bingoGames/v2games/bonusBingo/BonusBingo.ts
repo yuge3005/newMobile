@@ -16,12 +16,11 @@ class BonusBingo extends V2Game{
         this.superWinMcArray = new Array<egret.MovieClip>();
 
         PaytableUI.textBold = true;
-        PaytableUI.effectWithBg = "highlight";
+        PayTableManager.paytableUIType = BonusBingoPaytableUI;
 
         GameCard.zeroUI = "card_center";
 
         GameCard.gridOnTop = true;
-        GameCard.useRedEffect = true;
         GameCard.fitEffectRedLine = false;
 
         CardManager.cardType = BonusBingoCard;
@@ -575,7 +574,8 @@ class BonusBingo extends V2Game{
 
 /******************************************************************************************************************************************************************/
     protected showJackpot( jackpot: number, jackpotMinBet: number, betConfig: Array<Object> ){
-        this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 530, 4 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 25, 16 ), new egret.Rectangle( 0, 20, 200, 20 ), 16, 0xFEFEFE, new egret.Rectangle( 0, 0, 200, 20 ), 16, 0xFEFEFE ) );
+        this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 1443, 26 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 0, 0 ), new egret.Rectangle( 25, 0, 300, 55 ), 30, 0xFFFFFF ) );
+        this.jackpotArea.jackpotText.textAlign = "left";
     }
 
     protected hasExtraBallFit(): void {
