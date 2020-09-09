@@ -472,7 +472,7 @@ class BonusBingo extends V2Game{
 
     private showLuckTimeAt( luckMultiCardIndex: number ){
         this.winTimesTip[ luckMultiCardIndex ].removeChildren();
-        Com.addBitmapAt( this.winTimesTip[ luckMultiCardIndex ], this.assetStr( "x" + this.bonusLetter.luckMultiTimes + "_small" ), 0, 2 );
+        Com.addBitmapAtMiddle( this.winTimesTip[ luckMultiCardIndex ], this.assetStr( "x" + this.bonusLetter.luckMultiTimes + "_small" ), 164, 205 );
     }
 
     private givePlayerChanceToChooseCard( letPlayerChoose: boolean ): void{
