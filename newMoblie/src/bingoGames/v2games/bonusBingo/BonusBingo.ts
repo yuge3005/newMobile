@@ -81,7 +81,6 @@ class BonusBingo extends V2Game{
     private luckMultiCardId: number;
 
     private chooseCardButtons: Array<TouchDownButton>;
-    private winTimesTip: Array<egret.DisplayObjectContainer>;
 
     private letsBonus(): void{
         this.bonusLetter = new BonusLetterLayer;
@@ -90,15 +89,12 @@ class BonusBingo extends V2Game{
         this.bonusLetter.getCovers();
 
         this.chooseCardButtons = [];
-        this.winTimesTip = [];
         for( let i: number = 0; i < 4; i++ ){
             let offsetX: number = this.cardPositions[i]["x"];
             let offsetY: number = this.cardPositions[i]["y"];
             this.chooseCardButtons[i] = Com.addDownButtonAt( this, this.assetStr( "card_front" ), this.assetStr( "card_front" ), offsetX, offsetY, this.onCardChoose, true );
             this.chooseCardButtons[i].filters = [ MatrixTool.colorMatrixPure( 0xffc200 ), new egret.GlowFilter( 0xffc200, 1, 15, 15, 5, 2 ) ];
             this.addChildAt( this.chooseCardButtons[i], 1 );
-            this.winTimesTip[i] = new egret.DisplayObjectContainer;
-            Com.addObjectAt( this, this.winTimesTip[i], offsetX, offsetY );
         }
         this.superGame( false );
         this.givePlayerChanceToChooseCard( false );
@@ -158,9 +154,10 @@ class BonusBingo extends V2Game{
     private superGame( status: boolean ): void{
         this.bonusLetter.superMode( status );
         for( let i: number = 0; i < 4; i++ ){
-            (CardManager.cards[i] as BonusBingoCard).cardBgLight.visible = status;
-            this.winTimesTip[i].removeChildren();
-            if( status ) Com.addBitmapAt( this.winTimesTip[i], this.assetStr( "x50_small" ), 0, 0 );
+            let card: BonusBingoCard = CardManager.cards[i] as BonusBingoCard;
+            card.cardBgLight.visible = status;
+            card.clearWinTimesTip();
+            if( status ) card.showWinTimesTip( "x50_small" );
         }
         for( let j: number = 0; j < CardManager.cards.length; j++ ){
             ( CardManager.cards[j] as BonusBingoCard ).useSuperBg( status );
@@ -470,8 +467,9 @@ class BonusBingo extends V2Game{
     }
 
     private showLuckTimeAt( luckMultiCardIndex: number ){
-        this.winTimesTip[ luckMultiCardIndex ].removeChildren();
-        Com.addBitmapAtMiddle( this.winTimesTip[ luckMultiCardIndex ], this.assetStr( "x" + this.bonusLetter.luckMultiTimes + "_small" ), 164, 205 );
+        let card: BonusBingoCard = CardManager.cards[luckMultiCardIndex] as BonusBingoCard;
+        card.clearWinTimesTip();
+        card.showWinTimesTip( "x" + this.bonusLetter.luckMultiTimes + "_small" );
     }
 
     private givePlayerChanceToChooseCard( letPlayerChoose: boolean ): void{
@@ -518,14 +516,6 @@ class BonusBingo extends V2Game{
             if( blinkGrids[item].length == 1 && blinkGrids[item][0] == "single_line" ){
                 CardManager.setSmallWinTime( cardIndex, parseInt( item ), 0 );
             }
-        }
-    }
-
-    public changeCardsBg(){
-        super.changeCardsBg();
-        for( let i: number = 0; i < 4; i++ ){
-            if( i > CardManager.enabledCards - 1 )this.winTimesTip[i].visible = false;
-            else this.winTimesTip[i].visible = true;
         }
     }
 

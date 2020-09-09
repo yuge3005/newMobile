@@ -2,6 +2,7 @@ class BonusBingoCard extends GameCard{
 
     public cardBgLight: egret.Bitmap;
 	private luckMultiOnCard: egret.DisplayObjectContainer;
+	private winTimesTip: egret.Bitmap;
 
 	public constructor( cardId: number ) {
 		super( cardId );
@@ -86,5 +87,16 @@ class BonusBingoCard extends GameCard{
 
 	public removeLuckMultiOnCard(){
 		if( this.luckMultiOnCard && this.contains( this.luckMultiOnCard ) ) this.removeChild( this.luckMultiOnCard );
+	}
+
+	public clearWinTimesTip(){
+		if( this.winTimesTip && this.contains( this.winTimesTip ) ){
+			this.removeChild( this.winTimesTip );
+			this.winTimesTip = null;
+		}
+	}
+
+	public showWinTimesTip( assetName: string ){
+		this.winTimesTip = Com.addBitmapAtMiddle( this, BingoMachine.getAssetStr( assetName ), 164, 205 );
 	}
 }
