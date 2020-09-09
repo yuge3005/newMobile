@@ -1,8 +1,5 @@
 class DoubleTurbo90 extends V2Game{
 
-    private paytableBg: DoubleTurbo90PTBG;
-    private paytableTitles: Array<TextLabel>;
-
     protected static get classAssetName(){
 		return "doubleTurbo90";
 	}
@@ -16,6 +13,7 @@ class DoubleTurbo90 extends V2Game{
         this.languageObjectName = "doubleTurbo90_tx";
 
         PaytableUI.textBold = true;
+        PayTableManager.layerType = DoubleTurbo90PTLayer;
 
 		GameCard.gridOnTop = true;
 
@@ -33,12 +31,6 @@ class DoubleTurbo90 extends V2Game{
     protected init(){
         super.init();
 
-        this.paytableTitles = [];
-        this.paytableTitles[0] = this.addDouble90GameText( 34, "bingo");
-        this.paytableTitles[1] = this.addDouble90GameText( 72, "double line");
-        this.paytableTitles[2] = this.addDouble90GameText( 110, "line");
-        this.paytableTitles[3] = this.addDouble90GameText( 148, "four corners");
-
         this.showNoBetAndCredit();
 
         let cardAreaBg: egret.Bitmap = Com.addBitmapAt( this, "cards_background_png", 814, 127 );
@@ -51,30 +43,22 @@ class DoubleTurbo90 extends V2Game{
         Com.addObjectAt(this, this.runningBallContainer, 401, 252);
     }
 
-    private addDouble90GameText( yPos: number, textItem: string ): TextLabel{
-        let tx: TextLabel = MDS.addGameText( this, 315, yPos, 30, 0x46C8F5, textItem, false, 200, "", 0.9 );
-        tx.fontFamily = "Arial";
-        tx.bold = true;
-        return tx;
-    }
-
     protected showLastBall( ballIndex: number ): void{
         super.showLastBall( ballIndex );
         super.showLastBallAt( ballIndex, 24, 5, 2.8 );
         Com.addObjectAt( this.runningBallContainer, this.coverRunningBall, 0, 0 );
-        // Com.addObjectAt(this, this.runningBallContainer, 401, 252);
         
         this.playSound("t90_ball_mp3");
 	}
 
     protected afterCheck( resultList: Array<Object> ): void{
-        this.clearPaytableFgs();
+        this.payTableArea.clearPaytableFgs();
         super.afterCheck( resultList );
     }
 
     protected startPlay(): void {
         super.startPlay();
-        this.clearPaytableFgs();
+        this.payTableArea.clearPaytableFgs();
     }
 
 /******************************************************************************************************************************************************************/    
@@ -123,44 +107,4 @@ class DoubleTurbo90 extends V2Game{
 	protected changeNumberSound(): void {
 		this.playSound("t90_card_mp3");
 	}
-
-    protected addPayTables(){
-        this.paytableBg = new DoubleTurbo90PTBG;
-        Com.addObjectAt( this, this.paytableBg, 283, 16 );
-
-        super.addPayTables();
-
-        let pts: Object = PayTableManager.payTablesDictionary;
-        for( let payTable in pts ){
-            let pos: Object = pts[payTable].position;
-            let y: number = pos["y"];
-            y = Math.floor( y / 38 ) * 38 + 34;
-            pts[payTable].UI.y = y;
-            pts[payTable].UI.x = 600;
-            pts[payTable].UI.addEventListener( "paytableFitEvent", this.payTableFit, this );
-            let tx: egret.TextField = pts[payTable].UI["tx"];
-            tx.width = 110;
-            tx.textAlign = "right";
-        }
-	}
-
-    private payTableFit( event: egret.Event ){
-        let str: string = event.target["tx"].text;
-        if( str == "x1000" ) this.paytableShow( 0 );
-        else if( str == "x100" ) this.paytableShow( 1 );
-        else if( str == "x4" ) this.paytableShow( 2 );
-        else if( str == "x1" ) this.paytableShow( 3 );
-    }
-
-    private clearPaytableFgs(){
-        this.paytableBg.clearPaytableFgs();
-        for( let i: number = 0; i < 4; i++ ){
-            this.paytableTitles[i].textColor = 0x46C8F5;
-        }
-    }
-
-    private paytableShow( index: number ){
-        this.paytableBg.showPt( index );
-        this.paytableTitles[index].textColor = 0x0;
-    }
 }
