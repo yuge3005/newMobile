@@ -109,7 +109,7 @@ class SuperLotto extends V2Game{
 
         this.lockCards = false;
         this.clearLottoExtras();
-        this.hideAllPaytableBg();
+        this.payTableArea.clearPaytableFgs();
 	}
 
     private clearLottoExtras(): void{
@@ -178,38 +178,12 @@ class SuperLotto extends V2Game{
     private lottoExtraBg: egret.DisplayObjectContainer;
     private lottoExtraBgs: Array<egret.DisplayObjectContainer>;
 
-    private anNumbers: Array<TextLabel>;
-    private seNumbers: Array<TextLabel>;
-    private anBgs: Array<egret.Bitmap>;
-    private seBgs: Array<egret.Bitmap>;
-
     private letsLotto(){
         this.changePaytableRules();
 
         for( let i: number = 0; i < 4; i++ ){
             CardManager.cards[i].addEventListener( "cardNumberChanged", this.onCardNumberChange.bind(this), this );
             CardManager.cards[i].addEventListener( "cardFitPaytalbe", this.onCardFitPaytable.bind(this), this );
-        }
-
-        this.addLottoPaytalbeNumbers();
-    }
-
-    private addLottoPaytalbeNumbers(){
-        this.anNumbers = [];
-        this.anBgs = [];
-        for( let i: number = 0; i < 4; i++ ){
-            this.anBgs[i] = Com.addBitmapAt( this, this.assetStr( "any_light" ), 1587, 793 - 56 * i );
-            this.anBgs[i].visible = false;
-            this.anNumbers[i] = MDS.addGameTextCenterShadow( this, 1618, 799 - 56 * i, 40, 0xE518FD, "sequence", false, 45, false, false );
-            this.anNumbers[i].setText( "" + ( i + 2 ) );
-        }
-        this.seNumbers = [];
-        this.seBgs = [];
-        for( let i: number = 0; i < 6; i++ ){
-            this.seBgs[i] = Com.addBitmapAt( this, this.assetStr( "sequence_light" ), 1587, 478 - 56 * i );
-            this.seBgs[i].visible = false;
-            this.seNumbers[i] = MDS.addGameTextCenterShadow( this, 1618, 484 - 56 * i, 40, 0x18A4FD, "sequence", false, 45, false, false );
-            this.seNumbers[i].setText( "" + ( i + 1 ) );
         }
     }
 
@@ -227,7 +201,7 @@ class SuperLotto extends V2Game{
     }
 
     protected afterCheck( resultList: Array<Object> ): void{
-        this.hideAllPaytableBg();
+        this.payTableArea.clearPaytableFgs();
 		super.afterCheck( resultList );
 	}
 
@@ -336,28 +310,6 @@ class SuperLotto extends V2Game{
         let isSequence: boolean = assetName.indexOf( "se" ) >= 0;
         assetName = assetName.substr( 2 );
         let itemIndex: number = parseInt( assetName );
-        this.showPaytableBg( isSequence, itemIndex );
-    }
-
-    private showPaytableBg( isSequence, itemIndex ){
-        let i: number = itemIndex - ( isSequence ? 1 : 2 );
-        let bg: egret.Bitmap = isSequence ? this.seBgs[i] : this.anBgs[i];
-        bg.visible = true;
-        let tx: egret.TextField = isSequence ? this.seNumbers[i] : this.anNumbers[i];
-        tx.textColor = isSequence ? 0xFAFF32 : 0xFAFF32;
-        tx.stroke = 1.5;
-    }
-
-    private hideAllPaytableBg(){
-        for( let i: number = 0; i < 4; i++ ){
-            this.anBgs[i].visible = false;
-            this.anNumbers[i].textColor = 0xE518FD;
-            this.anNumbers[i].stroke = 0;
-        }
-        for( let i: number = 0; i < 6; i++ ){
-            this.seBgs[i].visible = false;
-            this.seNumbers[i].textColor = 0x18A4FD;
-            this.seNumbers[i].stroke = 0;
-        }
+        ( this.payTableArea as LottoPaytableLayer ).showPaytableBg( isSequence, itemIndex );
     }
 }
