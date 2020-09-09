@@ -1,8 +1,5 @@
 class AztecPharosSuper extends V2Game{
 
-    protected pharosPattenTexts: Array<TextLabel>;
-    protected pharosPattenBlickCount: Array<number>;
-
 	public constructor( gameConfigFile: string, configUrl: string, gameId: number ) {
 		super( gameConfigFile, configUrl, gameId );
         this.languageObjectName = "pharos_tx";
@@ -57,24 +54,13 @@ class AztecPharosSuper extends V2Game{
     }
 
     protected afterCheck( resultList: Array<Object> ): void{
-        this.clearPaytableFgs();
+        this.payTableArea.clearPaytableFgs();
         super.afterCheck( resultList );
     }
 
     protected startPlay(): void {
         super.startPlay();
-        this.clearPaytableFgs();
-    }
-
-    private clearPaytableFgs(){
-        for( let i: number = 0; i < 4; i++ ){
-            this.pharosPattenTexts[i].textColor = 0xE8D4AF;
-        }
-        this.pharosPattenBlickCount = null;
-        this.removeEventListener( egret.Event.ENTER_FRAME, this.onPaytableBlink, this );
-    }
-
-    protected onPaytableBlink( egret: egret.Event ){
+        this.payTableArea.clearPaytableFgs();
     }
 
     private tipStatusCoinTypeText: TextLabel;
