@@ -15,6 +15,7 @@ class SuperLotto extends V2Game{
         this.ballArea = new LottoBallManager;
         this.ballArea.mask = new egret.Rectangle( 342, 444, 1216, 159 );
         PaytableUI.textBold = true;
+        PayTableManager.layerType = LottoPaytableLayer;
 
         GameCard.clickChangeNumber = false;
         CardGrid.defaultBgColor = 0;
@@ -53,10 +54,10 @@ class SuperLotto extends V2Game{
         anText.text = anText.text.toUpperCase();
         anText.fontFamily = "Righteous";
 
-        let x2Text: egret.TextField = MDS.addGameTextCenterShadow( this, 1647, 863, 38, 0xFFFFFF, "sequence", false, 100, false, false );
-        x2Text.text = "x2";
-        let x3Text: egret.TextField = MDS.addGameTextCenterShadow( this, 1835, 863, 38, 0xFFFFFF, "sequence", false, 100, false, false );
-        x3Text.text = "x3";
+        let x2Text: TextLabel = MDS.addGameTextCenterShadow( this, 1647, 863, 38, 0xFFFFFF, "sequence", false, 100, false, false );
+        x2Text.setText( "x2" );
+        let x3Text: TextLabel = MDS.addGameTextCenterShadow( this, 1835, 863, 38, 0xFFFFFF, "sequence", false, 100, false, false );
+        x3Text.setText( "x3" );
 
         this.letsLotto();
     }
@@ -191,7 +192,6 @@ class SuperLotto extends V2Game{
         }
 
         this.addLottoPaytalbeNumbers();
-        this.addPayTables();
     }
 
     private addLottoPaytalbeNumbers(){
@@ -360,22 +360,4 @@ class SuperLotto extends V2Game{
             this.seNumbers[i].stroke = 0;
         }
     }
-
-    protected addPayTables(){
-		super.addPayTables();
-
-        let pts: Object = PayTableManager.payTablesDictionary;
-        for( let payTable in pts ){
-			let pos: Object = pts[payTable].position;
-            let isSequence: boolean = payTable.indexOf( "se" ) >= 0;
-            let y: number = pos["y"] - ( isSequence ? 234 : 382 );
-            y = Math.floor( y / 56 );
-            y = ( isSequence ? 234 : 382 ) + y * 56 + 32;
-			pts[payTable].UI.y = y;
-            pts[payTable].UI.x = 1745;
-            let tx: egret.TextField = pts[payTable].UI["tx"];
-            tx.width = 200;
-            tx.textAlign = "right";
-		}
-	}
 }
