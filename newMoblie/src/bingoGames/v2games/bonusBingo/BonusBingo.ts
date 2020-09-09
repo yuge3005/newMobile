@@ -310,12 +310,45 @@ class BonusBingo extends V2Game{
     }
 
     private curtains1: Array<egret.MovieClip>;
+	private curtains2: Array<egret.MovieClip>;
+
+	private showCurtain2Animation(): void{
+        let curtains: Array<egret.MovieClip> = [];
+        this.setbonusByBet();
+        for( let i: number = 0; i < 4; i++ ){
+            let offsetX: number = this.cardPositions[i]["x"];
+            let offsetY: number = this.cardPositions[i]["y"];
+            curtains[i] = Com.addMovieClipAt( this, this._mcf, "bonusBingo_curtains_02", offsetX, offsetY );
+            curtains[i].gotoAndPlay(1);
+            if( this.curtains1[i].parent ){
+                this.curtains1[i].parent.removeChild( this.curtains1[i] );
+            }
+        }
+        curtains[0].addEventListener( egret.Event.ENTER_FRAME, this.curtain2AnimationFrameCounter, this );
+        this.curtains2 = curtains;
+        this.waitForCurtain2Animation = true;
+    }
+
+	private curtain2AnimationFrameCounter( event: egret.Event ): void{
+        let curtains2: egret.MovieClip = event.currentTarget as egret.MovieClip;
+        if( curtains2.currentFrame == 25 && this.waitForCurtain2Animation ){
+            this.waitForCurtain2Animation = false;
+            for( let i: number = 0; i < 4; i++ ){
+                if( this.curtains2[i].parent ){
+                    this.curtains2[i].stop();
+                    this.curtains2[i].parent.removeChild( this.curtains2[i] );
+                }
+            }
+            curtains2.removeEventListener( egret.Event.ENTER_FRAME, this.curtain2AnimationFrameCounter, this );
+            this.returnToNormalGame();
+        }
+    }
 
     private showCurtainAnimation(): void{
         let curtains: Array<egret.MovieClip> = [];
         for( let i: number = 0; i < 4; i++ ){
-            let offsetX: number = ( i & 1 ) ? 553 : 31;
-            let offsetY: number = Math.floor( i / 2 ) ? 254 : 55;
+            let offsetX: number = this.cardPositions[i]["x"];
+            let offsetY: number = this.cardPositions[i]["y"];
             curtains[i] = Com.addMovieClipAt( this, this._mcf, "bonusBingo_curtains_01", offsetX, offsetY );
             curtains[i].gotoAndPlay(1);
         }
@@ -327,7 +360,7 @@ class BonusBingo extends V2Game{
     private curtain1AnimationFrameCounter( event: egret.Event ): void{
         let curtains1: egret.MovieClip = event.currentTarget as egret.MovieClip;
         if( curtains1.currentFrame == 20 && this.waitForCurtain1Animation ){
-            this.bonusLetter.showLightLetters();
+            this.bonusLetter.showLightLetters( 500, this.showCurtain2Animation.bind( this ) );
             this.waitForCurtain1Animation = false;
             curtains1.removeEventListener( egret.Event.ENTER_FRAME, this.curtain1AnimationFrameCounter, this );
             for( let i: number = 0; i < 4; i++ ){

@@ -4,8 +4,6 @@ class BonusLetterLayer extends egret.DisplayObjectContainer{
 	private bonusLetters: Array<egret.Bitmap>;
     private bonusLightLetters: Array<egret.Bitmap>;
 
-	private curtains2: Array<egret.MovieClip>;
-
 	public betProgress: Object;
 	public betBonusRounds: Object;
 	private betLuckMultis: Object;
@@ -99,46 +97,13 @@ class BonusLetterLayer extends egret.DisplayObjectContainer{
         tw.to( { scaleX : 1, scaleY : 1 }, 300 );
     }
 
-	public showLightLetters(): void{
+    public showLightLetters( letterDelay: number, callback: Function  ): void{
         let tw: egret.Tween = egret.Tween.get( this );
-        let letterDelay: number = 500;
         for( let i: number = 0; i < 5; i++ ){
             tw.wait( letterDelay );
             tw.call( () => { this.bonusLightLetters[i].visible = true } );
         }
         tw.wait( letterDelay );
-        // tw.call( this.showCurtain2Animation.bind( this ) );
+        tw.call( callback );
     }
-
-	/*private showCurtain2Animation(): void{
-        let curtains: Array<egret.MovieClip> = [];
-        this.setbonusByBet();
-        for( let i: number = 0; i < 4; i++ ){
-            let offsetX: number = ( i & 1 ) ? 553 : 31;
-            let offsetY: number = Math.floor( i / 2 ) ? 254 : 55;
-            curtains[i] = Com.addMovieClipAt( this, this._mcf, "bonusBingo_curtains_02", offsetX, offsetY );
-            curtains[i].gotoAndPlay(1);
-            if( this.curtains1[i].parent ){
-                this.curtains1[i].parent.removeChild( this.curtains1[i] );
-            }
-        }
-        curtains[0].addEventListener( egret.Event.ENTER_FRAME, this.curtain2AnimationFrameCounter, this );
-        this.curtains2 = curtains;
-        this.waitForCurtain2Animation = true;
-    }
-
-	private curtain2AnimationFrameCounter( event: egret.Event ): void{
-        let curtains2: egret.MovieClip = event.currentTarget as egret.MovieClip;
-        if( curtains2.currentFrame == 25 && this.waitForCurtain2Animation ){
-            this.waitForCurtain2Animation = false;
-            for( let i: number = 0; i < 4; i++ ){
-                if( this.curtains2[i].parent ){
-                    this.curtains2[i].stop();
-                    this.curtains2[i].parent.removeChild( this.curtains2[i] );
-                }
-            }
-            curtains2.removeEventListener( egret.Event.ENTER_FRAME, this.curtain2AnimationFrameCounter, this );
-            this.returnToNormalGame();
-        }
-    }*/
 }
