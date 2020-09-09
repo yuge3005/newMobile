@@ -161,7 +161,6 @@ class BonusBingo extends V2Game{
             (CardManager.cards[i] as BonusBingoCard).cardBgLight.visible = status;
             this.winTimesTip[i].removeChildren();
             if( status ) Com.addBitmapAt( this.winTimesTip[i], this.assetStr( "x50_small" ), 0, 0 );
-            if( i > CardManager.enabledCards - 1 )this.winTimesTip[i].visible = false;
         }
         for( let j: number = 0; j < CardManager.cards.length; j++ ){
             ( CardManager.cards[j] as BonusBingoCard ).useSuperBg( status );
