@@ -1,6 +1,7 @@
 class BonusBingoCard extends GameCard{
 
     public cardBgLight: egret.Bitmap;
+	private luckMultiOnCard: egret.DisplayObjectContainer;
 
 	public constructor( cardId: number ) {
 		super( cardId );
@@ -61,5 +62,29 @@ class BonusBingoCard extends GameCard{
 				(this.grids[j] as ForkGrid).removeFork();
 			}
 		}
+	}
+
+	public showCardMultiTimes( luckMultiTimes: number, cardIndex: number ){
+        let luckMultiOnCard: egret.DisplayObjectContainer = new egret.DisplayObjectContainer;
+        Com.addObjectAt( this, luckMultiOnCard, 164, 206 );
+        Com.addBitmapAt( luckMultiOnCard, BingoMachine.getAssetStr( "card_center02" ), 0, 0 );
+        let tx: egret.TextField = Com.addTextAt( luckMultiOnCard, 0, 0, 50, 20, 20, false, true );
+        tx.text = "X" + luckMultiTimes;
+        tx.textColor = 0xFFFF00;
+        luckMultiOnCard.anchorOffsetX = luckMultiOnCard.width >> 1;
+        luckMultiOnCard.anchorOffsetY = luckMultiOnCard.height >> 1;
+        luckMultiOnCard.scaleX = luckMultiOnCard.scaleY = 0.1;
+        let tw: egret.Tween = egret.Tween.get( luckMultiOnCard );
+        tw.to( { scaleX: 2, scaleY: 2 }, 300 );
+        tw.to( { scaleX: 1.2, scaleY: 1.2 }, 400, egret.Ease.bounceOut );
+        for( let i: number = 0; i < 250; i++ ){
+            tw.to( { scaleX: 0.8, scaleY: 0.8 }, 200 );
+            tw.to( { scaleX: 1.2, scaleY: 1.2 }, 200 );
+        }
+        this.luckMultiOnCard = luckMultiOnCard;
+    }
+
+	public removeLuckMultiOnCard(){
+		if( this.luckMultiOnCard && this.contains( this.luckMultiOnCard ) ) this.removeChild( this.luckMultiOnCard );
 	}
 }
