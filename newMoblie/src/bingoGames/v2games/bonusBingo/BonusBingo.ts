@@ -122,26 +122,6 @@ class BonusBingo extends V2Game{
         this.autoPlayWaitingForUseChooseCard = this.waitingDuration * this.waitingTime;
     }
 
-    private showCardMultiTimes( luckMultiTimes: number, cardIndex: number ): egret.DisplayObjectContainer{
-        let luckMultiOnCard: egret.DisplayObjectContainer = new egret.DisplayObjectContainer;
-        Com.addObjectAt( this, luckMultiOnCard, this.chooseCardButtons[cardIndex].x, this.chooseCardButtons[cardIndex].y + 9 );
-        Com.addBitmapAt( luckMultiOnCard, this.assetStr( "card_center02" ), 0, 0 );
-        let tx: egret.TextField = Com.addTextAt( luckMultiOnCard, 0, 0, 50, 20, 20, false, true );
-        tx.text = "X" + luckMultiTimes;
-        tx.textColor = 0xFFFF00;
-        luckMultiOnCard.anchorOffsetX = luckMultiOnCard.width >> 1;
-        luckMultiOnCard.anchorOffsetY = luckMultiOnCard.height >> 1;
-        luckMultiOnCard.scaleX = luckMultiOnCard.scaleY = 0.1;
-        let tw: egret.Tween = egret.Tween.get( luckMultiOnCard );
-        tw.to( { scaleX: 1, scaleY: 1 }, 300 );
-        tw.to( { scaleX: 0.6, scaleY: 0.6 }, 400, egret.Ease.bounceOut );
-        for( let i: number = 0; i < 250; i++ ){
-            tw.to( { scaleX: 0.4, scaleY: 0.4 }, 200 );
-            tw.to( { scaleX: 0.6, scaleY: 0.6 }, 200 );
-        }
-        return luckMultiOnCard;
-    }
-
     private fiveBallBlinkId: number;
 
     private _isSuper: boolean;
@@ -475,37 +455,18 @@ class BonusBingo extends V2Game{
         }
     }
 
-    private luckMultiAnimation: egret.DisplayObjectContainer;
-    private luckMultiOnCards: Array<egret.DisplayObjectContainer>;
+    private luckMultiAnimation: BonusLuckMultiAnimation;
 
     private showLuckMulti( luckMultiTimes: number ): void{
         this.bonusLetter.luckMultiTimes = luckMultiTimes;
-        let dtContainer: egret.DisplayObjectContainer = new egret.DisplayObjectContainer;
-        Com.addObjectAt( this, dtContainer, 320, 350 );
-        dtContainer.mask = new egret.Rectangle( -110, -50, 335, 172 );
-        let dtAnimation: egret.Sprite = new egret.Sprite;
-        Com.addObjectAt( dtContainer, dtAnimation, 0, 140 );
-        GraphicTool.drawRect( dtAnimation, new egret.Rectangle( -110, 0, 335, 140 ), 0, false, 0.5 );
-        Com.addBitmapAt( dtAnimation, this.assetStr( "doctor_multiplier" ), 0, 0 );
-        let tx1: TextLabel = MDS.addGameTextCenterShadow( this, -50, 104, 18, 0xFFFFFF, "choose a card", false, 260, true, false );
-        dtAnimation.addChild( tx1 );
-        Com.addBitmapAt( dtAnimation, this.assetStr( "txt_bg" ), -110, -40 );
-        let tx2: egret.TextField = Com.addTextAt( dtAnimation, -40, 0, 100, 40, 40, false, true );
-        tx2.textColor = 0xFEFE00;
-        tx2.text = "X" + luckMultiTimes;
-        let tx3: TextLabel = MDS.addGameTextCenterShadow( this, -110, -27, 22, 0x0, "win multiplier", false, 415, true, false );
-        dtAnimation.addChild( tx3 );
-        let tw: egret.Tween = egret.Tween.get( dtAnimation );
-        tw.to( { y: 0 }, 600, egret.Ease.bounceOut );
-        this.luckMultiAnimation = dtContainer;
-
+        this.luckMultiAnimation = new BonusLuckMultiAnimation( luckMultiTimes );
+        Com.addObjectAt( this, this.luckMultiAnimation, 750, 563 );
         this.showFourLuckMultis( luckMultiTimes );
     }
 
     private showFourLuckMultis( luckMultiTimes: number ): void{
-        this.luckMultiOnCards = [];
         for( let i: number = 0; i < 4; i++ ){
-            this.luckMultiOnCards[i] = this.showCardMultiTimes( luckMultiTimes, i );
+            ( CardManager.cards[i] as BonusBingoCard ).showCardMultiTimes( luckMultiTimes, i );
         }
     }
 
@@ -526,10 +487,8 @@ class BonusBingo extends V2Game{
 
     private removeLuckMultiAnimations(){
         if( this.luckMultiAnimation && this.contains( this.luckMultiAnimation ) ) this.removeChild( this.luckMultiAnimation );
-        if( this.luckMultiOnCards && this.luckMultiOnCards.length ){
-            for( let i: number = 0; i < 4; i++ ){
-                if( this.luckMultiOnCards[i] && this.luckMultiOnCards[i].parent )this.luckMultiOnCards[i].parent.removeChild( this.luckMultiOnCards[i] );
-            }
+        for( let i: number = 0; i < 4; i++ ){
+            ( CardManager.cards[i] as BonusBingoCard ).removeLuckMultiOnCard();
         }
     }
 
@@ -578,23 +537,10 @@ class BonusBingo extends V2Game{
     }
 
     protected hasExtraBallFit(): void {
-        // this.stopSound("t90_ball_mp3");
         if (this.firstHaveExtraBall) {
             this.firstHaveExtraBall = false;
         }
     }
-
-	protected getExtraBallFit(): void {
-		// this.playSound("t90_extra_ball_mp3");
-	}
-
-	protected collectExtraBall(): void {
-		// override
-	}
-
-	protected changeNumberSound(): void {
-		// this.playSound("t90_card_mp3");
-	}
 
     protected startPlay(): void {
         super.startPlay();
