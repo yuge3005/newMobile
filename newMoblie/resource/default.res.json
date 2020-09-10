@@ -59,6 +59,10 @@
 		{
 			"keys": "bgm_bounes_mode_mp3,bonusBingo_1_mp3,bonusBingo_10_mp3,bonusBingo_250_mp3,bonusBingo_3000_mp3,bonusBingo_40_mp3,bonusBingo_500_mp3,bonusBingo_EB_mp3,bonusBingo_ball_fall_mp3,bonusBingo_get_all_mp3,bonusBingo_get_ball_wav,bonusBingo_missone_mp3,bonusBingo_mutiplay_mp3,bonusBingo_super_miss_mp3,bonusBingo_json,bonusBingoAnimation_png,bonusBingoAnimation_json,bonusBingo_conf,bonusBingo_tx,bingoGameToolbar_json,topbar_json,open_list_mp3",
 			"name": "bonusBingo"
+		},
+		{
+			"keys": "dm_ball_mp3,dm_bingo_mp3,dm_change_card_mp3,dm_change_num_mp3,dm_collect_mp3,dm_double_h_mp3,dm_double_line_mp3,dm_double_t_mp3,dm_double_v_mp3,dm_double_z_mp3,dm_extra_ball_mp3,dm_line_mp3,dm_perimeter_mp3,dm_round_over_win_mp3,dm_triangle_mp3,dm_two_sides_mp3,dm_v_mp3,dm_y_mp3,doublemania_json,doublemaniaAnimation_png,doublemaniaAnimation_json,doublemania_conf",
+			"name": "doublemania"
 		}
 	],
 	"resources": [
@@ -1014,12 +1018,123 @@
 			"url": "game/bonusBingo/bonusBingo.json",
 			"type": "sheet",
 			"name": "bonusBingo_json",
-			"subkeys": "ball_blue,ball_green,ball_purple,ball_red,ball_yellow,bg,card_back,card_blink,card_center,card_center02,card_color,card_front,card_head_bg,card_head_outerlight,card_light,card_outlight,card_special,dark_B,dark_N,dark_O,dark_S,dark_U,dark_bg,doctor_bonus,doctor_multiplier,fireworks_01,fiveball_bg,fiveball_bg_cover,fiveball_bg_special,fiveball_bg_special_cover,fiveball_light,fork,highlight,jackpot_lock,light_B,light_B_02,light_N,light_N_02,light_O,light_O_02,light_S,light_S_02,light_U,light_U_02,light_bg,line_1th,line_2th,line_3th,line_4th,line_5th,line_x1,line_x10,line_x1_02,line_x2,line_x250,line_x3000,line_x8,small_block,txt_bg,x1,x10,x1_02,x2,x250,x2_small,x3000,x3_small,x4,x500,x50_small,x6,x8"
+			"subkeys": "ball_blue,ball_green,ball_purple,ball_red,ball_yellow,bg,card_blink,card_center,card_center02,card_color,card_front,card_head_bg,card_head_outerlight,card_light,card_outlight,card_special,dark_B,dark_N,dark_O,dark_S,dark_U,dark_bg,doctor_bonus,doctor_multiplier,fireworks_01,fiveball_bg,fiveball_bg_cover,fiveball_bg_special,fiveball_bg_special_cover,fiveball_light,fork,highlight,jackpot_lock,light_B,light_B_02,light_N,light_N_02,light_O,light_O_02,light_S,light_S_02,light_U,light_U_02,light_bg,line_1th,line_2th,line_3th,line_4th,line_5th,line_x1,line_x10,line_x1_02,line_x2,line_x250,line_x3000,line_x8,small_block,txt_bg,x1,x10,x1_02,x2,x250,x2_small,x3000,x3_small,x4,x500,x50_small,x6,x8"
 		},
 		{
 			"url": "config/bonusBingo.conf",
 			"type": "json",
 			"name": "bonusBingo_conf"
+		},
+		{
+			"url": "game/doubleMania/doublemaniaAnimation.png",
+			"type": "image",
+			"name": "doublemaniaAnimation_png"
+		},
+		{
+			"url": "game/doubleMania/sound/dm_ball.mp3",
+			"type": "sound",
+			"name": "dm_ball_mp3"
+		},
+		{
+			"url": "game/doubleMania/sound/dm_bingo.mp3",
+			"type": "sound",
+			"name": "dm_bingo_mp3"
+		},
+		{
+			"url": "game/doubleMania/sound/dm_change_card.mp3",
+			"type": "sound",
+			"name": "dm_change_card_mp3"
+		},
+		{
+			"url": "game/doubleMania/sound/dm_change_num.mp3",
+			"type": "sound",
+			"name": "dm_change_num_mp3"
+		},
+		{
+			"url": "game/doubleMania/sound/dm_collect.mp3",
+			"type": "sound",
+			"name": "dm_collect_mp3"
+		},
+		{
+			"url": "game/doubleMania/sound/dm_double_h.mp3",
+			"type": "sound",
+			"name": "dm_double_h_mp3"
+		},
+		{
+			"url": "game/doubleMania/sound/dm_double_line.mp3",
+			"type": "sound",
+			"name": "dm_double_line_mp3"
+		},
+		{
+			"url": "game/doubleMania/sound/dm_double_t.mp3",
+			"type": "sound",
+			"name": "dm_double_t_mp3"
+		},
+		{
+			"url": "game/doubleMania/sound/dm_double_v.mp3",
+			"type": "sound",
+			"name": "dm_double_v_mp3"
+		},
+		{
+			"url": "game/doubleMania/sound/dm_double_z.mp3",
+			"type": "sound",
+			"name": "dm_double_z_mp3"
+		},
+		{
+			"url": "game/doubleMania/sound/dm_extra_ball.mp3",
+			"type": "sound",
+			"name": "dm_extra_ball_mp3"
+		},
+		{
+			"url": "game/doubleMania/sound/dm_line.mp3",
+			"type": "sound",
+			"name": "dm_line_mp3"
+		},
+		{
+			"url": "game/doubleMania/sound/dm_perimeter.mp3",
+			"type": "sound",
+			"name": "dm_perimeter_mp3"
+		},
+		{
+			"url": "game/doubleMania/sound/dm_round_over_win.mp3",
+			"type": "sound",
+			"name": "dm_round_over_win_mp3"
+		},
+		{
+			"url": "game/doubleMania/sound/dm_triangle.mp3",
+			"type": "sound",
+			"name": "dm_triangle_mp3"
+		},
+		{
+			"url": "game/doubleMania/sound/dm_two_sides.mp3",
+			"type": "sound",
+			"name": "dm_two_sides_mp3"
+		},
+		{
+			"url": "game/doubleMania/sound/dm_v.mp3",
+			"type": "sound",
+			"name": "dm_v_mp3"
+		},
+		{
+			"url": "game/doubleMania/sound/dm_y.mp3",
+			"type": "sound",
+			"name": "dm_y_mp3"
+		},
+		{
+			"url": "game/doubleMania/doublemaniaAnimation.json",
+			"type": "json",
+			"name": "doublemaniaAnimation_json"
+		},
+		{
+			"url": "game/doubleMania/doublemania.json",
+			"type": "sheet",
+			"name": "doublemania_json",
+			"subkeys": "10,100,100_2L,1500,200,3,300,3_1L,40,40_2,600,8,BG,Ball_blue_large,Ball_green_large,Ball_machine,Ball_machine_metal,Ball_orange_large,Ball_purple_large,Ball_red_large,Jackpot,Mark_green,Mark_red,Mark_x,Mark_yellow,Rail,Rail_extra,WinEffect_bingo,WinEffect_doubleH,WinEffect_doubleT,WinEffect_doubleV,WinEffect_doubleZ,WinEffect_doubleline0,WinEffect_doubleline1,WinEffect_doubleline2,WinEffect_line0,WinEffect_line1,WinEffect_line2,WinEffect_perimeter,WinEffect_triangle,WinEffect_twosides,WinEffect_v,WinEffect_y,card_back,card_frame,jackpot_lock"
+		},
+		{
+			"url": "config/doublemania.conf",
+			"type": "json",
+			"name": "doublemania_conf"
 		}
 	]
 }
