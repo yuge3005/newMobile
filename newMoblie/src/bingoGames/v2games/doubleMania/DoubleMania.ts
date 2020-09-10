@@ -203,31 +203,6 @@ class DoubleMania extends V2Game{
         this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 295, 40 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 1, -28 ), new egret.Rectangle( 0, 0, 215, 25 ), 20, 0xd6c576 ) );
     }
 
-    protected getPaytablesFit( paytabledName: string, callback: Function = null ): void{
-		let soundName = "";
-        switch (paytabledName) {
-            case "bingo": soundName = "dm_bingo_mp3";break;
-            case "round": soundName = "dm_perimeter_mp3";break;
-            case "ii": soundName = "dm_two_sides_mp3";break;
-            case "fly": soundName = "dm_double_h_mp3";break;
-            case "double_line": soundName = "dm_double_line_mp3";break;
-            case "tt": soundName = "dm_double_t_mp3";break;
-            // case "mouse": soundName = "win_square_mp3";break;
-            case "xx": soundName = "dm_double_v_mp3"; break;
-            case "trangle": soundName = "dm_triangle_mp3"; break;
-            case "v": soundName = "dm_v_mp3"; break;
-            case "bao": soundName = "dm_y_mp3"; break;
-            case "guo": soundName = "dm_double_z_mp3"; break;
-            case "line": soundName = "dm_line_mp3"; break;
-            default: break;
-        }
-        if (SoundManager.soundOn && soundName !== "") {
-            this.playSound(soundName, 1, callback);
-        } else {
-			if( callback )callback();
-        }
-	}
-
     protected onBetChanged(event: egret.Event): void{
         super.onBetChanged(event);
 	}
