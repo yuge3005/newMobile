@@ -54,6 +54,7 @@ package controler{
 			currentIndex = index;
 			if( ball && this.contains( ball ) )this.removeChild( ball );
 			ball = addItemAt( GameRes.buildBallWithIndex( index, 0, false ), 0, 0 ) as Sprite;
+			this.setChildIndex( ball, 0 )
 			pathList.visible = true;
 			
 			if( ballForDrag && this.contains( ballForDrag ) )this.removeChild( ballForDrag );

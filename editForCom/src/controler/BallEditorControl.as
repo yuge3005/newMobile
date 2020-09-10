@@ -126,7 +126,7 @@ package controler{
 			addNumericStepper( 0, 140, 130, "number offset", onSetOffset, 20 ).minimum = -20;
 			btSize = addNumericStepper( 0, 180, 130, "ball size", onSetSize, 300 );
 			btSize.width = 60
-			btBallTextSize = addNumericStepper( 0, 220, 130, "ball text size", onSetBallTextSize, 100 );
+			btBallTextSize = addNumericStepper( 0, 220, 130, "ball text size", onSetBallTextSize, 150 );
 		}
 		
 		private function addTestButton():void	{
