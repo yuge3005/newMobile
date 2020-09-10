@@ -1,12 +1,12 @@
 {
-    "projectName": "doublemania",
+    "options": {
+        "useExtension": 0,
+        "layoutGap": 1,
+        "extend": 0,
+        "layoutMath": "0",
+        "sizeMode": "free"
+    },
     "files": [
-        "./Mark_red.png",
-        "./Mark_green.png",
-        "./jackpot_lock.png",
-        "./Jackpot.png",
-        "./card_frame.png",
-        "./card_back.png",
         "./BG.png",
         "./Ball_red_large.png",
         "./Ball_purple_large.png",
@@ -46,14 +46,15 @@
         "./Rail_extra.png",
         "./Rail.png",
         "./Mark_yellow.png",
-        "./Mark_x.png"
+        "./Mark_x.png",
+        "./Mark_white.png",
+        "./Mark_red.png",
+        "./Mark_green.png",
+        "./jackpot_lock.png",
+        "./Jackpot.png",
+        "./card_frame.png",
+        "./card_bg_white.png"
     ],
-    "options": {
-        "extend": 0,
-        "layoutMath": "0",
-        "sizeMode": "free",
-        "useExtension": 0,
-        "layoutGap": 1
-    },
-    "version": 5
+    "version": 5,
+    "projectName": "doublemania"
 }
