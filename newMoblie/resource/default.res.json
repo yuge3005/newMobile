@@ -61,7 +61,7 @@
 			"name": "bonusBingo"
 		},
 		{
-			"keys": "dm_ball_mp3,dm_bingo_mp3,dm_change_card_mp3,dm_change_num_mp3,dm_collect_mp3,dm_double_h_mp3,dm_double_line_mp3,dm_double_t_mp3,dm_double_v_mp3,dm_double_z_mp3,dm_extra_ball_mp3,dm_line_mp3,dm_perimeter_mp3,dm_round_over_win_mp3,dm_triangle_mp3,dm_two_sides_mp3,dm_v_mp3,dm_y_mp3,doublemania_json,doublemaniaAnimation_png,doublemaniaAnimation_json,doublemania_conf",
+			"keys": "dm_ball_mp3,dm_bingo_mp3,dm_change_card_mp3,dm_change_num_mp3,dm_collect_mp3,dm_double_h_mp3,dm_double_line_mp3,dm_double_t_mp3,dm_double_v_mp3,dm_double_z_mp3,dm_extra_ball_mp3,dm_line_mp3,dm_perimeter_mp3,dm_round_over_win_mp3,dm_triangle_mp3,dm_two_sides_mp3,dm_v_mp3,dm_y_mp3,doublemania_json,doublemaniaAnimation_png,doublemaniaAnimation_json,doublemania_conf,doublemania_tx,bingoGameToolbar_json,topbar_json,open_list_mp3",
 			"name": "doublemania"
 		}
 	],
@@ -1135,6 +1135,11 @@
 			"url": "config/doublemania.conf",
 			"type": "json",
 			"name": "doublemania_conf"
+		},
+		{
+			"url": "config/lan/doublemania.tx",
+			"type": "json",
+			"name": "doublemania_tx"
 		}
 	]
 }

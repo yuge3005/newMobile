@@ -10,26 +10,15 @@ class DoubleMania extends V2Game{
 
 	public constructor( assetsPath: string ) {
         super( "doublemania.conf", assetsPath, 62 );
-        this.ptFilterConfig = "doublemania_filt";
+        this.languageObjectName = "doublemania_tx";
 
-        GameCard.cardTexPosition = new egret.Point( 10, 7 );
-        GameCard.betTexPosition = new egret.Point( 108, 7 );
-        GameCard.texSize = 19;
-        GameCard.texColor = 0xFFFFFF;
-
-        CardGrid.defaultBgColor = 0xFFFFFF;
-        CardGrid.defaultNumberSize = 22;
-
-        CardGrid.blinkColors1 = 0xFFFF00;
-        CardGrid.blinkColors2 = 0xFF00FF;
+        CardGrid.defaultNumberSize = 55;
 
         CardGrid.winTimesOffset = new egret.Point( -1, -1 );
         this.needSmallWinTimesOnCard = true;
         this.ballArea.needLightCheck = true;
 
         this.needListenToolbarStatus = true;
-
-        GameToolBar.toolBarY = 595;
 	}
 
     protected init(){
@@ -74,19 +63,19 @@ class DoubleMania extends V2Game{
         if( e["status"] == GameCommands.extra ){
             let extraStr: string = "";
             if( e["extraPrice"] ) extraStr += Utils.formatCoinsNumber( e["extraPrice"] );
-			else extraStr += GameToolBar.languageText["free"][GlobelSettings.language];
+            else extraStr += MuLang.getText("free");
             Com.addBitmapAt( this.tipStatusContainer, this.assetStr("Ball_machine"), 0, 0 );
             Com.addObjectAt( this, this.tipStatusContainer, 320, 239 );
             let tipStatusText: egret.TextField = Com.addTextAt( this.tipStatusContainer, 0, 10, 154, 145, 20, false, true );
             tipStatusText.verticalAlign = "middle";
             tipStatusText.text = extraStr;
-            let str: string = GameUIItem.languageText["extra ball"][GlobelSettings.language];
+            let str: string = MuLang.getText("extra ball");
             let tipStatusTopText: egret.TextField = Com.addTextAt( this.tipStatusContainer, 0, 30, 154, 50, 17, false, true );
             tipStatusTopText.verticalAlign = "middle";
             tipStatusTopText.text = str.substr( 0, str.length - 2 );
             let tipStatusBottomText: egret.TextField = Com.addTextAt( this.tipStatusContainer, 0, 80, 154, 50, 18, false, true );
             tipStatusBottomText.verticalAlign = "middle";
-            tipStatusBottomText.text = GameUIItem.languageText["credit"][GlobelSettings.language];
+            tipStatusBottomText.text = MuLang.getText("credit");
         }
 
         if( this.runningBallContainer && this.contains( this.runningBallContainer ) )this.addChild( this.runningBallContainer );
