@@ -33,8 +33,9 @@ class DoubleMania extends V2Game{
 
         this.runningBallContainer = new egret.DisplayObjectContainer;
         let lotto: egret.DisplayObject = this.getChildByName( this.assetStr( "lotto" ) );
-        lotto.scaleX = lotto.scaleY = 280 / 211;
-        lotto.x -= 35;
+        lotto.scaleX = lotto.scaleY = 270 / 211;
+        lotto.x -= 30;
+        this.addChild( lotto );
     }
 
     protected getFitEffectNameList(): Object{
@@ -63,27 +64,14 @@ class DoubleMania extends V2Game{
     protected winChange( event: egret.Event ): void{
 	}
 
-    private tipStatusContainer: egret.DisplayObjectContainer;
+    private tipStatusContainer: DoubleManiaTipStatus;
 
     protected tipStatus( e: egret.Event ): void{
-        if( this.tipStatusContainer )this.tipStatusContainer.removeChildren();
-        else this.tipStatusContainer = new egret.DisplayObjectContainer;
+        if( this.tipStatusContainer )this.tipStatusContainer.clearTexts();
+        else this.tipStatusContainer = new DoubleManiaTipStatus;
         if( e["status"] == GameCommands.extra ){
-            let extraStr: string = "";
-            if( e["extraPrice"] ) extraStr += Utils.formatCoinsNumber( e["extraPrice"] );
-            else extraStr += MuLang.getText("free");
-            Com.addBitmapAt( this.tipStatusContainer, this.assetStr("Ball_machine"), 0, 0 );
-            Com.addObjectAt( this, this.tipStatusContainer, 320, 239 );
-            let tipStatusText: egret.TextField = Com.addTextAt( this.tipStatusContainer, 0, 10, 154, 145, 20, false, true );
-            tipStatusText.verticalAlign = "middle";
-            tipStatusText.text = extraStr;
-            let str: string = MuLang.getText("extra ball");
-            let tipStatusTopText: egret.TextField = Com.addTextAt( this.tipStatusContainer, 0, 30, 154, 50, 17, false, true );
-            tipStatusTopText.verticalAlign = "middle";
-            tipStatusTopText.text = str.substr( 0, str.length - 2 );
-            let tipStatusBottomText: egret.TextField = Com.addTextAt( this.tipStatusContainer, 0, 80, 154, 50, 18, false, true );
-            tipStatusBottomText.verticalAlign = "middle";
-            tipStatusBottomText.text = MuLang.getText("credit");
+            this.tipStatusContainer.showStatus( e["extraPrice"] );
+            Com.addObjectAt( this, this.tipStatusContainer, 861, 387 );
         }
 
         if( this.runningBallContainer && this.contains( this.runningBallContainer ) )this.addChild( this.runningBallContainer );
