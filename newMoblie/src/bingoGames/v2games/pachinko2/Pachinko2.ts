@@ -12,7 +12,7 @@ class Pachinko2 extends V2Game{
         super( "pachinko2.conf", assetsPath, 61 );
         this.languageObjectName = "forAll_tx";
 
-        CardManager.cardType = Pachinko2Card;
+        CardManager.cardType = ExtraBlinkCard;
 		CardManager.gridType = Pachinko2Grid;
         GameCard.gridOnTop = true;
         GameCard.useRedEffect = true;

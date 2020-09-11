@@ -12,6 +12,9 @@ class DoubleMania extends V2Game{
         super( "doublemania.conf", assetsPath, 62 );
         this.languageObjectName = "doublemania_tx";
 
+        CardManager.cardType = DoubleManiaCard;
+        CardManager.gridType = DoubleManiaGrid;
+        GameCard.gridOnTop = true;
         CardGrid.defaultNumberSize = 55;
 
         CardGrid.winTimesOffset = new egret.Point( -1, -1 );
@@ -202,6 +205,8 @@ class DoubleMania extends V2Game{
             this.firstHaveExtraBall = false;
             //this.playSound("extra_mode_start_mp3");
         }
+
+        ExtraBlinkGrid.extraBink = true;
     }
 
     private roundOverWaitingMiniGame: boolean;
@@ -223,8 +228,8 @@ class DoubleMania extends V2Game{
         super.roundOver();
 
         if( this.tipStatusContainer && this.contains( this.tipStatusContainer ) )this.removeChild( this.tipStatusContainer );
-        // this.stopSound("t90_ball_mp3");
-        // this.stopSound("t90_extra_loop_wav");
+
+        ExtraBlinkGrid.extraBink = false;
     }
 
 	protected getExtraBallFit(): void {
