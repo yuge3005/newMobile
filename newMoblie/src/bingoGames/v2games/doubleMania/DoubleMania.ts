@@ -31,11 +31,15 @@ class DoubleMania extends V2Game{
 
         this.showNoBetAndCredit();
 
-        this.runningBallContainer = new egret.DisplayObjectContainer;
         let lotto: egret.DisplayObject = this.getChildByName( this.assetStr( "lotto" ) );
         lotto.scaleX = lotto.scaleY = 270 / 211;
         lotto.x -= 30;
         this.addChild( lotto );
+
+        this.tipStatusContainer = new DoubleManiaTipStatus;
+        Com.addObjectAt( this, this.tipStatusContainer, 861, 387 );
+        this.runningBallContainer = new egret.DisplayObjectContainer;
+        Com.addObjectAt(this, this.runningBallContainer, 874, 392 );
     }
 
     protected getFitEffectNameList(): Object{
@@ -67,26 +71,19 @@ class DoubleMania extends V2Game{
     private tipStatusContainer: DoubleManiaTipStatus;
 
     protected tipStatus( e: egret.Event ): void{
-        if( this.tipStatusContainer )this.tipStatusContainer.clearTexts();
-        else this.tipStatusContainer = new DoubleManiaTipStatus;
+        this.tipStatusContainer.clearTexts();
         if( e["status"] == GameCommands.extra ){
             this.tipStatusContainer.showStatus( e["extraPrice"] );
-            Com.addObjectAt( this, this.tipStatusContainer, 861, 387 );
         }
-
-        if( this.runningBallContainer && this.contains( this.runningBallContainer ) )this.addChild( this.runningBallContainer );
-        this.readdObjOnTop();
     }
 
     protected showLastBall( ballIndex: number ): void{
         super.showLastBall( ballIndex );
         super.showLastBallAt( ballIndex, 0, 0 );
-        Com.addObjectAt(this, this.runningBallContainer, 325, 240);
 
         this.playSound("dm_ball_mp3");
 
         this.delayRemoveRunningBallUI();
-        this.readdObjOnTop();
 	}
 
     private delayTimeoutId = 0;
@@ -100,13 +97,8 @@ class DoubleMania extends V2Game{
             this.delayTimeoutId = setTimeout( this.removeRunningBallUI.bind(this), 3000 );
             return;
         }
-        if( this.runningBallUI && this.runningBallContainer && ( this.runningBallContainer ).contains( this.runningBallUI ) ){
-			( this.runningBallContainer ).removeChild( this.runningBallUI );
-		}
+        super.clearRunningBallUI();
     }
-
-    protected clearRunningBallUI(): void{
-	}
 
     private onAnimationComp( event: egret.Event ): void{
         let extraUI : egret.MovieClip = this.extraUIObject as egret.MovieClip;
@@ -178,11 +170,6 @@ class DoubleMania extends V2Game{
     private removeEb(){
         if( this.ebAnimation && this.contains( this.ebAnimation ) )this.removeChild( this.ebAnimation );
     }
-
-    private readdObjOnTop(): void{
-        if( this.ebAnimation && this.contains( this.ebAnimation ) ) this.addChild( this.ebAnimation );
-        if( this.miniGame && this.contains( this.miniGame ) ) this.addChild( this.miniGame );
-    }
 /******************************************************************************************************************************************************************/    
     protected showJackpot( jackpot: number, jackpotMinBet: number, betConfig: Array<Object> ){
         this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 1302, 0 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 0, 0 ), new egret.Rectangle( 0, 80, 454, 35 ), 35, 0xFFFFFF, null, 0, 0, true ) );
@@ -220,7 +207,7 @@ class DoubleMania extends V2Game{
     protected roundOver(): void {
         super.roundOver();
 
-        if( this.tipStatusContainer && this.contains( this.tipStatusContainer ) )this.removeChild( this.tipStatusContainer );
+        this.tipStatusContainer.clearTexts();
 
         ExtraBlinkGrid.extraBink = false;
     }
