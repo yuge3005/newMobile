@@ -13,8 +13,7 @@ class MiniGameInDoubleMania extends GameUIItem {
 	public constructor() {
 		super();
 
-		GraphicTool.drawRect( this, new egret.Rectangle( 0, 0, BingoBackGroundSetting.gameAreaWidth, GameToolBar.toolBarY + 164 ), 0, false, 0.0 );
-
+		GraphicTool.drawRect( this, new egret.Rectangle( 0, 0, BingoBackGroundSetting.gameMask.width, BingoBackGroundSetting.gameMask.height ), 0, false, 0.0 );
 		this.touchEnabled = true;
 
 		this.showBonusTip();
@@ -56,7 +55,6 @@ class MiniGameInDoubleMania extends GameUIItem {
 		this.removeChildren();
 
 		let bg: egret.Bitmap = Com.addBitmapAt( this, this.getAsset( "background" ), 0, 0 );
-		bg.height = GameToolBar.toolBarY + 164;
 
 		Com.addBitmapAt( this, this.getAsset( "background_machine" ), 28, 400 );
 
@@ -88,19 +86,19 @@ class MiniGameInDoubleMania extends GameUIItem {
 
 	private buildPlayBtn(): TouchDownButton{
 		let playBtnAssetName: string = this.getAsset( "button" );
-		let playBtn = Com.addDownButtonAt( this, playBtnAssetName, playBtnAssetName, 650, 660, this.miniSpin.bind( this ), true );
-		let txt: egret.TextField = Com.addTextAt( this, 0, -1, 10, 10, 20, true, true );
+		let playBtn: TouchDownButton = Com.addDownButtonAt( this, playBtnAssetName, playBtnAssetName, 650, 660, this.miniSpin.bind( this ), true );
+		let txt: TextLabel = Com.addLabelAt( this, 0, 0, playBtn.width, playBtn.height, 20, true, true );
 		txt.stroke = 2;
-		txt.text = GameToolBar.languageText["play"][GlobelSettings.language];
+		txt.setText( MuLang.getText( "play" ) );
 		txt.lineSpacing = 10;
-		playBtn.setText( txt );
+		playBtn.addChild( txt );
 		playBtn.disabledFilter = MatrixTool.colorMatrixLighter( 0.5 );
 		return playBtn;
 	}
 
 	private addPaytableBg( name: string, xPos: number ): void{
 		let bgBitmap: egret.Bitmap = Com.addBitmapAt( this, this.getAsset( name ), xPos, 100 );
-		let titleText: egret.TextField = this.addGameText( xPos, 90, 24, 0xFFEE00, name, true, bgBitmap.width, "", 1 );
+		let titleText: egret.TextField = MDS.addGameText( this, xPos, 90, 24, 0xFFEE00, name, true, bgBitmap.width, "", 1 );
 		titleText.strokeColor = 0;
 		titleText.stroke = 2;
 		titleText.textAlign = "center";
