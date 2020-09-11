@@ -99,15 +99,6 @@ class DoubleMania extends V2Game{
         super.clearRunningBallUI();
     }
 
-    private changeCardNumberFirstTime: boolean = true;
-
-    public changeCardsBg(){
-        super.changeCardsBg();
-        
-        if( this.changeCardNumberFirstTime )this.changeCardNumberFirstTime = false;
-        else this.playSound("dm_change_card_mp3");
-	}
-
     protected runningWinAnimation( callback: Function, lightResult: Array<Object>, isLastBall: boolean): void{
         let paytableName = "";
         let multiple = 0;
@@ -175,6 +166,8 @@ class DoubleMania extends V2Game{
 
     protected onBetChanged(event: egret.Event): void{
         super.onBetChanged(event);
+
+        this.playSound("dm_change_card_mp3");
 	}
 
     protected hasExtraBallFit(): void {
