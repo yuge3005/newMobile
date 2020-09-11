@@ -21,6 +21,8 @@ class DoubleMania extends V2Game{
         this.needSmallWinTimesOnCard = true;
         this.ballArea.needLightCheck = true;
 
+        PayTableManager.paytableUIType = DoubleManiaPaytableUI;
+        BallManager.ballOffsetY = 10;
         this.needListenToolbarStatus = true;
 	}
 
@@ -30,6 +32,9 @@ class DoubleMania extends V2Game{
         this.showNoBetAndCredit();
 
         this.runningBallContainer = new egret.DisplayObjectContainer;
+        let lotto: egret.DisplayObject = this.getChildByName( this.assetStr( "lotto" ) );
+        lotto.scaleX = lotto.scaleY = 280 / 211;
+        lotto.x -= 35;
     }
 
     protected getFitEffectNameList(): Object{
@@ -192,7 +197,7 @@ class DoubleMania extends V2Game{
     }
 /******************************************************************************************************************************************************************/    
     protected showJackpot( jackpot: number, jackpotMinBet: number, betConfig: Array<Object> ){
-        this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 295, 40 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 1, -28 ), new egret.Rectangle( 0, 0, 215, 25 ), 20, 0xd6c576 ) );
+        this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 1302, 0 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 0, 0 ), new egret.Rectangle( 0, 80, 454, 35 ), 35, 0xFFFFFF, null, 0, 0, true ) );
     }
 
     protected onBetChanged(event: egret.Event): void{
