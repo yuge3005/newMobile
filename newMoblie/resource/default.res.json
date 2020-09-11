@@ -1129,7 +1129,7 @@
 			"url": "game/doubleMania/doublemania.json",
 			"type": "sheet",
 			"name": "doublemania_json",
-			"subkeys": "10,100,100_2L,1500,200,3,300,3_1L,40,40_2,600,8,BG,Ball_blue_large,Ball_green_large,Ball_machine,Ball_machine_metal,Ball_orange_large,Ball_purple_large,Ball_red_large,Jackpot,Mark_green,Mark_red,Mark_x,Mark_yellow,Rail,Rail_extra,WinEffect_bingo,WinEffect_doubleH,WinEffect_doubleT,WinEffect_doubleV,WinEffect_doubleZ,WinEffect_doubleline0,WinEffect_doubleline1,WinEffect_doubleline2,WinEffect_line0,WinEffect_line1,WinEffect_line2,WinEffect_perimeter,WinEffect_triangle,WinEffect_twosides,WinEffect_v,WinEffect_y,card_back,card_frame,jackpot_lock"
+			"subkeys": "10,100,100_2L,1500,200,3,300,3_1L,40,40_2,600,8,BG,Ball_blue_large,Ball_green_large,Ball_machine,Ball_machine_metal,Ball_orange_large,Ball_purple_large,Ball_red_large,Jackpot,Mark_green,Mark_red,Mark_white,Mark_x,Mark_yellow,Rail,Rail_extra,WinEffect_bingo,WinEffect_doubleH,WinEffect_doubleT,WinEffect_doubleV,WinEffect_doubleZ,WinEffect_doubleline0,WinEffect_doubleline1,WinEffect_doubleline2,WinEffect_line0,WinEffect_line1,WinEffect_line2,WinEffect_perimeter,WinEffect_triangle,WinEffect_twosides,WinEffect_v,WinEffect_y,card_bg_white,card_frame,jackpot_lock"
 		},
 		{
 			"url": "config/doublemania.conf",
