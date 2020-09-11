@@ -19,8 +19,6 @@ class Pachinko2 extends V2Game{
         CardGrid.defaultNumberSize = 55;
         BallManager.textBold = true;
 
-        CardGrid.winTimesOffset = new egret.Point( -1, -1 );
-
         PayTableManager.paytableUIType = Pachinko2PaytableUI;
         BallManager.ballOffsetY = 5;
 

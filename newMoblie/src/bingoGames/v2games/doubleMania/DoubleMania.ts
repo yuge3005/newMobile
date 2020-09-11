@@ -17,7 +17,6 @@ class DoubleMania extends V2Game{
         GameCard.gridOnTop = true;
         CardGrid.defaultNumberSize = 55;
 
-        CardGrid.winTimesOffset = new egret.Point( -1, -1 );
         this.needSmallWinTimesOnCard = true;
         this.ballArea.needLightCheck = true;
 
