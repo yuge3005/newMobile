@@ -99,12 +99,6 @@ class DoubleMania extends V2Game{
         super.clearRunningBallUI();
     }
 
-    private onAnimationComp( event: egret.Event ): void{
-        let extraUI : egret.MovieClip = this.extraUIObject as egret.MovieClip;
-        extraUI.gotoAndStop( extraUI.totalFrames );
-        extraUI.removeEventListener( egret.Event.LOOP_COMPLETE, this.onAnimationComp, this );
-    }
-
     private changeCardNumberFirstTime: boolean = true;
 
     public changeCardsBg(){
@@ -114,7 +108,7 @@ class DoubleMania extends V2Game{
         else this.playSound("dm_change_card_mp3");
 	}
 
-    protected runningWinAnimation( callback: Function, lightResult: Array<Object> ): void{
+    protected runningWinAnimation( callback: Function, lightResult: Array<Object>, isLastBall: boolean): void{
         let paytableName = "";
         let multiple = 0;
         let lastI: number = -1;
@@ -125,7 +119,7 @@ class DoubleMania extends V2Game{
                         multiple = PayTableManager.payTablesDictionary[ob].multiple;
                         paytableName = PayTableManager.payTablesDictionary[ob].payTableName;
                         lastI = i;
-                        if (paytableName.indexOf("bing") >= 0) this.dispatchEvent(new egret.Event("bingo"));
+                        if ( paytableName == PayTableManager.bingoPaytableName )this.dispatchEvent(new egret.Event("bingo"));
                     }
                 }
             }
@@ -147,9 +141,14 @@ class DoubleMania extends V2Game{
             this.showEb( 0 );
         }
 
-        if( SoundManager.soundOn && paytableName !== "" ){
-            this.getResultListToCheck( true );
-            this.getPaytablesFit(paytableName, callback);
+        if(paytableName !== "") {
+            if (!isLastBall) {
+                this.getResultListToCheck( true );
+                this.getPaytablesFit(paytableName, callback);
+            } else {
+                this.getPaytablesFit(paytableName);
+                callback();
+            }
         } else callback();
 
         if( paytableName == "round" || paytableName == "bingo" ){//miniGame
@@ -161,8 +160,8 @@ class DoubleMania extends V2Game{
 
     private showEb( type: number ): void{
         this.removeEb()
-        if( type ) this.ebAnimation = Com.addMovieClipAt( this, this._mcf, "doublemaniaDoctor", 318, 212 );
-        else this.ebAnimation = Com.addMovieClipAt( this, this._mcf, "funnyFace", 324, 240 );
+        if( type ) this.ebAnimation = Com.addMovieClipAt( this, this._mcf, "doublemaniaDoctor", 825, 348 );
+        else this.ebAnimation = Com.addMovieClipAt( this, this._mcf, "funnyFace", 822, 348 );
         setTimeout( this.removeEb.bind(this), 3000 );
     }
 
@@ -232,22 +231,18 @@ class DoubleMania extends V2Game{
 
     protected showMiniGame(){
         if( this.gameToolBar.autoPlaying ) this.gameToolBar.autoPlaying = false;
-        this.canQuickPay = false;
         this.miniGame = new MiniGameInDoubleMania;
         this.miniGame.addEventListener( egret.Event.REMOVED_FROM_STAGE, this.onMiniGameRemove, this );
         this.addChild( this.miniGame );
     }
 
-    private canQuickPay: boolean = true;
-
     public quickPlay(): void {
-        if( this.canQuickPay )super.quickPlay();
+        if( !this.miniGame )super.quickPlay();
 	}
 
     private onMiniGameRemove( e: egret.Event ): void{
         this.miniGame.removeEventListener( egret.Event.REMOVED_FROM_STAGE, this.onMiniGameRemove, this );
         this.miniGame = null;
-        this.canQuickPay = true;
         if( this.roundOverWaitingMiniGame ){
             super.sendRoundOverRequest();
             this.roundOverWaitingMiniGame = false;
