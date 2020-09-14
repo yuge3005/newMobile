@@ -202,10 +202,6 @@ class BingoMachine extends GameUIItem{
 		this.tellTounamentCurrentBet();
 	}
 
-	protected getFitEffectNameList(): Object{
-		return null;
-	}
-
 	protected addPayTables(){
 		this.payTableArea = eval( "new PayTableManager.layerType()" );
 		this.addChild( this.payTableArea );
