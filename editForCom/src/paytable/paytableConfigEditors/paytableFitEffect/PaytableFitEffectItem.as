@@ -23,6 +23,10 @@ package paytable.paytableConfigEditors.paytableFitEffect
 			for( var i: int = 0; i < rule.length; i++ ){
 				rules[i] = new RuleItem( rule[i] );
 				rules[i].x = 260 * i + 120;
+				if( i >= 5 ){
+					rules[i].x = 260 * ( i - 5 ) + 120;
+					rules[i].y = 20;
+				}
 				this.addChild( rules[i] );
 			}
 		}
