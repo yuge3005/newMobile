@@ -1,4 +1,4 @@
-package paytable.paytableConfigEditors.paytableEffect{
+package paytable.paytableConfigEditors.paytableFitEffect{
 	import flash.display.Sprite;
 	
 	import paytable.paytableConfigEditors.PaytableConfigEditor;
@@ -6,12 +6,12 @@ package paytable.paytableConfigEditors.paytableEffect{
 	
 	import settings.GameConfigObject;
 	
-	public class PaytableEffectEditor extends PaytableConfigEditor{
+	public class PaytableFitEffectEditor extends PaytableConfigEditor{
 		
 		private var paytablesRulesList: Vector.<Vector.<String>>;
 		private var paytablesRulesListUIContainer: Vector.<Sprite>;
 		
-		public function PaytableEffectEditor(){
+		public function PaytableFitEffectEditor(){
 		}
 		
 		protected override function getPaytables():void{

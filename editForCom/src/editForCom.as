@@ -13,6 +13,7 @@ package
 	import gameUI.CardLayer;
 	import gameUI.PaytableUILayer;
 	
+	import paytable.paytableConfigEditors.paytableFitEffect.PaytableFitEffectEditor;
 	import paytable.paytableConfigEditors.paytableFilter.PaytableFilterEditor;
 	import paytable.paytableConfigEditors.paytableSound.PaytableSoundEditor;
 	
@@ -90,6 +91,7 @@ package
 			paytableControl.addEventListener( EditorEvent.ADD_PAYTABLE_UI, onAddPaytableUI );
 			paytableControl.addEventListener( EditorEvent.OPEN_PAYTABLE_FILTER_EDITOR, onOpenPaytableFilterEditor );
 			paytableControl.addEventListener( EditorEvent.OPEN_PAYTABLE_SOUND_EDITOR, onOpenPaytableSoundEditor );
+			paytableControl.addEventListener( EditorEvent.OPEN_PAYTABLE_FIT_EFFECT_EDITOR, onOpenPaytableFitEffectEditor );
 		}
 		
 		private function initCardEditor():void{
@@ -231,6 +233,10 @@ package
 		
 		protected function onOpenPaytableSoundEditor(event:Event):void{
 			this.addChild( new PaytableSoundEditor );
+		}
+		
+		protected function onOpenPaytableFitEffectEditor(event:Event):void{
+			this.addChild( new PaytableFitEffectEditor );
 		}
 	}
 }

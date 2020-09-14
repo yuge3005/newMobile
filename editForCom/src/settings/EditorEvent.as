@@ -61,6 +61,8 @@ package settings{
 		public static const OPEN_PAYTABLE_FILTER_EDITOR: String = "openPaytableFilterEditor";
 		/**打开paytableSound编辑面板*/
 		public static const OPEN_PAYTABLE_SOUND_EDITOR: String = "openPaytableSoundEditor";
+		/**打开paytableFitEffect编辑面板*/
+		public static const OPEN_PAYTABLE_FIT_EFFECT_EDITOR: String = "openPaytableFitEffectEditor";
 		/**选择声音*/
 		public static const PAYTABLE_SOUND_CHOSEN: String = "paytableSoundChosen";
 		

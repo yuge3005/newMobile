@@ -57,6 +57,7 @@ package controler{
 		
 		private var filterEditorButton: Button;
 		private var soundEditorButton: Button;
+		private var fitEffectEditorButton: Button;
 		
 		public function PaytableEditorControl(){
 			drawBackground( 0xEEEEFF, new Rectangle( -20, 0, 960, 340 ) );
@@ -103,6 +104,8 @@ package controler{
 			filterEditorButton.addEventListener( MouseEvent.CLICK, onFilterButtonClick );
 			soundEditorButton = addItemAt( new Button, 780, 60, 120, "paytableSound" ) as Button;
 			soundEditorButton.addEventListener( MouseEvent.CLICK, onSoundButtonClick );
+			fitEffectEditorButton = addItemAt( new Button, 780, 100, 120, "paytablefitEffect" ) as Button;
+			fitEffectEditorButton.addEventListener( MouseEvent.CLICK, onFitEffectButtonClick );
 		}
 		
 		private function addRuleTextInputAt( x: int, y: int, lebalString: String ): TextInput{
@@ -228,6 +231,10 @@ package controler{
 		
 		private function onSoundButtonClick( event: MouseEvent ): void{
 			report( EditorEvent.OPEN_PAYTABLE_SOUND_EDITOR );
+		}
+		
+		private function onFitEffectButtonClick( event: MouseEvent ): void{
+			report( EditorEvent.OPEN_PAYTABLE_FIT_EFFECT_EDITOR );
 		}
 	}
 }
