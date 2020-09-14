@@ -59,19 +59,6 @@ class Hotbingo extends V2Game{
         this.getChildByName( this.assetStr("lotto_balls_up") ).visible = !isPlaying;
     }
 
-    protected getFitEffectNameList(): Object{
-        let firList: Object = {}
-        firList["line"] = [];
-        firList["line"][0] = "hotbingo_1";
-        firList["line"][1] = "hotbingo_2";
-        firList["line"][2] = "hotbingo_3";
-        firList["double line"] = [];
-        firList["double line"][0] = "hotbingo_D_1";
-        firList["double line"][1] = "hotbingo_D_2";
-        firList["double line"][2] = "hotbingo_D_3";
-		return firList;
-	}
-
     private arrowMcs: Array<Array<egret.MovieClip>>;
 
     private addLineArrows(): void{

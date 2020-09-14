@@ -50,19 +50,6 @@ class Turbo90 extends V2Game{
         this.superExtraBg.visible = false;
     }
 
-    protected getFitEffectNameList(): Object{
-        let firList: Object = {}
-        firList["line"] = [];
-        firList["line"][0] = "turbo90_1";
-        firList["line"][1] = "turbo90_2";
-        firList["line"][2] = "turbo90_3";
-        firList["double line"] = [];
-        firList["double line"][0] = "turbo90_D_1";
-        firList["double line"][1] = "turbo90_D_2";
-        firList["double line"][2] = "turbo90_D_3";
-		return firList;
-	}
-
     private arrowMcs: Array<Array<egret.MovieClip>>;
 
     private addLineArrows(): void{

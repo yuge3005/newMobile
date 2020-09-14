@@ -46,24 +46,6 @@ class BonusBingo extends V2Game{
         this.ganhoCounter = new GanhoCounter( this.showWinAnimationAt.bind( this ) );
     }
 
-    protected getFitEffectNameList(): Object{        
-        let firList: Object = {}
-		firList["bingo"] = "line_x3000";
-		firList["round"] = "line_x250";
-		firList["letter_x"] = "line_x8";
-		firList["letter_t"] = "line_x10";
-		firList["four_corners"] = "line_x2";
-		firList["diagonal_0"] = "line_x1";
-		firList["diagonal_2"] = "line_x1_02";
-        firList["single_line"] = [];
-        firList["single_line"][0] = "line_1th";
-        firList["single_line"][1] = "line_2th";
-        firList["single_line"][2] = "line_3th";
-        firList["single_line"][3] = "line_4th";
-        firList["single_line"][4] = "line_5th";
-		return firList;
-	}
-
     protected showLastBall( ballIndex: number ): void{
         super.showLastBall( ballIndex );
         this.showLastBallAt( ballIndex, 0, 0, 182 / 88 );

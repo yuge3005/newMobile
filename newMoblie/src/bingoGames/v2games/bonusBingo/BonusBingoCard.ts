@@ -44,7 +44,7 @@ class BonusBingoCard extends GameCard{
 			if( fitIndex.length ){
 				for( let i: number = 0; i< fitIndex.length; i++ ){
 					if( fitIndex[i] ){
-						effectImage = Com.addBitmapAt( this.fitEffectLayer, BingoMachine.getAssetStr( GameCard.fitEffectNameList[assetName][i] ), 0, 0 );
+						if( GameCard.fitEffectNameList[assetName][i] ) effectImage = Com.addBitmapAt( this.fitEffectLayer, BingoMachine.getAssetStr( GameCard.fitEffectNameList[assetName][i] ), 0, 0 );
 					}
 				}
 			}

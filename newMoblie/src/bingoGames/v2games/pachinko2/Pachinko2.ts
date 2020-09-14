@@ -33,35 +33,6 @@ class Pachinko2 extends V2Game{
         if( this.extraUIObject ) this.extraUIShowNumber();
     }
 
-    protected getFitEffectNameList(): Object{        
-        let firList: Object = {}
-		firList["bingo"] = "pattern1";
-		firList["round"] = "pattern2";
-		firList["II"] = "pattern3";
-		firList["fly"] = "pattern4";
-		firList["double_line"] = [];
-		firList["double_line"][0] = "pattern5_1";
-        firList["double_line"][1] = "pattern5_2";
-        firList["double_line"][2] = "pattern5_3";
-		firList["m"] = [];
-		firList["m"][0] = "pattern6_1";
-        firList["m"][1] = "pattern6_2";
-		firList["mouse"] = "pattern7";
-		firList["xx"] = "pattern8";
-		firList["trangle"] = [];
-		firList["trangle"][0] = "pattern9_1";
-		firList["trangle"][1] = "pattern9_2";
-		firList["plus"] = "pattern10";
-		firList["v"] = [];
-		firList["v"][0] = "pattern11_1";
-		firList["v"][1] = "pattern11_2";
-        firList["line"] = [];
-        firList["line"][0] = "pattern12_1";
-        firList["line"][1] = "pattern12_2";
-        firList["line"][2] = "pattern12_3";
-		return firList;
-	}
-
     protected showLastBall( ballIndex: number ): void{
         super.showLastBall( ballIndex );
         super.showLastBallAt( ballIndex, 45, 16, 190 / 96 );
