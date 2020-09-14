@@ -1,15 +1,13 @@
 package paytable.paytableConfigEditors.paytableFitEffect{
-	import flash.display.Sprite;
+	import flash.events.MouseEvent;
 	
 	import paytable.paytableConfigEditors.PaytableConfigEditor;
-	import paytable.paytableConfigEditors.paytableFilter.PaytableFilterItem;
 	
 	import settings.GameConfigObject;
 	
 	public class PaytableFitEffectEditor extends PaytableConfigEditor{
 		
-		private var paytablesRulesList: Vector.<Vector.<String>>;
-		private var paytablesRulesListUIContainer: Vector.<Sprite>;
+		private var paytablesFitEffects: Vector.<PaytableFitEffectItem>
 		
 		public function PaytableFitEffectEditor(){
 		}
@@ -18,18 +16,36 @@ package paytable.paytableConfigEditors.paytableFitEffect{
 			var paytableData: Object = GameConfigObject.payTables;
 			var i: int = 0;
 			paytables = new Vector.<String>;
-			paytablesRulesList = new Vector.<Vector.<String>>;
-			paytablesRulesListUIContainer = new Vector.<Sprite>;
+			paytablesFitEffects = new Vector.<PaytableFitEffectItem>;
 			for( var ob: String in paytableData ){
-				var sp: PaytableFilterItem = new PaytableFilterItem( ob );
-				sp.y = 20 + 40 * i;
-				this.addChild( sp );
-//				sp.addEventListener( "dragEnd", onDragEnd );
+				paytablesFitEffects[i] = new PaytableFitEffectItem( ob );
+				paytablesFitEffects[i].y = 20 + 40 * i;
+				this.addChild( paytablesFitEffects[i] );
 				paytables[i] = ob;
-				paytablesRulesList[i] = new Vector.<String>;
-				paytablesRulesListUIContainer[i] = new Sprite;
 				i++;
 			}
+		}
+		
+		protected override function onSave( event: MouseEvent ): void{
+			var fitEffectObject: Object = {};
+			for( var i: int = 0; i < paytables.length; i++ ){
+				fitEffectObject[paytables[i]] = paytablesFitEffects[i].getFitEffects();
+			}
+			GameConfigObject.payTablesFitEffect = fitEffectObject;
+		}
+		
+		protected override function onLoad( event: MouseEvent ): void{
+			if( GameConfigObject.payTablesFitEffect ){
+				var fitEffectObject: Object = GameConfigObject.payTablesFitEffect;
+				for( var ob: String in fitEffectObject ){
+					var index: int = paytables.indexOf( ob );
+					paytablesFitEffects[index].setFitEffect( fitEffectObject[ob] );
+				}
+			}
+		}
+		
+		protected override function onDeleteFilter( event: MouseEvent ): void{
+			GameConfigObject.payTablesFitEffect = null;
 		}
 	}
 }
