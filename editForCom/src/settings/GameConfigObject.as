@@ -90,7 +90,7 @@ package settings{
 			if( obj.payTables ) payTables = obj.payTables;
 			if( obj.payTablesFilter ) payTablesFilter = obj.payTablesFilter;
 			if( obj.payTablesSound ) payTablesSound = obj.payTablesSound;
-			if( obj.payTablesFitEffect ) payTablesFitEffect = obj.payTablesFitEffect;			
+			if( obj.payTablesFitEffect ) payTablesFitEffect = obj.payTablesFitEffect;
 			if( obj.card )card = obj.card;
 			if( obj.extraUIName )extraUIName = obj.extraUIName;
 			successCallback();

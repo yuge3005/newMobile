@@ -37,7 +37,7 @@ package paytable.paytableConfigEditors.paytableFitEffect
 		
 		public function setFitEffect( value: Array ):void{
 			for( var i: int = 0; i < rules.length; i++ ){
-				rules[i].fitEffect = value;
+				rules[i].fitEffect = value[i];
 			}
 		}
 	}
