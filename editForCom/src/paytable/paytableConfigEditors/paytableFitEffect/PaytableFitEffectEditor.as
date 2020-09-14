@@ -29,6 +29,7 @@ package paytable.paytableConfigEditors.paytableFitEffect{
 		protected override function onSave( event: MouseEvent ): void{
 			var fitEffectObject: Object = {};
 			for( var i: int = 0; i < paytables.length; i++ ){
+				var vt: Array = paytablesFitEffects[i].getFitEffects();
 				fitEffectObject[paytables[i]] = paytablesFitEffects[i].getFitEffects();
 			}
 			GameConfigObject.payTablesFitEffect = fitEffectObject;

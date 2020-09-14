@@ -45,10 +45,13 @@ package paytable.paytableConfigEditors.paytableFitEffect
 		}
 		
 		public function get fitEffect(): String{
+			if( tx.text == "" ) return null;
 			return tx.text;
 		}
+		
 		public function set fitEffect( value: String ): void{
-			tx.text = value;
+			if( value && value != "" )tx.text = value;
+			else tx.text = "";
 		}
 	}
 }

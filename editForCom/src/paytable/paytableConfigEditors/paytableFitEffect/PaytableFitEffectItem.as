@@ -27,15 +27,15 @@ package paytable.paytableConfigEditors.paytableFitEffect
 			}
 		}
 		
-		public function getFitEffects(): Vector.<String>{
-			var fitEffect: Vector.<String> = new Vector.<String>;
+		public function getFitEffects(): Array{
+			var fitEffect: Array = [];
 			for( var i: int = 0; i < rules.length; i++ ){
 				fitEffect[i] = rules[i].fitEffect;
 			}
 			return fitEffect;
 		}
 		
-		public function setFitEffect( value: Vector.<String> ):void{
+		public function setFitEffect( value: Array ):void{
 			for( var i: int = 0; i < rules.length; i++ ){
 				rules[i].fitEffect = value;
 			}
