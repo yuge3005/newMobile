@@ -102,9 +102,9 @@ package controler{
 			
 			filterEditorButton = addItemAt( new Button, 780, 20, 120, "paytableFilter" ) as Button;
 			filterEditorButton.addEventListener( MouseEvent.CLICK, onFilterButtonClick );
-			soundEditorButton = addItemAt( new Button, 780, 60, 120, "paytableSound" ) as Button;
+			soundEditorButton = addItemAt( new Button, 780, 53, 120, "paytableSound" ) as Button;
 			soundEditorButton.addEventListener( MouseEvent.CLICK, onSoundButtonClick );
-			fitEffectEditorButton = addItemAt( new Button, 780, 100, 120, "paytablefitEffect" ) as Button;
+			fitEffectEditorButton = addItemAt( new Button, 780, 86, 120, "paytablefitEffect" ) as Button;
 			fitEffectEditorButton.addEventListener( MouseEvent.CLICK, onFitEffectButtonClick );
 		}
 		

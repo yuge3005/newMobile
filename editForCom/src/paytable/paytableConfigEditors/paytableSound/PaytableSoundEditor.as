@@ -42,7 +42,7 @@ package paytable.paytableConfigEditors.paytableSound{
 		
 		private function onDelete( event: Event ): void{
 			var ptSound: PaytableSoundItem = event.target as PaytableSoundItem;
-			var index: int = ( ptSound.parent.y + 1 ) / 40;
+			var index: int = ( ptSound.y + 1 ) / 40;
 			var childIndex: int = paytablesSoundNames[index].text = "";
 		}
 		
