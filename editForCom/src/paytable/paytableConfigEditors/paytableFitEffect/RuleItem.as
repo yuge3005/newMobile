@@ -37,7 +37,7 @@ package paytable.paytableConfigEditors.paytableFitEffect
 		}
 		
 		protected function onEffectFileSellect(event:Event): void{
-			tx.text = event.target.name;
+			tx.text = event.target.name.replace( ".png", "" );
 		}
 		
 		protected function onRightClick(event:MouseEvent): void{

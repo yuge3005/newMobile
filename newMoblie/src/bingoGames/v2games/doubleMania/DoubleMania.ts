@@ -41,29 +41,6 @@ class DoubleMania extends V2Game{
         Com.addObjectAt(this, this.runningBallContainer, 874, 392 );
     }
 
-    protected getFitEffectNameList(): Object{
-        let firList: Object = {}
-		firList["bingo"] = "WinEffect_bingo";
-		firList["round"] = "WinEffect_perimeter";
-		firList["ii"] = "WinEffect_twosides";
-		firList["fly"] = "WinEffect_doubleH";
-		firList["double_line"] = [];
-		firList["double_line"][0] = "WinEffect_doubleline0";
-        firList["double_line"][1] = "WinEffect_doubleline1";
-        firList["double_line"][2] = "WinEffect_doubleline2";
-		firList["tt"] = "WinEffect_doubleT";
-		firList["xx"] = "WinEffect_doubleV";
-		firList["v"] = "WinEffect_v";
-        firList["trangle"] = "WinEffect_triangle";
-        firList["bao"] = "WinEffect_y";
-        firList["guo"] = "WinEffect_doubleZ";
-        firList["line"] = [];
-        firList["line"][0] = "WinEffect_line0";
-        firList["line"][1] = "WinEffect_line1";
-        firList["line"][2] = "WinEffect_line2";
-		return firList;
-	}
-
     protected winChange( event: egret.Event ): void{
 	}
 

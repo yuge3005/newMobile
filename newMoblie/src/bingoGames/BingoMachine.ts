@@ -108,7 +108,7 @@ class BingoMachine extends GameUIItem{
 		CardManager.startBlinkTimer();
 		this.addEventListener(egret.Event.REMOVED_FROM_STAGE, this.onRemove, this);
 
-		GameCard.fitEffectNameList = this.getFitEffectNameList();
+		GameCard.fitEffectNameList = obj["payTablesFitEffect"];
 		PaytableFilter.filterObject = obj["payTablesFilter"];
 		PaytableFilter.soundObject = obj["payTablesSound"];
 		MuLang.txt = this.getLanguageObject();
