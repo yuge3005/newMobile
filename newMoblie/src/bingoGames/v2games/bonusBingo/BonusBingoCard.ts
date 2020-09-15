@@ -17,7 +17,7 @@ class BonusBingoCard extends GameCard{
 	public useSuperBg( status: boolean ){
 		let index: number = this.getChildIndex( this.bg );
 		if( status ){
-			if( !this.superBg )this.superBg = Com.addBitmapAt( this, BingoMachine.getAssetStr( BonusBingoCard.superBgName ), 0, 0 );
+			if( !this.superBg )this.superBg = Com.addBitmapAt( this, BingoMachine.getAssetStr( BonusBingoCard.superBgName ), -17, -17 );
 			this.addChildAt( this.superBg, index + 1 );
 		}
 		else{

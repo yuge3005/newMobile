@@ -266,7 +266,10 @@ class BonusBingo extends V2Game{
     private showSpuerModeAnimation(){
         this.canQuickPay = false;
         this.forbidTouchEvent = true;
-        let doctorAnimation: egret.MovieClip = Com.addMovieClipAt( this, this._mcf, "bonusBingo_doctor", 100, - 54 );
+        let doctorAnimation: egret.MovieClip = Com.addMovieClipAt( this, this._mcf, "bonusBingo_doctor", 1100, 574 );
+        doctorAnimation.anchorOffsetX = 275;
+        doctorAnimation.anchorOffsetY = 200;
+        doctorAnimation.scaleX = doctorAnimation.scaleY = 2;
         doctorAnimation.addEventListener( egret.Event.ENTER_FRAME, this.dtAnimationFrameCounter, this );
         doctorAnimation.mask = new egret.Rectangle( 110, 54, 335, 210 );
         this.playSound( "bonusBingo_get_all_mp3" );
@@ -453,9 +456,9 @@ class BonusBingo extends V2Game{
         // tw.call( () => { blinkSp.parent.removeChild( blinkSp ) } );
 
         if( this.isSuper ){
-            let dtAnimation: egret.MovieClip = Com.addMovieClipAt( this, this._mcf, "bonusBingo_doctor", CardManager.cards[cardId].x + 85, CardManager.cards[cardId].y + 200 );
-            dtAnimation.anchorOffsetX = 280;
-            dtAnimation.anchorOffsetY = 275;
+            let dtAnimation: egret.MovieClip = Com.addMovieClipAt( this, this._mcf, "bonusBingo_doctor", CardManager.cards[cardId].x + 164, CardManager.cards[cardId].y + 206 );
+            dtAnimation.anchorOffsetX = 275;
+            dtAnimation.anchorOffsetY = 200;
             let dtTw: egret.Tween = egret.Tween.get( dtAnimation );
             dtTw.wait( 3000 );
             dtTw.call( () => { dtAnimation.stop() } );
