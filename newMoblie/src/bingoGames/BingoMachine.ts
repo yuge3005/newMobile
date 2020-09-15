@@ -12,6 +12,7 @@ class BingoMachine extends GameUIItem{
 
 	protected ballArea: BallManager;
 	protected cardArea: egret.DisplayObjectContainer;
+	protected arrowArea: CardArrowLayer;
 	protected payTableArea: PaytableLayer;
 	protected gameToolBar: BingoGameToolbar;
 	protected topbar: Topbar;

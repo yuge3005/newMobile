@@ -49,30 +49,15 @@ class Hotbingo extends V2Game{
         this.setChildIndex( this.lastLineUI, this.getChildIndex( this.ballArea ) );
 
         this.ballArea.needLightCheck = true;
-        
-        this.addLineArrows();
+
+        this.arrowArea = new CardArrowLayer( this._mcf, "arrowAnimationInT90", this.cardPositions, new egret.Point( -47, 64 ), 64, 0.92 );
+        this.addChild( this.arrowArea );
     }
 
     private playingUI( isPlaying: boolean ){
         this.getChildByName( this.assetStr("Backdrop_ENG-1-1") ).visible = isPlaying;
         this.getChildByName( this.assetStr("lotto_balls") ).visible = !isPlaying;
         this.getChildByName( this.assetStr("lotto_balls_up") ).visible = !isPlaying;
-    }
-
-    private arrowMcs: Array<Array<egret.MovieClip>>;
-
-    private addLineArrows(): void{
-        this.arrowMcs = [];
-        for( let i: number = 0; i < 4; i++ ){
-            this.arrowMcs[i] = [];
-            for( let j: number = 0; j < 3; j++ ){
-                let arrowAnimation: egret.MovieClip = Com.addMovieClipAt( this, this._mcf, "arrowAnimationInT90", this.cardPositions[i]["x"] - 47, this.cardPositions[i]["y"] + 64 * ( j + 1 ) );
-                arrowAnimation.scaleX = 0.92;
-                arrowAnimation.stop();
-                arrowAnimation.visible = false;
-                this.arrowMcs[i][j] = arrowAnimation;
-            }
-        }
     }
 
     protected showLastBall( ballIndex: number ): void{
@@ -125,24 +110,12 @@ class Hotbingo extends V2Game{
     protected afterCheck( resultList: Array<Object> ): void{
         this.payTableArea.clearPaytableFgs();
         super.afterCheck( resultList );
-        this.clearArrow();
+        this.arrowArea.clearArrow();
         for( let i: number = 0; i < 4; i++ ){
             if( resultList[i]["line"] && resultList[i]["line"]["unfitIndexs"] ){
                 for( let line in resultList[i]["line"]["unfitIndexs"] ){
-                    let arrow: egret.MovieClip = this.arrowMcs[i][line];
-                    arrow.visible = true;
-                    arrow.gotoAndPlay(1);
+                    this.arrowArea.arrowBlink( i, Number(line) );
                 }
-            }
-        }
-    }
-
-    private clearArrow(): void{
-        for( let i: number = 0; i < 4; i++ ){
-            for( let j: number = 0; j < 3; j++ ){
-                let arrow: egret.MovieClip = this.arrowMcs[i][j];
-                arrow.visible = false;
-                arrow.stop();
             }
         }
     }
@@ -216,7 +189,7 @@ class Hotbingo extends V2Game{
 
     protected startPlay(): void {
         super.startPlay();
-        this.clearArrow();
+        this.arrowArea.clearArrow();
         this.playingUI( true );
         ( this.jackpotArea as JackpotLayerForHotbingo ).running( true );
         this.payTableArea.clearPaytableFgs();

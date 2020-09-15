@@ -38,7 +38,8 @@ class Nineball extends V2Game{
 
         this.buildSuperEbArea( "mega_" + GlobelSettings.language, 54, 19 );
 
-        this.addLineArrows();
+        this.arrowArea = new NineballCardArrowLayer( this._mcf, "", this.cardPositions, new egret.Point(0, 75), 70 );
+        this.addChild( this.arrowArea );
     }
 
     protected buildSuperEbArea( superEbBgName: string, superEbAreaX: number, superEbAreaY: number ): void{
@@ -46,22 +47,6 @@ class Nineball extends V2Game{
         this.superExtraBg.width = 115;
         this.superExtraBg.height = 115;
         this.superExtraBg.visible = false;
-    }
-
-    private arrowMcs: Array<Array<egret.MovieClip>>;
-
-    private addLineArrows(): void{
-        this.arrowMcs = [];
-        for( let i: number = 0; i < 4; i++ ){
-            this.arrowMcs[i] = [];
-            for( let j: number = 0; j < 3; j++ ){
-                let isLeft: boolean = ( i & 1 ) == 0;
-                let arrowAnimation: egret.MovieClip = Com.addMovieClipAt( this, this._mcf, isLeft ? "nineball_arrow_right" : "nineball_arrow_left", this.cardPositions[i]["x"] + ( isLeft ? 600 : -45 ), this.cardPositions[i]["y"] + 70 * ( j + 1 ) + 5 );
-                arrowAnimation.stop();
-                arrowAnimation.visible = false;
-                this.arrowMcs[i][j] = arrowAnimation;
-            }
-        }
     }
 
     protected showExtraUI( show: boolean = true ){
@@ -128,31 +113,19 @@ class Nineball extends V2Game{
     protected afterCheck( resultList: Array<Object> ): void{
         this.payTableArea.clearPaytableFgs();
         super.afterCheck( resultList );
-        this.clearArrow();
+        this.arrowArea.clearArrow();
         for( let i: number = 0; i < 4; i++ ){
             if( resultList[i]["line"] && resultList[i]["line"]["unfitIndexs"] ){
                 for( let line in resultList[i]["line"]["unfitIndexs"] ){
-                    let arrow: egret.MovieClip = this.arrowMcs[i][line];
-                    arrow.visible = true;
-                    arrow.gotoAndPlay(1);
+                    this.arrowArea.arrowBlink( i, Number(line) );
                 }
-            }
-        }
-    }
-
-    private clearArrow(): void{
-        for( let i: number = 0; i < 4; i++ ){
-            for( let j: number = 0; j < 3; j++ ){
-                let arrow: egret.MovieClip = this.arrowMcs[i][j];
-                arrow.visible = false;
-                arrow.stop();
             }
         }
     }
 
     protected startPlay(): void {
         super.startPlay();
-        this.clearArrow();
+        this.arrowArea.clearArrow();
         this.payTableArea.clearPaytableFgs();
     }
 
