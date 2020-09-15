@@ -22,10 +22,17 @@ class CardArrowLayer extends egret.DisplayObjectContainer{
 		return arrowAnimation;
 	}
 
-	public arrowBlink( cardIndex: number, lineIndex: number ){
-		let arrow: egret.MovieClip = this.arrowMcs[cardIndex][lineIndex];
-		arrow.visible = true;
-		arrow.gotoAndPlay(1);
+	public arrowBlink( resultList: Array<Object> ){
+		this.clearArrow();
+		for( let i: number = 0; i < 4; i++ ){
+            if( resultList[i]["line"] && resultList[i]["line"]["unfitIndexs"] ){
+                for( let line in resultList[i]["line"]["unfitIndexs"] ){
+					let arrow: egret.MovieClip = this.arrowMcs[i][line];
+					arrow.visible = true;
+					arrow.gotoAndPlay(1);
+                }
+            }
+        }
 	}
 
 	public clearArrow(): void{

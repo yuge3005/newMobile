@@ -110,14 +110,7 @@ class Hotbingo extends V2Game{
     protected afterCheck( resultList: Array<Object> ): void{
         this.payTableArea.clearPaytableFgs();
         super.afterCheck( resultList );
-        this.arrowArea.clearArrow();
-        for( let i: number = 0; i < 4; i++ ){
-            if( resultList[i]["line"] && resultList[i]["line"]["unfitIndexs"] ){
-                for( let line in resultList[i]["line"]["unfitIndexs"] ){
-                    this.arrowArea.arrowBlink( i, Number(line) );
-                }
-            }
-        }
+        this.arrowArea.arrowBlink(resultList);
     }
 
 /******************************************************************************************************************************************************************/    
