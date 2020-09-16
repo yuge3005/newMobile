@@ -2,7 +2,7 @@ class GraphicTool {
 	public constructor() {
 	}
 
-	public static drawRect( target: any, rect: egret.Rectangle, color: number = 0, clearFirst: boolean = false, alpha: number = 1, roundRect: number = 0, lineThick: number = 0, lineColor: number = 0, lineAlpha: number = 1 ): void{
+	public static drawRect( target: egret.Shape|egret.Sprite, rect: egret.Rectangle, color: number = 0, clearFirst: boolean = false, alpha: number = 1, roundRect: number = 0, lineThick: number = 0, lineColor: number = 0, lineAlpha: number = 1 ): void{
 		if( clearFirst ) target.graphics.clear();
 		if( lineThick ) target.graphics.lineStyle( lineThick, lineColor, lineAlpha );
 		target.graphics.beginFill( color, alpha );
@@ -11,7 +11,7 @@ class GraphicTool {
 		target.graphics.endFill();
 	}
 
-	public static drawRectangles( target: egret.Shape, rectangles: Array<egret.Rectangle>, color: number = 0, clearFirst: boolean = false, alpha: number = 1 ): void{
+	public static drawRectangles( target: egret.Shape|egret.Sprite, rectangles: Array<egret.Rectangle>, color: number = 0, clearFirst: boolean = false, alpha: number = 1 ): void{
 		if( clearFirst ) target.graphics.clear();
 		target.graphics.beginFill( color, alpha );
 		for( let i: number = 0; i < rectangles.length; i++ ){

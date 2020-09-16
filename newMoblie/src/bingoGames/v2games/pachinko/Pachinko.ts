@@ -21,10 +21,6 @@ class Pachinko extends V2Game{
 
         GameCard.bgRound = 4;
 
-        GameCard.cardTexPosition = new egret.Point( 6, 2 );
-        GameCard.betTexPosition = new egret.Point(75, 2);
-        GameCard.texSize = 16;
-        GameCard.texColor = 0xFFFFFF;
         GameCard.zeroUI = "pachinko_cat";
 
         CardManager.cardType = PachinkoCard;
@@ -53,15 +49,15 @@ class Pachinko extends V2Game{
 
         this.showNoBetAndCredit();
 
-        this.addGameText( 46, 58, 17, 0xFFFFFF, "win", true, 100 );
+        MDS.addGameText( this, 46, 58, 17, 0xFFFFFF, "win", true, 100 );
 
-        this.winText = this.addGameText( 85, 58, 17, 0xFEFE00, "win", false, 185 );
+        this.winText = MDS.addGameText( this, 85, 58, 17, 0xFEFE00, "win", false, 185 );
         this.winText.textAlign = "right";
         this.winText.text = "0";
 
         this.runningBallContainer = new egret.DisplayObjectContainer;
         
-        this.ballCountText = this.addGameText( 455, 46, 15, 0x88FF88, "bet", false, 38 );
+        this.ballCountText = MDS.addGameText( this, 455, 46, 15, 0x88FF88, "bet", false, 38 );
         this.ballCountText.textAlign = "center";
         this.ballCountText.text = "";
 
@@ -251,7 +247,7 @@ class Pachinko extends V2Game{
         Com.addObjectAt( this, blinkSp, CardManager.cards[cardId].x, CardManager.cards[cardId].y );
         let tx: egret.TextField = Com.addTextAt( blinkSp, 5, 4, 220, 15, 15, false, true );
         tx.textAlign = "left";
-        tx.text = GameUIItem.languageText["win"][GlobelSettings.language] + " " + ( win * GameData.currentBet );
+        tx.text = MuLang.getText("win") + " " + ( win * GameData.currentBet );
         let outRect: egret.Rectangle = new egret.Rectangle( 0, 0, 203, 177 );
         let inRect: egret.Rectangle = new egret.Rectangle( 5, 21, 193, 151 );
         this.drawOutRect(blinkSp, 0xFFFF00, outRect, inRect);
