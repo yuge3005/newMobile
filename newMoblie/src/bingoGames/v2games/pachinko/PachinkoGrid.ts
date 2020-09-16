@@ -1,61 +1,49 @@
-class PachinkoGrid extends TowerGrid{
-    private shape: egret.Shape;
+class PachinkoGrid extends ExtraBlinkGrid{
+
+	public static gridMatrixs: Array<Array<number>>;
 
     constructor() {
         super();
-
-        // bg
-        this.addChildAt(new egret.Bitmap(RES.getRes("pachinko_json.card_box")), 0);
-
-        // shape
-        this.shape = new egret.Shape();
-        this.shape.width = CardGrid.gridSize.x;
-        this.shape.height = CardGrid.gridSize.y;
-        this.redrawBg(0xFFFFFF, 0);
-        this.addChildAt(this.shape, 1);
     }
 
-    protected _blink: boolean;
-	public get blink(): boolean{
-		return this._blink;
-	}
-    public set blink( value: boolean ){
-		if( this._blink == value )return;
-		this._blink = value;
-
-		if( !value ){
-			this.redrawBg( CardGrid.defaultBgColor, 0 );
-			
-			if( this.smallWinTimesText ){
-				if( this.contains( this.smallWinTimesText ) )this.removeChild( this.smallWinTimesText );
-				this.smallWinTimesText = null;
-			}
-			if( this.smallWinIcon ){
-				if( this.contains( this.smallWinIcon ) )this.removeChild( this.smallWinIcon );
-				this.smallWinIcon = null;
-			}
-		}
+	protected buildSmallWinText(){
+		this.extraBlinkNumTxt = Com.addLabelAt( this.extraBinkSp, 0, 6, CardGrid.gridSize.x, 30, 30, false, true );
+		this.extraBlinkNumTxt.textColor = 0;
+		this.smallWinTimesText = Com.addLabelAt( this.extraBinkSp, 0, 34, CardGrid.gridSize.x, 40, 40, true, true );
+		this.smallWinTimesText.stroke = 3;
 	}
 
-    protected redrawBg(color: number, alpha: number = 1): void {
-        if (this.shape) GraphicTool.drawRect( this.shape, new egret.Rectangle( 0, 0, CardGrid.gridSize.x, CardGrid.gridSize.y ), color, true, alpha );
-    }
+	protected getBlinkBg(): egret.Bitmap{
+		return Com.createBitmapByName( BingoMachine.getAssetStr( TowerGrid.defaultBgPicName ) );
+	}
 
-    public showEffect( isShow: boolean ){
-		if( this.blink )this.blink = false;
-		this._isChecked = isShow;
-		if( isShow ){
-			if( CardGrid.colorNumberOnEffect )this.numTxt.textColor = CardGrid.numberColorOnEffect;
-			if( CardGrid.colorNumberBackgroundOnEffect )this.redrawBg( CardGrid.numberBackgroundColorOnEffect );
-		}
-		else{
-			if( CardGrid.colorNumberOnEffect )this.numTxt.textColor = CardGrid.numberColor;
-			if( CardGrid.colorNumberBackgroundOnEffect )this.redrawBg( CardGrid.defaultBgColor, 0 );
-		}
-    }
-    
-    public showBlink( isShow: boolean ): void{
-		if( isShow )this.redrawBg( CardGrid.blinkColors1, 0.65 );
-		else this.redrawBg( CardGrid.blinkColors2, 0.65 );
+	public set extraBlinkNumber( value: number ){
+		this.extraBlinkNumTxt.text = "" + value;
+		let extraBg: egret.Bitmap = this.extraBinkSp.getChildAt( 0 ) as egret.Bitmap;
+		let index: number = Math.floor( value / 10 );
+		let gcmf: egret.ColorMatrixFilter = new egret.ColorMatrixFilter(PachinkoGrid.gridMatrixs[index]);
+		extraBg.filters = [ gcmf ];
+	}
+
+	public static setGridMatrix(){
+		let gridMatrixs = [];
+		gridMatrixs[0] = this.getMatrixArray( 0, 1, 0 );
+		gridMatrixs[1] = this.getMatrixArray( 1, 0, 0 );
+		gridMatrixs[2] = this.getMatrixArray( 1, 1, 0 );
+		gridMatrixs[3] = this.getMatrixArray( 0, 0, 1 );
+		gridMatrixs[4] = this.getMatrixArray( 1, 0.5, 0 );
+		gridMatrixs[5] = this.getMatrixArray( 0.3, 0.3, 0.3 );
+		gridMatrixs[6] = this.getMatrixArray( 0.9, 0, 0.9 );
+		gridMatrixs[7] = this.getMatrixArray( 0.6, 0, 0.9 );
+		this.gridMatrixs = gridMatrixs;
+	}
+
+	public static getMatrixArray( r: number, g: number, b: number ): Array<number>{
+		let matrix : Array<number> = [];
+		matrix = matrix.concat( [r, 0, 0, 0, 0 ] );
+		matrix = matrix.concat( [0, g, 0, 0, 0 ] );
+		matrix = matrix.concat( [0, 0, b, 0, 0 ] );
+		matrix = matrix.concat( [0, 0, 0, 1, 0 ] );
+		return matrix;
 	}
 }

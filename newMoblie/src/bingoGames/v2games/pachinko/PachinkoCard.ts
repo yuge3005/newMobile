@@ -1,7 +1,6 @@
-
-class PachinkoCard extends GameCard {
-    constructor(i: number) {
-        super(i);
+class PachinkoCard extends ExtraBlinkCard {
+    constructor( cardId: number ) {
+        super( cardId );
     }
 
     public set bet( value: number ){

@@ -15,11 +15,11 @@ class ExtraBlinkGrid extends TowerGrid{
 		else this.numTxt.textColor = CardGrid.numberColorOnEffect;
 	}
 
-	protected extraBlinkNumTxt: egret.TextField;
+	protected extraBlinkNumTxt: TextLabel;
 	protected extraBinkSp: egret.DisplayObjectContainer;
 
 	public set extraBlinkNumber( value: number ){
-		this.extraBlinkNumTxt.text = "" + value;
+		this.extraBlinkNumTxt.setText( "" + value );
 	}
 
 	public constructor() {

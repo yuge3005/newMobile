@@ -125,6 +125,8 @@ class Pachinko extends V2Game{
         Com.addObjectAt( this, this.pachinkoLetterContainer, 1202, 203 );
 
         this.useBetPaytable();
+        ExtraBlinkGrid.extraBink = true;
+        PachinkoGrid.setGridMatrix();
     }
 
     private useBetPaytable(): void{
