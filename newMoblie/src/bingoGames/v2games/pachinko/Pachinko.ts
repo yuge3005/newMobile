@@ -11,8 +11,6 @@ class Pachinko extends V2Game{
     private winText: egret.TextField;
     private blinkSpArray: Array<egret.Sprite>;
 
-    private gridPaytableIconList: Object;
-
     public constructor( assetsPath: string ) {
         super("pachinko.conf", assetsPath, 41);
         this.ptFilterConfig = "pachinko_filt";
@@ -52,30 +50,6 @@ class Pachinko extends V2Game{
         this.tipStatusTextPosition = new egret.Rectangle( 515, 56, 260, 14 );
         this.tipStatusTextColor = 0xFEFE00;
 
-        this.gridPaytableIconList = {};
-        let gridPaytableIconList = this.gridPaytableIconList;
-        gridPaytableIconList["pachinko_1l"] = null;
-        gridPaytableIconList["pachinko_2l"] = this.combinPaytableString( "2l" );
-        gridPaytableIconList["pachinko_3l"] = this.combinPaytableString( "3l" );
-        gridPaytableIconList["pachinko_4l"] = this.combinPaytableString( "4l" );
-        gridPaytableIconList["pachinko_round"] = this.combinPaytableString( "round" );
-
-        gridPaytableIconList["pachinko_flower"] = this.combinPaytableString( "flower" );
-        gridPaytableIconList["pachinko_#"] = this.combinPaytableString( "shape" );
-        gridPaytableIconList["pachinko_flower2"] = this.combinPaytableString( "xx" );
-        gridPaytableIconList["pachinko_mouse"] = this.combinPaytableString( "mouse" );
-        gridPaytableIconList["pachinko_plus"] = this.combinPaytableString( "plus" );
-        gridPaytableIconList["pachinko_corner"] = this.combinPaytableString( "corner" );
-
-        gridPaytableIconList["pachinko_p"] = this.combinPaytableString( "p" );
-        gridPaytableIconList["pachinko_a"] = this.combinPaytableString( "a" );
-        gridPaytableIconList["pachinko_c"] = this.combinPaytableString( "c" );
-        gridPaytableIconList["pachinko_h"] = this.combinPaytableString( "h" );
-        gridPaytableIconList["pachinko_i"] = this.combinPaytableString( "i" );
-        gridPaytableIconList["pachinko_n"] = this.combinPaytableString( "n" );
-        gridPaytableIconList["pachinko_k"] = this.combinPaytableString( "k" );
-        gridPaytableIconList["pachinko_o"] = this.combinPaytableString( "o" );
-
         this.needSmallWinTimesOnCard = true;
         this.ballArea.needLightCheck = true;
 
@@ -85,21 +59,12 @@ class Pachinko extends V2Game{
         PayTableManager.bingoPaytableName = "pachinko_bingo";
     }
 
-    private combinPaytableString( str: string ){
-        return "pachinko_grid_" + str;
-    }
-
     protected init(){
         super.init();
 
-        this.addGameText( 46, 12, 17, 0xFFFFFF, "credit", true, 100 );
-        this.addGameText( 46, 35, 17, 0xFFFFFF, "bet", true, 100 );
-        this.addGameText( 46, 58, 17, 0xFFFFFF, "win", true, 100 );
+        this.showNoBetAndCredit();
 
-        this.creditText = this.addGameText( 85, 12, 17, 0xFEFE00, "credit", false, 185 );
-        this.creditText.textAlign = "right";
-        this.betText = this.addGameText( 85, 35, 17, 0xFEFE00, "bet", false, 185 );
-        this.betText.textAlign = "right";
+        this.addGameText( 46, 58, 17, 0xFFFFFF, "win", true, 100 );
 
         this.winText = this.addGameText( 85, 58, 17, 0xFEFE00, "win", false, 185 );
         this.winText.textAlign = "right";
@@ -410,22 +375,10 @@ class Pachinko extends V2Game{
 
         for( let index in blinkGrids ){
             let winTimes: number = 0;
-            let sp: egret.DisplayObjectContainer = new egret.DisplayObjectContainer;
             for( let j: number = 0; j < blinkGrids[index].length; j++ ){
                 let winTimesTxt: string = PayTableManager.payTablesDictionary[blinkGrids[index][j]].ui["tx"].text;
                 winTimes += parseFloat( winTimesTxt.replace( /\D/, "" ) );
-                // sp.addChild( this.gridPaytableIconList[ PayTableManager.payTablesDictionary[blinkGrids[index][j]].payTableName ] );
-                if( this.gridPaytableIconList[ PayTableManager.payTablesDictionary[blinkGrids[index][j]].payTableName ] ){
-                    let icon: egret.Bitmap = Com.addBitmapAt( sp, this.assetStr( this.gridPaytableIconList[ PayTableManager.payTablesDictionary[blinkGrids[index][j]].payTableName ] ), 0, 0 );
-                    icon.x = ( sp.numChildren - 1 ) * 11;
-                }
             }
-
-            if( sp.numChildren > 0 ){
-                sp.scaleX = sp.scaleY = 0.7;
-                CardManager.setSmallWinIcon( cardIndex, parseInt( index ), sp );
-            }
-
             CardManager.setSmallWinTime( cardIndex, parseInt( index ), winTimes );
         }
     }
