@@ -28,6 +28,7 @@ class Pachinko extends V2Game{
         GameCard.gridOnTop = true;
         CardGrid.defaultNumberSize = 55;
 
+        PayTableManager.paytableUIType = PachinkoPaytableUI;
         BallManager.ballOffsetY = 3;
 
         this.needListenToolbarStatus = true;
