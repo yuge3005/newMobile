@@ -49,20 +49,11 @@ class Pachinko extends V2Game{
         this.tileBg();
         this.showNoBetAndCredit();
 
-        MDS.addGameText( this, 46, 58, 17, 0xFFFFFF, "win", true, 100 );
-
-        this.winText = MDS.addGameText( this, 85, 58, 17, 0xFEFE00, "win", false, 185 );
-        this.winText.textAlign = "right";
-        this.winText.text = "0";
-
         this.runningBallContainer = new egret.DisplayObjectContainer;
+        Com.addObjectAt( this, this.runningBallContainer, 996, 154 );
         
         this.ballCountText = MDS.addGameTextCenterShadow( this, 1445, 204, 55, 0x88FF88, "", false, 100, true, false );
         this.ballCountText.fontFamily = "Arial";
-
-        let normalText: egret.TextField = Com.addTextAt( this, 335, 26 + BrowserInfo.textUp, 90, 13, 13, false, true );
-        normalText.text = "NORMAL";
-        normalText.textColor = 0;
 
         this.buildSuperEbArea( "mega_" + GlobelSettings.language, 457, 94 );
 
@@ -73,30 +64,19 @@ class Pachinko extends V2Game{
 
     protected showLastBall( ballIndex: number ): void{
         super.showLastBall( ballIndex );
-        this.showLastBallAt(ballIndex, 0, 0);
-        Com.addObjectAt( this, this.runningBallContainer, 260, 15 );
+        super.showLastBallAt(ballIndex, 0, 0, 17 / 7 );
 
         this.playSound("pck_ball_mp3");
 
         if (this.btExtra && (this.currentBallIndex === this.gratisNumber - 1)) this.playSound("pck_free_extra_mp3");
     }
 
-    protected showLastBallAt( ballIndex: number, x: number, y: number, scale: number = 1 ): void{
-		if( this.runningBallUI && ( this.runningBallContainer ).contains( this.runningBallUI ) ){
-			( this.runningBallContainer ).removeChild( this.runningBallUI );
-		}
-		this.runningBallUI = this.ballArea.getABigBall( ballIndex, "_small", 36 );
-		this.runningBallUI.scaleX = this.runningBallUI.scaleY = scale;
-		Com.addObjectAt( this.runningBallContainer, this.runningBallUI, x, y );
-	}
-
     protected getGratisUI(): egret.DisplayObject{
 		return Com.addMovieClipAt( this, this._mcf, "pachinkoCat", 0, 0 );;
 	}
 
     protected clearRunningBallUI(): void{
-        if( this.runningBallContainer && this.contains( this.runningBallContainer ) )this.removeChild( this.runningBallContainer );
-
+        super.clearRunningBallUI();
         this.ballCountText.text = "";
     }
 
@@ -106,8 +86,6 @@ class Pachinko extends V2Game{
     }
 
 	protected winChange( event: egret.Event ): void{
-		this.winText.text = Utils.formatCoinsNumber( event["winCoins"] );
-        super.winChange( event );
 	}
 
 	protected tipStatus( event: egret.Event ): void{
