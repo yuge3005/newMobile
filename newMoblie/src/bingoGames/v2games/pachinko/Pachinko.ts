@@ -146,7 +146,7 @@ class Pachinko extends V2Game{
         this.pachinkoLetterContainer = new egret.DisplayObjectContainer;
         this.addChild( this.pachinkoLetterContainer );
         for( let i: number = 0; i < 8; i++ ){
-            this.pachinkoLetters[i] = Com.addBitmapAt( this.pachinkoLetterContainer, this.assetStr( "pachinko_letter_" + ( i + 1 ) ), 350 + 11 * i, 38 );
+            this.pachinkoLetters[i] = Com.addBitmapAt( this.pachinkoLetterContainer, this.assetStr( "pachinko_letter_" + ( i + 1 ) ), 1202 + 29 * i + ( i > 4 ? -16 : 0 ), 203 );
         }
         this.useBetPaytable();
     }
