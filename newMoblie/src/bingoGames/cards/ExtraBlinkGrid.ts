@@ -11,6 +11,7 @@ class ExtraBlinkGrid extends TowerGrid{
 		if( !value ){
 			this.currentBgPic = this.defaultBgPic;
 			this.extraBinkSp.visible = false;
+			this.numTxt.textColor = CardGrid.numberColor;
 		}
 		else this.numTxt.textColor = CardGrid.numberColorOnEffect;
 	}
