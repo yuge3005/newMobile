@@ -19,6 +19,8 @@ class Pachinko extends V2Game{
         
         this.blinkSpArray = new Array<egret.Sprite>();
 
+        PayTableManager.layerType = PachinkoPaytableLayer;
+
         GameCard.zeroUI = "pachinko_cat";
 
         CardManager.cardType = PachinkoCard;
@@ -170,14 +172,6 @@ class Pachinko extends V2Game{
         return letterIndex;
     }
 
-    private setPachinkoLetter( index: number ): void{
-        for( let i: number = 0; i < 8; i++ ){
-            if( i < index )this.pachinkoLetters[i].filters = [MatrixTool.colorMatrixPure(0xFFFF00)];
-            else if( i == index )this.pachinkoLetters[i].filters = [MatrixTool.colorMatrixPure(0xFF0000)];
-            else this.pachinkoLetters[i].filters = [];
-        }
-    }
-
     private addPachinkoPaytable( index: number ): void{
         let pachinkoStr: string = Pachinko.pachinkoString;
         if( this.currentPachinkoStr ){
@@ -283,13 +277,7 @@ class Pachinko extends V2Game{
     private showPachinkoLetterAnimation(): void{
         let pachinkoStr: string = Pachinko.pachinkoString;
         let i: number = pachinkoStr.indexOf( this.currentPachinkoStr );
-        this.pachinkoLetterContainer.removeChild( this.pachinkoLetters[i] );
-        this.pachinkoLetters[i] = Com.addBitmapAt( this.pachinkoLetterContainer, this.assetStr( "pachinko_letter_" + ( i + 1 ) ), 350 + 11 * i, 38 );
-        this.pachinkoLetters[i].scaleX = 5;
-        this.pachinkoLetters[i].scaleY = 5;
-        this.pachinkoLetters[i].filters = [MatrixTool.colorMatrixPure(0xFFFF00)];
-        let tw: egret.Tween = egret.Tween.get( this.pachinkoLetters[i] );
-        tw.to( { scaleX: 1, scaleY: 1 }, 1200 );
+        this.pachinkoLetterContainer.showPachinkoLetterAnimation( i );
     }
 
     protected onBetChanged( event: egret.Event ): void{
@@ -302,7 +290,7 @@ class Pachinko extends V2Game{
     private setLettersByBet(): void{
         let pachinkoPaytableIndex: number = this.getPaytableIndex( GameData.currentBet );
 
-        this.setPachinkoLetter( pachinkoPaytableIndex );
+        this.pachinkoLetterContainer.setPachinkoLetter( pachinkoPaytableIndex );
         this.addPachinkoPaytable( pachinkoPaytableIndex );
     }
 
@@ -335,19 +323,13 @@ class Pachinko extends V2Game{
 
     private runPachinkoGetAllLetterAnimation( betProgressIndex: number ){
         this.addChild( this.pachinkoLetterContainer );
-        this.pachinkoLetters[7].filters = [MatrixTool.colorMatrixPure(0xFFFF00)];
         this.playSound( "pck_pachinko_wav" );
-        let tw: egret.Tween = egret.Tween.get( this.pachinkoLetterContainer );
-        tw.to( { scaleX: 4, scaleY: 4, x: -1200, y: -160 }, 400 );
-        tw.to( { scaleX: 1, scaleY: 1, x: 0, y: 0  }, 400 );
-        tw.to( { scaleX: 4, scaleY: 4, x: -1200, y: -160  }, 400 );
-        tw.to( { scaleX: 1, scaleY: 1, x: 0, y: 0  }, 400 );
-        tw.to( { scaleX: 4, scaleY: 4, x: -1200, y: -160  }, 400 );
-        tw.to( { scaleX: 1, scaleY: 1, x: 0, y: 0  }, 400 );
-        tw.to( { scaleX: 4, scaleY: 4, x: -1200, y: -160  }, 400 );
-        tw.to( { scaleX: 1, scaleY: 1, x: 0, y: 0  }, 400 );
-        tw.wait(100);
-        tw.call( () => { this.betProgress[betProgressIndex]["letterIndex"] = 0; this.setLettersByBet(); } );
+        this.pachinkoLetterContainer.runPachinkoGetAllLetterAnimation( this.afterGetAllLetters.bind(this, betProgressIndex) );
+    }
+
+    private afterGetAllLetters( betProgressIndex: number ){
+        this.betProgress[betProgressIndex]["letterIndex"] = 0;
+        this.setLettersByBet();
     }
 
     protected showSmallWinResult( cardIndex: number, blinkGrids: Object ): void{
