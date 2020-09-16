@@ -25,9 +25,8 @@ class Pachinko extends V2Game{
 
         CardManager.cardType = PachinkoCard;
         CardManager.gridType = PachinkoGrid;
-
-        CardGrid.defaultBgColor = 0xFFFFFF;
-        CardGrid.defaultNumberSize = 20;
+        GameCard.gridOnTop = true;
+        CardGrid.defaultNumberSize = 55;
 
         BallManager.ballOffsetY = 3;
 
@@ -57,9 +56,8 @@ class Pachinko extends V2Game{
 
         this.runningBallContainer = new egret.DisplayObjectContainer;
         
-        this.ballCountText = MDS.addGameText( this, 455, 46, 15, 0x88FF88, "bet", false, 38 );
-        this.ballCountText.textAlign = "center";
-        this.ballCountText.text = "";
+        this.ballCountText = MDS.addGameTextCenterShadow( this, 1445, 204, 55, 0x88FF88, "", false, 100, true, false );
+        this.ballCountText.fontFamily = "Arial";
 
         let normalText: egret.TextField = Com.addTextAt( this, 335, 26 + BrowserInfo.textUp, 90, 13, 13, false, true );
         normalText.text = "NORMAL";
