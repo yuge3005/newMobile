@@ -119,10 +119,10 @@ class Pachinko extends V2Game{
 
     /*********************************************************************************************************************************************************/
 
-    private static pachinkoString: string = "pachinko"
-    private pachinkoLetters: Array<egret.Bitmap>;
+    public static pachinkoString: string = "pachinko";
+
     private pachinkoPaytableList: Object;
-    private pachinkoLetterContainer: egret.DisplayObjectContainer;
+    private pachinkoLetterContainer: PachinkoLetterLayer;
     private currentPachinkoStr: string;
     private hasPachinkoLetter: boolean;
 
@@ -142,12 +142,9 @@ class Pachinko extends V2Game{
     }
 
     private letsPachinko():void{
-        this.pachinkoLetters = [];
-        this.pachinkoLetterContainer = new egret.DisplayObjectContainer;
-        this.addChild( this.pachinkoLetterContainer );
-        for( let i: number = 0; i < 8; i++ ){
-            this.pachinkoLetters[i] = Com.addBitmapAt( this.pachinkoLetterContainer, this.assetStr( "pachinko_letter_" + ( i + 1 ) ), 1202 + 29 * i + ( i > 4 ? -16 : 0 ), 203 );
-        }
+        this.pachinkoLetterContainer = new PachinkoLetterLayer;
+        Com.addObjectAt( this, this.pachinkoLetterContainer, 1202, 203 );
+
         this.useBetPaytable();
     }
 
