@@ -13,7 +13,7 @@ class Pachinko extends V2Game{
 
     public constructor( assetsPath: string ) {
         super("pachinko.conf", assetsPath, 41);
-        this.ptFilterConfig = "pachinko_filt";
+        this.languageObjectName = "pachinko_tx";
 
         this.gratisUIIsOverExtraUI = true;
         
@@ -36,14 +36,6 @@ class Pachinko extends V2Game{
         CardGrid.blinkColors1 = 0xFFFF00;
         CardGrid.blinkColors2 = 0xFF00FF;
 
-        let languageText = GameUIItem.languageText;
-        languageText["bingo"] = { en: "BINGO", es: "BINGO", pt: "BINGO" };
-        languageText["double line"] = { en: "DOUBLE LINE", es: "DOBLE LÍNEA", pt: "LINHA DUPLA" };
-        languageText["line"] = { en: "LINE", es: "LÍNEA", pt: "LINHA" };
-        languageText["four corners"] = { en: "4 CORNERS", es: "4 ESQUINAS", pt: "4 ESQUINAS" };
-
-        languageText["win"] = { en: "WIN", es: "CANADO", pt: "CANHO" };
-
         BallManager.ballOffsetY = 3;
 
         this.needListenToolbarStatus = true;
@@ -52,9 +44,6 @@ class Pachinko extends V2Game{
 
         this.needSmallWinTimesOnCard = true;
         this.ballArea.needLightCheck = true;
-
-        GameToolBar.toolBarY = 474;
-        BingoBackGroundSetting.defaultScale = false;
 
         PayTableManager.bingoPaytableName = "pachinko_bingo";
     }
@@ -449,40 +438,6 @@ class Pachinko extends V2Game{
     protected showJackpot( jackpot: number, jackpotMinBet: number, betConfig: Array<Object> ){
         this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 522, 16 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 0, -6 ), new egret.Rectangle( 0, 0, 197, 26 ), 22, 0xFFFF00 ) );
     }
-
-    protected getPaytablesFit( paytabledName: string, callback: Function = null ): void{
-		let soundName = "";
-        switch (paytabledName) {
-            case "pachinko_2l": soundName = "pck_2line_mp3";break;
-            case "pachinko_a": soundName = "pck_a_mp3";break;
-            case "pachinko_bingo": soundName = "pck_bingo_mp3";break;
-            case "pachinko_flower": soundName = "pck_flower_wav"; break;
-            // case "pachinko_1l": soundName = "";break;
-            case "pachinko_round": soundName = "pck_round_wav";break;
-            case "pachinko_mouse": soundName = ""; break;
-            case "pachinko_flower2": soundName = "pck_flower_wav";break;
-            case "pachinko_p": soundName = "pck_p_mp3";break;
-            case "pachinko_c": soundName = "pck_c_mp3"; break;
-            case "pachinko_h": soundName = "pck_h_mp3";break;
-            case "pachinko_i": soundName = "pck_i_mp3";break;
-            case "pachinko_n": soundName = "pck_n_mp3"; break;
-            case "pachinko_k": soundName = "pck_k_mp3";break;
-            case "pachinko_o": soundName = "pck_o_mp3";break;
-            case "pachinko_plus": soundName = "pck_plus_wav"; break;
-            case "pachinko_#": soundName = "";break;
-            case "pachinko_4l": soundName = "pck_4line_mp3";break;
-            case "pachinko_3l": soundName = "pck_3line_mp3"; break;
-            case "pachinko_corner": soundName = "pck_4corners_mp3"; break;
-            case "pachinko_pachinko": soundName = "pck_pachinko_wav"; break;
-            default: break;
-        }
-        if (SoundManager.soundOn && soundName !== "") {
-            this.playSound(soundName, 1, callback);
-            soundName = "";
-        } else {
-            callback();
-        }
-	}
 
     protected hasExtraBallFit(): void {
         this.stopSound("pck_ball_mp3");
