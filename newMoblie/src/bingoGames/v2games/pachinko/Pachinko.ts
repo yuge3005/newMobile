@@ -101,7 +101,8 @@ class Pachinko extends V2Game{
     public static pachinkoString: string = "pachinko";
 
     private pachinkoPaytableList: Object;
-    private pachinkoLetterContainer: PachinkoLetterLayer;
+    private pachinkoLetters1: PachinkoLetterLayer;
+    private pachinkoLetters2: PachinkoLetterLayer;
     private currentPachinkoStr: string;
     private hasPachinkoLetter: boolean;
 
@@ -121,8 +122,11 @@ class Pachinko extends V2Game{
     }
 
     private letsPachinko():void{
-        this.pachinkoLetterContainer = new PachinkoLetterLayer;
-        Com.addObjectAt( this, this.pachinkoLetterContainer, 1202, 203 );
+        this.pachinkoLetters1 = new PachinkoLetterLayer;
+        Com.addObjectAt( this, this.pachinkoLetters1, 1202, 203 );
+        this.pachinkoLetters2 = new PachinkoLetterLayer;
+        Com.addObjectAt( this, this.pachinkoLetters2, 372, 45 );
+        this.pachinkoLetters2.scaleX = this.pachinkoLetters2.scaleY = 1.72;
 
         this.useBetPaytable();
         ExtraBlinkGrid.extraBink = true;
@@ -256,7 +260,8 @@ class Pachinko extends V2Game{
     private showPachinkoLetterAnimation(): void{
         let pachinkoStr: string = Pachinko.pachinkoString;
         let i: number = pachinkoStr.indexOf( this.currentPachinkoStr );
-        this.pachinkoLetterContainer.showPachinkoLetterAnimation( i );
+        this.pachinkoLetters1.showPachinkoLetterAnimation( i );
+        this.pachinkoLetters2.showPachinkoLetterAnimation( i );
     }
 
     protected onBetChanged( event: egret.Event ): void{
@@ -269,7 +274,8 @@ class Pachinko extends V2Game{
     private setLettersByBet(): void{
         let pachinkoPaytableIndex: number = this.getPaytableIndex( GameData.currentBet );
 
-        this.pachinkoLetterContainer.setPachinkoLetter( pachinkoPaytableIndex );
+        this.pachinkoLetters1.setPachinkoLetter( pachinkoPaytableIndex );
+        this.pachinkoLetters2.setPachinkoLetter( pachinkoPaytableIndex );
         this.addPachinkoPaytable( pachinkoPaytableIndex );
     }
 
@@ -301,9 +307,9 @@ class Pachinko extends V2Game{
     }
 
     private runPachinkoGetAllLetterAnimation( betProgressIndex: number ){
-        this.addChild( this.pachinkoLetterContainer );
+        this.addChild( this.pachinkoLetters1 );
         this.playSound( "pck_pachinko_wav" );
-        this.pachinkoLetterContainer.runPachinkoGetAllLetterAnimation( this.afterGetAllLetters.bind(this, betProgressIndex) );
+        this.pachinkoLetters1.runPachinkoGetAllLetterAnimation( this.afterGetAllLetters.bind(this, betProgressIndex) );
     }
 
     private afterGetAllLetters( betProgressIndex: number ){
