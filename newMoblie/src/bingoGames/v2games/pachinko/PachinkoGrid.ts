@@ -1,5 +1,4 @@
-
-class PachinkoGrid extends CardGrid {
+class PachinkoGrid extends TowerGrid{
     private shape: egret.Shape;
 
     constructor() {

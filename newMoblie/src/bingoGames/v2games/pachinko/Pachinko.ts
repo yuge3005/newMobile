@@ -19,8 +19,6 @@ class Pachinko extends V2Game{
         
         this.blinkSpArray = new Array<egret.Sprite>();
 
-        GameCard.bgRound = 4;
-
         GameCard.zeroUI = "pachinko_cat";
 
         CardManager.cardType = PachinkoCard;
@@ -28,9 +26,6 @@ class Pachinko extends V2Game{
 
         CardGrid.defaultBgColor = 0xFFFFFF;
         CardGrid.defaultNumberSize = 20;
-
-        CardGrid.blinkColors1 = 0xFFFF00;
-        CardGrid.blinkColors2 = 0xFF00FF;
 
         BallManager.ballOffsetY = 3;
 
@@ -42,11 +37,14 @@ class Pachinko extends V2Game{
         this.ballArea.needLightCheck = true;
 
         PayTableManager.bingoPaytableName = "pachinko_bingo";
+        BingoBackGroundSetting.gameMask = new egret.Rectangle( 0, 0, 2560, 1440 );
+        BingoGameToolbar.toolBarY = 1152;
     }
 
     protected init(){
         super.init();
 
+        this.tileBg();
         this.showNoBetAndCredit();
 
         MDS.addGameText( this, 46, 58, 17, 0xFFFFFF, "win", true, 100 );
