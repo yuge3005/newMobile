@@ -32,7 +32,7 @@ class PachinkoGrid extends ExtraBlinkGrid{
 		gridMatrixs[2] = this.getMatrixArray( 1, 1, 0 );
 		gridMatrixs[3] = this.getMatrixArray( 0, 0, 1 );
 		gridMatrixs[4] = this.getMatrixArray( 1, 0.5, 0 );
-		gridMatrixs[5] = this.getMatrixArray( 0.7, 0.7, 0.7 );
+		gridMatrixs[5] = this.getMatrixArray( 0.8, 0.8, 0.8 );
 		gridMatrixs[6] = this.getMatrixArray( 0.9, 0, 0.9 );
 		gridMatrixs[7] = this.getMatrixArray( 0.6, 0, 0.9 );
 		this.gridMatrixs = gridMatrixs;

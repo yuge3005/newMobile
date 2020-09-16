@@ -337,28 +337,6 @@ class Pachinko extends V2Game{
         }
     }
 
-    protected runningWinAnimation( callback: Function, lightResult: Array<Object> ): void{
-        let paytableName = "";
-        let multiple = 0;
-        for( let i = 0; i < lightResult.length; i++ ){
-            for (let ob in lightResult[i]) {
-                if (!this.lastLightResult[i] || !this.lastLightResult[i][ob] || this.lastLightResult[i][ob].length < lightResult[i][ob].length) {
-                    if (multiple < PayTableManager.payTablesDictionary[ob].multiple) {
-                        multiple = PayTableManager.payTablesDictionary[ob].multiple;
-                        paytableName = PayTableManager.payTablesDictionary[ob].payTableName;
-                        if (paytableName.indexOf("bing") >= 0) this.dispatchEvent(new egret.Event("bingo"));
-                    }
-                }
-            }
-        }
-
-        this.lastLightResult = lightResult;
-        if( SoundManager.soundOn && paytableName !== "" ){
-            this.getResultListToCheck( true );
-            this.getPaytablesFit(paytableName, callback);
-        } else callback();
-	}
-
     public onRoundOver( data: Object ){
         super.onRoundOver( data );
         this.resetLetterIndex( data["letra"] );
