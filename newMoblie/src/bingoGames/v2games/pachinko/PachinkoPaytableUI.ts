@@ -5,7 +5,7 @@ class PachinkoPaytableUI extends PaytableUI{
 	}
 
 	public focus(){
-		GraphicTool.drawRect( this, new egret.Rectangle( -3, -3, this.bg.width + 6, this.bg.height + 6 ), PaytableUI.focusColor, true, 0.0, 0, 2, PaytableUI.focusColor );
+		GraphicTool.drawRect( this, new egret.Rectangle( -5, -5, this.bg.width + 10, this.bg.height + 10 ), PaytableUI.focusColor, true, 0, 10, 5, PaytableUI.focusColor );
 		this.tx.textColor = 0xFF0000;
 	}
 
@@ -17,6 +17,8 @@ class PachinkoPaytableUI extends PaytableUI{
 			this.grids[i].y = Math.floor( i / 5 ) * 19;
 			GraphicTool.drawRect( this.grids[i], new egret.Rectangle( 0, 0, 15, 15 ), 0, true );
 		}
+
+		this.tx.y += 5;
 	}
 
 	public clearStatus(): void{
@@ -27,7 +29,7 @@ class PachinkoPaytableUI extends PaytableUI{
 	protected onFrame(event:egret.Event):void{
 		this.currentEffect++;
 		for( var i: number = 0; i < this.blinkGridsIndexs.length; i++ ){
-			this.grids[this.blinkGridsIndexs[i]].filters = [ this._winEffects[(this.currentEffect>>4)%this._winEffects.length] ];
+			// this.grids[this.blinkGridsIndexs[i]].filters = [ this._winEffects[(this.currentEffect>>4)%this._winEffects.length] ];
 		}
 	}
 }
