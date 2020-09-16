@@ -100,7 +100,6 @@ class Pachinko extends V2Game{
 
     public static pachinkoString: string = "pachinko";
 
-    private pachinkoPaytableList: Object;
     private pachinkoLetters1: PachinkoLetterLayer;
     private pachinkoLetters2: PachinkoLetterLayer;
     private currentPachinkoStr: string;
@@ -128,20 +127,8 @@ class Pachinko extends V2Game{
         Com.addObjectAt( this, this.pachinkoLetters2, 372, 45 );
         this.pachinkoLetters2.scaleX = this.pachinkoLetters2.scaleY = 1.72;
 
-        this.useBetPaytable();
         ExtraBlinkGrid.extraBink = true;
         PachinkoGrid.setGridMatrix();
-    }
-
-    private useBetPaytable(): void{
-        this.pachinkoPaytableList = {};
-        let pachinkoStr: string = Pachinko.pachinkoString;
-        for( let i: number = 0; i < pachinkoStr.length; i++ ){
-            this.pachinkoPaytableList[pachinkoStr[i]] = PayTableManager.payTablesDictionary[ pachinkoStr + "_" + pachinkoStr[i] ];
-            this.payTableArea.removeChild( this.pachinkoPaytableList[pachinkoStr[i]].ui );
-            PayTableManager.payTablesDictionary[ pachinkoStr + "_" + pachinkoStr[i] ] = null;
-            delete PayTableManager.payTablesDictionary[ pachinkoStr + "_" + pachinkoStr[i] ];
-        }
     }
 
     private getPaytableIndex( bet: number ): number{
@@ -156,17 +143,8 @@ class Pachinko extends V2Game{
     }
 
     private addPachinkoPaytable( index: number ): void{
-        let pachinkoStr: string = Pachinko.pachinkoString;
-        if( this.currentPachinkoStr ){
-            let str: string = pachinkoStr + "_" + this.currentPachinkoStr;
-            this.payTableArea.removeChild( PayTableManager.payTablesDictionary[ str ].ui );
-            PayTableManager.payTablesDictionary[ str ] = null;
-            delete PayTableManager.payTablesDictionary[ str ];
-        }
-
-        PayTableManager.payTablesDictionary[ pachinkoStr + "_" + pachinkoStr[index] ] = this.pachinkoPaytableList[pachinkoStr[index]];
-        this.payTableArea.addChild( this.pachinkoPaytableList[pachinkoStr[index]].ui );
-        this.currentPachinkoStr = pachinkoStr[index];
+        this.currentPachinkoStr = Pachinko.pachinkoString[index];
+        ( this.payTableArea as PachinkoPaytableLayer ).addCurrentPaytable( index );
     }
 
     protected paytableResultFilter( resultList: Array<Object> ): void{
