@@ -30,7 +30,7 @@ class Pachinko extends V2Game{
         CardGrid.defaultNumberSize = 55;
 
         PayTableManager.paytableUIType = PachinkoPaytableUI;
-        BallManager.ballOffsetY = 3;
+        BallManager.ballOffsetY = 5;
 
         this.needListenToolbarStatus = true;
         this.tipStatusTextPosition = new egret.Rectangle( 515, 56, 260, 14 );
@@ -267,7 +267,7 @@ class Pachinko extends V2Game{
 
     private runPachinkoGetAllLetterAnimation( betProgressIndex: number ){
         this.addChild( this.pachinkoLetters1 );
-        this.playSound( "pck_pachinko_wav" );
+        this.playSound( "pck_pachinko_mp3" );
         this.pachinkoLetters1.runPachinkoGetAllLetterAnimation( this.afterGetAllLetters.bind(this, betProgressIndex) );
     }
 
