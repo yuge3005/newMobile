@@ -7,8 +7,18 @@
         "sizeMode": "free"
     },
     "files": [
+        "./pachinko_card_c.png",
+        "./pachinko_card_a.png",
+        "./mega_pt.png",
+        "./mega_es.png",
+        "./mega_en.png",
+        "./jackpot_lock.png",
+        "./jackpot_active.png",
+        "./fundo-cartela.png",
         "./fundo-1.png",
         "./EB_next_bg.png",
+        "./EB_free.png",
+        "./eb_darken.png",
         "./card_box_red.png",
         "./card_box_effect.png",
         "./card_box_black.png",
@@ -42,6 +52,7 @@
         "./pachinko_paytable_h.png",
         "./pachinko_paytable_c.png",
         "./pachinko_paytable_a.png",
+        "./pachinko_lotto_cat.png",
         "./pachinko_letter_8.png",
         "./pachinko_letter_7.png",
         "./pachinko_letter_6.png",
@@ -68,15 +79,7 @@
         "./pachinko_card_line1.png",
         "./pachinko_card_k.png",
         "./pachinko_card_i.png",
-        "./pachinko_card_h.png",
-        "./pachinko_card_c.png",
-        "./pachinko_card_a.png",
-        "./mega_pt.png",
-        "./mega_es.png",
-        "./mega_en.png",
-        "./jackpot_lock.png",
-        "./jackpot_active.png",
-        "./fundo-cartela.png"
+        "./pachinko_card_h.png"
     ],
     "version": 5,
     "projectName": "pachinko"
