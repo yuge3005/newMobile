@@ -88,7 +88,7 @@ class Pachinko extends V2Game{
     }
 
     protected getGratisUI(): egret.DisplayObject{
-		return Com.addMovieClipAt( this, this._mcf, "pachinkoCat", 0, 0 );;
+		return Com.addBitmapAt( this, "EB_free", 0, 0 );
 	}
 
     protected clearRunningBallUI(): void{
@@ -99,6 +99,7 @@ class Pachinko extends V2Game{
     protected showExtraUI( show: boolean = true ){
         super.showExtraUI( show );
         if( !show && this.gratisUI && this.contains( this.gratisUI ) )this.removeChild( this.gratisUI );
+        this.getChildByName( this.assetStr("eb_darken") ).visible = !show;
     }
 
 	protected winChange( event: egret.Event ): void{
@@ -148,6 +149,7 @@ class Pachinko extends V2Game{
 
         ExtraBlinkGrid.extraBink = true;
         PachinkoGrid.setGridMatrix();
+        this.getChildByName( this.assetStr("eb_darken") ).alpha = 0.85;
     }
 
     private getPaytableIndex( bet: number ): number{
