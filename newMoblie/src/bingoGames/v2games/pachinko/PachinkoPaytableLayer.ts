@@ -24,7 +24,7 @@ class PachinkoPaytableLayer extends PaytableLayer{
 		let pachinkoStr: string = Pachinko.pachinkoString;
 		for( let i: number = 0; i < pachinkoStr.length; i++ ){
 			let letter: string = pachinkoStr[i];
-			if( this.contains( this.pachinkoPaytableList[letter] ) ){
+			if( this.contains( this.pachinkoPaytableList[letter].ui ) ){
 				this.removeChild( this.pachinkoPaytableList[letter].ui );
 				this.deletePaytableFromDictionary( pachinkoStr + "_" + letter );
 			}
