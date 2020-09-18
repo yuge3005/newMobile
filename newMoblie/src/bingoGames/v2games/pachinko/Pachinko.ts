@@ -8,21 +8,17 @@ class Pachinko extends V2Game{
         return "pachinkoAnimation";
     }
 
-    private winText: egret.TextField;
-    private blinkSpArray: Array<egret.Sprite>;
-
     public constructor( assetsPath: string ) {
         super("pachinko.conf", assetsPath, 41);
         this.languageObjectName = "pachinko_tx";
         this.megaName = "turbo90_mega";
 
         this.gratisUIIsOverExtraUI = true;
-        
-        this.blinkSpArray = new Array<egret.Sprite>();
 
         PayTableManager.layerType = PachinkoPaytableLayer;
 
         GameCard.zeroUI = "pachinko_cat";
+        GameCard.showTitleShadow = new egret.GlowFilter( 0, 1, 4, 4, 4, 2 );
 
         CardManager.cardType = PachinkoCard;
         CardManager.gridType = PachinkoGrid;
@@ -174,46 +170,7 @@ class Pachinko extends V2Game{
     }
 
     protected showWinAnimationAt(cardId: number, win: number): void{
-        let blinkSp: egret.Sprite = new egret.Sprite;
-        Com.addObjectAt( this, blinkSp, CardManager.cards[cardId].x, CardManager.cards[cardId].y );
-        let tx: egret.TextField = Com.addTextAt( blinkSp, 5, 4, 220, 15, 15, false, true );
-        tx.textAlign = "left";
-        tx.text = MuLang.getText("win") + " " + ( win * GameData.currentBet );
-        let outRect: egret.Rectangle = new egret.Rectangle( 0, 0, 203, 177 );
-        let inRect: egret.Rectangle = new egret.Rectangle( 5, 21, 193, 151 );
-        this.drawOutRect(blinkSp, 0xFFFF00, outRect, inRect);
-        this.blinkSpArray.push(blinkSp);
-        tx.textColor = 0;
-        let tw: egret.Tween = egret.Tween.get( blinkSp );
-        tw.wait( 500 );
-        tw.call( () => { this.drawOutRect( blinkSp, 0xFF0000, outRect, inRect ); tx.textColor = 0xFFFFFF; } );
-        tw.wait( 500 );
-        tw.call( () => { this.drawOutRect( blinkSp, 0xFFFF00, outRect, inRect ); tx.textColor = 0; } );
-        tw.wait( 500 );
-        tw.call( () => { this.drawOutRect( blinkSp, 0xFF0000, outRect, inRect ); tx.textColor = 0xFFFFFF; } );
-        tw.wait( 500 );
-        tw.call( () => { this.drawOutRect( blinkSp, 0xFFFF00, outRect, inRect ); tx.textColor = 0; } );
-        tw.wait( 500 );
-        tw.call( () => { this.drawOutRect( blinkSp, 0xFF0000, outRect, inRect ); tx.textColor = 0xFFFFFF; } );
-        tw.wait( 500 );
-        tw.call( () => { this.drawOutRect( blinkSp, 0xFFFF00, outRect, inRect ); tx.textColor = 0; } );
-        tw.wait( 500 );
-        tw.call( () => { this.drawOutRect( blinkSp, 0xFF0000, outRect, inRect ); tx.textColor = 0xFFFFFF; } );
-        tw.wait( 500 );
-        tw.call( () => { this.drawOutRect( blinkSp, 0xFFFF00, outRect, inRect ); tx.textColor = 0; } );
-        tw.wait( 500 );
-        tw.call( () => { this.drawOutRect( blinkSp, 0xFF0000, outRect, inRect ); tx.textColor = 0xFFFFFF; } );
-        tw.wait( 500 );
-        tw.call( () => { blinkSp.parent.removeChild( blinkSp ) } );
-    }
-
-    private drawOutRect( sp: egret.Sprite, color: number, rectOut: egret.Rectangle, rectIn: egret.Rectangle ): void{
-        let pts: Array<egret.Rectangle> = [];
-        pts.push( new egret.Rectangle( rectOut.x, rectOut.y, rectOut.width, rectIn.y - rectOut.y ) );
-        pts.push( new egret.Rectangle( rectOut.x, rectIn.y, rectIn.x - rectOut.x, rectIn.height ) );
-        pts.push( new egret.Rectangle( rectIn.right, rectIn.y, rectOut.right - rectIn.right, rectIn.height ) );
-        pts.push( new egret.Rectangle( rectOut.x, rectIn.bottom, rectOut.width, rectOut.bottom - rectIn.bottom ) );
-        GraphicTool.drawRectangles( sp, pts, color, true );
+        ( CardManager.cards[cardId] as PachinkoCard ).showWinCount( win * GameData.currentBet );
     }
 
     private showPachinkoLetterAnimation(): void{
@@ -365,20 +322,5 @@ class Pachinko extends V2Game{
 
 	protected changeNumberSound(): void {
 		this.playSound("pck_card_mp3");
-	}
-
-	protected startPlay(): void {
-        super.startPlay();
-        
-        for (let i = 0; i < this.blinkSpArray.length; i++) {
-            if (this.blinkSpArray[i]) {
-                egret.Tween.removeTweens(this.blinkSpArray[i]);
-                if (this.blinkSpArray[i].parent) {
-                    this.blinkSpArray[i].parent.removeChild(this.blinkSpArray[i]);
-                }
-                this.blinkSpArray[i] = null;
-            }
-        }
-        this.blinkSpArray = new Array<egret.Sprite>();
 	}
 }
