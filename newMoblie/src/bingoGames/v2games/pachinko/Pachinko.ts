@@ -14,6 +14,7 @@ class Pachinko extends V2Game{
     public constructor( assetsPath: string ) {
         super("pachinko.conf", assetsPath, 41);
         this.languageObjectName = "pachinko_tx";
+        this.megaName = "turbo90_mega";
 
         this.gratisUIIsOverExtraUI = true;
         
@@ -386,14 +387,4 @@ class Pachinko extends V2Game{
         }
         this.blinkSpArray = new Array<egret.Sprite>();
 	}
-    
-    protected onServerData( data: Object ){
-        super.onServerData( data );
-        if( localStorage.getItem( "pachinko_mega" ) ) return;
-        else{
-            try{
-                RES.loadGroup( "megaForFirst_" + GlobelSettings.language );
-            }catch(e){}
-        }
-    }
 }
