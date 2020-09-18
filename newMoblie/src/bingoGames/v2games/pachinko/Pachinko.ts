@@ -51,11 +51,17 @@ class Pachinko extends V2Game{
         this.ballCountText = MDS.addGameTextCenterShadow( this, 1445, 204, 55, 0x88FF88, "", false, 100, true, false );
         this.ballCountText.fontFamily = "Arial";
 
-        this.buildSuperEbArea( "mega_" + GlobelSettings.language, 457, 94 );
+        this.buildSuperEbArea( "mega_" + GlobelSettings.language, 1456, 312 );
 
         this.letsPachinko();
 
         this.ganhoCounter = new GanhoCounter( this.showWinAnimationAt.bind( this ) );
+    }
+
+    protected buildSuperEbArea( superEbBgName: string, superEbAreaX: number, superEbAreaY: number ): void{
+        super.buildSuperEbArea( superEbBgName, superEbAreaX, superEbAreaY );
+        this.superExtraBg.width = 70;
+        this.superExtraBg.height = 70;
     }
 
     private tipStatusContainer: PachinkoTipStatus;
