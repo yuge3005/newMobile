@@ -288,7 +288,7 @@ class Pachinko extends V2Game{
 /******************************************************************************************************************************************************************/    
 
     protected showJackpot( jackpot: number, jackpotMinBet: number, betConfig: Array<Object> ){
-        this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 522, 16 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 0, -6 ), new egret.Rectangle( 0, 0, 197, 26 ), 22, 0xFFFF00 ) );
+        this.addChild( this.jackpotArea = new PachinkoJackpotLayer( new egret.Point( 1749, 24 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 0, 0 ), new egret.Rectangle( 115, 41, 425, 55 ), 55, 0xFFFF00 ) );
     }
 
     protected hasExtraBallFit(): void {
