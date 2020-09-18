@@ -346,13 +346,7 @@ class Pachinko extends V2Game{
             this.superExtraBg.visible = true;
             this.gameToolBar.megeExtraOnTop( true );
 
-            if( localStorage.getItem( "pachinko_mega" ) ) return;
-            else{
-                localStorage.setItem( "pachinko_mega", "true" );
-                let ev: egret.Event = new egret.Event( "megaFirst" );
-                ev.data = new egret.Rectangle( 626, 233, 30, 30 );
-                this.dispatchEvent( ev );
-            }
+            this.tryFirstMega( new egret.Rectangle( 626, 233, 30, 30 ) );
         }
     }
     
