@@ -29,9 +29,6 @@ class Pachinko extends V2Game{
         BallManager.ballOffsetY = 5;
 
         this.needListenToolbarStatus = true;
-        this.tipStatusTextPosition = new egret.Rectangle( 515, 56, 260, 14 );
-        this.tipStatusTextColor = 0xFEFE00;
-
         this.needSmallWinTimesOnCard = true;
         this.ballArea.needLightCheck = true;
 
@@ -46,9 +43,11 @@ class Pachinko extends V2Game{
         this.tileBg();
         this.showNoBetAndCredit();
 
+        this.tipStatusContainer = new PachinkoTipStatus;
+        Com.addObjectAt( this, this.tipStatusContainer, 996, 154 );
         this.runningBallContainer = new egret.DisplayObjectContainer;
         Com.addObjectAt( this, this.runningBallContainer, 996, 154 );
-        
+
         this.ballCountText = MDS.addGameTextCenterShadow( this, 1445, 204, 55, 0x88FF88, "", false, 100, true, false );
         this.ballCountText.fontFamily = "Arial";
 
@@ -59,6 +58,8 @@ class Pachinko extends V2Game{
         this.ganhoCounter = new GanhoCounter( this.showWinAnimationAt.bind( this ) );
     }
 
+    private tipStatusContainer: PachinkoTipStatus;
+
     protected showLastBall( ballIndex: number ): void{
         super.showLastBall( ballIndex );
         super.showLastBallAt(ballIndex, 0, 0, 17 / 7 );
@@ -66,6 +67,18 @@ class Pachinko extends V2Game{
         this.playSound("pck_ball_mp3");
 
         if (this.btExtra && (this.currentBallIndex === this.gratisNumber - 1)) this.playSound("pck_free_extra_mp3");
+
+        this.delayRemoveRunningBallUI();
+	}
+
+    private delayTimeoutId = 0;
+    private delayRemoveRunningBallUI(){
+        clearTimeout( this.delayTimeoutId );
+        this.delayTimeoutId = setTimeout( this.removeRunningBallUI.bind(this), 2000 );
+    }
+
+    private removeRunningBallUI(){
+        super.clearRunningBallUI();
     }
 
     protected getGratisUI(): egret.DisplayObject{
@@ -86,7 +99,10 @@ class Pachinko extends V2Game{
 	}
 
 	protected tipStatus( event: egret.Event ): void{
-        super.tipStatus( event );
+        this.tipStatusContainer.clearTexts();
+        if( event["status"] == GameCommands.extra ){
+            this.tipStatusContainer.showStatus( event["extraPrice"] );
+        }
 	}
 
     protected updateCredit( data: Object ): void{
