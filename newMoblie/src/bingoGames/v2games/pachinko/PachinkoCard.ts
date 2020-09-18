@@ -22,11 +22,13 @@ class PachinkoCard extends ExtraBlinkCard {
 				for( let i: number = 0; i< fitIndex.length; i++ ){
 					if( fitIndex[i] ){
 						if( GameCard.fitEffectNameList[assetName][i] )effectImage = Com.addBitmapAt( this.fitEffectLayer, BingoMachine.getAssetStr( GameCard.fitEffectNameList[assetName][i] ), 0, 0 );
+						this.setGridsToRed( PayTableManager.payTablesDictionary[assetName].rules[i] );
 					}
 				}
 			}
 			else{
 				if( GameCard.fitEffectNameList[assetName] )effectImage = Com.addBitmapAt( this.fitEffectLayer, BingoMachine.getAssetStr( GameCard.fitEffectNameList[assetName] ), 0, 0 );
+				this.setGridsToRed( PayTableManager.payTablesDictionary[assetName].rule );
 			}
 		}
 		catch( e ){

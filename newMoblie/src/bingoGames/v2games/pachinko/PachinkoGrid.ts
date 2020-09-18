@@ -46,4 +46,9 @@ class PachinkoGrid extends ExtraBlinkGrid{
 		matrix = matrix.concat( [0, 0, 0, 1, 0 ] );
 		return matrix;
 	}
+
+	public showRedEffect(){
+		super.showRedEffect();
+		this.numTxt.textColor = CardGrid.numberColorOnEffect;
+	}
 }
