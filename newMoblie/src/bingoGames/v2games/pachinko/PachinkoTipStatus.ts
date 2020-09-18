@@ -13,6 +13,11 @@ class PachinkoTipStatus extends egret.DisplayObjectContainer{
 	}
 
 	public showStatus( extraPrice: number ){
+		if( !extraPrice ){
+			this.addChild( this.catBitmap );
+			return;
+		}
+
 		let extraStr: string = Utils.formatCoinsNumber( extraPrice );
 
 		let tipStatusText: TextLabel = MDS.addGameTextCenterShadow( this, 18, 93, 28, 0xFFFFFF, "credit", true, 136, true, false );

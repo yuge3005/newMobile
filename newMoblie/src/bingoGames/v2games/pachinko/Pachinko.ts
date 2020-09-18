@@ -43,6 +43,8 @@ class Pachinko extends V2Game{
         this.tileBg();
         this.showNoBetAndCredit();
 
+        if( this.extraUIObject ) this.extraUIShowNumber();
+
         this.tipStatusContainer = new PachinkoTipStatus;
         Com.addObjectAt( this, this.tipStatusContainer, 996, 154 );
         this.runningBallContainer = new egret.DisplayObjectContainer;
@@ -84,7 +86,16 @@ class Pachinko extends V2Game{
     }
 
     private removeRunningBallUI(){
-        super.clearRunningBallUI();
+        if( BingoMachine.inRound && this.btExtra )super.clearRunningBallUI();
+    }
+
+    protected extraUIShowNumber(){
+        this.runningBallContainer = new egret.DisplayObjectContainer;
+        this.runningBallContainer.x = this.extraUIObject.x;
+        this.runningBallContainer.y = this.extraUIObject.y;
+        this.addChildAt( this.runningBallContainer, this.getChildIndex( this.extraUIObject ) );
+        this.removeChild( this.extraUIObject );
+        this.extraUIObject = this.runningBallContainer;
     }
 
     protected getGratisUI(): egret.DisplayObject{
