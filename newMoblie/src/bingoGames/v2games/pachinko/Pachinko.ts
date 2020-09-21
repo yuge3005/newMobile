@@ -270,7 +270,7 @@ class Pachinko extends V2Game{
     }
 
     protected showSmallWinResult( cardIndex: number, blinkGrids: Object ): void{
-        this.paytableRuleFilter( blinkGrids );
+        PachinkoPtSettings.paytableRuleFilter( blinkGrids, this.currentPachinkoStr );
 
         for( let index in blinkGrids ){
             let winTimes: number = 0;
@@ -279,35 +279,6 @@ class Pachinko extends V2Game{
                 winTimes += parseFloat( winTimesTxt.replace( /\D/, "" ) );
             }
             CardManager.setSmallWinTime( cardIndex, parseInt( index ), winTimes );
-        }
-    }
-
-    protected paytableRuleFilter( blinkGrids ): void{
-        for( let gridId in blinkGrids ){
-            let blinkGridsArray: Array<string> = blinkGrids[gridId] as Array<string>;
-            if( blinkGridsArray.length > 1 ){
-                let newArr: Array<string> = [];
-                let unNeedIndex: number = blinkGridsArray.indexOf( "pachinko_" + this.currentPachinkoStr );
-                if( unNeedIndex >= 0 ){
-                    newArr.push( blinkGridsArray[unNeedIndex] );
-                    blinkGridsArray.splice( unNeedIndex, 1 );
-                }
-                let bingoIndex: number = blinkGridsArray.indexOf( "pachinko_bingo" );
-                if( bingoIndex >= 0 ){
-                    newArr.push( "pachinko_bingo" );
-                    blinkGridsArray.length = 0;
-                }
-                let line1Index: number = blinkGridsArray.indexOf( "pachinko_1l" );
-                if( line1Index >= 0 ){
-                    blinkGridsArray.splice( line1Index, 1 );
-                }
-
-                if( blinkGridsArray.length > 1 ){
-                    PaytableFilter.paytableConfixFilter( blinkGridsArray );
-                }
-                
-                blinkGrids[gridId] = newArr.concat( blinkGridsArray );
-            }
         }
     }
 

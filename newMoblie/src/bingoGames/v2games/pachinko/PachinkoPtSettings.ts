@@ -29,4 +29,39 @@ class PachinkoPtSettings {
             }
         }
 	}
+
+    /**
+     * leave letter Pt
+     * bingo kill all other Pt
+     * kill one line
+     * then filt as normal
+     */
+    public static paytableRuleFilter( blinkGrids: Object, currentPachinkoStr: string ): void{
+        for( let gridId in blinkGrids ){
+            let blinkGridsArray: Array<string> = blinkGrids[gridId] as Array<string>;
+            if( blinkGridsArray.length > 1 ){
+                let newArr: Array<string> = [];
+                let unNeedIndex: number = blinkGridsArray.indexOf( "pachinko_" + currentPachinkoStr );
+                if( unNeedIndex >= 0 ){
+                    newArr.push( blinkGridsArray[unNeedIndex] );
+                    blinkGridsArray.splice( unNeedIndex, 1 );
+                }
+                let bingoIndex: number = blinkGridsArray.indexOf( "pachinko_bingo" );
+                if( bingoIndex >= 0 ){
+                    newArr.push( "pachinko_bingo" );
+                    blinkGridsArray.length = 0;
+                }
+                let line1Index: number = blinkGridsArray.indexOf( "pachinko_1l" );
+                if( line1Index >= 0 ){
+                    blinkGridsArray.splice( line1Index, 1 );
+                }
+
+                if( blinkGridsArray.length > 1 ){
+                    PaytableFilter.paytableConfixFilter( blinkGridsArray );
+                }
+                
+                blinkGrids[gridId] = newArr.concat( blinkGridsArray );
+            }
+        }
+    }
 }
