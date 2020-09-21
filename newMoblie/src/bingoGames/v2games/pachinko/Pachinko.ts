@@ -90,12 +90,13 @@ class Pachinko extends V2Game{
     }
 
     protected extraUIShowNumber(){
-        this.runningBallContainer = new egret.DisplayObjectContainer;
+        this.runningBallContainer = new PachinkoExtraBg;
         this.runningBallContainer.x = this.extraUIObject.x;
         this.runningBallContainer.y = this.extraUIObject.y;
         this.addChildAt( this.runningBallContainer, this.getChildIndex( this.extraUIObject ) );
         this.removeChild( this.extraUIObject );
         this.extraUIObject = this.runningBallContainer;
+        this.extraUIObject.visible = false;
     }
 
     protected getGratisUI(): egret.DisplayObject{
@@ -108,7 +109,7 @@ class Pachinko extends V2Game{
     }
 
     protected showExtraUI( show: boolean = true ){
-        super.showExtraUI( show );
+        ( this.extraUIObject as PachinkoExtraBg ).setVisible( show );
         if( !show && this.gratisUI && this.contains( this.gratisUI ) )this.removeChild( this.gratisUI );
         this.getChildByName( this.assetStr("eb_darken") ).visible = !show;
     }
