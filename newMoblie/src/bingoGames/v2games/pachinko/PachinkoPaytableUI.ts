@@ -42,7 +42,7 @@ class PachinkoPaytableUI extends PaytableUI{
 					let index: number = Math.floor( num / 10 );
 					showingFilter = new egret.ColorMatrixFilter(PachinkoGrid.gridMatrixs[index]);
 				}
-				else showingFilter = MatrixTool.colorMatrixPure( 0xFFFF00 );
+				else showingFilter = PachinkoPaytableUI.defaulAlphaFilter;
 
 				this.grids[this.blinkGridsIndexs[i]].filters = [ showingFilter ];
 			}
