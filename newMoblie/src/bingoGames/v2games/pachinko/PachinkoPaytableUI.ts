@@ -1,4 +1,8 @@
 class PachinkoPaytableUI extends PaytableUI{
+
+	public payTableName: string;
+	public static defaulAlphaFilter = MatrixTool.colorMatrixPure( 0, 0 );
+
 	public constructor( useBg: boolean ) {
 		super( useBg );
 		this.scaleX = this.scaleY = 20 / 23;
@@ -15,7 +19,7 @@ class PachinkoPaytableUI extends PaytableUI{
 		for( let i: number = 0; i < 25; i++ ){
 			this.grids[i].x = i % 5 * 19 + 1;
 			this.grids[i].y = Math.floor( i / 5 ) * 19;
-			GraphicTool.drawRect( this.grids[i], new egret.Rectangle( 0, 0, 15, 15 ), 0, true );
+			GraphicTool.drawRect( this.grids[i], new egret.Rectangle( 0, 0, 15, 15 ), 0xFFFFFF, true );
 		}
 
 		this.tx.y += 5;
@@ -28,8 +32,23 @@ class PachinkoPaytableUI extends PaytableUI{
 
 	protected onFrame(event:egret.Event):void{
 		this.currentEffect++;
+
 		for( var i: number = 0; i < this.blinkGridsIndexs.length; i++ ){
-			// this.grids[this.blinkGridsIndexs[i]].filters = [ this._winEffects[(this.currentEffect>>4)%this._winEffects.length] ];
+			let showing: boolean = Boolean( ( this.currentEffect >> 4 ) & 1 );
+			if( showing ){
+				let showingFilter: egret.Filter;
+				if( PachinkoGrid.paytableNumbers[this.payTableName] != null ) {
+					let num: number = PachinkoGrid.paytableNumbers[this.payTableName][this.blinkGridsIndexs[i]];
+					let index: number = Math.floor( num / 10 );
+					showingFilter = new egret.ColorMatrixFilter(PachinkoGrid.gridMatrixs[index]);
+				}
+				else showingFilter = MatrixTool.colorMatrixPure( 0xFFFF00 );
+
+				this.grids[this.blinkGridsIndexs[i]].filters = [ showingFilter ];
+			}
+			else{
+				this.grids[this.blinkGridsIndexs[i]].filters = [ PachinkoPaytableUI.defaulAlphaFilter ];
+			}
 		}
 	}
 }

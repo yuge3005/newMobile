@@ -186,6 +186,7 @@ class Pachinko extends V2Game{
     }
 
     protected afterCheck( resultList: Array<Object> ): void{
+        PachinkoGrid.paytableNumbers = {};
         super.afterCheck( resultList );
 
         let pachinkoStr: string = Pachinko.pachinkoString;
@@ -277,6 +278,8 @@ class Pachinko extends V2Game{
             for( let j: number = 0; j < blinkGrids[index].length; j++ ){
                 let winTimesTxt: string = PayTableManager.payTablesDictionary[blinkGrids[index][j]].ui["tx"].text;
                 winTimes += parseFloat( winTimesTxt.replace( /\D/, "" ) );
+                if( !PachinkoGrid.paytableNumbers[blinkGrids[index][j]] ) PachinkoGrid.paytableNumbers[blinkGrids[index][j]] = {};
+                PachinkoGrid.paytableNumbers[blinkGrids[index][j]][index] = CardManager.cards[cardIndex].getNumberAt( Number(index) );
             }
             CardManager.setSmallWinTime( cardIndex, parseInt( index ), winTimes );
         }

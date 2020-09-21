@@ -1,6 +1,7 @@
 class PachinkoGrid extends ExtraBlinkGrid{
 
 	public static gridMatrixs: Array<Array<number>>;
+	public static paytableNumbers: Object;
 
     constructor() {
         super();

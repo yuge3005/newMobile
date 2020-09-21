@@ -9,6 +9,11 @@ class PachinkoPaytableLayer extends PaytableLayer{
 	public addPaytableUI(){
 		super.addPaytableUI();
 
+		let pts: Object = PayTableManager.payTablesDictionary;
+		for( let ob in pts ){
+			pts[ob].UI.payTableName = pts[ob].payTableName;
+		}
+
 		this.pachinkoPaytableList = {};
 
 		let pachinkoStr: string = Pachinko.pachinkoString;

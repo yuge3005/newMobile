@@ -10,13 +10,10 @@ class PaytableLayer extends egret.DisplayObjectContainer{
 		PayTableManager.getPayTableUI();
 		let pts: Object = PayTableManager.payTablesDictionary;
 		for( let ob in pts ){
+			let pos: Object = pts[ob].position;
+			pts[ob].UI.x = pos["x"] - this.x;
+			pts[ob].UI.y = pos["y"] - this.y;
 			this.addChild( pts[ob].UI );
-		}
-
-		for( let payTable in PayTableManager.payTablesDictionary ){
-			let pos: Object = PayTableManager.payTablesDictionary[payTable].position;
-			pts[payTable].UI.x = pos["x"] - this.x;
-			pts[payTable].UI.y = pos["y"] - this.y;
 		}
 	}
 
