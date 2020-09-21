@@ -69,7 +69,7 @@
 			"name": "pachinko"
 		},
 		{
-			"keys": "pcpk_a_mp3,pcpk_ball_mp3,pcpk_e_mp3,pcpk_eb_mp3,pcpk_free_eb_mp3,pcpk_g_mp3,pcpk_l_mp3,pcpk_o_mp3,pcpk_p_mp3,pcpk_r_mp3,pcpk_s_mp3,pcpk_supergoal_mp3,pcpk_u_mp3,pcpk_x10_25_mp3,pcpk_x1500_mp3,pcpk_x150_250_mp3,pcpk_x2_8_mp3,pcpk_x3000_mp3,pcpk_x50_mp3,pcpk_x500_mp3",
+			"keys": "pcpk_a_mp3,pcpk_ball_mp3,pcpk_e_mp3,pcpk_eb_mp3,pcpk_free_eb_mp3,pcpk_g_mp3,pcpk_l_mp3,pcpk_o_mp3,pcpk_p_mp3,pcpk_r_mp3,pcpk_s_mp3,pcpk_supergoal_mp3,pcpk_u_mp3,pcpk_x10_25_mp3,pcpk_x1500_mp3,pcpk_x150_250_mp3,pcpk_x2_8_mp3,pcpk_x3000_mp3,pcpk_x50_mp3,pcpk_x500_mp3,superGoal_json,superGoal_conf,superGoal_tx,bingoGameToolbar_json,topbar_json,open_list_mp3",
 			"name": "superGoal"
 		}
 	],
@@ -1394,6 +1394,22 @@
 			"url": "game/superGoal/sound/pcpk_x500.mp3",
 			"type": "sound",
 			"name": "pcpk_x500_mp3"
+		},
+		{
+			"url": "config/superGoal.conf",
+			"type": "json",
+			"name": "superGoal_conf"
+		},
+		{
+			"url": "config/lan/superGoal.tx",
+			"type": "json",
+			"name": "superGoal_tx"
+		},
+		{
+			"url": "game/superGoal/superGoal.json",
+			"type": "sheet",
+			"name": "superGoal_json",
+			"subkeys": "ball_green,ball_green_small,card_black,card_number_bg,card_pink,card_white,card_yellow,card_yellow_02,champion_extra,champion_letter_1,champion_letter_2,champion_letter_3,champion_letter_4,champion_letter_5,champion_letter_6,champion_letter_7,champion_letter_8,champion_letter_9,champion_paytable_a,champion_paytable_e,champion_paytable_g,champion_paytable_l,champion_paytable_o,champion_paytable_p,champion_paytable_r,champion_paytable_s,champion_paytable_u,champion_shose,extraball,fundo-1,fundo-cartela,jackpot_en,jackpot_es,jackpot_icon_coin,jackpot_lock,jackpot_pt,mega_en,mega_es,mega_pt,pachinko_paytable1,pachinko_paytable10,pachinko_paytable11,pachinko_paytable12,pachinko_paytable2,pachinko_paytable3,pachinko_paytable4,pachinko_paytable5,pachinko_paytable6,pachinko_paytable7,pachinko_paytable8,pachinko_paytable9,paytable_bg,paytable_bg_02,x"
 		}
 	]
 }

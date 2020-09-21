@@ -10,18 +10,14 @@ class SuperGoal extends V2Game{
 
     public constructor( assetsPath: string ) {
         super("pachampionko.conf", assetsPath, 70);
-        this.ptFilterConfig = "pachampionko_filt";
+        this.languageObjectName = "superGoal_tx";
+        this.megaName = "superGoal_mega";
 
         this.gratisUIIsOverExtraUI = true;
 
         GameCard.gridOnTop = true;
-        GameCard.bgRound = 10;
 
-        GameCard.betTexPosition = new egret.Point( 6, 1 );
-        GameCard.texSize = 16;
-        GameCard.texColor = 0xFFFFFF;
         GameCard.zeroUI = "champion_shose";
-        GameCard.usefork = "x";
 
         GameCard.useRedEffect = true;
 
@@ -30,22 +26,7 @@ class SuperGoal extends V2Game{
         CardManager.cardType = PachampionkoCard;
         CardManager.gridType = PachampionkoGrid;
 
-        TowerGrid.blink1PicName = "card_yellow";
-        TowerGrid.blink2PicName = "card_pink";
-        TowerGrid.defaultBgPicName = "card_white";
-        TowerGrid.onEffBgPicName = "card_white";
-        TowerGrid.linePicName = "card_black";
-
-        CardGrid.defaultBgColor = 0xFFFFFF;
         CardGrid.defaultNumberSize = 20;
-
-        let languageText = GameUIItem.languageText;
-        languageText["bingo"] = { en: "BINGO", es: "BINGO", pt: "BINGO" };
-        languageText["double line"] = { en: "DOUBLE LINE", es: "DOBLE LÍNEA", pt: "LINHA DUPLA" };
-        languageText["line"] = { en: "LINE", es: "LÍNEA", pt: "LINHA" };
-        languageText["four corners"] = { en: "4 CORNERS", es: "4 ESQUINAS", pt: "4 ESQUINAS" };
-
-        languageText["win"] = { en: "WIN", es: "CANADO", pt: "CANHO" };
 
         BallManager.ballOffsetY = 3;
 
@@ -68,7 +49,7 @@ class SuperGoal extends V2Game{
 
         this.runningBallContainer = new egret.DisplayObjectContainer;
         
-        this.ballCountText = this.addGameText( 455, 46, 15, 0x88FF88, "bet", false, 38 );
+        this.ballCountText = MDS.addGameText( this, 455, 46, 15, 0x88FF88, "bet", false, 38 );
         this.ballCountText.textAlign = "center";
         this.ballCountText.text = "";
 
