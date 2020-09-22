@@ -47,7 +47,7 @@ class SuperGoal extends V2Game{
 
         this.buildSuperEbArea( "mega_" + GlobelSettings.language, 784, 172 );
 
-        this.letsPachampionko();
+        this.letsSupergoal();
         
         this.ganhoCounter = new GanhoCounter;
     }
@@ -78,20 +78,13 @@ class SuperGoal extends V2Game{
         if( !show && this.gratisUI && this.contains( this.gratisUI ) )this.removeChild( this.gratisUI );
     }
 
-    protected onServerData( data: Object ){
-        super.onServerData( data );
-        // try{
-        //     RES.loadGroup( "pachampionko_bingo" );
-        // }catch(e){}
-    }
-
     /*********************************************************************************************************************************************************/
 
     public static supergoalString: string = "supergoal";
 
     private superGoalLetters: SuperGoalLetterLayer;
     private currentSupergoalStr: string;
-    private hasPachinkoLetter: boolean;
+    private hasSupergoalLetter: boolean;
 
     private betProgress: Array<Object>;
 
@@ -108,7 +101,7 @@ class SuperGoal extends V2Game{
         this.setLettersByBet();
     }
 
-    private letsPachampionko():void{
+    private letsSupergoal():void{
         this.superGoalLetters = new SuperGoalLetterLayer;
         Com.addObjectAt( this, this.superGoalLetters, 295, 44 );
         ExtraBlinkGrid.extraBink = true;
@@ -147,8 +140,8 @@ class SuperGoal extends V2Game{
             }
         }
 
-        if( hasPachinkoPaytable && !this.hasPachinkoLetter ){
-            this.hasPachinkoLetter = true;
+        if( hasPachinkoPaytable && !this.hasSupergoalLetter ){
+            this.hasSupergoalLetter = true;
             this.showPachinkoLetterAnimation();
         }
 
@@ -176,8 +169,8 @@ class SuperGoal extends V2Game{
     }
 
     private resetLetterIndex( letra: number ){
-        if( this.hasPachinkoLetter ){
-            this.hasPachinkoLetter = false;
+        if( this.hasSupergoalLetter ){
+            this.hasSupergoalLetter = false;
 
             let index: number = NaN;
             for( let i: number = this.betProgress.length - 1; i >= 0; i-- ){
