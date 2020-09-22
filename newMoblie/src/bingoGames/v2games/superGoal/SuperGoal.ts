@@ -50,11 +50,6 @@ class SuperGoal extends V2Game{
         this.letsPachampionko();
         
         this.ganhoCounter = new GanhoCounter;
-
-        let ptBg: egret.Bitmap = this.getChildByName( this.assetStr( "paytable_bg_02" ) ) as egret.Bitmap;
-        ptBg.scale9Grid = new egret.Rectangle( 10, 10, 40, 40 );
-        ptBg.width = 492;
-        ptBg.height = 200;
     }
 
     protected showLastBall( ballIndex: number ): void{
@@ -92,8 +87,8 @@ class SuperGoal extends V2Game{
 
     /*********************************************************************************************************************************************************/
 
-    public static pachampionkoString: string = "supergoal"
-    private pachinkoPaytableList: Object;
+    public static pachampionkoString: string = "supergoal";
+
     private superGoalLetters: SuperGoalLetterLayer;
     private currentPachinkoStr: string;
     private hasPachinkoLetter: boolean;
@@ -116,21 +111,7 @@ class SuperGoal extends V2Game{
     private letsPachampionko():void{
         this.superGoalLetters = new SuperGoalLetterLayer;
         Com.addObjectAt( this, this.superGoalLetters, 295, 44 );
-
         ExtraBlinkGrid.extraBink = true;
-
-        this.useBetPaytable();
-    }
-
-    private useBetPaytable(): void{
-        this.pachinkoPaytableList = {};
-        let pachinkoStr: string = SuperGoal.pachampionkoString;
-        for( let i: number = 0; i < pachinkoStr.length; i++ ){
-            this.pachinkoPaytableList[pachinkoStr[i]] = PayTableManager.payTablesDictionary[ "pachinko" + "_" + pachinkoStr[i] ];
-            this.payTableArea.removeChild( this.pachinkoPaytableList[pachinkoStr[i]].ui );
-            PayTableManager.payTablesDictionary[ "pachinko" + "_" + pachinkoStr[i] ] = null;
-            delete PayTableManager.payTablesDictionary[ "pachinko" + "_" + pachinkoStr[i] ];
-        }
     }
 
     private getPaytableIndex( bet: number ): number{
@@ -145,17 +126,8 @@ class SuperGoal extends V2Game{
     }
 
     private addPachinkoPaytable( index: number ): void{
-        let pachinkoStr: string = SuperGoal.pachampionkoString;
-        if( this.currentPachinkoStr ){
-            let str: string = "pachinko" + "_" + this.currentPachinkoStr;
-            this.payTableArea.removeChild( PayTableManager.payTablesDictionary[ str ].ui );
-            PayTableManager.payTablesDictionary[ str ] = null;
-            delete PayTableManager.payTablesDictionary[ str ];
-        }
-
-        PayTableManager.payTablesDictionary[ "pachinko" + "_" + pachinkoStr[index] ] = this.pachinkoPaytableList[pachinkoStr[index]];
-        this.payTableArea.addChild( this.pachinkoPaytableList[pachinkoStr[index]].ui );
-        this.currentPachinkoStr = pachinkoStr[index];
+        this.currentPachinkoStr = SuperGoal.pachampionkoString[index];
+        ( this.payTableArea as SuperGoalPaytableLayer ).addCurrentPaytable( index );
     }
 
     protected paytableResultFilter( resultList: Array<Object> ): void{
