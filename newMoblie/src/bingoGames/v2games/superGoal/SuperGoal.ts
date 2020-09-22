@@ -42,6 +42,8 @@ class SuperGoal extends V2Game{
 
         this.showNoBetAndCredit();
 
+        if( this.extraUIObject ) this.extraUIShowNumber();
+
         this.runningBallContainer = new egret.DisplayObjectContainer;
         Com.addObjectAt( this, this.runningBallContainer, 1105, 125 );
 
@@ -76,6 +78,16 @@ class SuperGoal extends V2Game{
     protected showExtraUI( show: boolean = true ){
         super.showExtraUI( show );
         if( !show && this.gratisUI && this.contains( this.gratisUI ) )this.removeChild( this.gratisUI );
+    }
+
+    protected extraUIShowNumber(){
+        this.runningBallContainer = new SuperGoalExtraBg;
+        this.runningBallContainer.x = this.extraUIObject.x;
+        this.runningBallContainer.y = this.extraUIObject.y;
+        this.addChildAt( this.runningBallContainer, this.getChildIndex( this.extraUIObject ) );
+        this.removeChild( this.extraUIObject );
+        this.extraUIObject = this.runningBallContainer;
+        this.extraUIObject.visible = false;
     }
 
     /*********************************************************************************************************************************************************/
