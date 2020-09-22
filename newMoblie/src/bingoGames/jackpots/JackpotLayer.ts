@@ -1,6 +1,6 @@
 class JackpotLayer extends egret.DisplayObjectContainer {
 	public tip: TextLabel;
-    public jackpotText: egret.TextField;
+    public jackpotText: TextLabel;
 	public jackpotMinBet: number;
 	protected jackpotLock: egret.Bitmap;
 
@@ -30,7 +30,7 @@ class JackpotLayer extends egret.DisplayObjectContainer {
 			this.tip.setText( MuLang.getText("jackpot") );
 		}
 
-		this.jackpotText = Com.addTextAt( this, jackpotTextRect.x, jackpotTextRect.y, jackpotTextRect.width, jackpotTextRect.height, jackpotTextSize, false, true );
+		this.jackpotText = Com.addLabelAt( this, jackpotTextRect.x, jackpotTextRect.y, jackpotTextRect.width, jackpotTextRect.height, jackpotTextSize, false, true );
         this.jackpotText.textColor = jackpotTextColor;
 		this.jackpotText.verticalAlign = "middle";
 		this.jackpotValue = this.countJackpotByRate( Math.round( jackpot ) );
@@ -68,7 +68,7 @@ class JackpotLayer extends egret.DisplayObjectContainer {
 	private jackpotCurrentTextValue: number;
 	private set jackpotValue( value: number ){
 		this.jackpotCurrentTextValue = value;
-		this.jackpotText.text = Utils.formatCoinsNumber( Math.round( value ) );
+		this.jackpotText.setText( Utils.formatCoinsNumber( Math.round( value ) ) );
 	}
 
 	private get jackpotValue(): number{
