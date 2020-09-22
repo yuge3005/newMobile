@@ -41,6 +41,7 @@ class SuperGoal extends V2Game{
         this.showNoBetAndCredit();
 
         this.runningBallContainer = new egret.DisplayObjectContainer;
+        Com.addObjectAt( this, this.runningBallContainer, 1105, 125 );
         
         this.ballCountText = MDS.addGameText( this, 455, 46, 15, 0x88FF88, "bet", false, 38 );
         this.ballCountText.textAlign = "center";
@@ -58,7 +59,6 @@ class SuperGoal extends V2Game{
     protected showLastBall( ballIndex: number ): void{
         super.showLastBall( ballIndex );
         this.showLastBallAt(ballIndex, 0, 0);
-        Com.addObjectAt( this, this.runningBallContainer, 438, 15 );
 
         this.playSound("pcpk_ball_mp3");
 
@@ -69,8 +69,7 @@ class SuperGoal extends V2Game{
 		if( this.runningBallUI && ( this.runningBallContainer ).contains( this.runningBallUI ) ){
 			( this.runningBallContainer ).removeChild( this.runningBallUI );
 		}
-		this.runningBallUI = this.ballArea.getABigBall( ballIndex, "_small", 36 );
-		this.runningBallUI.scaleX = this.runningBallUI.scaleY = scale;
+		this.runningBallUI = this.ballArea.getABigBall( ballIndex, "_small", 72 );
 		Com.addObjectAt( this.runningBallContainer, this.runningBallUI, x, y );
 	}
 
@@ -79,7 +78,7 @@ class SuperGoal extends V2Game{
 	}
 
     protected clearRunningBallUI(): void{
-        if( this.runningBallContainer && this.contains( this.runningBallContainer ) )this.removeChild( this.runningBallContainer );
+        super.clearRunningBallUI();
 
         this.ballCountText.text = "";
     }
@@ -91,9 +90,9 @@ class SuperGoal extends V2Game{
 
     protected onServerData( data: Object ){
         super.onServerData( data );
-        try{
-            RES.loadGroup( "pachampionko_bingo" );
-        }catch(e){}
+        // try{
+        //     RES.loadGroup( "pachampionko_bingo" );
+        // }catch(e){}
     }
 
     /*********************************************************************************************************************************************************/
@@ -421,15 +420,13 @@ class SuperGoal extends V2Game{
         }
 
         super.onCancelExtra( data );
-        this.resetLetterIndex( data["letra"] ); 
+        this.resetLetterIndex( data["letra"] );
     }
 
 /******************************************************************************************************************************************************************/    
 
     protected showJackpot( jackpot: number, jackpotMinBet: number, betConfig: Array<Object> ): void{
-        this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 570, 28 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 30, -9 ), new egret.Rectangle( 0, 0, 197, 26 ), 18, 0 ) );
-        this.jackpotArea["jackpotText"].scaleX = 0.85;
-        this.jackpotArea["jackpotText"].x += 19;
+        this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 1278, 30 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 178, -5 ), new egret.Rectangle( 240, 22, 230, 42 ), 42, 0 ) );
     }
 
     protected hasExtraBallFit(): void {
