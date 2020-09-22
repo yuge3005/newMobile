@@ -48,6 +48,11 @@ class SuperGoal extends V2Game{
         this.letsPachampionko();
         
         this.ganhoCounter = new GanhoCounter;
+
+        let ptBg: egret.Bitmap = this.getChildByName( this.assetStr( "paytable_bg_02" ) ) as egret.Bitmap;
+        ptBg.scale9Grid = new egret.Rectangle( 10, 10, 40, 40 );
+        ptBg.width = 492;
+        ptBg.height = 200;
     }
 
     protected showLastBall( ballIndex: number ): void{
