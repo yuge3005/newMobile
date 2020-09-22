@@ -1,4 +1,4 @@
-class PachampionkoCard extends GameCard{
+class SuperGoalCard extends GameCard{
 
 	public constructor( cardId: number ) {
 		super( cardId );
@@ -32,9 +32,9 @@ class PachampionkoCard extends GameCard{
 	}
 
 	public clearStatus(){
-		PachampionkoGrid.needClear = true;
+		SuperGoalGrid.needClear = true;
 		super.clearStatus();
-		PachampionkoGrid.needClear = false;
+		SuperGoalGrid.needClear = false;
 		this.redEffectKeys = {};
 	}
 
@@ -47,7 +47,7 @@ class PachampionkoCard extends GameCard{
 		if( str == "1000100000000000000010001" ){ // corner
 			for( let j: number = 0; j < str.length; j++ ){
 				if( str[j] == "1" ){
-					( this.grids[j] as PachampionkoGrid ).showWaveEffect( 100 );
+					( this.grids[j] as SuperGoalGrid ).showWaveEffect( 100 );
 				}
 			}
 		}
@@ -114,7 +114,7 @@ class PachampionkoCard extends GameCard{
 
 	private turnRedOrder( order: Array<number> ): void{
 		for( let i: number = 0; i < order.length; i++ ){
-			( this.grids[order[i]] as PachampionkoGrid ).showWaveEffect( 100 + 100 * i );
+			( this.grids[order[i]] as SuperGoalGrid ).showWaveEffect( 100 + 100 * i );
 		}
 	}
 

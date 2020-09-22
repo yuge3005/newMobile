@@ -21,8 +21,8 @@ class SuperGoal extends V2Game{
 
         PaytableUI.focusColor = 0xFFFF00;
 
-        CardManager.cardType = PachampionkoCard;
-        CardManager.gridType = PachampionkoGrid;
+        CardManager.cardType = SuperGoalCard;
+        CardManager.gridType = SuperGoalGrid;
         CardGrid.defaultNumberSize = 45;
 
         BallManager.ballOffsetY = 3;
@@ -36,7 +36,7 @@ class SuperGoal extends V2Game{
     protected init(){
         super.init();
 
-        PachampionkoGrid.mcf = this._mcf;
+        MDS.mcFactory = this._mcf;
 
         this.showNoBetAndCredit();
 
@@ -426,7 +426,11 @@ class SuperGoal extends V2Game{
 /******************************************************************************************************************************************************************/    
 
     protected showJackpot( jackpot: number, jackpotMinBet: number, betConfig: Array<Object> ): void{
-        this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 1278, 30 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 178, -5 ), new egret.Rectangle( 240, 22, 230, 42 ), 42, 0 ) );
+        this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 1278, 30 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 178, -5 ), new egret.Rectangle( 240, 22, 230, 42 ), 42, 0,
+            new egret.Rectangle( 12, 18, 210, 48 ), 48, 0xFFFFFF ) );
+        this.jackpotArea.tip.stroke = 3;
+        this.jackpotArea.tip.strokeColor = 0;
+        this.jackpotArea.tip.scaleX = 0.82;
     }
 
     protected hasExtraBallFit(): void {
