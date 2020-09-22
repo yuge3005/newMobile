@@ -90,7 +90,7 @@ class SuperGoal extends V2Game{
     public static supergoalString: string = "supergoal";
 
     private superGoalLetters: SuperGoalLetterLayer;
-    private currentPachinkoStr: string;
+    private currentSupergoalStr: string;
     private hasPachinkoLetter: boolean;
 
     private betProgress: Array<Object>;
@@ -126,32 +126,12 @@ class SuperGoal extends V2Game{
     }
 
     private addPachinkoPaytable( index: number ): void{
-        this.currentPachinkoStr = SuperGoal.supergoalString[index];
+        this.currentSupergoalStr = SuperGoal.supergoalString[index];
         ( this.payTableArea as SuperGoalPaytableLayer ).addCurrentPaytable( index );
     }
 
     protected paytableResultFilter( resultList: Array<Object> ): void{
-        for( let i: number = 0; i < resultList.length; i++ ){
-            let fitsArr: Array<boolean> = resultList[i]["pachinko_1l"].fits;
-            if( fitsArr ){
-                let fitCount: number = 0;
-                let firstlineFit: boolean = false;
-                let lastlineFit: boolean = false;
-                for( let j: number = 0; j < fitsArr.length; j++ ){
-                    if( fitsArr[j] ){
-                        fitCount ++;
-                        if( j == 0 ) firstlineFit = true;
-                        if( j == 4 ) lastlineFit = true;
-                    }
-                }
-                if( fitCount <= 1 )resultList[i]["pachinko_1l"].fits = null;
-                else{
-                    if( firstlineFit && lastlineFit ){
-                        resultList[i]["pachinko_corner"].fit = false;
-                    }
-                }
-            }
-        }
+        PachinkoPtSettings.filtOneLineAndCorner( resultList );
         super.paytableResultFilter( resultList );
     }
 
@@ -161,7 +141,7 @@ class SuperGoal extends V2Game{
         let pachinkoStr: string = SuperGoal.supergoalString;
         let hasPachinkoPaytable: boolean = false;
         for( let i: number = 0; i < resultList.length; i++ ){
-            let result: PaytableCheckResult = resultList[i]["pachinko" + "_" + this.currentPachinkoStr ];
+            let result: PaytableCheckResult = resultList[i]["pachinko" + "_" + this.currentSupergoalStr ];
             if( result.fit || result.fits ){
                 hasPachinkoPaytable = true;
             }
@@ -177,7 +157,7 @@ class SuperGoal extends V2Game{
 
     private showPachinkoLetterAnimation(): void{
         let pachinkoStr: string = SuperGoal.supergoalString;
-        let i: number = pachinkoStr.indexOf( this.currentPachinkoStr );
+        let i: number = pachinkoStr.indexOf( this.currentSupergoalStr );
         this.superGoalLetters.showPachinkoLetterAnimation( i );
     }
 
@@ -289,7 +269,7 @@ class SuperGoal extends V2Game{
             let blinkGridsArray: Array<string> = blinkGrids[gridId] as Array<string>;
             if( blinkGridsArray.length > 1 ){
                 let newArr: Array<string> = [];
-                let unNeedIndex: number = blinkGridsArray.indexOf( "pachinko_" + this.currentPachinkoStr );
+                let unNeedIndex: number = blinkGridsArray.indexOf( "pachinko_" + this.currentSupergoalStr );
                 if( unNeedIndex >= 0 ){
                     newArr.push( blinkGridsArray[unNeedIndex] );
                     blinkGridsArray.splice( unNeedIndex, 1 );
