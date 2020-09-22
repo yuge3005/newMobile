@@ -87,7 +87,7 @@ class SuperGoal extends V2Game{
 
     /*********************************************************************************************************************************************************/
 
-    public static pachampionkoString: string = "supergoal";
+    public static supergoalString: string = "supergoal";
 
     private superGoalLetters: SuperGoalLetterLayer;
     private currentPachinkoStr: string;
@@ -126,7 +126,7 @@ class SuperGoal extends V2Game{
     }
 
     private addPachinkoPaytable( index: number ): void{
-        this.currentPachinkoStr = SuperGoal.pachampionkoString[index];
+        this.currentPachinkoStr = SuperGoal.supergoalString[index];
         ( this.payTableArea as SuperGoalPaytableLayer ).addCurrentPaytable( index );
     }
 
@@ -158,7 +158,7 @@ class SuperGoal extends V2Game{
     protected afterCheck( resultList: Array<Object> ): void{
         super.afterCheck( resultList );
 
-        let pachinkoStr: string = SuperGoal.pachampionkoString;
+        let pachinkoStr: string = SuperGoal.supergoalString;
         let hasPachinkoPaytable: boolean = false;
         for( let i: number = 0; i < resultList.length; i++ ){
             let result: PaytableCheckResult = resultList[i]["pachinko" + "_" + this.currentPachinkoStr ];
@@ -176,7 +176,7 @@ class SuperGoal extends V2Game{
     }
 
     private showPachinkoLetterAnimation(): void{
-        let pachinkoStr: string = SuperGoal.pachampionkoString;
+        let pachinkoStr: string = SuperGoal.supergoalString;
         let i: number = pachinkoStr.indexOf( this.currentPachinkoStr );
         this.superGoalLetters.showPachinkoLetterAnimation( i );
     }
@@ -204,7 +204,7 @@ class SuperGoal extends V2Game{
                 if( GameData.currentBet - 1 == this.betProgress[i]["bet"] ){
                     index = this.betProgress[i]["letterIndex"];
                     index += 1;
-                    if( index >= SuperGoal.pachampionkoString.length && letra == 0 ){
+                    if( index >= SuperGoal.supergoalString.length && letra == 0 ){
                         this.runPachinkoGetAllLetterAnimation( i );
                     }
                     else{

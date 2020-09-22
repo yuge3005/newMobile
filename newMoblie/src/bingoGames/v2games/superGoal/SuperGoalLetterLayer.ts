@@ -36,7 +36,7 @@ class SuperGoalLetterLayer extends egret.DisplayObjectContainer{
 	}
 
 	public showPachinkoLetterAnimation( index: number ){
-		let pachinkoStr: string = SuperGoal.pachampionkoString;
+		let pachinkoStr: string = SuperGoal.supergoalString;
 		this.playingLetterAnimation = true;
 
 		let letterPaytable: egret.Bitmap = Com.addBitmapAt( this, BingoMachine.getAssetStr( "champion_paytable_" + pachinkoStr[index] ), 1000, 700 );

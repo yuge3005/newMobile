@@ -29,7 +29,7 @@ class SuperGoalPaytableLayer extends PaytableLayer{
 
 		this.pachinkoPaytableList = {};
 
-		let supergoalStr: string = SuperGoal.pachampionkoString;
+		let supergoalStr: string = SuperGoal.supergoalString;
         for( let i: number = 0; i < supergoalStr.length; i++ ){
 			let tpName: string = "pachinko" + "_" + supergoalStr[i]
             this.pachinkoPaytableList[supergoalStr[i]] = PayTableManager.payTablesDictionary[ tpName ];
@@ -39,7 +39,7 @@ class SuperGoalPaytableLayer extends PaytableLayer{
 	}
 
 	private removeCurrentLetter(){
-		let supergoalStr: string = SuperGoal.pachampionkoString;
+		let supergoalStr: string = SuperGoal.supergoalString;
 		for( let i: number = 0; i < supergoalStr.length; i++ ){
 			let letter: string = supergoalStr[i];
 			if( this.contains( this.pachinkoPaytableList[letter].ui ) ){
@@ -56,7 +56,7 @@ class SuperGoalPaytableLayer extends PaytableLayer{
 
 	public addCurrentPaytable( letterIndex: number ){
 		this.removeCurrentLetter();
-		let supergoalStr: string = SuperGoal.pachampionkoString;
+		let supergoalStr: string = SuperGoal.supergoalString;
 		let letter: string = supergoalStr[letterIndex];
 
 		PayTableManager.payTablesDictionary[ "pachinko" + "_" + letter ] = this.pachinkoPaytableList[letter];
