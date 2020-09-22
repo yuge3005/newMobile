@@ -72,7 +72,7 @@ class SuperGoal extends V2Game{
 	}
 
     protected getGratisUI(): egret.DisplayObject{
-        return Com.addBitmapAt( this, this.assetStr( "extraball" ), 0, 0 );;
+        return Com.addBitmapAt( this, this.assetStr( "extraball" ), 0, 0 );
 	}
 
     protected showExtraUI( show: boolean = true ){
@@ -339,6 +339,14 @@ class SuperGoal extends V2Game{
         super.onCancelExtra( data );
         this.resetLetterIndex( data["letra"] );
     }
+
+    protected buildSuperEbArea( superEbBgName: string, superEbAreaX: number, superEbAreaY: number ): void{
+		this.superExtraBg = Com.addBitmapAt( this, this.assetStr( superEbBgName ), superEbAreaX, superEbAreaY );
+        this.superExtraBg.fillMode = egret.BitmapFillMode.REPEAT;
+        this.superExtraBg.width = 56 * 5;
+		this.superExtraBg.visible = false;
+		this.setChildIndex( this.superExtraBg, this.getChildIndex( this.ballArea ) );
+	}
 
 /******************************************************************************************************************************************************************/    
 
