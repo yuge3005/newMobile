@@ -1,9 +1,4 @@
-class PachampionkoGrid extends TowerGrid{
-
-	private missOneContainer: egret.DisplayObjectContainer;
-	private missOneBg: egret.Bitmap;
-	private missOneNumText: egret.TextField;
-	private missOneMultiple: egret.TextField;
+class PachampionkoGrid extends ExtraBlinkGrid{
 
 	private waveMc: egret.MovieClip;
 
@@ -12,41 +7,13 @@ class PachampionkoGrid extends TowerGrid{
 	public static needClear: boolean;
 
 	private forkUI: egret.Bitmap;
-	
-	public get blink(): boolean{
-		return this._blink;
-	}
-	public set blink( value: boolean ){
-		if( this._blink == value )return;
-		this._blink = value;
-		if( !value ){ 
-			this.currentBgPic = this.defaultBgPic;
-			this.missOneContainer.visible = false;
-		}
-	}
 
 	public constructor() {
 		super()
+	}
 
-		// miss one effect
-		this.missOneContainer = new egret.DisplayObjectContainer();
-		this.missOneContainer.visible = false;
-		this.addChild( this.missOneContainer );
-		// bg
-		this.missOneBg = Com.addBitmapAt(this.missOneContainer, BingoMachine.getAssetStr( "card_yellow_02" ), 0, 0);
-		// miss one num text
-		this.missOneNumText = Com.addTextAt(this.missOneContainer, 0, 0, 38, 20, 18, false, false);
-		this.missOneNumText.bold = true;
-		this.missOneNumText.textAlign = "center";
-		this.missOneNumText.verticalAlign = "middle";
-		this.missOneNumText.textColor = CardGrid.numberColor;
-		this.missOneNumText.text = this.numTxt.text;
-		// miss one multiple
-		this.missOneMultiple = Com.addTextAt(this.missOneContainer, 0, 15, 38, 16, 14, false, false);
-		this.missOneMultiple.textAlign = "center";
-		this.missOneMultiple.verticalAlign = "middle";
-		this.missOneMultiple.textColor = 0xFFFFFF;
-		this.missOneMultiple.text = "0";
+	protected getBlinkBg(): egret.Bitmap{
+		return Com.createBitmapByName( BingoMachine.getAssetStr( "card_yellow_02" ) );
 	}
 
 	public showWaveEffect( delay: number ): void{
@@ -81,9 +48,6 @@ class PachampionkoGrid extends TowerGrid{
 
 	public showEffect( isShow: boolean ): void{
 		super.showEffect( isShow );
-		if( !isShow ){
-			this.missOneContainer.visible = false;
-		}
 
 		if( isShow ){
 			if( !this.forkUI ) this.forkUI = Com.createBitmapByName( BingoMachine.getAssetStr( GameCard.usefork ) );
@@ -95,8 +59,6 @@ class PachampionkoGrid extends TowerGrid{
 	}
 
 	public showBlink( isShow: boolean ): void{
-		this.missOneNumText.text = this.numTxt.text;
-		this.missOneContainer.visible = true;
 		if( this.parent ) this.parent.addChild( this );
 	}
 
@@ -105,6 +67,5 @@ class PachampionkoGrid extends TowerGrid{
 			this.blink = false;
 			return;
 		}
-		this.missOneMultiple.text = "" + winTimes;
 	}
 }

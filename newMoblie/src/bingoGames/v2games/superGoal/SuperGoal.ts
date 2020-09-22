@@ -16,16 +16,13 @@ class SuperGoal extends V2Game{
         this.gratisUIIsOverExtraUI = true;
 
         GameCard.gridOnTop = true;
-
         GameCard.zeroUI = "champion_shose";
-
         GameCard.useRedEffect = true;
 
         PaytableUI.focusColor = 0xFFFF00;
 
         CardManager.cardType = PachampionkoCard;
         CardManager.gridType = PachampionkoGrid;
-
         CardGrid.defaultNumberSize = 45;
 
         BallManager.ballOffsetY = 3;
@@ -127,8 +124,11 @@ class SuperGoal extends V2Game{
         this.pachinkoLetters = [];
         this.pachinkoLetterContainer = new egret.DisplayObjectContainer;
         this.addChild( this.pachinkoLetterContainer );
+
+        ExtraBlinkGrid.extraBink = true;
+
         for( let i: number = 0; i < 9; i++ ){
-            this.pachinkoLetters[i] = Com.addBitmapAt( this.pachinkoLetterContainer, this.assetStr( "champion_letter_" + ( i + 1 ) ), 22 * i + ( i < 5 ? 38 : 43 ), 26 );
+            this.pachinkoLetters[i] = Com.addBitmapAt( this.pachinkoLetterContainer, this.assetStr( "champion_letter_" + ( i + 1 ) ), 44 * i + 295, 44 );
         }
         this.useBetPaytable();
     }
