@@ -9,7 +9,7 @@ class SuperGoal extends V2Game{
     }
 
     public constructor( assetsPath: string ) {
-        super("pachampionko.conf", assetsPath, 70);
+        super("superGoal.conf", assetsPath, 70);
         this.languageObjectName = "superGoal_tx";
         this.megaName = "superGoal_mega";
 
@@ -26,7 +26,7 @@ class SuperGoal extends V2Game{
         CardManager.cardType = PachampionkoCard;
         CardManager.gridType = PachampionkoGrid;
 
-        CardGrid.defaultNumberSize = 20;
+        CardGrid.defaultNumberSize = 45;
 
         BallManager.ballOffsetY = 3;
 
@@ -34,10 +34,6 @@ class SuperGoal extends V2Game{
         this.ballArea.needLightCheck = true;
 
         PayTableManager.bingoPaytableName = "pachinko_bingo";
-    }
-
-    private combinPaytableString( str: string ){
-        return "champion_grid_" + str;
     }
 
     protected init(){
@@ -57,7 +53,7 @@ class SuperGoal extends V2Game{
 
         this.letsPachampionko();
 
-        ( this.getChildByName( this.assetStr( "jackpot_pt" ) ) as egret.Bitmap ).texture = RES.getRes( this.assetStr( "jackpot_" + GlobelSettings.language ) );
+        // ( this.getChildByName( this.assetStr( "jackpot_pt" ) ) as egret.Bitmap ).texture = RES.getRes( this.assetStr( "jackpot_" + GlobelSettings.language ) );
 
         this.ganhoCounter = new GanhoCounter;
     }
