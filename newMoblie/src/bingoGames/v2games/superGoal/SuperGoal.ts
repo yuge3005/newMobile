@@ -20,6 +20,7 @@ class SuperGoal extends V2Game{
         GameCard.useRedEffect = true;
 
         PaytableUI.focusColor = 0xFFFF00;
+        PayTableManager.layerType = SuperGoalPaytableLayer;
         PayTableManager.paytableUIType = SuperGoalPaytableUI;
 
         CardManager.cardType = SuperGoalCard;
