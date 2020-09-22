@@ -42,17 +42,11 @@ class SuperGoal extends V2Game{
 
         this.runningBallContainer = new egret.DisplayObjectContainer;
         Com.addObjectAt( this, this.runningBallContainer, 1105, 125 );
-        
-        this.ballCountText = MDS.addGameText( this, 455, 46, 15, 0x88FF88, "bet", false, 38 );
-        this.ballCountText.textAlign = "center";
-        this.ballCountText.text = "";
 
-        this.buildSuperEbArea( "mega_" + GlobelSettings.language, 257, 48 );
+        this.buildSuperEbArea( "mega_" + GlobelSettings.language, 784, 172 );
 
         this.letsPachampionko();
-
-        // ( this.getChildByName( this.assetStr( "jackpot_pt" ) ) as egret.Bitmap ).texture = RES.getRes( this.assetStr( "jackpot_" + GlobelSettings.language ) );
-
+        
         this.ganhoCounter = new GanhoCounter;
     }
 
@@ -76,12 +70,6 @@ class SuperGoal extends V2Game{
     protected getGratisUI(): egret.DisplayObject{
         return Com.addBitmapAt( this, this.assetStr( "extraball" ), 0, 0 );;
 	}
-
-    protected clearRunningBallUI(): void{
-        super.clearRunningBallUI();
-
-        this.ballCountText.text = "";
-    }
 
     protected showExtraUI( show: boolean = true ){
         super.showExtraUI( show );
