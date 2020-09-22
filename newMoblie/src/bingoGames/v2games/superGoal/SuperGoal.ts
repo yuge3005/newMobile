@@ -5,7 +5,7 @@ class SuperGoal extends V2Game{
     }
 
     protected static get animationAssetName(){
-        return "gridWavePachampionko";
+        return "gridWaveSuperGoal";
     }
 
     public constructor( assetsPath: string ) {

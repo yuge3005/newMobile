@@ -26,7 +26,7 @@ class SuperGoalGrid extends ExtraBlinkGrid{
 	public set currentBgPic( value ){
 		if( this._currentBgPic && this.contains( this._currentBgPic ) )this.removeChild( this._currentBgPic );
 		if( value == this.linePic ){
-			if( !this.waveMc )this.waveMc = Com.addMovieClipAt( this, MDS.mcFactory, "gridWavePachampionko", 0, 0 );
+			if( !this.waveMc )this.waveMc = Com.addMovieClipAt( this, MDS.mcFactory, "gridWaveSuperGoal", 0, 0 );
 			if( !this.contains( this.waveMc ) ){
 				this.waveMc.gotoAndStop(1);
 			}
