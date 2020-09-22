@@ -92,10 +92,9 @@ class SuperGoal extends V2Game{
 
     /*********************************************************************************************************************************************************/
 
-    private static pachampionkoString: string = "supergoal"
-    private pachinkoLetters: Array<egret.Bitmap>;
+    public static pachampionkoString: string = "supergoal"
     private pachinkoPaytableList: Object;
-    private pachinkoLetterContainer: egret.DisplayObjectContainer;
+    private superGoalLetters: SuperGoalLetterLayer;
     private currentPachinkoStr: string;
     private hasPachinkoLetter: boolean;
 
@@ -115,15 +114,11 @@ class SuperGoal extends V2Game{
     }
 
     private letsPachampionko():void{
-        this.pachinkoLetters = [];
-        this.pachinkoLetterContainer = new egret.DisplayObjectContainer;
-        this.addChild( this.pachinkoLetterContainer );
+        this.superGoalLetters = new SuperGoalLetterLayer;
+        Com.addObjectAt( this, this.superGoalLetters, 295, 44 );
 
         ExtraBlinkGrid.extraBink = true;
 
-        for( let i: number = 0; i < 9; i++ ){
-            this.pachinkoLetters[i] = Com.addBitmapAt( this.pachinkoLetterContainer, this.assetStr( "champion_letter_" + ( i + 1 ) ), 44 * i + 295, 44 );
-        }
         this.useBetPaytable();
     }
 
@@ -147,14 +142,6 @@ class SuperGoal extends V2Game{
             }
         }
         return letterIndex;
-    }
-
-    private setPachinkoLetter( index: number ): void{
-        for( let i: number = 0; i < 9; i++ ){
-            if( i < index )this.pachinkoLetters[i].filters = [MatrixTool.colorMatrixPure(0xFFFF00)];
-            else if( i == index )this.pachinkoLetters[i].filters = [MatrixTool.colorMatrixPure(0xFF0000)];
-            else this.pachinkoLetters[i].filters = [];
-        }
     }
 
     private addPachinkoPaytable( index: number ): void{
@@ -216,32 +203,10 @@ class SuperGoal extends V2Game{
         this.ganhoCounter.countGanhoAndPlayAnimation(resultList);
     }
 
-    private playingLetterAnimation: boolean;
-
     private showPachinkoLetterAnimation(): void{
         let pachinkoStr: string = SuperGoal.pachampionkoString;
-        let index: number = pachinkoStr.indexOf( this.currentPachinkoStr );
-
-        this.playingLetterAnimation = true;
-
-        let letterPaytable: egret.Bitmap = Com.addBitmapAt( this, this.assetStr( "champion_paytable_" + pachinkoStr[index] ), 475, 350 );
-        TweenerTool.tweenTo( letterPaytable, { x: 241, y: 26 }, 800, 0, ( ( letterPaytable ) => { if( letterPaytable.parent ) letterPaytable.parent.removeChild( letterPaytable ) } ).bind( this, letterPaytable ) );
-
-        for( let i: number = pachinkoStr.length - 1; i > index; i-- ){
-            TweenerTool.tweenTo( this.pachinkoLetters[i], { alpha: 1 }, 0.01, ( pachinkoStr.length - 1 - i ) * 200 + 800, this.letterTurnYellow.bind( this, i, true ) );
-            TweenerTool.tweenTo( this.pachinkoLetters[i], { alpha: 1 }, 0.01, ( pachinkoStr.length - 1 - i ) * 200 + 1000, this.letterTurnYellow.bind( this, i, false ) );
-        }
-
-        TweenerTool.tweenTo( this, { alpha: this.alpha }, 1, ( pachinkoStr.length - index - 2 ) * 200 + 1000, this.setPlayingLetterEsendPlayRequest.bind(this, index) );
-    }
-
-    private letterTurnYellow( i: number, isYellow: boolean ): void{
-        this.pachinkoLetters[i].filters = isYellow ? [ MatrixTool.colorMatrixPure( 0xFFFF00 ) ] : [];
-    }
-
-    private setPlayingLetterEsendPlayRequest( index: number ){
-        this.playingLetterAnimation = false;
-        this.letterTurnYellow( index, true );
+        let i: number = pachinkoStr.indexOf( this.currentPachinkoStr );
+        this.superGoalLetters.showPachinkoLetterAnimation( i );
     }
 
     protected onBetChanged( event: egret.Event ): void{
@@ -254,7 +219,7 @@ class SuperGoal extends V2Game{
     private setLettersByBet(): void{
         let pachinkoPaytableIndex: number = this.getPaytableIndex( GameData.currentBet );
 
-        this.setPachinkoLetter( pachinkoPaytableIndex );
+        this.superGoalLetters.setPachinkoLetter( pachinkoPaytableIndex );
         this.addPachinkoPaytable( pachinkoPaytableIndex );
     }
 
@@ -286,18 +251,18 @@ class SuperGoal extends V2Game{
     }
 
     private runPachinkoGetAllLetterAnimation( betProgressIndex: number ){
-        this.addChild( this.pachinkoLetterContainer );
+        this.addChild( this.superGoalLetters );
         this.playSound( "pcpk_supergoal_mp3" );
-        let tw: egret.Tween = egret.Tween.get( this.pachinkoLetterContainer );
-        this.pachinkoLetterContainer.filters = [ MatrixTool.colorMatrixPure( 0xFFFF00 ) ];
+        let tw: egret.Tween = egret.Tween.get( this.superGoalLetters );
+        this.superGoalLetters.filters = [ MatrixTool.colorMatrixPure( 0xFFFF00 ) ];
         tw.wait( 500 );
-        tw.call( ( () => { this.pachinkoLetterContainer.filters = [ MatrixTool.colorMatrixPure( 0x5b6f0b ) ]; } ).bind(this) );
+        tw.call( ( () => { this.superGoalLetters.filters = [ MatrixTool.colorMatrixPure( 0x5b6f0b ) ]; } ).bind(this) );
         tw.wait( 400 );
-        tw.call( ( () => { this.pachinkoLetterContainer.filters = [ MatrixTool.colorMatrixPure( 0xFFFF00 ) ]; } ).bind(this) );
+        tw.call( ( () => { this.superGoalLetters.filters = [ MatrixTool.colorMatrixPure( 0xFFFF00 ) ]; } ).bind(this) );
         tw.wait( 300 );
-        tw.call( ( () => { this.pachinkoLetterContainer.filters = [ MatrixTool.colorMatrixPure( 0x5b6f0b ) ]; } ).bind(this) );
+        tw.call( ( () => { this.superGoalLetters.filters = [ MatrixTool.colorMatrixPure( 0x5b6f0b ) ]; } ).bind(this) );
         tw.wait( 200 );
-        tw.call( ( () => { this.pachinkoLetterContainer.filters = [ MatrixTool.colorMatrixPure( 0xFFFF00 ) ]; } ).bind(this) );
+        tw.call( ( () => { this.superGoalLetters.filters = [ MatrixTool.colorMatrixPure( 0xFFFF00 ) ]; } ).bind(this) );
         tw.wait( 100 );
         tw.call( this.showAllLetters.bind(this) );
         tw.call( () => { this.betProgress[betProgressIndex]["letterIndex"] = 0; this.setLettersByBet(); } );
@@ -331,7 +296,7 @@ class SuperGoal extends V2Game{
         twSnow.to( { alpha: 1, y: -412 }, 600 );
         twSnow.to( { alpha: 0, y: -100 }, 1000 );
         twSnow.call( () => { sp.parent.removeChild(sp); letters.parent.removeChild( letters ); snow.parent.removeChild( snow ) } );
-        twSnow.call( () => { this.pachinkoLetterContainer.filters = []; } );
+        twSnow.call( () => { this.superGoalLetters.filters = []; } );
     }
 
     protected showSmallWinResult( cardIndex: number, blinkGrids: Object ): void{
@@ -399,7 +364,7 @@ class SuperGoal extends V2Game{
 	}
 
     public onRoundOver( data: Object ){
-        if( this.playingLetterAnimation ){
+        if( this.superGoalLetters.playingLetterAnimation ){
             setTimeout( this.onRoundOver.bind( this, data ), 100 );
             return;
         }
@@ -409,7 +374,7 @@ class SuperGoal extends V2Game{
     }
 
     public onCancelExtra( data: Object ){
-        if( this.playingLetterAnimation ){
+        if( this.superGoalLetters.playingLetterAnimation ){
             setTimeout( this.onCancelExtra.bind( this, data ), 100 );
             return;
         }
