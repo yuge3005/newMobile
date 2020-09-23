@@ -43,7 +43,7 @@ class MiniGameInDoubleMania extends GameUIItem {
 
 		let bg: egret.Bitmap = Com.addBitmapAt( this, this.getAsset( "background" ), 0, 0 );
 
-		Com.addBitmapAt( this, this.getAsset( "background_machine" ), 28, 400 );
+		Com.addBitmapAt( this, this.getAsset( "background_machine" ), 215, 499 );
 
 		this.playBtn = this.buildPlayBtn();
 
@@ -51,7 +51,7 @@ class MiniGameInDoubleMania extends GameUIItem {
 		this.addPaytableBg( "bg", 1545 );
 		this.addPaytableBg( "prize_bg", 1070 );
 
-		Com.addBitmapAt( this, this.getAsset( "line_vertical" ), 218, 145 );
+		Com.addBitmapAt( this, this.getAsset( "line_vertical" ), 646, 160 );
 
 		this.gettingPaytableBg = Com.addBitmapAt( this, this.getAsset( "paytable_outline" ), 60, 400 );
 		this.gettingPaytableBg.visible = false;
@@ -73,8 +73,8 @@ class MiniGameInDoubleMania extends GameUIItem {
 
 	private buildPlayBtn(): TouchDownButton{
 		let playBtnAssetName: string = this.getAsset( "button" );
-		let playBtn: TouchDownButton = Com.addDownButtonAt( this, playBtnAssetName, playBtnAssetName, 650, 660, this.miniSpin.bind( this ), true );
-		let txt: TextLabel = Com.addLabelAt( this, 0, 0, playBtn.width, playBtn.height, 20, true, true );
+		let playBtn: TouchDownButton = Com.addDownButtonAt( this, playBtnAssetName, playBtnAssetName, 1463, 988, this.miniSpin.bind( this ), true );
+		let txt: TextLabel = Com.addLabelAt( this, 0, 0, playBtn.width, playBtn.height, 48, true, true );
 		txt.stroke = 2;
 		txt.setText( MuLang.getText( "play" ) );
 		txt.lineSpacing = 10;
@@ -85,15 +85,15 @@ class MiniGameInDoubleMania extends GameUIItem {
 
 	private addPaytableBg( name: string, xPos: number ): void{
 		let bgBitmap: egret.Bitmap = Com.addBitmapAt( this, this.getAsset( name ), xPos, 106 );
-		let titleText: egret.TextField = MDS.addGameText( this, xPos, 90, 24, 0xFFEE00, name, true, bgBitmap.width, "", 1 );
+		let titleText: egret.TextField = MDS.addGameText( this, xPos, 80, 48, 0xFFEE00, name, true, bgBitmap.width, "", 1 );
 		titleText.strokeColor = 0;
-		titleText.stroke = 2;
+		titleText.stroke = 3;
 		titleText.textAlign = "center";
 	}
 
 	private buildTaytableLayer(): void{
 		this.ptLayer = new egret.DisplayObjectContainer;
-		Com.addObjectAt( this, this.ptLayer, 28, 100 );
+		Com.addObjectAt( this, this.ptLayer, 270, 130 );
 
 		this.addPaytableItems( "paytable_funnyface", 28, 25 );
 		this.addPaytableItems( "paytable_triplebonus", 28, 115 );
@@ -107,20 +107,20 @@ class MiniGameInDoubleMania extends GameUIItem {
 		let pt: egret.Point = new egret.Point( xPos, yPos );
 		for( let i: number = 0; i < 12; i++ ){
 			let ptItem: egret.Bitmap;
-			if( i < 7 && i != 4 ) ptItem = Com.addBitmapAt( this.ptLayer, this.getAsset( name ), xPos + i % 4 * 40, yPos + Math.floor(i / 4) * 30 );
-			else ptItem = Com.addBitmapAt( this.ptLayer, this.getAsset( "line_horizontal" ), xPos + 2 + i % 4 * 40, yPos + 10 + Math.floor(i / 4) * 30 );
+			if( i < 7 && i != 4 ) ptItem = Com.addBitmapAt( this.ptLayer, this.getAsset( name ), xPos + i % 4 * 72, yPos + Math.floor(i / 4) * 56 );
+			else ptItem = Com.addBitmapAt( this.ptLayer, this.getAsset( "line_horizontal" ), xPos + 2 + i % 4 * 72, yPos + 10 + Math.floor(i / 4) * 56 );
 		}
-		let p1: egret.Bitmap = Com.addBitmapAt( this.ptLayer, this.getAsset( name ), xPos + 4 % 4 * 40, yPos + Math.floor(4 / 4) * 30 );
+		let p1: egret.Bitmap = Com.addBitmapAt( this.ptLayer, this.getAsset( name ), xPos + 4 % 4 * 72, yPos + Math.floor(4 / 4) * 56 );
 		this.getItemPosX( p1, xPos, 4, 7 );
-		let p2: egret.Bitmap = Com.addBitmapAt( this.ptLayer, this.getAsset( name ), xPos + 8 % 4 * 40, yPos + Math.floor(8 / 4) * 30 );
+		let p2: egret.Bitmap = Com.addBitmapAt( this.ptLayer, this.getAsset( name ), xPos + 8 % 4 * 72, yPos + Math.floor(8 / 4) * 56 );
 		this.getItemPosX( p2, xPos, 8, 10 );
-		let p3: egret.Bitmap = Com.addBitmapAt( this.ptLayer, this.getAsset( name ), xPos + 9 % 4 * 40, yPos + Math.floor(9 / 4) * 30 );
+		let p3: egret.Bitmap = Com.addBitmapAt( this.ptLayer, this.getAsset( name ), xPos + 9 % 4 * 72, yPos + Math.floor(9 / 4) * 56 );
 		this.getItemPosX( p3, xPos, 9, 11 );
 	}
 
 	private getItemPosX( item: egret.Bitmap, xPos: number, index1: number, index2: number ): void{
-		item["pos0"] = xPos + index1 % 4 * 40;
-		item["pos1"] = xPos + index2 % 4 * 40;
+		item["pos0"] = xPos + index1 % 4 * 72;
+		item["pos1"] = xPos + index2 % 4 * 72;
 		this.changePosItems.push( item );
 	}
 
