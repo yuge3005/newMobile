@@ -136,6 +136,11 @@ class DoubleMania extends V2Game{
     private removeEb(){
         if( this.ebAnimation && this.contains( this.ebAnimation ) )this.removeChild( this.ebAnimation );
     }
+
+    protected onServerData( data: Object ){
+        super.onServerData( data );
+        RES.loadGroup( "doublemania_mini" );
+    }
 /******************************************************************************************************************************************************************/    
     protected showJackpot( jackpot: number, jackpotMinBet: number, betConfig: Array<Object> ){
         this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 1302, 0 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 0, 0 ), new egret.Rectangle( 0, 80, 454, 35 ), 35, 0xFFFFFF, null, 0, 0, true ) );

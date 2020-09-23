@@ -65,6 +65,10 @@
 			"name": "doublemania"
 		},
 		{
+			"keys": "doublemania_mini_json",
+			"name": "doublemania_mini"
+		},
+		{
 			"keys": "pck_2line_mp3,pck_3line_mp3,pck_4corners_mp3,pck_4line_mp3,pck_a_mp3,pck_ball_mp3,pck_bet_mp3,pck_bingo_real_mp3,pck_bingo_mp3,pck_c_mp3,pck_card_mp3,pck_collect_mp3,pck_extra_ball_mp3,pck_flower_mp3,pck_free_extra_mp3,pck_h_mp3,pck_have_extra_ball_mp3,pck_i_mp3,pck_jackpot_mp3,pck_k_mp3,pck_n_mp3,pck_o_mp3,pck_p_mp3,pck_pachinko_mp3,pck_plus_mp3,pck_round_mp3,pachinko_json,pachinko_conf,pachinko_tx,bingoGameToolbar_json,topbar_json,open_list_mp3",
 			"name": "pachinko"
 		},
@@ -1420,6 +1424,12 @@
 			"url": "game/superGoal/gridWaveSuperGoal.json",
 			"type": "json",
 			"name": "gridWaveSuperGoal_json"
+		},
+		{
+			"url": "game/doubleMania/doublemania_mini.json",
+			"type": "sheet",
+			"name": "doublemania_mini_json",
+			"subkeys": "1,2,3,4,BonusEffect,background,background_machine,bg,button,doctor,doctor_blur,dr_bingo,dr_bingo_blur,funny_face,funny_face_blur,line_horizontal,line_vertical,paytable_doctor,paytable_drbingo,paytable_funnyface,paytable_outline,paytable_triplebonus,prize_bg,prize_title,pt_bg,pt_title,title,triplebonus,triplebonus_blur,x,x_blur"
 		}
 	]
 }

@@ -13,7 +13,7 @@ class MiniGameInDoubleMania extends GameUIItem {
 	public constructor() {
 		super();
 
-		GraphicTool.drawRect( this, new egret.Rectangle( 0, 0, BingoBackGroundSetting.gameMask.width, BingoBackGroundSetting.gameMask.height ), 0, false, 0.0 );
+		GraphicTool.drawRect( this, new egret.Rectangle( 0, 0, BingoBackGroundSetting.gameMask.width, BingoBackGroundSetting.gameMask.height ), 0, false, 0.4 );
 		this.touchEnabled = true;
 
 		this.showBonusTip();
@@ -24,30 +24,17 @@ class MiniGameInDoubleMania extends GameUIItem {
 	}
 
 	private getAsset( str: string ): string{
-		let assetStr: string = BingoMachine.getAssetStr( str );
-		let strArr: Array<string> = assetStr.split( "_json." );
-		let nameArr: Array<string> = [];
-		nameArr.push( strArr[0] );
-		nameArr.push( "_mini" );
-		nameArr.push( "_json." );
-		nameArr.push( strArr[1] );
-		return nameArr.join( "" );
+		return "doublemania_mini_json." + str;
 	}
 
 	private showBonusTip(): void{
-		let bonusEffect: egret.Bitmap = Com.addBitmapAt( this, this.getAsset( "BonusEffect" ), 0, 0 );
-		bonusEffect.anchorOffsetX = bonusEffect.width >> 1;
-		bonusEffect.anchorOffsetY = bonusEffect.height >> 1;
-		bonusEffect.x = BingoBackGroundSetting.gameAreaWidth >> 1;
-		bonusEffect.y = BingoBackGroundSetting.gameAreaHeight >> 1;
+		let bonusEffect: egret.Bitmap = Com.addBitmapAtMiddle( this, this.getAsset( "BonusEffect" ), BingoBackGroundSetting.gameMask.width >> 1, BingoBackGroundSetting.gameMask.height >> 1 );
 
 		let tw: egret.Tween = egret.Tween.get( bonusEffect );
-		tw.to( { scaleX: 1.5, scaleY: 1.5 }, 350);
-		tw.to( { scaleX: 1, scaleY: 1 }, 350);
-		tw.to( { scaleX: 1.5, scaleY: 1.5 }, 350);
-		tw.to( { scaleX: 1, scaleY: 1 }, 350);
-		tw.to( { scaleX: 1.5, scaleY: 1.5 }, 350);
-		tw.to( { scaleX: 1, scaleY: 1 }, 350);
+		for( let i: number = 5; i >= 0; i -- ){
+			tw.to( { scaleX: 1.5, scaleY: 1.5 }, 350);
+			tw.to( { scaleX: 1, scaleY: 1 }, 350);
+		}
 		tw.call( this.showMiniGame, this );
 	}
 
@@ -60,9 +47,9 @@ class MiniGameInDoubleMania extends GameUIItem {
 
 		this.playBtn = this.buildPlayBtn();
 
-		this.addPaytableBg( "pt_bg", 28 );
-		this.addPaytableBg( "bg", 655 );
-		this.addPaytableBg( "prize_bg", 422 );
+		this.addPaytableBg( "pt_bg", 245 );
+		this.addPaytableBg( "bg", 1545 );
+		this.addPaytableBg( "prize_bg", 1070 );
 
 		Com.addBitmapAt( this, this.getAsset( "line_vertical" ), 218, 145 );
 
@@ -97,12 +84,11 @@ class MiniGameInDoubleMania extends GameUIItem {
 	}
 
 	private addPaytableBg( name: string, xPos: number ): void{
-		let bgBitmap: egret.Bitmap = Com.addBitmapAt( this, this.getAsset( name ), xPos, 100 );
+		let bgBitmap: egret.Bitmap = Com.addBitmapAt( this, this.getAsset( name ), xPos, 106 );
 		let titleText: egret.TextField = MDS.addGameText( this, xPos, 90, 24, 0xFFEE00, name, true, bgBitmap.width, "", 1 );
 		titleText.strokeColor = 0;
 		titleText.stroke = 2;
 		titleText.textAlign = "center";
-		bgBitmap.scaleY = 1.25;
 	}
 
 	private buildTaytableLayer(): void{
