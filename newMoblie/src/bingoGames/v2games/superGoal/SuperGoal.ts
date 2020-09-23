@@ -51,7 +51,11 @@ class SuperGoal extends V2Game{
 
         this.letsSupergoal();
         
-        this.ganhoCounter = new GanhoCounter;
+        this.ganhoCounter = new GanhoCounter( this.showWinAnimationAt.bind( this ) );
+    }
+
+    protected showWinAnimationAt(cardId: number, win: number): void{
+        ( CardManager.cards[cardId] as SuperGoalCard ).showWinCount( win * GameData.currentBet );
     }
 
     protected showLastBall( ballIndex: number ): void{
@@ -190,7 +194,7 @@ class SuperGoal extends V2Game{
                     index = this.betProgress[i]["letterIndex"];
                     index += 1;
                     if( index >= SuperGoal.supergoalString.length && letra == 0 ){
-                        this.runPachinkoGetAllLetterAnimation( i );
+                        this.runSuperGoalGetAllLetterAnimation( i );
                     }
                     else{
                         this.betProgress[i]["letterIndex"] = letra;
@@ -207,22 +211,17 @@ class SuperGoal extends V2Game{
         }
     }
 
-    private runPachinkoGetAllLetterAnimation( betProgressIndex: number ){
+    private runSuperGoalGetAllLetterAnimation( betProgressIndex: number ){
         this.addChild( this.superGoalLetters );
         this.playSound( "pcpk_supergoal_mp3" );
-        let tw: egret.Tween = egret.Tween.get( this.superGoalLetters );
-        this.superGoalLetters.filters = [ MatrixTool.colorMatrixPure( 0xFFFF00 ) ];
-        tw.wait( 500 );
-        tw.call( ( () => { this.superGoalLetters.filters = [ MatrixTool.colorMatrixPure( 0x5b6f0b ) ]; } ).bind(this) );
-        tw.wait( 400 );
-        tw.call( ( () => { this.superGoalLetters.filters = [ MatrixTool.colorMatrixPure( 0xFFFF00 ) ]; } ).bind(this) );
-        tw.wait( 300 );
-        tw.call( ( () => { this.superGoalLetters.filters = [ MatrixTool.colorMatrixPure( 0x5b6f0b ) ]; } ).bind(this) );
-        tw.wait( 200 );
-        tw.call( ( () => { this.superGoalLetters.filters = [ MatrixTool.colorMatrixPure( 0xFFFF00 ) ]; } ).bind(this) );
-        tw.wait( 100 );
-        tw.call( this.showAllLetters.bind(this) );
-        tw.call( () => { this.betProgress[betProgressIndex]["letterIndex"] = 0; this.setLettersByBet(); } );
+        this.superGoalLetters.runSuperGoalGetAllLetterAnimation( this.afterGetAllLetters.bind(this, betProgressIndex) );
+    }
+
+    private afterGetAllLetters( betProgressIndex: number ){
+        this.betProgress[betProgressIndex]["letterIndex"] = 0;
+        this.setLettersByBet();
+
+        this.showAllLetters();
     }
 
     private showAllLetters(){

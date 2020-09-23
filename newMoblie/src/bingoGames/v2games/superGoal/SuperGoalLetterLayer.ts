@@ -20,18 +20,18 @@ class SuperGoalLetterLayer extends egret.DisplayObjectContainer{
         }
     }
 
-	public runPachinkoGetAllLetterAnimation( callback: Function ){
-		this.pachinkoLetters[this.pachinkoLetters.length-1].filters = [MatrixTool.colorMatrixPure(0xFFFF00)];
+	public runSuperGoalGetAllLetterAnimation( callback: Function ){
         let tw: egret.Tween = egret.Tween.get( this );
-        tw.to( { scaleX: 4, scaleY: 4, x: -1200, y: -160 }, 400 );
-        tw.to( { scaleX: 1, scaleY: 1, x: 0, y: 0  }, 400 );
-        tw.to( { scaleX: 4, scaleY: 4, x: -1200, y: -160  }, 400 );
-        tw.to( { scaleX: 1, scaleY: 1, x: 0, y: 0  }, 400 );
-        tw.to( { scaleX: 4, scaleY: 4, x: -1200, y: -160  }, 400 );
-        tw.to( { scaleX: 1, scaleY: 1, x: 0, y: 0  }, 400 );
-        tw.to( { scaleX: 4, scaleY: 4, x: -1200, y: -160  }, 400 );
-        tw.to( { scaleX: 1, scaleY: 1, x: 0, y: 0  }, 400 );
-        tw.wait(100);
+        this.filters = [ MatrixTool.colorMatrixPure( 0xFFFF00 ) ];
+        tw.wait( 500 );
+        tw.call( ( () => { this.filters = [ MatrixTool.colorMatrixPure( 0x5b6f0b ) ]; } ).bind(this) );
+        tw.wait( 400 );
+        tw.call( ( () => { this.filters = [ MatrixTool.colorMatrixPure( 0xFFFF00 ) ]; } ).bind(this) );
+        tw.wait( 300 );
+        tw.call( ( () => { this.filters = [ MatrixTool.colorMatrixPure( 0x5b6f0b ) ]; } ).bind(this) );
+        tw.wait( 200 );
+        tw.call( ( () => { this.filters = [ MatrixTool.colorMatrixPure( 0xFFFF00 ) ]; } ).bind(this) );
+        tw.wait( 100 );
         tw.call( callback );
 	}
 

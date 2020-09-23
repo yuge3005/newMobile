@@ -1,7 +1,38 @@
 class SuperGoalCard extends GameCard{
 
+	private winTipTx: TextLabel;
+	private winTx: TextLabel;
+
 	public constructor( cardId: number ) {
 		super( cardId );
+	}
+
+	public set bet( value: number ){
+		this.betText.setText( Utils.formatCoinsNumber( value ) );
+    }
+
+	protected onAdd(event: egret.Event) {
+        super.onAdd(event);
+
+		if (this.cardText) this.cardText.setText( MuLang.getText( "bet" ) + ":" );
+
+		this.winTipTx = Com.addLabelAt( this, 245, GameCard.cardTextRect.y, GameCard.cardTextRect.width, GameCard.cardTextRect.height, GameCard.cardTextRect.height, false, true );
+		this.winTipTx.textColor = GameCard.texColor;
+		this.winTipTx.textAlign = "left";
+		this.winTipTx.scaleX = 0.9;
+		this.winTipTx.setText( MuLang.getText( "win" ) + ":" );
+		this.winTx = Com.addLabelAt( this, 325, GameCard.betTextRect.y, 200, GameCard.betTextRect.height, GameCard.betTextRect.height, false, true );
+		this.winTx.textAlign = "left";
+		this.winTx.scaleX = 0.9;
+		this.winTx.setText( MuLang.getText( "" ) + ": " );
+		this.winTx.visible = this.winTipTx.visible = false;
+    }
+
+	public showWinCount( winNumber: number ): void{
+		if( winNumber > 0 ){
+			this.winTx.visible = this.winTipTx.visible = true;
+			this.winTx.setText( Utils.formatCoinsNumber( winNumber ) );
+		}
 	}
 
 	private redEffectKeys: Object = {};
@@ -36,6 +67,7 @@ class SuperGoalCard extends GameCard{
 		super.clearStatus();
 		SuperGoalGrid.needClear = false;
 		this.redEffectKeys = {};
+		this.winTx.visible = this.winTipTx.visible = false;
 	}
 
 	protected gridsRedWave( str: string ): void{
