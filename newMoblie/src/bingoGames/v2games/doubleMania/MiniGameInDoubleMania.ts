@@ -101,6 +101,18 @@ class MiniGameInDoubleMania extends GameUIItem {
 		this.addPaytableItems( "paytable_doctor", 425, 180 );
 
 		this.intervalId = setInterval( this.changePTItemPos.bind( this ), 1000 );
+
+		let timesArr: Array<number> = [ 500, 225, 40, 400, 150, 25, 325, 90, 15, 250, 60, 10 ];
+		for( let i: number = 0; i < timesArr.length; i++ ){
+			this.addTimesText( i, "x" + timesArr[i] );
+		}
+	}
+
+	private addTimesText( i: number, str: string ){
+		let tx: TextLabel = MDS.addGameText( this.ptLayer, i > 5 ? 680 : 280, 8 + 54 * (i % 6), 30, 0, str, false, 80, "", 1 );
+		tx.bold = true;
+		tx.textAlign = "right";
+		tx.fontFamily = "Arial";
 	}
 
 	private addPaytableItems( name: string, xPos: number, yPos: number ): void{
