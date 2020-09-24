@@ -59,10 +59,10 @@ class MiniGameInDoubleMania extends GameUIItem {
 		this.buildTaytableLayer();
 
 		this.miniTtems = [];
-		this.miniTtems[0] = this.buildMiniItemAt( 1, 50, 435 );
-		this.miniTtems[1] = this.buildMiniItemAt( 2, 225, 435 );
-		this.miniTtems[2] = this.buildMiniItemAt( 3, 400, 435 );
-		this.miniTtems[3] = this.buildMiniItemAt( 4, 570, 435 );
+		this.miniTtems[0] = this.buildMiniItemAt( 1, 272, 571 );
+		this.miniTtems[1] = this.buildMiniItemAt( 2, 645, 571 );
+		this.miniTtems[2] = this.buildMiniItemAt( 3, 1008, 571 );
+		this.miniTtems[3] = this.buildMiniItemAt( 4, 1356, 571 );
 	}
 
 	private buildMiniItemAt( type: number, xPos: number, yPos: number ): DoubleManiaMiniItem{
@@ -74,7 +74,7 @@ class MiniGameInDoubleMania extends GameUIItem {
 	private buildPlayBtn(): TouchDownButton{
 		let playBtnAssetName: string = this.getAsset( "button" );
 		let playBtn: TouchDownButton = Com.addDownButtonAt( this, playBtnAssetName, playBtnAssetName, 1463, 988, this.miniSpin.bind( this ), true );
-		let txt: TextLabel = Com.addLabelAt( this, 0, 0, playBtn.width, playBtn.height, 48, true, true );
+		let txt: TextLabel = Com.addLabelAt( this, 10, 0, playBtn.width - 20, playBtn.height, 40, true, true );
 		txt.stroke = 2;
 		txt.setText( MuLang.getText( "play" ) );
 		txt.lineSpacing = 10;
@@ -95,10 +95,10 @@ class MiniGameInDoubleMania extends GameUIItem {
 		this.ptLayer = new egret.DisplayObjectContainer;
 		Com.addObjectAt( this, this.ptLayer, 270, 130 );
 
-		this.addPaytableItems( "paytable_funnyface", 28, 25 );
-		this.addPaytableItems( "paytable_triplebonus", 28, 115 );
-		this.addPaytableItems( "paytable_drbingo", 210, 25 );
-		this.addPaytableItems( "paytable_doctor", 210, 115 );
+		this.addPaytableItems( "paytable_funnyface", 25, 25 );
+		this.addPaytableItems( "paytable_triplebonus", 25, 180 );
+		this.addPaytableItems( "paytable_drbingo", 425, 25 );
+		this.addPaytableItems( "paytable_doctor", 425, 180 );
 
 		this.intervalId = setInterval( this.changePTItemPos.bind( this ), 1000 );
 	}
@@ -107,14 +107,14 @@ class MiniGameInDoubleMania extends GameUIItem {
 		let pt: egret.Point = new egret.Point( xPos, yPos );
 		for( let i: number = 0; i < 12; i++ ){
 			let ptItem: egret.Bitmap;
-			if( i < 7 && i != 4 ) ptItem = Com.addBitmapAt( this.ptLayer, this.getAsset( name ), xPos + i % 4 * 72, yPos + Math.floor(i / 4) * 56 );
-			else ptItem = Com.addBitmapAt( this.ptLayer, this.getAsset( "line_horizontal" ), xPos + 2 + i % 4 * 72, yPos + 10 + Math.floor(i / 4) * 56 );
+			if( i < 7 && i != 4 ) ptItem = Com.addBitmapAtMiddle( this.ptLayer, this.getAsset( name ), xPos + i % 4 * 72, yPos + Math.floor(i / 4) * 56 );
+			else ptItem = Com.addBitmapAtMiddle( this.ptLayer, this.getAsset( "line_horizontal" ), xPos + 2 + i % 4 * 72, yPos + 10 + Math.floor(i / 4) * 56 );
 		}
-		let p1: egret.Bitmap = Com.addBitmapAt( this.ptLayer, this.getAsset( name ), xPos + 4 % 4 * 72, yPos + Math.floor(4 / 4) * 56 );
+		let p1: egret.Bitmap = Com.addBitmapAtMiddle( this.ptLayer, this.getAsset( name ), xPos + 4 % 4 * 72, yPos + Math.floor(4 / 4) * 56 );
 		this.getItemPosX( p1, xPos, 4, 7 );
-		let p2: egret.Bitmap = Com.addBitmapAt( this.ptLayer, this.getAsset( name ), xPos + 8 % 4 * 72, yPos + Math.floor(8 / 4) * 56 );
+		let p2: egret.Bitmap = Com.addBitmapAtMiddle( this.ptLayer, this.getAsset( name ), xPos + 8 % 4 * 72, yPos + Math.floor(8 / 4) * 56 );
 		this.getItemPosX( p2, xPos, 8, 10 );
-		let p3: egret.Bitmap = Com.addBitmapAt( this.ptLayer, this.getAsset( name ), xPos + 9 % 4 * 72, yPos + Math.floor(9 / 4) * 56 );
+		let p3: egret.Bitmap = Com.addBitmapAtMiddle( this.ptLayer, this.getAsset( name ), xPos + 9 % 4 * 72, yPos + Math.floor(9 / 4) * 56 );
 		this.getItemPosX( p3, xPos, 9, 11 );
 	}
 
