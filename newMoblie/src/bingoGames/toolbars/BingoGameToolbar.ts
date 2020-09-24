@@ -7,7 +7,7 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 
 	protected maxBetBtn: TouchDownButton;
 	private collectBtn: TouchDownButton;
-	private buyAllBtn: TouchDownButton;
+	protected buyAllBtn: TouchDownButton;
 
 	protected playBtn: LongPressButton;
 	protected stopBtn: TouchDownButton;
