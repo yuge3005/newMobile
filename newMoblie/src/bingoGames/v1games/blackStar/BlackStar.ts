@@ -28,7 +28,7 @@ class BlackStar extends V1Game{
         this.languageObjectName = "blackStar_tx";
 
         CardManager.cardType = BlackStarCard;
-        CardManager.gridType = TowerGrid;
+        CardManager.gridType = BlackStarGrid;
 
         GameCard.showTitleShadow = new egret.GlowFilter(0, 1, 2, 2, 4, 4);
         GameCard.gridOnTop = true;
