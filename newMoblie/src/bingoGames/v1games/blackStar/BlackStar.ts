@@ -5,7 +5,7 @@ class BlackStar extends V1Game{
 	}
 
     protected static get animationAssetName(){
-		return "showballAnimation";
+		return "blackStarArrow";
 	}
 
     private winText: egret.TextField;
@@ -88,14 +88,10 @@ class BlackStar extends V1Game{
     }
 
     private setSave( saveNumber: number ): void{
-        this.addGameText( 562, 160, 14, 0xFFFFFF, "saving", false, 125 ).textAlign = "center";
+        MDS.addGameText( this, 562, 160, 14, 0xFFFFFF, "saving", false, 125 ).textAlign = "center";
 
-        this.winText = this.addGameTextCenterShadow( 485, 194, 14, 0xFEFE00, "win", false, 100, true, false );
-        this.winText.scaleX = 0.71;
-        this.winText.text = "" + 0;
-
-        this.saveText = this.addGameTextCenterShadow( 578, 194, 14, 0x04DF04, "saving", false, 100, true, false );
-        this.saveText.scaleX = 0.71;
+        this.winText = MDS.addGameTextCenterShadow( this, 485, 194, 14, 0xFEFE00, "win", false, 100, true, false );
+        this.saveText = MDS.addGameTextCenterShadow( this, 578, 194, 14, 0x04DF04, "saving", false, 100, true, false );
         this.saveNumber = saveNumber;
 	}
 

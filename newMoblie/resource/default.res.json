@@ -75,6 +75,10 @@
 		{
 			"keys": "pcpk_a_mp3,pcpk_ball_mp3,pcpk_e_mp3,pcpk_eb_mp3,pcpk_free_eb_mp3,pcpk_g_mp3,pcpk_l_mp3,pcpk_o_mp3,pcpk_p_mp3,pcpk_r_mp3,pcpk_s_mp3,pcpk_supergoal_mp3,pcpk_u_mp3,pcpk_x10_25_mp3,pcpk_x1500_mp3,pcpk_x150_250_mp3,pcpk_x2_8_mp3,pcpk_x3000_mp3,pcpk_x50_mp3,pcpk_x500_mp3,superGoal_json,gridWaveSuperGoal_png,gridWaveSuperGoal_json,superGoal_conf,superGoal_tx,bingoGameToolbar_json,topbar_json,open_list_mp3",
 			"name": "superGoal"
+		},
+		{
+			"keys": "bs_acumulado_wav,bs_ball_mp3,bs_bingo_mp3,bs_card_wav,bs_double_line_mp3,bs_estrela_mp3,bs_h_mp3,bs_line_wav,bs_perimeter_mp3,bs138_mp3,bs140_mp3,bs148_mp3,bs149_mp3,bs151_mp3,bs153_mp3,blackStar_json,blackStarArrow_png,blackStarArrow_json,blackStar_conf,blackStar_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,v1gameDefault_json",
+			"name": "blackStar"
 		}
 	],
 	"resources": [
@@ -1430,6 +1434,107 @@
 			"type": "sheet",
 			"name": "doublemania_mini_json",
 			"subkeys": "1,2,3,4,BonusEffect,background,background_machine,bg,button,doctor,doctor_blur,dr_bingo,dr_bingo_blur,funny_face,funny_face_blur,line_horizontal,line_vertical,paytable_doctor,paytable_drbingo,paytable_funnyface,paytable_outline,paytable_triplebonus,prize_bg,prize_title,pt_bg,pt_title,title,triplebonus,triplebonus_blur,x,x_blur"
+		},
+		{
+			"url": "game/blackStar/sound/bs138.mp3",
+			"type": "sound",
+			"name": "bs138_mp3"
+		},
+		{
+			"url": "game/blackStar/sound/bs140.mp3",
+			"type": "sound",
+			"name": "bs140_mp3"
+		},
+		{
+			"url": "game/blackStar/sound/bs148.mp3",
+			"type": "sound",
+			"name": "bs148_mp3"
+		},
+		{
+			"url": "game/blackStar/sound/bs149.mp3",
+			"type": "sound",
+			"name": "bs149_mp3"
+		},
+		{
+			"url": "game/blackStar/sound/bs151.mp3",
+			"type": "sound",
+			"name": "bs151_mp3"
+		},
+		{
+			"url": "game/blackStar/sound/bs153.mp3",
+			"type": "sound",
+			"name": "bs153_mp3"
+		},
+		{
+			"url": "game/blackStar/sound/bs_acumulado.wav",
+			"type": "sound",
+			"name": "bs_acumulado_wav"
+		},
+		{
+			"url": "game/blackStar/sound/bs_ball.mp3",
+			"type": "sound",
+			"name": "bs_ball_mp3"
+		},
+		{
+			"url": "game/blackStar/sound/bs_bingo.mp3",
+			"type": "sound",
+			"name": "bs_bingo_mp3"
+		},
+		{
+			"url": "game/blackStar/sound/bs_card.wav",
+			"type": "sound",
+			"name": "bs_card_wav"
+		},
+		{
+			"url": "game/blackStar/sound/bs_double_line.mp3",
+			"type": "sound",
+			"name": "bs_double_line_mp3"
+		},
+		{
+			"url": "game/blackStar/sound/bs_estrela.mp3",
+			"type": "sound",
+			"name": "bs_estrela_mp3"
+		},
+		{
+			"url": "game/blackStar/sound/bs_h.mp3",
+			"type": "sound",
+			"name": "bs_h_mp3"
+		},
+		{
+			"url": "game/blackStar/sound/bs_line.wav",
+			"type": "sound",
+			"name": "bs_line_wav"
+		},
+		{
+			"url": "game/blackStar/sound/bs_perimeter.mp3",
+			"type": "sound",
+			"name": "bs_perimeter_mp3"
+		},
+		{
+			"url": "game/blackStar/blackStarArrow.png",
+			"type": "image",
+			"name": "blackStarArrow_png"
+		},
+		{
+			"url": "game/blackStar/blackStarArrow.json",
+			"type": "json",
+			"name": "blackStarArrow_json"
+		},
+		{
+			"url": "game/blackStar/blackStar.json",
+			"type": "sheet",
+			"name": "blackStar_json",
+			"subkeys": "FCartela1,Image-213,Image-214,Image-215,Image-216,Image-217,Image-218,Image-219,Image-220,PLAY_01,PLAY_02,backStarBall_blue,backStarBall_greean,backStarBall_orange,backStarBall_pink,backStarBall_red,backStarBall_yellow,ball_bg,barraextra,blackStar_acumulado,blackStar_bg,btn_savings,card_bg03,card_bg_light,card_bingo,card_dbline1,card_dbline2,card_dbline3,card_h,card_ii,card_line1,card_line2,card_line3,card_mouse,card_round,card_trangle,card_trangle2,fundo_cartela,jackpot_bg,jackpot_lock,number_bg,number_bg_black,number_bg_blue,radar_bingo,radar_double_line,radar_h,radar_ii,radar_line,radar_mouse,radar_round,radar_trangle"
+		},
+		{
+			"url": "config/blackStar.conf",
+			"type": "json",
+			"name": "blackStar_conf"
+		},
+		{
+			"url": "config/lan/blackStar.tx",
+			"type": "json",
+			"name": "blackStar_tx"
 		}
 	]
 }
