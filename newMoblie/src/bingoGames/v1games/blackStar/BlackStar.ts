@@ -52,19 +52,21 @@ class BlackStar extends V1Game{
 
         if( data["save"] != null ) this.setSave( parseInt( data["save"] ) );
 
-        this.removeChild( this.gameToolBar );
-        this.gameToolBar = new BackGameToolBar;
-		Com.addObjectAt( this, this.gameToolBar, 0, GameToolBar.toolBarY );
-		this.gameToolBar.scaleX = 160 / 151;
-		this.gameToolBar.scaleY = 1 / 0.77;
-		this.gameToolBar.showTip( "" );
-        this.addChild( this.pussleProcessBar );
-
         this.gameToolBar.addEventListener( "winChange", this.winChange, this );
         this.gameToolBar.addEventListener( "tipStatus", this.tipStatus, this );
-
-        this.resetGameToolBarStatus();
     }
+
+    protected initToolbar(){
+		this.gameToolBar = new BingoGameToolbar;
+		Com.addObjectAt( this, this.gameToolBar, 0, BingoGameToolbar.toolBarY );
+		this.gameToolBar.showTip( "" );
+
+		this.topbar = new Topbar;
+		this.addChild( this.topbar );
+		
+		this.topbar.scaleX = this.gameToolBar.scaleX = BingoBackGroundSetting.gameMask.width / 2000;
+		this.topbar.scaleY = this.gameToolBar.scaleY = BingoBackGroundSetting.gameMask.height / 1125;
+	}
 
     protected winChange( event: egret.Event ): void{
         this.winText.text = Utils.formatCoinsNumber( event["winCoins"] );
