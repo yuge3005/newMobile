@@ -46,34 +46,11 @@ class BlackStar extends V1Game{
         this.runningBallContainer = new egret.DisplayObjectContainer;
         this.runningBallContainer.scaleX = this.runningBallContainer.scaleY = 0.5;
     }
-    
-    protected getFitEffectNameList(): Object{
-        function combinString( str: string ){
-            return "card_" + str;
-        }
-
-        let firList: Object = {}
-        firList["line"] = [];
-        firList["line"][0] = combinString( "line1" );
-        firList["line"][1] = combinString( "line2" );
-        firList["line"][2] = combinString( "line3" );
-        firList["double_line"] = [];
-        firList["double_line"][0] = combinString( "dbline1" );
-        firList["double_line"][1] = combinString( "dbline2" );
-        firList["double_line"][2] = combinString( "dbline3" );
-        firList["trangle"] = [];
-        firList["trangle"][0] = combinString( "trangle" );
-        firList["trangle"][1] = combinString( "trangle2" );
-        firList["mouse"] = combinString( "mouse" );
-        firList["h"] = combinString( "h" );
-        firList["ii"] = combinString( "ii" );
-        firList["round"] = combinString( "round" );
-        firList["bing"] = combinString( "bingo" );
-        return firList;
-    }
 
     protected onServerData( data: Object ){
         super.onServerData( data );
+
+        if( data["save"] != null ) this.setSave( parseInt( data["save"] ) );
 
         this.removeChild( this.gameToolBar );
         this.gameToolBar = new BackGameToolBar;
@@ -108,8 +85,7 @@ class BlackStar extends V1Game{
         this.playSound("bs_ball_mp3");
     }
 
-    protected setSave( saveNumber: number ): void{
-        this.addGameText( 493, 160, 14, 0xFFFFFF, "win", false, 70 ).textAlign = "center";
+    private setSave( saveNumber: number ): void{
         this.addGameText( 562, 160, 14, 0xFFFFFF, "saving", false, 125 ).textAlign = "center";
 
         this.winText = this.addGameTextCenterShadow( 485, 194, 14, 0xFEFE00, "win", false, 100, true, false );

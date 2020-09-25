@@ -246,7 +246,6 @@ class BingoMachine extends GameUIItem{
 		this.dispatchEvent( new egret.Event( "connected_to_server" ) );
 
 		this.setLetras( data["letras"] );
-		if( data["save"] != null )this.setSave( parseInt( data["save"] ) );
 
 		this.showJackpot( data["acumulado"], data["jackpot_min_bet"], data["betConfig"] );
 		IBingoServer.jackpotCallbak = this.jackpotArea.setJackpotNumber.bind(this.jackpotArea);
@@ -431,10 +430,6 @@ class BingoMachine extends GameUIItem{
 
 	protected setLetras( letrasData: string ): void{
 		//only for pachinko
-	}
-
-	protected setSave( saveNumber: number ): void{
-		
 	}
 
 	protected playSound(soundName: string, repeat: number = 1, callback: Function = null, thisObject: Object = null): void {
