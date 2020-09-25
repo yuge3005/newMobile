@@ -1,4 +1,4 @@
-class SuperGoalCard extends GameCard{
+class SuperGoalCard extends ExtraBlinkCard{
 
 	private winTipTx: TextLabel;
 	private winTx: TextLabel;

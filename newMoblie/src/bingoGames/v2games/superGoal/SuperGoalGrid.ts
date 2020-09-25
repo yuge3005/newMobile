@@ -16,6 +16,13 @@ class SuperGoalGrid extends ExtraBlinkGrid{
 		return Com.createBitmapByName( BingoMachine.getAssetStr( "card_yellow_02" ) );
 	}
 
+	protected buildSmallWinText(){
+		this.extraBlinkNumTxt = Com.addLabelAt( this.extraBinkSp, 0, 3, CardGrid.gridSize.x, 30, 30, false, true );
+		this.extraBlinkNumTxt.textColor = 0;
+		this.smallWinTimesText = Com.addLabelAt( this.extraBinkSp, 0, 28, CardGrid.gridSize.x, 35, 30 );
+		this.smallWinTimesText.textColor = 0xFFFF00;
+	}
+
 	public showWaveEffect( delay: number ): void{
 		egret.Tween.removeTweens( this );
 		let tw: egret.Tween = egret.Tween.get( this );
@@ -55,17 +62,6 @@ class SuperGoalGrid extends ExtraBlinkGrid{
 		}
 		else {
 			if( this.forkUI && this.contains( this.forkUI ) )this.removeChild( this.forkUI );
-		}
-	}
-
-	public showBlink( isShow: boolean ): void{
-		if( this.parent ) this.parent.addChild( this );
-	}
-
-	public setSmallTime( winTimes: number ): void{
-		if( !winTimes ){
-			this.blink = false;
-			return;
 		}
 	}
 }
