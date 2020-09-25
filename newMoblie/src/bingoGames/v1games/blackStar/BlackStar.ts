@@ -9,7 +9,7 @@ class BlackStar extends V1Game{
 	}
 
     private winText: egret.TextField;
-    private saveText: egret.TextField;
+    private saveText: TextLabel;
 
     private _saveNumber: number;
     private get saveNumber(): number{
@@ -18,8 +18,7 @@ class BlackStar extends V1Game{
     private set saveNumber( value: number ){
         this._saveNumber = value;
         ( this.gameToolBar as BackGameToolBar ).savingNumber = value;
-        this.saveText.text = Utils.formatCoinsNumber( value );
-        this.saveText.size = this.saveText.text.length > 11 ? 11 : 14;
+        this.saveText.setText( Utils.formatCoinsNumber( value ) );
     }
 
     private extraPrice: number;
@@ -29,17 +28,7 @@ class BlackStar extends V1Game{
         this.languageObjectName = "blackStar_tx";
 
         GameCard.bgRound = 10;
-
-        GameCard.cardTexPosition = new egret.Point( 10, -4 );
-        GameCard.betTexPosition = new egret.Point( 130, -4 );
-        GameCard.texSize = 18;
-        GameCard.texColor = 0x1C0EB9;
-
-        CardGrid.defaultBgColor = 0xFFFFFF;
         CardGrid.defaultNumberSize = 60;
-
-        CardGrid.blinkColors1 = 0xFFFF00;
-        CardGrid.blinkColors2 = 0xFF00FF;
 
         this.needSmallWinTimesOnCard = true;
         this.ballArea.needLightCheck = true;
@@ -47,21 +36,12 @@ class BlackStar extends V1Game{
         this.needListenToolbarStatus = true;
         this.tipStatusTextPosition = new egret.Rectangle( 12, 180, 258, 16 );
         this.tipStatusTextColor = 0xFEFE00;
-
-        GameToolBar.toolBarY = 615;
 	}
 
     protected init(){
         super.init();
 
-        this.addGameTextCenterShadow( 400, 160, 14, 0xFFFFFF, "bet", false, 70, true, false );
-        this.addGameTextCenterShadow( 675, 160, 14, 0xFFFFFF, "credit", false, 125, true, false );
-
-        this.addGameTextCenterShadow( 176, 112, 18, 0x00FE00, "credit", false, 54, true, false ).text = "34";
-        this.addGameTextCenterShadow( 10, 115, 20, 0xFEFE00, "credit", false, 200, true, false ).text = "0";
-
-        this.betText = this.addGameTextCenterShadow( 391, 193, 14, 0xFEFE00, "bet", false, 92, true, false );
-        this.creditText = this.addGameTextCenterShadow( 672, 189, 15, 0xFEFE00, "credit", false, 140, true, false );
+        this.showNoBetAndCredit();
 
         this.runningBallContainer = new egret.DisplayObjectContainer;
         this.runningBallContainer.scaleX = this.runningBallContainer.scaleY = 0.5;
