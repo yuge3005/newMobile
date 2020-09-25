@@ -27,7 +27,11 @@ class BlackStar extends V1Game{
 		super( "blackStar.conf", assetsPath, 23 );
         this.languageObjectName = "blackStar_tx";
 
-        GameCard.bgRound = 10;
+        CardManager.cardType = BlackStarCard;
+        CardManager.gridType = TowerGrid;
+
+        GameCard.showTitleShadow = new egret.GlowFilter(0, 1, 2, 2, 4, 4);
+        GameCard.gridOnTop = true;
         CardGrid.defaultNumberSize = 60;
 
         this.needSmallWinTimesOnCard = true;
@@ -42,6 +46,7 @@ class BlackStar extends V1Game{
         super.init();
 
         this.showNoBetAndCredit();
+        if( this.extraUIObject )this.extraUIObject.visible = true;
 
         this.runningBallContainer = new egret.DisplayObjectContainer;
         this.runningBallContainer.scaleX = this.runningBallContainer.scaleY = 0.5;
@@ -86,6 +91,10 @@ class BlackStar extends V1Game{
         
         this.playSound("bs_ball_mp3");
     }
+
+    protected showExtraUI( show: boolean = true ){
+		if( this.extraUIObject )this.extraUIObject.visible = !show;
+	}
 
     private setSave( saveNumber: number ): void{
         MDS.addGameText( this, 562, 160, 14, 0xFFFFFF, "saving", false, 125 ).textAlign = "center";
