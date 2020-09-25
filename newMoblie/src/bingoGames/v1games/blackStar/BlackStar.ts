@@ -140,26 +140,6 @@ class BlackStar extends V1Game{
 			}
 		}
     }
-    
-    protected getPaytablesFit( paytabledName: string, callback: Function = null ): void{
-        let soundName = "";
-        switch (paytabledName) {
-            case "round": soundName = "bs147_mp3";break;
-            case "double_line": soundName = "bs141_mp3";break;
-            case "ii": soundName = "bs154_mp3";break;
-            case "h": soundName = "bs142_mp3";break;
-            case "mouse": 
-            case "trangle": 
-            case "line": soundName = "bs_line_wav";break;
-            case "bing": soundName = "bs143_mp3";break;
-            default: break;
-        }
-        if (SoundManager.soundOn && soundName !== "") {
-            this.playSound(soundName, 1, callback);
-        } else {
-            callback();
-        }
-	}
 
 	protected onBetChanged( event: egret.Event ): void{
         super.onBetChanged(event);
