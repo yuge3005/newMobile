@@ -40,6 +40,8 @@ class BlackStar extends V1Game{
         this.needListenToolbarStatus = true;
         this.tipStatusTextPosition = new egret.Rectangle( 12, 180, 258, 16 );
         this.tipStatusTextColor = 0xFEFE00;
+
+        PayTableManager.paytableUIType = BlackStarPaytableUI;
 	}
 
     protected init(){
