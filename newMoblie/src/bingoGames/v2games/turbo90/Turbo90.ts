@@ -60,7 +60,7 @@ class Turbo90 extends V2Game{
 
     protected showLastBallAt( ballIndex: number, x: number, y: number, scale: number = 1 ): void{
 		this.clearRunningBallUI();
-		this.runningBallUI = this.ballArea.getABall( ballIndex );
+		this.runningBallUI = this.ballArea.getABigBall( ballIndex );
         this.runningBallUI.scaleX = this.runningBallUI.scaleY = 200 / 68;
 		Com.addObjectAt( this.runningBallContainer, this.runningBallUI, x, y );
 

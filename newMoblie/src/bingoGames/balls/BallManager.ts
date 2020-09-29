@@ -205,29 +205,6 @@ class BallManager extends egret.Sprite{
 		return ball;
 	}
 
-	private buildBigBallWithIndex( index : number, num : number = 0, diffString: string, textSize: number ): egret.Sprite{
-		var ballObj: Object = BallManager.balls[index];
-		var ball: egret.Sprite = new egret.Sprite();
-		Com.addBitmapAt( ball, BingoMachine.getAssetStr( ballObj["ui"].replace( diffString, "" ) ), 0, 0 );
-		var tx: egret.TextField = new egret.TextField;
-		tx.width = ball.width;
-		tx.size = textSize;
-		tx.bold = true;
-		tx.textAlign = "center";
-		tx.textColor = Number( ballObj["color"] );
-		tx.text = "" + ( num ? num : index + 1 );
-		tx.y = ball.height - tx.textHeight >> 1;
-		if( BallManager.textStroke ){
-			tx.stroke = 2;
-			tx.strokeColor = 0x000000;
-			tx.filters = [new egret.GlowFilter( 0, 1, 1, 1, 5 )];
-		}
-		if( ballObj["offsetX"] )tx.x = ballObj["offsetX"];
-		if( BallManager.ballOffsetY )tx.y += BallManager.ballOffsetY;
-		ball.addChild( tx );
-		return ball;
-	}
-
 	private moveToNextPoint(sp:egret.Sprite, pts:Array<egret.Point>):void{
 		var curruntPoint: egret.Point = pts.shift();
 		if( !pts.length )return;
@@ -246,8 +223,8 @@ class BallManager extends egret.Sprite{
 		return this.buildBallWithIndex( index - 1, index );
 	}
 
-	public getABigBall( index: number, diffString: string, textSize: number ): egret.Sprite{
-		return this.buildBigBallWithIndex( index - 1, index, diffString, textSize );
+	public getABigBall( index: number ): egret.Sprite{
+		return this.buildBallWithIndex( index - 1, index, false );
 	}
 
 	public static getBallLastPosition( index: number ): egret.Point{

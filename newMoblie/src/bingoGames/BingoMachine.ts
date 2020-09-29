@@ -739,7 +739,7 @@ class BingoMachine extends GameUIItem{
 		if( this.runningBallUI && ( this.runningBallContainer ).contains( this.runningBallUI ) ){
 			( this.runningBallContainer ).removeChild( this.runningBallUI );
 		}
-		this.runningBallUI = this.ballArea.getABall( ballIndex );
+		this.runningBallUI = this.ballArea.getABigBall( ballIndex );
 		this.runningBallUI.scaleX = this.runningBallUI.scaleY = scale;
 		Com.addObjectAt( this.runningBallContainer, this.runningBallUI, x, y );
 	}

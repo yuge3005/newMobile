@@ -67,7 +67,7 @@ class ShowballSuper extends V1Game{
 		if( this.runningBallUI && ( this.runningBallContainer ).contains( this.runningBallUI ) ){
 			( this.runningBallContainer ).removeChild( this.runningBallUI );
 		}
-		this.runningBallUI = this.ballArea.getABigBall( ballIndex, "_small", 67 );
+		this.runningBallUI = this.ballArea.getABigBall( ballIndex );
 		Com.addObjectAt( this.runningBallContainer, this.runningBallUI, x, y );
 	}
 
