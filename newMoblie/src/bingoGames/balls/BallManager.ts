@@ -4,7 +4,6 @@ class BallManager extends egret.Sprite{
 	private static ballUIs: Array<egret.Sprite>;
 	private ballSize: number;
 	private ballTextSize: number;
-	public static textStroke: boolean;
 	public static textBold: boolean;
 
 	private ballIndexs: Array<number>;
@@ -134,8 +133,7 @@ class BallManager extends egret.Sprite{
 		cross.graphics.lineTo( sp.width - startOffset, sp.height - startOffset );
 		cross.graphics.moveTo( sp.width - startOffset, startOffset );
 		cross.graphics.lineTo( startOffset, sp.height - startOffset );
-		if( BallManager.textStroke ) sp.alpha = 0.75;
-		else sp.filters = [ MatrixTool.colorMatrixLighter( 0.5 ) ];
+		sp.filters = [ MatrixTool.colorMatrixLighter( 0.5 ) ];
 		sp.addChild( cross );
 	}
 
@@ -191,11 +189,6 @@ class BallManager extends egret.Sprite{
 		tx.textColor = Number( ballObj["color"] );
 		tx.text = "" + ( num ? num : index + 1 );
 		tx.y = ball.height - tx.textHeight >> 1;
-		if( BallManager.textStroke ){
-			tx.stroke = 2;
-			tx.strokeColor = 0x000000;
-			tx.filters = [new egret.GlowFilter( 0, 1, 1, 1, 5 )];
-		}
 		if( BallManager.textBold ){
 			tx.fontFamily = "Arial Black";
 		}
