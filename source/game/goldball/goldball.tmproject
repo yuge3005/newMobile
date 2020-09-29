@@ -1,0 +1,18 @@
+{
+    "projectName": "goldball",
+    "options": {
+        "extend": 0,
+        "layoutMath": "0",
+        "sizeMode": "free",
+        "useExtension": 0,
+        "layoutGap": 1
+    },
+    "files": [
+        "./jackpot_lock.png",
+        "./closed-card.png",
+        "./card_background.png",
+        "./bigball-extralarge.png",
+        "./background.png"
+    ],
+    "version": 5
+}
