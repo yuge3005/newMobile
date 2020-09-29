@@ -17,7 +17,7 @@ class CardGrid extends egret.Sprite{
 
 	public static winTimesOffset: egret.Point = new egret.Point;
 
-	protected numTxt: egret.TextField;
+	protected numTxt: BmpText;
 
 	private zeroUI: egret.Bitmap;
 
@@ -65,10 +65,7 @@ class CardGrid extends egret.Sprite{
 
 		this.redrawBg( CardGrid.defaultBgColor );
 
-		this.numTxt = Com.addTextAt( this, 0, CardGrid.defaultNumberSize * 0.125, CardGrid.gridSize.x, CardGrid.gridSize.y, CardGrid.defaultNumberSize, false, true );
-		this.numTxt.textAlign = "center";
-		this.numTxt.verticalAlign = "middle";
-		this.numTxt.textColor = CardGrid.numberColor;
+		this.numTxt = MDS.addBitmapTextAt( this, "Arial Black_fnt", 0, - CardGrid.defaultNumberSize * 0.125, "center", CardGrid.defaultNumberSize, CardGrid.numberColor, CardGrid.gridSize.x, CardGrid.gridSize.y );
 	}
 
 	protected redrawBg( color: number ){

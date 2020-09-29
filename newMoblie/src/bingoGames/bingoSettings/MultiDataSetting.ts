@@ -18,6 +18,21 @@ class MDS{
         return tx;
     }
 
+    public static addBitmapTextAt( target: egret.DisplayObjectContainer, fontName: string, x: number, y: number, textAlign: string = "left", size: number, color: number = 0, width: number, height: number ): BmpText{
+		var bmpText: BmpText = new BmpText();
+		bmpText.font = RES.getRes(fontName);
+		bmpText.textAlign = textAlign;
+		bmpText.verticalAlign = "middle";
+		bmpText.text = " ";
+		let scale: number = size / bmpText.textHeight;
+		bmpText.width = 1 / scale * width;
+		bmpText.height = 1 / scale * height;
+		bmpText.scaleX = bmpText.scaleY = scale;
+		bmpText.filters = [MatrixTool.colorMatrixPure(color)];
+		Com.addObjectAt( target, bmpText, x, y );
+		return bmpText;
+	}
+
 	public constructor() {
 	}
 

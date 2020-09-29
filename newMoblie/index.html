@@ -93,6 +93,13 @@
         document.body.appendChild(s);
     };
 
+    var userAgent = navigator.userAgent;
+    if( userAgent.indexOf("Android") >= 0 && userAgent.indexOf("Firefox") >= 0 ){
+        alert( "we don't support firefox on phone." );
+        alert( "please use other browser" );
+        throw SyntaxError();
+    }
+
     var xhr = new XMLHttpRequest();
     xhr.open('GET', './manifest.json?v=' + Math.random(), true);
     xhr.addEventListener("load", function () {
