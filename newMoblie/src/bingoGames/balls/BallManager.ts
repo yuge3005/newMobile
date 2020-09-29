@@ -103,7 +103,7 @@ class BallManager extends egret.Sprite{
 		for( var i: number = 0; i < path.length; i++ ){
 			pts[i] = new egret.Point( path[i]["x"], path[i]["y"] );
 		}
-		var sp: egret.Sprite = this.buildBallWithIndex( index - 1, index );
+		var sp: BingoBall = this.buildBallWithIndex( index - 1, index );
 		if( BallManager.rotateBall ){
 			let half: number = this.ballSize >> 1;
 			sp.anchorOffsetX = half;
@@ -122,7 +122,7 @@ class BallManager extends egret.Sprite{
 		var path: Array<string> = ballInfo["path"];
 		var lstPtObj: Object = path[path.length-1];
 		var ptLast: egret.Point = new egret.Point( lstPtObj["x"], lstPtObj["y"] );
-		var sp: egret.Sprite = this.buildBallWithIndex( index - 1, index );
+		var sp: BingoBall = this.buildBallWithIndex( index - 1, index );
 		Com.addObjectAt( this, sp, ptLast.x, ptLast.y );
 		let cross: egret.Shape = new egret.Shape;
 		let a: number = this.ballSize / sp.scaleX;
@@ -163,12 +163,11 @@ class BallManager extends egret.Sprite{
 		Com.addBitmapAt( ball, BingoMachine.getAssetStr( assetName ), 0, 0 );
 	}
 
-	private buildBallWithIndex( index : number, num : number = 0, scaleToGame: Boolean = true ): egret.Sprite{
+	private buildBallWithIndex( index : number, num : number = 0, scaleToGame: Boolean = true ): BingoBall{
 		if( !BingoBall.ballUIs[index] ){
 			BingoBall.ballUIs[index] = this.buildBallUIWithIndex( index, num );
 		}
-		let sp: BingoBall = new BingoBall( index, scaleToGame ? this.ballSize : 0 );
-		return sp;
+		return new BingoBall( index, scaleToGame ? this.ballSize : 0 );
 	}
 
 	private buildBallUIWithIndex( index : number, num : number = 0 ): egret.Sprite{
@@ -206,11 +205,11 @@ class BallManager extends egret.Sprite{
 		tw.call( this.moveToNextPoint, this, [sp, pts] );
 	}
 
-	public getABall( index: number ): egret.Sprite{
+	public getABall( index: number ): BingoBall{
 		return this.buildBallWithIndex( index - 1, index );
 	}
 
-	public getABigBall( index: number ): egret.Sprite{
+	public getABigBall( index: number ): BingoBall{
 		return this.buildBallWithIndex( index - 1, index, false );
 	}
 
