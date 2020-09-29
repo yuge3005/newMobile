@@ -1,6 +1,7 @@
 class BallManager extends egret.Sprite{
 
 	private static balls: Array<Object>;
+	private static ballUIs: Array<egret.Sprite>;
 	private ballSize: number;
 	private ballTextSize: number;
 	public static textStroke: boolean;
@@ -29,6 +30,7 @@ class BallManager extends egret.Sprite{
 			for( let ob in balls[i] ) newballs[i][ob] = balls[i][ob];
 		}
 		BallManager.balls = newballs;
+		BallManager.ballUIs = [];
 		this.ballSize = ballSize;
 		this.ballTextSize = ballTextSize;
 	}
@@ -165,6 +167,19 @@ class BallManager extends egret.Sprite{
 	}
 
 	private buildBallWithIndex( index : number, num : number = 0, scaleToGame: Boolean = true ): egret.Sprite{
+		if( !BallManager.ballUIs[index] ){
+			BallManager.ballUIs[index] = this.buildBallUIWithIndex( index, num );
+		}
+		let ren: egret.RenderTexture = new egret.RenderTexture;
+		let newBall: egret.Sprite = BallManager.ballUIs[index];
+		ren.drawToTexture( newBall, new egret.Rectangle( 0, 0, newBall.width, newBall.height ), scaleToGame ? this.ballSize / newBall.height : 1 );
+		let bmp = new egret.Bitmap( ren );
+		let sp: egret.Sprite = new egret.Sprite;
+		sp.addChild( bmp );
+		return sp;
+	}
+
+	private buildBallUIWithIndex( index : number, num : number = 0 ): egret.Sprite{
 		var ballObj: Object = BallManager.balls[index];
 		var ball: egret.Sprite = new egret.Sprite();
 		this.setBallBg( ball, ballObj["ui"] );
@@ -187,7 +202,6 @@ class BallManager extends egret.Sprite{
 		if( ballObj["offsetX"] )tx.x = ballObj["offsetX"];
 		if( BallManager.ballOffsetY )tx.y += BallManager.ballOffsetY;
 		ball.addChild( tx );
-		if( scaleToGame )ball.scaleX = ball.scaleY = this.ballSize / ball.height;
 		return ball;
 	}
 
