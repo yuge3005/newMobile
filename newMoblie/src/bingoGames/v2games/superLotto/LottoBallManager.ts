@@ -19,6 +19,12 @@ class LottoBallManager extends BallManager{
 		return LottoBallManager._ballCounter - 1;
 	}
 
+	protected buildBallWithIndex( num : number = 0, scaleToGame: Boolean = true ): BingoBall{
+		let index: number = num - 1;
+		BingoBall.ballUIs[index] = null;
+		return super.buildBallWithIndex( num, scaleToGame );
+	}
+
 	private ballUIs: Array<string>;
 
 	public setPrizeBalls( prizeBalls: Array<Object> ){
