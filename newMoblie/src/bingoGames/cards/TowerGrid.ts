@@ -13,9 +13,6 @@ class TowerGrid extends CardGrid{
 		this._currentBgPic = value;
 		this.flushGrid();
 	}
-	public get currentBgPic(){
-		return this._currentBgPic;
-	}
 
 	public get blink(): boolean{
 		return this._blink;
@@ -29,10 +26,25 @@ class TowerGrid extends CardGrid{
 
 	private gridView: egret.Bitmap;
 
+	private zeroUI: egret.Bitmap;
+
+	private num: number;
+	public set gridNumber( value: number ){
+		this.num = value;
+		this.numTxt.text = "" + value;
+		if( value == 0 && GameCard.zeroUI ){
+			if( !this.zeroUI )this.zeroUI = Com.addBitmapAt( this, BingoMachine.getAssetStr( GameCard.zeroUI ), 0, 0 );
+		}
+		this.flushGrid();
+	}
+	public get gridNumber(): number{
+		return this.num;
+	}
+
 	public constructor() {
 		super();
 
-		this.defaultBgPic = Com.createBitmapByName( BingoMachine.getAssetStr( CardSettings.defaultBgPicName ) );
+		this._currentBgPic = this.defaultBgPic = Com.createBitmapByName( BingoMachine.getAssetStr( CardSettings.defaultBgPicName ) );
 		this.onEffBgPic = Com.createBitmapByName( BingoMachine.getAssetStr( CardSettings.onEffBgPicName ) );
 		this.blink1Pic = Com.createBitmapByName( BingoMachine.getAssetStr( CardSettings.blink1PicName ) );
 		this.blink2Pic = Com.createBitmapByName( BingoMachine.getAssetStr( CardSettings.blink2PicName ) );

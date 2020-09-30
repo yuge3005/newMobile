@@ -15,20 +15,6 @@ class CardGrid extends egret.Sprite{
 
 	protected numTxt: BmpText;
 
-	private zeroUI: egret.Bitmap;
-
-	private num: number;
-	public set gridNumber( value: number ){
-		this.num = value;
-		this.numTxt.text = "" + value;
-		if( value == 0 && GameCard.zeroUI ){
-			if( !this.zeroUI )this.zeroUI = Com.addBitmapAt( this, BingoMachine.getAssetStr( GameCard.zeroUI ), 0, 0 );
-		}
-	}
-	public get gridNumber(): number{
-		return this.num;
-	}
-
 	protected _isChecked: boolean;
 	public get isChecked(): boolean{
 		return this._isChecked;
