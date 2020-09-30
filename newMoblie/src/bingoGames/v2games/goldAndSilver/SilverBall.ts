@@ -14,8 +14,6 @@ class SilverBall extends GoldSilverSuper{
 
         PayTableManager.layerType = SilverBallPaytableLayer;
 
-        CardManager.gridType = TowerGrid;
-
         CardGrid.defaultNumberSize = 52;
 
         BallManager.ballOffsetY = 10;

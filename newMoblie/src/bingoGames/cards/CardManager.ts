@@ -5,7 +5,7 @@ class CardManager{
 	public static groupNumber: number;
 
 	public static cardType: Function = GameCard;
-	public static gridType: Function = CardGrid;
+	public static gridType: Function = TowerGrid;
 
 	public constructor() {
 	}

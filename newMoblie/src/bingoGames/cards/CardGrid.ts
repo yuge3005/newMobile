@@ -9,11 +9,7 @@ class CardGrid extends egret.Sprite{
 	public static gridSize: egret.Point;
 	public static gridSpace: egret.Point;
 
-	public static defaultBgColor: number;
 	public static defaultNumberSize: number;
-
-	public static blinkColors1: number;
-	public static blinkColors2: number;
 
 	public static winTimesOffset: egret.Point = new egret.Point;
 
