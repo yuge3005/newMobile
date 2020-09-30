@@ -1,5 +1,7 @@
 class BingoBall extends egret.Sprite{
 
+	public static BALL_MOVE_END: string = "ballMoveEnd";
+
 	public static ballUIs: Array<egret.Sprite>;
 	private ballSize: number;
 	private pts: Array<egret.Point>;
@@ -35,7 +37,10 @@ class BingoBall extends egret.Sprite{
 
 	private moveToNextPoint():void{
 		var curruntPoint: egret.Point = this.pts.shift();
-		if( !this.pts.length )return;
+		if( !this.pts.length ){
+			this.dispatchEvent( new egret.Event( BingoBall.BALL_MOVE_END ) );
+			return;
+		}
 		var targetPoint : egret.Point = this.pts[0];
 		var distance: number = egret.Point.distance( curruntPoint, targetPoint );
 		let tw: egret.Tween = egret.Tween.get( this );

@@ -1,4 +1,4 @@
-class BallManager extends egret.Sprite{
+class BallManager extends egret.DisplayObjectContainer{
 
 	private static balls: Array<Object>;
 	private ballSize: number;
@@ -17,8 +17,17 @@ class BallManager extends egret.Sprite{
 
 	private lightResult: Array<Object>;
 
+	private moveingBallLayer: egret.DisplayObjectContainer;
+	private staticBallLayer: egret.DisplayObjectContainer;
+
 	public constructor() {
 		super();
+
+		this.moveingBallLayer = new egret.DisplayObjectContainer;
+		this.staticBallLayer = new egret.DisplayObjectContainer;
+		this.addChild( this.staticBallLayer );
+		this.addChild( this.moveingBallLayer );
+		this.staticBallLayer.cacheAsBitmap = true;
 	}
 
 	public getBallSettings( balls: Array<Object>, ballSize: number, ballTextSize: number ): void{
@@ -34,7 +43,12 @@ class BallManager extends egret.Sprite{
 	}
 
 	public clearBalls(): void{
-		this.removeChildren();
+		for( let i: number = 0; i < this.moveingBallLayer.numChildren; i++ ){
+			let ball: BingoBall = this.moveingBallLayer.getChildAt( i ) as BingoBall;
+			ball.removeEventListener( BingoBall.BALL_MOVE_END, this.onBallMoveEnd, this );
+		}
+		this.moveingBallLayer.removeChildren();
+		this.staticBallLayer.removeChildren();
 	}
 
 	public onRemove(){
@@ -104,10 +118,16 @@ class BallManager extends egret.Sprite{
 			pts[i] = new egret.Point( path[i]["x"], path[i]["y"] );
 		}
 		var sp: BingoBall = this.buildBallWithIndex( index );
-		this.addChild( sp );
+		this.moveingBallLayer.addChild( sp );
+		sp.addEventListener( BingoBall.BALL_MOVE_END, this.onBallMoveEnd, this );
 		sp.startRun( pts );
 		CardManager.getBall( index );
 		BingoMachine.runningBall( index );
+	}
+
+	private onBallMoveEnd( event: egret.Event ){
+		let ball: BingoBall = event.target as BingoBall;
+		this.staticBallLayer.addChild( ball );
 	}
 
 	private runMissExtraBall(): void{
@@ -117,7 +137,7 @@ class BallManager extends egret.Sprite{
 		var lstPtObj: Object = path[path.length-1];
 		var ptLast: egret.Point = new egret.Point( lstPtObj["x"], lstPtObj["y"] );
 		var sp: BingoBall = this.buildBallWithIndex( index );
-		Com.addObjectAt( this, sp, ptLast.x, ptLast.y );
+		Com.addObjectAt( this.staticBallLayer, sp, ptLast.x, ptLast.y );
 		let cross: egret.Shape = new egret.Shape;
 		let a: number = this.ballSize / sp.scaleX;
 		cross.graphics.lineStyle( Math.floor( a * 0.07 ), 0xFF0000 );
