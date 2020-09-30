@@ -9,8 +9,8 @@ class DoubleBingoCard extends GameCard{
 		super.onAdd( event );
 	}
 
-	protected createGrid( gridIndex: number ): CardGrid{
-		let grid: CardGrid = new CardGrid();
+	protected createGrid( gridIndex: number ): TowerGrid{
+		let grid: TowerGrid = new TowerGrid();
 		let line: number = gridIndex < 4 ? 0 : ( gridIndex < 9 ? 1 : 2 );
 		grid.x = GameCard.gridInitPosition.x + ( gridIndex - line * 4 ) * CardGrid.gridSpace.x;
 		grid.y = GameCard.gridInitPosition.y + line * CardGrid.gridSpace.y;

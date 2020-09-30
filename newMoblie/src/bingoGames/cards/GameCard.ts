@@ -6,7 +6,7 @@ class GameCard extends GameUIItem{
 	protected cardText: TextLabel;
 	protected betText: TextLabel;
 
-	protected grids: Array<CardGrid>;
+	protected grids: Array<TowerGrid>;
 
 	public static gridNumbers: egret.Point;
 	public static gapSize: egret.Point;
@@ -149,8 +149,8 @@ class GameCard extends GameUIItem{
 		}
 	}
 
-	protected createGrid( gridIndex: number ): CardGrid{
-		let grid: CardGrid = eval( "new CardManager.gridType()" );
+	protected createGrid( gridIndex: number ): TowerGrid{
+		let grid: TowerGrid = eval( "new CardManager.gridType()" );
 		grid.x = GameCard.gridInitPosition.x + ( gridIndex % GameCard.gridNumbers.x ) * CardGrid.gridSpace.x;
 		grid.y = GameCard.gridInitPosition.y + Math.floor( gridIndex / GameCard.gridNumbers.x ) * CardGrid.gridSpace.y;
 		if( GameCard.gridOnTop )this.addChild( grid );

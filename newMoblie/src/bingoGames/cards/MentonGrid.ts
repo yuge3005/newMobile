@@ -1,4 +1,4 @@
-class MentonGrid extends CardGrid{
+class MentonGrid extends TowerGrid{
 	private radius: number;
 	// single number effect
 	private effectBox: egret.DisplayObjectContainer;

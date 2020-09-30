@@ -26,8 +26,8 @@ class TowerCard extends GameCard{
 		}
 	}
 
-	protected createGrid( gridIndex: number ): CardGrid{
-		let grid: CardGrid = new TowerGrid();
+	protected createGrid( gridIndex: number ): TowerGrid{
+		let grid: TowerGrid = new TowerGrid();
 		if( !TowerCard.lineIndexCounter ) TowerCard.countLineIndexs();
 		let indexPt: egret.Point = TowerCard.lineIndexCounter[gridIndex];
 		let column: number = indexPt.x;
