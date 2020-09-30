@@ -69,8 +69,6 @@ class MentonGrid extends CardGrid{
 	public constructor() {
 		super();
 
-		this.redrawBg( CardGrid.defaultBgColor );
-
 		// radius
 		this.radius = Math.max(CardGrid.gridSize.x, CardGrid.gridSize.y) * Math.SQRT1_2;
 		// effect container
