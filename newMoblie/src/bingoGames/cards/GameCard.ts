@@ -46,6 +46,7 @@ class GameCard extends GameUIItem{
 		super();
 
 		this.cardId = cardId;
+		this.cacheAsBitmap = true;
 		
 		this.addEventListener( egret.Event.ADDED_TO_STAGE, this.onAdd, this );
 	}
