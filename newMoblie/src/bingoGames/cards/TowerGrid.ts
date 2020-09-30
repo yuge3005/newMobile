@@ -6,11 +6,15 @@ class TowerGrid extends CardGrid{
 	private blink2Pic: egret.Bitmap;
 	protected linePic: egret.Bitmap;
 
+	private gridLayer: egret.DisplayObjectContainer;
+
 	protected _currentBgPic: egret.Bitmap;
 	public set currentBgPic( value ){
-		if( this._currentBgPic && this.contains( this._currentBgPic ) )this.removeChild( this._currentBgPic );
 		this._currentBgPic = value;
-		this.addChildAt( this._currentBgPic, 0 );
+		this.flushGrid();
+	}
+	public get currentBgPic(){
+		return this._currentBgPic;
 	}
 
 	public get blink(): boolean{
@@ -23,16 +27,31 @@ class TowerGrid extends CardGrid{
 		else this.numTxt.textColor = CardGrid.numberColorOnEffect;
 	}
 
+	private gridView: egret.Bitmap;
+
 	public constructor() {
 		super();
 
-		this.defaultBgPic = Com.createBitmapByName( BingoMachine.getAssetStr( TowerGrid.defaultBgPicName ) );
-		this.addChildAt( this.defaultBgPic, 0 );
+		this.defaultBgPic = Com.createBitmapByName( BingoMachine.getAssetStr( CardSettings.defaultBgPicName ) );
+		this.onEffBgPic = Com.createBitmapByName( BingoMachine.getAssetStr( CardSettings.onEffBgPicName ) );
+		this.blink1Pic = Com.createBitmapByName( BingoMachine.getAssetStr( CardSettings.blink1PicName ) );
+		this.blink2Pic = Com.createBitmapByName( BingoMachine.getAssetStr( CardSettings.blink2PicName ) );
+		this.linePic = Com.createBitmapByName( BingoMachine.getAssetStr( CardSettings.linePicName ) );
 
-		this.onEffBgPic = Com.createBitmapByName( BingoMachine.getAssetStr( TowerGrid.onEffBgPicName ) );
-		this.blink1Pic = Com.createBitmapByName( BingoMachine.getAssetStr( TowerGrid.blink1PicName ) );
-		this.blink2Pic = Com.createBitmapByName( BingoMachine.getAssetStr( TowerGrid.blink2PicName ) );
-		this.linePic = Com.createBitmapByName( BingoMachine.getAssetStr( TowerGrid.linePicName ) );
+		this.gridView = new egret.Bitmap;
+		this.addChild( this.gridView );
+
+		this.gridLayer = new egret.DisplayObjectContainer;
+	}
+
+	protected flushGrid(){
+		this.gridLayer.removeChildren();
+		this.gridLayer.addChild( this._currentBgPic );
+		this.gridLayer.addChild( this.numTxt );
+
+		let ren: egret.RenderTexture = new egret.RenderTexture;
+		ren.drawToTexture( this.gridLayer, new egret.Rectangle( 0, 0, this.gridLayer.width, this.gridLayer.height ) );
+		this.gridView.texture = ren;
 	}
 
 	public showEffect( isShow: boolean ){
