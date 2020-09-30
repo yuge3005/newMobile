@@ -91,7 +91,7 @@
 			"url": "game/superLotto/superLotto.json",
 			"type": "sheet",
 			"name": "superLotto_json",
-			"subkeys": "any_light,ball_blue,ball_golden,ball_mega,ball_silver,bar_any,bar_sequence,bg,bg_channle,btn_down,btn_down_press,btn_orange,btn_orange_press,btn_up,btn_up_press,card_back,card_bg,card_bg_A,extra_blue,extra_golden,extra_silver,icon_golden,icon_silver,jackpot_bg,jackpot_lock,list_01,list_02,mega_blue,mega_golden,mega_silver,sequence_light"
+			"subkeys": "any_light,ball_blue,ball_golden,ball_mega,ball_silver,bar_any,bar_sequence,bg,bg_channle,btn_down,btn_down_press,btn_orange,btn_orange_press,btn_up,btn_up_press,card_bg,card_bg_A,extra_blue,extra_golden,extra_silver,grid_black,grid_blue,grid_pink,icon_golden,icon_silver,jackpot_bg,jackpot_lock,list_01,list_02,mega_blue,mega_golden,mega_silver,sequence_light"
 		},
 		{
 			"url": "config/superLotto.conf",
