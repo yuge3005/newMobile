@@ -11,6 +11,6 @@ class Pachinko2Grid extends ExtraBlinkGrid{
 	}
 
 	protected getBlinkBg(): egret.Bitmap{
-		return Com.createBitmapByName( BingoMachine.getAssetStr( TowerGrid.linePicName ) );
+		return Com.createBitmapByName( BingoMachine.getAssetStr( CardSettings.linePicName ) );
 	}
 }

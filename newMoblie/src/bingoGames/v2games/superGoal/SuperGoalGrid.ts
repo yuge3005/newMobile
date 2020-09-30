@@ -57,7 +57,7 @@ class SuperGoalGrid extends ExtraBlinkGrid{
 		super.showEffect( isShow );
 
 		if( isShow ){
-			if( !this.forkUI ) this.forkUI = Com.createBitmapByName( BingoMachine.getAssetStr( GameCard.usefork ) );
+			if( !this.forkUI ) this.forkUI = Com.createBitmapByName( BingoMachine.getAssetStr( CardSettings.usefork ) );
 			Com.addObjectAt( this, this.forkUI, CardGrid.gridSize.x - this.forkUI.width >> 1, CardGrid.gridSize.y - this.forkUI.height >> 1 );
 		}
 		else {
