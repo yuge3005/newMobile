@@ -37,6 +37,7 @@ class SuperLotto extends V2Game{
 
     protected init(){
         BallManager["balls"][-1] = BallManager["balls"][0];
+        BingoBall["ballUIs"][-1] = null;
 
         super.init();
         this.tileBg();
