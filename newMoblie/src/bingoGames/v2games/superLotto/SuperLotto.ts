@@ -18,14 +18,11 @@ class SuperLotto extends V2Game{
         PayTableManager.layerType = LottoPaytableLayer;
 
         GameCard.clickChangeNumber = false;
-        CardGrid.defaultBgColor = 0;
         CardGrid.defaultNumberSize = 65;
 
         CardManager.cardType = LottoCard;
         CardManager.gridType = LottoGrid;
 
-        CardGrid.blinkColors1 = 0x0;
-	    CardGrid.blinkColors2 = 0x0;
         GameCard.useRedEffect = true;
 
         BallManager.normalBallInterval = 200;
