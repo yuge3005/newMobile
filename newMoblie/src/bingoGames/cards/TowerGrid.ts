@@ -1,18 +1,9 @@
 class TowerGrid extends CardGrid{
 
-	public static defaultBgPicName: string;
 	protected defaultBgPic: egret.Bitmap;
-
-	public static onEffBgPicName: string;
 	private onEffBgPic: egret.Bitmap;
-
-	public static blink1PicName: string;
 	private blink1Pic: egret.Bitmap;
-
-	public static blink2PicName: string;
 	private blink2Pic: egret.Bitmap;
-
-	public static linePicName: string;
 	protected linePic: egret.Bitmap;
 
 	protected _currentBgPic: egret.Bitmap;
@@ -34,8 +25,6 @@ class TowerGrid extends CardGrid{
 
 	public constructor() {
 		super();
-
-		this.graphics.clear();
 
 		this.defaultBgPic = Com.createBitmapByName( BingoMachine.getAssetStr( TowerGrid.defaultBgPicName ) );
 		this.addChildAt( this.defaultBgPic, 0 );

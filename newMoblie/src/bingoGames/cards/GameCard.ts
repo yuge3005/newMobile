@@ -26,7 +26,6 @@ class GameCard extends GameUIItem{
 	public static zeroUI: string;
 
 	public static gridOnTop: boolean;
-	public static usefork: string;
 
 	protected fitEffectLayer: egret.DisplayObjectContainer;
 	public static fitEffectNameList: Object;
@@ -111,12 +110,12 @@ class GameCard extends GameUIItem{
 		CardGrid.gridSpace = new egret.Point( CardGrid.gridSize.x + this.gapSize.x, CardGrid.gridSize.y + this.gapSize.y );
 		this.gridInitPosition = new egret.Point( size["numberInitialPositionX"], size["numberInitialPositionY"] );
 
-		TowerGrid.blink1PicName = data["blink1"];
-        TowerGrid.blink2PicName = data["blink2"];
-        TowerGrid.defaultBgPicName = data["defaultBg"];
-        TowerGrid.onEffBgPicName = data["onEffBg"];
-        TowerGrid.linePicName = data["line"];
-		GameCard.usefork = data["usefork"];
+		CardSettings.blink1PicName = data["blink1"];
+        CardSettings.blink2PicName = data["blink2"];
+        CardSettings.defaultBgPicName = data["defaultBg"];
+        CardSettings.onEffBgPicName = data["onEffBg"];
+        CardSettings.linePicName = data["line"];
+		CardSettings.usefork = data["usefork"];
 
 		let cardTextRect: egret.Rectangle = new egret.Rectangle( size["cardTextPositionX"], size["cardTextPositionY"], size["cardTextSizeX"], size["cardTextSizeY"] );
 		if( cardTextRect.width > 1 ) GameCard.cardTextRect = cardTextRect;
