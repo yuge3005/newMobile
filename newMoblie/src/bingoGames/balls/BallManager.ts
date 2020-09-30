@@ -103,7 +103,7 @@ class BallManager extends egret.Sprite{
 		for( var i: number = 0; i < path.length; i++ ){
 			pts[i] = new egret.Point( path[i]["x"], path[i]["y"] );
 		}
-		var sp: BingoBall = this.buildBallWithIndex( index - 1, index );
+		var sp: BingoBall = this.buildBallWithIndex( index );
 		this.addChild( sp );
 		sp.startRun( pts );
 		CardManager.getBall( index );
@@ -116,7 +116,7 @@ class BallManager extends egret.Sprite{
 		var path: Array<string> = ballInfo["path"];
 		var lstPtObj: Object = path[path.length-1];
 		var ptLast: egret.Point = new egret.Point( lstPtObj["x"], lstPtObj["y"] );
-		var sp: BingoBall = this.buildBallWithIndex( index - 1, index );
+		var sp: BingoBall = this.buildBallWithIndex( index );
 		Com.addObjectAt( this, sp, ptLast.x, ptLast.y );
 		let cross: egret.Shape = new egret.Shape;
 		let a: number = this.ballSize / sp.scaleX;
@@ -157,7 +157,8 @@ class BallManager extends egret.Sprite{
 		Com.addBitmapAt( ball, BingoMachine.getAssetStr( assetName ), 0, 0 );
 	}
 
-	private buildBallWithIndex( index : number, num : number = 0, scaleToGame: Boolean = true ): BingoBall{
+	protected buildBallWithIndex( num : number = 0, scaleToGame: Boolean = true ): BingoBall{
+		let index: number = num - 1;
 		if( !BingoBall.ballUIs[index] ){
 			BingoBall.ballUIs[index] = this.buildBallUIWithIndex( index, num );
 		}
@@ -186,11 +187,11 @@ class BallManager extends egret.Sprite{
 	}
 
 	public getABall( index: number ): BingoBall{
-		return this.buildBallWithIndex( index - 1, index );
+		return this.buildBallWithIndex( index );
 	}
 
 	public getABigBall( index: number ): BingoBall{
-		return this.buildBallWithIndex( index - 1, index, false );
+		return this.buildBallWithIndex( index, false );
 	}
 
 	public static getBallLastPosition( index: number ): egret.Point{
