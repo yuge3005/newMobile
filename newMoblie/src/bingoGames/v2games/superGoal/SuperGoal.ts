@@ -27,7 +27,7 @@ class SuperGoal extends V2Game{
         CardManager.gridType = SuperGoalGrid;
         CardGrid.defaultNumberSize = 45;
 
-        BallManager.ballOffsetY = 3;
+        BallManager.ballOffsetY = 6;
 
         this.needSmallWinTimesOnCard = true;
         this.ballArea.needLightCheck = true;
@@ -60,20 +60,12 @@ class SuperGoal extends V2Game{
 
     protected showLastBall( ballIndex: number ): void{
         super.showLastBall( ballIndex );
-        this.showLastBallAt(ballIndex, 0, 0);
+        super.showLastBallAt(ballIndex, 0, 0 );
 
         this.playSound("pcpk_ball_mp3");
 
         if (this.btExtra && (this.currentBallIndex === this.gratisNumber - 1)) this.playSound("pcpk_free_eb_mp3");
     }
-
-    protected showLastBallAt( ballIndex: number, x: number, y: number, scale: number = 1 ): void{
-		if( this.runningBallUI && ( this.runningBallContainer ).contains( this.runningBallUI ) ){
-			( this.runningBallContainer ).removeChild( this.runningBallUI );
-		}
-		this.runningBallUI = this.ballArea.getABigBall( ballIndex );
-		Com.addObjectAt( this.runningBallContainer, this.runningBallUI, x, y );
-	}
 
     protected getGratisUI(): egret.DisplayObject{
         return Com.addBitmapAt( this, this.assetStr( "extraball" ), 0, 0 );
