@@ -14,14 +14,16 @@ class BlackStarTipStatus extends egret.DisplayObjectContainer{
 
 		this.addEventListener( egret.Event.ADDED_TO_STAGE, this.onAdd, this );
 
-		this.extraTitle = MDS.addBitmapTextAt( this, "Ozone_fnt", 0, -35, "center", 50, 0xFFFF00, 320, 50 );
+		this.extraTitle = MDS.addBitmapTextAt( this, "Ozone_fnt", 0, 10, "center", 60, 0xE4E4E4, 320, 60 );
 		this.extraTitle.verticalAlign = "middle";
 		this.extraTitle.text = "EXTRA BALL";
 		this.extraTitle.visible = false;
 
-		this.extraText = MDS.addBitmapTextAt( this, "Ozone_fnt", 0, 100, "center", 50, 0xFFFF00, 320, 50 );
+		this.extraText = MDS.addBitmapTextAt( this, "Ozone_fnt", 0, 55, "center", 60, 0xF6352E, 320, 60 );
 		this.extraText.verticalAlign = "middle";
 		this.extraText.visible = false;
+
+		this.cacheAsBitmap = true;
 	}
 
 	private onAdd( event: egret.Event ){
@@ -42,6 +44,6 @@ class BlackStarTipStatus extends egret.DisplayObjectContainer{
 	public showExtra( price: number ){
 		this.playText.visible = false;
 		this.extraTitle.visible = this.extraText.visible = true;
-		this.playText.text = Utils.formatCoinsNumber( price );
+		this.extraText.text = Utils.formatCoinsNumber( price ) + " COINS";
 	}
 }
