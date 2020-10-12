@@ -9,7 +9,7 @@ class BackGameToolBar extends BingoGameToolbar{
 
 		this.savingBtn = this.buyAllBtn;
 		this.savingBtn.removeChildAt( this.savingBtn.numChildren - 1 );
-		this.addButtonText( this.savingBtn, 16, "saving" );
+		this.addButtonText( this.savingBtn, 50, "saving", 10, 0, 0, this.savingBtn.width - 20 );
 		this.savingBtn.name = GameCommands.saving;
 	}
 

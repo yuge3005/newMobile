@@ -64,7 +64,7 @@ class BlackStar extends V1Game{
     }
 
     protected initToolbar(){
-		this.gameToolBar = new BingoGameToolbar;
+		this.gameToolBar = new BackGameToolBar;
 		Com.addObjectAt( this, this.gameToolBar, 0, BingoGameToolbar.toolBarY );
 		this.gameToolBar.showTip( "" );
 
