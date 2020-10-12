@@ -77,7 +77,7 @@
 			"name": "superGoal"
 		},
 		{
-			"keys": "bs_acumulado_wav,bs_ball_mp3,bs_bingo_mp3,bs_card_wav,bs_double_line_mp3,bs_estrela_mp3,bs_h_mp3,bs_line_wav,bs_perimeter_mp3,bs138_mp3,bs140_mp3,bs148_mp3,bs149_mp3,bs151_mp3,bs153_mp3,blackStar_json,blackStarArrow_png,blackStarArrow_json,blackStar_conf,blackStar_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,v1gameDefault_json,Arial Black_fnt,Arial Black_png",
+			"keys": "bs_acumulado_wav,bs_ball_mp3,bs_bingo_mp3,bs_card_wav,bs_double_line_mp3,bs_estrela_mp3,bs_h_mp3,bs_line_wav,bs_perimeter_mp3,bs138_mp3,bs140_mp3,bs148_mp3,bs149_mp3,bs151_mp3,bs153_mp3,blackStar_json,blackStarArrow_png,blackStarArrow_json,blackStar_conf,blackStar_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,v1gameDefault_json,Arial Black_fnt,Arial Black_png,Ozone_png,Ozone_fnt",
 			"name": "blackStar"
 		}
 	],
@@ -1417,7 +1417,7 @@
 			"url": "game/superGoal/superGoal.json",
 			"type": "sheet",
 			"name": "superGoal_json",
-			"subkeys": "ball_green,ball_green_small,card_black,card_number_bg,card_pink,card_white,card_yellow,card_yellow_02,champion_extra,champion_letter_1,champion_letter_2,champion_letter_3,champion_letter_4,champion_letter_5,champion_letter_6,champion_letter_7,champion_letter_8,champion_letter_9,champion_paytable_a,champion_paytable_e,champion_paytable_g,champion_paytable_l,champion_paytable_o,champion_paytable_p,champion_paytable_r,champion_paytable_s,champion_paytable_u,champion_shose,extraball,fundo-1,fundo-cartela,jackpot_en,jackpot_es,jackpot_icon_coin,jackpot_lock,jackpot_pt,mega_en,mega_es,mega_pt,pachinko_paytable1,pachinko_paytable10,pachinko_paytable11,pachinko_paytable12,pachinko_paytable2,pachinko_paytable3,pachinko_paytable4,pachinko_paytable5,pachinko_paytable7,pachinko_paytable8,pachinko_paytable9,paytable_bg,paytable_bg_02,x"
+			"subkeys": "ball_green,card_black,card_number_bg,card_pink,card_white,card_yellow,card_yellow_02,champion_extra,champion_letter_1,champion_letter_2,champion_letter_3,champion_letter_4,champion_letter_5,champion_letter_6,champion_letter_7,champion_letter_8,champion_letter_9,champion_paytable_a,champion_paytable_e,champion_paytable_g,champion_paytable_l,champion_paytable_o,champion_paytable_p,champion_paytable_r,champion_paytable_s,champion_paytable_u,champion_shose,extraball,fundo-1,fundo-cartela,jackpot_en,jackpot_es,jackpot_icon_coin,jackpot_lock,jackpot_pt,mega_en,mega_es,mega_pt,pachinko_paytable1,pachinko_paytable10,pachinko_paytable11,pachinko_paytable12,pachinko_paytable2,pachinko_paytable3,pachinko_paytable4,pachinko_paytable5,pachinko_paytable7,pachinko_paytable8,pachinko_paytable9,paytable_bg,paytable_bg_02,x"
 		},
 		{
 			"url": "game/superGoal/gridWaveSuperGoal.png",
@@ -1524,7 +1524,7 @@
 			"url": "game/blackStar/blackStar.json",
 			"type": "sheet",
 			"name": "blackStar_json",
-			"subkeys": "FCartela1,Image-213,Image-214,Image-215,Image-216,Image-217,Image-218,Image-219,Image-220,PLAY_01,PLAY_02,backStarBall_blue,backStarBall_greean,backStarBall_orange,backStarBall_pink,backStarBall_red,backStarBall_yellow,ball_bg,barraextra,blackStar_acumulado,blackStar_bg,btn_savings,card_bg03,card_bg_light,card_bingo,card_dbline1,card_dbline2,card_dbline3,card_h,card_ii,card_line1,card_line2,card_line3,card_mouse,card_round,card_trangle,card_trangle2,fundo_cartela,jackpot_bg,jackpot_lock,number_bg,number_bg_black,number_bg_blue,radar_bingo,radar_double_line,radar_h,radar_ii,radar_line,radar_mouse,radar_round,radar_trangle"
+			"subkeys": "FCartela1,Image-213,Image-215,Image-216,Image-217,Image-219,Image-220,PLAY_01,PLAY_02,ball_bg,barraextra,blackStar_bg,btn_savings,card_bg03,card_bg_light,card_bingo,card_dbline1,card_dbline2,card_dbline3,card_h,card_ii,card_line1,card_line2,card_line3,card_mouse,card_round,card_trangle,card_trangle2,jackpot_bg,jackpot_lock,number_bg,number_bg_black,number_bg_blue,radar_bingo,radar_double_line,radar_h,radar_ii,radar_line,radar_mouse,radar_round,radar_trangle"
 		},
 		{
 			"url": "config/blackStar.conf",
@@ -1545,6 +1545,16 @@
 			"url": "assets/Arial Black.png",
 			"type": "image",
 			"name": "Arial Black_png"
+		},
+		{
+			"url": "game/blackStar/Ozone.fnt",
+			"type": "font",
+			"name": "Ozone_fnt"
+		},
+		{
+			"url": "game/blackStar/Ozone.png",
+			"type": "image",
+			"name": "Ozone_png"
 		}
 	]
 }

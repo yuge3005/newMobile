@@ -22,6 +22,8 @@ class BlackStar extends V1Game{
 
     private extraPrice: number;
 
+    private tipStatusUI: BlackStarTipStatus;
+
 	public constructor( assetsPath: string ) {
 		super( "blackStar.conf", assetsPath, 23 );
         this.languageObjectName = "blackStar_tx";
@@ -37,8 +39,8 @@ class BlackStar extends V1Game{
         this.ballArea.needLightCheck = true;
 
         this.needListenToolbarStatus = true;
-        this.tipStatusTextPosition = new egret.Rectangle( 12, 180, 258, 16 );
-        this.tipStatusTextColor = 0xFEFE00;
+        // this.tipStatusTextPosition = new egret.Rectangle( 12, 180, 258, 16 );
+        // this.tipStatusTextColor = 0xFEFE00;
 
         PayTableManager.paytableUIType = BlackStarPaytableUI;
 	}
@@ -54,6 +56,9 @@ class BlackStar extends V1Game{
 
         this.arrowArea = new BlackStarCardArrowLayer( this._mcf, "", this.cardPositions, new egret.Point(0, 44), 73 );
         this.addChild( this.arrowArea );
+
+        this.tipStatusUI = new BlackStarTipStatus;
+        Com.addObjectAt( this, this.tipStatusUI, 300, 150 );
     }
 
     protected onServerData( data: Object ){
@@ -82,7 +87,16 @@ class BlackStar extends V1Game{
 	}
 
     protected tipStatus( event: egret.Event ): void{
-        super.tipStatus( event );
+        switch( event["status"] ){
+			case GameCommands.play:
+			    break;
+			case GameCommands.extra:
+                this.tipStatusUI.showExtra( event["extraPrice"] );
+			    break;
+			default:
+				this.tipStatusUI.showPlay();
+			    break;
+		}
         this.extraPrice = event["extraPrice"];
 	}
 
@@ -92,6 +106,7 @@ class BlackStar extends V1Game{
         
         this.playSound("bs_ball_mp3");
 
+        this.tipStatusUI.visible = false;
         clearTimeout( this.timeoutId );
         this.timeoutId = setTimeout( this.clearRunningBallUI.bind( this ), 3000 );
 	}
@@ -100,8 +115,7 @@ class BlackStar extends V1Game{
 
     protected clearRunningBallUI(){
         super.clearRunningBallUI();
-
-
+        this.tipStatusUI.visible = true;
     }
 
     protected showExtraUI( show: boolean = true ){
