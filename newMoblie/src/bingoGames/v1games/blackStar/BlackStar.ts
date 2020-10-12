@@ -113,7 +113,9 @@ class BlackStar extends V1Game{
 /******************************************************************************************************************************************************************/    
 
     protected showJackpot( jackpot: number, jackpotMinBet: number, betConfig: Array<Object> ){
-        this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 244, 160 ), jackpot, jackpotMinBet, betConfig, new egret.Point( -7, 10 ), new egret.Rectangle( 0, 32, 120, 12 ), 16, 0xFF0000, new egret.Rectangle( 0, 0, 120, 14 ), 14, 0xFFFFFF ) );
+        this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 1485, 0 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 0, 0 ), new egret.Rectangle( 80, 40, 240, 30 ), 30, 0xFFFF00 ) );
+        this.jackpotArea.jackpotText.textAlign = "left";
+        this.jackpotArea.jackpotText.fontFamily = "Arial";
     }
 
     protected afterCheck( resultList: Array<Object> ): void{
