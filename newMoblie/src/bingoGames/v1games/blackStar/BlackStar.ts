@@ -51,7 +51,7 @@ class BlackStar extends V1Game{
         if( this.extraUIObject )this.extraUIObject.visible = true;
 
         this.runningBallContainer = new egret.DisplayObjectContainer;
-        this.runningBallContainer.scaleX = this.runningBallContainer.scaleY = 0.5;
+        Com.addObjectAt(this, this.runningBallContainer, 408, 155);
 
         this.arrowArea = new BlackStarCardArrowLayer( this._mcf, "", this.cardPositions, new egret.Point(0, 44), 73 );
         this.addChild( this.arrowArea );
@@ -91,8 +91,7 @@ class BlackStar extends V1Game{
 
     protected showLastBall( ballIndex: number ): void{
         super.showLastBall( ballIndex );
-        super.showLastBallAt( ballIndex, 0, 0 );
-        Com.addObjectAt(this, this.runningBallContainer, 75, 12);
+        super.showLastBallAt( ballIndex, 0, 0, 1.5 );
         
         this.playSound("bs_ball_mp3");
     }
