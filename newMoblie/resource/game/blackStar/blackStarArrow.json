@@ -1,25 +1,5 @@
 {"mc":{
-	"blackStar_arrow._left":{
-		"frameRate":24,
-		"events":[
-			
-			],
-		"frames":[
-			
-			{
-			"res":"7631904F",
-			"x":0,
-			"y":0,
-			"duration":5
-			},
-			{
-			"res":"2144DF1C",
-			"x":0,
-			"y":0,
-			"duration":5
-			}
-			]
-},"blackStar_arrow":{
+	"blackStar_arrow_right":{
 		"frameRate":24,
 		"events":[
 			
@@ -30,18 +10,38 @@
 			"res":"700510A8",
 			"x":0,
 			"y":0,
-			"duration":5
+			"duration":12
 			},
 			{
 			"res":"2144DF1C",
 			"x":0,
 			"y":0,
-			"duration":5
+			"duration":12
+			}
+			]
+},"blackStar_arrow_left":{
+		"frameRate":24,
+		"events":[
+			
+			],
+		"frames":[
+			
+			{
+			"res":"7631904F",
+			"x":0,
+			"y":0,
+			"duration":12
+			},
+			{
+			"res":"2144DF1C",
+			"x":0,
+			"y":0,
+			"duration":12
 			}
 			]
 }},
 	"res":{
 		"2144DF1C":{"x":34,"y":0,"w":1,"h":1},
-		"700510A8":{"x":0,"y":0,"w":15,"h":65},
-		"7631904F":{"x":17,"y":0,"w":15,"h":65}
+		"7631904F":{"x":0,"y":0,"w":15,"h":65},
+		"700510A8":{"x":17,"y":0,"w":15,"h":65}
 	}}

@@ -52,6 +52,9 @@ class BlackStar extends V1Game{
 
         this.runningBallContainer = new egret.DisplayObjectContainer;
         this.runningBallContainer.scaleX = this.runningBallContainer.scaleY = 0.5;
+
+        this.arrowArea = new BlackStarCardArrowLayer( this._mcf, "", this.cardPositions, new egret.Point(0, 44), 73 );
+        this.addChild( this.arrowArea );
     }
 
     protected onServerData( data: Object ){
@@ -120,6 +123,7 @@ class BlackStar extends V1Game{
 
     protected afterCheck( resultList: Array<Object> ): void{
 		super.afterCheck( resultList );
+        this.arrowArea.arrowBlink(resultList);
 
         if( !this.inLightCheck ){
 			if( PaytableResultListOprator.missOneCounter( resultList, "bing" ) ){
@@ -127,6 +131,11 @@ class BlackStar extends V1Game{
 			}
 		}
     }
+
+     protected startPlay(): void {
+        super.startPlay();
+        this.arrowArea.clearArrow();
+     }
 
 	protected onBetChanged( event: egret.Event ): void{
         super.onBetChanged(event);
