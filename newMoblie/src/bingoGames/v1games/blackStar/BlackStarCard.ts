@@ -27,7 +27,24 @@ class BlackStarCard extends ExtraBlinkCard{
 		super.clearFitEffect();
 		if( this.unFitEffectLayer ){
 			this.unFitEffectLayer.removeChildren();
-			this.addChildAt( this.unFitEffectLayer, this.getChildIndex( this.fitEffectLayer ) );
+			this.addChildAt( this.unFitEffectLayer, this.getChildIndex( this.fitEffectLayer ) - 1 );
+		}
+	}
+
+	public showunfitEffect( assetName: string, unfitRules: Array<number> ){
+		try{
+			let effectImage: egret.Bitmap;
+			if( unfitRules ){
+				for( let i: number = 0; i< unfitRules.length; i++ ){
+					effectImage = Com.addBitmapAt( this.unFitEffectLayer, BingoMachine.getAssetStr( GameCard.fitEffectNameList[assetName][unfitRules[i]] ), 0, 0 );
+				}
+			}
+			else{
+				effectImage = Com.addBitmapAt( this.unFitEffectLayer, BingoMachine.getAssetStr( GameCard.fitEffectNameList[assetName] ), 0, 0 );
+			}
+		}
+		catch( e ){
+			trace( "showfitEffect ignore:" + assetName );
 		}
 	}
 }

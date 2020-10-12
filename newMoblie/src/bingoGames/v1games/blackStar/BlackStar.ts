@@ -129,6 +129,8 @@ class BlackStar extends V1Game{
 			if( PaytableResultListOprator.missOneCounter( resultList, "bing" ) ){
                 this.playSound("bs140_mp3", -1);
 			}
+
+            this.showUnfitEffect( resultList );
 		}
     }
 
@@ -174,5 +176,38 @@ class BlackStar extends V1Game{
     public onExtra( data: Object ){
         super.onExtra( data );
         if( data && data["extra"] )this.saveNumber = data["save"];
+    }
+
+    private showUnfitEffect( resultList: Array<Object> ){
+        let unfitGridOnCard: Array<Array<Object>> = [];
+
+        for( let i: number = 0; i < resultList.length; i++ ){
+			unfitGridOnCard[i] = [];
+			for( let ob in PayTableManager.payTablesDictionary ){
+				let result: PaytableCheckResult = resultList[i][ob];
+
+				if( result.unfitIndex >= 0 ){
+                    unfitGridOnCard[i].push( { paytalbe:ob, unfits:[result.unfitIndex] } );
+				}
+				else if( result.unfitIndexs ){
+                    let unfitObj: Object = { paytalbe:ob, unfits:[], unfitRules: [] };
+                    unfitGridOnCard[i].push( unfitObj );
+					for( let unfitItem in result.unfitIndexs ){
+                        unfitObj["unfits"].push( result.unfitIndexs[unfitItem] );
+                        unfitObj["unfitRules"].push( unfitItem );
+					}
+				}
+			}
+		}
+
+        if( PaytableFilter.filterObject ){
+			for( let i: number = 0; i < unfitGridOnCard.length; i++ )PaytableFilter.paytableConfixFilter( unfitGridOnCard[i], true );
+		}
+
+        for( let i: number = 0; i < 4; i++ ){
+            for( let j: number = 0; j < unfitGridOnCard[i].length; j++ ){
+                ( CardManager.cards[i] as BlackStarCard ).showunfitEffect( unfitGridOnCard[i][j]["paytalbe"], unfitGridOnCard[i][j]["unfitRules"] );
+            }
+        }
     }
 }
