@@ -8,7 +8,7 @@ class BlackStar extends V1Game{
 		return "blackStarArrow";
 	}
 
-    private winText: egret.TextField;
+    private winText: TextLabel;
     private saveText: TextLabel;
 
     private _saveNumber: number;
@@ -99,10 +99,10 @@ class BlackStar extends V1Game{
 	}
 
     private setSave( saveNumber: number ): void{
-        MDS.addGameText( this, 562, 160, 14, 0xFFFFFF, "saving", false, 125 ).textAlign = "center";
+        MDS.addGameText( this, 1568, 165, 36, 0xFFFFFF, "saving", false, 350 ).textAlign = "center";
 
-        this.winText = MDS.addGameTextCenterShadow( this, 485, 194, 14, 0xFEFE00, "win", false, 100, true, false );
-        this.saveText = MDS.addGameTextCenterShadow( this, 578, 194, 14, 0x04DF04, "saving", false, 100, true, false );
+        this.winText = MDS.addGameTextCenterShadow( this, 1568, 165, 36, 0xFEFE00, "win", false, 100, true, false );
+        this.saveText = MDS.addGameTextCenterShadow( this, 1568, 240, 36, 0xFFFF45, "saving", false, 350, true, false );
         this.saveNumber = saveNumber;
 	}
 
