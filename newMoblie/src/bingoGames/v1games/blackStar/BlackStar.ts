@@ -8,7 +8,6 @@ class BlackStar extends V1Game{
 		return "blackStarArrow";
 	}
 
-    private winText: TextLabel;
     private saveText: TextLabel;
 
     private _saveNumber: number;
@@ -79,9 +78,7 @@ class BlackStar extends V1Game{
 	}
 
     protected winChange( event: egret.Event ): void{
-        this.winText.text = Utils.formatCoinsNumber( event["winCoins"] );
-        this.winText.size = this.winText.text.length > 11 ? 11 : 14;
-        super.winChange( event );
+        // super.winChange( event );
 	}
 
     protected tipStatus( event: egret.Event ): void{
@@ -94,6 +91,17 @@ class BlackStar extends V1Game{
         super.showLastBallAt( ballIndex, 0, 0, 1.5 );
         
         this.playSound("bs_ball_mp3");
+
+        clearTimeout( this.timeoutId );
+        this.timeoutId = setTimeout( this.clearRunningBallUI.bind( this ), 3000 );
+	}
+
+    private timeoutId: number;
+
+    protected clearRunningBallUI(){
+        super.clearRunningBallUI();
+
+
     }
 
     protected showExtraUI( show: boolean = true ){
@@ -103,7 +111,6 @@ class BlackStar extends V1Game{
     private setSave( saveNumber: number ): void{
         MDS.addGameText( this, 1568, 165, 36, 0xFFFFFF, "saving", false, 350 ).textAlign = "center";
 
-        this.winText = MDS.addGameTextCenterShadow( this, 1568, 165, 36, 0xFEFE00, "win", false, 100, true, false );
         this.saveText = MDS.addGameTextCenterShadow( this, 1568, 240, 36, 0xFFFF45, "saving", false, 350, true, false );
         this.saveNumber = saveNumber;
 	}
