@@ -37,6 +37,10 @@
 			"name": "silver_ball"
 		},
 		{
+			"keys": "gb_1line_mp3,gb_2line_mp3,gb_ball_mp3,gb_bingo_mp3,gb_card_mp3,gb_extra_ball_mp3,gb_have_extra_ball_wav",
+			"name": "goldball"
+		},
+		{
 			"keys": "shb_win_wav,shb_w_mp3,shb_round_mp3,shb_m_mp3,shb_m_w_mp3,shb_jackpot_mp3,shb_have_extra_ball_wav,shb_free_extra_mp3,shb_extra_ball_mp3,shb_double_line_mp3,shb_card_mp3,shb_bingo_mp3,shb_bet_mp3,shb_ball_mp3,shb_2trangle_mp3,shb_1to_bingo_mp3,shb_1line_mp3,showball3_json,showballAnimation_png,showballAnimation_json,showball3_conf,showball3_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,getCoinsParticle_png,getCoinsParticle_json,v1gameDefault_json,Arial Black_fnt,Arial Black_png",
 			"name": "showball3"
 		},
@@ -1555,6 +1559,41 @@
 			"url": "game/blackStar/Ozone.png",
 			"type": "image",
 			"name": "Ozone_png"
+		},
+		{
+			"url": "game/goldball/sound/gb_1line.mp3",
+			"type": "sound",
+			"name": "gb_1line_mp3"
+		},
+		{
+			"url": "game/goldball/sound/gb_2line.mp3",
+			"type": "sound",
+			"name": "gb_2line_mp3"
+		},
+		{
+			"url": "game/goldball/sound/gb_ball.mp3",
+			"type": "sound",
+			"name": "gb_ball_mp3"
+		},
+		{
+			"url": "game/goldball/sound/gb_bingo.mp3",
+			"type": "sound",
+			"name": "gb_bingo_mp3"
+		},
+		{
+			"url": "game/goldball/sound/gb_card.mp3",
+			"type": "sound",
+			"name": "gb_card_mp3"
+		},
+		{
+			"url": "game/goldball/sound/gb_extra_ball.mp3",
+			"type": "sound",
+			"name": "gb_extra_ball_mp3"
+		},
+		{
+			"url": "game/goldball/sound/gb_have_extra_ball.wav",
+			"type": "sound",
+			"name": "gb_have_extra_ball_wav"
 		}
 	]
 }
