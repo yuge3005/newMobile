@@ -147,12 +147,16 @@ class BlackStar extends V1Game{
             this.firstHaveExtraBall = false;
             this.playSound("bs138_mp3");
         }
+
+        ExtraBlinkGrid.extraBink = true;
 	}
 
     protected roundOver(): void {
         super.roundOver();
         this.stopSound("bs_ball_mp3");
         this.stopSound("bs140_mp3");
+        
+        ExtraBlinkGrid.extraBink = false;
     }
 
 	protected getExtraBallFit(): void {
