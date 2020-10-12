@@ -1,14 +1,7 @@
 {
     "projectName": "blackStar",
     "files": [
-        "./barraextra.png",
         "./ball_bg.png",
-        "./backStarBall_yellow.png",
-        "./backStarBall_red.png",
-        "./backStarBall_pink.png",
-        "./backStarBall_orange.png",
-        "./backStarBall_greean.png",
-        "./backStarBall_blue.png",
         "./radar_trangle.png",
         "./radar_round.png",
         "./radar_mouse.png",
@@ -26,13 +19,10 @@
         "./jackpot_bg.png",
         "./Image-220.png",
         "./Image-219.png",
-        "./Image-218.png",
         "./Image-217.png",
         "./Image-216.png",
         "./Image-215.png",
-        "./Image-214.png",
         "./Image-213.png",
-        "./fundo_cartela.png",
         "./FCartela1.png",
         "./card_trangle2.png",
         "./card_trangle.png",
@@ -51,7 +41,7 @@
         "./card_bg_light.png",
         "./btn_savings.png",
         "./blackStar_bg.png",
-        "./blackStar_acumulado.png"
+        "./barraextra.png"
     ],
     "options": {
         "layoutMath": "0",
