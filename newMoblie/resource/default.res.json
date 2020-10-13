@@ -1599,7 +1599,7 @@
 			"url": "game/goldball/goldball.json",
 			"type": "sheet",
 			"name": "goldball_json",
-			"subkeys": "background,bigball-extralarge,card_background,jackpot_lock,mark_gray,mark_green,mark_red,mark_white,mark_yellow"
+			"subkeys": "background,bigball-extralarge,card_background,jackpot_lock,mark_gray,mark_green,mark_red,mark_yellow"
 		}
 	]
 }
