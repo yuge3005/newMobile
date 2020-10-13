@@ -37,7 +37,7 @@
 			"name": "silver_ball"
 		},
 		{
-			"keys": "gb_1line_mp3,gb_2line_mp3,gb_ball_mp3,gb_bingo_mp3,gb_card_mp3,gb_extra_ball_mp3,gb_have_extra_ball_wav,goldball_json",
+			"keys": "gb_1line_mp3,gb_2line_mp3,gb_ball_mp3,gb_bingo_mp3,gb_card_mp3,gb_extra_ball_mp3,gb_have_extra_ball_wav,goldball_json,goldball_conf,silver_ball_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,Arial Black_fnt,Arial Black_png",
 			"name": "goldball"
 		},
 		{
@@ -1600,6 +1600,11 @@
 			"type": "sheet",
 			"name": "goldball_json",
 			"subkeys": "background,bigball-extralarge,card_background,jackpot_lock,mark_gray,mark_green,mark_red,mark_yellow"
+		},
+		{
+			"url": "config/goldball.conf",
+			"type": "json",
+			"name": "goldball_conf"
 		}
 	]
 }

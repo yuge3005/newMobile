@@ -11,6 +11,7 @@ class Goldball extends GoldSilverSuper{
 		super( "goldball.conf", assetsPath, 56 );
 
         GameCard.texColor = 0xFFFFFF;
+        GameCard.gridOnTop = true;
 
         CardGrid.defaultNumberSize = 52;
 	}
