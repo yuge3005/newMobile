@@ -22,17 +22,8 @@ class Goldball extends GoldSilverSuper{
         MDS.addGameText( this, 15, 36, 15, 0xF6E28B, "double",false, 200 ).italic = true;
         MDS.addGameText( this, 15, 56, 15, 0xF6E28B, "line",false, 200 ).italic = true;
 
-        let bet: egret.TextField = MDS.addGameText( this, 15, 123, 17, 0xF6E28B, "bet", true, 100 );
-        bet.italic = true;
-        bet.text = Utils.toFirstUpperCase( bet.text );
-        let credit: egret.TextField = MDS.addGameText( this, 535, 123, 17, 0xF6E28B, "credit", true, 100 );
-        credit.italic = true;
-        credit.text = Utils.toFirstUpperCase( credit.text );
 
-        this.betText = MDS.addGameTextCenterShadow( this, 75, 123, 17, 0xFFFFFF, "bet", false, 180, true, false );
-	    this.betText.textAlign = "right";
-        this.creditText =  MDS.addGameTextCenterShadow( this, 596, 123, 17, 0xFFFFFF, "credit", false, 180, true, false );
-	    this.creditText.textAlign = "right";
+        this.showNoBetAndCredit();
     }
 
     protected showExtraUI( show: boolean = true ){
