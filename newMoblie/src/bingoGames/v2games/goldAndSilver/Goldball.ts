@@ -66,9 +66,9 @@ class Goldball extends GoldSilverSuper{
         this.extraUIObject = this.runningBallContainer;
     }
 
-/******************************************************************************************************************************************************************/    
+/******************************************************************************************************************************************************************/
     protected showJackpot( jackpot: number, jackpotMinBet: number, betConfig: Array<Object> ){
-        this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 538, 18 ), jackpot, jackpotMinBet, betConfig, new egret.Point( -11, -8 ), new egret.Rectangle( 0, 25, 200, 26 ), 20, 0xff0000, new egret.Rectangle( 0, 0, 200, 14), 14, 0x3d2312 ) );
+        this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 1297, 104 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 0, 0 ), new egret.Rectangle( 0, 40, 550, 36 ), 36, 0xff0000, new egret.Rectangle( 0, -50, 550, 40 ), 40, 0x3d2312, true ) );
     }
 
     protected getPaytablesFit( paytabledName: string, callback: Function = null ): void{
