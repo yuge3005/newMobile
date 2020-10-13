@@ -1,9 +1,0 @@
-{"file":"goldball.png","frames":{
-"card_background":{"x":0,"y":1127,"w":668,"h":267,"offX":0,"offY":0,"sourceW":668,"sourceH":267},
-"bigball-extralarge":{"x":0,"y":1396,"w":266,"h":266,"offX":0,"offY":0,"sourceW":266,"sourceH":266},
-"background":{"x":0,"y":0,"w":2000,"h":1125,"offX":0,"offY":0,"sourceW":2000,"sourceH":1125},
-"mark_yellow":{"x":0,"y":1784,"w":121,"h":61,"offX":0,"offY":0,"sourceW":121,"sourceH":61},
-"mark_red":{"x":0,"y":1973,"w":121,"h":61,"offX":0,"offY":0,"sourceW":121,"sourceH":61},
-"mark_green":{"x":0,"y":1910,"w":121,"h":61,"offX":0,"offY":0,"sourceW":121,"sourceH":61},
-"mark_gray":{"x":0,"y":1847,"w":121,"h":61,"offX":0,"offY":0,"sourceW":121,"sourceH":61},
-"jackpot_lock":{"x":0,"y":1664,"w":552,"h":118,"offX":0,"offY":0,"sourceW":552,"sourceH":118}}}
