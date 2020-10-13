@@ -10,6 +10,8 @@ class Goldball extends GoldSilverSuper{
 	public constructor( assetsPath: string ) {
 		super( "goldball.conf", assetsPath, 56 );
 
+        PayTableManager.layerType = GoldBallPaytableLayer;
+        
         GameCard.gridOnTop = true;
 
         CardGrid.defaultNumberSize = 52;
@@ -17,11 +19,6 @@ class Goldball extends GoldSilverSuper{
 
     protected init() {
         super.init();
-
-        MDS.addGameText( this, 15, 16, 15, 0xF6E28B, "bingo",false, 200 ).italic = true;
-        MDS.addGameText( this, 15, 36, 15, 0xF6E28B, "double",false, 200 ).italic = true;
-        MDS.addGameText( this, 15, 56, 15, 0xF6E28B, "line",false, 200 ).italic = true;
-
 
         this.showNoBetAndCredit();
     }
@@ -50,7 +47,7 @@ class Goldball extends GoldSilverSuper{
         this.runningBallContainer = new egret.DisplayObjectContainer;
         this.runningBallContainer.x = 1000;
         this.runningBallContainer.y = 290;
-        this.addChildAt( this.runningBallContainer, this.getChildIndex( this.extraUIObject ) );
+        this.addChildAt( this.runningBallContainer, this.getChildIndex( this.ballArea ) + 1 );
         this.extraUIObject.anchorOffsetX = this.extraUIObject.width >> 1;
         this.extraUIObject.anchorOffsetY = this.extraUIObject.height >> 1;
         Com.addObjectAt( this.runningBallContainer, this.extraUIObject, 0, 0 );
@@ -61,21 +58,6 @@ class Goldball extends GoldSilverSuper{
     protected showJackpot( jackpot: number, jackpotMinBet: number, betConfig: Array<Object> ){
         this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 1297, 104 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 0, 0 ), new egret.Rectangle( 0, 40, 550, 36 ), 36, 0xff0000, new egret.Rectangle( 0, -50, 550, 40 ), 40, 0x3d2312, true ) );
     }
-
-    protected getPaytablesFit( paytabledName: string, callback: Function = null ): void{
-		let soundName = "";
-        switch (paytabledName) {
-            case "line": soundName = "gb_1line_mp3"; break;
-            case "double": soundName = "gb_2line_mp3"; break;
-            case "bingo": soundName = "gb_bingo_mp3";break;    
-            default: break;
-        }
-        if (SoundManager.soundOn && soundName !== "") {
-            this.playSound(soundName, 1, callback);
-        } else {
-            callback();
-        }
-	}
 
 	protected onBetChanged( event: egret.Event ): void{
         super.onBetChanged(event);
