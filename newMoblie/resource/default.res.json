@@ -37,7 +37,7 @@
 			"name": "silver_ball"
 		},
 		{
-			"keys": "gb_1line_mp3,gb_2line_mp3,gb_ball_mp3,gb_bingo_mp3,gb_card_mp3,gb_extra_ball_mp3,gb_have_extra_ball_wav",
+			"keys": "gb_1line_mp3,gb_2line_mp3,gb_ball_mp3,gb_bingo_mp3,gb_card_mp3,gb_extra_ball_mp3,gb_have_extra_ball_wav,goldball_json",
 			"name": "goldball"
 		},
 		{
@@ -1594,6 +1594,12 @@
 			"url": "game/goldball/sound/gb_have_extra_ball.wav",
 			"type": "sound",
 			"name": "gb_have_extra_ball_wav"
+		},
+		{
+			"url": "game/goldball/goldball.json",
+			"type": "sheet",
+			"name": "goldball_json",
+			"subkeys": "background,bigball-extralarge,card_background,jackpot_lock,mark_gray,mark_green,mark_red,mark_white,mark_yellow"
 		}
 	]
 }
