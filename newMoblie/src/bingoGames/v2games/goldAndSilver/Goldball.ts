@@ -10,7 +10,6 @@ class Goldball extends GoldSilverSuper{
 	public constructor( assetsPath: string ) {
 		super( "goldball.conf", assetsPath, 56 );
 
-        GameCard.texColor = 0xFFFFFF;
         GameCard.gridOnTop = true;
 
         CardGrid.defaultNumberSize = 52;
@@ -39,9 +38,9 @@ class Goldball extends GoldSilverSuper{
     protected showExtraUI( show: boolean = true ){
         if( this.extraUIObject ){
             let tw: egret.Tween = egret.Tween.get( this.extraUIObject );
-            if( !show )tw.to( { x: 306, y: 19, scaleX: 1, scaleY: 1 }, 500 );
+            if( !show )tw.to( { scaleX: 1, scaleY: 1 }, 500 );
             else{
-                tw.to( { x: 328, y: 43, scaleX: 0.70, scaleY: 0.70 }, 500 );
+                tw.to( { scaleX: 0.76, scaleY: 0.76 }, 500 );
             }
         }
     }
@@ -49,9 +48,23 @@ class Goldball extends GoldSilverSuper{
     protected showLastBall( ballIndex: number ): void{
         super.showLastBall( ballIndex );
         super.showLastBallAt(ballIndex, 0, 0);
+        this.runningBallUI.anchorOffsetX = this.runningBallUI.width >> 1;
+        this.runningBallUI.anchorOffsetY = this.runningBallUI.height >> 1;
         
         this.playSound("gb_ball_mp3");
 	}
+
+    protected extraUIShowNumber(){
+        this.extraUIObject.visible = true;
+        this.runningBallContainer = new egret.DisplayObjectContainer;
+        this.runningBallContainer.x = 1000;
+        this.runningBallContainer.y = 290;
+        this.addChildAt( this.runningBallContainer, this.getChildIndex( this.extraUIObject ) );
+        this.extraUIObject.anchorOffsetX = this.extraUIObject.width >> 1;
+        this.extraUIObject.anchorOffsetY = this.extraUIObject.height >> 1;
+        Com.addObjectAt( this.runningBallContainer, this.extraUIObject, 0, 0 );
+        this.extraUIObject = this.runningBallContainer;
+    }
 
 /******************************************************************************************************************************************************************/    
     protected showJackpot( jackpot: number, jackpotMinBet: number, betConfig: Array<Object> ){

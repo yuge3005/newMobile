@@ -75,11 +75,23 @@ class SilverBall extends GoldSilverSuper{
 		super.sendRoundOverRequest();
 
         if( this.firstHaveExtraBall ){//此处用是否发生过extraball来判断，是否是没有extraball就roundover了
-            let lastBall: egret.Sprite = this.ballArea.getChildAt( this.ballArea.numChildren - 1 ) as egret.Sprite;
+            let lastBall: egret.Sprite = this.ballArea["moveingBallLayer"].getChildAt( this.ballArea["moveingBallLayer"].numChildren - 1 ) as egret.Sprite;
             egret.Tween.removeTweens(lastBall);
             TweenerTool.tweenTo( lastBall, { x: 963, y: 305 }, 20 );
         }
 	}
+
+    protected extraUIShowNumber(){
+        this.extraUIObject.visible = true;
+        this.runningBallContainer = new egret.DisplayObjectContainer;
+        this.runningBallContainer.x = 887;
+        this.runningBallContainer.y = 55;
+		this.extraUIObject.width = 230;
+		this.extraUIObject.height = 230;
+        this.addChildAt( this.runningBallContainer, this.getChildIndex( this.extraUIObject ) );
+        Com.addObjectAt( this.runningBallContainer, this.extraUIObject, 0, 0 );
+        this.extraUIObject = this.runningBallContainer;
+    }
 
 /******************************************************************************************************************************************************************/
     protected showJackpot( jackpot: number, jackpotMinBet: number, betConfig: Array<Object> ){
