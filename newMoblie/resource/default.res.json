@@ -85,7 +85,7 @@
 			"name": "blackStar"
 		},
 		{
-			"keys": "tb10_mp3,tb13_mp3,tb14_mp3,tb15_mp3,tb16_mp3,tb17_mp3,tb2_mp3,tb3_mp3,tb4_mp3,tb5_mp3,tb7_mp3,tb8_mp3,tb9_mp3,turbomaniaAnimation_png,turbomaniaAnimation_json,turbomania_json,turbomania_conf",
+			"keys": "tb10_mp3,tb13_mp3,tb14_mp3,tb15_mp3,tb16_mp3,tb17_mp3,tb2_mp3,tb3_mp3,tb4_mp3,tb5_mp3,tb7_mp3,tb8_mp3,tb9_mp3,turbomaniaAnimation_png,turbomaniaAnimation_json,turbomania_json,turbomania_conf,vipBingoAndTurboMania_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,Arial Black_fnt,Arial Black_png",
 			"name": "turbomania"
 		}
 	],
@@ -1695,6 +1695,11 @@
 			"url": "config/turbomania.conf",
 			"type": "json",
 			"name": "turbomania_conf"
+		},
+		{
+			"url": "config/lan/vipBingoAndTurboMania.tx",
+			"type": "json",
+			"name": "vipBingoAndTurboMania_tx"
 		}
 	]
 }

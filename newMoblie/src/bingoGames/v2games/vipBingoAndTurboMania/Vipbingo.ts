@@ -19,16 +19,17 @@ class Vipbingo extends VipManiaSuper{
     protected init(){
         super.init();
 
-        this.addGameTextCenterShadow( 312, 10, 18, 0xFEFE00, "credit", true, 160, true, false );
-        this.addGameTextCenterShadow( 312, 58, 18, 0xFEFE00, "bet", true, 160, true, false );
-        this.addGameTextCenterShadow( 312, 114, 18, 0xFEFE00, "prize", true, 160, true, false );
+        MDS.addGameTextCenterShadow( this,  312, 10, 18, 0xFEFE00, "credit", true, 160, true, false );
+        MDS.addGameTextCenterShadow( this,  312, 58, 18, 0xFEFE00, "bet", true, 160, true, false );
+        MDS.addGameTextCenterShadow( this,  312, 114, 18, 0xFEFE00, "prize", true, 160, true, false );
 
-        this.creditText = this.addGameTextCenterShadow( 312, 30, 17, 0xFEFE00, "credit", true, 160, true, false );
-        this.betText = this.addGameTextCenterShadow( 312, 80, 18, 0xFFFFFF, "bet", true, 160, true, false );
-        this.prizeText = this.addGameTextCenterShadow( 312, 135, 18, 0xFFFFFF, "prize", true, 160, true, false );
+        this.creditText = MDS.addGameTextCenterShadow( this,  312, 30, 17, 0xFEFE00, "credit", true, 160, true, false );
+        this.betText = MDS.addGameTextCenterShadow( this,  312, 80, 18, 0xFFFFFF, "bet", true, 160, true, false );
+        this.prizeText = MDS.addGameTextCenterShadow( this,  312, 135, 18, 0xFFFFFF, "prize", true, 160, true, false );
         this.prizeText.text = "0";
 
         this.runningBallContainer = new egret.DisplayObjectContainer;
+        Com.addObjectAt( this, this.runningBallContainer, 878, 258 );
 
         this.ballArea.needLightCheck = true;
     }
