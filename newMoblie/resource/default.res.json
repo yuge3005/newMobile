@@ -83,6 +83,10 @@
 		{
 			"keys": "bs_acumulado_wav,bs_ball_mp3,bs_bingo_mp3,bs_card_wav,bs_double_line_mp3,bs_estrela_mp3,bs_h_mp3,bs_line_wav,bs_perimeter_mp3,bs138_mp3,bs140_mp3,bs148_mp3,bs149_mp3,bs151_mp3,bs153_mp3,blackStar_json,blackStarArrow_png,blackStarArrow_json,blackStar_conf,blackStar_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,v1gameDefault_json,Arial Black_fnt,Arial Black_png,Ozone_png,Ozone_fnt",
 			"name": "blackStar"
+		},
+		{
+			"keys": "tb10_mp3,tb13_mp3,tb14_mp3,tb15_mp3,tb16_mp3,tb17_mp3,tb2_mp3,tb3_mp3,tb4_mp3,tb5_mp3,tb7_mp3,tb8_mp3,tb9_mp3,turbomaniaAnimation_png,turbomaniaAnimation_json,turbomania_json,turbomania_conf",
+			"name": "turbomania"
 		}
 	],
 	"resources": [
@@ -1605,6 +1609,92 @@
 			"url": "config/goldball.conf",
 			"type": "json",
 			"name": "goldball_conf"
+		},
+		{
+			"url": "game/turbomania/sound/tb10.mp3",
+			"type": "sound",
+			"name": "tb10_mp3"
+		},
+		{
+			"url": "game/turbomania/sound/tb13.mp3",
+			"type": "sound",
+			"name": "tb13_mp3"
+		},
+		{
+			"url": "game/turbomania/sound/tb14.mp3",
+			"type": "sound",
+			"name": "tb14_mp3"
+		},
+		{
+			"url": "game/turbomania/sound/tb15.mp3",
+			"type": "sound",
+			"name": "tb15_mp3"
+		},
+		{
+			"url": "game/turbomania/sound/tb16.mp3",
+			"type": "sound",
+			"name": "tb16_mp3"
+		},
+		{
+			"url": "game/turbomania/sound/tb17.mp3",
+			"type": "sound",
+			"name": "tb17_mp3"
+		},
+		{
+			"url": "game/turbomania/sound/tb2.mp3",
+			"type": "sound",
+			"name": "tb2_mp3"
+		},
+		{
+			"url": "game/turbomania/sound/tb3.mp3",
+			"type": "sound",
+			"name": "tb3_mp3"
+		},
+		{
+			"url": "game/turbomania/sound/tb4.mp3",
+			"type": "sound",
+			"name": "tb4_mp3"
+		},
+		{
+			"url": "game/turbomania/sound/tb5.mp3",
+			"type": "sound",
+			"name": "tb5_mp3"
+		},
+		{
+			"url": "game/turbomania/sound/tb7.mp3",
+			"type": "sound",
+			"name": "tb7_mp3"
+		},
+		{
+			"url": "game/turbomania/sound/tb8.mp3",
+			"type": "sound",
+			"name": "tb8_mp3"
+		},
+		{
+			"url": "game/turbomania/sound/tb9.mp3",
+			"type": "sound",
+			"name": "tb9_mp3"
+		},
+		{
+			"url": "game/turbomania/turbomaniaAnimation.png",
+			"type": "image",
+			"name": "turbomaniaAnimation_png"
+		},
+		{
+			"url": "game/turbomania/turbomaniaAnimation.json",
+			"type": "json",
+			"name": "turbomaniaAnimation_json"
+		},
+		{
+			"url": "game/turbomania/turbomania.json",
+			"type": "sheet",
+			"name": "turbomania_json",
+			"subkeys": "jackpot_lock,mania_ball_blue,mania_ball_green,mania_ball_red,mania_ball_yellow,mania_bg,mania_card_bg,mania_card_bingo,mania_card_corner,mania_card_dbline1,mania_card_dbline2,mania_card_dbline3,mania_card_gun,mania_card_h,mania_card_l,mania_card_line1,mania_card_line2,mania_card_line3,mania_card_mouse,mania_card_round,mania_card_t,mania_card_v,mania_card_v2,mania_extra,mark_gray,mark_green,mark_red,mark_white,vip_bingo,vip_corner,vip_double_line,vip_gun,vip_h,vip_l,vip_line,vip_mouse,vip_round,vip_t,vip_v,vip_v2"
+		},
+		{
+			"url": "config/turbomania.conf",
+			"type": "json",
+			"name": "turbomania_conf"
 		}
 	]
 }
