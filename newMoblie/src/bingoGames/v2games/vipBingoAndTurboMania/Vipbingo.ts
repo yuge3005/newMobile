@@ -34,31 +34,6 @@ class Vipbingo extends VipManiaSuper{
         this.ballArea.needLightCheck = true;
     }
 
-    protected getPaytablesFit( paytabledName: string, callback: Function = null ): void{
-        let soundName = "";
-        let repeat = 1;
-        switch (paytabledName) {
-            case "vip_v": soundName = "vb4_mp3"; break;
-            case "vip_t": soundName = "vb3_mp3"; break;
-            case "vip_l": soundName = "vb14_mp3"; break;
-            case "vip_v2": soundName = "vb4_mp3"; break;
-            case "vip_round": soundName = "vb5_mp3"; break;
-            case "vip_line": soundName = "vb2_mp3"; repeat = -1; break;
-            case "vip_h": soundName = "vb17_mp3"; break;
-            case "vip_corner": soundName = "vb8_mp3"; break;
-            case "vip_double_line": soundName = "vb2_mp3"; break;
-            case "vip_bingo": soundName = "vb10_mp3"; break;
-            case "vip_gun": soundName = "vb14_mp3"; break;
-            case "vip_mouse": soundName = "vb5_mp3"; break;
-            default: break;    
-        }
-        if (SoundManager.soundOn && soundName !== "") {
-            this.playSound(soundName, 1, callback);
-        } else {
-            callback();
-        }
-	}
-
     protected hasExtraBallFit(): void {
         this.stopSound("vb16_mp3");
         if (this.firstHaveExtraBall) {
