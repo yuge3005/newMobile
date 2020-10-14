@@ -16,10 +16,6 @@ class TurboMania extends VipManiaSuper{
         super.init();
 
         this.showNoBetAndCredit();
-        MDS.addGameTextCenterShadow( this,  335, 118, 18, 0xFEFE00, "prize", true, 140, true, false );
-
-        this.prizeText = MDS.addGameTextCenterShadow( this,  335, 140, 17, 0xFFFFFF, "prize", false, 140, true, false );
-        this.prizeText.text = "0";
 
         this.runningBallContainer = new egret.DisplayObjectContainer;
         Com.addObjectAt( this, this.runningBallContainer, 880, 258 );
