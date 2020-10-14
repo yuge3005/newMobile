@@ -87,6 +87,10 @@
 		{
 			"keys": "tb10_mp3,tb13_mp3,tb14_mp3,tb15_mp3,tb16_mp3,tb17_mp3,tb2_mp3,tb3_mp3,tb4_mp3,tb5_mp3,tb7_mp3,tb8_mp3,tb9_mp3,turbomaniaAnimation_png,turbomaniaAnimation_json,turbomania_json,turbomania_conf,vipBingoAndTurboMania_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,Arial Black_fnt,Arial Black_png",
 			"name": "turbomania"
+		},
+		{
+			"keys": "vb14_mp3,vb10_mp3,vb13_mp3,vb15_mp3,vb16_mp3,vb17_mp3,vb2_mp3,vb3_mp3,vb4_mp3,vb5_mp3,vb7_mp3,vb8_mp3,vipbingo_json,vipbingoAnimation_json,vipbingoAnimation_png,vipbingo_conf,vipBingoAndTurboMania_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,Arial Black_fnt,Arial Black_png",
+			"name": "vipbingo"
 		}
 	],
 	"resources": [
@@ -1700,6 +1704,87 @@
 			"url": "config/lan/vipBingoAndTurboMania.tx",
 			"type": "json",
 			"name": "vipBingoAndTurboMania_tx"
+		},
+		{
+			"url": "config/vipbingo.conf",
+			"type": "json",
+			"name": "vipbingo_conf"
+		},
+		{
+			"url": "game/vipbingo/vipbingoAnimation.png",
+			"type": "image",
+			"name": "vipbingoAnimation_png"
+		},
+		{
+			"url": "game/vipbingo/sound/vb10.mp3",
+			"type": "sound",
+			"name": "vb10_mp3"
+		},
+		{
+			"url": "game/vipbingo/sound/vb13.mp3",
+			"type": "sound",
+			"name": "vb13_mp3"
+		},
+		{
+			"url": "game/vipbingo/sound/vb14.mp3",
+			"type": "sound",
+			"name": "vb14_mp3"
+		},
+		{
+			"url": "game/vipbingo/sound/vb15.mp3",
+			"type": "sound",
+			"name": "vb15_mp3"
+		},
+		{
+			"url": "game/vipbingo/sound/vb16.mp3",
+			"type": "sound",
+			"name": "vb16_mp3"
+		},
+		{
+			"url": "game/vipbingo/sound/vb17.mp3",
+			"type": "sound",
+			"name": "vb17_mp3"
+		},
+		{
+			"url": "game/vipbingo/sound/vb2.mp3",
+			"type": "sound",
+			"name": "vb2_mp3"
+		},
+		{
+			"url": "game/vipbingo/sound/vb3.mp3",
+			"type": "sound",
+			"name": "vb3_mp3"
+		},
+		{
+			"url": "game/vipbingo/sound/vb4.mp3",
+			"type": "sound",
+			"name": "vb4_mp3"
+		},
+		{
+			"url": "game/vipbingo/sound/vb5.mp3",
+			"type": "sound",
+			"name": "vb5_mp3"
+		},
+		{
+			"url": "game/vipbingo/sound/vb7.mp3",
+			"type": "sound",
+			"name": "vb7_mp3"
+		},
+		{
+			"url": "game/vipbingo/sound/vb8.mp3",
+			"type": "sound",
+			"name": "vb8_mp3"
+		},
+		{
+			"url": "game/vipbingo/vipbingoAnimation.json",
+			"type": "json",
+			"name": "vipbingoAnimation_json"
+		},
+		{
+			"url": "game/vipbingo/vipbingo.json",
+			"type": "sheet",
+			"name": "vipbingo_json",
+			"subkeys": "Background_ENG,Extra-Ball_ENG,card_bingo,card_corner,card_dbline1,card_dbline2,card_dbline3,card_gun,card_h,card_l,card_line1,card_line2,card_line3,card_mouse,card_round,card_t,card_v,card_v2,jackpot_lock,mark_black,mark_red,mark_white,mark_yellow,vip_ball_blue,vip_ball_cyan,vip_ball_green,vip_ball_purple,vip_ball_red,vip_ball_yellow,vip_bingo,vip_corner,vip_double_line,vip_gun,vip_h,vip_l,vip_line,vip_mouse,vip_round,vip_t,vip_v,vip_v2,vipbingo_card_bg"
 		}
 	]
 }
