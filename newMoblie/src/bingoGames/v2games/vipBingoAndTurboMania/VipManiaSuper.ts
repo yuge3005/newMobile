@@ -11,10 +11,6 @@ class VipManiaSuper extends V2Game{
         PayTableManager.bingoPaytableName = "vip_bingo";
 	}
 
-	protected combinString( str: string ){
-        return "";
-    }
-
     protected showLastBall( ballIndex: number ): void{
         super.showLastBall( ballIndex );
         super.showLastBallAt( ballIndex, 0, 0 );
