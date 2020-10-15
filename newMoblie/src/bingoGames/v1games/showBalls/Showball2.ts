@@ -10,6 +10,7 @@ class Showball2 extends ShowballSuper{
 
     public constructor( assetsPath: string ) {
         super( "showball2.conf", assetsPath, 21 );
+        this.megaName = "showball2_mega";
     }
 
     protected init(){
@@ -73,7 +74,7 @@ class Showball2 extends ShowballSuper{
 /******************************************************************************************************************************************************************/    
 
 	protected showJackpot( jackpot: number, jackpotMinBet: number, betConfig: Array<Object> ){
-		this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 1302, 257 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 0, 0 ), new egret.Rectangle( 0, -50, 318, 36 ), 36, 0xFFFFFF ) );
+		this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 1302, 275 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 0, 0 ), new egret.Rectangle( 0, 0, 318, 75 ), 36, 0xFFFFFF, new egret.Rectangle( 0, -45, 318, 36 ), 36, 0xFFFFFF, true ) );
 		this.jackpotArea.jackpotText.fontFamily = "Arial";
 	}
 }

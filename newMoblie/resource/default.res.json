@@ -1791,15 +1791,15 @@
 			"subkeys": "Background_ENG,Extra-Ball_ENG,card_bingo,card_corner,card_dbline1,card_dbline2,card_dbline3,card_gun,card_h,card_l,card_line1,card_line2,card_line3,card_mouse,card_round,card_t,card_v,card_v2,jackpot_lock,mark_black,mark_red,mark_white,mark_yellow,vip_ball_blue,vip_ball_cyan,vip_ball_green,vip_ball_purple,vip_ball_red,vip_ball_yellow,vip_bingo,vip_corner,vip_double_line,vip_gun,vip_h,vip_l,vip_line,vip_mouse,vip_round,vip_t,vip_v,vip_v2,vipbingo_card_bg"
 		},
 		{
-			"url": "assets/showball2.conf",
-			"type": "json",
-			"name": "showball2_conf"
-		},
-		{
 			"url": "game/showball2/showball2.json",
 			"type": "sheet",
 			"name": "showball2_json",
 			"subkeys": "TelaFundo2,arrow_08,bg,card_pt_bingo,card_pt_dbline1,card_pt_dbline2,card_pt_dbline3,card_pt_line1,card_pt_line2,card_pt_line3,card_pt_round,jackpot_lock,mark_black,mark_red,mark_white,mega_en,mega_es,mega_pt,pt_bingo,pt_double_line,pt_line,pt_round,showball_JP,showball_blue,showball_cardBg,showball_cyan,showball_dark_green,showball_extra,showball_green,showball_orange,showball_pink,showball_purple,showball_red,showball_yellow"
+		},
+		{
+			"url": "config/showball2.conf",
+			"type": "json",
+			"name": "showball2_conf"
 		}
 	]
 }
