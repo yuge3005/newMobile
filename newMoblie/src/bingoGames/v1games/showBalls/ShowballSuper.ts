@@ -37,11 +37,6 @@ class ShowballSuper extends V1Game{
 		this.ballCountText.fontFamily = "Righteous";
 		this.ballCountText.text = "";
 
-		this.runningBallContainer = new egret.Sprite;
-		Com.addObjectAt( this, this.runningBallContainer, 1395, 28 );
-
-		this.buildSuperEbArea( "mega_" + GlobelSettings.language, 371, 8 );
-
 		// this.showTipStatus();
 
 		this.ganhoCounter = new GanhoCounter( this.showWinAnimationAt.bind( this ) );

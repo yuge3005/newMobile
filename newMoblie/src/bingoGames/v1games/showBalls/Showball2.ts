@@ -16,6 +16,11 @@ class Showball2 extends ShowballSuper{
     protected init(){
         super.init();
         this.tileBg();
+
+        this.runningBallContainer = new egret.Sprite;
+		Com.addObjectAt( this, this.runningBallContainer, 1362, 24 );
+
+		this.buildSuperEbArea( "mega_" + GlobelSettings.language, 371, 8 );
     }
 
     protected showExtraPrice( price: number ): void{

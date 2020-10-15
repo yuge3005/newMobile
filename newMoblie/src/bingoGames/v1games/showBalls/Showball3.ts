@@ -18,6 +18,11 @@ class Showball3 extends ShowballSuper{
     protected init(){
 		super.init();
 
+        this.runningBallContainer = new egret.Sprite;
+		Com.addObjectAt( this, this.runningBallContainer, 1395, 28 );
+
+		this.buildSuperEbArea( "mega_" + GlobelSettings.language, 371, 8 );
+
 		this.showballLogo = this.getChildByName( this.assetStr("logo_rails") ) as egret.Bitmap;
 	}
 
