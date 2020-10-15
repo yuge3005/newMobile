@@ -12,7 +12,7 @@ class ShowballSuper extends V1Game{
 		CardManager.cardType = ShowballCard;
 		CardManager.gridType = ShowballGrid;
 
-		CardGrid.defaultNumberSize = 64;
+		CardGrid.defaultNumberSize = 60;
 
 		this.needSmallWinTimesOnCard = true;
 		this.ballArea.needLightCheck = true;
