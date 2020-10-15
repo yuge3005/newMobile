@@ -49,7 +49,7 @@
 			"name": "showball1"
 		},
 		{
-			"keys": "shb_win_wav,shb_w_mp3,shb_round_mp3,shb_m_mp3,shb_m_w_mp3,shb_jackpot_mp3,shb_have_extra_ball_wav,shb_free_extra_mp3,shb_extra_ball_mp3,shb_double_line_mp3,shb_card_mp3,shb_bingo_mp3,shb_bet_mp3,shb_ball_mp3,shb_2trangle_mp3,shb_1to_bingo_mp3,shb_1line_mp3,showball2_json,showball1Animation_png,showball1Animation_json,showball2_conf,showball3_tx,bingoGameToolbar_json,topbar_json,getCoinsParticle_png,getCoinsParticle_json,v1gameDefault_json,Arial Black_fnt,Arial Black_png",
+			"keys": "shb_win_wav,shb_w_mp3,shb_round_mp3,shb_m_mp3,shb_m_w_mp3,shb_jackpot_mp3,shb_have_extra_ball_wav,shb_free_extra_mp3,shb_extra_ball_mp3,shb_double_line_mp3,shb_card_mp3,shb_bingo_mp3,shb_bet_mp3,shb_ball_mp3,shb_2trangle_mp3,shb_1to_bingo_mp3,shb_1line_mp3,showball2_json,showballAnimation_png,showballAnimation_json,showball2_conf,showball3_tx,bingoGameToolbar_json,topbar_json,getCoinsParticle_png,getCoinsParticle_json,v1gameDefault_json,Arial Black_fnt,Arial Black_png",
 			"name": "showball2"
 		},
 		{
