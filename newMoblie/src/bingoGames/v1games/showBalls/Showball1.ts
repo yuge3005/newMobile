@@ -18,6 +18,8 @@ class Showball1 extends ShowballSuper{
 	protected init(){
 		super.init();
 
+		this.buildBallCountText();
+
 		this.runningBallContainer = new egret.Sprite;
 		Com.addObjectAt( this, this.runningBallContainer, 1395, 28 );
 
@@ -42,5 +44,10 @@ class Showball1 extends ShowballSuper{
 	protected showJackpot( jackpot: number, jackpotMinBet: number, betConfig: Array<Object> ){
 		this.addChild( this.jackpotArea = new JackpotLayerForShowball1( new egret.Point( 1305, 181 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 0, 0 ), new egret.Rectangle( 66, 38, 312, 48 ), 48, 0xF6C8CB ) );
 		this.jackpotArea.jackpotText.fontFamily = "Arial";
+	}
+
+	protected showExtraUI( show: boolean = true ){
+		super.showExtraUI( show );
+		this.showballLogo.alpha = show ? 0.5 : 1;
 	}
 }

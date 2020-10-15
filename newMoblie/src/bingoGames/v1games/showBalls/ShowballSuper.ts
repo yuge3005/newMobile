@@ -30,16 +30,18 @@ class ShowballSuper extends V1Game{
 
 		this.showNoBetAndCredit();
 
+		// this.showTipStatus();
+
+		this.ganhoCounter = new GanhoCounter( this.showWinAnimationAt.bind( this ) );
+	}
+
+	protected buildBallCountText(){
 		let ballText: TextLabel = MDS.addGameTextCenterShadow( this, 1603, 52, 32, 0x0, "ball", false, 125, true, false );
 		ballText.fontFamily = "Righteous";
 
 		this.ballCountText = MDS.addGameTextCenterShadow( this, 1603, 85, 100, 0x88FF88, "ball", false, 125, true, false );
 		this.ballCountText.fontFamily = "Righteous";
 		this.ballCountText.text = "";
-
-		// this.showTipStatus();
-
-		this.ganhoCounter = new GanhoCounter( this.showWinAnimationAt.bind( this ) );
 	}
 
 	protected showLastBall( ballIndex: number ): void{
@@ -253,10 +255,5 @@ class ShowballSuper extends V1Game{
 	protected winBingo(): void {
 		super.winBingo();
 		this.clearHeartAnimation();
-	}
-
-	protected showExtraUI( show: boolean = true ){
-		super.showExtraUI( show );
-		this.showballLogo.alpha = show ? 0.5 : 1;
 	}
 }

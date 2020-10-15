@@ -17,11 +17,23 @@ class Showball2 extends ShowballSuper{
         super.init();
         this.tileBg();
 
+        this.buildBallCountText();
+
         this.runningBallContainer = new egret.Sprite;
 		Com.addObjectAt( this, this.runningBallContainer, 1362, 24 );
 
 		this.buildSuperEbArea( "mega_" + GlobelSettings.language, 371, 8 );
     }
+
+    protected buildBallCountText(){
+		let ballText: TextLabel = MDS.addGameTextCenterShadow( this, 1614, 120, 32, 0xFFFFFF, "ball", false, 140, true, false );
+		ballText.fontFamily = "Righteous";
+        ballText.stroke = 3;
+
+		this.ballCountText = MDS.addGameTextCenterShadow( this, 1614, 158, 40, 0x88FF88, "ball", false, 140, true, false );
+		this.ballCountText.fontFamily = "Righteous";
+		this.ballCountText.text = "";
+	}
 
     protected showExtraPrice( price: number ): void{
 		super.showExtraPrice( price );
