@@ -19,8 +19,6 @@ class ShowballSuper extends V1Game{
 		
 		// this.needListenToolbarStatus = true;
 
-		BallManager.ballOffsetY = 5;
-
 		PayTableManager.bingoPaytableName = "pt_bingo";
 		PaytableUI.textBold = true;
 	}

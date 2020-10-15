@@ -11,6 +11,8 @@ class Showball2 extends ShowballSuper{
     public constructor( assetsPath: string ) {
         super( "showball2.conf", assetsPath, 21 );
         this.megaName = "showball2_mega";
+
+        BallManager.ballOffsetY = 15;
     }
 
     protected init(){

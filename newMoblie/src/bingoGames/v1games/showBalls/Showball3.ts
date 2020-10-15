@@ -13,6 +13,8 @@ class Showball3 extends ShowballSuper{
         this.megaName = "showball3_mega";
 
         PayTableManager.paytableUIType = ShowballPaytableUI;
+
+		BallManager.ballOffsetY = 5;
     }
 
     protected init(){
