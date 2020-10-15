@@ -1,6 +1,6 @@
 class ShowballSuper extends V1Game{
 
-	private showballLogo: egret.Bitmap;
+	protected showballLogo: egret.Bitmap;
 
 	public constructor( gameConfigFile: string, configUrl: string, gameId: number ) {
 		super( gameConfigFile, configUrl, gameId );
@@ -22,7 +22,6 @@ class ShowballSuper extends V1Game{
 		BallManager.ballOffsetY = 5;
 
 		PayTableManager.bingoPaytableName = "pt_bingo";
-		PayTableManager.paytableUIType = ShowballPaytableUI;
 		PaytableUI.textBold = true;
 	}
 
@@ -46,8 +45,6 @@ class ShowballSuper extends V1Game{
 		// this.showTipStatus();
 
 		this.ganhoCounter = new GanhoCounter( this.showWinAnimationAt.bind( this ) );
-
-		this.showballLogo = this.getChildByName( this.assetStr("logo_rails") ) as egret.Bitmap;
 	}
 
 	protected showLastBall( ballIndex: number ): void{

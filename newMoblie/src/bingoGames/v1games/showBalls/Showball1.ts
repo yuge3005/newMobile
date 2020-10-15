@@ -11,12 +11,15 @@ class Showball1 extends ShowballSuper{
     public constructor( assetsPath: string ) {
         super( "showball1.conf", assetsPath, 22 );
         this.megaName = "showball1_mega";
+
+		PayTableManager.paytableUIType = ShowballPaytableUI;
     }
 
 	protected init(){
 		super.init();
 
 		MDS.mcFactory = this._mcf;
+		this.showballLogo = this.getChildByName( this.assetStr("logo_rails") ) as egret.Bitmap;
 	}
 
 	protected startPlay(): void {
