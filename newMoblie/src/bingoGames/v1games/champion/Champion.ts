@@ -14,6 +14,8 @@ class Champion extends V1Game{
 		super( "champion.conf", assetsPath, 19 );
 		this.languageObjectName = "champion_tx";
 
+		this.ballArea = new ChampionBallManager;
+
 		this.blinkSpArray = new Array<egret.Sprite>();
 
 		GameCard.gridOnTop = true;
@@ -115,26 +117,6 @@ class Champion extends V1Game{
 	protected showJackpot( jackpot: number, jackpotMinBet: number, betConfig: Array<Object> ){
 		this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 2, 125 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 16, 12 ), new egret.Rectangle( 16, 62, 245, 40 ), 40, 0xFFFF00, new egret.Rectangle( 16, 20, 245, 40 ), 40, 0xFF0000, true ) );
 		this.jackpotArea.jackpotText.fontFamily = "Arial";
-	}
-
-	protected getPaytablesFit( paytabledName: string, callback: Function = null ): void{
-		let soundName = "";
-        switch (paytabledName) {
-            case "round": soundName = "";break;
-            case "4lines": soundName = "";break;
-            case "bingo": soundName = "";break;
-            case "letterTX": soundName = "chp_letterTX_wav";break;
-            case "2lines": soundName = "chp104_mp3";break;
-            case "4corners": soundName = "chp102_mp3";break;
-            case "3lines": soundName = "chp103_mp3";break;
-            case "diagonal": soundName = "chp101_mp3";break;
-            default: break;    
-        }
-        if (SoundManager.soundOn && soundName !== "") {
-            this.playSound(soundName, 1, callback);
-        } else {
-            callback();
-        }
 	}
 
 	protected onBetChanged(event: egret.Event): void{

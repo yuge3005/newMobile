@@ -185,7 +185,7 @@ class BallManager extends egret.DisplayObjectContainer{
 		return new BingoBall( index, scaleToGame ? this.ballSize : 0 );
 	}
 
-	private buildBallUIWithIndex( index : number, num : number = 0 ): egret.Sprite{
+	protected buildBallUIWithIndex( index : number, num : number = 0 ): egret.Sprite{
 		var ballObj: Object = BallManager.balls[index];
 		var ball: egret.Sprite = new egret.Sprite();
 		this.setBallBg( ball, ballObj["ui"] );
