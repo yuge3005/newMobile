@@ -18,7 +18,7 @@ class Champion extends V1Game{
 
 		GameCard.gridOnTop = true;
 
-        CardGrid.defaultNumberSize = 25;
+        CardGrid.defaultNumberSize = 40;
 
 		GameCard.useRedEffect = true;
 

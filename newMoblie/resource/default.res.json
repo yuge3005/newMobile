@@ -1844,7 +1844,7 @@
 			"url": "game/champion/champion.json",
 			"type": "sheet",
 			"name": "champion_json",
-			"subkeys": "btn_01,btn_help,champion_bg,champion_extra,champion_extra_ball,frame_right,fundo_1,item_black,item_block,item_cartela,item_red,item_yellow,jackpot_frame,jackpot_lock,mega_en,mega_es,mega_pt,pot,won_bg"
+			"subkeys": "btn_01,btn_help,champion_bg,champion_extra,champion_extra_ball,frame_right,fundo_1,item_black,item_block,item_cartela,item_red,item_yellow,jackpot_frame,jackpot_frame2,jackpot_lock,mega_en,mega_es,mega_pt,pot,won_bg"
 		},
 		{
 			"url": "config/champion.conf",

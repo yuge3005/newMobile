@@ -1,10 +1,10 @@
 {
     "options": {
+        "useExtension": 0,
         "layoutGap": 1,
         "extend": 0,
         "layoutMath": "0",
-        "sizeMode": "free",
-        "useExtension": 0
+        "sizeMode": "free"
     },
     "files": [
         "./btn_help.png",
@@ -15,6 +15,7 @@
         "./mega_es.png",
         "./mega_en.png",
         "./jackpot_lock.png",
+        "./jackpot_frame2.png",
         "./jackpot_frame.png",
         "./item_yellow.png",
         "./item_red.png",
@@ -27,6 +28,6 @@
         "./champion_extra.png",
         "./champion_bg.png"
     ],
-    "projectName": "champion",
-    "version": 5
+    "version": 5,
+    "projectName": "champion"
 }
