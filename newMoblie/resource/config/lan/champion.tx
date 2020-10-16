@@ -6,7 +6,7 @@
 		,"good luck":{"en": "GOOD LUCK","es": "BUENA SUERTE","pt": "BOA SORTE"}
 		,"extra ball":{"en": "EXTRA BALL ?", "es":"BOLA EXTRA ?","pt": "BOLA EXTRA ?"}
 		,"play extra":{"en": "Play Extra Ball", "es":"Bola del juego extra", "pt":"Aperte Bola Extra"}
-		,"jackpot":{"en":"JACKPOT", "es":"JACKPOT", "pt":"ACUMULADO"}
+		,"jackpot":{"en":"jackpot", "es":"jackpot", "pt":"acumulado"}
 		,"prize":{"en":"PRIZE","es": "PRÉMIO", "pt":"PRÉMIO"}
 		,"jackpot_tooltip":{"en":"Your current bet does not qualify\nPlease increase your bet to {1}\nand play {2} cards",
 			"es":"Su apuesta actual no cualifica.\nPor favor,aumente su apuesta\npara {1} y juega con {2} tarjetas.", 

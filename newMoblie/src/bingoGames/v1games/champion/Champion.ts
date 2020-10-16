@@ -113,7 +113,8 @@ class Champion extends V1Game{
 /******************************************************************************************************************************************************************/    
 
 	protected showJackpot( jackpot: number, jackpotMinBet: number, betConfig: Array<Object> ){
-		this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 692, 15 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 2, 0 ), new egret.Rectangle( 0, 20, 100, 14 ), 14, 0xFFFF00, new egret.Rectangle( -3, 0, 105, 14 ), 14, 0xFF0000 ) );
+		this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 2, 125 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 16, 12 ), new egret.Rectangle( 16, 62, 245, 40 ), 40, 0xFFFF00, new egret.Rectangle( 16, 20, 245, 40 ), 40, 0xFF0000, true ) );
+		this.jackpotArea.jackpotText.fontFamily = "Arial";
 	}
 
 	protected getPaytablesFit( paytabledName: string, callback: Function = null ): void{
