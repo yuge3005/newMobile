@@ -18,6 +18,7 @@ class Champion extends V1Game{
 
 		this.blinkSpArray = new Array<egret.Sprite>();
 
+		CardManager.cardType = ChampionCard;
 		GameCard.gridOnTop = true;
 
         CardGrid.defaultNumberSize = 40;
@@ -94,22 +95,7 @@ class Champion extends V1Game{
 	}
 
 	protected showWinAnimationAt(cardId: number, win: number): void{
-        let blinkSp: egret.Sprite = new egret.Sprite;
-        Com.addObjectAt( this, blinkSp, CardManager.cards[cardId].x, CardManager.cards[cardId].y );
-        let tx: egret.TextField = Com.addTextAt( blinkSp, 42, 65, 180, 74, 22, false, true );
-        tx.textAlign = "center";
-		tx.verticalAlign = "middle";
-		tx.text = MuLang.getText("win") + "\n" + Utils.formatCoinsNumber( win * GameData.currentBet );
-        let outRect: egret.Rectangle = new egret.Rectangle( 35, 58, 194, 88 );
-        let inRect: egret.Rectangle = new egret.Rectangle( 42, 65, 180, 74 );
-        this.drawOutRect(blinkSp, 0x00FFFC, outRect, inRect);
-        this.blinkSpArray.push(blinkSp);
-        tx.textColor = 0xFFFFFF;
-    }
-
-	private drawOutRect( sp: egret.Sprite, color: number, rectOut: egret.Rectangle, rectIn: egret.Rectangle ): void{
-		GraphicTool.drawRect( sp, new egret.Rectangle( rectOut.x, rectOut.y, rectOut.width, rectOut.height ), color, true );
-		GraphicTool.drawRect( sp, new egret.Rectangle( rectIn.x, rectIn.y, rectIn.width, rectIn.height ) );
+		( CardManager.cards[cardId] as ChampionCard ).showWinCount( win * GameData.currentBet );
     }
 
 /******************************************************************************************************************************************************************/    
