@@ -95,6 +95,10 @@
 		{
 			"keys": "vb14_mp3,vb10_mp3,vb13_mp3,vb15_mp3,vb16_mp3,vb17_mp3,vb2_mp3,vb3_mp3,vb4_mp3,vb5_mp3,vb7_mp3,vb8_mp3,vipbingo_json,vipbingoAnimation_json,vipbingoAnimation_png,vipbingo_conf,vipBingoAndTurboMania_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,Arial Black_fnt,Arial Black_png",
 			"name": "vipbingo"
+		},
+		{
+			"keys": "chp97_mp3,chp104_mp3,chp103_mp3,chp102_mp3,chp101_mp3,chp100_mp3,chp_letterTX_mp3,champion_json,champion_conf,champion_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,ChampionCartoes_json,Arial Black_fnt,Arial Black_png",
+			"name": "champion"
 		}
 	],
 	"resources": [
@@ -1800,6 +1804,62 @@
 			"url": "config/showball2.conf",
 			"type": "json",
 			"name": "showball2_conf"
+		},
+		{
+			"url": "game/champion/sound/chp100.mp3",
+			"type": "sound",
+			"name": "chp100_mp3"
+		},
+		{
+			"url": "game/champion/sound/chp101.mp3",
+			"type": "sound",
+			"name": "chp101_mp3"
+		},
+		{
+			"url": "game/champion/sound/chp102.mp3",
+			"type": "sound",
+			"name": "chp102_mp3"
+		},
+		{
+			"url": "game/champion/sound/chp103.mp3",
+			"type": "sound",
+			"name": "chp103_mp3"
+		},
+		{
+			"url": "game/champion/sound/chp104.mp3",
+			"type": "sound",
+			"name": "chp104_mp3"
+		},
+		{
+			"url": "game/champion/sound/chp97.mp3",
+			"type": "sound",
+			"name": "chp97_mp3"
+		},
+		{
+			"url": "game/champion/sound/chp_letterTX.mp3",
+			"type": "sound",
+			"name": "chp_letterTX_mp3"
+		},
+		{
+			"url": "game/champion/champion.json",
+			"type": "sheet",
+			"name": "champion_json",
+			"subkeys": "btn_01,btn_help,champion_bg,champion_extra,champion_extra_ball,frame_right,fundo_1,item_black,item_block,item_cartela,item_red,item_yellow,jackpot_frame,jackpot_lock,mega_en,mega_es,mega_pt,pot,won_bg"
+		},
+		{
+			"url": "config/champion.conf",
+			"type": "json",
+			"name": "champion_conf"
+		},
+		{
+			"url": "config/lan/champion.tx",
+			"type": "json",
+			"name": "champion_tx"
+		},
+		{
+			"url": "config/cartoesConfig/ChampionCartoes.json",
+			"type": "json",
+			"name": "ChampionCartoes_json"
 		}
 	]
 }
