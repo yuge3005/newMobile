@@ -1,22 +1,32 @@
 {
-    "projectName": "champion",
+    "options": {
+        "layoutGap": 1,
+        "extend": 0,
+        "layoutMath": "0",
+        "sizeMode": "free",
+        "useExtension": 0
+    },
     "files": [
+        "./btn_help.png",
+        "./btn_01.png",
+        "./won_bg.png",
+        "./pot.png",
         "./mega_pt.png",
         "./mega_es.png",
         "./mega_en.png",
         "./jackpot_lock.png",
-        "./item_cartela_disabled.png",
+        "./jackpot_frame.png",
+        "./item_yellow.png",
+        "./item_red.png",
         "./item_cartela.png",
+        "./item_block.png",
+        "./item_black.png",
         "./fundo_1.png",
+        "./frame_right.png",
+        "./champion_extra_ball.png",
         "./champion_extra.png",
         "./champion_bg.png"
     ],
-    "options": {
-        "layoutMath": "0",
-        "sizeMode": "free",
-        "useExtension": 0,
-        "layoutGap": 1,
-        "extend": 0
-    },
+    "projectName": "champion",
     "version": 5
 }
