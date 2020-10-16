@@ -29,6 +29,7 @@ class Champion extends V1Game{
 
     protected init(){
         super.init();
+		this.tileBg();
 
 		// this.addGameText( 700, 74, 15, 0x46C8F5, "bingo",false, 200 );
         // this.addGameText( 700, 130, 15, 0x46C8F5, "4 lines",false, 200 );
