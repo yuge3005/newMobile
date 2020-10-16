@@ -1,0 +1,22 @@
+{
+    "projectName": "champion",
+    "files": [
+        "./mega_pt.png",
+        "./mega_es.png",
+        "./mega_en.png",
+        "./jackpot_lock.png",
+        "./item_cartela_disabled.png",
+        "./item_cartela.png",
+        "./fundo_1.png",
+        "./champion_extra.png",
+        "./champion_bg.png"
+    ],
+    "options": {
+        "layoutMath": "0",
+        "sizeMode": "free",
+        "useExtension": 0,
+        "layoutGap": 1,
+        "extend": 0
+    },
+    "version": 5
+}
