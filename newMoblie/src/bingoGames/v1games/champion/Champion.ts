@@ -5,7 +5,7 @@ class Champion extends V1Game{
 	}
 
     protected static get animationAssetName(){
-		return "showballAnimation";
+		return "championAnimation";
 	}
 
 	private blinkSpArray: Array<egret.Sprite>;
@@ -45,10 +45,21 @@ class Champion extends V1Game{
 
 		this.showNoBetAndCredit();
 
+		if( this.extraUIObject ) this.championExtraUIBg();
+
 		this.buildSuperEbArea( "mega_" + GlobelSettings.language, 702, 524 );
 
 		this.ganhoCounter = new ChampionGanhoCounter( this.showWinAnimationAt.bind( this ) );
     }
+
+	private championExtraUIBg(){
+        this.runningBallContainer = new egret.DisplayObjectContainer;
+        this.runningBallContainer.x = this.extraUIObject.x;
+        this.runningBallContainer.y = this.extraUIObject.y;
+        this.addChildAt( this.runningBallContainer, this.getChildIndex( this.extraUIObject ) );
+        Com.addObjectAt( this.runningBallContainer, this.extraUIObject, 0, 0 );
+        this.extraUIObject = this.runningBallContainer;
+	}
 
 	public de_duplication( balls: Array<number> ){
 		for( let i: number = 1; i < balls.length; ){

@@ -97,7 +97,7 @@
 			"name": "vipbingo"
 		},
 		{
-			"keys": "chp97_mp3,chp104_mp3,chp103_mp3,chp102_mp3,chp101_mp3,chp100_mp3,chp_letterTX_mp3,champion_json,champion_conf,champion_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,ChampionCartoes_json,Arial Black_fnt,Arial Black_png",
+			"keys": "chp97_mp3,chp104_mp3,chp103_mp3,chp102_mp3,chp101_mp3,chp100_mp3,chp_letterTX_mp3,champion_json,championAnimation_png,championAnimation_json,champion_conf,champion_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,ChampionCartoes_json,Arial Black_fnt,Arial Black_png",
 			"name": "champion"
 		}
 	],
@@ -1860,6 +1860,16 @@
 			"url": "config/cartoesConfig/ChampionCartoes.json",
 			"type": "json",
 			"name": "ChampionCartoes_json"
+		},
+		{
+			"url": "game/champion/championAnimation.png",
+			"type": "image",
+			"name": "championAnimation_png"
+		},
+		{
+			"url": "game/champion/championAnimation.json",
+			"type": "json",
+			"name": "championAnimation_json"
 		}
 	]
 }
