@@ -35,4 +35,13 @@ class ChampionCard extends GameCard{
 		super.clearStatus();
 		if( this.contains( this.winAnimationLayer ) ) this.removeChild( this.winAnimationLayer );
 	}
+
+	public blink( show: number ){
+		if( !this.grids || !this.grids.length ) return;
+		if( !this.redEffectArray ) return;
+		let isShow: boolean = Boolean( show );
+		for( let i: number = 0; i < this.grids.length; i++ ){
+			if( this.redEffectArray[i] )this.grids[i].showBlink( isShow );
+		}
+	}
 }

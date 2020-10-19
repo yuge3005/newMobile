@@ -219,7 +219,7 @@ class GameCard extends GameUIItem{
 		}
 	}
 
-	private redEffectArray: Array<boolean>;
+	protected redEffectArray: Array<boolean>;
 
 	protected setGridsToRed( str: string ): void{
 		if( !this.redEffectArray )this.redEffectArray = [];
