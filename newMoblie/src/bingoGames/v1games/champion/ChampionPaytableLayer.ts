@@ -13,10 +13,9 @@ class ChampionPaytableLayer extends PaytableLayer{
 		this.paytableFgs = [];
 		let pts: Array<Array<number>> = [ [45, 28], [123, 42], [200,45], [280,42], [357,43], [434,45], [514,43], [592,42] ];
         for( let i: number = 0; i < 8; i++ ){
-            this.paytableFgs[i] = new egret.Shape;
-			GraphicTool.drawRect( this.paytableFgs[i] as egret.Shape, new egret.Rectangle( 17, pts[i][0], 236, pts[i][1] ), 0xFF0000 );
+            this.paytableFgs[i] = Com.addMovieClipAt( this, MDS.mcFactory, "paytable_fg", 17, pts[i][0] );
+            this.paytableFgs[i].height = pts[i][1];
             this.paytableFgs[i].visible = false;
-			this.addChild( this.paytableFgs[i] );
         }
     }
 
