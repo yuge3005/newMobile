@@ -32,6 +32,7 @@ class Champion extends V1Game{
         super.init();
 		this.tileBg();
 
+		this.addHelpBtn();
 		this.showNoBetAndCredit();
 
 		if( this.extraUIObject ) this.championExtraUIBg();
@@ -160,5 +161,19 @@ class Champion extends V1Game{
 	protected startPlay(): void {
 		super.startPlay();
 		this.payTableArea.clearPaytableFgs();
+	}
+
+	private addHelpBtn(){
+		let helpBtn: TouchDownButton = Com.addDownButtonAt( this, this.assetStr( "btn_help" ), this.assetStr( "btn_help" ), 20, 336, this.onHelpButton, true );
+		let txt: TextLabel = Com.addLabelAt( this, 0, 0, helpBtn.width, helpBtn.height, 36 );
+		helpBtn.addChild(txt);
+		txt.fontFamily = "Righteous";
+		txt.textColor = 0xFFFFFF;
+
+		txt.setText( MuLang.getText("help", MuLang.CASE_UPPER) );
+	}
+
+	private onHelpButton( event: egret.TouchEvent ){
+		BingoMachine.sendCommand( GameCommands.help );
 	}
 }

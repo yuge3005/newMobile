@@ -38,4 +38,5 @@
 		,"4 corners":{ "en": "4 CORNERS", "es": "4 ESQUINAS", "pt": "4 CANTOS" }
 		,"diagonal":{ "en": "DIAGONAL", "es": "DIAGONAL", "pt": "DIAGONAL" }
 		,"win":{ "en": "WIN", "es": "CANADO", "pt": "CANHO" }
+		,"help":{ "en": "help", "es": "help", "pt": "help" }
 			}

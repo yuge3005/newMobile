@@ -86,6 +86,7 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 		this.createTexts();
 
 		this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onToolbarAdd, this);
+		this.cacheAsBitmap = true;
 	}
 
 	protected onToolbarAdd( event: egret.Event ): void{
