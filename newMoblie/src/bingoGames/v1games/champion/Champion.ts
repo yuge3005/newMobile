@@ -32,15 +32,6 @@ class Champion extends V1Game{
         super.init();
 		this.tileBg();
 
-		// this.addGameText( 700, 74, 15, 0x46C8F5, "bingo",false, 200 );
-        // this.addGameText( 700, 130, 15, 0x46C8F5, "4 lines",false, 200 );
-        // this.addGameText( 700, 183, 15, 0x46C8F5, "perimeter",false, 200 );
-        // this.addGameText( 700, 238, 15, 0x46C8F5, "3 lines",false, 200 );
-		// this.addGameText( 700, 292, 15, 0x46C8F5, "letterXT",false, 200 );
-		// this.addGameText( 700, 346, 15, 0x46C8F5, "2 lines",false, 200 );
-		// this.addGameText( 700, 400, 15, 0x46C8F5, "4 corners",false, 200 );
-		// this.addGameText( 700, 455, 15, 0x46C8F5, "diagonal",false, 200 );
-
 		this.showNoBetAndCredit();
 
 		if( this.extraUIObject ) this.championExtraUIBg();
@@ -103,6 +94,7 @@ class Champion extends V1Game{
 	}
 	
 	protected afterCheck( resultList: Array<Object> ): void{
+		this.payTableArea.clearPaytableFgs();
         super.afterCheck( resultList );
 
 		this.ganhoCounter.countGanhoAndPlayAnimation(resultList);
@@ -167,5 +159,6 @@ class Champion extends V1Game{
 
 	protected startPlay(): void {
 		super.startPlay();
+		this.payTableArea.clearPaytableFgs();
 	}
 }

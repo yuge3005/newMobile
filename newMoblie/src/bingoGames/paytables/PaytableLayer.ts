@@ -4,6 +4,8 @@ class PaytableLayer extends egret.DisplayObjectContainer{
 
 	public constructor() {
 		super();
+
+		this.cacheAsBitmap = true;
 	}
 
 	public addPaytableUI(){
