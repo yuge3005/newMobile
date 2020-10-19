@@ -8,15 +8,13 @@ class Champion extends V1Game{
 		return "championAnimation";
 	}
 
-	private blinkSpArray: Array<egret.Sprite>;
-
 	public constructor( assetsPath: string ) {
 		super( "champion.conf", assetsPath, 19 );
 		this.languageObjectName = "champion_tx";
 
 		this.ballArea = new ChampionBallManager;
 
-		this.blinkSpArray = new Array<egret.Sprite>();
+		PayTableManager.layerType = ChampionPaytableLayer;
 
 		CardManager.cardType = ChampionCard;
 		GameCard.gridOnTop = true;
@@ -169,15 +167,5 @@ class Champion extends V1Game{
 
 	protected startPlay(): void {
 		super.startPlay();
-
-		for (let i = 0; i < this.blinkSpArray.length; i++) {
-            if (this.blinkSpArray[i]) {
-                if (this.blinkSpArray[i].parent) {
-                    this.blinkSpArray[i].parent.removeChild(this.blinkSpArray[i]);
-                }
-                this.blinkSpArray[i] = null;
-            }
-        }
-        this.blinkSpArray = new Array<egret.Sprite>();
 	}
 }
