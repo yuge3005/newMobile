@@ -138,6 +138,10 @@ class Champion extends V1Game{
 	protected roundOver(): void {
         super.roundOver();
         this.stopSound("chp97_mp3");
+
+		for( let i: number = 0; i < 4; i++ ){
+			( CardManager.cards[i] as ChampionCard ).showChampionWinCount();
+		}
     }
 
 	protected showLastBall(ballIndex: number): void {

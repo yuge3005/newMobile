@@ -23,7 +23,12 @@ class ChampionCard extends GameCard{
 		if( winNumber > 0 ){
 			Com.addObjectAt( this, this.winAnimationLayer, 82, 66 );
 			this.winTx.setText( Utils.formatCoinsNumber( winNumber ) );
+			this.winAnimationLayer.visible = false;
 		}
+	}
+
+	public showChampionWinCount(): void{
+		if( this.winAnimationLayer.parent ) this.winAnimationLayer.visible = true;
 	}
 
 	public clearStatus(): void{
