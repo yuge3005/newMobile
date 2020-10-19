@@ -266,7 +266,7 @@ class BonusBingo extends V2Game{
     private showSpuerModeAnimation(){
         this.canQuickPay = false;
         this.forbidTouchEvent = true;
-        let doctorAnimation: egret.MovieClip = Com.addMovieClipAt( this, this._mcf, "bonusBingo_doctor", 1100, 574 );
+        let doctorAnimation: egret.MovieClip = Com.addMovieClipAt( this, MDS.mcFactory, "bonusBingo_doctor", 1100, 574 );
         doctorAnimation.anchorOffsetX = 275;
         doctorAnimation.anchorOffsetY = 200;
         doctorAnimation.scaleX = doctorAnimation.scaleY = 2;
@@ -303,7 +303,7 @@ class BonusBingo extends V2Game{
         for( let i: number = 0; i < 4; i++ ){
             let offsetX: number = this.cardPositions[i]["x"];
             let offsetY: number = this.cardPositions[i]["y"];
-            curtains[i] = Com.addMovieClipAt( this, this._mcf, "bonusBingo_curtains_02", offsetX, offsetY );
+            curtains[i] = Com.addMovieClipAt( this, MDS.mcFactory, "bonusBingo_curtains_02", offsetX, offsetY );
             curtains[i].gotoAndPlay(1);
             if( this.curtains1[i].parent ){
                 this.curtains1[i].parent.removeChild( this.curtains1[i] );
@@ -334,7 +334,7 @@ class BonusBingo extends V2Game{
         for( let i: number = 0; i < 4; i++ ){
             let offsetX: number = this.cardPositions[i]["x"];
             let offsetY: number = this.cardPositions[i]["y"];
-            curtains[i] = Com.addMovieClipAt( this, this._mcf, "bonusBingo_curtains_01", offsetX, offsetY );
+            curtains[i] = Com.addMovieClipAt( this, MDS.mcFactory, "bonusBingo_curtains_01", offsetX, offsetY );
             curtains[i].gotoAndPlay(1);
         }
         curtains[0].addEventListener( egret.Event.ENTER_FRAME, this.curtain1AnimationFrameCounter, this );
@@ -456,7 +456,7 @@ class BonusBingo extends V2Game{
         // tw.call( () => { blinkSp.parent.removeChild( blinkSp ) } );
 
         if( this.isSuper ){
-            let dtAnimation: egret.MovieClip = Com.addMovieClipAt( this, this._mcf, "bonusBingo_doctor", CardManager.cards[cardId].x + 164, CardManager.cards[cardId].y + 206 );
+            let dtAnimation: egret.MovieClip = Com.addMovieClipAt( this, MDS.mcFactory, "bonusBingo_doctor", CardManager.cards[cardId].x + 164, CardManager.cards[cardId].y + 206 );
             dtAnimation.anchorOffsetX = 275;
             dtAnimation.anchorOffsetY = 200;
             let dtTw: egret.Tween = egret.Tween.get( dtAnimation );

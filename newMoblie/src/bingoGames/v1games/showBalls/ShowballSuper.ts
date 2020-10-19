@@ -200,7 +200,7 @@ class ShowballSuper extends V1Game{
 		this.clearHeartAnimation();
 
 		if( !this.heartAnimation ){
-			this.heartAnimation = Com.addMovieClipAt( this, this._mcf, "showball_heart", 355, 320 );
+			this.heartAnimation = Com.addMovieClipAt( this, MDS.mcFactory, "showball_heart", 355, 320 );
 		}
 	}
 

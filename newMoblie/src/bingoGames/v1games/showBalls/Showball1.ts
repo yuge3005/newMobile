@@ -27,7 +27,6 @@ class Showball1 extends ShowballSuper{
 
 		this.buildSuperEbArea( "mega_" + GlobelSettings.language, 371, 8 );
 
-		MDS.mcFactory = this._mcf;
 		this.showballLogo = this.getChildByName( this.assetStr("logo_rails") ) as egret.Bitmap;
 	}
 

@@ -65,8 +65,8 @@ class Pachinko2 extends V2Game{
         this.addChildAt( this.runningBallContainer, this.getChildIndex( this.extraUIObject ) );
         Com.addObjectAt( this.runningBallContainer, this.extraUIObject, 0, 0 );
 
-        Com.addMovieClipAt( this.runningBallContainer, this._mcf, "pachinko2_cat", 927 - this.runningBallContainer.x, 125 - this.runningBallContainer.y );
-        this.extraUIObject = Com.addMovieClipAt( this, this._mcf, "pachinko2Extra", 851, 344 );
+        Com.addMovieClipAt( this.runningBallContainer, MDS.mcFactory, "pachinko2_cat", 927 - this.runningBallContainer.x, 125 - this.runningBallContainer.y );
+        this.extraUIObject = Com.addMovieClipAt( this, MDS.mcFactory, "pachinko2Extra", 851, 344 );
         this.extraUIObject.visible = false;
         this.addChildAt( this.extraUIObject, this.getChildIndex( this.ballArea ) );
         this.addChildAt( this.runningBallContainer, this.getChildIndex( this.ballArea ) + 1 );

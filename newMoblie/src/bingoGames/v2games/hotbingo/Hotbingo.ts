@@ -50,7 +50,7 @@ class Hotbingo extends V2Game{
 
         this.ballArea.needLightCheck = true;
 
-        this.arrowArea = new CardArrowLayer( this._mcf, "arrowAnimationInT90", this.cardPositions, new egret.Point( -47, 64 ), 64, 0.92 );
+        this.arrowArea = new CardArrowLayer( MDS.mcFactory, "arrowAnimationInT90", this.cardPositions, new egret.Point( -47, 64 ), 64, 0.92 );
         this.addChild( this.arrowArea );
     }
 

@@ -6,7 +6,6 @@ class BingoMachine extends GameUIItem{
 
 	protected assetName: string;
 	private gameConfigFile: string;
-	protected _mcf: egret.MovieClipDataFactory;
 	protected languageObjectName: string;
 	protected megaName: string;
 
@@ -183,7 +182,7 @@ class BingoMachine extends GameUIItem{
 		this.scaleY = Main.gameSize.y / BingoBackGroundSetting.gameMask.height;
 		this.mask = BingoBackGroundSetting.gameMask;
 
-		this._mcf = BingoBackGroundSetting.initBackground( this );
+		MDS.mcFactory = BingoBackGroundSetting.initBackground( this );
 
 		this.addChild( this.ballArea );
 		this.addPayTables();

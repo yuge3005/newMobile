@@ -128,8 +128,8 @@ class DoubleMania extends V2Game{
 
     private showEb( type: number ): void{
         this.removeEb()
-        if( type ) this.ebAnimation = Com.addMovieClipAt( this, this._mcf, "doublemaniaDoctor", 825, 348 );
-        else this.ebAnimation = Com.addMovieClipAt( this, this._mcf, "funnyFace", 822, 348 );
+        if( type ) this.ebAnimation = Com.addMovieClipAt( this, MDS.mcFactory, "doublemaniaDoctor", 825, 348 );
+        else this.ebAnimation = Com.addMovieClipAt( this, MDS.mcFactory, "funnyFace", 822, 348 );
         setTimeout( this.removeEb.bind(this), 3000 );
     }
 

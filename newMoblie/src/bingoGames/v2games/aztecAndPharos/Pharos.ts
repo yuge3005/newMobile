@@ -41,7 +41,7 @@ class Pharos extends AztecPharosSuper{
 	}
 
     protected getGratisUI(): egret.DisplayObject{
-        return Com.addMovieClipAt( this, this._mcf, "pharos", 0, 0 );
+        return Com.addMovieClipAt( this, MDS.mcFactory, "pharos", 0, 0 );
     }
 
 /******************************************************************************************************************************************************************/    

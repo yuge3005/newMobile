@@ -38,8 +38,6 @@ class SuperGoal extends V2Game{
     protected init(){
         super.init();
 
-        MDS.mcFactory = this._mcf;
-
         this.showNoBetAndCredit();
 
         if( this.extraUIObject ) this.extraUIShowNumber();

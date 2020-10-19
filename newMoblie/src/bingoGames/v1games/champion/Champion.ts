@@ -48,9 +48,9 @@ class Champion extends V1Game{
         this.addChildAt( this.runningBallContainer, this.getChildIndex( this.extraUIObject ) );
 		this.extraUIObject.visible = true;
         Com.addObjectAt( this.runningBallContainer, this.extraUIObject, 0, 0 );
-		Com.addMovieClipAt( this.runningBallContainer, this._mcf, "championAnimation1", 7, 0 );
-		Com.addMovieClipAt( this.runningBallContainer, this._mcf, "championAnimation2", 88, 0 );
-		Com.addMovieClipAt( this.runningBallContainer, this._mcf, "championAnimation3", 169, 0 );
+		Com.addMovieClipAt( this.runningBallContainer, MDS.mcFactory, "championAnimation1", 7, 0 );
+		Com.addMovieClipAt( this.runningBallContainer, MDS.mcFactory, "championAnimation2", 88, 0 );
+		Com.addMovieClipAt( this.runningBallContainer, MDS.mcFactory, "championAnimation3", 169, 0 );
 		this.runningBallContainer.visible = false;
         this.extraUIObject = this.runningBallContainer;
 	}
