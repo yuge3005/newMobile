@@ -1,11 +1,12 @@
 {
     "options": {
-        "layoutGap": 1,
-        "extend": 0,
         "layoutMath": "0",
         "sizeMode": "free",
-        "useExtension": 0
+        "useExtension": 0,
+        "layoutGap": 1,
+        "extend": 0
     },
+    "projectName": "prakaramba",
     "files": [
         "./praka_pt_xx.png",
         "./praka_pt_x.png",
@@ -37,24 +38,7 @@
         "./mark_green.png",
         "./mark_gray.png",
         "./jackpot_lock.png",
-        "./fundo-cartela.png",
-        "./fundo_pay_xx.png",
-        "./fundo_pay_x.png",
-        "./fundo_pay_v2.png",
-        "./fundo_pay_v1.png",
-        "./fundo_pay_trangle2.png",
-        "./fundo_pay_trangle1.png",
-        "./fundo_pay_round.png",
-        "./fundo_pay_plus.png",
-        "./fundo_pay_mouse.png",
-        "./fundo_pay_m2.png",
-        "./fundo_pay_m1.png",
-        "./fundo_pay_line3.png",
-        "./fundo_pay_line2.png",
-        "./fundo_pay_line1.png",
-        "./fundo_pay_fly.png",
-        "./fundo_pay_bingo.png"
+        "./fundo-cartela.png"
     ],
-    "projectName": "prakaramba",
     "version": 5
 }
