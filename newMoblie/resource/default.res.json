@@ -99,6 +99,10 @@
 		{
 			"keys": "chp97_mp3,chp104_mp3,chp103_mp3,chp102_mp3,chp101_mp3,chp100_mp3,chp_letterTX_mp3,champion_json,championAnimation_png,championAnimation_json,champion_conf,champion_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,ChampionCartoes_json,Arial Black_fnt,Arial Black_png",
 			"name": "champion"
+		},
+		{
+			"keys": "prak1_mp3,prak15_mp3,prak16_mp3,prak19_mp3,prak2_mp3,prak20_mp3,prak21_mp3,prak22_mp3,prak24_mp3,prak28_mp3,prak29_mp3,prak3_wav,prak30_mp3,prak8_mp3,prak9_mp3,prakaramba_json,prakarambaAnimation_png,prakarambaAnimation_json,prakaramba_conf,forAll_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,Arial Black_fnt,Arial Black_png",
+			"name": "prakaramba"
 		}
 	],
 	"resources": [
@@ -1870,6 +1874,102 @@
 			"url": "game/champion/championAnimation.json",
 			"type": "json",
 			"name": "championAnimation_json"
+		},
+		{
+			"url": "game/prakaramba/prakarambaAnimation.png",
+			"type": "image",
+			"name": "prakarambaAnimation_png"
+		},
+		{
+			"url": "game/prakaramba/sound/prak1.mp3",
+			"type": "sound",
+			"name": "prak1_mp3"
+		},
+		{
+			"url": "game/prakaramba/sound/prak15.mp3",
+			"type": "sound",
+			"name": "prak15_mp3"
+		},
+		{
+			"url": "game/prakaramba/sound/prak16.mp3",
+			"type": "sound",
+			"name": "prak16_mp3"
+		},
+		{
+			"url": "game/prakaramba/sound/prak19.mp3",
+			"type": "sound",
+			"name": "prak19_mp3"
+		},
+		{
+			"url": "game/prakaramba/sound/prak2.mp3",
+			"type": "sound",
+			"name": "prak2_mp3"
+		},
+		{
+			"url": "game/prakaramba/sound/prak20.mp3",
+			"type": "sound",
+			"name": "prak20_mp3"
+		},
+		{
+			"url": "game/prakaramba/sound/prak21.mp3",
+			"type": "sound",
+			"name": "prak21_mp3"
+		},
+		{
+			"url": "game/prakaramba/sound/prak22.mp3",
+			"type": "sound",
+			"name": "prak22_mp3"
+		},
+		{
+			"url": "game/prakaramba/sound/prak24.mp3",
+			"type": "sound",
+			"name": "prak24_mp3"
+		},
+		{
+			"url": "game/prakaramba/sound/prak28.mp3",
+			"type": "sound",
+			"name": "prak28_mp3"
+		},
+		{
+			"url": "game/prakaramba/sound/prak29.mp3",
+			"type": "sound",
+			"name": "prak29_mp3"
+		},
+		{
+			"url": "game/prakaramba/sound/prak3.wav",
+			"type": "sound",
+			"name": "prak3_wav"
+		},
+		{
+			"url": "game/prakaramba/sound/prak30.mp3",
+			"type": "sound",
+			"name": "prak30_mp3"
+		},
+		{
+			"url": "game/prakaramba/sound/prak8.mp3",
+			"type": "sound",
+			"name": "prak8_mp3"
+		},
+		{
+			"url": "game/prakaramba/sound/prak9.mp3",
+			"type": "sound",
+			"name": "prak9_mp3"
+		},
+		{
+			"url": "game/prakaramba/prakarambaAnimation.json",
+			"type": "json",
+			"name": "prakarambaAnimation_json"
+		},
+		{
+			"url": "game/prakaramba/prakaramba.json",
+			"type": "sheet",
+			"name": "prakaramba_json",
+			"subkeys": "fundo-cartela,jackpot_lock,mark_gray,mark_green,mark_red,mark_white,paytable,praka_ball_blue,praka_ball_dark_blue,praka_ball_green,praka_ball_light_green,praka_ball_orange,praka_ball_pink,praka_ball_purple,praka_ball_red,praka_ball_yellow,praka_bg,praka_extra,praka_left,praka_pt_bingo,praka_pt_double_line,praka_pt_fly,praka_pt_line,praka_pt_m,praka_pt_mouse,praka_pt_plus,praka_pt_round,praka_pt_trangle,praka_pt_v,praka_pt_x,praka_pt_xx"
+		},
+		{
+			"url": "config/prakaramba.conf",
+			"type": "json",
+			"name": "prakaramba_conf"
 		}
 	]
 }
