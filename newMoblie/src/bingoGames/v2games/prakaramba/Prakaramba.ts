@@ -32,6 +32,8 @@ class Prakaramba extends V2Game{
 
         this.runningBallContainer = new egret.DisplayObjectContainer;
         Com.addObjectAt(this, this.runningBallContainer, 262, 167);
+
+        this.ganhoCounter = new GanhoCounter( this.showWinAnimationAt.bind( this ) );
     }
 
     protected showLastBall( ballIndex: number ): void{
@@ -40,6 +42,16 @@ class Prakaramba extends V2Game{
         
         this.playSound("prak3_wav");
 	}
+
+    protected afterCheck( resultList: Array<Object> ): void{
+		super.afterCheck( resultList );
+
+		this.ganhoCounter.countGanhoAndPlayAnimation(resultList);
+	}
+
+    protected showWinAnimationAt(cardId: number, win: number): void{
+        ( CardManager.cards[cardId] as PrakarambaCard ).showWinCount( win * GameData.currentBet );
+    }
 
 /******************************************************************************************************************************************************************/    
 
