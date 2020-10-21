@@ -28,19 +28,14 @@ class Prakaramba extends V2Game{
         this.showNoBetAndCredit();
 
         this.runningBallContainer = new egret.DisplayObjectContainer;
-        this.runningBallContainer.scaleX = this.runningBallContainer.scaleY = 0.8;
+        Com.addObjectAt(this, this.runningBallContainer, 262, 173);
     }
 
     protected showLastBall( ballIndex: number ): void{
         super.showLastBall( ballIndex );
         super.showLastBallAt( ballIndex, 0, 0 );
-        Com.addObjectAt(this, this.runningBallContainer, 114, 272);
         
         this.playSound("prak3_wav");
-	}
-
-    protected clearRunningBallUI(): void{
-        if( this.runningBallContainer && this.contains( this.runningBallContainer ) )this.removeChild( this.runningBallContainer );
 	}
 
 /******************************************************************************************************************************************************************/    
