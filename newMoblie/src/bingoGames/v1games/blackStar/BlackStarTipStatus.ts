@@ -30,10 +30,14 @@ class BlackStarTipStatus extends egret.DisplayObjectContainer{
 		this.tipTimer = new egret.Timer( 500 );
 		this.tipTimer.addEventListener( egret.TimerEvent.TIMER, this.onTimer, this );
 		this.tipTimer.start();
+		this.addEventListener( egret.Event.REMOVED_FROM_STAGE, this.onRemove, this );
 	}
 
 	private onTimer( event: egret.TimerEvent ){
-		this.playText.filters = [MatrixTool.colorMatrixPure( (this.tipTimer.currentCount&1) ? 0xFFFF00 : 0x252500 )];
+		let bl: boolean = Boolean( this.tipTimer.currentCount & 1 );
+		this.playText.filters = [MatrixTool.colorMatrixPure( bl ? 0xFFFF00 : 0x252500 )];
+		this.extraTitle.filters = [MatrixTool.colorMatrixPure( bl ? 0xE4E4E4 : 0xF6352E )];
+		this.extraText.filters = [MatrixTool.colorMatrixPure( bl ? 0xF6352E : 0xE4E4E4 )];
 	}
 
 	public showPlay(){
@@ -45,5 +49,12 @@ class BlackStarTipStatus extends egret.DisplayObjectContainer{
 		this.playText.visible = false;
 		this.extraTitle.visible = this.extraText.visible = true;
 		this.extraText.text = Utils.formatCoinsNumber( price ) + " COINS";
+	}
+
+	private onRemove( event: egret.Event ){
+		this.tipTimer.reset();
+		this.tipTimer.stop();
+		this.tipTimer.removeEventListener( egret.TimerEvent.TIMER, this.onTimer, this );
+		this.removeEventListener( egret.Event.REMOVED_FROM_STAGE, this.onRemove, this );
 	}
 }
