@@ -28,7 +28,7 @@ class Prakaramba extends V2Game{
         this.showNoBetAndCredit();
 
         this.runningBallContainer = new egret.DisplayObjectContainer;
-        Com.addObjectAt(this, this.runningBallContainer, 262, 173);
+        Com.addObjectAt(this, this.runningBallContainer, 262, 167);
     }
 
     protected showLastBall( ballIndex: number ): void{
