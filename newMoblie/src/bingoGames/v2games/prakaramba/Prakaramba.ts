@@ -46,7 +46,7 @@ class Prakaramba extends V2Game{
 /******************************************************************************************************************************************************************/    
 
     protected showJackpot( jackpot: number, jackpotMinBet: number, betConfig: Array<Object> ){
-        this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 53, 10 ), jackpot, jackpotMinBet, betConfig, new egret.Point( -6, 7 ), new egret.Rectangle( 0, 25, 120, 14 ), 14, 0xFEFEFE, new egret.Rectangle( 0, 0, 120, 14 ), 14, 0xFEFE00 ) );
+        this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 149, 43 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 0, 0 ), new egret.Rectangle( 0, 30, 295, 32 ), 32, 0xFEFEFE, new egret.Rectangle( 0, -13, 295, 32 ), 32, 0xFEFE00, true ) );
     }
 
     protected hasExtraBallFit(): void {
