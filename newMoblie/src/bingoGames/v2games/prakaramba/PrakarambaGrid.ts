@@ -12,7 +12,7 @@ class PrakarambaGrid extends ExtraBlinkGrid{
 	}
 
 	protected buildSmallWinText(){
-		this.extraBlinkNumTxt = MDS.addBitmapTextAt( this, "Arial Black_fnt", 0, - CardGrid.defaultNumberSize * 0.125, "center", CardGrid.defaultNumberSize, CardGrid.numberColorOnEffect, CardGrid.gridSize.x, CardGrid.gridSize.y );
+		this.extraBlinkNumTxt = MDS.addBitmapTextAt( this.extraBinkSp, "Arial Black_fnt", 0, - CardGrid.defaultNumberSize * 0.125, "center", CardGrid.defaultNumberSize, CardGrid.numberColor, CardGrid.gridSize.x, CardGrid.gridSize.y );
 		this.smallWinTimesText = Com.addLabelAt( this.extraBinkSp, 5, 55, CardGrid.gridSize.x - 5, 11, 11 );
 		this.smallWinTimesText.textColor = 0;
 		this.smallWinTimesText.textAlign = "left";
