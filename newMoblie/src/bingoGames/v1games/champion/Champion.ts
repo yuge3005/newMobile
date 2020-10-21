@@ -11,6 +11,7 @@ class Champion extends V1Game{
 	public constructor( assetsPath: string ) {
 		super( "champion.conf", assetsPath, 19 );
 		this.languageObjectName = "champion_tx";
+		this.megaName = "champion_mega";
 
 		this.ballArea = new ChampionBallManager;
 
@@ -125,13 +126,7 @@ class Champion extends V1Game{
 			this.superExtraBg.visible = true;
 			this.gameToolBar.megeExtraOnTop( true );
 
-			if( localStorage.getItem( "champion_mega" ) ) return;
-			else{
-				localStorage.setItem( "champion_mega", "true" );
-				let ev: egret.Event = new egret.Event( "megaFirst" );
-				ev.data = new egret.Rectangle( 842, 543, 53, 43 );
-				this.dispatchEvent( ev );
-			}
+			this.tryFirstMega( new egret.Rectangle( 842, 543, 53, 43 ) );
 		}
 	}
 

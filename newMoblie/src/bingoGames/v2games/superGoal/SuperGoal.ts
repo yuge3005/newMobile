@@ -11,7 +11,6 @@ class SuperGoal extends V2Game{
     public constructor( assetsPath: string ) {
         super("superGoal.conf", assetsPath, 70);
         this.languageObjectName = "superGoal_tx";
-        this.megaName = "superGoal_mega";
 
         this.gratisUIIsOverExtraUI = true;
 
