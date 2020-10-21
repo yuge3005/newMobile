@@ -5,7 +5,7 @@ class Prakaramba extends V2Game{
 	}
 
     protected static get animationAssetName(){
-		return "showballAnimation";
+		return "prakarambaAnimation";
 	}
 
 	public constructor( assetsPath: string ) {
@@ -16,7 +16,7 @@ class Prakaramba extends V2Game{
         CardManager.gridType = PrakarambaGrid;
 
         GameCard.gridOnTop = true;
-        CardGrid.defaultNumberSize = 48;
+        CardGrid.defaultNumberSize = 36;
         GameCard.useRedEffect = true;
 
         this.needSmallWinTimesOnCard = true;

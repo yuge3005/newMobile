@@ -16,7 +16,7 @@ class ExtraBlinkGrid extends TowerGrid{
 		else this.numTxt.textColor = CardGrid.numberColorOnEffect;
 	}
 
-	protected extraBlinkNumTxt: TextLabel;
+	protected extraBlinkNumTxt: TextLabel | BmpText;
 	protected extraBinkSp: egret.DisplayObjectContainer;
 
 	public set extraBlinkNumber( value: number ){
@@ -41,7 +41,7 @@ class ExtraBlinkGrid extends TowerGrid{
 		//sub class override
 	}
 
-	protected getBlinkBg(): egret.Bitmap{
+	protected getBlinkBg(): egret.Bitmap | egret.MovieClip{
 		return null;
 	}
 

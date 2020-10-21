@@ -1,4 +1,7 @@
 class PrakarambaCard extends ExtraBlinkCard{
+
+	private winTx: TextLabel;
+
 	public constructor( cardId: number ) {
 		super( cardId );
 	}
@@ -6,6 +9,16 @@ class PrakarambaCard extends ExtraBlinkCard{
 	protected onAdd(event: egret.Event) {
         super.onAdd(event);
 
-		this.cardText.setText( MuLang.getText("win") + ": 0" );
+		this.winTx = this.cardText;
+		this.winTx.setText( MuLang.getText("win") + ": 0" );
+	}
+
+	public showWinCount( winNumber: number ): void{
+		this.winTx.setText(  MuLang.getText("win") + ": " + Utils.formatCoinsNumber( winNumber ) );
+	}
+
+	public clearStatus(){
+		super.clearStatus();
+		this.winTx.setText( MuLang.getText("win") + ": 0" );
 	}
 }

@@ -12,4 +12,8 @@ class BmpText extends egret.BitmapText{
 	public constructor() {
 		super();
 	}
+
+	public setText( str: string ): void{
+		this.text = str;
+	}
 }
