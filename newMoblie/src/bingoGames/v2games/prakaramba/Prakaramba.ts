@@ -12,6 +12,9 @@ class Prakaramba extends V2Game{
 		super( "prakaramba.conf", assetsPath, 48 );
         this.languageObjectName = "forAll_tx";
 
+        CardManager.cardType = PrakarambaCard;
+        CardManager.gridType = PrakarambaGrid;
+
         GameCard.gridOnTop = true;
         CardGrid.defaultNumberSize = 48;
         GameCard.useRedEffect = true;

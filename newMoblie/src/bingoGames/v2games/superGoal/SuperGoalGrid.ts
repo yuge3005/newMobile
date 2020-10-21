@@ -9,7 +9,7 @@ class SuperGoalGrid extends ExtraBlinkGrid{
 	private forkUI: egret.Bitmap;
 
 	public constructor() {
-		super()
+		super();
 	}
 
 	protected getBlinkBg(): egret.Bitmap{
