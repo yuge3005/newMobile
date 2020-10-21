@@ -2,8 +2,13 @@ class PrakarambaGrid extends ExtraBlinkGrid{
 
 	private blinkGridBg: egret.MovieClip;
 
+	private waveMc: egret.MovieClip;
+
 	public constructor() {
 		super();
+
+		this.waveMc = Com.addMovieClipAt( this, MDS.mcFactory, "prakarambaGridRed", 0, 0 );
+		this.waveMc.visible = false;
 	}
 
 	protected getBlinkBg(): egret.MovieClip{
@@ -29,5 +34,17 @@ class PrakarambaGrid extends ExtraBlinkGrid{
 			return;
 		}
 		this.smallWinTimesText.text = "" + winTimes * GameData.currentBet;
+	}
+
+	public showWaveEffect( delay: number ): void{
+		this.waveMc.visible = true;
+		this.waveMc.gotoAndPlay(1);
+		this.addChildAt( this.numTxt, this.getChildIndex( this.waveMc ) + 1 );
+
+		setTimeout( this.removeWaveMc.bind(this), 1000 );
+	}
+
+	private removeWaveMc(){
+		if( this.waveMc.visible ) this.waveMc.visible = false;
 	}
 }

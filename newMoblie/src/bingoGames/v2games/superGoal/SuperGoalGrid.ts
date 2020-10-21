@@ -2,8 +2,6 @@ class SuperGoalGrid extends ExtraBlinkGrid{
 
 	private waveMc: egret.MovieClip;
 
-	public static mcf: egret.MovieClipDataFactory;
-
 	public static needClear: boolean;
 
 	private forkUI: egret.Bitmap;
