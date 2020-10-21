@@ -1,6 +1,7 @@
 class BlackStarCard extends ExtraBlinkCard{
 
 	private unFitEffectLayer: egret.DisplayObjectContainer;
+	private winTx: TextLabel;
 
 	public constructor( cardId: number ) {
 		super( cardId );
@@ -9,12 +10,25 @@ class BlackStarCard extends ExtraBlinkCard{
 	protected onAdd( event: egret.Event ){
 		super.onAdd( event );
 
-		if (this.cardText) this.cardText.setText( MuLang.getText( "card" ) + ":" );
-
 		Com.addBitmapAt( this, BingoMachine.getAssetStr( "card_bg03" ), 13, 34 );
 
 		this.unFitEffectLayer = new egret.DisplayObjectContainer;
 		this.addChildAt( this.unFitEffectLayer, this.getChildIndex( this.fitEffectLayer ) );
+
+		this.winTx = Com.addLabelAt( this, 395, GameCard.betTextRect.y, 300, GameCard.betTextRect.height, GameCard.betTextRect.height, false, true );
+		this.winTx.textColor = 0;
+		this.winTx.textAlign = "right";
+		this.winTx.scaleX = 0.9;
+		this.winTx.setText( "" );
+	}
+
+	public showWinCount( winNumber: number ): void{
+		this.winTx.setText( "" + winNumber );
+	}
+
+	public clearStatus(){
+		super.clearStatus();
+		this.winTx.setText( "" );
 	}
 
 	public getBgColor(){

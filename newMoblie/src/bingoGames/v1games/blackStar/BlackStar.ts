@@ -59,6 +59,8 @@ class BlackStar extends V1Game{
 
         this.tipStatusUI = new BlackStarTipStatus;
         Com.addObjectAt( this, this.tipStatusUI, 300, 150 );
+
+        this.ganhoCounter = new GanhoCounter( this.showWinAnimationAt.bind( this ) );
     }
 
     protected onServerData( data: Object ){
@@ -133,6 +135,10 @@ class BlackStar extends V1Game{
         super.sendExtraRequest( saving && this.saveNumber >= this.extraPrice );
     }
 
+    protected showWinAnimationAt(cardId: number, win: number): void{
+        ( CardManager.cards[cardId] as BlackStarCard ).showWinCount( win * GameData.currentBet );
+    }
+
 /******************************************************************************************************************************************************************/    
 
     protected showJackpot( jackpot: number, jackpotMinBet: number, betConfig: Array<Object> ){
@@ -144,6 +150,8 @@ class BlackStar extends V1Game{
     protected afterCheck( resultList: Array<Object> ): void{
 		super.afterCheck( resultList );
         this.arrowArea.arrowBlink(resultList);
+
+        this.ganhoCounter.countGanhoAndPlayAnimation(resultList);
 
         if( !this.inLightCheck ){
 			if( PaytableResultListOprator.missOneCounter( resultList, "bing" ) ){
