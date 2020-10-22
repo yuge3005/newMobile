@@ -18,8 +18,8 @@ class BingoBene extends V2Game{
 		super( "menton.conf", assetsPath, 69 );
         this.languageObjectName = "forAll_tx";
 
+        PayTableManager.paytableUIType = PaytableUIForMenton;
         PaytableUI.textBold = true;
-        PaytableUI.effectForMenton = "hehe";
 
         GameCard.bgRound = 20;
 

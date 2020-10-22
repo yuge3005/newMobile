@@ -103,6 +103,10 @@
 		{
 			"keys": "prak1_mp3,prak15_mp3,prak16_mp3,prak19_mp3,prak2_mp3,prak20_mp3,prak21_mp3,prak22_mp3,prak24_mp3,prak28_mp3,prak29_mp3,prak3_wav,prak30_mp3,prak8_mp3,prak9_mp3,prakaramba_json,prakarambaAnimation_png,prakarambaAnimation_json,prakaramba_conf,forAll_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,Arial Black_fnt,Arial Black_png",
 			"name": "prakaramba"
+		},
+		{
+			"keys": "lemon_BGM_mp3,lemon_cheese_mp3,lemon_choose_plate_mp3,lemon_ketchup_mp3,lemon_open_pizza_box_mp3,lemon_vegetable_mp3,menton_BGM_mp3,menton_ball_mp3,menton_bell_mp3,menton_extra_mp3,menton_roulette_mp3,menton_roulette_winner_mp3,menton_x120_mp3,menton_x250_mp3,menton_x30_mp3,menton_x4_mp3,menton_x500_mp3,menton_x80_mp3,menton_json,menton_conf,forAll_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,Arial Black_fnt,Arial Black_png",
+			"name": "menton"
 		}
 	],
 	"resources": [
@@ -1970,6 +1974,107 @@
 			"url": "config/prakaramba.conf",
 			"type": "json",
 			"name": "prakaramba_conf"
+		},
+		{
+			"url": "game/menton/sound/lemon_BGM.mp3",
+			"type": "sound",
+			"name": "lemon_BGM_mp3"
+		},
+		{
+			"url": "game/menton/sound/lemon_cheese.mp3",
+			"type": "sound",
+			"name": "lemon_cheese_mp3"
+		},
+		{
+			"url": "game/menton/sound/lemon_choose_plate.mp3",
+			"type": "sound",
+			"name": "lemon_choose_plate_mp3"
+		},
+		{
+			"url": "game/menton/sound/lemon_ketchup.mp3",
+			"type": "sound",
+			"name": "lemon_ketchup_mp3"
+		},
+		{
+			"url": "game/menton/sound/lemon_open_pizza_box.mp3",
+			"type": "sound",
+			"name": "lemon_open_pizza_box_mp3"
+		},
+		{
+			"url": "game/menton/sound/lemon_vegetable.mp3",
+			"type": "sound",
+			"name": "lemon_vegetable_mp3"
+		},
+		{
+			"url": "game/menton/sound/menton_BGM.mp3",
+			"type": "sound",
+			"name": "menton_BGM_mp3"
+		},
+		{
+			"url": "game/menton/sound/menton_ball.mp3",
+			"type": "sound",
+			"name": "menton_ball_mp3"
+		},
+		{
+			"url": "game/menton/sound/menton_bell.mp3",
+			"type": "sound",
+			"name": "menton_bell_mp3"
+		},
+		{
+			"url": "game/menton/sound/menton_extra.mp3",
+			"type": "sound",
+			"name": "menton_extra_mp3"
+		},
+		{
+			"url": "game/menton/sound/menton_roulette.mp3",
+			"type": "sound",
+			"name": "menton_roulette_mp3"
+		},
+		{
+			"url": "game/menton/sound/menton_roulette_winner.mp3",
+			"type": "sound",
+			"name": "menton_roulette_winner_mp3"
+		},
+		{
+			"url": "game/menton/sound/menton_x120.mp3",
+			"type": "sound",
+			"name": "menton_x120_mp3"
+		},
+		{
+			"url": "game/menton/sound/menton_x250.mp3",
+			"type": "sound",
+			"name": "menton_x250_mp3"
+		},
+		{
+			"url": "game/menton/sound/menton_x30.mp3",
+			"type": "sound",
+			"name": "menton_x30_mp3"
+		},
+		{
+			"url": "game/menton/sound/menton_x4.mp3",
+			"type": "sound",
+			"name": "menton_x4_mp3"
+		},
+		{
+			"url": "game/menton/sound/menton_x500.mp3",
+			"type": "sound",
+			"name": "menton_x500_mp3"
+		},
+		{
+			"url": "game/menton/sound/menton_x80.mp3",
+			"type": "sound",
+			"name": "menton_x80_mp3"
+		},
+		{
+			"url": "game/menton/menton.json",
+			"type": "sheet",
+			"name": "menton_json",
+			"subkeys": "bg,bg_bigball,bg_bigball_export,bg_extraball,big_ball,big_ball_small,card,card_bell,channel,cover_big_ball,extra_ball_en,extra_ball_es,extra_ball_pt,extraball_pt,free_eb,jackpot_bg,jackpot_en,jackpot_es,jackpot_line,jackpot_lock,jackpot_pt,megaball_bg,megaball_en,pattern_01,pattern_02,pattern_03,pattern_04,pattern_05,pattern_06,pattern_07,pattern_color,pattern_frame,pattern_half"
+		},
+		{
+			"url": "config/menton.conf",
+			"type": "json",
+			"name": "menton_conf"
 		}
 	]
 }

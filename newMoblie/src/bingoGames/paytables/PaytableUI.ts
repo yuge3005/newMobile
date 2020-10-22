@@ -1,7 +1,6 @@
 class PaytableUI extends egret.Sprite{
 
 	public static textBold: boolean = false;
-	public static effectForMenton: string;
 	public static focusColor: number = 0xFFFF88;
 	public static needBlink: boolean = true;
 
