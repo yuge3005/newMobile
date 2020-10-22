@@ -1,12 +1,7 @@
 {
-    "options": {
-        "useExtension": 0,
-        "layoutGap": 1,
-        "extend": 0,
-        "layoutMath": "0",
-        "sizeMode": "free"
-    },
+    "projectName": "showball2",
     "files": [
+        "./showball_green.png",
         "./showball_extra.png",
         "./showball_dark_green.png",
         "./showball_cyan.png",
@@ -22,6 +17,8 @@
         "./mark_white.png",
         "./mark_red.png",
         "./mark_black.png",
+        "./kavkav2.png",
+        "./kavkav1.png",
         "./jackpot_lock.png",
         "./card_pt_round.png",
         "./card_pt_line3.png",
@@ -39,9 +36,14 @@
         "./showball_purple.png",
         "./showball_pink.png",
         "./showball_orange.png",
-        "./showball_JP.png",
-        "./showball_green.png"
+        "./showball_JP.png"
     ],
-    "version": 5,
-    "projectName": "showball2"
+    "options": {
+        "layoutMath": "0",
+        "sizeMode": "free",
+        "useExtension": 0,
+        "layoutGap": 1,
+        "extend": 0
+    },
+    "version": 5
 }

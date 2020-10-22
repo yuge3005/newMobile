@@ -1802,7 +1802,7 @@
 			"url": "game/showball2/showball2.json",
 			"type": "sheet",
 			"name": "showball2_json",
-			"subkeys": "TelaFundo2,arrow_08,bg,card_pt_bingo,card_pt_dbline1,card_pt_dbline2,card_pt_dbline3,card_pt_line1,card_pt_line2,card_pt_line3,card_pt_round,jackpot_lock,mark_black,mark_red,mark_white,mega_en,mega_es,mega_pt,pt_bingo,pt_double_line,pt_line,pt_round,showball_JP,showball_blue,showball_cardBg,showball_cyan,showball_dark_green,showball_extra,showball_green,showball_orange,showball_pink,showball_purple,showball_red,showball_yellow"
+			"subkeys": "TelaFundo2,arrow_08,bg,card_pt_bingo,card_pt_dbline1,card_pt_dbline2,card_pt_dbline3,card_pt_line1,card_pt_line2,card_pt_line3,card_pt_round,jackpot_lock,kavkav1,kavkav2,mark_black,mark_red,mark_white,mega_en,mega_es,mega_pt,pt_bingo,pt_double_line,pt_line,pt_round,showball_JP,showball_blue,showball_cardBg,showball_cyan,showball_dark_green,showball_extra,showball_green,showball_orange,showball_pink,showball_purple,showball_red,showball_yellow"
 		},
 		{
 			"url": "config/showball2.conf",
