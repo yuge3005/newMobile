@@ -16,7 +16,7 @@ class BingoBene extends V2Game{
 
 	public constructor( assetsPath: string ) {
 		super( "menton.conf", assetsPath, 69 );
-        this.ptFilterConfig = "menton_filt";
+        this.languageObjectName = "forAll_tx";
 
         PaytableUI.textBold = true;
         PaytableUI.effectForMenton = "hehe";
@@ -26,17 +26,11 @@ class BingoBene extends V2Game{
         CardManager.cardType = MentonCard;
         CardManager.gridType = MentonGrid;
 
-        CardGrid.defaultBgColor = 0xFFFFFF;
         CardGrid.defaultNumberSize = 22;
 
-        CardGrid.blinkColors1 = 0xFFFF00;
-	    CardGrid.blinkColors2 = 0xFF00FF;
         GameCard.useRedEffect = true;
 
         BallManager.ballOffsetY = 1;
-
-        GameToolBar.toolBarY = 474;
-        BingoBackGroundSetting.defaultScale = false;
 	}
 
     protected init(){
@@ -48,7 +42,7 @@ class BingoBene extends V2Game{
         this.addChildAt( this.extraUIObject, this.getChildIndex( this.ballArea ) );
 
         this.runningBallContainer = new egret.DisplayObjectContainer;
-        this.buildSuperEbArea( "mega_" + GlobelSettings.language, 119, 58 );
+        this.buildSuperEbArea( "megaball_bg", 119, 58 );
 
         if( GlobelSettings.language != "pt" ){
             let exBitmap: egret.Bitmap = this.getChildByName( this.assetStr("extra_ball_pt") ) as egret.Bitmap;
@@ -77,7 +71,7 @@ class BingoBene extends V2Game{
 		if( this.runningBallUI && ( this.runningBallContainer ).contains( this.runningBallUI ) ){
 			( this.runningBallContainer ).removeChild( this.runningBallUI );
 		}
-		this.runningBallUI = this.ballArea.getABigBall( ballIndex, "_small", 45 );
+		this.runningBallUI = this.ballArea.getABigBall( ballIndex );
 		Com.addObjectAt( this.runningBallContainer, this.runningBallUI, x, y );
 
         Com.addObjectAt( this, this.runningBallContainer, 143, 205 );
@@ -89,8 +83,6 @@ class BingoBene extends V2Game{
 
     protected startPlay(): void {
         super.startPlay();
-
-        this.firstMega = false;
 
         for( let i: number = 0; i < this.tomatoArray.length; i++ ){
             if( this.tomatoArray[i] && this.contains( this.tomatoArray[i] ) ){
@@ -140,20 +132,24 @@ class BingoBene extends V2Game{
     protected onServerData( data: Object ){
         super.onServerData( data );
 
-        this.removeChild( this.gameToolBar );
-        this.gameToolBar = new MontonToolBar;
-        this.gameToolBar.minCardCount = 4;
-        Com.addObjectAt( this, this.gameToolBar, 0, GameToolBar.toolBarY );
-        this.gameToolBar.showTip( "" );
-        this.resetGameToolBarStatus();
-        this.addChild( this.pussleProcessBar );
-
         this.letsMenton( data );
 
         try{
             RES.loadGroup( "menton_bingo" );
         }catch(e){}
     }
+
+    protected initToolbar(){
+        this.gameToolBar = new MontonToolBar;
+		Com.addObjectAt( this, this.gameToolBar, 0, BingoGameToolbar.toolBarY );
+        this.gameToolBar.showTip( "" );
+
+		this.topbar = new Topbar;
+		this.addChild( this.topbar );
+		
+		this.topbar.scaleX = this.gameToolBar.scaleX = BingoBackGroundSetting.gameMask.width / 2000;
+		this.topbar.scaleY = this.gameToolBar.scaleY = BingoBackGroundSetting.gameMask.height / 1125;
+	}
 
     protected paytableResultFilter( resultList: Array<Object> ): void{
         for( let i: number = 0; i < resultList.length; i++ ){
@@ -471,8 +467,6 @@ class BingoBene extends V2Game{
         // if (event.data["type"] !== 0) this.playSound("t90_bet_mp3");
 	}
 
-    private firstMega: boolean;
-
     protected hasExtraBallFit(): void {
         // this.stopSound("t90_ball_mp3");
         if (this.firstHaveExtraBall) {
@@ -486,20 +480,6 @@ class BingoBene extends V2Game{
         if( this.isMegaBall ){
             this.superExtraBg.visible = true;
             this.gameToolBar.megeExtraOnTop( true );
-
-            if( !this.firstMega ){
-                this.firstMega = true;
-                this.superExtraBg.x = 97;
-                this.superExtraBg.y = 220;
-                let maskOfToolbar: egret.Shape = new egret.Shape;
-                GraphicTool.drawRect( maskOfToolbar, new egret.Rectangle( 0, 0, 755, 600 - GameToolBar.toolBarY ), 0, false, 0 );
-                maskOfToolbar.touchEnabled = true;
-                Com.addObjectAt( this, maskOfToolbar, 0, GameToolBar.toolBarY );
-                this.canQuickPay = false;
-                let tw: egret.Tween = egret.Tween.get( this.superExtraBg );
-                tw.to( {x:98,y:48}, 1500, egret.Ease.sineIn );
-                tw.call( () => { if( maskOfToolbar.parent )maskOfToolbar.parent.removeChild( maskOfToolbar ); this.canQuickPay = true; } );
-            }
         }
 
         let hasBellEffect: boolean = this.checkBellEffect();
@@ -520,8 +500,6 @@ class BingoBene extends V2Game{
     
     protected roundOver(): void {
         super.roundOver();
-        // this.stopSound("t90_ball_mp3");
-        // this.stopSound("t90_extra_loop_wav");
         if( this.freeEbUI1 ){
             this.freeEbUI1.visible = this.freeEbUI2.visible = false;
         }
@@ -544,16 +522,5 @@ class BingoBene extends V2Game{
 
 	protected changeNumberSound(): void {
 		// this.playSound("t90_card_mp3");
-	}
-
-    protected buildSuperEbArea( superEbBgName: string, superEbAreaX: number, superEbAreaY: number ): void{
-        this.superExtraBg = this.getChildByName( this.assetStr("megaball_bg") ) as egret.Bitmap;
-        this.superExtraBg.visible = false;
-	}
-
-    private canQuickPay: boolean = true;
-
-    public quickPlay(): void {
-        if( this.canQuickPay )super.quickPlay();
 	}
 }
