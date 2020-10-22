@@ -20,11 +20,11 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 	private betText: TextLabel;
 	private winText: TextLabel;
 
-	private allButtons: Array<TouchDownButton>;
+	protected allButtons: Array<TouchDownButton>;
 	private enabledButtons: Array<TouchDownButton>;
 
-	private playContainer: egret.DisplayObjectContainer;
-	private extraContainer: egret.DisplayObjectContainer;
+	protected playContainer: egret.DisplayObjectContainer;
+	protected extraContainer: egret.DisplayObjectContainer;
 
 	private _autoPlaying: boolean = false;
 	public get autoPlaying(): boolean{
