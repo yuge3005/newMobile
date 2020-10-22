@@ -427,30 +427,14 @@ class BingoBene extends V2Game{
     }
 
     protected getPaytablesFit( paytabledName: string, callback: Function = null ): void{
-        let soundName = "";
+        super.getPaytablesFit( paytabledName, callback );
+
         switch (paytabledName) {
-            case "line": soundName = "menton_x4_mp3";break;
-            case "columns_2": soundName = "menton_x4_mp3"; break;
-            case "columns_3": soundName = "menton_x30_mp3";
-                Com.addObjectAt( this, new MentonWine( this.runningBallUI, paytabledName ), 222, 390 );
-                break;
-            case "line_2": soundName = "menton_x80_mp3";
-                Com.addObjectAt( this, new MentonWine( this.runningBallUI, paytabledName ), 222, 390 );
-                break;
-            case "columns_4": soundName = "menton_x120_mp3";
-                Com.addObjectAt( this, new MentonWine( this.runningBallUI, paytabledName ), 222, 390 );
-                break;
-            case "columns_2_2": soundName = "menton_x250_mp3";
-                Com.addObjectAt( this, new MentonWine( this.runningBallUI, paytabledName ), 222, 390 );
-                break;
-            case "bingo": soundName = "menton_x500_mp3";
-                Com.addObjectAt( this, new MentonWine( this.runningBallUI, paytabledName ), 222, 390 );
-                break;
-            default: console.error( "paytable sound error" );
-                soundName = "menton_x500_mp3";break;
-        }
-        if (SoundManager.soundOn && soundName !== "") {
-            this.playSound(soundName, 1);
+            case "columns_3": Com.addObjectAt( this, new MentonWine( this.runningBallUI, paytabledName ), 222, 390 ); break;
+            case "line_2": Com.addObjectAt( this, new MentonWine( this.runningBallUI, paytabledName ), 222, 390 ); break;
+            case "columns_4": Com.addObjectAt( this, new MentonWine( this.runningBallUI, paytabledName ), 222, 390 );break;
+            case "columns_2_2": Com.addObjectAt( this, new MentonWine( this.runningBallUI, paytabledName ), 222, 390 ); break;
+            case "bingo": Com.addObjectAt( this, new MentonWine( this.runningBallUI, paytabledName ), 222, 390 ); break;
         }
     }
 
