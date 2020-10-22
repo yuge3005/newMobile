@@ -1,0 +1,24 @@
+{
+    "files": [
+        "./yellow_square.png",
+        "./purple_square.png",
+        "./purple_line.png",
+        "./pizza.png",
+        "./pink_square.png",
+        "./orange_square.png",
+        "./green_square.png",
+        "./card_red.png",
+        "./card_pink.png",
+        "./card_green.png",
+        "./blue_square.png"
+    ],
+    "projectName": "mentonGrid",
+    "version": 5,
+    "options": {
+        "extend": 0,
+        "layoutMath": "0",
+        "sizeMode": "free",
+        "useExtension": 0,
+        "layoutGap": 1
+    }
+}

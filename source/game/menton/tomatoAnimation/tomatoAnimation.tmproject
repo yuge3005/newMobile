@@ -1,0 +1,18 @@
+{
+    "options": {
+        "layoutMath": "0",
+        "sizeMode": "free",
+        "useExtension": 0,
+        "layoutGap": 1,
+        "extend": 0
+    },
+    "projectName": "tomatoAnimation",
+    "files": [
+        "./tomato_juice.png",
+        "./tomato_bg.png",
+        "./tomato_03.png",
+        "./tomato_02.png",
+        "./tomato_01.png"
+    ],
+    "version": 5
+}
