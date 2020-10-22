@@ -5,10 +5,10 @@ class MentonWine extends egret.DisplayObjectContainer {
 
     private ball: egret.Sprite;
 
-	public constructor( mcf: egret.MovieClipDataFactory, bigBall: egret.Sprite, paytableName: string ) {
+	public constructor( bigBall: egret.Sprite, paytableName: string ) {
 		super();
 
-		this.mc = Com.addMovieClipAt( this, mcf, "menton_wine_effect" );
+		this.mc = Com.addMovieClipAt( this, MDS.mcFactory, "menton_wine_effect" );
         this.mc.x = -322;
         this.mc.y = -476;
         this.mc.scaleX = this.mc.scaleY = 0.6;
