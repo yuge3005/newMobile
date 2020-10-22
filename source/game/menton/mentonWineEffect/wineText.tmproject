@@ -1,0 +1,28 @@
+{
+    "projectName": "wineText",
+    "files": [
+        "./wine_pt_05.png",
+        "./wine_pt_04.png",
+        "./wine_pt_03.png",
+        "./wine_pt_02.png",
+        "./wine_pt_01.png",
+        "./wine_es_05.png",
+        "./wine_es_04.png",
+        "./wine_es_03.png",
+        "./wine_es_02.png",
+        "./wine_es_01.png",
+        "./wine_en_05.png",
+        "./wine_en_04.png",
+        "./wine_en_03.png",
+        "./wine_en_02.png",
+        "./wine_en_01.png"
+    ],
+    "options": {
+        "layoutMath": "0",
+        "sizeMode": "free",
+        "useExtension": 0,
+        "layoutGap": 1,
+        "extend": 0
+    },
+    "version": 5
+}

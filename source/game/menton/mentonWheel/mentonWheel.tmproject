@@ -1,0 +1,20 @@
+{
+    "projectName": "mentonWheel",
+    "files": [
+        "./icon_wheel.png",
+        "./bell.png",
+        "./x2_small.png",
+        "./wheel_x2bg.png",
+        "./wheel_pointer.png",
+        "./wheel_fan_shaped.png",
+        "./wheel.png"
+    ],
+    "options": {
+        "layoutMath": "0",
+        "sizeMode": "free",
+        "useExtension": 0,
+        "layoutGap": 1,
+        "extend": 0
+    },
+    "version": 5
+}
