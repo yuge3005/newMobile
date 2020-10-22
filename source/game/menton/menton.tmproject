@@ -1,23 +1,24 @@
 {
     "projectName": "menton",
     "files": [
-        "./megaball_bg.png",
-        "./jackpot_pt.png",
-        "./jackpot_lock.png",
+        "./jackpot_line.png",
         "./jackpot_es.png",
         "./jackpot_en.png",
+        "./jackpot_bg.png",
         "./free_eb.png",
+        "./extraball_pt.png",
         "./extra_ball_pt.png",
         "./extra_ball_es.png",
         "./extra_ball_en.png",
         "./cover_big_ball.png",
         "./channel.png",
         "./card_bell.png",
-        "./card_back.png",
         "./card.png",
         "./big_ball_small.png",
         "./big_ball.png",
+        "./bg_extraball.png",
         "./bg_bigball_export.png",
+        "./bg_bigball.png",
         "./bg.png",
         "./pattern_half.png",
         "./pattern_frame.png",
@@ -29,14 +30,17 @@
         "./pattern_03.png",
         "./pattern_02.png",
         "./pattern_01.png",
-        "./megaball_en.png"
+        "./megaball_en.png",
+        "./megaball_bg.png",
+        "./jackpot_pt.png",
+        "./jackpot_lock.png"
     ],
     "options": {
-        "layoutMath": "0",
         "sizeMode": "free",
         "useExtension": 0,
         "layoutGap": 1,
-        "extend": 0
+        "extend": 0,
+        "layoutMath": "0"
     },
     "version": 5
 }
