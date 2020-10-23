@@ -11,15 +11,11 @@ class BingoBenePaytableUI extends PaytableUI {
 	private frameBg: egret.Bitmap;
 	private colorBg: egret.Bitmap;
 
-	private rules: Array<string>;
-	private ruleLayer: egret.Shape;
-	private rulerTimer: egret.Timer;
 	private rulesStep: number = 0;
 
-	public constructor( useBg: boolean, rules: Array<string> ) {
+	public constructor( useBg: boolean ) {
 		super( useBg );
 
-		if( rules )this.rules = rules;
 		if( !useBg )throw new Error( "PaytableUIWithAnimation useBg must be true" );
 	}
 
@@ -29,41 +25,6 @@ class BingoBenePaytableUI extends PaytableUI {
 		this.tx.y += 12;
 
 		this.resetBgStatus();
-
-		if( this.rules )this.showRules();
-	}
-
-	private showRules(){
-		this.ruleLayer = new egret.Shape;
-		this.addChild( this.ruleLayer );
-
-		this.rulerTimer = new egret.Timer( 800 );
-		this.rulerTimer.addEventListener( egret.TimerEvent.TIMER, this.onTimer, this );
-		this.rulerTimer.start();
-
-		this.onTimer( null );
-
-		this.bg.visible = false;
-		this.ruleLayer.addEventListener( egret.Event.REMOVED_FROM_STAGE, this.onRuleLayerRemoved, this );
-	}
-
-	private onTimer( event: egret.TimerEvent ): void{
-		this.ruleLayer.graphics.clear();
-
-		let rule: string = this.rules[ this.rulesStep++ % this.rules.length ];
-		for( let i: number = 0; i < rule.length; i++ ){
-			let str: string = rule.charAt( i );
-			if( str == "1" ){
-				GraphicTool.drawRect( this.ruleLayer, new egret.Rectangle( i % 5 * 8, Math.floor( i / 5 ) * 8, 7, 7 ), 0xFFFFFF );
-			}
-		}
-	}
-
-	private onRuleLayerRemoved( event: egret.Event ): void{
-		this.rulerTimer.removeEventListener( egret.TimerEvent.TIMER, this.onTimer, this );
-		this.rulerTimer.stop();
-
-		this.bg.visible = true;
 	}
 
 	private addBitmapOnBottom( name: string ): egret.Bitmap{
@@ -94,7 +55,14 @@ class BingoBenePaytableUI extends PaytableUI {
 
 	public showFit(): void{
 		this.colorBg.filters = [ MatrixTool.colorMatrixPure( 0xFFFF00 ) ];
-		this.tx.textColor = 0;
-		if( this.ruleLayer && this.contains( this.ruleLayer ) ) this.removeChild( this.ruleLayer );
+		this.tx.textColor = 0xFF0000;
+	}
+
+	protected onFrame(event:egret.Event):void{
+		this.currentEffect++;
+
+		for( var i: number = 0; i < this.blinkGridsIndexs.length; i++ ){
+			this.grids[this.blinkGridsIndexs[i]].filters = [ this._winEffects[(this.currentEffect>>4)%this._winEffects.length] ];
+		}
 	}
 }
