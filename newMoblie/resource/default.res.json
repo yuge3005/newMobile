@@ -105,7 +105,7 @@
 			"name": "prakaramba"
 		},
 		{
-			"keys": "lemon_BGM_mp3,lemon_cheese_mp3,lemon_choose_plate_mp3,lemon_ketchup_mp3,lemon_open_pizza_box_mp3,lemon_vegetable_mp3,menton_BGM_mp3,menton_ball_mp3,menton_bell_mp3,menton_extra_mp3,menton_roulette_mp3,menton_roulette_winner_mp3,menton_x120_mp3,menton_x250_mp3,menton_x30_mp3,menton_x4_mp3,menton_x500_mp3,menton_x80_mp3,menton_json,mentonGrid_json,menton_conf,forAll_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,Arial Black_fnt,Arial Black_png",
+			"keys": "lemon_BGM_mp3,lemon_cheese_mp3,lemon_choose_plate_mp3,lemon_ketchup_mp3,lemon_open_pizza_box_mp3,lemon_vegetable_mp3,menton_BGM_mp3,menton_ball_mp3,menton_bell_mp3,menton_extra_mp3,menton_roulette_mp3,menton_roulette_winner_mp3,menton_x120_mp3,menton_x250_mp3,menton_x30_mp3,menton_x4_mp3,menton_x500_mp3,menton_x80_mp3,menton_json,mentonGrid_json,lemonGame_json,menton_conf,forAll_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,Arial Black_fnt,Arial Black_png",
 			"name": "menton"
 		}
 	],
@@ -2069,7 +2069,7 @@
 			"url": "game/menton/menton.json",
 			"type": "sheet",
 			"name": "menton_json",
-			"subkeys": "Wine_barrel_bg,bg,bg_bigball,bg_bigball_export,bg_extraball,big_ball,card,card_bell,card_square,card_square_blue,channel,cover_big_ball,extra_ball_en,extra_ball_es,extra_ball_pt,extraball_pt,free_eb,jackpot_bg,jackpot_en,jackpot_es,jackpot_line,jackpot_lock,jackpot_pt,megaball_bg,megaball_en,pattern_01,pattern_02,pattern_03,pattern_04,pattern_05,pattern_06,pattern_07,pattern_color,pattern_frame,pattern_half"
+			"subkeys": "Wine_barrel_bg,bg,bg_bigball,bg_bigball_export,bg_extraball,big_ball,card,card_bell,card_square,card_square_blue,channel,cover_big_ball,extra_ball_en,extra_ball_es,extra_ball_pt,free_eb,jackpot_bg,jackpot_en,jackpot_es,jackpot_line,jackpot_lock,jackpot_pt,megaball_bg,megaball_en,pattern_01,pattern_02,pattern_03,pattern_04,pattern_05,pattern_06,pattern_07,pattern_color,pattern_frame,pattern_half"
 		},
 		{
 			"url": "config/menton.conf",
@@ -2081,6 +2081,12 @@
 			"type": "sheet",
 			"name": "mentonGrid_json",
 			"subkeys": "blue_square,card_blue,card_green,card_pink,card_red,green_square,orange_square,pink_square,pizza,purple_line,purple_square,yellow_square"
+		},
+		{
+			"url": "game/menton/lemonGame.json",
+			"type": "sheet",
+			"name": "lemonGame_json",
+			"subkeys": "1_rounds,2_rounds,3_rounds,4_rounds,5_rounds,bg,bg_cake,box_close,box_open,cheese_01,cheese_02,cheese_03,green_pepper,ham,icon_end,ketchup_01,ketchup_02,ketchup_03,mushroom,pizza_cheese_01,pizza_cheese_02,pizza_cheese_03,pizza_cheese_04,pizza_cheese_05,pizza_cheese_06,pizza_cheese_07,pizza_cheese_08,pizza_cheese_09,pizza_ketchup_01,pizza_ketchup_02,pizza_ketchup_03,pizza_vegetable_01,pizza_vegetable_02,pizza_vegetable_03,pizza_vegetable_04,pizza_vegetable_05,pizza_vegetable_06,pizza_vegetable_07,pizza_vegetable_08,pizza_vegetable_09,pizza_vegetable_10,pizza_vegetable_11,pizza_vegetable_12,plate_back,plate_knife,plate_scissors,tomato,track,track_frame,vegetable_01,vegetable_02,vegetable_03"
 		}
 	]
 }

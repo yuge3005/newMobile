@@ -1,12 +1,28 @@
 {
     "options": {
+        "layoutMath": "0",
+        "sizeMode": "free",
         "useExtension": 0,
         "layoutGap": 1,
-        "extend": 0,
-        "layoutMath": "0",
-        "sizeMode": "free"
+        "extend": 0
     },
+    "projectName": "lemonGame",
     "files": [
+        "./ketchup_03.png",
+        "./ketchup_02.png",
+        "./ketchup_01.png",
+        "./icon_end.png",
+        "./ham.png",
+        "./green_pepper.png",
+        "./cheese_03.png",
+        "./cheese_02.png",
+        "./cheese_01.png",
+        "./box_open.png",
+        "./box_close.png",
+        "./bg_cake.png",
+        "./bg.png",
+        "./5_rounds.png",
+        "./4_rounds.png",
         "./3_rounds.png",
         "./2_rounds.png",
         "./1_rounds.png",
@@ -43,23 +59,7 @@
         "./pizza_cheese_03.png",
         "./pizza_cheese_02.png",
         "./pizza_cheese_01.png",
-        "./mushroom.png",
-        "./ketchup_03.png",
-        "./ketchup_02.png",
-        "./ketchup_01.png",
-        "./icon_end.png",
-        "./ham.png",
-        "./green_pepper.png",
-        "./cheese_03.png",
-        "./cheese_02.png",
-        "./cheese_01.png",
-        "./box_open.png",
-        "./box_close.png",
-        "./bg_cake.png",
-        "./bg.png",
-        "./5_rounds.png",
-        "./4_rounds.png"
+        "./mushroom.png"
     ],
-    "version": 5,
-    "projectName": "lemonGame"
+    "version": 5
 }
