@@ -21,8 +21,6 @@ class BingoBene extends V2Game{
         PayTableManager.paytableUIType = BingoBenePaytableUI;
         PaytableUI.textBold = true;
 
-        GameCard.bgRound = 20;
-
         CardManager.cardType = MentonCard;
         CardManager.gridType = MentonGrid;
 
@@ -30,7 +28,7 @@ class BingoBene extends V2Game{
 
         GameCard.useRedEffect = true;
 
-        BallManager.ballOffsetY = 1;
+        BallManager.ballOffsetY = 5;
 	}
 
     protected init(){
@@ -451,14 +449,11 @@ class BingoBene extends V2Game{
         if( hasBetData || this.currentBuf == 3 ){
             this.startLemonGame();
         }
-        // if (event.data["type"] !== 0) this.playSound("t90_bet_mp3");
 	}
 
     protected hasExtraBallFit(): void {
-        // this.stopSound("t90_ball_mp3");
         if (this.firstHaveExtraBall) {
             this.firstHaveExtraBall = false;
-            // this.playSound("t90_extra_loop_wav", -1);
 
             this.showFreeExtraPosition();
             this.addFreeEbIcons();
@@ -501,13 +496,5 @@ class BingoBene extends V2Game{
 
 	protected getExtraBallFit(): void {
 		this.playSound("menton_extra_mp3");
-	}
-
-	protected collectExtraBall(): void {
-		// override
-	}
-
-	protected changeNumberSound(): void {
-		// this.playSound("t90_card_mp3");
 	}
 }
