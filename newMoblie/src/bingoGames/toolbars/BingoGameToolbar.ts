@@ -173,7 +173,7 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 	protected addBtn( assets: string, x: number, y: number, name: string, container: egret.DisplayObjectContainer, donotHavePressUi: boolean = false ): TouchDownButton{
 		let assetsName: string = "bingoGameToolbar_json." + assets;
 		let pressUi: string = donotHavePressUi ? assetsName : assetsName + "_press";
-		let btn: TouchDownButton = Com.addDownButtonAt( container, assetsName, pressUi, x, y, this.sendCommand, true );
+		let btn: TouchDownButton = Com.addDownButtonAt( container, assetsName, pressUi, x, y, this.sendCommand.bind( this ), true );
 		btn.name = name;
 		btn.disabledFilter = MatrixTool.colorMatrixLighter( 0.2 );
 		this.allButtons.push( btn );
