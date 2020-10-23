@@ -1,0 +1,13 @@
+{"file":"mentonGrid.png","frames":{
+"green_square":{"x":808,"y":212,"w":135,"h":104,"offX":0,"offY":0,"sourceW":135,"sourceH":104},
+"orange_square":{"x":671,"y":212,"w":135,"h":104,"offX":0,"offY":0,"sourceW":135,"sourceH":104},
+"pink_square":{"x":808,"y":106,"w":135,"h":104,"offX":0,"offY":0,"sourceW":135,"sourceH":104},
+"pizza":{"x":0,"y":0,"w":669,"h":315,"offX":0,"offY":0,"sourceW":669,"sourceH":315},
+"purple_line":{"x":0,"y":396,"w":639,"h":12,"offX":0,"offY":0,"sourceW":639,"sourceH":12},
+"purple_square":{"x":808,"y":0,"w":135,"h":104,"offX":0,"offY":0,"sourceW":135,"sourceH":104},
+"yellow_square":{"x":671,"y":0,"w":135,"h":104,"offX":0,"offY":0,"sourceW":135,"sourceH":104},
+"blue_square":{"x":671,"y":106,"w":135,"h":104,"offX":0,"offY":0,"sourceW":135,"sourceH":104},
+"card_blue":{"x":0,"y":317,"w":119,"h":77,"offX":0,"offY":0,"sourceW":119,"sourceH":77},
+"card_green":{"x":363,"y":317,"w":119,"h":77,"offX":0,"offY":0,"sourceW":119,"sourceH":77},
+"card_pink":{"x":242,"y":317,"w":119,"h":77,"offX":0,"offY":0,"sourceW":119,"sourceH":77},
+"card_red":{"x":121,"y":317,"w":119,"h":77,"offX":0,"offY":0,"sourceW":119,"sourceH":77}}}
