@@ -1,9 +1,9 @@
-class PaytableUIForMenton extends PaytableUI {
+class BingoBenePaytableUI extends PaytableUI {
 
 	public static colorBgName = "pattern_color";
     public static frameBgName = "pattern_frame";
     public static halfBgName = "pattern_half";
-	public static offsetPoint: egret.Point = new egret.Point( -6, -5 );
+	public static offsetPoint: egret.Point = new egret.Point( -15, -10 );
 
 	public static normalColors: Object = { 4: 0x0d4590, 30: 0x14ae00, 80: 0x6f10ab, 120: 0xc71bbd, 250: 0xbb2f0f, 500: 0xdfbb14 } 
 
@@ -26,7 +26,7 @@ class PaytableUIForMenton extends PaytableUI {
 	public initUI(){
 		super.initUI();
 
-		this.tx.y += 4;
+		this.tx.y += 12;
 
 		this.resetBgStatus();
 
@@ -68,8 +68,8 @@ class PaytableUIForMenton extends PaytableUI {
 
 	private addBitmapOnBottom( name: string ): egret.Bitmap{
 		let bit: egret.Bitmap = Com.createBitmapByName( BingoMachine.getAssetStr( name ) );
-		bit.x = PaytableUIForMenton.offsetPoint.x;
-		bit.y = PaytableUIForMenton.offsetPoint.y;
+		bit.x = BingoBenePaytableUI.offsetPoint.x;
+		bit.y = BingoBenePaytableUI.offsetPoint.y;
 		this.addChildAt( bit, 0 );
 		return bit;
 	}
@@ -77,7 +77,7 @@ class PaytableUIForMenton extends PaytableUI {
 	private normalStatus(): void{
 		this.tx.textColor = 0xFFFFFF;
 		this.colorBg.filters = [ MatrixTool.colorMatrixPure( 0 ) ];
-		this.halfBg.filters = [ MatrixTool.colorMatrixPure( PaytableUIForMenton.normalColors[ this._tx ] ) ];
+		this.halfBg.filters = [ MatrixTool.colorMatrixPure( BingoBenePaytableUI.normalColors[ this._tx ] ) ];
 	}
 
 	public clearStatus(): void{
@@ -86,9 +86,9 @@ class PaytableUIForMenton extends PaytableUI {
 	}
 
 	private resetBgStatus(): void{
-		this.halfBg = this.addBitmapOnBottom( PaytableUIForMenton.halfBgName );
-		this.frameBg = this.addBitmapOnBottom( PaytableUIForMenton.frameBgName );
-		this.colorBg = this.addBitmapOnBottom( PaytableUIForMenton.colorBgName );
+		this.halfBg = this.addBitmapOnBottom( BingoBenePaytableUI.halfBgName );
+		this.frameBg = this.addBitmapOnBottom( BingoBenePaytableUI.frameBgName );
+		this.colorBg = this.addBitmapOnBottom( BingoBenePaytableUI.colorBgName );
 		this.normalStatus();
 	}
 
