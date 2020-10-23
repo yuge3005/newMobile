@@ -1,0 +1,8 @@
+{"file":"mentonWheel.png","frames":{
+"wheel":{"x":0,"y":791,"w":789,"h":789,"offX":0,"offY":0,"sourceW":789,"sourceH":789},
+"wheel_fan_shaped":{"x":0,"y":1582,"w":321,"h":278,"offX":0,"offY":0,"sourceW":321,"sourceH":278},
+"wheel_pointer":{"x":791,"y":0,"w":200,"h":258,"offX":0,"offY":0,"sourceW":200,"sourceH":258},
+"wheel_x2bg":{"x":0,"y":0,"w":789,"h":789,"offX":0,"offY":0,"sourceW":789,"sourceH":789},
+"x2_small":{"x":0,"y":1862,"w":158,"h":115,"offX":0,"offY":0,"sourceW":158,"sourceH":115},
+"bell":{"x":323,"y":1582,"w":261,"h":275,"offX":0,"offY":0,"sourceW":261,"sourceH":275},
+"icon_wheel":{"x":160,"y":1862,"w":71,"h":71,"offX":0,"offY":0,"sourceW":71,"sourceH":71}}}
