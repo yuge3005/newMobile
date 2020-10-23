@@ -42,6 +42,7 @@ class BingoBene extends V2Game{
         this.addChildAt( this.extraUIObject, this.getChildIndex( this.ballArea ) );
 
         this.runningBallContainer = new egret.DisplayObjectContainer;
+        Com.addObjectAt( this, this.runningBallContainer, 210, 678 );
         this.buildSuperEbArea( "megaball_bg", 119, 58 );
 
         if( GlobelSettings.language != "pt" ){
@@ -62,23 +63,9 @@ class BingoBene extends V2Game{
 
     protected showLastBall( ballIndex: number ): void{
         super.showLastBall( ballIndex );
-        this.showLastBallAt( ballIndex, 0, 0 );
+        super.showLastBallAt( ballIndex, 0, 0, 51 / 61 );
 
         this.playSound("menton_ball_mp3");
-	}
-
-    protected showLastBallAt( ballIndex: number, x: number, y: number, scale: number = 1 ): void{
-		if( this.runningBallUI && ( this.runningBallContainer ).contains( this.runningBallUI ) ){
-			( this.runningBallContainer ).removeChild( this.runningBallUI );
-		}
-		this.runningBallUI = this.ballArea.getABigBall( ballIndex );
-		Com.addObjectAt( this.runningBallContainer, this.runningBallUI, x, y );
-
-        Com.addObjectAt( this, this.runningBallContainer, 143, 205 );
-	}
-
-    protected clearRunningBallUI(): void{
-        if( this.runningBallContainer && this.contains( this.runningBallContainer ) )this.removeChild( this.runningBallContainer );
 	}
 
     protected startPlay(): void {

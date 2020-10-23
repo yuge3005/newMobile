@@ -7,9 +7,7 @@
         "sizeMode": "free"
     },
     "files": [
-        "./jackpot_bg.png",
         "./free_eb.png",
-        "./extraball_pt.png",
         "./extra_ball_pt.png",
         "./extra_ball_es.png",
         "./extra_ball_en.png",
@@ -41,7 +39,8 @@
         "./jackpot_lock.png",
         "./jackpot_line.png",
         "./jackpot_es.png",
-        "./jackpot_en.png"
+        "./jackpot_en.png",
+        "./jackpot_bg.png"
     ],
     "version": 5,
     "projectName": "menton"
