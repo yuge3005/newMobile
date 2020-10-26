@@ -1,4 +1,4 @@
-class MentonGrid extends TowerGrid{
+class MentonGrid extends ExtraBlinkGrid{
 	private radius: number;
 	// single number effect
 	private effectBox: egret.DisplayObjectContainer;
@@ -12,10 +12,9 @@ class MentonGrid extends TowerGrid{
 	public static lineNumTextColor: number = 0xFFFFFF;
 
 	// miss one effect
-	private missOneContainer: egret.DisplayObjectContainer;
 	private missOneBg: egret.Bitmap;
-	private missOneNumText: egret.TextField;
-	private missOneMultiple: egret.TextField;
+
+	private waveMc: egret.MovieClip;
 
 	public static MISS_LINE: string = "blue_square";
 	public static MISS_COLUMNS_3: string = "green_square";
@@ -41,14 +40,6 @@ class MentonGrid extends TowerGrid{
 			case MentonGrid.MISS_BINGO: winTimesStr = "500";
 				break;
 		}
-		this.missOneMultiple.text = winTimesStr;
-	}
-
-	protected _currentBgPic: egret.Bitmap;
-	public set currentBgPic( value ){
-		if( this._currentBgPic && this.contains( this._currentBgPic ) )this.removeChild( this._currentBgPic );
-		this._currentBgPic = value;
-		this.addChildAt( this._currentBgPic, 0 );
 	}
 
 	public get blink(): boolean{
@@ -58,7 +49,6 @@ class MentonGrid extends TowerGrid{
 		if( this._blink == value )return;
 		this._blink = value;
 		if( !value ){
-			this.missOneContainer.visible = false;
 			this.blinkType = MentonGrid.MISS_LINE;
 		}
 		else{
@@ -81,25 +71,19 @@ class MentonGrid extends TowerGrid{
 		this.effect.scaleX = this.effect.scaleY = 0;
 		Com.addObjectAt(this.effectBox, this.effect, CardGrid.gridSize.x >> 1, CardGrid.gridSize.y >> 1);
 
-		// miss one effect
-		this.missOneContainer = new egret.DisplayObjectContainer();
-		this.missOneContainer.visible = false;
-		Com.addObjectAt(this, this.missOneContainer, -3, -3);
-		// bg
-		this.missOneBg = Com.addBitmapAt(this.missOneContainer, this.assetStr( "blue_square" ), 0, 0);
-		// miss one num text
-		this.missOneNumText = Com.addTextAt(this.missOneContainer, 0, 3, 50, 30, CardGrid.defaultNumberSize, false, false);
-		this.missOneNumText.bold = true;
-		this.missOneNumText.textAlign = "center";
-		this.missOneNumText.verticalAlign = "middle";
-		this.missOneNumText.textColor = CardGrid.numberColor;
-		this.missOneNumText.text = this.numTxt.text;
-		// miss one multiple
-		this.missOneMultiple = Com.addTextAt(this.missOneContainer, 0, 27, 50, 20, 16, false, false);
-		this.missOneMultiple.textAlign = "center";
-		this.missOneMultiple.verticalAlign = "middle";
-		this.missOneMultiple.textColor = 0xFFFFFF;
-		this.missOneMultiple.text = "0";
+		this.waveMc = Com.addMovieClipAt( this, MDS.mcFactory, "bingo_bene_wave", 0, 0 );
+		this.waveMc.visible = false;
+	}
+
+	protected buildSmallWinText(){
+		this.extraBlinkNumTxt = Com.addLabelAt( this.extraBinkSp, 0, 3, CardGrid.gridSize.x, 30, 30, false, true );
+		this.smallWinTimesText = Com.addLabelAt( this.extraBinkSp, 0, 27, CardGrid.gridSize.x, 40, 35 );
+		this.smallWinTimesText.textColor = 0xFFFF00;
+	}
+
+	protected getBlinkBg(): egret.Bitmap | egret.MovieClip{
+		this.missOneBg = Com.createBitmapByName( this.assetStr( "blue_square" ) );
+		return this.missOneBg;
 	}
 
 	private assetStr( str: string ): string{
@@ -108,19 +92,35 @@ class MentonGrid extends TowerGrid{
 
 	public showEffect( isShow: boolean ){
 		if( this.blink )this.blink = false;
-		this._isChecked = isShow;
 		if (isShow) {
-			egret.Tween.get(this.effect).to({ scaleX: 1, scaleY: 1 }, 300);
-			this.numTxt.textColor = MentonGrid.effectTextColor;
+			this.currentBgPic = this.onEffBgPic;
+			if( !this._isChecked ){
+				this._isChecked = true;
+				
+				this.waveMc.visible = true;
+				this.waveMc.gotoAndPlay(1,1);
+				this.addChildAt( this.numTxt, this.getChildIndex( this.waveMc ) + 1 );
+
+				setTimeout( this.removeWaveMc.bind(this), 1000 );
+			}
 		}
 		else{
+			this.currentBgPic = this.defaultBgPic;
+			if( this._isChecked ){
+				this._isChecked = false;
+				this.removeWaveMc();
+			}
+
 			if (this.blink) this.blink = false;
 			egret.Tween.removeTweens(this.effect);
 			this.effect.scaleX = this.effect.scaleY = 0;
 
 			this.drawEffectCircle(MentonGrid.effectBgColor, CardGrid.numberColor);
-			this.missOneContainer.visible = false;
 		}
+	}
+
+	private removeWaveMc(){
+		if( this.waveMc.visible ) this.waveMc.visible = false;
 	}
 
 	public showRedEffect(){
@@ -130,11 +130,5 @@ class MentonGrid extends TowerGrid{
 	private drawEffectCircle(bgColor: number, textColor: number): void {
 		GraphicTool.drawCircle( this.effect, new egret.Point, this.radius, bgColor, true );
 		this.numTxt.textColor = textColor;
-	}
-
-	public showBlink( isShow: boolean ): void{
-		this.missOneNumText.text = this.numTxt.text;
-		this.missOneContainer.visible = true;
-		if( this.missOneMultiple.text == "0" )this.blinkType = MentonGrid.MISS_LINE;
 	}
 }
