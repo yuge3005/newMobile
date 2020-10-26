@@ -21,7 +21,7 @@ class BingoBene extends V2Game{
         PayTableManager.paytableUIType = BingoBenePaytableUI;
         PaytableUI.textBold = true;
 
-        CardManager.cardType = MentonCard;
+        CardManager.cardType = BingoBeneCard;
         CardManager.gridType = MentonGrid;
 
         CardGrid.defaultNumberSize = 52;
@@ -152,20 +152,20 @@ class BingoBene extends V2Game{
         super.afterCheck( resultList );
         for( let i: number = 0; i < 4; i++ ){
             if( resultList[i]["bingo"] && ( resultList[i]["bingo"]["unfitIndex"] >= 0 || resultList[i]["bingo"].fit ) ){
-                ( CardManager.cards[i] as MentonCard ).showMissBingo( resultList[i]["bingo"]["unfitIndex"] );
+                ( CardManager.cards[i] as BingoBeneCard ).showMissBingo( resultList[i]["bingo"]["unfitIndex"] );
                 continue;
             }
             if( resultList[i]["columns_4"] && resultList[i]["columns_4"]["unfitIndexs"] ){
-                ( CardManager.cards[i] as MentonCard ).showMissColumns_4( resultList[i]["columns_4"]["unfitIndexs"] );
+                ( CardManager.cards[i] as BingoBeneCard ).showMissColumns_4( resultList[i]["columns_4"]["unfitIndexs"] );
             }
             if( resultList[i]["columns_3"] && resultList[i]["columns_3"]["unfitIndexs"] ){
-                ( CardManager.cards[i] as MentonCard ).showMissColumns_3( resultList[i]["columns_3"]["unfitIndexs"] );
+                ( CardManager.cards[i] as BingoBeneCard ).showMissColumns_3( resultList[i]["columns_3"]["unfitIndexs"] );
             }
             if( resultList[i]["columns_2_2"] && resultList[i]["columns_2_2"]["unfitIndex"] >= 0 ){
-                ( CardManager.cards[i] as MentonCard ).showMissColumns_2_2( resultList[i]["columns_2_2"]["unfitIndex"] );
+                ( CardManager.cards[i] as BingoBeneCard ).showMissColumns_2_2( resultList[i]["columns_2_2"]["unfitIndex"] );
             }
             if( resultList[i]["line_2"] && resultList[i]["line_2"]["unfitIndexs"] ){
-                ( CardManager.cards[i] as MentonCard ).showMissDoubline( resultList[i]["line_2"]["unfitIndexs"] );
+                ( CardManager.cards[i] as BingoBeneCard ).showMissDoubline( resultList[i]["line_2"]["unfitIndexs"] );
             }
         }
     }

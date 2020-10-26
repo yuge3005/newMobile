@@ -1,4 +1,4 @@
-class MentonCard extends ExtraBlinkCard{
+class BingoBeneCard extends ExtraBlinkCard{
 
 	private waveLayer: egret.DisplayObjectContainer;
 
