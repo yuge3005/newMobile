@@ -1,4 +1,4 @@
-class MentonGrid extends ExtraBlinkGrid{
+class BingoBeneGrid extends ExtraBlinkGrid{
 	private radius: number;
 
 	// effect color
@@ -24,17 +24,17 @@ class MentonGrid extends ExtraBlinkGrid{
 		this.missOneBg.texture = RES.getRes( this.assetStr( value ) );
 		let winTimesStr: string;
 		switch(value){
-			case MentonGrid.MISS_LINE: winTimesStr = "4";
+			case BingoBeneGrid.MISS_LINE: winTimesStr = "4";
 				break;
-			case MentonGrid.MISS_COLUMNS_3: winTimesStr = "30";
+			case BingoBeneGrid.MISS_COLUMNS_3: winTimesStr = "30";
 				break;
-			case MentonGrid.MISS_DOUBLE_LINE: winTimesStr = "80";
+			case BingoBeneGrid.MISS_DOUBLE_LINE: winTimesStr = "80";
 				break;
-			case MentonGrid.MISS_COLUMNS_4: winTimesStr = "120";
+			case BingoBeneGrid.MISS_COLUMNS_4: winTimesStr = "120";
 				break;
-			case MentonGrid.MISS_COLUMNS_2_2: winTimesStr = "250";
+			case BingoBeneGrid.MISS_COLUMNS_2_2: winTimesStr = "250";
 				break;
-			case MentonGrid.MISS_BINGO: winTimesStr = "500";
+			case BingoBeneGrid.MISS_BINGO: winTimesStr = "500";
 				break;
 		}
 		this.smallWinTimesText.text = "x" + winTimesStr;
@@ -51,7 +51,7 @@ class MentonGrid extends ExtraBlinkGrid{
 			this.extraBinkSp.visible = false;
 		}
 		else{
-			this.blinkType = MentonGrid.MISS_LINE;
+			this.blinkType = BingoBeneGrid.MISS_LINE;
 		}
 	}
 
@@ -122,6 +122,6 @@ class MentonGrid extends ExtraBlinkGrid{
 	}
 
 	public showRedEffect(){
-		this.numTxt.textColor = MentonGrid.lineNumTextColor;
+		this.numTxt.textColor = BingoBeneGrid.lineNumTextColor;
 	}
 }

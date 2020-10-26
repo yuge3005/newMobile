@@ -22,7 +22,7 @@ class BingoBene extends V2Game{
         PaytableUI.textBold = true;
 
         CardManager.cardType = BingoBeneCard;
-        CardManager.gridType = MentonGrid;
+        CardManager.gridType = BingoBeneGrid;
 
         CardGrid.defaultNumberSize = 52;
 

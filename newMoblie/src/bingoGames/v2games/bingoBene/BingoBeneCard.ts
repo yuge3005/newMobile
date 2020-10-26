@@ -106,7 +106,7 @@ class BingoBeneCard extends ExtraBlinkCard{
 	}
 
 	public addMissLine( gridIndex: number ): void{
-		if( this.hasMissColumns_4.indexOf( gridIndex ) < 0 && this.hasMissColumns_2_2 < 0 ) ( this.grids[gridIndex] as MentonGrid ).blinkType = MentonGrid.MISS_DOUBLE_LINE;
+		if( this.hasMissColumns_4.indexOf( gridIndex ) < 0 && this.hasMissColumns_2_2 < 0 ) ( this.grids[gridIndex] as BingoBeneGrid ).blinkType = BingoBeneGrid.MISS_DOUBLE_LINE;
 		Com.addBitmapAt( this.fitEffectLayer, "mentonGrid_json.purple_line", 7, 35 + 41 * Math.floor( gridIndex / 5 ) );
 	}
 
@@ -119,7 +119,7 @@ class BingoBeneCard extends ExtraBlinkCard{
 			missNumArray.push( missNumbers[column] );
 			columsNum = parseInt( column );
 			columsNumArr.push( columsNum );
-			( this.grids[missNumbers[column]] as MentonGrid ).blinkType = MentonGrid.MISS_COLUMNS_3;
+			( this.grids[missNumbers[column]] as BingoBeneGrid ).blinkType = BingoBeneGrid.MISS_COLUMNS_3;
 		}
 		if( missNumArray.length == 1 ){
 			if( columsNum == 0 || columsNum == 1 || columsNum == 2 ) this.fitEffectLayer.addChildAt( this.addGridCover( "mentonGrid_json.card_green", new egret.Rectangle( 12 + 44 * columsNum, 17, 132, 123 ) ), 0 );
@@ -157,7 +157,7 @@ class BingoBeneCard extends ExtraBlinkCard{
 			missNumArray.push( missNumbers[column] );
 			this.hasMissColumns_4.push( missNumbers[column] );
 			columsNum = parseInt( column );
-			( this.grids[missNumbers[column]] as MentonGrid ).blinkType = MentonGrid.MISS_COLUMNS_4;
+			( this.grids[missNumbers[column]] as BingoBeneGrid ).blinkType = BingoBeneGrid.MISS_COLUMNS_4;
 		}
 		if( missNumArray.length == 1 ){
 			if( columsNum == 0 || columsNum == 1 ) this.fitEffectLayer.addChild( this.addGridCover( "mentonGrid_json.card_pink", new egret.Rectangle( 12 + 44 * columsNum, 17, 176, 123 ) ) );
@@ -177,13 +177,13 @@ class BingoBeneCard extends ExtraBlinkCard{
 
 	public showMissColumns_2_2( missNumber: number ): void{
 		this.hasMissColumns_2_2 = missNumber;
-		( this.grids[missNumber] as MentonGrid ).blinkType = MentonGrid.MISS_COLUMNS_2_2;
+		( this.grids[missNumber] as BingoBeneGrid ).blinkType = BingoBeneGrid.MISS_COLUMNS_2_2;
 		this.fitEffectLayer.addChild( this.addGridCover( "mentonGrid_json.card_red", new egret.Rectangle( 12, 17, 88, 123 ) ) );
 		this.fitEffectLayer.addChild( this.addGridCover( "mentonGrid_json.card_red", new egret.Rectangle( 12 + 44 * 3, 17, 88, 123 ) ) );
 	}
 
 	public showMissBingo( missNumber: number = -1 ): void{
-		if( missNumber >= 0 )( this.grids[missNumber] as MentonGrid ).blinkType = MentonGrid.MISS_BINGO;
+		if( missNumber >= 0 )( this.grids[missNumber] as BingoBeneGrid ).blinkType = BingoBeneGrid.MISS_BINGO;
 		this.fitEffectLayer.addChild( this.addGridCover( "mentonGrid_json.pizza", new egret.Rectangle( 12, 17, 220, 123 ), true ) );
 	}
 
