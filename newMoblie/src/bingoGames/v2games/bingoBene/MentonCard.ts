@@ -1,4 +1,4 @@
-class MentonCard extends GameCard{
+class MentonCard extends ExtraBlinkCard{
 
 	private waveLayer: egret.DisplayObjectContainer;
 
@@ -67,6 +67,7 @@ class MentonCard extends GameCard{
 		super.clearStatus();
 		this.redEffectKeys = {};
 		this.hasPlayBingoEffect = false;
+		this.waveLayer.removeChildren();
 	}
 
 	public blink( show: number ){

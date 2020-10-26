@@ -37,6 +37,7 @@ class MentonGrid extends ExtraBlinkGrid{
 			case MentonGrid.MISS_BINGO: winTimesStr = "500";
 				break;
 		}
+		this.smallWinTimesText.text = "x" + winTimesStr;
 	}
 
 	public get blink(): boolean{
@@ -45,8 +46,9 @@ class MentonGrid extends ExtraBlinkGrid{
 	public set blink( value: boolean ){
 		if( this._blink == value )return;
 		this._blink = value;
+
 		if( !value ){
-			this.blinkType = MentonGrid.MISS_LINE;
+			this.extraBinkSp.visible = false;
 		}
 		else{
 			this.blinkType = MentonGrid.MISS_LINE;
@@ -64,14 +66,21 @@ class MentonGrid extends ExtraBlinkGrid{
 	}
 
 	protected buildSmallWinText(){
-		this.extraBlinkNumTxt = Com.addLabelAt( this.extraBinkSp, 0, 3, CardGrid.gridSize.x, 30, 30, false, true );
-		this.smallWinTimesText = Com.addLabelAt( this.extraBinkSp, 0, 27, CardGrid.gridSize.x, 40, 35 );
-		this.smallWinTimesText.textColor = 0xFFFF00;
+		this.extraBlinkNumTxt = Com.addLabelAt( this.extraBinkSp, 0, 3, CardGrid.gridSize.x, 45, 45, false, true );
+		this.extraBlinkNumTxt.textColor = 0;
+		this.smallWinTimesText = Com.addLabelAt( this.extraBinkSp, 0, 50, CardGrid.gridSize.x, 30, 30 );
+		this.smallWinTimesText.textColor = 0xFFFFFF;
 	}
 
 	protected getBlinkBg(): egret.Bitmap | egret.MovieClip{
 		this.missOneBg = Com.createBitmapByName( this.assetStr( "blue_square" ) );
 		return this.missOneBg;
+	}
+
+	protected buildExtraBlinkSp(){
+		super.buildExtraBlinkSp();
+		this.missOneBg.x -= 8;
+		this.missOneBg.y -= 13;
 	}
 
 	private assetStr( str: string ): string{
@@ -103,16 +112,16 @@ class MentonGrid extends ExtraBlinkGrid{
 		}
 	}
 
+	public showBlink( isShow: boolean ): void{
+		// this.currentBgPic = this.defaultBgPic;
+		this.extraBinkSp.visible = true;
+	}
+
 	private removeWaveMc(){
 		if( this.waveMc.visible ) this.waveMc.visible = false;
 	}
 
 	public showRedEffect(){
-		this.drawEffectCircle(MentonGrid.lineBgColor, MentonGrid.lineNumTextColor);
-	}
-	
-	private drawEffectCircle(bgColor: number, textColor: number): void {
-		// GraphicTool.drawCircle( this.effect, new egret.Point, this.radius, bgColor, true );
-		this.numTxt.textColor = textColor;
+		this.numTxt.textColor = MentonGrid.lineNumTextColor;
 	}
 }
