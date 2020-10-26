@@ -401,7 +401,8 @@ class BingoBene extends V2Game{
 
 /******************************************************************************************************************************************************************/
     protected showJackpot( jackpot: number, jackpotMinBet: number, betConfig: Array<Object> ){
-        this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 2, 12 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 13, 14 ), new egret.Rectangle( 0, 20, 160, 17 ), 17, 0xd6c576 ) );
+        this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 1456, 60 ), jackpot, jackpotMinBet, betConfig, new egret.Point( -12, -6 ), new egret.Rectangle( 0, 0, 235, 45 ), 45, 0xd6c573 ) );
+        this.jackpotArea.jackpotText.textAlign = "left";
     }
 
     protected getPaytablesFit( paytabledName: string, callback: Function = null ): void{
