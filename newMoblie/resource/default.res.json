@@ -105,7 +105,7 @@
 			"name": "prakaramba"
 		},
 		{
-			"keys": "lemon_BGM_mp3,lemon_cheese_mp3,lemon_choose_plate_mp3,lemon_ketchup_mp3,lemon_open_pizza_box_mp3,lemon_vegetable_mp3,menton_BGM_mp3,menton_ball_mp3,menton_bell_mp3,menton_extra_mp3,menton_roulette_mp3,menton_roulette_winner_mp3,menton_x120_mp3,menton_x250_mp3,menton_x30_mp3,menton_x4_mp3,menton_x500_mp3,menton_x80_mp3,menton_json,mentonGrid_json,lemonGame_json,mentonWheel_json,tomatoAnimation_json,bingoBeneAnimation_json,bingoBeneAnimation_png,menton_conf,forAll_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,Arial Black_fnt,Arial Black_png",
+			"keys": "lemon_BGM_mp3,lemon_cheese_mp3,lemon_choose_plate_mp3,lemon_ketchup_mp3,lemon_open_pizza_box_mp3,lemon_vegetable_mp3,menton_BGM_mp3,menton_ball_mp3,menton_bell_mp3,menton_extra_mp3,menton_roulette_mp3,menton_roulette_winner_mp3,menton_x120_mp3,menton_x250_mp3,menton_x30_mp3,menton_x4_mp3,menton_x500_mp3,menton_x80_mp3,menton_json,mentonGrid_json,lemonGame_json,mentonWheel_json,tomatoAnimation_json,wineText_json,bingoBeneAnimation_json,bingoBeneAnimation_png,menton_conf,forAll_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,Arial Black_fnt,Arial Black_png",
 			"name": "menton"
 		}
 	],
@@ -2109,6 +2109,12 @@
 			"type": "sheet",
 			"name": "tomatoAnimation_json",
 			"subkeys": "tomato_01,tomato_02,tomato_03,tomato_bg,tomato_juice"
+		},
+		{
+			"url": "game/menton/wineText.json",
+			"type": "sheet",
+			"name": "wineText_json",
+			"subkeys": "wine_en_01,wine_en_02,wine_en_03,wine_en_04,wine_en_05,wine_es_01,wine_es_02,wine_es_03,wine_es_04,wine_es_05,wine_pt_01,wine_pt_02,wine_pt_03,wine_pt_04,wine_pt_05"
 		}
 	]
 }
