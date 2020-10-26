@@ -1,0 +1,6 @@
+{"file":"tomatoAnimation.png","frames":{
+"tomato_juice":{"x":0,"y":0,"w":232,"h":174,"offX":0,"offY":0,"sourceW":232,"sourceH":174},
+"tomato_bg":{"x":234,"y":0,"w":210,"h":120,"offX":0,"offY":0,"sourceW":210,"sourceH":120},
+"tomato_03":{"x":381,"y":122,"w":100,"h":73,"offX":0,"offY":0,"sourceW":100,"sourceH":73},
+"tomato_02":{"x":234,"y":122,"w":145,"h":133,"offX":0,"offY":0,"sourceW":145,"sourceH":133},
+"tomato_01":{"x":0,"y":176,"w":142,"h":128,"offX":0,"offY":0,"sourceW":142,"sourceH":128}}}
