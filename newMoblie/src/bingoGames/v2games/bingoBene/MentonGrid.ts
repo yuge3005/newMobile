@@ -1,15 +1,12 @@
 class MentonGrid extends ExtraBlinkGrid{
 	private radius: number;
-	// single number effect
-	private effectBox: egret.DisplayObjectContainer;
-	private effect: egret.Shape;
 
 	// effect color
 	public static effectBgColor: number = 0x18458E;
 	public static effectTextColor: number = 0x2A5AC3;
 	// line num color
 	public static lineBgColor: number = 0x222870;
-	public static lineNumTextColor: number = 0xFFFFFF;
+	public static lineNumTextColor: number = 0x2859c2;
 
 	// miss one effect
 	private missOneBg: egret.Bitmap;
@@ -61,15 +58,6 @@ class MentonGrid extends ExtraBlinkGrid{
 
 		// radius
 		this.radius = Math.max(CardGrid.gridSize.x, CardGrid.gridSize.y) * Math.SQRT1_2;
-		// effect container
-		this.effectBox = new egret.DisplayObjectContainer();
-		this.effectBox.mask = new egret.Rectangle(0, 0, CardGrid.gridSize.x, CardGrid.gridSize.y);
-		this.addChildAt(this.effectBox, 0);
-		// effect
-		this.effect = new egret.Shape();
-		this.drawEffectCircle(MentonGrid.effectBgColor, CardGrid.numberColor);
-		this.effect.scaleX = this.effect.scaleY = 0;
-		Com.addObjectAt(this.effectBox, this.effect, CardGrid.gridSize.x >> 1, CardGrid.gridSize.y >> 1);
 
 		this.waveMc = Com.addMovieClipAt( this, MDS.mcFactory, "bingo_bene_wave", 0, 0 );
 		this.waveMc.visible = false;
@@ -93,6 +81,7 @@ class MentonGrid extends ExtraBlinkGrid{
 	public showEffect( isShow: boolean ){
 		if( this.blink )this.blink = false;
 		if (isShow) {
+			this.numTxt.textColor = CardGrid.numberColorOnEffect;
 			this.currentBgPic = this.onEffBgPic;
 			if( !this._isChecked ){
 				this._isChecked = true;
@@ -105,6 +94,7 @@ class MentonGrid extends ExtraBlinkGrid{
 			}
 		}
 		else{
+			this.numTxt.textColor = CardGrid.numberColor;
 			this.currentBgPic = this.defaultBgPic;
 			if( this._isChecked ){
 				this._isChecked = false;
@@ -112,8 +102,6 @@ class MentonGrid extends ExtraBlinkGrid{
 			}
 
 			if (this.blink) this.blink = false;
-			egret.Tween.removeTweens(this.effect);
-			this.effect.scaleX = this.effect.scaleY = 0;
 
 			this.drawEffectCircle(MentonGrid.effectBgColor, CardGrid.numberColor);
 		}
@@ -128,7 +116,7 @@ class MentonGrid extends ExtraBlinkGrid{
 	}
 	
 	private drawEffectCircle(bgColor: number, textColor: number): void {
-		GraphicTool.drawCircle( this.effect, new egret.Point, this.radius, bgColor, true );
+		// GraphicTool.drawCircle( this.effect, new egret.Point, this.radius, bgColor, true );
 		this.numTxt.textColor = textColor;
 	}
 }
