@@ -5,7 +5,7 @@ class BingoBene extends V2Game{
 	}
 
     protected static get animationAssetName(){
-		return "mentonAnimation";
+		return "bingoBeneAnimation";
 	}
 
     private freeEbList: Array<number>;
@@ -24,8 +24,9 @@ class BingoBene extends V2Game{
         CardManager.cardType = MentonCard;
         CardManager.gridType = MentonGrid;
 
-        CardGrid.defaultNumberSize = 22;
+        CardGrid.defaultNumberSize = 52;
 
+        GameCard.gridOnTop = true;
         GameCard.useRedEffect = true;
 
         BallManager.ballOffsetY = 5;
@@ -41,7 +42,7 @@ class BingoBene extends V2Game{
 
         this.runningBallContainer = new egret.DisplayObjectContainer;
         Com.addObjectAt( this, this.runningBallContainer, 210, 678 );
-        this.buildSuperEbArea( "megaball_bg", 119, 58 );
+        this.buildSuperEbArea( "megaball_bg", 151, 79 );
 
         if( GlobelSettings.language != "pt" ){
             let exBitmap: egret.Bitmap = this.getChildByName( this.assetStr("extra_ball_pt") ) as egret.Bitmap;
@@ -111,7 +112,7 @@ class BingoBene extends V2Game{
     }
 
     protected showExtraUI( show: boolean = true ){
-		if( !show )if( !show && this.gratisUI && this.contains( this.gratisUI ) )this.removeChild( this.gratisUI );
+		if( !show && this.gratisUI && this.contains( this.gratisUI ) )this.removeChild( this.gratisUI );
 	}
 
     protected onServerData( data: Object ){
@@ -120,7 +121,7 @@ class BingoBene extends V2Game{
         this.letsMenton( data );
 
         try{
-            RES.loadGroup( "menton_bingo" );
+            // RES.loadGroup( "menton_bingo" );
         }catch(e){}
     }
 
@@ -250,8 +251,7 @@ class BingoBene extends V2Game{
     private showMouseMask(): void{
         if( !this.clickProtector ){
             this.clickProtector = new egret.Shape;
-            GraphicTool.drawRect( this.clickProtector, new egret.Rectangle( 0, 0, 755, 462 ), 0, false, 0.0 );
-            GraphicTool.drawRect( this.clickProtector, new egret.Rectangle( 0, 462, 755, 138 ), 0, false, 0.4 );
+            GraphicTool.drawRect( this.clickProtector, new egret.Rectangle( 0, 0, BingoBackGroundSetting.gameMask.width, BingoBackGroundSetting.gameMask.height ), 0, false, 0.0 );
             this.clickProtector.touchEnabled = true;
         }
         Com.addObjectAt( this, this.clickProtector, 0, 0 );
