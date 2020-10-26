@@ -279,8 +279,6 @@ class BingoBene extends V2Game{
         for( let i: number = 0; i < bellIndexs.length; i++ ){
             let pt: egret.Point = this.getIndexOnCard( bellIndexs[i] );
             this.setTargetToPositionOnCard( this.bellIndexIcons[i], pt.x, pt.y );
-            this.bellIndexIcons[i].x += 7;
-            this.bellIndexIcons[i].y += 3;
             this.bellIndexIcons[i].alpha = 0.4;
         }
     }
