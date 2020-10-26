@@ -100,10 +100,6 @@ class MentonGrid extends ExtraBlinkGrid{
 				this._isChecked = false;
 				this.removeWaveMc();
 			}
-
-			if (this.blink) this.blink = false;
-
-			this.drawEffectCircle(MentonGrid.effectBgColor, CardGrid.numberColor);
 		}
 	}
 
