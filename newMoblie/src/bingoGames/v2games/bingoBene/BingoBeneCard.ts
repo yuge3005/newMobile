@@ -184,7 +184,7 @@ class BingoBeneCard extends ExtraBlinkCard{
 
 	public showMissBingo( missNumber: number = -1 ): void{
 		if( missNumber >= 0 )( this.grids[missNumber] as BingoBeneGrid ).blinkType = BingoBeneGrid.MISS_BINGO;
-		this.fitEffectLayer.addChild( this.addGridCover( "mentonGrid_json.pizza", new egret.Rectangle( 12, 17, 220, 123 ), true ) );
+		this.fitEffectLayer.addChild( this.addGridCover( "mentonGrid_json.pizza", new egret.Rectangle( 0, 0, 669, 315 ), true ) );
 	}
 
 	private addGridCover( assetName: string, rect: egret.Rectangle, isBingo: boolean = false ): egret.DisplayObjectContainer{
@@ -235,7 +235,7 @@ class BingoBeneCard extends ExtraBlinkCard{
 
 	public clearFitEffect(){
 		super.clearFitEffect();
-		this.setChildIndex( this.fitEffectLayer, this.getChildIndex( this.bg ) + 1 );
+		this.addChild( this.fitEffectLayer );
 		this.hasMissColumns_4 = [];
 		this.hasMissColumns_2_2 = -1;
 	}
