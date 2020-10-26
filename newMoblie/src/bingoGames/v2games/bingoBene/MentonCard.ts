@@ -67,9 +67,6 @@ class MentonCard extends GameCard{
 
 	public clearStatus(): void{
 		super.clearStatus();
-		for (let i: number = 0; i < this.grids.length; i++){
-			this.setChildIndex(this.grids[i], 0);
-		}
 		this.redEffectKeys = {};
 		this.hasPlayBingoEffect = false;
 	}
@@ -81,9 +78,6 @@ class MentonCard extends GameCard{
 			if (this.grids[i].blink) {
 				this.grids[i].showBlink(isShow);
 				this.addChild(this.grids[i]);
-			}
-			else{
-				if( !this.grids[i]["missOneContainer"].visible )this.addChildAt(this.grids[i], 0);
 			}
 		}
 	}

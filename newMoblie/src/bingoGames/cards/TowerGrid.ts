@@ -1,7 +1,7 @@
 class TowerGrid extends CardGrid{
 
 	protected defaultBgPic: egret.Bitmap;
-	private onEffBgPic: egret.Bitmap;
+	protected onEffBgPic: egret.Bitmap;
 	private blink1Pic: egret.Bitmap;
 	private blink2Pic: egret.Bitmap;
 	protected linePic: egret.Bitmap;
