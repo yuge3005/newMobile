@@ -242,7 +242,7 @@ class MentonCard extends ExtraBlinkCard{
 
 	public stopBlink(){
 		for( let i: number = 0; i < this.grids.length; i++ ){
-			if( this.grids[i].blink )this.grids[i]["_blink"] = false;
+			if( this.grids[i].blink )this.grids[i].blink = false;
 		}
 	}
 }
