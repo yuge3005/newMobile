@@ -17,26 +17,24 @@ class MentonCard extends GameCard{
 	private redEffectKeys: Object = {};
 
 	public showfitEffect( assetName: string, fitIndex: Array<boolean> ){
-		if( GameCard.useRedEffect ){
-			if( fitIndex.length ){
-				for( let i: number = 0; i < fitIndex.length; i++ ){
-					if( fitIndex[i] ){
-						let ruleStr: string = PayTableManager.payTablesDictionary[assetName].rules[i];
-						this.setGridsToRed( ruleStr );
+		if( fitIndex.length ){
+			for( let i: number = 0; i < fitIndex.length; i++ ){
+				if( fitIndex[i] ){
+					let ruleStr: string = PayTableManager.payTablesDictionary[assetName].rules[i];
+					this.setGridsToRed( ruleStr );
 
-						if( !this.redEffectKeys[ ruleStr ] ){
-							this.gridsRedWave( ruleStr );
-						}
+					if( !this.redEffectKeys[ ruleStr ] ){
+						this.gridsRedWave( ruleStr );
 					}
 				}
 			}
-			else{
-				let ruleStr: string = PayTableManager.payTablesDictionary[assetName].rule;
-				this.setGridsToRed( ruleStr );
+		}
+		else{
+			let ruleStr: string = PayTableManager.payTablesDictionary[assetName].rule;
+			this.setGridsToRed( ruleStr );
 
-				if( !this.redEffectKeys[ ruleStr ] ){
-					this.gridsRedWave( ruleStr );
-				}
+			if( !this.redEffectKeys[ ruleStr ] ){
+				this.gridsRedWave( ruleStr );
 			}
 		}
 	}
@@ -49,17 +47,17 @@ class MentonCard extends GameCard{
 		while( firstIndex >= 0 ){
 			str = str.replace( "11111", "" );
 			let sp: egret.Sprite = new egret.Sprite;
-			Com.addObjectAt( this.waveLayer, sp, 12, 17 + 40 * (step + firstIndex * 0.2) );
+			Com.addObjectAt( this.waveLayer, sp, GameCard.gridInitPosition.x, GameCard.gridInitPosition.y + CardGrid.gridSpace.y * (step + firstIndex * 0.2) );
 			let shp: egret.Shape = new egret.Shape;
 			let matrix: egret.Matrix = new egret.Matrix;
 			matrix.createBox( 0.25, 1, 0, 100 );
 			shp.graphics.beginGradientFill( egret.GradientType.LINEAR, [0xFFFFFF,0xFFFFFF,0xFFFFFF], [0,1,0], [0,128,255], matrix );
-			shp.graphics.drawRect( 0, 0, 500, 41 );
+			shp.graphics.drawRect( 0, 0, 1300, 77 );
 			shp.graphics.endFill();
 			sp.addChild( shp );
-			shp.x = -500;
-			TweenerTool.tweenTo( shp, { x: 220 }, 800, step * 500 );
-			sp.mask = new egret.Rectangle( 0, 0, 220, 41 );
+			shp.x = -1300;
+			TweenerTool.tweenTo( shp, { x: 611 }, 800, step * 500 );
+			sp.mask = new egret.Rectangle( 0, 0, 611, 77 );
 			step++;
 			firstIndex = str.indexOf( "11111" );
 		}
