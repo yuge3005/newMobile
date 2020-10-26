@@ -239,10 +239,4 @@ class MentonCard extends ExtraBlinkCard{
 		this.hasMissColumns_4 = [];
 		this.hasMissColumns_2_2 = -1;
 	}
-
-	public stopBlink(){
-		for( let i: number = 0; i < this.grids.length; i++ ){
-			if( this.grids[i].blink )this.grids[i].blink = false;
-		}
-	}
 }
