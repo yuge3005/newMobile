@@ -1,12 +1,4 @@
 class BingoBeneGrid extends ExtraBlinkGrid{
-	private radius: number;
-
-	// effect color
-	public static effectBgColor: number = 0x18458E;
-	public static effectTextColor: number = 0x2A5AC3;
-	// line num color
-	public static lineBgColor: number = 0x222870;
-	public static lineNumTextColor: number = 0x2859c2;
 
 	// miss one effect
 	private missOneBg: egret.Bitmap;
@@ -57,9 +49,6 @@ class BingoBeneGrid extends ExtraBlinkGrid{
 
 	public constructor() {
 		super();
-
-		// radius
-		this.radius = Math.max(CardGrid.gridSize.x, CardGrid.gridSize.y) * Math.SQRT1_2;
 
 		this.waveMc = Com.addMovieClipAt( this, MDS.mcFactory, "bingo_bene_wave", 0, 0 );
 		this.waveMc.visible = false;
@@ -113,7 +102,6 @@ class BingoBeneGrid extends ExtraBlinkGrid{
 	}
 
 	public showBlink( isShow: boolean ): void{
-		// this.currentBgPic = this.defaultBgPic;
 		this.extraBinkSp.visible = true;
 	}
 
@@ -122,6 +110,7 @@ class BingoBeneGrid extends ExtraBlinkGrid{
 	}
 
 	public showRedEffect(){
-		this.numTxt.textColor = BingoBeneGrid.lineNumTextColor;
+		this.numTxt.textColor = 0;
+		this.currentBgPic = this.linePic;
 	}
 }

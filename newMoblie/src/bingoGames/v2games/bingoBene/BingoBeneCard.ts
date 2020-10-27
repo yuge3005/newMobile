@@ -235,8 +235,6 @@ class BingoBeneCard extends ExtraBlinkCard{
 
 	public clearFitEffect(){
 		super.clearFitEffect();
-		// this.fitEffectLayer.removeChildren();
-		// this.addChild( this.fitEffectLayer );
 		this.hasMissColumns_4 = [];
 		this.hasMissColumns_2_2 = -1;
 	}
