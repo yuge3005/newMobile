@@ -82,7 +82,6 @@ class BingoBeneCard extends ExtraBlinkCard{
 	}
 
 	public showMissDoubline( missNumbers: Object ): void{
-		trace( missNumbers );
 		let missNumArray: Array<number> = [];
 		for( let line in missNumbers ){
 			missNumArray.push( missNumbers[line] );
