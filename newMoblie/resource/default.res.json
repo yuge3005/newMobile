@@ -2069,7 +2069,7 @@
 			"url": "game/menton/menton.json",
 			"type": "sheet",
 			"name": "menton_json",
-			"subkeys": "Wine_barrel_bg,bg,bg_bigball,bg_bigball_export,bg_extraball,big_ball,card,card_bell,card_square,card_square_blue,channel,cover_big_ball,extra_ball_en,extra_ball_es,extra_ball_pt,free_eb,jackpot_bg,jackpot_en,jackpot_es,jackpot_line,jackpot_lock,jackpot_pt,megaball_bg,pattern_01,pattern_02,pattern_03,pattern_04,pattern_05,pattern_06,pattern_07,pattern_color,pattern_frame,pattern_half"
+			"subkeys": "Wine_barrel_bg,bg,bg_bigball,bg_bigball_export,bg_extraball,big_ball,card,card_bell,card_square,card_square_blue,card_square_dark_blue,channel,cover_big_ball,extra_ball_en,extra_ball_es,extra_ball_pt,free_eb,jackpot_bg,jackpot_en,jackpot_es,jackpot_line,jackpot_lock,jackpot_pt,megaball_bg,pattern_01,pattern_02,pattern_03,pattern_04,pattern_05,pattern_06,pattern_07,pattern_color,pattern_frame,pattern_half"
 		},
 		{
 			"url": "config/menton.conf",

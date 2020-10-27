@@ -193,7 +193,9 @@ class BingoBene extends V2Game{
         this.setBellIndexs( data["bellIndexs"] );
         this.addChild( this.getChildByName( this.assetStr( "bg_bigball_export" ) ) );
 
-        this.iconWheel = Com.addBitmapAt( this, "mentonWheel_json.icon_wheel", 200, 0 );
+        this.iconWheel = Com.addBitmapAt( this, "mentonWheel_json.icon_wheel", 430, 14 );
+        this.iconWheel.width = 120;
+        this.iconWheel.height = 120;
 
         this.lemonBuffInfo = data["lemonBuffs"];
         let hasBetData: boolean = this.getCurrentBetBuff();
