@@ -56,15 +56,13 @@ class LemonWheel extends egret.DisplayObjectContainer {
 
 	public showDoubleBonus(){
 		let container: egret.DisplayObjectContainer = new egret.DisplayObjectContainer;
-		container.anchorOffsetX = 87;
-		container.anchorOffsetY = 84;
 		Com.addBitmapAt( container, "mentonWheel_json.wheel_fan_shaped", 0, 0 ).alpha = 0.5;
-		Com.addBitmapAt( container, "mentonWheel_json.x2_small", 45, 62 );
-		Com.addObjectAt( this, container, 87 + 187, -50 + 187 );
+		Com.addBitmapAt( container, "mentonWheel_json.x2_small", 82, 139 );
+		Com.addObjectAt( this, container, 0, -278 );
 
 		this.setChildIndex( container, this.getChildIndex( this.pointIcon ) );
 
-		this.newBg = Com.addBitmapAt( this, "mentonWheel_json.wheel_x2bg", 0, 0 );
+		this.newBg = Com.addBitmapAtMiddle( this, "mentonWheel_json.wheel_x2bg", 0, 0 );
 		this.newBg.alpha = 0;
 		this.setChildIndex( this.newBg, this.getChildIndex( container ) );
 
@@ -94,18 +92,13 @@ class LemonWheel extends egret.DisplayObjectContainer {
 		TweenerTool.tweenTo( this.newBg, { alpha: 1 }, 400 );
 		TweenerTool.tweenTo( this.pointIcon, { alpha: 0 }, 400 );
 		this.container.removeChildAt(0);
-		TweenerTool.tweenTo( this.container, { scaleX: 2.5, scaleY: 2.5, x: 200, y: 160 }, 420, 0, this.moveToSmallWheel.bind(this) );
+		TweenerTool.tweenTo( this.container, { scaleX: 2, scaleY: 2, x: -364, y: -394 }, 420, 0, this.moveToSmallWheel.bind(this) );
 	}
 
 	private moveToSmallWheel(){
-		TweenerTool.tweenTo( this, { scaleX: 0.182, scaleY: 0.182, x: 236, y: 35 }, 420 );
+		let scale: number = 120/789;
+		TweenerTool.tweenTo( this, { scaleX: scale, scaleY: scale, x: 490, y: 72 }, 420 );
 	}
-
-	// public leave(){
-	// 	this.removeChildren();
-	// 	this.addChild( this.container );
-	// 	TweenerTool.tweenTo( this, { scaleX: 0.4, scaleY: 0.4, y: 490 }, 300, 0, this.endMove.bind(this) );
-	// }
 
 	public endMove(){
 		if( this.parent ) this.parent.removeChild( this );
