@@ -64,9 +64,9 @@ class LemonGame extends egret.DisplayObjectContainer {
 		for( let i: number = 0; i < 15; i++ ){
 			let line: number = Math.floor( i / 5 );
 			let row: number = i % 5;
-			this.plate[i] = Com.addBitmapAt( this, this.assetStr( "plate_back" ), this.plateX( row ), this.plateY( line ) - 400 );
-			this.plate[i].anchorOffsetX = this.plate[i].width >> 1;
-			this.plate[i].anchorOffsetY = this.plate[i].height >> 1;
+			this.plate[i] = Com.addBitmapAt( this, this.assetStr( "plate_back" ), this.plateX( row ), this.plateY( line ) );
+			this.plate[i].anchorOffsetX = 130;
+			this.plate[i].anchorOffsetY = 130;
 
 			let tw: egret.Tween = egret.Tween.get( this.plate[i] );
 			tw.wait( ( 2 - line ) * 500 + Math.random() * 300 );
@@ -76,11 +76,11 @@ class LemonGame extends egret.DisplayObjectContainer {
 
 		this.olderArray = [];
 
-		this.getPlateTxt = Com.addTextAt(this, 0, 15, 755, 35, 32, false, true );
+		this.getPlateTxt = Com.addTextAt(this, 500, 40, 1000, 50, 50, false, true );
         this.getPlateTxt.fontFamily = "LuckiestGuy";
         this.getPlateTxt.textColor = 0x531001;
 
-		this.getRoundsTxt = Com.addTextAt(this, 0, 400, 755, 35, 32, false, true );
+		this.getRoundsTxt = Com.addTextAt(this, 500, 1050, 1000, 50, 50, false, true );
         this.getRoundsTxt.fontFamily = "LuckiestGuy";
         this.getRoundsTxt.textColor = 0x531001;
 
@@ -89,11 +89,11 @@ class LemonGame extends egret.DisplayObjectContainer {
 	}
 
 	private plateX( row: number ): number{
-		return 127 + row * 125;
+		return 186 + row * 337 + 130;
 	}
 
 	private plateY( line: number ): number{
-		return 120 + line * 109;
+		return 98 + line * 325 + 130;
 	}
 
 	private endPlateFull(){
@@ -246,7 +246,7 @@ class LemonGame extends egret.DisplayObjectContainer {
 	private showRoundChange(){
 		this.getRoundsTxt.text = "" + this.roundCount + "  ROUNDS" ;
 		let str: string = "";
-		let num: number = 5 - this.plateCount;
+		let num: number = LemonGame.maxPlateCount - this.plateCount;
 		switch( GlobelSettings.language ){
 			case "en": str = "Choose  " + num + "  plates";
 				break;
