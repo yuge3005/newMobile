@@ -233,8 +233,8 @@ class LemonGame extends egret.DisplayObjectContainer {
 		else if( type == 2 ){
 			assetName = round + "_rounds";
 			this.roundCount += round;
-			this.showRoundChange();
 		}
+		this.showRoundChange();
 		Com.addBitmapAt( newPlate, this.assetStr( assetName ), 0, 0 );
 		Com.addObjectAt( this, newPlate, plate.x, plate.y );
 
