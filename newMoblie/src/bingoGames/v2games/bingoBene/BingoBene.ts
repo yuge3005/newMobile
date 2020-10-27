@@ -408,13 +408,8 @@ class BingoBene extends V2Game{
     protected getPaytablesFit( paytabledName: string, callback: Function = null ): void{
         super.getPaytablesFit( paytabledName, callback );
 
-        switch (paytabledName) {
-            case "columns_3": Com.addObjectAt( this, new MentonWine( this.runningBallUI, paytabledName ), 222, 390 ); break;
-            case "line_2": Com.addObjectAt( this, new MentonWine( this.runningBallUI, paytabledName ), 222, 390 ); break;
-            case "columns_4": Com.addObjectAt( this, new MentonWine( this.runningBallUI, paytabledName ), 222, 390 );break;
-            case "columns_2_2": Com.addObjectAt( this, new MentonWine( this.runningBallUI, paytabledName ), 222, 390 ); break;
-            case "bingo": Com.addObjectAt( this, new MentonWine( this.runningBallUI, paytabledName ), 222, 390 ); break;
-        }
+        let hasWineEffectPaytables: Array<string> = [ "bingo", "columns_2_2", "columns_4", "line_2", "columns_3" ];
+        if( hasWineEffectPaytables.indexOf( paytabledName ) >= 0 ) Com.addObjectAt( this, new MentonWine( this.runningBallUI, paytabledName ), 250, 460 );
     }
 
     protected runningWinAnimation(callback: Function, lightResult: Array<Object>): void{
