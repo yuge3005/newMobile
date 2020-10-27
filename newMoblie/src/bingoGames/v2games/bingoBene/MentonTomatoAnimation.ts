@@ -19,7 +19,7 @@ class MentonTomatoAnimation extends egret.DisplayObjectContainer {
 	private onAdd( event: egret.Event ): void{
 		this.tomato1 = Com.addBitmapAt( this, "tomatoAnimation_json.tomato_01", 0, 0 );
 		this.anchorMiddle( this.tomato1 );
-		TweenerTool.tweenTo( this, {x: this.x + 45, y: this.y + 40, alpha: 1 }, 300, 0, this.showJuice.bind(this), {x: this.fromPosition.x, y: this.fromPosition.y, alpha: 0, scaleX: 1.1, scaleY: 1.1}, egret.Ease.sineOut );
+		TweenerTool.tweenTo( this, {x: this.x + 5, y: this.y + 13, alpha: 1 }, 300, 0, this.showJuice.bind(this), {x: this.fromPosition.x, y: this.fromPosition.y, alpha: 0, scaleX: 1.1, scaleY: 1.1}, egret.Ease.sineOut );
 	}
 
 	private onRemove( event: egret.Event ): void{
