@@ -3,6 +3,8 @@ class Main extends egret.DisplayObjectContainer {
     private currentGame: BingoMachine;
 	private currentPo: GenericPo;
 
+	private isMobile: boolean;
+
     public static gameSize: egret.Point = new egret.Point( 960, 540 );
 
     public constructor() {
@@ -17,11 +19,11 @@ class Main extends egret.DisplayObjectContainer {
         })
 
         egret.lifecycle.onPause = () => {
-            egret.ticker.pause();
+			if( this.isMobile ) egret.ticker.pause();
         }
 
         egret.lifecycle.onResume = () => {
-            egret.ticker.resume();
+            if( this.isMobile ) egret.ticker.resume();
         }
 
         this.runGame().catch(e => {
@@ -59,6 +61,11 @@ class Main extends egret.DisplayObjectContainer {
         let stageW = this.stage.stageWidth;
         let stageH = this.stage.stageHeight;
         let isMobile: boolean = stageW < stageH;
+		try{
+			isMobile = eval( "isMobile()" );
+		}catch(e){}
+		this.isMobile = isMobile;
+
         if( isMobile ){
             this.x = stageW;
             this.rotation = 90;
