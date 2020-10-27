@@ -319,10 +319,10 @@ class BingoBene extends V2Game{
         this.showMouseMask();
         this.lemonWheel = new LemonWheel( this.currentBuf );
         this.lemonWheel.addEventListener( "wheelEnd", this.wheelEnd.bind( this, endToContinue ), this );
-        Com.addObjectAt( this, this.lemonWheel, this.iconWheel.x + this.lemonWheel.scaleX * 375 * 0.5, this.iconWheel.y + this.lemonWheel.scaleX * 375 * 0.5 );
+        Com.addObjectAt( this, this.lemonWheel, 1139, 432 );
 
         this.iconWheel.visible = false;
-        this.lemonWheel.showOff( 755 >> 1, 462 >> 1 );
+        this.lemonWheel.showOff();
 
         this.playSound( "menton_bell_mp3" );
         TweenerTool.tweenTo( this.lemonWheel, { x: this.lemonWheel.x }, 2500, 0, this.playWheelSound.bind(this) );

@@ -2,16 +2,12 @@ class LemonWheel extends egret.DisplayObjectContainer {
 
 	private buffId: number;
 
-	private middlePosition: number;
-
 	private pointIcon: egret.Bitmap;
 
 	public constructor( buffId: number ) {
 		super();
 
 		this.buffId = buffId;
-
-		this.anchorOffsetY = this.anchorOffsetX = this.middlePosition = 375 >> 1;
 	}
 
 	private runWheel(){
@@ -23,13 +19,10 @@ class LemonWheel extends egret.DisplayObjectContainer {
 		tw.call( this.closeWheel.bind( this ) );
 	}
 
-	public showOff( targetX: number, targetY: number ): void{
-		this.x = targetX;
-		this.y = targetY;
-
-		let bell: egret.Bitmap = Com.addBitmapAt( this, "mentonWheel_json.bell", 305, 145 );
-		bell.anchorOffsetX = 66;
-		bell.anchorOffsetY = 40;
+	public showOff(): void{
+		let bell: egret.Bitmap = Com.addBitmapAt( this, "mentonWheel_json.bell", 0, -60 );
+		bell.anchorOffsetX = 132;
+		bell.anchorOffsetY = 82;
 
 		let tw: egret.Tween = egret.Tween.get( bell );
 		tw.to( { rotation: -15 }, 100 );
@@ -48,11 +41,11 @@ class LemonWheel extends egret.DisplayObjectContainer {
 	private showWheel(){
 		this.removeChildren();
 
-		Com.addBitmapAt( this, "mentonWheel_json.wheel", 0, 0 );
+		Com.addBitmapAtMiddle( this, "mentonWheel_json.wheel", 0, 0 );
 
-		this.pointIcon = Com.addBitmapAt( this, "mentonWheel_json.wheel_pointer", 187, 187 );
-		this.pointIcon.anchorOffsetX = 45;
-		this.pointIcon.anchorOffsetY = 71;
+		this.pointIcon = Com.addBitmapAt( this, "mentonWheel_json.wheel_pointer", 0, 0 );
+		this.pointIcon.anchorOffsetX = 100;
+		this.pointIcon.anchorOffsetY = 160;
 	}
 
 	private closeWheel():void{
