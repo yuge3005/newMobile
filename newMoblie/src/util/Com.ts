@@ -102,13 +102,6 @@ class Com {
 		return bmpText;
 	}
 
-	public static addButtonAt( target: egret.DisplayObjectContainer, assetName: string, x: number, y: number, onClickCallBack: Function, touchedScale: number = 1, normalScale: number = 1, touchedFilter: egret.Filter = null ): ScaleAbleButton{
-		let bit: ScaleAbleButton = new ScaleAbleButton( assetName, normalScale, touchedScale, touchedFilter );
-		this.addObjectAt( target, bit, x, y );
-		if (typeof onClickCallBack !== "undefined" && onClickCallBack !== null) bit.addEventListener( egret.TouchEvent.TOUCH_TAP, onClickCallBack, target );
-		return bit;
-	}
-
 	public static addDownButtonAt( target: egret.DisplayObjectContainer, assetNormal: string, assetTouched: string, x: number, y: number, onClickCallBack: Function, enableButton: boolean ): TouchDownButton{
 		let bit: TouchDownButton = new TouchDownButton( assetNormal, assetTouched );
 		this.addObjectAt( target, bit, x, y );

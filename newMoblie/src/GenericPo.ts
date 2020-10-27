@@ -3,7 +3,7 @@ class GenericPo extends GenericModal{
 	protected bgAssetName: string;
 	protected bg: egret.Bitmap;
 	protected closeButtonAssetName: string;
-	protected closeButton: ScaleAbleButton;
+	protected closeButton: TouchDownButton;
 	protected closeButtonOffset: egret.Point;
 
 	public constructor(configUrl: string = null ) {
@@ -23,7 +23,7 @@ class GenericPo extends GenericModal{
 		}
 		if( !this.closeButtonOffset ) this.closeButtonOffset = new egret.Point( 0, 0 );
 
-		if (this.closeButtonAssetName) this.closeButton = Com.addButtonAt( this, this.closeButtonAssetName, this.bg.width + this.closeButtonOffset.x, this.closeButtonOffset.y, this.onClose, 1.4, 1.2 );
+		if (this.closeButtonAssetName) this.closeButton = Com.addDownButtonAt( this, this.closeButtonAssetName, this.closeButtonAssetName, this.bg.width + this.closeButtonOffset.x, this.closeButtonOffset.y, this.onClose, true );
 
 		super.init();
 	}

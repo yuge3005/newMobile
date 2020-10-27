@@ -19,9 +19,9 @@ class LemonGame extends egret.DisplayObjectContainer {
 		}
 	}
 
-	private choseBoxes: Array<ScaleAbleButton>;
+	private choseBoxes: Array<TouchDownButton>;
 	private plate: Array<egret.Bitmap>;
-	private plateButtons: Array<ScaleAbleButton>;
+	private plateButtons: Array<TouchDownButton>;
 
 	private olderArray: Array<number>;
 	private plateCount: number;
@@ -35,8 +35,8 @@ class LemonGame extends egret.DisplayObjectContainer {
 
 	private type0ToolLeft: number = 0;
 
-	private type1Btn: ScaleAbleButton;
-	private type2Btn: ScaleAbleButton;
+	private type1Btn: TouchDownButton;
+	private type2Btn: TouchDownButton;
 
 	private openBoxType: number;
 
@@ -101,7 +101,7 @@ class LemonGame extends egret.DisplayObjectContainer {
 		for( let i: number = 0; i < 15; i++ ){
 			let line: number = Math.floor( i / 5 );
 			let row: number = i % 5;
-			this.plateButtons[i] = Com.addButtonAt( this, this.assetStr( "plate_back" ), this.plateX( row ), this.plateY( line ), this.clickPlate.bind(this) );
+			this.plateButtons[i] = Com.addDownButtonAt( this, this.assetStr( "plate_back" ), this.assetStr( "plate_back" ), this.plateX( row ) - 130, this.plateY( line ) - 130, this.clickPlate.bind(this), true );
 			this.plateButtons[i].name = "" + i;
 			this.plateButtons[i].alpha = 0.05;
 		}
@@ -114,7 +114,7 @@ class LemonGame extends egret.DisplayObjectContainer {
 	}
 
 	private clickPlate( event: egret.TouchEvent ){
-		let btn: ScaleAbleButton = event.target as ScaleAbleButton;
+		let btn: TouchDownButton = event.target as TouchDownButton;
 		btn.touchEnabled = false;
 
 		let index: number = parseInt( btn.name );
@@ -141,7 +141,7 @@ class LemonGame extends egret.DisplayObjectContainer {
 
 		this.choseBoxes = [];
 		for( let i: number = 0; i < 3; i++ ){
-			this.choseBoxes[i] = Com.addButtonAt( this.rightArea, this.assetStr( "box_close" ), 77, - 500, this.chooseCard.bind(this) );
+			this.choseBoxes[i] = Com.addDownButtonAt( this.rightArea, this.assetStr( "box_close" ), this.assetStr( "box_close" ), 77, - 500, this.chooseCard.bind(this), true );
 			this.choseBoxes[i].name = "" + i;
 		}
 
@@ -152,8 +152,8 @@ class LemonGame extends egret.DisplayObjectContainer {
 
 		this.startMove();
 
-		this.type1Btn = Com.addButtonAt( this, this.assetStr( "plate_knife" ), 80, 80, this.onType1Button.bind(this) );
-		this.type2Btn = Com.addButtonAt( this, this.assetStr( "plate_scissors" ), 500, 80, this.onType2Button.bind(this) );
+		this.type1Btn = Com.addDownButtonAt( this, this.assetStr( "plate_knife" ), this.assetStr( "plate_knife" ), 80, 80, this.onType1Button.bind(this), true );
+		this.type2Btn = Com.addDownButtonAt( this, this.assetStr( "plate_scissors" ), this.assetStr( "plate_scissors" ), 500, 80, this.onType2Button.bind(this), true );
 
 		this.enablePizzaButton( false );
 
@@ -179,7 +179,7 @@ class LemonGame extends egret.DisplayObjectContainer {
 		this.setTypeButtonState( this.type2Btn, enable && this.type2Count > 0 );
 	}
 
-	private setTypeButtonState( targetButton: ScaleAbleButton, enable: boolean ){
+	private setTypeButtonState( targetButton: TouchDownButton, enable: boolean ){
 		targetButton.touchEnabled = enable;
 		let filterArray: Array<egret.Filter> = [];
 		if( !enable ) filterArray.push( MatrixTool.colorMatrixLighter( 0.5 ) );
@@ -282,7 +282,7 @@ class LemonGame extends egret.DisplayObjectContainer {
 
 	private chooseCard( event: egret.TouchEvent ){
 		this.enablePizzaButton( false );
-		let btn: ScaleAbleButton = event.target as ScaleAbleButton;
+		let btn: TouchDownButton = event.target as TouchDownButton;
 
 		this.boxIndex = parseInt( btn.name );
 		switch( this.openBoxType ){
