@@ -567,7 +567,7 @@ class Pipa extends V2Game{
         Com.addObjectAt( this.chooseBar, toolBarMask, 0, 0 );
 
         Com.addBitmapAt( this.chooseBar, this.assetStr( "ball_silver" ), 323, 339 );
-        Com.addMovieClipAt( this.chooseBar, this._mcf, "choose_" + GlobelSettings.language, 323, 340 );
+        Com.addMovieClipAt( this.chooseBar, MDS.mcFactory, "choose_" + GlobelSettings.language, 323, 340 );
 
         this.chooseBar.visible = false;
 
@@ -946,7 +946,7 @@ class Pipa extends V2Game{
             this.bombs[i] = new egret.DisplayObjectContainer;
             Com.addObjectAt( this, this.bombs[i], this.cardPositions[i]["x"] + 120, this.cardPositions[i]["y"] + 48 );
 
-            this.bombExplode[i] = Com.addMovieClipAt( this.bombs[i], this._mcf, "bomb_02", -193, -158 );
+            this.bombExplode[i] = Com.addMovieClipAt( this.bombs[i], MDS.mcFactory, "bomb_02", -193, -158 );
             this.bombExplode[i].gotoAndStop(1);
         }
         this.needBomb( false );
@@ -1077,12 +1077,12 @@ class Pipa extends V2Game{
     }
 
     private dbLineAnimation(): void{
-        let pipaDbLineAnimation: PipaAnimation = new PipaAnimation( "pipaDoubleLine_json" );
+        let pipaDbLineAnimation: CopaAnimation = new CopaAnimation( "pipaDoubleLine_json" );
         Com.addObjectAt( this, pipaDbLineAnimation, 0, 0 );
     }
 
     private squareAnimation(): void{
-        let pipaDbLineAnimation: PipaAnimation = new PipaAnimation( "pipaSquare_json", true );
+        let pipaDbLineAnimation: CopaAnimation = new CopaAnimation( "pipaSquare_json", true );
         Com.addObjectAt( this, pipaDbLineAnimation, 0, 0 );
     }
 
@@ -1229,8 +1229,6 @@ class Pipa extends V2Game{
         this.updateCredit( data );
 
         this.countBuffLeft();
-
-        this.dealWithNewDatas( data );
     }
 
     public onCancelExtra( data: Object ){

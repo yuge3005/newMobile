@@ -1,4 +1,4 @@
-class PipaAnimation extends egret.Sprite{
+class CopaAnimation extends egret.Sprite{
 
 	private letterBg: egret.Bitmap;
 	private assetName: string;
