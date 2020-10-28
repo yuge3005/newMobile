@@ -1,4 +1,4 @@
-class PipaGanhoCounter extends GanhoCounter{
+class CopaGanhoCounter extends GanhoCounter{
     private ganhoObjects: Array<Object>;
 
 	public constructor( winCallback: Function = null ) {

@@ -48,7 +48,7 @@ class Pipa extends V2Game{
             this.getChildByName( this.assetStr( "arrow_r_" + lanArray[i] ) ).visible = false;
         }
 
-        this.ganhoCounter = new PipaGanhoCounter( this.showWinPopup.bind( this ) );
+        this.ganhoCounter = new CopaGanhoCounter( this.showWinPopup.bind( this ) );
     }
 
     protected showLastBall( ballIndex: number ): void{
@@ -114,7 +114,7 @@ class Pipa extends V2Game{
         this.addChild( this.runningBallContainer );
 
         this.letsPipa( data );
-        ( this.gameToolBar as PipaToolBar ).setMiniButton( this.bufLeftTurns == 0 );
+        ( this.gameToolBar as CopaToolBar ).setMiniButton( this.bufLeftTurns == 0 );
 
         try{
             RES.loadGroup( "bingoPipa" );
@@ -122,7 +122,7 @@ class Pipa extends V2Game{
     }
 
     protected initToolbar(){
-        this.gameToolBar = new PipaToolBar;
+        this.gameToolBar = new CopaToolBar;
 		Com.addObjectAt( this, this.gameToolBar, 0, BingoGameToolbar.toolBarY );
         this.gameToolBar.showTip( "" );
 
@@ -268,7 +268,7 @@ class Pipa extends V2Game{
             this.getBuff( this.currentBuf );
         }
         else{
-            ( this.gameToolBar as PipaToolBar ).setMiniButton( true );
+            ( this.gameToolBar as CopaToolBar ).setMiniButton( true );
         }
         this.showCurrentBuff();
     }
@@ -294,10 +294,10 @@ class Pipa extends V2Game{
         Com.addBitmapAt( this.buffIcon, this.assetStr( "buff_" + this.currentBuf ), 0, 0 );
 
         if( this.bufLeftTurns ){
-            ( this.gameToolBar as PipaToolBar ).lockBet( false );
+            ( this.gameToolBar as CopaToolBar ).lockBet( false );
         }
         else{
-            ( this.gameToolBar as PipaToolBar ).lockBet( true );
+            ( this.gameToolBar as CopaToolBar ).lockBet( true );
         }
         this.resetGameToolBarStatus();
     }
@@ -670,7 +670,7 @@ class Pipa extends V2Game{
     private countBuffLeft(): void{
         this.bufLeftTurns--;
         if( this.bufLeftTurns <= 0 ){
-            ( this.gameToolBar as PipaToolBar ).setMiniButton( true );
+            ( this.gameToolBar as CopaToolBar ).setMiniButton( true );
             if( this.bufLeftTurns == 0 ){
                 this.cancelBuff();
             }
@@ -1287,7 +1287,7 @@ class Pipa extends V2Game{
     private startMiniGame(): void {
         this.miniGame.startGame();
         this.addChild( this.miniGame );
-        ( this.gameToolBar as PipaToolBar ).setMiniButton( false );
+        ( this.gameToolBar as CopaToolBar ).setMiniButton( false );
     }
 
     /**
@@ -1407,7 +1407,7 @@ class Pipa extends V2Game{
     public static resetBgMusicTimer(): void{
         let pipaGame: Pipa = BingoMachine["currentGame"] as Pipa;
         if( pipaGame ){
-            ( pipaGame.gameToolBar as PipaToolBar ).resetBgMusicTimer();
+            ( pipaGame.gameToolBar as CopaToolBar ).resetBgMusicTimer();
         }
     }
 }

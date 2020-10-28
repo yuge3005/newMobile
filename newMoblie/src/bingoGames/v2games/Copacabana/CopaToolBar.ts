@@ -1,4 +1,4 @@
-class PipaToolBar extends BingoGameToolbar{
+class CopaToolBar extends BingoGameToolbar{
 
 	private miniGameBtn: TouchDownButton;
 
