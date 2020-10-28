@@ -359,8 +359,8 @@ class LemonGame extends egret.DisplayObjectContainer {
 					if( i == this.boxIndex ){
 						let box: egret.DisplayObjectContainer = new egret.DisplayObjectContainer;
 						Com.addBitmapAt( box, this.assetStr( "box_open" ), 0, 0 );
-						Com.addObjectAt( this.rightArea, box, 4, i * 130 - 8 );
-						let inBox: egret.Bitmap = Com.addBitmapAt( this.rightArea, this.assetStr( inBoxName ), 30, this.choseBoxes[i].y - 32 );
+						Com.addObjectAt( this.rightArea, box, 18, i * 360 - 106 );
+						let inBox: egret.Bitmap = Com.addBitmapAtMiddle( this.rightArea, this.assetStr( inBoxName ), 212, this.choseBoxes[i].y + 112 );
 						this.lemonAwards[ inBoxArray[i]["type"] ] += inBoxArray[i]["value"];
 						this.choseBoxes[this.boxIndex].filters = [];
 					}
@@ -375,13 +375,13 @@ class LemonGame extends egret.DisplayObjectContainer {
 						if( this.hasLookin ){
 							let box: egret.DisplayObjectContainer = new egret.DisplayObjectContainer;
 							Com.addBitmapAt( box, this.assetStr( "box_open" ), 0, 0 );
-							Com.addObjectAt( this.rightArea, box, 4, i * 130 - 8 );
-							let inBox: egret.Bitmap = Com.addBitmapAt( this.rightArea, this.assetStr( inBoxName ), 30, this.choseBoxes[i].y - 32 );
+							Com.addObjectAt( this.rightArea, box, 18, i * 360 - 106 );
+							let inBox: egret.Bitmap = Com.addBitmapAtMiddle( this.rightArea, this.assetStr( inBoxName ), 212, this.choseBoxes[i].y + 112 );
 							this.lemonAwards[ inBoxArray[i]["type"] ] += inBoxArray[i]["value"];
 							this.openBoxType = 2;
 						}
 						else{
-							let inBox: egret.Bitmap = Com.addBitmapAt( this.rightArea, this.assetStr( inBoxName ), 30, this.choseBoxes[i].y - 32 );
+							let inBox: egret.Bitmap = Com.addBitmapAtMiddle( this.rightArea, this.assetStr( inBoxName ), 212, this.choseBoxes[i].y + 112 );
 							inBox.alpha = 0.5;
 						}
 					}
@@ -396,8 +396,8 @@ class LemonGame extends egret.DisplayObjectContainer {
 					inBoxName += "_0" + inBoxArray[i]["value"];
 					let box: egret.DisplayObjectContainer = new egret.DisplayObjectContainer;
 					Com.addBitmapAt( box, this.assetStr( "box_open" ), 0, 0 );
-					Com.addObjectAt( this.rightArea, box, 4, i * 130 - 8 );
-					let inBox: egret.Bitmap = Com.addBitmapAt( this.rightArea, this.assetStr( inBoxName ), 30, this.choseBoxes[i].y - 32 );
+					Com.addObjectAt( this.rightArea, box, 18, i * 360 - 106 );
+					let inBox: egret.Bitmap = Com.addBitmapAtMiddle( this.rightArea, this.assetStr( inBoxName ), 212, this.choseBoxes[i].y + 112 );
 					if( i == this.boxIndex ){
 						this.lemonAwards[ inBoxArray[i]["type"] ] += inBoxArray[i]["value"];
 					}
