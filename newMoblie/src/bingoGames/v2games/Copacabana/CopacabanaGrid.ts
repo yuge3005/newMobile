@@ -1,4 +1,4 @@
-class PipaGrid extends TowerGrid{
+class CopacabanaGird extends TowerGrid{
 
 	private waveMc: egret.MovieClip;
 
@@ -24,7 +24,7 @@ class PipaGrid extends TowerGrid{
 	public set currentBgPic( value ){
 		if( this._currentBgPic && this.contains( this._currentBgPic ) )this.removeChild( this._currentBgPic );
 		if( value == this.linePic ){
-			if( !this.waveMc )this.waveMc = Com.addMovieClipAt( this, PipaGrid.mcf, "gridWave", 0, 0 );
+			if( !this.waveMc )this.waveMc = Com.addMovieClipAt( this, CopacabanaGird.mcf, "gridWave", 0, 0 );
 			if( !this.contains( this.waveMc ) ){
 				this.waveMc.gotoAndStop(1);
 			}
@@ -35,7 +35,7 @@ class PipaGrid extends TowerGrid{
 				this._currentBgPic = value;
 				this.addChildAt( this._currentBgPic, 0 );
 			}
-			else if( this.contains( this.waveMc ) && PipaGrid.needClear ){
+			else if( this.contains( this.waveMc ) && CopacabanaGird.needClear ){
 				this.removeChild( this.waveMc );
 				this._currentBgPic = value;
 				this.addChildAt( this._currentBgPic, 0 );
@@ -50,7 +50,7 @@ class PipaGrid extends TowerGrid{
 	public showBlink( isShow: boolean ): void{
 		super.showBlink( isShow );
 
-		if( PipaGrid.showBinkColor ) this._currentBgPic.filters = [ MatrixTool.colorMatrixPure( PipaGrid.rangeColors[ Math.floor( ( this.gridNumber - 1 ) / 15 ) ] ) ];
+		if( CopacabanaGird.showBinkColor ) this._currentBgPic.filters = [ MatrixTool.colorMatrixPure( CopacabanaGird.rangeColors[ Math.floor( ( this.gridNumber - 1 ) / 15 ) ] ) ];
 		else this._currentBgPic.filters = [];
 	}
 }

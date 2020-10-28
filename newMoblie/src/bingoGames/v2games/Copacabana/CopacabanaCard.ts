@@ -1,4 +1,4 @@
-class PipaCard extends GameCard{
+class CopacabanaCard extends GameCard{
 
 	public constructor( cardId: number ) {
 		super( cardId );
@@ -32,9 +32,9 @@ class PipaCard extends GameCard{
 	}
 
 	public clearStatus(){
-		PipaGrid.needClear = true;
+		CopacabanaGird.needClear = true;
 		super.clearStatus();
-		PipaGrid.needClear = false;
+		CopacabanaGird.needClear = false;
 		this.redEffectKeys = {};
 	}
 
@@ -44,7 +44,7 @@ class PipaCard extends GameCard{
 		let first1: number = str.indexOf( "1" );
 		for( let j: number = 0; j < str.length; j++ ){
 			if( str[j] == "1" ){
-				( this.grids[j] as PipaGrid ).showWaveEffect( ( j - first1 + 1 ) * 100 );
+				( this.grids[j] as CopacabanaGird ).showWaveEffect( ( j - first1 + 1 ) * 100 );
 			}
 		}
 	}
