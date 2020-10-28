@@ -1,0 +1,18 @@
+{
+    "options": {
+        "layoutGap": 1,
+        "extend": 0,
+        "layoutMath": "3",
+        "sizeMode": "2n",
+        "useExtension": 0
+    },
+    "files": [
+        "./title_pt.png",
+        "./title_es.png",
+        "./title_en.png",
+        "./square.png",
+        "./bg.png"
+    ],
+    "projectName": "pipaSquare",
+    "version": 5
+}

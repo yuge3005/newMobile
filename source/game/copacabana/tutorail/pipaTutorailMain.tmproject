@@ -1,0 +1,18 @@
+{
+    "options": {
+        "useExtension": 0,
+        "layoutGap": 1,
+        "extend": 0,
+        "layoutMath": "3",
+        "sizeMode": "2n"
+    },
+    "files": [
+        "./jackpotBg.png",
+        "./blankBg.png",
+        "./1-0_pt.png",
+        "./1-0_es.png",
+        "./1-0_en.png"
+    ],
+    "version": 5,
+    "projectName": "pipaTutorailMain"
+}

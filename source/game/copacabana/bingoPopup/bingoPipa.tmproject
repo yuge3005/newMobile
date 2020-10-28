@@ -1,0 +1,21 @@
+{
+    "options": {
+        "layoutMath": "3",
+        "sizeMode": "2n",
+        "useExtension": 0,
+        "layoutGap": 1,
+        "extend": 0
+    },
+    "projectName": "bingoPipa",
+    "files": [
+        "./N.png",
+        "./I.png",
+        "./GT.png",
+        "./G.png",
+        "./blank_bg.png",
+        "./bingo_star.png",
+        "./B.png",
+        "./O.png"
+    ],
+    "version": 5
+}
