@@ -533,20 +533,22 @@ class LemonGame extends egret.DisplayObjectContainer {
 	}
 
 	private amin0(): void{
-		let anim: egret.Bitmap = Com.addBitmapAt( this, this.assetStr( "ketchup_01" ), 500, 80 ); 
+		let startPt: egret.Point = new egret.Point( 1000, 180 );
+		let shakePt: egret.Point = new egret.Point( 50, 20 );
+		let anim: egret.Bitmap = Com.addBitmapAt( this, this.assetStr( "ketchup_01" ), startPt.x, startPt.y ); 
 		anim.rotation = -125;
 		anim.scaleX = anim.scaleY = 2;
 		let tw: egret.Tween = egret.Tween.get( anim );
-		tw.to( { x: 450, y: 100 }, 150 );
-		tw.to( { x: 550, y: 60 }, 300 );
-		tw.to( { x: 450, y: 100 }, 300 );
-		tw.to( { x: 500, y: 80, alpha: 0 }, 150 );
+		tw.to( { x: startPt.x - shakePt.x, y: startPt.y + shakePt.y }, 150 );
+		tw.to( { x: startPt.x + shakePt.x, y: startPt.y - shakePt.y }, 300 );
+		tw.to( { x: startPt.x - shakePt.x, y: startPt.y + shakePt.y }, 300 );
+		tw.to( { x: startPt.x + shakePt.x, y: startPt.y - shakePt.y, alpha: 0 }, 150 );
 		SoundManager.play( "lemon_ketchup_mp3" );
 	}
 
 	private amin1(): void{
 		for( let i: number = 0; i < 15; i++ ){
-			let anim: egret.Bitmap = Com.addBitmapAt( this, this.assetStr( "cheese_01" ), 100 + Math.random() * 340, 30 );
+			let anim: egret.Bitmap = Com.addBitmapAt( this, this.assetStr( "cheese_01" ), 200 + Math.random() * 1000, 30 );
 			anim.scaleX = anim.scaleY = Math.random() * 0.8 + 0.8;
 			let tw: egret.Tween = egret.Tween.get( anim );
 			tw.wait( Math.random() * 350 );
