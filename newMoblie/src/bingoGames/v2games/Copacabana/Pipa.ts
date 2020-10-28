@@ -43,13 +43,6 @@ class Pipa extends V2Game{
         this.buildSuperEbArea( "big_ball_bg2", 331, 343 );
         CopacabanaGird.rangeColors = [ 0x0b5ff2, 0x27a00d, 0x8a0eaf, 0xbd0a0e, 0xc8800d, 0xE193B1 ];
 
-        let lanArray: Array<string> = ["en", "es", "pt"];
-        for( let i: number = 0; i < 3; i++ ){
-            if( lanArray[i] == GlobelSettings.language )continue;
-            this.getChildByName( this.assetStr( "arrow_l_" + lanArray[i] ) ).visible = false;
-            this.getChildByName( this.assetStr( "arrow_r_" + lanArray[i] ) ).visible = false;
-        }
-
         this.ganhoCounter = new CopaGanhoCounter( this.showWinPopup.bind( this ) );
     }
 
@@ -66,7 +59,7 @@ class Pipa extends V2Game{
 
     protected showLastBall( ballIndex: number ): void{
         super.showLastBall( ballIndex );
-        this.showLastBallAt( ballIndex, 323, 339 );
+        this.showLastBallAt( ballIndex, 0, 0 );
 
         if( this.needMarkLine ){
             if( ballIndex == this.markNumber1 || ballIndex == this.markNumber2 ){
@@ -103,34 +96,24 @@ class Pipa extends V2Game{
     }
 
     protected showLastBallAt( ballIndex: number, x: number, y: number, scale: number = 1 ): void{
-        if( this.runningBallUI && ( this.runningBallContainer ).contains( this.runningBallUI ) ){
-            ( this.runningBallContainer ).removeChild( this.runningBallUI );
-        }
-        this.runningBallUI = this.ballArea.getABigBall( ballIndex );
-        Com.addObjectAt( this.runningBallContainer, this.runningBallUI, x, y );
+        super.showLastBallAt( ballIndex, x, y );
 
         clearTimeout( this.timeoutId );
-        this.timeoutId = setTimeout( this.removeBigBall.bind( this ), 1000 * scale );
+        this.timeoutId = setTimeout( this.clearRunningBallUI.bind( this ), 1000 * scale );
     }
 
     private timeoutId: number;
 
-    private removeBigBall(){
-        if( this.runningBallUI && ( this.runningBallContainer ).contains( this.runningBallUI ) ){
-            ( this.runningBallContainer ).removeChild( this.runningBallUI );
-        }
-    }
-
     protected onServerData( data: Object ){
         super.onServerData( data );
 
-        this.addChild( this.runningBallContainer );
+        Com.addObjectAt( this, this.runningBallContainer, 878, 676 );
 
         this.letsPipa( data );
         ( this.gameToolBar as CopaToolBar ).setMiniButton( this.bufLeftTurns == 0 );
 
         try{
-            RES.loadGroup( "bingoPipa" );
+            // RES.loadGroup( "bingoPipa" );
         }catch(e){}
     }
 
@@ -1139,7 +1122,7 @@ class Pipa extends V2Game{
             if( this.missOneForBingoNumbers.length ){
                 for( let i: number = 0; i < this.missOneForBingoNumbers.length; i++ ){
                     if( Math.abs( this.missOneForBingoNumbers[i] - ballNumber ) <= 1 ){
-                        this.showLastBallAt( ballNumber, 323, 339, 3.5 );
+                        this.showLastBallAt( ballNumber, 0, 0, 3.5 );
                         this.showPeel();
                         return true;
                     }
@@ -1150,7 +1133,7 @@ class Pipa extends V2Game{
             if( this.missOneForAllNumbers.length ){
                 for( let i: number = 0; i < this.missOneForAllNumbers.length; i++ ){
                     if( Math.abs( this.missOneForAllNumbers[i] - ballNumber ) <= 1 ){
-                        this.showLastBallAt( ballNumber, 323, 339, 3.5 );
+                        this.showLastBallAt( ballNumber, 0, 0, 3.5 );
                         this.showPeel();
                         return true;
                     }
