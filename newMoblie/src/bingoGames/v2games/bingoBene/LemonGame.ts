@@ -552,7 +552,7 @@ class LemonGame extends egret.DisplayObjectContainer {
 			anim.scaleX = anim.scaleY = Math.random() * 0.8 + 0.8;
 			let tw: egret.Tween = egret.Tween.get( anim );
 			tw.wait( Math.random() * 350 );
-			tw.to( { y: 140 + Math.random() * 90 }, 400, egret.Ease.sineIn );
+			tw.to( { y: 350 + Math.random() * 200 }, 400, egret.Ease.sineIn );
 			tw.to( { alpha: 0 }, 150 );
 		}
 		SoundManager.play( "lemon_cheese_mp3" );
@@ -562,10 +562,10 @@ class LemonGame extends egret.DisplayObjectContainer {
 
 	private amin2(): void{
 		for( let i: number = 0; i < 15; i++ ){
-			let anim: egret.Bitmap = Com.addBitmapAt( this, this.assetStr( LemonGame.foodOnPizza[ Math.floor( Math.random() * 4 ) ] ), 100 + Math.random() * 300, 30 );
+			let anim: egret.Bitmap = Com.addBitmapAt( this, this.assetStr( LemonGame.foodOnPizza[ Math.floor( Math.random() * 4 ) ] ), 200 + Math.random() * 850, 30 );
 			let tw: egret.Tween = egret.Tween.get( anim );
 			tw.wait( Math.random() * 350 );
-			tw.to( { y: 140 + Math.random() * 90 }, 400, egret.Ease.sineIn );
+			tw.to( { y: 350 + Math.random() * 200 }, 400, egret.Ease.sineIn );
 			tw.to( { alpha: 0 }, 150 );
 		}
 		SoundManager.play( "lemon_vegetable_mp3" );
