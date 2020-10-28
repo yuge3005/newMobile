@@ -61,6 +61,7 @@ class LemonGame extends egret.DisplayObjectContainer {
 		IBingoServer.lemonGame( "join", bet );
 
 		Com.addBitmapAt( this, this.assetStr( "bg" ), 0, 0 );
+		Com.addBitmapAt( this, this.assetStr( "ui_bg" ), 656, 978 );
 
 		this.plate = [];
 		for( let i: number = 0; i < 15; i++ ){
@@ -78,11 +79,11 @@ class LemonGame extends egret.DisplayObjectContainer {
 
 		this.olderArray = [];
 
-		this.getPlateTxt = Com.addTextAt(this, 500, 40, 1000, 50, 50, false, true );
+		this.getPlateTxt = Com.addTextAt(this, 500, 40, 1000, 80, 80, false, true );
         this.getPlateTxt.fontFamily = "LuckiestGuy";
         this.getPlateTxt.textColor = 0x531001;
 
-		this.getRoundsTxt = Com.addTextAt(this, 500, 1050, 1000, 50, 50, false, true );
+		this.getRoundsTxt = Com.addTextAt(this, 500, 1015, 1000, 80, 80, false, true );
         this.getRoundsTxt.fontFamily = "LuckiestGuy";
         this.getRoundsTxt.textColor = 0x531001;
 
@@ -91,11 +92,11 @@ class LemonGame extends egret.DisplayObjectContainer {
 	}
 
 	private plateX( row: number ): number{
-		return 186 + row * 337 + 130;
+		return 320 + row * 340;
 	}
 
 	private plateY( line: number ): number{
-		return 98 + line * 325 + 130;
+		return 270 + line * 280;
 	}
 
 	private endPlateFull(){
