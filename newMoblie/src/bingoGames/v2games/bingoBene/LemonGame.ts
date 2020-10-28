@@ -3,6 +3,8 @@ class LemonGame extends egret.DisplayObjectContainer {
 	public static maxPlateCount: number = 5;
 	public static boxNames: Array<string> = [ "ketchup", "cheese", "vegetable" ];
 
+	private static assetsRepeatHight: number = 85;
+
 	private rightArea: egret.DisplayObjectContainer;
 	private track: egret.Bitmap;
 
@@ -12,10 +14,10 @@ class LemonGame extends egret.DisplayObjectContainer {
 	}
 	private set trackY( value: number ){
 		this._trackY = value;
-		while( value > 0 ) value -= 38;
+		while( value > 0 ) value -= LemonGame.assetsRepeatHight;
 		this.track.y = value;
 		for( let i: number = 0; i < 3; i++ ){
-			this.choseBoxes[i].y = 130 * i - 350 + this._trackY;
+			this.choseBoxes[i].y = 360 * i - 940 + this._trackY;
 		}
 	}
 
@@ -130,18 +132,21 @@ class LemonGame extends egret.DisplayObjectContainer {
 	private showPizza(){
 		this.removeChildren();
 
-		Com.addBitmapAt( this, this.assetStr( "bg_cake" ), 0, 0 );
+		Com.addBitmapAt( this, this.assetStr( "bg" ), 0, 0 );
+		Com.addBitmapAt( this, this.assetStr( "bg_cake" ), 124, 236 );
 
 		this.rightArea = new egret.DisplayObjectContainer;
-		Com.addObjectAt( this, this.rightArea, 584, 0 );
-		this.rightArea.mask = new egret.Rectangle( 0, 0, 154, 462 );
+		Com.addObjectAt( this, this.rightArea, 1582, 0 );
+		this.rightArea.mask = new egret.Rectangle( 0, 0, 418, 1125 );
 
 		this.track = Com.addBitmapAt( this.rightArea, this.assetStr( "track" ), 0, 0 );
-		Com.addBitmapAt( this, this.assetStr( "track_frame" ), 555, 0 );
+		this.track.fillMode = egret.BitmapFillMode.REPEAT;
+		this.track.height = 1125 + LemonGame.assetsRepeatHight;
+		Com.addBitmapAt( this, this.assetStr( "track_frame" ), 1508, 0 );
 
 		this.choseBoxes = [];
 		for( let i: number = 0; i < 3; i++ ){
-			this.choseBoxes[i] = Com.addDownButtonAt( this.rightArea, this.assetStr( "box_close" ), this.assetStr( "box_close" ), 77, - 500, this.chooseCard.bind(this), true );
+			this.choseBoxes[i] = Com.addDownButtonAt( this.rightArea, this.assetStr( "box_close" ), this.assetStr( "box_close" ), 18, - 500, this.chooseCard.bind(this), true );
 			this.choseBoxes[i].name = "" + i;
 		}
 
@@ -152,12 +157,12 @@ class LemonGame extends egret.DisplayObjectContainer {
 
 		this.startMove();
 
-		this.type1Btn = Com.addDownButtonAt( this, this.assetStr( "plate_knife" ), this.assetStr( "plate_knife" ), 80, 80, this.onType1Button.bind(this), true );
-		this.type2Btn = Com.addDownButtonAt( this, this.assetStr( "plate_scissors" ), this.assetStr( "plate_scissors" ), 500, 80, this.onType2Button.bind(this), true );
+		this.type1Btn = Com.addDownButtonAt( this, this.assetStr( "plate_knife" ), this.assetStr( "plate_knife" ), 20, 20, this.onType1Button.bind(this), true );
+		this.type2Btn = Com.addDownButtonAt( this, this.assetStr( "plate_scissors" ), this.assetStr( "plate_scissors" ), 1230, 20, this.onType2Button.bind(this), true );
 
 		this.enablePizzaButton( false );
 
-		this.roundTx = Com.addTextAt( this, 557, 150, 30, 165, 20, false, true );
+		this.roundTx = Com.addTextAt( this, 1516, 347, 67, 466, 56, false, true );
 		this.roundTx.verticalAlign = "middle";
 		this.roundTx.text = this.getRoundString();
 	}
@@ -272,7 +277,7 @@ class LemonGame extends egret.DisplayObjectContainer {
 
 	private startMove(){
 		let tw: egret.Tween = egret.Tween.get( this );
-		tw.to( { trackY: 450 }, 1000 );
+		tw.to( { trackY: 1000 }, 1000 );
 		tw.call( this.letChoose );
 	}
 
@@ -436,13 +441,13 @@ class LemonGame extends egret.DisplayObjectContainer {
 
 	private showAwardResuilt(){
 		this.rewardArea = new egret.DisplayObjectContainer;
-		this.rewardArea.x = 90;
-		this.rewardArea.y = 100;
+		this.rewardArea.x = 124;
+		this.rewardArea.y = 236;
 		this.addChild( this.rewardArea );
 
-		this.showPizzaItems( 0, 3, 0, 0 );
-		this.showPizzaItems( 1, 9, 22, 8 );
-		this.showPizzaItems( 2, 12, 24, 8 );
+		this.showPizzaItems( 0, 3, 112, 54 );
+		this.showPizzaItems( 1, 9, 165, 60 );
+		this.showPizzaItems( 2, 12, 144, 70 );
 
 		this.rewardAreaShowUp();
 		this.showrewardAnimation();
