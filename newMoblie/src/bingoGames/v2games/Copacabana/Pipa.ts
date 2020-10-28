@@ -32,6 +32,8 @@ class Pipa extends V2Game{
     protected init(){
         super.init();
 
+        this.stretchBg();
+
         this.showNoBetAndCredit();
 
         this.extraUIObject.visible = true;
@@ -49,6 +51,17 @@ class Pipa extends V2Game{
         }
 
         this.ganhoCounter = new CopaGanhoCounter( this.showWinPopup.bind( this ) );
+    }
+
+    private stretchBg(){
+        let bg: egret.Bitmap = this.getChildAt( 0 ) as egret.Bitmap;
+        if( bg ){
+            bg.fillMode = egret.BitmapFillMode.SCALE;
+            bg.width = BingoBackGroundSetting.gameMask.width;
+            bg.height = BingoBackGroundSetting.gameMask.height;
+            return true;
+        }
+        return false;
     }
 
     protected showLastBall( ballIndex: number ): void{

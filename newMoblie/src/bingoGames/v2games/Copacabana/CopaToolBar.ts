@@ -7,7 +7,7 @@ class CopaToolBar extends BingoGameToolbar{
 	public constructor() {
 		super();
 
-		this.miniGameBtn = this.addBtn( "GameToolBar_json.btn_go", 1724, 22, GameCommands.showMini, this.playContainer );
+		this.miniGameBtn = this.addBtn( "btn_go", 1724, 22, GameCommands.showMini, this.playContainer, true );
 		this.addButtonText( this.miniGameBtn, GlobelSettings.language == "pt"? 22 : 25, "board" );
 	}
 

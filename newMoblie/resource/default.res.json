@@ -107,6 +107,10 @@
 		{
 			"keys": "lemon_BGM_mp3,lemon_cheese_mp3,lemon_choose_plate_mp3,lemon_ketchup_mp3,lemon_open_pizza_box_mp3,lemon_vegetable_mp3,menton_BGM_mp3,menton_ball_mp3,menton_bell_mp3,menton_extra_mp3,menton_roulette_mp3,menton_roulette_winner_mp3,menton_x120_mp3,menton_x250_mp3,menton_x30_mp3,menton_x4_mp3,menton_x500_mp3,menton_x80_mp3,menton_json,mentonGrid_json,lemonGame_json,mentonWheel_json,tomatoAnimation_json,wineText_json,bingoBeneAnimation_json,bingoBeneAnimation_png,menton_conf,forAll_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,Arial Black_fnt,Arial Black_png",
 			"name": "menton"
+		},
+		{
+			"keys": "bad_buff_mp3,chess_mp3,collect_bonus_mp3,dice_mp3,engine_mp3,nice_buff_mp3,pipa_ball_mp3,pipa_bgm_mp3,pipa_bomb_mp3,pipa_double_line_mp3,pipa_mark_pen_mp3,pipa_peel_mp3,pipa_singe_line_mp3,pipa_square_mp3,pipa_win_bingo_mp3,pipa_json,pipaAnimation_png,pipaAnimation_json,pipa_conf,copacabana_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,Arial Black_fnt,Arial Black_png",
+			"name": "pipa"
 		}
 	],
 	"resources": [
@@ -2115,6 +2119,107 @@
 			"type": "sheet",
 			"name": "wineText_json",
 			"subkeys": "wine_en_01,wine_en_02,wine_en_03,wine_en_04,wine_en_05,wine_es_01,wine_es_02,wine_es_03,wine_es_04,wine_es_05,wine_pt_01,wine_pt_02,wine_pt_03,wine_pt_04,wine_pt_05"
+		},
+		{
+			"url": "game/copacabana/sound/bad_buff.mp3",
+			"type": "sound",
+			"name": "bad_buff_mp3"
+		},
+		{
+			"url": "game/copacabana/sound/chess.mp3",
+			"type": "sound",
+			"name": "chess_mp3"
+		},
+		{
+			"url": "game/copacabana/sound/collect_bonus.mp3",
+			"type": "sound",
+			"name": "collect_bonus_mp3"
+		},
+		{
+			"url": "game/copacabana/sound/dice.mp3",
+			"type": "sound",
+			"name": "dice_mp3"
+		},
+		{
+			"url": "game/copacabana/sound/engine.mp3",
+			"type": "sound",
+			"name": "engine_mp3"
+		},
+		{
+			"url": "game/copacabana/sound/nice_buff.mp3",
+			"type": "sound",
+			"name": "nice_buff_mp3"
+		},
+		{
+			"url": "game/copacabana/sound/pipa_ball.mp3",
+			"type": "sound",
+			"name": "pipa_ball_mp3"
+		},
+		{
+			"url": "game/copacabana/sound/pipa_bgm.mp3",
+			"type": "sound",
+			"name": "pipa_bgm_mp3"
+		},
+		{
+			"url": "game/copacabana/sound/pipa_bomb.mp3",
+			"type": "sound",
+			"name": "pipa_bomb_mp3"
+		},
+		{
+			"url": "game/copacabana/sound/pipa_double_line.mp3",
+			"type": "sound",
+			"name": "pipa_double_line_mp3"
+		},
+		{
+			"url": "game/copacabana/sound/pipa_mark_pen.mp3",
+			"type": "sound",
+			"name": "pipa_mark_pen_mp3"
+		},
+		{
+			"url": "game/copacabana/sound/pipa_peel.mp3",
+			"type": "sound",
+			"name": "pipa_peel_mp3"
+		},
+		{
+			"url": "game/copacabana/sound/pipa_singe_line.mp3",
+			"type": "sound",
+			"name": "pipa_singe_line_mp3"
+		},
+		{
+			"url": "game/copacabana/sound/pipa_square.mp3",
+			"type": "sound",
+			"name": "pipa_square_mp3"
+		},
+		{
+			"url": "game/copacabana/sound/pipa_win_bingo.mp3",
+			"type": "sound",
+			"name": "pipa_win_bingo_mp3"
+		},
+		{
+			"url": "game/copacabana/pipaAnimation.png",
+			"type": "image",
+			"name": "pipaAnimation_png"
+		},
+		{
+			"url": "game/copacabana/pipaAnimation.json",
+			"type": "json",
+			"name": "pipaAnimation_json"
+		},
+		{
+			"url": "game/copacabana/pipa.json",
+			"type": "sheet",
+			"name": "pipa_json",
+			"subkeys": "arrow_30,arrow_l_en,arrow_l_es,arrow_l_pt,arrow_r_en,arrow_r_es,arrow_r_pt,ball_bg,ball_bg_01,ball_blue,ball_gray,ball_green,ball_library,ball_pink,ball_purple,ball_red,ball_silver,ball_yellow,bg,bg_db_line,big_ball_bg,big_ball_bg2,big_star,big_star_face,box_blue,box_green,box_green_blink,box_orange,box_red,box_white,buff_0,buff_1,buff_11,buff_2,buff_3,buff_4,buff_5,buff_6,buff_7,buff_8,buff_9,card_bg,confirm_bg,confirm_btn,cover_number,ex_bar,free_extra_ball_star,icon_add_ball,icon_add_ball_01,icon_add_ball_02,icon_mark,icon_mark_big,icon_x,jackpot_en,jackpot_es,jackpot_lock,jackpot_pt,loyalty_lock,marker_lightball,peel_01,peel_02,peel_03,yellow_point"
+		},
+		{
+			"url": "config/pipa.conf",
+			"type": "json",
+			"name": "pipa_conf"
+		},
+		{
+			"url": "config/lan/copacabana.tx",
+			"type": "json",
+			"name": "copacabana_tx"
 		}
 	]
 }
