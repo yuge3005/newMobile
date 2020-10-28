@@ -1,4 +1,4 @@
-class PipaToolBar extends GameToolBar{
+class PipaToolBar extends BingoGameToolbar{
 
 	private miniGameBtn: TouchDownButton;
 
@@ -7,19 +7,7 @@ class PipaToolBar extends GameToolBar{
 	public constructor() {
 		super();
 
-		this.removeChild( this.startAutoBtn );
-		this.removeChild( this.stopAutoBtn );
-		this.removeChild( this.playBtn );
-		this.removeChild( this.stopBtn );
-
-		this.playBtn = this.addBtn( "GameToolBar_json.play_big", 603, 23, GameCommands.play );
-		this.addButtonText( this.playBtn, 25, "play", 0, -3 );
-
-		this.stopBtn = this.addBtn( "GameToolBar_json.play_big", 603, 23, GameCommands.stop );
-		this.addButtonText( this.stopBtn, 25, "stop", 0, -3 );
-		this.stopBtn.visible = false;
-
-		this.miniGameBtn = this.addBtn( "GameToolBar_json.play_big", 603, 23, GameCommands.showMini );
+		this.miniGameBtn = this.addBtn( "GameToolBar_json.btn_go", 1724, 22, GameCommands.showMini, this.playContainer );
 		this.addButtonText( this.miniGameBtn, GlobelSettings.language == "pt"? 22 : 25, "board" );
 	}
 
@@ -76,8 +64,8 @@ class PipaToolBar extends GameToolBar{
 		}
 	}
 
-	public setBet( bet: number, cardNumber: number, isMaxBet: boolean, isMaxCards: boolean ){
-		super.setBet( bet, cardNumber, isMaxBet, isMaxCards );
+	public setBet( bet: number, cardNumber: number, isMaxBet: boolean ){
+		super.setBet( bet, cardNumber, isMaxBet );
 
 		if( this.betLocked ){
 			this.maxBetBtn.enabled = false;

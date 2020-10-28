@@ -14,7 +14,7 @@ class Pipa extends V2Game{
 
     public constructor( assetsPath: string ) {
         super( "pipa.conf", assetsPath, 68 );
-        this.ptFilterConfig = "pipa_filt";
+        this.languageObjectName = "copacabana_tx";
 
         this.gratisUIIsOverExtraUI = true;
         PaytableUI.textBold = true;
@@ -22,63 +22,15 @@ class Pipa extends V2Game{
         CardManager.cardType = CopacabanaCard;
         CardManager.gridType = CopacabanaGird;
 
-        TowerGrid.blink1PicName = "box_green";
-        TowerGrid.blink2PicName = "box_green_blink";
-        TowerGrid.defaultBgPicName = "box_white";
-        TowerGrid.onEffBgPicName = "box_blue";
-        TowerGrid.linePicName = "box_red";
+        CardGrid.defaultNumberSize = 44;
 
-        CardGrid.defaultBgColor = 0xFFFFFF;
-        CardGrid.defaultNumberSize = 25;
-
-        CardGrid.blinkColors1 = 0x19BF0E;
-        CardGrid.blinkColors2 = 0x19BF0E;
         GameCard.useRedEffect = true;
 
         BallManager.normalBallInterval = 40;
-
-        let languageText = GameUIItem.languageText;
-        languageText["accept"] = { en: "Accept", es: "Aceptar", pt: "Aceitar" };
-        languageText["rounds"] = { en: "rounds", es: "rondas", pt: "rodadas" };
-        languageText["rollAgain"] = { en: "Roll the dice again", es: "Juega el dado de nuevo", pt: "Jogue o dado novamente" };
-        languageText["doubleDuration"] = { en: "Double power duration", es: "Doblar el tiempo del poder", pt: "Dobre o tempo do poder" };
-        languageText["RollDice"] = { en: "ROLL", es: "Juega", pt: "Jogue" };
-        languageText["go"] = { en: "GO!", es: "¡VA!", pt: "VAI!" };
-        languageText["choose"] = { en: "Choose", es: "Eligir", pt: "Escolher" };
-        languageText["vip"] = { en: "vip", es: "vip", pt: "vip" };
-        languageText["coming_soon"] = { en: "Coming soon...", es: "En Breve...", pt: "Em Breve..." };
-
-        languageText["no_bonus"] = { en: "Better luck next time", es: "Buena suerte en la próxima", pt: "Boa Sorte na Próxima" };
-        languageText["portuguese_stone"] = { en: "Portuguese Stone", es: "Piedra portuguesa", pt: "Pedra Portuguesa" };
-        languageText["wiz_beach_soccer"] = { en: "Wiz beach Soccer", es: "Crack de la Arena", pt: "Craque da Areia" };
-        languageText["divine_shell"] = { en: "Divine Shell", es: "Divina Concha", pt: "Divina Concha" };
-        languageText["rainbow"] = { en: "Rainbow", es: "Arco iris", pt: "Arco íris" };
-        languageText["cold_coconut"] = { en: "Cold coconut", es: "Coco helado", pt: "Coco Gelado" };
-        languageText["magic_ball"] = { en: "Magic Ball", es: "Bola Mágica", pt: "Bola Mágica" };
-        languageText["umbrella_beach"] = { en: "Sunscreen", es: "Protector solar", pt: "Protetor Solar" };
-        languageText["ball_fish"] = { en: "Ball Fish", es: "Pez Bola", pt: "Peixe Bola" };
-        languageText["seaquake"] = { en: "Water Ball", es: "Bola de agua", pt: "Bexiga de água" };
-        languageText["currency"] = { en: "Currency name", es: "Currency name", pt: "Currency name" };
-        languageText["jet_sprint"] = { en: "Jet Sprint", es: "Corrida de Lancha", pt: "Corrida de Lanchas" };
-
-        languageText["change"] = { en: "Change", es: "Cambiar", pt: "Trocar" };
-        languageText["don't change"] = { en: "Don't change", es: "No cambiar", pt: "Não trocar" };
-        languageText["if want change"] = { en: "If you change your bet during spin without buff,\n the counter will return to the begin",
-            es: "Si usted cambia la apuesta durante las partidas\n sin poderes, el marcador\n luminoso regresará al principio",
-            pt: "Se você trocar a aposta durante as partidas\n sem poderes, o marcador\n luminoso retornará ao início" };
-        languageText["cann't change"] = { en: "The bet can not be changed during the buff session",
-            es: "Durante la utilización de cualquier beneficio,\n no podrás cambiar la apuesta",
-            pt: "Durante a utilização de qualquer poder a aposta\n não poderá ser alterada" };
-        languageText["click_to_continue"] = { en: "Click to continue", es: "Haga Clic para continuar", pt: "Clique para continuar" };
-
-        GameToolBar.toolBarY = 474;
-        BingoBackGroundSetting.defaultScale = false;
     }
 
     protected init(){
         super.init();
-
-        CopacabanaGird.mcf = this._mcf;
 
         this.showNoBetAndCredit();
 
@@ -129,7 +81,7 @@ class Pipa extends V2Game{
             if( !this.buffBallBg1.visible || this.currentBallIndex > 36 ){
                 let path: Array<Object> = BallManager["balls"][this.currentBallIndex-1]["path"];
                 let pt: Object = path[path.length-1];
-                let mc: egret.MovieClip = Com.addMovieClipAt( this, this._mcf, "star", pt["x"] - 132, pt["y"] - 102 );
+                let mc: egret.MovieClip = Com.addMovieClipAt( this, MDS.mcFactory, "star", pt["x"] - 132, pt["y"] - 102 );
                 mc.gotoAndPlay( 1, 1 );
             }
         }
@@ -141,7 +93,7 @@ class Pipa extends V2Game{
         if( this.runningBallUI && ( this.runningBallContainer ).contains( this.runningBallUI ) ){
             ( this.runningBallContainer ).removeChild( this.runningBallUI );
         }
-        this.runningBallUI = this.ballArea.getABigBall( ballIndex, "_small", 60 );
+        this.runningBallUI = this.ballArea.getABigBall( ballIndex );
         Com.addObjectAt( this.runningBallContainer, this.runningBallUI, x, y );
 
         clearTimeout( this.timeoutId );
@@ -161,14 +113,6 @@ class Pipa extends V2Game{
 
         this.addChild( this.runningBallContainer );
 
-        this.removeChild( this.gameToolBar );
-        this.gameToolBar = new PipaToolBar;
-        this.gameToolBar.minCardCount = 4;
-        Com.addObjectAt( this, this.gameToolBar, 0, GameToolBar.toolBarY );
-        this.gameToolBar.showTip( "" );
-        this.resetGameToolBarStatus();
-        this.addChild( this.pussleProcessBar );
-
         this.letsPipa( data );
         ( this.gameToolBar as PipaToolBar ).setMiniButton( this.bufLeftTurns == 0 );
 
@@ -176,6 +120,18 @@ class Pipa extends V2Game{
             RES.loadGroup( "bingoPipa" );
         }catch(e){}
     }
+
+    protected initToolbar(){
+        this.gameToolBar = new PipaToolBar;
+		Com.addObjectAt( this, this.gameToolBar, 0, BingoGameToolbar.toolBarY );
+        this.gameToolBar.showTip( "" );
+
+		this.topbar = new Topbar;
+		this.addChild( this.topbar );
+		
+		this.topbar.scaleX = this.gameToolBar.scaleX = BingoBackGroundSetting.gameMask.width / 2000;
+		this.topbar.scaleY = this.gameToolBar.scaleY = BingoBackGroundSetting.gameMask.height / 1125;
+	}
 
     /******************************************************************************************************************************************************************/
 

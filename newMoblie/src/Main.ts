@@ -49,7 +49,7 @@ class Main extends egret.DisplayObjectContainer {
     }
 
 	private showGame(){
-		this.currentGame = new BingoBene("resource/default.res.json");
+		this.currentGame = new Pipa("resource/default.res.json");
 
 		const loadingView = new LoadingUI();
 		this.currentGame.preLoader = loadingView;

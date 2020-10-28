@@ -1,0 +1,64 @@
+{"bet":{"en":"BET","pt":"APOSTA","es":"APUESTA"}
+,"credit":{"en":"CREDIT", "es":"CRÉDITO","pt":"CRÉDITO"}
+		,"card":{"en":"CARD","es": "TARJETA", "pt":"CARTELA"}
+		,"select cards":{"en":"Select Cards.", "es":"Seleccione Tarjeta.","pt":"Selecione Cartões."}
+		,"pulse game":{"en":"Pulse Game.", "es":"Juego de pulso.","pt": "Pulse Jogue."}
+		,"good luck":{"en": "GOOD LUCK","es": "BUENA SUERTE","pt": "BOA SORTE"}
+		,"extra ball":{"en": "EXTRA BALL ?", "es":"BOLA EXTRA ?","pt": "BOLA EXTRA ?"}
+		,"play extra":{"en": "Play Extra Ball", "es":"Bola del juego extra", "pt":"Aperte Bola Extra"}
+		,"win":{ "en":"WIN","es": "GANÕ","pt": "GANHO"}
+		,"jackpot":{"en":"JACKPOT", "es":"JACKPOT", "pt":"ACUMULADO"}
+		,"prize":{"en":"PRIZE","es": "PRÉMIO", "pt":"PRÉMIO"}
+		,"jackpot_tooltip":{"en":"Your current bet does not qualify\nPlease increase your bet to {1}\nand play {2} cards",
+			"es":"Su apuesta actual no cualifica.\nPor favor,aumente su apuesta\npara {1} y juega con {2} tarjetas.", 
+			"pt":"Sua aposta atual não se qualifica.\nPor favor,aumente sua aporta\npara {1} e jogue com {2} cartas."}
+		,"max":{"en": "MAX", "es": "MAX", "pt": "MAX" }
+        ,"play":{"en": "PLAY", "es": "JUGAR", "pt": "JOGAR" }
+		,"stop":{"en": "STOP", "es": "PARAR", "pt": "PARAR" }
+		,"collect":{"en": "COLLECT", "es": "RECOGER", "pt": "COLETAR" }
+		,"total bet":{"en": "TOTAL BET", "es": "APUETA TOTAL", "pt": "APOSTA TOTAL" }
+		,"free":{"en": "FREE", "es": "GRATIS", "pt": "GRATIS" }
+		,"hold for auto":{"en": "HOLD FOR\nAUTOPLAY", "es": "PRESSIONE\nPARA AUTO", "pt": "PRESSIONE\nPARA AUTO" }
+		,"bingo":{ "en": "Bingo", "es": "Bingo", "pt": "Bingo" }
+		,"double":{ "en": "Double", "es": "Doble", "pt": "Dupla" }
+		,"line":{ "en": "Line", "es": "Línea", "pt": "Linha" }
+		,"extraball":{ "en": "Extra Ball", "es": "Pelota Extra", "pt": "Bola Extra" }
+		,"extra":{ "en": "Extra", "es": "Extra", "pt": "Extra" }
+		,"mega":{ "en": "mega", "es": "mega", "pt": "mega" }
+		,"click to stop":{ "en": "CLICK TO STOP", "es": "HAGA CLIC PARA PARAR AUTO", "pt": "CLIQUE PARA PARAR AUTO" }
+		,"auto":{ "en": "auto", "es": "auto", "pt": "auto" }
+		,"bank":{ "en": "BANK", "es": "BANCO", "pt": "BANCO" }
+		,"buy all":{ "en": "BUY ALL", "es": "COMPRAR TODAS", "pt": "COMPRAR TODAS" }
+		,"coins":{ "en": "COINS", "es": "MONEDAS", "pt": "MOEDAS" }
+		,"dinero":{ "en": "DINERO", "es": "PLATAS", "pt": "DOLETAS" }
+		,"accept":{ "en": "Accept", "es": "Aceptar", "pt": "Aceitar" }
+        ,"rounds":{ "en": "rounds", "es": "rondas", "pt": "rodadas" }
+        ,"rollAgain":{ "en": "Roll the dice again", "es": "Juega el dado de nuevo", "pt": "Jogue o dado novamente" }
+        ,"doubleDuration":{ "en": "Double power duration", "es": "Doblar el tiempo del poder", "pt": "Dobre o tempo do poder" }
+        ,"RollDice":{ "en": "ROLL", "es": "Juega", "pt": "Jogue" }
+        ,"go":{ "en": "GO!", "es": "¡VA!", "pt": "VAI!" }
+        ,"choose":{ "en": "Choose", "es": "Eligir", "pt": "Escolher" }
+        ,"vip":{ "en": "vip", "es": "vip", "pt": "vip" }
+        ,"coming_soon":{ "en": "Coming soon...", "es": "En Breve...", "pt": "Em Breve..." }
+        ,"no_bonus":{ "en": "Better luck next time", "es": "Buena suerte en la próxima", "pt": "Boa Sorte na Próxima" }
+        ,"portuguese_stone":{ "en": "Portuguese Stone", "es": "Piedra portuguesa", "pt": "Pedra Portuguesa" }
+        ,"wiz_beach_soccer":{ "en": "Wiz beach Soccer", "es": "Crack de la Arena", "pt": "Craque da Areia" }
+        ,"divine_shell":{ "en": "Divine Shell", "es": "Divina Concha", "pt": "Divina Concha" }
+        ,"rainbow":{ "en": "Rainbow", "es": "Arco iris", "pt": "Arco íris" }
+        ,"cold_coconut":{ "en": "Cold coconut", "es": "Coco helado", "pt": "Coco Gelado" }
+        ,"magic_ball":{ "en": "Magic Ball", "es": "Bola Mágica", "pt": "Bola Mágica" }
+        ,"umbrella_beach":{ "en": "Sunscreen", "es": "Protector solar", "pt": "Protetor Solar" }
+        ,"ball_fish":{ "en": "Ball Fish", "es": "Pez Bola", "pt": "Peixe Bola" }
+        ,"seaquake":{ "en": "Water Ball", "es": "Bola de agua", "pt": "Bexiga de água" }
+        ,"currency":{ "en": "Currency name", "es": "Currency name", "pt": "Currency name" }
+        ,"jet_sprint":{ "en": "Jet Sprint", "es": "Corrida de Lancha", "pt": "Corrida de Lanchas" }
+        ,"change":{ "en": "Change", "es": "Cambiar", "pt": "Trocar" }
+        ,"don't change":{ "en": "Don't change", "es": "No cambiar", "pt": "Não trocar" }
+        ,"if want change":{ "en": "If you change your bet during spin without buff,\n the counter will return to the begin",
+            "es": "Si usted cambia la apuesta durante las partidas\n sin poderes, el marcador\n luminoso regresará al principio",
+            "pt": "Se você trocar a aposta durante as partidas\n sem poderes, o marcador\n luminoso retornará ao início" }
+        ,"cann't change":{ "en": "The bet can not be changed during the buff session",
+            "es": "Durante la utilización de cualquier beneficio,\n no podrás cambiar la apuesta",
+            "pt": "Durante a utilização de qualquer poder a aposta\n não poderá ser alterada" }
+        ,"click_to_continue":{ "en": "Click to continue", "es": "Haga Clic para continuar", "pt": "Clique para continuar" }
+			}
