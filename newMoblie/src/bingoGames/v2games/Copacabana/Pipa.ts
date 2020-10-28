@@ -41,7 +41,6 @@ class Pipa extends V2Game{
         this.runningBallContainer = new egret.DisplayObjectContainer;
 
         this.buildSuperEbArea( "big_ball_bg2", 331, 343 );
-        CopacabanaGird.rangeColors = [ 0x0b5ff2, 0x27a00d, 0x8a0eaf, 0xbd0a0e, 0xc8800d, 0xE193B1 ];
 
         this.ganhoCounter = new CopaGanhoCounter( this.showWinPopup.bind( this ) );
     }

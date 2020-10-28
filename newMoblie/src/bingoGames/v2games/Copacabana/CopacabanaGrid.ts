@@ -8,7 +8,7 @@ class CopacabanaGird extends TowerGrid{
 
 	public static showBinkColor: boolean;
 
-	public static rangeColors: Array<number>;
+	public static rangeColors: Array<number> = [ 0x0b5ff2, 0x27a00d, 0x8a0eaf, 0xbd0a0e, 0xc8800d, 0xE193B1 ];
 
 	public constructor() {
 		super();
