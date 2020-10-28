@@ -1976,97 +1976,97 @@
 			"name": "prakaramba_conf"
 		},
 		{
-			"url": "game/menton/sound/lemon_BGM.mp3",
+			"url": "game/bingobene/sound/lemon_BGM.mp3",
 			"type": "sound",
 			"name": "lemon_BGM_mp3"
 		},
 		{
-			"url": "game/menton/sound/lemon_cheese.mp3",
+			"url": "game/bingobene/sound/lemon_cheese.mp3",
 			"type": "sound",
 			"name": "lemon_cheese_mp3"
 		},
 		{
-			"url": "game/menton/sound/lemon_choose_plate.mp3",
+			"url": "game/bingobene/sound/lemon_choose_plate.mp3",
 			"type": "sound",
 			"name": "lemon_choose_plate_mp3"
 		},
 		{
-			"url": "game/menton/sound/lemon_ketchup.mp3",
+			"url": "game/bingobene/sound/lemon_ketchup.mp3",
 			"type": "sound",
 			"name": "lemon_ketchup_mp3"
 		},
 		{
-			"url": "game/menton/sound/lemon_open_pizza_box.mp3",
+			"url": "game/bingobene/sound/lemon_open_pizza_box.mp3",
 			"type": "sound",
 			"name": "lemon_open_pizza_box_mp3"
 		},
 		{
-			"url": "game/menton/sound/lemon_vegetable.mp3",
+			"url": "game/bingobene/sound/lemon_vegetable.mp3",
 			"type": "sound",
 			"name": "lemon_vegetable_mp3"
 		},
 		{
-			"url": "game/menton/sound/menton_BGM.mp3",
+			"url": "game/bingobene/sound/menton_BGM.mp3",
 			"type": "sound",
 			"name": "menton_BGM_mp3"
 		},
 		{
-			"url": "game/menton/sound/menton_ball.mp3",
+			"url": "game/bingobene/sound/menton_ball.mp3",
 			"type": "sound",
 			"name": "menton_ball_mp3"
 		},
 		{
-			"url": "game/menton/sound/menton_bell.mp3",
+			"url": "game/bingobene/sound/menton_bell.mp3",
 			"type": "sound",
 			"name": "menton_bell_mp3"
 		},
 		{
-			"url": "game/menton/sound/menton_extra.mp3",
+			"url": "game/bingobene/sound/menton_extra.mp3",
 			"type": "sound",
 			"name": "menton_extra_mp3"
 		},
 		{
-			"url": "game/menton/sound/menton_roulette.mp3",
+			"url": "game/bingobene/sound/menton_roulette.mp3",
 			"type": "sound",
 			"name": "menton_roulette_mp3"
 		},
 		{
-			"url": "game/menton/sound/menton_roulette_winner.mp3",
+			"url": "game/bingobene/sound/menton_roulette_winner.mp3",
 			"type": "sound",
 			"name": "menton_roulette_winner_mp3"
 		},
 		{
-			"url": "game/menton/sound/menton_x120.mp3",
+			"url": "game/bingobene/sound/menton_x120.mp3",
 			"type": "sound",
 			"name": "menton_x120_mp3"
 		},
 		{
-			"url": "game/menton/sound/menton_x250.mp3",
+			"url": "game/bingobene/sound/menton_x250.mp3",
 			"type": "sound",
 			"name": "menton_x250_mp3"
 		},
 		{
-			"url": "game/menton/sound/menton_x30.mp3",
+			"url": "game/bingobene/sound/menton_x30.mp3",
 			"type": "sound",
 			"name": "menton_x30_mp3"
 		},
 		{
-			"url": "game/menton/sound/menton_x4.mp3",
+			"url": "game/bingobene/sound/menton_x4.mp3",
 			"type": "sound",
 			"name": "menton_x4_mp3"
 		},
 		{
-			"url": "game/menton/sound/menton_x500.mp3",
+			"url": "game/bingobene/sound/menton_x500.mp3",
 			"type": "sound",
 			"name": "menton_x500_mp3"
 		},
 		{
-			"url": "game/menton/sound/menton_x80.mp3",
+			"url": "game/bingobene/sound/menton_x80.mp3",
 			"type": "sound",
 			"name": "menton_x80_mp3"
 		},
 		{
-			"url": "game/menton/menton.json",
+			"url": "game/bingobene/menton.json",
 			"type": "sheet",
 			"name": "menton_json",
 			"subkeys": "Wine_barrel_bg,bg,bg_bigball,bg_bigball_export,bg_extraball,big_ball,card,card_bell,card_square,card_square_blue,card_square_dark_blue,channel,cover_big_ball,extra_ball_en,extra_ball_es,extra_ball_pt,free_eb,jackpot_bg,jackpot_en,jackpot_es,jackpot_line,jackpot_lock,jackpot_pt,megaball_bg,pattern_01,pattern_02,pattern_03,pattern_04,pattern_05,pattern_06,pattern_07,pattern_color,pattern_frame,pattern_half"
@@ -2077,41 +2077,41 @@
 			"name": "menton_conf"
 		},
 		{
-			"url": "game/menton/mentonGrid.json",
+			"url": "game/bingobene/mentonGrid.json",
 			"type": "sheet",
 			"name": "mentonGrid_json",
 			"subkeys": "blue_square,card_blue,card_green,card_pink,card_red,green_square,orange_square,pink_square,pizza,purple_line,purple_square,yellow_square"
 		},
 		{
-			"url": "game/menton/lemonGame.json",
+			"url": "game/bingobene/lemonGame.json",
 			"type": "sheet",
 			"name": "lemonGame_json",
 			"subkeys": "1_rounds,2_rounds,3_rounds,4_rounds,5_rounds,bg,bg_cake,box_close,box_open,cheese_01,cheese_02,cheese_03,green_pepper,ham,icon_end,ketchup_01,ketchup_02,ketchup_03,mushroom,pizza_cheese_01,pizza_cheese_02,pizza_cheese_03,pizza_cheese_04,pizza_cheese_05,pizza_cheese_06,pizza_cheese_07,pizza_cheese_08,pizza_cheese_09,pizza_ketchup_01,pizza_ketchup_02,pizza_ketchup_03,pizza_vegetable_01,pizza_vegetable_02,pizza_vegetable_03,pizza_vegetable_04,pizza_vegetable_05,pizza_vegetable_06,pizza_vegetable_07,pizza_vegetable_08,pizza_vegetable_09,pizza_vegetable_10,pizza_vegetable_11,pizza_vegetable_12,plate_back,plate_knife,plate_scissors,tomato,track,track_frame,vegetable_01,vegetable_02,vegetable_03"
 		},
 		{
-			"url": "game/menton/mentonWheel.json",
+			"url": "game/bingobene/mentonWheel.json",
 			"type": "sheet",
 			"name": "mentonWheel_json",
 			"subkeys": "bell,icon_wheel,wheel,wheel_fan_shaped,wheel_pointer,wheel_x2bg,x2_small"
 		},
 		{
-			"url": "game/menton/bingoBeneAnimation.png",
+			"url": "game/bingobene/bingoBeneAnimation.png",
 			"type": "image",
 			"name": "bingoBeneAnimation_png"
 		},
 		{
-			"url": "game/menton/bingoBeneAnimation.json",
+			"url": "game/bingobene/bingoBeneAnimation.json",
 			"type": "json",
 			"name": "bingoBeneAnimation_json"
 		},
 		{
-			"url": "game/menton/tomatoAnimation.json",
+			"url": "game/bingobene/tomatoAnimation.json",
 			"type": "sheet",
 			"name": "tomatoAnimation_json",
 			"subkeys": "tomato_01,tomato_02,tomato_03,tomato_bg,tomato_juice"
 		},
 		{
-			"url": "game/menton/wineText.json",
+			"url": "game/bingobene/wineText.json",
 			"type": "sheet",
 			"name": "wineText_json",
 			"subkeys": "wine_en_01,wine_en_02,wine_en_03,wine_en_04,wine_en_05,wine_es_01,wine_es_02,wine_es_03,wine_es_04,wine_es_05,wine_pt_01,wine_pt_02,wine_pt_03,wine_pt_04,wine_pt_05"
