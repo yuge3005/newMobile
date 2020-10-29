@@ -1,4 +1,3 @@
-
 class CopaBoat extends egret.DisplayObjectContainer {
     private static SCROLL_OVER: string = "SCROLL_OVER";
     public static GET_TURBO: string = "GET_TURBO";

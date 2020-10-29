@@ -1,7 +1,7 @@
-class PipaDice extends egret.DisplayObjectContainer {
+class CopaDice extends egret.DisplayObjectContainer {
     public static RUN_OVER: string = "RUN_OVER";
 
-    public movieClip: egret.MovieClip;    
+    public movieClip: egret.MovieClip;
     public defaultPosition: Object;
 
     private startPosition: Object;
@@ -29,7 +29,7 @@ class PipaDice extends egret.DisplayObjectContainer {
     }
 
     private runOver(): void {
-        this.dispatchEvent(new egret.Event(PipaDice.RUN_OVER));
+        this.dispatchEvent(new egret.Event(CopaDice.RUN_OVER));
     }
 
     public reset(): void {

@@ -5,8 +5,8 @@ class CopaChess extends egret.DisplayObjectContainer {
 
     public buffIconConfig: Array<Object>;
 
-    private leftDice: PipaDice;
-    private rightDice: PipaDice;
+    private leftDice: CopaDice;
+    private rightDice: CopaDice;
 
     private noBonusContainer: egret.DisplayObjectContainer;
     private noBonusText: egret.TextField;
@@ -115,8 +115,8 @@ class CopaChess extends egret.DisplayObjectContainer {
         // dice movieclip factory
         let diceMovieClipFactory = new egret.MovieClipDataFactory(RES.getRes("pipa_dice_json"), RES.getRes("pipa_dice_png"));
         // dices
-        this.leftDice = new PipaDice(diceMovieClipFactory, { x: 161, y: 130 });
-        this.rightDice = new PipaDice(diceMovieClipFactory, { x: 520, y: 95 });
+        this.leftDice = new CopaDice(diceMovieClipFactory, { x: 161, y: 130 });
+        this.rightDice = new CopaDice(diceMovieClipFactory, { x: 520, y: 95 });
         this.leftDice.frameRate = this.rightDice.frameRate = 72;
         this.leftDice.scaleX = this.leftDice.scaleY = this.rightDice.scaleX = this.rightDice.scaleY = 0.9;
         this.leftDice.visible = this.rightDice.visible = false;
@@ -483,7 +483,7 @@ class CopaChess extends egret.DisplayObjectContainer {
         // dice animation
         this.leftDice.runTo({ x: 326, y: 177 });
         this.rightDice.runTo({ x: 364, y: 199 });
-        this.rightDice.once(PipaDice.RUN_OVER, function (points: Array<number>) {
+        this.rightDice.once(CopaDice.RUN_OVER, function (points: Array<number>) {
             this.pointText.visible = true;
 
             this.setChildIndex(this.leftDice, this.leftDice["selfIndex"]);
