@@ -22,23 +22,23 @@ class CopacabanaGird extends TowerGrid{
 	}
 
 	public set currentBgPic( value ){
-		if( this._currentBgPic && this.contains( this._currentBgPic ) )this.removeChild( this._currentBgPic );
 		if( value == this.linePic ){
-			if( !this.waveMc )this.waveMc = Com.addMovieClipAt( this, MDS.mcFactory, "gridWave", 0, 0 );
+			if( !this.waveMc ) this.waveMc = Com.addMovieClipAt( this, MDS.mcFactory, "gridWave", 0, 0 );
 			if( !this.contains( this.waveMc ) ){
 				this.waveMc.gotoAndStop(1);
 			}
-			this.addChildAt( this.waveMc, 0 );
+			this.addChild( this.waveMc );
+			this.addChild( this.numTxt );
 		}
 		else{
 			if( !this.contains( this.waveMc ) ){
 				this._currentBgPic = value;
-				this.addChildAt( this._currentBgPic, 0 );
+				this.flushGrid();
 			}
 			else if( this.contains( this.waveMc ) && CopacabanaGird.needClear ){
 				this.removeChild( this.waveMc );
 				this._currentBgPic = value;
-				this.addChildAt( this._currentBgPic, 0 );
+				this.flushGrid();
 			}
 		}
 	}
