@@ -40,7 +40,7 @@ class Copacabana extends V2Game{
 
         this.extraUIObject.visible = true;
 
-        this.buildSuperEbArea( "big_ball_bg2", 331, 343 );
+        this.buildSuperEbArea( "big_ball_bg2", 875, 673 );
 
         this.ganhoCounter = new CopaGanhoCounter( this.showWinPopup.bind( this ) );
     }
