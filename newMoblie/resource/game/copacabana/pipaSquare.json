@@ -1,0 +1,6 @@
+{"file":"pipaSquare.png","frames":{
+"bg":{"x":1,"y":1,"w":145,"h":120,"offX":0,"offY":0,"sourceW":145,"sourceH":120},
+"square":{"x":418,"y":1,"w":34,"h":34,"offX":0,"offY":0,"sourceW":34,"sourceH":34},
+"title_en":{"x":148,"y":59,"w":257,"h":56,"offX":0,"offY":0,"sourceW":257,"sourceH":56},
+"title_es":{"x":148,"y":117,"w":264,"h":47,"offX":0,"offY":0,"sourceW":264,"sourceH":47},
+"title_pt":{"x":148,"y":1,"w":268,"h":56,"offX":0,"offY":0,"sourceW":268,"sourceH":56}}}
