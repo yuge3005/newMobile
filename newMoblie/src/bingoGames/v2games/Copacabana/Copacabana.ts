@@ -384,8 +384,8 @@ class Copacabana extends V2Game{
         this.buffBallPositions = [];
         this.buffBallPositions[0] = balls[34]["path"];
         this.buffBallPositions[1] = balls[35]["path"];
-        this.buffBallBg1 = this.getChildByName( this.assetStr("icon_add_ball_01") ) as egret.Bitmap;
-        this.buffBallBg2 = this.getChildByName( this.assetStr("icon_add_ball_02") ) as egret.Bitmap;
+        this.buffBallBg1 = Com.addBitmapAt( this, this.assetStr("icon_add_ball"), 769, 673 );
+        this.buffBallBg2 = Com.addBitmapAt( this, this.assetStr("icon_add_ball"), 1149, 673 );
         this.showAditionBall( false );
     }
 
