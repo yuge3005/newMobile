@@ -33,27 +33,15 @@ class Pipa extends V2Game{
         super.init();
 
         this.stretchBg();
+        this.horBallBg();
 
         this.showNoBetAndCredit();
 
         this.extraUIObject.visible = true;
 
-        this.runningBallContainer = new egret.DisplayObjectContainer;
-
         this.buildSuperEbArea( "big_ball_bg2", 331, 343 );
 
         this.ganhoCounter = new CopaGanhoCounter( this.showWinPopup.bind( this ) );
-    }
-
-    private stretchBg(){
-        let bg: egret.Bitmap = this.getChildAt( 0 ) as egret.Bitmap;
-        if( bg ){
-            bg.fillMode = egret.BitmapFillMode.SCALE;
-            bg.width = BingoBackGroundSetting.gameMask.width;
-            bg.height = BingoBackGroundSetting.gameMask.height;
-            return true;
-        }
-        return false;
     }
 
     protected showLastBall( ballIndex: number ): void{
@@ -106,6 +94,7 @@ class Pipa extends V2Game{
     protected onServerData( data: Object ){
         super.onServerData( data );
 
+        this.runningBallContainer = new egret.DisplayObjectContainer;
         Com.addObjectAt( this, this.runningBallContainer, 878, 676 );
 
         this.letsPipa( data );
@@ -1031,6 +1020,26 @@ class Pipa extends V2Game{
         let isOOC: boolean = Number( this.dinero ) < num;
         if( isOOC ) this.dispatchEvent(new egret.Event("out_of_dinero"));
         return isOOC;
+    }
+
+    private stretchBg(){
+        let bg: egret.Bitmap = this.getChildAt( 0 ) as egret.Bitmap;
+        if( bg ){
+            bg.fillMode = egret.BitmapFillMode.SCALE;
+            bg.width = BingoBackGroundSetting.gameMask.width;
+            bg.height = BingoBackGroundSetting.gameMask.height;
+            return true;
+        }
+        return false;
+    }
+
+    private horBallBg(){
+        let ballBg: egret.Bitmap = this.getChildByName( this.assetStr( "ball_library" ) ) as egret.Bitmap;
+        let newBallBg: egret.DisplayObjectContainer = new egret.DisplayObjectContainer;
+        this.addChildAt( newBallBg, this.getChildIndex( ballBg ) );
+        newBallBg.addChild( ballBg );
+        let hor: egret.Bitmap = Com.addBitmapAt( newBallBg, this.assetStr( "ball_library" ), ballBg.x + ballBg.width * 2 - 1, ballBg.y );
+        hor.scaleX = -1;
     }
 
     /******************************************************************************************************************************************************************/    
