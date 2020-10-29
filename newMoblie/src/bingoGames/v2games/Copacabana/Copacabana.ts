@@ -27,6 +27,7 @@ class Copacabana extends V2Game{
         GameCard.useRedEffect = true;
 
         BallManager.normalBallInterval = 40;
+        BallManager.ballOffsetY = 8;
     }
 
     protected init(){
@@ -1049,23 +1050,6 @@ class Copacabana extends V2Game{
         let jkText: egret.Bitmap = Com.addBitmapAt( this, this.assetStr( "jackpot_" + GlobelSettings.language ), 551 + 35, 12 + 13 );
         jkText.anchorOffsetX = jkText.width >> 1;
         jkText.anchorOffsetY = jkText.height >> 1;
-    }
-
-    protected getPaytablesFit( paytabledName: string, callback: Function = null ): void{
-        let soundName = "";
-        switch (paytabledName) {
-            case "double_line": soundName = "pipa_double_line_mp3"; break;
-            case "double_line2": soundName = "pipa_double_line_mp3"; break;
-            case "square": soundName = "pipa_square_mp3"; break;
-            case "bingo": soundName = "pipa_win_bingo_mp3"; break;
-            case "line": soundName = "pipa_singe_line_mp3"; break;
-            default: break;
-        }
-        if (SoundManager.soundOn && soundName !== "") {
-            this.playSound(soundName, 1, callback);
-        } else {
-            callback();
-        }
     }
 
     protected afterCheck( resultList: Array<Object> ): void{
