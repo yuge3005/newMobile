@@ -82,10 +82,8 @@ class Copacabana extends V2Game{
         }
 
         clearTimeout( this.timeoutId );
-        if( this.currentBallIndex >= 40 ){
-            if( !this.buffBallBg1.visible || this.currentBallIndex > 42 ){
-                this.timeoutId = setTimeout( this.clearRunningBallUI.bind( this ), 1500 );
-            }
+        if( this.isMegaBall ){
+            this.timeoutId = setTimeout( this.clearRunningBallUI.bind( this ), 1500 );
         }
 
         this.playSound("pipa_ball_mp3");
