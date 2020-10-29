@@ -234,7 +234,6 @@ class PipaBoat extends egret.DisplayObjectContainer {
         this.goBtn.width = 220;
         this.goBtn.height = 73;
         this.goBtn.touchEnabled = true;
-        mouse.setButtonMode(this.goBtn, true);
         this.goBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.getPower, this);
         Com.addObjectAt(this.speedBar, this.goBtn, 389, 5);
         // bg
@@ -244,7 +243,7 @@ class PipaBoat extends egret.DisplayObjectContainer {
         goBtnText.fontFamily = "LuckiestGuy";
         goBtnText.verticalAlign = "middle";
         goBtnText.textColor = 0xFFFFFF;
-        goBtnText.text = GameUIItem.languageText["go"][GlobelSettings.language];
+        goBtnText.text = MuLang.getText( "go" );
         // go btn trigger
         this.goBtn["trigger"] = function (bg: egret.Bitmap, enable: boolean) {
             bg.texture = RES.getRes(this.assetJson + (enable ? ".btn_go": ".btn_go_dark"));
@@ -287,7 +286,7 @@ class PipaBoat extends egret.DisplayObjectContainer {
             this.prizeMaxText[i].textColor = 0xFFFFFF;
             this.prizeMaxText[i].skewX = 10;
             if (i !== 0) {
-                this.prizeMaxText[i].text = GameUIItem.languageText["coming_soon"][GlobelSettings.language];
+                this.prizeMaxText[i].text = MuLang.getText( "coming_soon" );
             }
             // boat icon
             Com.addBitmapAt(this.choicePrizeCard[i], this.assetJson + boatsAssets[i], 11, 73);
@@ -296,7 +295,6 @@ class PipaBoat extends egret.DisplayObjectContainer {
             choiceBtn.width = 155;
             choiceBtn.height = 51;
             choiceBtn.touchEnabled = true;
-            mouse.setButtonMode(choiceBtn, true);
             choiceBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.choicePrize.bind(this, i), this);
             Com.addObjectAt(this.choicePrizeCard[i], choiceBtn, 25, 190);
             // btn bg
@@ -307,7 +305,7 @@ class PipaBoat extends egret.DisplayObjectContainer {
             choiceBtnText.verticalAlign = "middle";
             choiceBtnText.textColor = 0xFFFFFF;
             choiceBtnText.skewX = 10;
-            choiceBtnText.text = (i === 2 ? "   ": "") + (GameUIItem.languageText[choiceBtnTextArray[i]][GlobelSettings.language] as string).toUpperCase();
+            choiceBtnText.text = (i === 2 ? "   ": "") + MuLang.getText( choiceBtnTextArray[i], MuLang.CASE_UPPER );
             if (i > 0) {
                 choiceBtn.touchEnabled = false;
                 choiceBtn.filters = [MatrixTool.colorMatrix(0.33, 0.33, 1)];
@@ -735,7 +733,7 @@ class PipaBoat extends egret.DisplayObjectContainer {
         choiceBtnText.verticalAlign = "middle";
         choiceBtnText.textColor = 0xFFFFFF;
         choiceBtnText.skewX = 10;
-        choiceBtnText.text = (GameUIItem.languageText["choose"][GlobelSettings.language] as string).toUpperCase();
+        choiceBtnText.text = MuLang.getText( "choose", MuLang.CASE_UPPER );
         // choice arrow
         let choiceArrow = Com.addBitmapAt(this.tutorailSteps[0], "pipa_tutorail_json.tutorail_arrow", 287, 288);
         choiceArrow.rotation = 90;
@@ -804,7 +802,7 @@ class PipaBoat extends egret.DisplayObjectContainer {
         continueText.fontFamily = "Righteous";
         continueText.verticalAlign = "middle";
         continueText.textColor = 0xFFFFFF;
-        continueText.text = GameUIItem.languageText["click_to_continue"][GlobelSettings.language];
+        continueText.text = MuLang.getText( "click_to_continue" );
     }
 
     /**
