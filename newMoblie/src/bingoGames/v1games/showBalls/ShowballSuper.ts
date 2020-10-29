@@ -7,7 +7,6 @@ class ShowballSuper extends V1Game{
 		this.languageObjectName = "showball3_tx";
 
 		GameCard.showTitleShadow = new egret.GlowFilter( 0, 1, 4, 4, 4, 2 );
-		GameCard.gridOnTop = true;
 
 		CardManager.cardType = ShowballCard;
 		CardManager.gridType = ShowballGrid;

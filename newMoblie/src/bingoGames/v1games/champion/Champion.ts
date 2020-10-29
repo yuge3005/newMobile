@@ -18,7 +18,6 @@ class Champion extends V1Game{
 		PayTableManager.layerType = ChampionPaytableLayer;
 
 		CardManager.cardType = ChampionCard;
-		GameCard.gridOnTop = true;
 
         CardGrid.defaultNumberSize = 40;
 

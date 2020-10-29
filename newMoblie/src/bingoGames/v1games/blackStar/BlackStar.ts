@@ -32,7 +32,6 @@ class BlackStar extends V1Game{
         CardManager.gridType = BlackStarGrid;
 
         GameCard.showTitleShadow = new egret.GlowFilter(0, 1, 2, 2, 4, 4);
-        GameCard.gridOnTop = true;
         CardGrid.defaultNumberSize = 60;
 
         this.needSmallWinTimesOnCard = true;

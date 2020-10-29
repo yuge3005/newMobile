@@ -25,7 +25,7 @@ class GameCard extends GameUIItem{
 
 	public static zeroUI: string;
 
-	public static gridOnTop: boolean;
+	public static gridOnTop: boolean = true;
 
 	protected fitEffectLayer: egret.DisplayObjectContainer;
 	public static fitEffectNameList: Object;
