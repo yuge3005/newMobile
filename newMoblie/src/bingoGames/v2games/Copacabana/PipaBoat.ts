@@ -1,5 +1,5 @@
 
-class PipaBoat extends egret.DisplayObjectContainer {
+class CopaBoat extends egret.DisplayObjectContainer {
     private static SCROLL_OVER: string = "SCROLL_OVER";
     public static GET_TURBO: string = "GET_TURBO";
     public static BOAT_GAME_OVER: string = "BOAT_GAME_OVER";
@@ -205,7 +205,7 @@ class PipaBoat extends egret.DisplayObjectContainer {
             this.powers[i] = new egret.DisplayObjectContainer();
             this.powers[i].width = 44;
             this.powers[i].height = 268;
-            this.powers[i].addEventListener(PipaBoat.SCROLL_OVER, this.showLights, this);
+            this.powers[i].addEventListener(CopaBoat.SCROLL_OVER, this.showLights, this);
             Com.addObjectAt(powerContainer, this.powers[i], 74 * i, -201);
 
             Com.addBitmapAt(this.powers[i], this.assetJson + ".icon_oil", 5, 11);
@@ -219,7 +219,7 @@ class PipaBoat extends egret.DisplayObjectContainer {
                 egret.setTimeout(function (power: egret.DisplayObjectContainer, value: number) {
                     egret.Tween.removeTweens(power);
                     power.y = value === 0 ? -201 : 0;
-                    power.dispatchEvent(new egret.Event(PipaBoat.SCROLL_OVER));
+                    power.dispatchEvent(new egret.Event(CopaBoat.SCROLL_OVER));
                 }.bind(this, power, value), this, 900);
             }.bind(this, this.powers[i]);
         }
@@ -397,7 +397,7 @@ class PipaBoat extends egret.DisplayObjectContainer {
         this.prizeType = index;
 
         // send command
-        let ev: egret.Event = new egret.Event(PipaBoat.GET_TURBO);
+        let ev: egret.Event = new egret.Event(CopaBoat.GET_TURBO);
         ev.data = { action: "select_turbo", rewardType: index };
         this.dispatchEvent(ev);
 
@@ -490,7 +490,7 @@ class PipaBoat extends egret.DisplayObjectContainer {
         this.dispatchEvent(event);
 
         // send game over command
-        let ev: egret.Event = new egret.Event(PipaBoat.GET_TURBO);
+        let ev: egret.Event = new egret.Event(CopaBoat.GET_TURBO);
         ev.data = { action: "over" };
         this.dispatchEvent(ev);
     }
@@ -532,7 +532,7 @@ class PipaBoat extends egret.DisplayObjectContainer {
         this.btnEnable = false;
 
         // send command
-        let ev: egret.Event = new egret.Event(PipaBoat.GET_TURBO);
+        let ev: egret.Event = new egret.Event(CopaBoat.GET_TURBO);
         ev.data = { action: "get_turbo" };
         this.dispatchEvent(ev);
 
@@ -662,7 +662,7 @@ class PipaBoat extends egret.DisplayObjectContainer {
         }.bind(this, rewardTimer, buffReward), this, 1000);
 
         // dispatch event
-        let event: egret.Event = new egret.Event(PipaBoat.BOAT_GAME_OVER);
+        let event: egret.Event = new egret.Event(CopaBoat.BOAT_GAME_OVER);
         event.data = { buffPos: buffPos };
         egret.setTimeout(function (event: egret.Event) {
             this.dispatchEvent(event);

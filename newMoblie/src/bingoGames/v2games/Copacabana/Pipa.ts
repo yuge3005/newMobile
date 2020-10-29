@@ -1,8 +1,8 @@
 class Pipa extends V2Game{
     public static PLAY_MINI_GAME_SOUND: string = "PLAY_MINI_GAME_SOUND";
     public static STOP_MINI_GAME_SOUND: string = "STOP_MINI_GAME_SOUND";
-    private miniGame: PipaChess;
-    private boatGame: PipaBoat;
+    private miniGame: CopaChess;
+    private boatGame: CopaBoat;
 
     protected static get classAssetName(){
         return "pipa";
@@ -1256,20 +1256,20 @@ class Pipa extends V2Game{
      * load mini game
      */
     private loadMiniGame(currentPosition: number, chessArrayConfig: Array<number>, goKartRewards: any): void {
-        this.miniGame = new PipaChess(currentPosition, chessArrayConfig);
-        this.miniGame.addEventListener(PipaChess.REROLL_DICE, this.sendRerollCommand, this);
+        this.miniGame = new CopaChess(currentPosition, chessArrayConfig);
+        this.miniGame.addEventListener(CopaChess.REROLL_DICE, this.sendRerollCommand, this);
         this.miniGame.addEventListener(Pipa.PLAY_MINI_GAME_SOUND, this.playMiniGameSound, this);
-        this.miniGame.addEventListener(PipaChess.GET_BOAT_GAME, this.startBoatGame, this);
-        this.miniGame.addEventListener(PipaChess.MINI_GAME_OVER, this.miniGameOver, this);
+        this.miniGame.addEventListener(CopaChess.GET_BOAT_GAME, this.startBoatGame, this);
+        this.miniGame.addEventListener(CopaChess.MINI_GAME_OVER, this.miniGameOver, this);
         Com.addObjectAt(this, this.miniGame, 0, 0);
 
         // load boat game
-        this.boatGame = new PipaBoat( goKartRewards );
+        this.boatGame = new CopaBoat( goKartRewards );
         this.boatGame.visible = false;
         this.boatGame.addEventListener(Pipa.PLAY_MINI_GAME_SOUND, this.playMiniGameSound, this);
         this.boatGame.addEventListener(Pipa.STOP_MINI_GAME_SOUND, this.stopMiniGameSound, this);
-        this.boatGame.addEventListener(PipaBoat.GET_TURBO, this.sendGetTurboCommand, this);
-        this.boatGame.addEventListener(PipaBoat.BOAT_GAME_OVER, this.boatGameOver, this);
+        this.boatGame.addEventListener(CopaBoat.GET_TURBO, this.sendGetTurboCommand, this);
+        this.boatGame.addEventListener(CopaBoat.BOAT_GAME_OVER, this.boatGameOver, this);
         Com.addObjectAt(this, this.boatGame, 0, 0);
     }
 

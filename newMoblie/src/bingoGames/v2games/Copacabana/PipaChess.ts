@@ -1,4 +1,4 @@
-class PipaChess extends egret.DisplayObjectContainer {
+class CopaChess extends egret.DisplayObjectContainer {
     public static MINI_GAME_OVER: string = "MINI_GAME_OVER";
     public static REROLL_DICE: string = "REROLL_DICE";
     public static GET_BOAT_GAME: string = "GET_BOAT_GAME";
@@ -428,7 +428,7 @@ class PipaChess extends egret.DisplayObjectContainer {
      * roll dice
      */
     private rollDice(): void {
-        let ev: egret.Event = new egret.Event(PipaChess.REROLL_DICE);
+        let ev: egret.Event = new egret.Event(CopaChess.REROLL_DICE);
         ev.data = { action: "normal" };
         this.dispatchEvent( ev );
         
@@ -580,7 +580,7 @@ class PipaChess extends egret.DisplayObjectContainer {
         this.rerollCard.alpha = this.roundCard.alpha = this.doublePowerCard.alpha = 0;
         this.rerollCard.visible = this.roundCard.visible = this.doublePowerCard.visible = false;
 
-        let ev: egret.Event = new egret.Event(PipaChess.REROLL_DICE);
+        let ev: egret.Event = new egret.Event(CopaChess.REROLL_DICE);
         ev.data = { action: "overwrite" };
         this.dispatchEvent( ev );
 
@@ -609,7 +609,7 @@ class PipaChess extends egret.DisplayObjectContainer {
 
         this.canChoise = false;
 
-        let ev: egret.Event = new egret.Event(PipaChess.REROLL_DICE);
+        let ev: egret.Event = new egret.Event(CopaChess.REROLL_DICE);
         ev.data = { action: "double" };
         this.dispatchEvent(ev);
 
@@ -666,7 +666,7 @@ class PipaChess extends egret.DisplayObjectContainer {
 
         egret.Tween.get(iconBoatGame).to({ alpha: 1 }, 500).wait(1000).to({ alpha: 0 }, 500).call(function (icon: egret.Bitmap) {
             if (icon.parent) icon.parent.removeChild(icon);
-            this.dispatchEvent(new egret.Event(PipaChess.GET_BOAT_GAME));
+            this.dispatchEvent(new egret.Event(CopaChess.GET_BOAT_GAME));
         }.bind(this, iconBoatGame), this);
     }
 
@@ -744,7 +744,7 @@ class PipaChess extends egret.DisplayObjectContainer {
      * mini game over
      */
     private miniGameOver(): void {
-        this.dispatchEvent(new egret.Event(PipaChess.MINI_GAME_OVER));
+        this.dispatchEvent(new egret.Event(CopaChess.MINI_GAME_OVER));
     }
 }
 
