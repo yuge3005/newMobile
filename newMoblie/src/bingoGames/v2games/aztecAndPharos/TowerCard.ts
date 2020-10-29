@@ -7,6 +7,12 @@ class TowerCard extends GameCard{
 	protected onAdd( event: egret.Event ){
 		this.betText = new TextLabel;
 		this.betText.visible = false;
+
+		if( GameCard.clickChangeNumber ){
+			this.touchChildren = false;
+			this.touchEnabled = true;
+			this.addEventListener( egret.TouchEvent.TOUCH_TAP, this.cardNumber, this );
+		}
 	}
 
 	private static lineIndexCounter: Array<egret.Point>;
