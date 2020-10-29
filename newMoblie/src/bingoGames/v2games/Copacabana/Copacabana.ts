@@ -294,7 +294,7 @@ class Copacabana extends V2Game{
         IBingoServer.buffHandlerCallback = this.onGetCurrentFromServer.bind( this );
         if( !this.clickProtector ){
             this.clickProtector = new egret.Shape;
-            GraphicTool.drawRect( this.clickProtector, new egret.Rectangle( 0, 0, 755, 600 ), 0, false, 0.0 );
+            GraphicTool.drawRect( this.clickProtector, BingoBackGroundSetting.gameMask, 0, false, 0.0 );
             this.clickProtector.touchEnabled = true;
         }
         Com.addObjectAt( this, this.clickProtector, 0, 0 );
@@ -989,18 +989,17 @@ class Copacabana extends V2Game{
     private buildPeel(): void{
         this.peelLayer = new egret.Sprite;
         Com.addObjectAt( this, this.peelLayer, 0, 0 );
-        GraphicTool.drawRect( this.peelLayer, new egret.Rectangle( 0, 0, 755, 600 ), 0, false, 0.01 );
+        GraphicTool.drawRect( this.peelLayer, BingoBackGroundSetting.gameMask, 0, false, 0.01 );
         this.peelLayer.touchEnabled = true;
         this.peelLayer.visible = false;
-        Com.addBitmapAt( this.peelLayer, this.assetStr( "peel_01" ), 309, 330 );
-        let peel01: egret.Bitmap =  Com.addBitmapAt( this.peelLayer, this.assetStr( "peel_01" ), 451, 337 );
-        peel01.rotation = 180;
+        Com.addBitmapAt( this.peelLayer, this.assetStr( "peel_01" ), 853, 669 );
+        let peel01: egret.Bitmap =  Com.addBitmapAt( this.peelLayer, this.assetStr( "peel_01" ), 1147, 669 );
+        peel01.scaleX = -1;
         let peelContainer: egret.DisplayObjectContainer = new egret.DisplayObjectContainer;
-        Com.addObjectAt( this.peelLayer, peelContainer, 318, 332 );
-        this.peelTop = Com.addBitmapAt( this.peelLayer, this.assetStr( "peel_02" ), 318, 334 );
-        this.peelTop.anchorOffsetY = 9;
+        Com.addObjectAt( this.peelLayer, peelContainer, 872, 672 );
+        this.peelTop = Com.addBitmapAtMiddle( this.peelLayer, this.assetStr( "peel_02" ), 1000, 676 );
 
-        peelContainer.mask = new egret.Rectangle( 0, 0, 124, 125 );
+        peelContainer.mask = new egret.Rectangle( 0, 0, 256, 254 );
         this.peelMc = Com.addBitmapAt( peelContainer, this.assetStr( "peel_03" ), 0, 0 );
     }
 
@@ -1008,9 +1007,9 @@ class Copacabana extends V2Game{
         this.peelLayer.visible = true;
         this.addChild( this.peelLayer );
         this.peelMc.y = 0;
-        this.peelTop.scaleY = 0.5;
+        this.peelTop.scaleY = 0.2;
         let tw: egret.Tween = egret.Tween.get( this.peelMc );
-        tw.to( { y: -125 }, 3900 );
+        tw.to( { y: -250 }, 3900 );
         tw.call( () => { this.peelLayer.visible = false } );
         let tw2: egret.Tween = egret.Tween.get( this.peelTop );
         tw2.to( { scaleY: 1 }, 3800 );
