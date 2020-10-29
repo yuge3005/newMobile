@@ -1,4 +1,3 @@
-
 class PipaChess extends egret.DisplayObjectContainer {
     public static MINI_GAME_OVER: string = "MINI_GAME_OVER";
     public static REROLL_DICE: string = "REROLL_DICE";
@@ -43,12 +42,6 @@ class PipaChess extends egret.DisplayObjectContainer {
 
     private currentPosition: number = 0;
     private point: number;
-
-    private tutorail: boolean = false;
-    private tutorailContainer: egret.DisplayObjectContainer;
-    private tutorailSteps: Array<egret.DisplayObjectContainer>;
-    private tutorailPrizeText: egret.TextField;
-    private tutorailIndex: number = 0;
 
     private config: Array<number>;
 
@@ -109,38 +102,6 @@ class PipaChess extends egret.DisplayObjectContainer {
             { bgAsset: ".big_board_blue", buffBgAsset: ".positive_blue", asset: ".icon_boat", anchorOffsetX: 47, anchorOffsetY: 36, name: "currency", introduceName: "jet_sprint_introduce" },
             { bgAsset: ".big_board_blue", buffBgAsset: ".positive_blue", asset: ".icon_boat", anchorOffsetX: 47, anchorOffsetY: 36, name: "jet_sprint", introduceName: "jet_sprint_introduce" }
         ];
-
-        let languageText = GameUIItem.languageText;
-        languageText["ninebox_introduce"] = { en: "Add a new square (center 9 grid) pattern to your pay table",
-            es: "Agregue un nuevo patrón cuadrado (cuadrícula del centro 9) a su tabla de premios",
-            pt: "Adicione um novo padrão de quadrados (grade 9) à sua tabela de prêmios" };
-        languageText["color_introduce"] = { en: "Reveal the color of the extra ball",
-            es: "Revela el color de la bola extra",
-            pt: "Revela a cor da bola extra" };
-        languageText["cold_cocount_introduce"] = { en: "Double the price when winning double line",
-            es: "Doble el premio al ganar la doble línea",
-            pt: "Dobra o prêmio ao ganhar linha dupla" };
-        languageText["jet_sprint_introduce"] = { en: "Take a boat tour on Copacabana",
-            es: "Haga un paseo en Lancha por Copacabana",
-            pt: "Faça um passeio de Lancha por Copacabana" };
-        languageText["magic_ball_introduce"] = { en: "Give you the option to choose the number you want.",
-            es: "Usted puede eligir el número que quieras.",
-            pt: "Você pode escolher o número que quiser." };
-        languageText["pipa_star_introduce"] = { en: "Get 2 free extra balls",
-            es: "Gane 2 bolas extra gratis",
-            pt: "Receba 2 bolas extras grátis" };
-        languageText["pipa_plus_introduce"] = { en: "Get 2 more balls in the first round",
-            es: "Gana 2 bolas más en la primera ronda",
-            pt: "Ganhe 2 bolas a mais na primeira rodada" };
-        languageText["pipa_mark_introduce"] = { en: "Mark the line of the first ball on each card",
-            es: "Marque la línea de la primera bola en cada tarjeta",
-            pt: "Marque a linha da primeira bola em cada cartela" };
-        languageText["pipa_bomb_introduce"] = { en: "Mark the number with a water ball. Explode the water ball when the number is marked",
-            es: "Marca el número con la bola de agua. Ocurrirá una explosión cuando el número ha ido sorteado",
-            pt: "Marca o número com a bexiga de água. A bexiga explodirá quando o número for sorteado" };
-        languageText["pipa_card_introduce"] = { en: "Receive a number already marked on each card",
-            es: "Tenga un número marcado en cada cartela.",
-            pt: "Tenha um número já marcado em cada cartela." };
 
         // add chesses
         let count = config.length;
@@ -244,13 +205,12 @@ class PipaChess extends egret.DisplayObjectContainer {
         rerollText.wordWrap = true;
         rerollText.stroke = 2;
         rerollText.strokeColor = 0xFFFFFF;
-        rerollText.text = GameUIItem.languageText["rollAgain"][GlobelSettings.language];
+        rerollText.text = MuLang.getText( "rollAgain" );
         // reroll btn
         let rerollBtn = new egret.DisplayObjectContainer();
         rerollBtn.width = 84;
         rerollBtn.height = 34;
         rerollBtn.touchEnabled = true;
-        mouse.setButtonMode(rerollBtn, true);
         rerollBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.rerollDice, this);
         Com.addObjectAt(this.rerollCard, rerollBtn, 45, 129);
         // reroll bg
@@ -289,7 +249,7 @@ class PipaChess extends egret.DisplayObjectContainer {
         noBonusTitle.verticalAlign = "middle";
         noBonusTitle.textColor = 0x6886E7;
         noBonusTitle.filters = [new egret.DropShadowFilter(1, 90, 0x000000, 1, 0, 1)];
-        noBonusTitle.text = GameUIItem.languageText["no_bonus"][GlobelSettings.language];
+        noBonusTitle.text = MuLang.getText( "no_bonus" );
         // text
         let roundCardText = Com.addTextAt(this.roundCard, 18, 12, 135, 60, 20, true, false);
         roundCardText.fontFamily = "TCM_conden";
@@ -304,7 +264,6 @@ class PipaChess extends egret.DisplayObjectContainer {
         roundBtn.width = 84;
         roundBtn.height = 34;
         roundBtn.touchEnabled = true;
-        mouse.setButtonMode(roundBtn, true);
         roundBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.getRounds, this);
         Com.addObjectAt(this.roundCard, roundBtn, 45, 129);
         // round bg
@@ -314,7 +273,7 @@ class PipaChess extends egret.DisplayObjectContainer {
         roundBtnText.fontFamily = "TCM_conden";
         roundBtnText.verticalAlign = "middle";
         roundBtnText.textColor = 0xFFFFFF;
-        roundBtnText.text = GameUIItem.languageText["accept"][GlobelSettings.language];
+        roundBtnText.text = MuLang.getText( "accept" );
 
         // double power card
         this.doublePowerCard = new egret.DisplayObjectContainer();
@@ -336,13 +295,12 @@ class PipaChess extends egret.DisplayObjectContainer {
         doublePowerText.wordWrap = true;
         doublePowerText.stroke = 2;
         doublePowerText.strokeColor = 0xFFFFFF;
-        doublePowerText.text = GameUIItem.languageText["doubleDuration"][GlobelSettings.language];
+        doublePowerText.text = MuLang.getText( "doubleDuration" );
         // double power btn
         let doublePowerBtn = new egret.DisplayObjectContainer();
         doublePowerBtn.width = 84;
         doublePowerBtn.height = 34;
         doublePowerBtn.touchEnabled = true;
-        mouse.setButtonMode(doublePowerBtn, true);
         doublePowerBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.getDoublePower, this);
         Com.addObjectAt(this.doublePowerCard, doublePowerBtn, 45, 129);
         // double power bg
@@ -399,18 +357,11 @@ class PipaChess extends egret.DisplayObjectContainer {
         playBtnText.wordWrap = true;
         playBtnText.filters = [new egret.DropShadowFilter(0, 90, 0x999999, 1, 0, 2)];
         playBtnText.textColor = 0xFFFFFF;
-        playBtnText.text = GameUIItem.languageText["RollDice"][GlobelSettings.language];
+        playBtnText.text = MuLang.getText( "RollDice" );
 
-        this.playBtn.setText(playBtnText);
-        
-        // check is first time to play pipa chess game
-        let firstPlayPipaChess = window.localStorage.getItem(PlayerConfig.player("user.id") + "_firstPlayPipaChess");
-        if (firstPlayPipaChess === null) {
-            this.tutorail = true;
-        }
+        this.playBtn.addChild(playBtnText);
 
         this.visible = false;
-        if (this.tutorail) this.addTutorail();
     }
 
     public checkBuffBoat( bufPos: number ): void{
@@ -497,7 +448,7 @@ class PipaChess extends egret.DisplayObjectContainer {
             return;
         }
 
-        this.roundCardText.text = rounds + " " + GameUIItem.languageText["rounds"][GlobelSettings.language];
+        this.roundCardText.text = rounds + " " + MuLang.getText( "rounds" );
         this.rerollPrice.text = rerollPrice + "";
         this.rerollPrice.size = 24 - Math.max((rerollPrice + "").length - 4, 0) * 4;
         this.doublePowerPrice.text = doublePowerPrice + "";
@@ -592,15 +543,10 @@ class PipaChess extends egret.DisplayObjectContainer {
                     this.buffInfoIcon.anchorOffsetX = this.buffInfoIcon.width >> 1;
                     this.buffInfoIcon.anchorOffsetY = this.buffInfoIcon.height >> 1;
                     // buff name
-                    this.buffInfoName.text = GameUIItem.languageText[this.buffIconConfig[buffId]["name"]][GlobelSettings.language];
+                    this.buffInfoName.text = MuLang.getText( this.buffIconConfig[buffId]["name"] );
                     // buff introduce
-                    this.buffInfoIntroduce.text = GameUIItem.languageText[this.buffIconConfig[buffId]["introduceName"]][GlobelSettings.language];
+                    this.buffInfoIntroduce.text = MuLang.getText( this.buffIconConfig[buffId]["introduceName"] );
                 }, this, [buffId]).to({ alpha: 1 }, 500);
-
-                if (this.tutorail) {
-                    GraphicTool.drawRect(this.tutorailContainer["shadow"], new egret.Rectangle(0, 0, 755, 462), 0xFFFFFF, true, 0);
-                    this.showTutorail();
-                }
             }
 
             this.canChoise = true;
@@ -683,7 +629,7 @@ class PipaChess extends egret.DisplayObjectContainer {
      */
     public kartGameOver(position: number, roundNumber: number): number {
         // set rounds text
-        this.roundCardText.text = roundNumber + " " + GameUIItem.languageText["rounds"][GlobelSettings.language];
+        this.roundCardText.text = roundNumber + " " + MuLang.getText( "rounds" );
 
         // chess data
         let chessData = [this.chessPositionArray[this.currentPosition], this.chessPositionArray[position]];
@@ -790,144 +736,8 @@ class PipaChess extends egret.DisplayObjectContainer {
         return buffIcon;
     }
 
-    /**
-     * add tutorail
-     */
-    private addTutorail(): void {
-        this.addTutorailLanguage();
-
-        this.tutorailContainer = new egret.DisplayObjectContainer();
-        this.tutorailContainer.width = 755;
-        this.tutorailContainer.height = 462;
-        this.tutorailContainer.touchEnabled = true;
-        this.tutorailContainer.addEventListener(egret.TouchEvent.TOUCH_TAP, this.hideTutorail, this);
-        Com.addObjectAt(this, this.tutorailContainer, 0, 0);
-        // shadow
-        this.tutorailContainer["shadow"] = new egret.Shape();
-        GraphicTool.drawRect(this.tutorailContainer["shadow"], new egret.Rectangle(0, 0, 755, 590), 0x000000, false, 0.55);
-        Com.addObjectAt(this.tutorailContainer, this.tutorailContainer["shadow"], 0, 0);
-
-        // steps
-        this.tutorailSteps = new Array<egret.DisplayObjectContainer>(3);
-        // steps -> 0
-        this.tutorailSteps[0] = new egret.DisplayObjectContainer();
-        this.tutorailSteps[0].width = 755;
-        this.tutorailSteps[0].height = 462;
-        Com.addObjectAt(this.tutorailContainer, this.tutorailSteps[0], 0, 0);
-        // chess
-        let chessPlace = Com.addBitmapAt(this.tutorailSteps[0], this.assetJson + ".doctor_place", this.chessPositionArray[this.currentPosition]["x"] - 32, this.chessPositionArray[this.currentPosition]["y"] - 26);
-        let chess = Com.addBitmapAt(this.tutorailSteps[0], this.assetJson + ".doctor_jump", this.chessPositionArray[this.currentPosition]["x"] - 15, this.chessPositionArray[this.currentPosition]["y"] - 39);
-        // chess arrow
-        let chessArrow = Com.addBitmapAt(this.tutorailSteps[0], "pipa_tutorail_json.tutorail_arrow", 391, 227);
-        chessArrow.rotation = -135;
-        // chess tutorail text
-        this.addTutorailText(this.tutorailSteps[0], 123, 196, 278, 62, 18, GameUIItem.languageText["pipa_chess_tutorail"][GlobelSettings.language] );
-        // go btn
-        Com.addBitmapAt(this.tutorailSteps[0], this.assetJson + ".btn_roll", 602, 497);
-        // go btn text
-        let playBtnText = Com.addTextAt(this.tutorailSteps[0], 602, 497, 129, 91, 36, false, false);
-        playBtnText.fontFamily = "TCM_conden";
-        playBtnText.verticalAlign = "middle";
-        playBtnText.wordWrap = true;
-        playBtnText.filters = [new egret.DropShadowFilter(0, 90, 0x999999, 1, 0, 2)];
-        playBtnText.textColor = 0xFFFFFF;
-        playBtnText.text = GameUIItem.languageText["RollDice"][GlobelSettings.language];
-        // go btn arrow
-        let goBtnArrow = Com.addBitmapAt(this.tutorailSteps[0], "pipa_tutorail_json.tutorail_arrow", 650, 410);
-        this.addTutorailText(this.tutorailSteps[0], 472, 340, 278, 62, 18, GameUIItem.languageText["pipa_chess_go_btn_tutorail"][GlobelSettings.language] );
-
-        // steps -> 1
-        this.tutorailSteps[1] = new egret.DisplayObjectContainer();
-        this.tutorailSteps[1].width = 755;
-        this.tutorailSteps[1].height = 462;
-        this.tutorailSteps[1].visible = false;
-        Com.addObjectAt(this.tutorailContainer, this.tutorailSteps[1], 0, 0);
-        // buffs
-        let buffArray = [0, 19, 1, 17, 4, 15, 5, 14, 7, 11, 10];
-        for (let i = 0; i < buffArray.length; i++) {
-            this.appendBuffInGame(this.tutorailSteps[1], buffArray[i]);
-        }
-        // no buff arrow
-        let noBuffArrow = Com.addBitmapAt(this.tutorailSteps[1], "pipa_tutorail_json.tutorail_arrow", 247, 80);
-        noBuffArrow.scaleX = -1;
-        noBuffArrow.rotation = -75;
-        // no buff tutorail text
-        this.addTutorailText(this.tutorailSteps[1], 3, 61, 238, 62, 18, GameUIItem.languageText["pipa_no_buff_tutorail"][GlobelSettings.language] );
-        // buff arrow
-        let buffArrow = Com.addBitmapAt(this.tutorailSteps[1], "pipa_tutorail_json.tutorail_arrow", 492, 40);
-        buffArrow.rotation = 90;
-        // buff tutorail text
-        this.addTutorailText(this.tutorailSteps[1], 500, 22, 238, 62, 18, GameUIItem.languageText["pipa_buff_tutorail"][GlobelSettings.language] );
-
-        // steps -> 2
-        this.tutorailSteps[2] = new egret.DisplayObjectContainer();
-        this.tutorailSteps[2].width = 755;
-        this.tutorailSteps[2].height = 462;
-        this.tutorailSteps[2].visible = false;
-        Com.addObjectAt(this.tutorailContainer, this.tutorailSteps[2], 0, 0);
-        // card arrow
-        let cardArrow = Com.addBitmapAt(this.tutorailSteps[2], "pipa_tutorail_json.tutorail_arrow", 226, 191);
-        cardArrow.scaleX = -1;
-        cardArrow.rotation = -90;
-        this.addTutorailText(this.tutorailSteps[2], 0, 172, 220, 76, 14, GameUIItem.languageText["pipa_card_tutorail"][GlobelSettings.language] );
-        // introduce arrow
-        let introduceArrow = Com.addBitmapAt(this.tutorailSteps[2], "pipa_tutorail_json.tutorail_arrow", 570, 389);
-        introduceArrow.scaleX = -1;
-        introduceArrow.rotation = 90;
-        this.addTutorailText(this.tutorailSteps[2], 575, 344, 180, 62, 16, GameUIItem.languageText["pipa_introduce_tutorail"][GlobelSettings.language] );
-
-        // continue bg
-        Com.addBitmapAt(this.tutorailContainer, "pipa_tutorail_json.continue_bg", 209, 405);
-        // continue text
-        let continueText = Com.addTextAt(this.tutorailContainer, 209, 405, 318, 43, 16, false, false);
-        continueText.fontFamily = "Righteous";
-        continueText.verticalAlign = "middle";
-        continueText.textColor = 0xFFFFFF;
-        continueText.text = GameUIItem.languageText["click_to_continue"][GlobelSettings.language];
-    }
-
-    /**
-     * add tutorail text
-     */
-    private addTutorailText(target: egret.DisplayObjectContainer, x: number, y: number, width: number, height: number, size: number, text: string): void {
-        let bg = Com.addBitmapAt(target, "pipa_tutorail_json.tutorail_txt_bg", x, y);
-        bg.scale9Grid = new egret.Rectangle(30, 30, 168, 2);
-        bg.width = width;
-        bg.height = height;
-        let textField = Com.addTextAt(target, x + 20, y, width - 40, height, size, false, false);
-        textField.fontFamily = "Righteous";
-        textField.verticalAlign = "middle";
-        textField.wordWrap = true;
-        textField.textColor = 0xFFFFFF;
-        textField.text = text;
-    }
-
-    /**
-     * show tutorail
-     */
-    private showTutorail(): void {
-        this.tutorailSteps[this.tutorailIndex].visible = true;
-        this.tutorailContainer.visible = true;
-    }
-
-    /**
-     * hide tutorail
-     */
-    private hideTutorail(): void {
-        this.tutorailSteps[this.tutorailIndex].visible = false;
-        this.tutorailIndex++;
-        this.tutorailContainer.visible = false;
-
-        if (this.tutorailIndex === this.tutorailSteps.length) {
-            this.tutorail = false;
-            window.localStorage.setItem(PlayerConfig.player("user.id") + "_firstPlayPipaChess", "false");
-        } else if (this.tutorailIndex < this.tutorailSteps.length - 1) {
-            this.showTutorail();
-        }
-    }
-
     public currnetBuffName(): string{
-        return GameUIItem.languageText[this.buffIconConfig[this.config[this.currentPosition]]["name"]][GlobelSettings.language];
+        return MuLang.getText( this.buffIconConfig[this.config[this.currentPosition]]["name"] );
     }
 
     /**
@@ -936,24 +746,6 @@ class PipaChess extends egret.DisplayObjectContainer {
     private miniGameOver(): void {
         this.dispatchEvent(new egret.Event(PipaChess.MINI_GAME_OVER));
     }
-
-    private addTutorailLanguage(){
-        let languageText = GameUIItem.languageText;
-        languageText["pipa_chess_tutorail"] = { en: "The pin will move according to the number on dices",
-            es: "El pino se moverá de acuerdo con el numero de dados",
-            pt: "O pino se moverá de acordo com o numéro dos dados" };
-        languageText["pipa_chess_go_btn_tutorail"] = { en: "The PLAY button will be changed to you Roll the Dices",
-            es: "El botón JUGAR cambiará para tu Jugar los dados",
-            pt: "O botão JOGAR mudará para que você jogue os dados" };
-        languageText["pipa_no_buff_tutorail"] = { en: "X is mean no Buff", es: "X significa sin poderes", pt: "X significa sem poderes" };
-        languageText["pipa_buff_tutorail"] = { en: "There are 10 different buffs on the board",
-            es: "Hay 10 diferentes poderes en el tablero",
-            pt: "Existem 10 poderes diferentes no tabuleiro" };
-        languageText["pipa_card_tutorail"] = { en: "When you got a buff you need to Acept to continue the game",
-            es: "Cuando usted gana un poder usted debe aceptar para continuar el juego",
-            pt: "Quando você ganha um poder você deve aceitar para continuar o jogo" };
-        languageText["pipa_introduce_tutorail"] = { en: "The explanation for the buff", es: "Explicación del poder", pt: "Explicação do poder" };
-	}
 }
 
 class JumpChess extends egret.Bitmap {

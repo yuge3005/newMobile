@@ -61,4 +61,34 @@
             "es": "Durante la utilización de cualquier beneficio,\n no podrás cambiar la apuesta",
             "pt": "Durante a utilização de qualquer poder a aposta\n não poderá ser alterada" }
         ,"click_to_continue":{ "en": "Click to continue", "es": "Haga Clic para continuar", "pt": "Clique para continuar" }
+		,"ninebox_introduce":{ "en": "Add a new square (center 9 grid) pattern to your pay table",
+            "es": "Agregue un nuevo patrón cuadrado (cuadrícula del centro 9) a su tabla de premios",
+            "pt": "Adicione um novo padrão de quadrados (grade 9) à sua tabela de prêmios" }
+        ,"color_introduce":{ "en": "Reveal the color of the extra ball",
+            "es": "Revela el color de la bola extra",
+            "pt": "Revela a cor da bola extra" }
+        ,"cold_cocount_introduce":{ "en": "Double the price when winning double line",
+            "es": "Doble el premio al ganar la doble línea",
+            "pt": "Dobra o prêmio ao ganhar linha dupla" }
+        ,"jet_sprint_introduce":{ "en": "Take a boat tour on Copacabana",
+            "es": "Haga un paseo en Lancha por Copacabana",
+            "pt": "Faça um passeio de Lancha por Copacabana" }
+        ,"magic_ball_introduce":{ "en": "Give you the option to choose the number you want.",
+            "es": "Usted puede eligir el número que quieras.",
+            "pt": "Você pode escolher o número que quiser." }
+        ,"pipa_star_introduce":{ "en": "Get 2 free extra balls",
+            "es": "Gane 2 bolas extra gratis",
+            "pt": "Receba 2 bolas extras grátis" }
+        ,"pipa_plus_introduce":{ "en": "Get 2 more balls in the first round",
+            "es": "Gana 2 bolas más en la primera ronda",
+            "pt": "Ganhe 2 bolas a mais na primeira rodada" }
+        ,"pipa_mark_introduce":{ "en": "Mark the line of the first ball on each card",
+            "es": "Marque la línea de la primera bola en cada tarjeta",
+            "pt": "Marque a linha da primeira bola em cada cartela" }
+        ,"pipa_bomb_introduce":{ "en": "Mark the number with a water ball. Explode the water ball when the number is marked",
+            "es": "Marca el número con la bola de agua. Ocurrirá una explosión cuando el número ha ido sorteado",
+            "pt": "Marca o número com a bexiga de água. A bexiga explodirá quando o número for sorteado" }
+        ,"pipa_card_introduce":{ "en": "Receive a number already marked on each card",
+            "es": "Tenga un número marcado en cada cartela.",
+            "pt": "Tenha um número já marcado em cada cartela." }
 			}

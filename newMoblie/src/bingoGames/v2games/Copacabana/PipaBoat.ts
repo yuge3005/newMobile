@@ -51,12 +51,6 @@ class PipaBoat extends egret.DisplayObjectContainer {
     private rewardContainer: egret.DisplayObjectContainer;
     private rewardText: egret.TextField;
 
-    private tutorail: boolean;
-    private tutorailContainer: egret.DisplayObjectContainer;
-    private tutorailSteps: Array<egret.DisplayObjectContainer>;
-    private tutorailPrizeText: egret.TextField;
-    private tutorailIndex: number = 0;
-
     constructor( goKartRewards: any ) {
         super();
 
@@ -351,12 +345,6 @@ class PipaBoat extends egret.DisplayObjectContainer {
         this.addEventListener(egret.Event.REMOVED_FROM_STAGE, function () {
             if (this.overplusTimer) this.overplusTimer.stop();
         }, this);
-
-        let firstPlayPipaBoat = window.localStorage.getItem("firstPlayPipaBoat");
-        if (firstPlayPipaBoat === null) {
-            this.tutorail = true;
-            this.addTutorail();
-        }
     }
 
     /**
@@ -396,7 +384,6 @@ class PipaBoat extends egret.DisplayObjectContainer {
             totalCoins += Number(this.pointPrize[0][j]["coins"]);
         }
         this.prizeMaxText[0].text = "" + totalCoins * bet;
-        if (this.tutorail) this.tutorailPrizeText.text = "" + totalCoins * bet;
 
         this.visible = true;
         this.rewardContainer.visible = false;
@@ -425,8 +412,6 @@ class PipaBoat extends egret.DisplayObjectContainer {
             this.choicePrizeContainer.visible = false;
             this.progressBar.visible = this.speedBar.visible = true;
             this.btnEnable = true;
-
-            if (this.tutorail) this.showTutorail();
         }
     }
 
@@ -682,148 +667,6 @@ class PipaBoat extends egret.DisplayObjectContainer {
         egret.setTimeout(function (event: egret.Event) {
             this.dispatchEvent(event);
         }.bind(this, event), this, 3500);
-    }
-
-    /**
-     * add tutorail
-     */
-    private addTutorail(): void {
-        this.tutorailContainer = new egret.DisplayObjectContainer();
-        this.tutorailContainer.width = 755;
-        this.tutorailContainer.height = 462;
-        this.tutorailContainer.touchEnabled = true;
-        this.tutorailContainer.addEventListener(egret.TouchEvent.TOUCH_TAP, this.hideTutorail, this);
-        Com.addObjectAt(this, this.tutorailContainer, 0, 0);
-        // shadow
-        let shape = new egret.Shape();
-        GraphicTool.drawRect(shape, new egret.Rectangle(0, 0, 755, 462), 0x000000, false, 0.55);
-        Com.addObjectAt(this.tutorailContainer, shape, 0, 0);
-
-        // steps -> 0
-        this.tutorailSteps = new Array<egret.DisplayObjectContainer>(2);
-        this.tutorailSteps[0] = new egret.DisplayObjectContainer();
-        this.tutorailSteps[0].width = 755;
-        this.tutorailSteps[0].height = 462;
-        Com.addObjectAt(this.tutorailContainer, this.tutorailSteps[0], 0, 0);
-        // add images
-        Com.addBitmapAt(this.tutorailSteps[0], this.assetJson + ".icon_coin", 108, 93);
-        this.tutorailPrizeText = Com.addTextAt(this.tutorailSteps[0], 118, 9, 115, 35, 20, false, false);
-        this.tutorailPrizeText.textAlign = "left";
-        this.tutorailPrizeText.fontFamily = "Righteous";
-        this.tutorailPrizeText.verticalAlign = "middle";
-        this.tutorailPrizeText.textColor = 0xFFFFFF;
-        this.tutorailPrizeText.skewX = 10;
-        // prize arrow
-        let prizeArrow = Com.addBitmapAt(this.tutorailSteps[0], "pipa_tutorail_json.tutorail_arrow", 314, 98);
-        prizeArrow.rotation = 90;
-        // prize tutorail text
-        let prizeTutorailBg = Com.addBitmapAt(this.tutorailSteps[0], "pipa_tutorail_json.tutorail_txt_bg", 328, 82);
-        prizeTutorailBg.scale9Grid = new egret.Rectangle(30, 0, 168, 62);
-        prizeTutorailBg.width = 278;
-        let prizeTutorailText = Com.addTextAt(this.tutorailSteps[0], 348, 82, 238, 62, 26, false, false);
-        prizeTutorailText.fontFamily = "Righteous";
-        prizeTutorailText.verticalAlign = "middle";
-        prizeTutorailText.wordWrap = true;
-        prizeTutorailText.textColor = 0xFFFFFF;
-        // prizeTutorailText.text = Lanuage.getValue("pipa_prize_tutorail");
-        // choice btn
-        Com.addBitmapAt(this.tutorailSteps[0], this.assetJson + ".btn_choose", 61, 274);
-        let choiceBtnText = Com.addTextAt(this.tutorailSteps[0], 61, 274, 155, 51, 22, false, false);
-        choiceBtnText.fontFamily = "Righteous";
-        choiceBtnText.verticalAlign = "middle";
-        choiceBtnText.textColor = 0xFFFFFF;
-        choiceBtnText.skewX = 10;
-        choiceBtnText.text = MuLang.getText( "choose", MuLang.CASE_UPPER );
-        // choice arrow
-        let choiceArrow = Com.addBitmapAt(this.tutorailSteps[0], "pipa_tutorail_json.tutorail_arrow", 287, 288);
-        choiceArrow.rotation = 90;
-        // choice tutorail text
-        let choiceTutorailBg = Com.addBitmapAt(this.tutorailSteps[0], "pipa_tutorail_json.tutorail_txt_bg", 301, 272);
-        prizeTutorailBg.scale9Grid = new egret.Rectangle(30, 0, 168, 62);
-        prizeTutorailBg.width = 278;
-        let choiceTutorailText = Com.addTextAt(this.tutorailSteps[0], 321, 272, 238, 62, 26, false, false);
-        prizeTutorailText.fontFamily = "Righteous";
-        prizeTutorailText.verticalAlign = "middle";
-        prizeTutorailText.wordWrap = true;
-        prizeTutorailText.textColor = 0xFFFFFF;
-        // prizeTutorailText.text = Lanuage.getValue("pipa_choice_tutorail");
-
-        // steps -> 1
-        this.tutorailSteps[1] = new egret.DisplayObjectContainer();
-        this.tutorailSteps[1].width = 755;
-        this.tutorailSteps[1].height = 462;
-        this.tutorailSteps[1].visible = false;
-        Com.addObjectAt(this.tutorailContainer, this.tutorailSteps[1], 0, 0);
-        // overplus bg
-        Com.addBitmapAt(this.tutorailSteps[1], this.assetJson + ".time_bg", 43, 34);
-        Com.addBitmapAt(this.tutorailSteps[1], this.assetJson + ".icon_stopwatch", 66, 36);
-        // overplus text
-        let overplusText = Com.addTextAt(this.tutorailSteps[1], 58, 10, 51, 28, 22, false, false);
-        overplusText.fontFamily = "LuckiestGuy";
-        overplusText.verticalAlign = "middle";
-        overplusText.textColor = 0xFFFFFF;
-        overplusText.text = "30";
-        // overplus arrow
-        let overplusArrow = Com.addBitmapAt(this.tutorailSteps[1], "pipa_tutorail_json.tutorail_arrow", 298, 41);
-        overplusArrow.rotation = 90;
-        // overplus tutorail text
-        let overplusTutorailBg = Com.addBitmapAt(this.tutorailSteps[1], "pipa_tutorail_json.tutorail_txt_bg", 312, 25);
-        prizeTutorailBg.scale9Grid = new egret.Rectangle(30, 0, 168, 62);
-        prizeTutorailBg.width = 278;
-        let overplusTutorailText = Com.addTextAt(this.tutorailSteps[1], 332, 25, 238, 62, 26, false, false);
-        overplusTutorailText.fontFamily = "Righteous";
-        overplusTutorailText.verticalAlign = "middle";
-        overplusTutorailText.wordWrap = true;
-        overplusTutorailText.textColor = 0xFFFFFF;
-        // overplusTutorailText.text = Lanuage.getValue("pipa_overplus_tutorail");
-        // oil images
-        for (let i = 0; i < 3; i++) {
-            Com.addBitmapAt(this.tutorailSteps[1], this.assetJson + ".light_choice", 96 + 74 * i, 355);
-            Com.addBitmapAt(this.tutorailSteps[1], this.assetJson + ".icon_oil", 190 + 74 * i, 366);
-        }
-        // oil arrow
-        let oilArrow = Com.addBitmapAt(this.tutorailSteps[1], "pipa_tutorail_json.tutorail_arrow", 305, 276);
-        oilArrow.rotation = 45;
-        // oil tutorail text
-        let oilTutorailBg = Com.addBitmapAt(this.tutorailSteps[1], "pipa_tutorail_json.tutorail_txt_bg", 324, 252);
-        oilTutorailBg.scale9Grid = new egret.Rectangle(30, 0, 168, 62);
-        oilTutorailBg.width = 318;
-        let oilTutorailText = Com.addTextAt(this.tutorailSteps[1], 344, 252, 278, 62, 26, false, false);
-        oilTutorailText.fontFamily = "Righteous";
-        oilTutorailText.verticalAlign = "middle";
-        oilTutorailText.wordWrap = true;
-        oilTutorailText.textColor = 0xFFFFFF;
-        // oilTutorailText.text = Lanuage.getValue("pipa_oil_tutorail");
-
-        // continue bg
-        Com.addBitmapAt(this.tutorailContainer, "pipa_tutorail_json.continue_bg", 209, 405);
-        // continue text
-        let continueText = Com.addTextAt(this.tutorailContainer, 209, 405, 318, 43, 26, false, false);
-        continueText.fontFamily = "Righteous";
-        continueText.verticalAlign = "middle";
-        continueText.textColor = 0xFFFFFF;
-        continueText.text = MuLang.getText( "click_to_continue" );
-    }
-
-    /**
-     * show tutorail
-     */
-    private showTutorail(): void {
-        this.tutorailSteps[this.tutorailIndex].visible = true;
-        this.tutorailContainer.visible = true;
-    }
-
-    /**
-     * hide tutorail
-     */
-    private hideTutorail(): void {
-        this.tutorailSteps[this.tutorailIndex].visible = false;
-        this.tutorailIndex++;
-        this.tutorailContainer.visible = false;
-
-        if (this.currentIndex === this.tutorailSteps.length) {
-            window.localStorage.setItem("firstPlayPipaBoat", "false");
-        }
     }
 
     private get btnEnable(): boolean {
