@@ -14,7 +14,6 @@ class Pachinko2 extends V2Game{
 
         CardManager.cardType = ExtraBlinkCard;
 		CardManager.gridType = Pachinko2Grid;
-        GameCard.gridOnTop = true;
         GameCard.useRedEffect = true;
         CardGrid.defaultNumberSize = 55;
         BallManager.textBold = true;

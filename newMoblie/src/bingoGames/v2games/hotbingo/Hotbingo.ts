@@ -24,7 +24,6 @@ class Hotbingo extends V2Game{
         GameCard.showTitleShadow = new egret.GlowFilter(0, 1, 4, 4, 4 );
         CardGrid.defaultNumberSize = 55;
 
-        GameCard.gridOnTop = true;
         BallManager.ballOffsetY = 4;
 
         this.needListenToolbarStatus = true;

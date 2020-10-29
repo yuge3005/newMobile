@@ -15,8 +15,6 @@ class DoubleTurbo90 extends V2Game{
         PaytableUI.textBold = true;
         PayTableManager.layerType = DoubleTurbo90PTLayer;
 
-		GameCard.gridOnTop = true;
-
         CardManager.cardType = DoubleTurbo90Card;
         CardManager.gridType = ForkGrid;
         

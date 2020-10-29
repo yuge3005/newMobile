@@ -14,7 +14,6 @@ class SuperGoal extends V2Game{
 
         this.gratisUIIsOverExtraUI = true;
 
-        GameCard.gridOnTop = true;
         GameCard.zeroUI = "champion_shose";
         GameCard.useRedEffect = true;
 

@@ -6,7 +6,6 @@ class VipManiaSuper extends V2Game{
 
         CardManager.cardType = VipManiaCard;
         CardGrid.defaultNumberSize = 50;
-        GameCard.gridOnTop = true;
 
         PayTableManager.bingoPaytableName = "vip_bingo";
 	}

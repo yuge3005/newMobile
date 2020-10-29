@@ -22,6 +22,7 @@ class Turbo90 extends V2Game{
 
         GameCard.showTitleShadow = new egret.GlowFilter(0, 1, 2, 2, 4 );
         CardGrid.defaultNumberSize = 55;
+        GameCard.gridOnTop = false;
 
         BallManager.ballOffsetY = 2;
         BallManager.rotateBall = true;

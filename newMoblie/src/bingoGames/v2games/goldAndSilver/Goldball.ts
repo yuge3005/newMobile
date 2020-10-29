@@ -11,8 +11,6 @@ class Goldball extends GoldSilverSuper{
 		super( "goldball.conf", assetsPath, 56 );
 
         PayTableManager.layerType = GoldBallPaytableLayer;
-        
-        GameCard.gridOnTop = true;
 
         CardGrid.defaultNumberSize = 52;
 	}

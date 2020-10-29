@@ -16,6 +16,8 @@ class SilverBall extends GoldSilverSuper{
 
         CardGrid.defaultNumberSize = 52;
 
+        GameCard.gridOnTop = false;
+
         BallManager.ballOffsetY = 10;
 
         this.needListenToolbarStatus = true;

@@ -14,7 +14,6 @@ class DoubleMania extends V2Game{
 
         CardManager.cardType = DoubleManiaCard;
         CardManager.gridType = DoubleManiaGrid;
-        GameCard.gridOnTop = true;
         CardGrid.defaultNumberSize = 55;
 
         this.needSmallWinTimesOnCard = true;

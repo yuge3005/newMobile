@@ -20,8 +20,6 @@ class BonusBingo extends V2Game{
 
         GameCard.zeroUI = "card_center";
 
-        GameCard.gridOnTop = true;
-
         CardManager.cardType = BonusBingoCard;
         CardManager.gridType = ForkGrid;
 

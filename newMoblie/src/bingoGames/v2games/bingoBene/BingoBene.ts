@@ -26,8 +26,6 @@ class BingoBene extends V2Game{
 
         CardGrid.defaultNumberSize = 52;
 
-        GameCard.gridOnTop = true;
-
         BallManager.ballOffsetY = 5;
 	}
 
