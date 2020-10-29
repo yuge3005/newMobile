@@ -74,7 +74,8 @@ class Copacabana extends V2Game{
             if( !this.buffBallBg1.visible || this.currentBallIndex > 36 ){
                 let path: Array<Object> = BallManager["balls"][this.currentBallIndex-1]["path"];
                 let pt: Object = path[path.length-1];
-                let mc: egret.MovieClip = Com.addMovieClipAt( this, MDS.mcFactory, "star", pt["x"] - 132, pt["y"] - 102 );
+                let mc: egret.MovieClip = Com.addMovieClipAt( this, MDS.mcFactory, "star", pt["x"] - 270, pt["y"] - 180 );
+                mc.scaleX = mc.scaleY = 2;
                 mc.gotoAndPlay( 1, 1 );
             }
         }
@@ -83,7 +84,7 @@ class Copacabana extends V2Game{
     }
 
     protected showLastBallAt( ballIndex: number, x: number, y: number, scale: number = 1 ): void{
-        super.showLastBallAt( ballIndex, x, y );
+        super.showLastBallAt( ballIndex, x, y, 245 / 177 );
 
         clearTimeout( this.timeoutId );
         this.timeoutId = setTimeout( this.clearRunningBallUI.bind( this ), 1000 * scale );
