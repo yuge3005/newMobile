@@ -514,7 +514,9 @@ class LemonGame extends egret.DisplayObjectContainer {
 	private showRewardCoins( rewardCoins: number ): void{
 		this.rightArea.removeChildren();
 		this.track = Com.addBitmapAt( this.rightArea, this.assetStr( "track" ), 0, 0 );
-		let tx: egret.TextField = Com.addTextAt( this.rightArea, 0, 110, 154, 230, 15, false, true );
+		this.track.fillMode = egret.BitmapFillMode.REPEAT;
+		this.track.height = 1125 + LemonGame.assetsRepeatHight;
+		let tx: egret.TextField = Com.addTextAt( this.rightArea, 10, 420, 400, 600, 45, false, true );
 
 		let str: string = "";
 		switch( GlobelSettings.language ){
@@ -529,7 +531,7 @@ class LemonGame extends egret.DisplayObjectContainer {
 		}
 		tx.text = str;
 		tx.lineSpacing = 20;
-		Com.addBitmapAt( this.rightArea, this.assetStr( "icon_end" ), 35, 230 );
+		Com.addBitmapAt( this.rightArea, this.assetStr( "icon_end" ), 96, 142 );
 	}
 
 	private amin0(): void{
