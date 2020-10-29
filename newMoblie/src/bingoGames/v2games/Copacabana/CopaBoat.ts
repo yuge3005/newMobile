@@ -400,7 +400,7 @@ class CopaBoat extends egret.DisplayObjectContainer {
         ev.data = { action: "select_turbo", rewardType: index };
         this.dispatchEvent(ev);
 
-        Pipa.resetBgMusicTimer();
+        Copacabana.resetBgMusicTimer();
     }
 
     /**
@@ -440,7 +440,7 @@ class CopaBoat extends egret.DisplayObjectContainer {
         this.waterSprayTimer.start();
 
         // dispatch event to play boat sound
-        let event = new egret.Event(Pipa.PLAY_MINI_GAME_SOUND);
+        let event = new egret.Event(Copacabana.PLAY_MINI_GAME_SOUND);
         event.data = { soundName: "engine_mp3", repeat: true };
         this.dispatchEvent(event);
         
@@ -484,7 +484,7 @@ class CopaBoat extends egret.DisplayObjectContainer {
         this.btnEnable = false;
 
         // dispatch event to stop sound
-        let event: egret.Event = new egret.Event(Pipa.STOP_MINI_GAME_SOUND);
+        let event: egret.Event = new egret.Event(Copacabana.STOP_MINI_GAME_SOUND);
         event.data = { soundName: "engine_mp3" };
         this.dispatchEvent(event);
 
@@ -535,7 +535,7 @@ class CopaBoat extends egret.DisplayObjectContainer {
         ev.data = { action: "get_turbo" };
         this.dispatchEvent(ev);
 
-        Pipa.resetBgMusicTimer();
+        Copacabana.resetBgMusicTimer();
     }
 
     /**
@@ -640,7 +640,7 @@ class CopaBoat extends egret.DisplayObjectContainer {
         this.rewardContainer.visible = true;
 
         // dispatch event to stop sound
-        let e: egret.Event = new egret.Event(Pipa.PLAY_MINI_GAME_SOUND);
+        let e: egret.Event = new egret.Event(Copacabana.PLAY_MINI_GAME_SOUND);
         e.data = { soundName: "collect_bonus_mp3", repeat: false };
         this.dispatchEvent(e);
 

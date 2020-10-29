@@ -1,4 +1,4 @@
-class Pipa extends V2Game{
+class Copacabana extends V2Game{
     public static PLAY_MINI_GAME_SOUND: string = "PLAY_MINI_GAME_SOUND";
     public static STOP_MINI_GAME_SOUND: string = "STOP_MINI_GAME_SOUND";
     private miniGame: CopaChess;
@@ -97,7 +97,7 @@ class Pipa extends V2Game{
         this.runningBallContainer = new egret.DisplayObjectContainer;
         Com.addObjectAt( this, this.runningBallContainer, 878, 676 );
 
-        this.letsPipa( data );
+        this.letsCopa( data );
         ( this.gameToolBar as CopaToolBar ).setMiniButton( this.bufLeftTurns == 0 );
 
         try{
@@ -187,7 +187,7 @@ class Pipa extends V2Game{
     private rewardUinit: egret.Bitmap;
     private rewardNumIndex: number;
 
-    private letsPipa( data: Object ): void{
+    private letsCopa( data: Object ): void{
 
         this.getBuffBallPosition();
         this.deleteDoubleLine2();
@@ -258,9 +258,9 @@ class Pipa extends V2Game{
     }
 
     private firstTimePlayShowTutorail(){
-        if( localStorage.getItem( "PipaTT" ) ) return;
+        if( localStorage.getItem( "CopaTT" ) ) return;
         else{
-            localStorage.setItem( "PipaTT", "true" );
+            localStorage.setItem( "CopaTT", "true" );
             this.dispatchEvent( new egret.Event( "new_game_tutorail" ) );
         }
     }
@@ -1258,7 +1258,7 @@ class Pipa extends V2Game{
     private loadMiniGame(currentPosition: number, chessArrayConfig: Array<number>, goKartRewards: any): void {
         this.miniGame = new CopaChess(currentPosition, chessArrayConfig);
         this.miniGame.addEventListener(CopaChess.REROLL_DICE, this.sendRerollCommand, this);
-        this.miniGame.addEventListener(Pipa.PLAY_MINI_GAME_SOUND, this.playMiniGameSound, this);
+        this.miniGame.addEventListener(Copacabana.PLAY_MINI_GAME_SOUND, this.playMiniGameSound, this);
         this.miniGame.addEventListener(CopaChess.GET_BOAT_GAME, this.startBoatGame, this);
         this.miniGame.addEventListener(CopaChess.MINI_GAME_OVER, this.miniGameOver, this);
         Com.addObjectAt(this, this.miniGame, 0, 0);
@@ -1266,8 +1266,8 @@ class Pipa extends V2Game{
         // load boat game
         this.boatGame = new CopaBoat( goKartRewards );
         this.boatGame.visible = false;
-        this.boatGame.addEventListener(Pipa.PLAY_MINI_GAME_SOUND, this.playMiniGameSound, this);
-        this.boatGame.addEventListener(Pipa.STOP_MINI_GAME_SOUND, this.stopMiniGameSound, this);
+        this.boatGame.addEventListener(Copacabana.PLAY_MINI_GAME_SOUND, this.playMiniGameSound, this);
+        this.boatGame.addEventListener(Copacabana.STOP_MINI_GAME_SOUND, this.stopMiniGameSound, this);
         this.boatGame.addEventListener(CopaBoat.GET_TURBO, this.sendGetTurboCommand, this);
         this.boatGame.addEventListener(CopaBoat.BOAT_GAME_OVER, this.boatGameOver, this);
         Com.addObjectAt(this, this.boatGame, 0, 0);
@@ -1407,7 +1407,7 @@ class Pipa extends V2Game{
     }
 
     public static resetBgMusicTimer(): void{
-        let pipaGame: Pipa = BingoMachine["currentGame"] as Pipa;
+        let pipaGame: Copacabana = BingoMachine["currentGame"] as Copacabana;
         if( pipaGame ){
             ( pipaGame.gameToolBar as CopaToolBar ).resetBgMusicTimer();
         }

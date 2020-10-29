@@ -137,7 +137,7 @@ class CopaChess extends egret.DisplayObjectContainer {
         this.chess.bindPlace(this.chessPlace);
         this.chess.addEventListener(JumpChess.JUMP, function () {
             // dispatch event to play sound
-            let event = new egret.Event(Pipa.PLAY_MINI_GAME_SOUND);
+            let event = new egret.Event(Copacabana.PLAY_MINI_GAME_SOUND);
             event.data = { soundName: "chess_mp3", repeat: false };
             this.dispatchEvent(event);
 
@@ -432,7 +432,7 @@ class CopaChess extends egret.DisplayObjectContainer {
         ev.data = { action: "normal" };
         this.dispatchEvent( ev );
         
-        Pipa.resetBgMusicTimer();
+        Copacabana.resetBgMusicTimer();
     }
 
     /**
@@ -474,7 +474,7 @@ class CopaChess extends egret.DisplayObjectContainer {
         this.chess.once(JumpChess.MOVE_OVER, this.showCards, this);
 
         // dispatch event to play sound
-        let event = new egret.Event(Pipa.PLAY_MINI_GAME_SOUND);
+        let event = new egret.Event(Copacabana.PLAY_MINI_GAME_SOUND);
         event.data = { soundName: "dice_mp3", repeat: false };
         egret.setTimeout(function (event: egret.Event) {
             this.dispatchEvent(event);
@@ -516,7 +516,7 @@ class CopaChess extends egret.DisplayObjectContainer {
             this.startBoatGame();
         } else {
             // dispatch event to play sound
-            let event = new egret.Event(Pipa.PLAY_MINI_GAME_SOUND);
+            let event = new egret.Event(Copacabana.PLAY_MINI_GAME_SOUND);
             event.data = { soundName: buffId === 0 ? "bad_buff_mp3" : "nice_buff_mp3", repeat: false };
             this.dispatchEvent(event);
 
@@ -568,7 +568,7 @@ class CopaChess extends egret.DisplayObjectContainer {
     private rerollDice(): void {
         if (!this.canChoise) return;
 
-        let canRoll: boolean = ( this.parent as Pipa ).checkDinero( Number( this.rerollPrice.text ) );
+        let canRoll: boolean = ( this.parent as Copacabana ).checkDinero( Number( this.rerollPrice.text ) );
         if( canRoll )return;
 
         this.point = 0;
@@ -584,7 +584,7 @@ class CopaChess extends egret.DisplayObjectContainer {
         ev.data = { action: "overwrite" };
         this.dispatchEvent( ev );
 
-        Pipa.resetBgMusicTimer();
+        Copacabana.resetBgMusicTimer();
     }
 
     /**
@@ -595,7 +595,7 @@ class CopaChess extends egret.DisplayObjectContainer {
         this.canChoise = false;
 
         this.showBuffResult();
-        Pipa.resetBgMusicTimer();
+        Copacabana.resetBgMusicTimer();
     }
 
     /**
@@ -604,7 +604,7 @@ class CopaChess extends egret.DisplayObjectContainer {
     private getDoublePower(): void {
         if (!this.canChoise) return;
 
-        let canRoll: boolean = ( this.parent as Pipa ).checkDinero( Number( this.doublePowerPrice.text ) );
+        let canRoll: boolean = ( this.parent as Copacabana ).checkDinero( Number( this.doublePowerPrice.text ) );
         if( canRoll )return;
 
         this.canChoise = false;
@@ -613,7 +613,7 @@ class CopaChess extends egret.DisplayObjectContainer {
         ev.data = { action: "double" };
         this.dispatchEvent(ev);
 
-        Pipa.resetBgMusicTimer();
+        Copacabana.resetBgMusicTimer();
     }
 
     /**
