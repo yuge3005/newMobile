@@ -81,14 +81,18 @@ class Copacabana extends V2Game{
             }
         }
 
+        clearTimeout( this.timeoutId );
+        if( this.currentBallIndex >= 40 ){
+            if( !this.buffBallBg1.visible || this.currentBallIndex > 42 ){
+                this.timeoutId = setTimeout( this.clearRunningBallUI.bind( this ), 1500 );
+            }
+        }
+
         this.playSound("pipa_ball_mp3");
     }
 
     protected showLastBallAt( ballIndex: number, x: number, y: number, scale: number = 1 ): void{
         super.showLastBallAt( ballIndex, x, y, 245 / 177 );
-
-        clearTimeout( this.timeoutId );
-        this.timeoutId = setTimeout( this.clearRunningBallUI.bind( this ), 1000 * scale );
     }
 
     private timeoutId: number;
@@ -1114,7 +1118,7 @@ class Copacabana extends V2Game{
             if( this.missOneForBingoNumbers.length ){
                 for( let i: number = 0; i < this.missOneForBingoNumbers.length; i++ ){
                     if( Math.abs( this.missOneForBingoNumbers[i] - ballNumber ) <= 1 ){
-                        this.showLastBallAt( ballNumber, 0, 0, 3.5 );
+                        this.showLastBallAt( ballNumber, 0, 0 );
                         this.showPeel();
                         return true;
                     }
@@ -1125,7 +1129,7 @@ class Copacabana extends V2Game{
             if( this.missOneForAllNumbers.length ){
                 for( let i: number = 0; i < this.missOneForAllNumbers.length; i++ ){
                     if( Math.abs( this.missOneForAllNumbers[i] - ballNumber ) <= 1 ){
-                        this.showLastBallAt( ballNumber, 0, 0, 3.5 );
+                        this.showLastBallAt( ballNumber, 0, 0 );
                         this.showPeel();
                         return true;
                     }
