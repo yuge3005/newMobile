@@ -12,7 +12,6 @@ class GameCard extends GameUIItem{
 	
 	public static showTitleShadow: egret.Filter;
 	public static clickChangeNumber: boolean = true;
-	public static firstToUpperCase: boolean = false;
 
 	public static zeroUI: string;
 
@@ -28,9 +27,7 @@ class GameCard extends GameUIItem{
 
 	public set bet( value: number ){
 		if( !this.betText )return;
-		let pre = MuLang.getText("bet");
-		if (GameCard.firstToUpperCase) pre = Utils.toFirstUpperCase(pre);
-		this.betText.setText( pre + ": " + Utils.formatCoinsNumber( value ) );
+		this.betText.setText( MuLang.getText("bet") + ": " + Utils.formatCoinsNumber( value ) );
 	}
 
 	public constructor( cardId: number ) {
@@ -51,22 +48,12 @@ class GameCard extends GameUIItem{
 		this.getBgColor();
 
 		if( GameCardUISettings.cardTextRect ){
-			this.cardText = Com.addLabelAt( this, GameCardUISettings.cardTextRect.x, GameCardUISettings.cardTextRect.y, GameCardUISettings.cardTextRect.width, GameCardUISettings.cardTextRect.height, GameCardUISettings.cardTextRect.height, false, true );
-			this.cardText.textColor = GameCardUISettings.texColor;
-			this.cardText.textAlign = "left";
-			this.cardText.scaleX = 0.9;
-			this.cardText.setText( MuLang.getText( "card", GameCard.firstToUpperCase ? 3 : 0 ) + ": " + (this.cardId + 1) );
-			
-			if (GameCard.showTitleShadow) this.cardText.filters = [GameCard.showTitleShadow];
+			this.cardText = this.buildCardTitleText( GameCardUISettings.cardTextRect, GameCardUISettings.cardTextRect.height );
+			this.cardText.setText( MuLang.getText( "card" ) + ": " + (this.cardId + 1) );
 		}
 		if( GameCardUISettings.betTextRect ){
-			this.betText = Com.addLabelAt( this, GameCardUISettings.betTextRect.x, GameCardUISettings.betTextRect.y, GameCardUISettings.betTextRect.width, GameCardUISettings.betTextRect.height, GameCardUISettings.betTextRect.height, false, true );
-			this.betText.textColor = GameCardUISettings.texColor;
-			this.betText.textAlign = "left";
-			this.betText.scaleX = 0.9;
+			this.betText = this.buildCardTitleText( GameCardUISettings.betTextRect, GameCardUISettings.betTextRect.height );
 			this.betText.setText( MuLang.getText( "bet" ) + ": " );
-
-			if (GameCard.showTitleShadow) this.betText.filters = [GameCard.showTitleShadow];
 		}
 
 		if( GameCard.clickChangeNumber ){
@@ -74,6 +61,15 @@ class GameCard extends GameUIItem{
 			this.touchEnabled = true;
 			this.addEventListener( egret.TouchEvent.TOUCH_TAP, this.cardNumber, this );
 		}
+	}
+
+	private buildCardTitleText( rect: egret.Rectangle, size: number ): TextLabel{
+		let tx: TextLabel = Com.addLabelAt( this, rect.x, rect.y, rect.width, rect.height, size, false, true );
+		tx.textColor = GameCardUISettings.texColor;
+		tx.textAlign = "left";
+		tx.scaleX = 0.9;
+		if(GameCard.showTitleShadow) tx.filters = [GameCard.showTitleShadow];
+		return tx;
 	}
 
 	public static changeingCard: boolean;
