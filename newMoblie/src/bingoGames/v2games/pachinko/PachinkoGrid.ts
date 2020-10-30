@@ -49,7 +49,7 @@ class PachinkoGrid extends ExtraBlinkGrid{
 	}
 
 	public showRedEffect(){
-		super.showRedEffect();
 		this.numTxt.textColor = CardGridColorAndSizeSettings.numberColorOnEffect;
+		this.currentBgPic = this.linePic;
 	}
 }
