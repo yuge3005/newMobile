@@ -5,7 +5,7 @@ class DoubleBingoCard extends GameCard{
 	}
 
 	protected onAdd( event: egret.Event ){
-		this.bg = Com.addBitmapAt( this, BingoMachine.getAssetStr( GameCard.bgString.replace( "_1", "" ) + "_" + ( this.cardId + 1 ) ), 0, 0 );
+		this.bg = Com.addBitmapAt( this, BingoMachine.getAssetStr( GameCardUISettings.bgString.replace( "_1", "" ) + "_" + ( this.cardId + 1 ) ), 0, 0 );
 		super.onAdd( event );
 	}
 

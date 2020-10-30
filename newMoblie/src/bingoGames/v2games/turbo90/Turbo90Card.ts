@@ -15,8 +15,8 @@ class Turbo90Card extends GameCard{
 
 	public getBgColor(){
 		if( !this.titleBg )return;
-		if( GameCard.titleColors ){
-			this.titleBg.filters = [ MatrixTool.colorMatrixPure( GameCard.titleColors[GameCard.currentBgColorIndex] ) ];
+		if( GameCardUISettings.titleColors ){
+			this.titleBg.filters = [ MatrixTool.colorMatrixPure( GameCardUISettings.titleColors[GameCard.currentBgColorIndex] ) ];
 		}
 	}
 

@@ -1,7 +1,6 @@
 class GameCard extends GameUIItem{
 
 	protected bg: egret.Bitmap;
-	protected static bgString: string;
 
 	protected cardText: TextLabel;
 	protected betText: TextLabel;
@@ -12,7 +11,6 @@ class GameCard extends GameUIItem{
 	public static gapSize: egret.Point;
 	public static gridInitPosition: egret.Point;
 
-	public static titleColors: Array<number>;
 	public static bgRound: number = 0;
 	public static currentBgColorIndex: number = 0;
 	
@@ -52,7 +50,7 @@ class GameCard extends GameUIItem{
 	}
 
 	protected onAdd( event: egret.Event ){
-		if( !this.bg )this.bg = Com.addBitmapAt( this, BingoMachine.getAssetStr( GameCard.bgString ), 0, 0 );
+		if( !this.bg )this.bg = Com.addBitmapAt( this, BingoMachine.getAssetStr( GameCardUISettings.bgString ), 0, 0 );
 		
 		this.fitEffectLayer = new egret.DisplayObjectContainer;
 		this.addChild( this.fitEffectLayer );
@@ -93,8 +91,8 @@ class GameCard extends GameUIItem{
 	}
 
 	public static getCardData( data: Object ){
-		this.titleColors = data["titleColors"];
-		this.bgString = data["cardBg"];
+		GameCardUISettings.titleColors = data["titleColors"];
+		GameCardUISettings.bgString = data["cardBg"];
 
 		let colors: Object = data["colors"];
 		let size: Object = data["size"];
@@ -116,12 +114,12 @@ class GameCard extends GameUIItem{
 
 	public static changeBgColor(){
 		this.currentBgColorIndex++;
-		if( this.currentBgColorIndex >= this.titleColors.length )this.currentBgColorIndex = 0;
+		if( this.currentBgColorIndex >= GameCardUISettings.titleColors.length )this.currentBgColorIndex = 0;
 	}
 
 	public getBgColor(){
-		if( GameCard.titleColors ){
-			GraphicTool.drawRect( this, new egret.Rectangle( 0, 0, this.bg.width, this.bg.height ), GameCard.titleColors[GameCard.currentBgColorIndex], true, 1, GameCard.bgRound );
+		if( GameCardUISettings.titleColors ){
+			GraphicTool.drawRect( this, new egret.Rectangle( 0, 0, this.bg.width, this.bg.height ), GameCardUISettings.titleColors[GameCard.currentBgColorIndex], true, 1, GameCard.bgRound );
 		}
 	}
 

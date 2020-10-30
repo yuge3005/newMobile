@@ -4,8 +4,8 @@ class VipManiaCard extends GameCard{
 	}
 
 	public getBgColor(){
-		if( GameCard.titleColors ){
-			this.bg.filters = [ MatrixTool.colorMatrixPure( GameCard.titleColors[GameCard.currentBgColorIndex] ) ];
+		if( GameCardUISettings.titleColors ){
+			this.bg.filters = [ MatrixTool.colorMatrixPure( GameCardUISettings.titleColors[GameCard.currentBgColorIndex] ) ];
 		}
 	}
 }
