@@ -8,7 +8,6 @@ class GameCard extends GameUIItem{
 	protected grids: Array<TowerGrid>;
 
 	public static gridNumbers: egret.Point;
-	public static gapSize: egret.Point;
 	public static gridInitPosition: egret.Point;
 
 	public static bgRound: number = 0;
@@ -100,7 +99,6 @@ class GameCard extends GameUIItem{
 		GameCard.texColor = colors["textColor"];
 
 		this.gridNumbers = new egret.Point( size["vertSize"], size["horzSize"] );
-		this.gapSize = new egret.Point( size["vertGap"], size["horzGap"] );
 		CardGridColorAndSizeSettings.sizeSetting( size );
 		this.gridInitPosition = new egret.Point( size["numberInitialPositionX"], size["numberInitialPositionY"] );
 
