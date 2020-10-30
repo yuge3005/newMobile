@@ -17,7 +17,6 @@ class GameCard extends GameUIItem{
 	protected fitEffectLayer: egret.DisplayObjectContainer;
 	public static fitEffectNameList: Object;
 	public static useRedEffect: boolean;
-	public static fitEffectRedLine: boolean = true;
 
 	protected cardId: number;
 	protected numbers: Array<number>;
@@ -213,13 +212,11 @@ class GameCard extends GameUIItem{
 				for( let i: number = 0; i< fitIndex.length; i++ ){
 					if( fitIndex[i] ){
 						effectImage = Com.addBitmapAt( this.fitEffectLayer, BingoMachine.getAssetStr( GameCard.fitEffectNameList[assetName][i] ), 0, 0 );
-						if( GameCard.fitEffectRedLine )effectImage.filters = [ MatrixTool.colorMatrixPure( 0xFF0000 ) ];
 					}
 				}
 			}
 			else{
 				effectImage = Com.addBitmapAt( this.fitEffectLayer, BingoMachine.getAssetStr( GameCard.fitEffectNameList[assetName] ), 0, 0 );
-				if( GameCard.fitEffectRedLine )effectImage.filters = [ MatrixTool.colorMatrixPure( 0xFF0000 ) ];
 			}
 		}
 		catch( e ){
