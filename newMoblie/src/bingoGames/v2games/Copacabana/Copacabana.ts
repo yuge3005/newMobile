@@ -151,7 +151,6 @@ class Copacabana extends V2Game{
     private squareGridsOnCard: Array<egret.Shape>;
     private squareNumbers: Array<number>;
 
-    private needShowEbColor: boolean;
     private needShowFreeEb: boolean;
     private ebColorList: Array<number>;
     private freeEbList: Array<number>;
@@ -512,8 +511,6 @@ class Copacabana extends V2Game{
     }
 
     private showEbColor( isShow: boolean ): void{
-        this.needShowEbColor = isShow;
-
         CopacabanaGird.showBinkColor = isShow;
     }
 
@@ -721,7 +718,7 @@ class Copacabana extends V2Game{
             this.addMarkNumbers();
         }
         
-        if( this.needShowEbColor ) this.ebColorList = data["eb_colors"];
+        if( CopacabanaGird.showBinkColor ) this.ebColorList = data["eb_colors"];
         if( this.needShowFreeEb ) this.freeEbList = data["free_eb"];
     }
 
@@ -737,7 +734,7 @@ class Copacabana extends V2Game{
 
         super.onExtra( data );
 
-        if( !this.needShowEbColor )return;
+        if( !CopacabanaGird.showBinkColor )return;
         let superEbColors: Array<number> = data["eb_colors"];
         if( superEbColors && superEbColors.length == 5 ){
             this.superEbColorsSp = new egret.DisplayObjectContainer;
@@ -1172,7 +1169,7 @@ class Copacabana extends V2Game{
             // this.playSound("t90_extra_loop_wav", -1);
             this.showFreeExtraPosition();
 
-            if( this.needShowEbColor )this.drawEbColors();
+            if( CopacabanaGird.showBinkColor )this.drawEbColors();
             if( this.needShowFreeEb )this.addFreeEbIcons();
         }
 

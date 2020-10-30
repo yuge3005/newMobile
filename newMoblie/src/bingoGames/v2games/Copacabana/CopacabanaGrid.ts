@@ -2,8 +2,6 @@ class CopacabanaGird extends TowerGrid{
 
 	private waveMc: egret.MovieClip;
 
-	public static mcf: egret.MovieClipDataFactory;
-
 	public static needClear: boolean;
 
 	public static showBinkColor: boolean;
