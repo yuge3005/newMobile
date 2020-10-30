@@ -5,7 +5,7 @@ class VipManiaSuper extends V2Game{
         this.languageObjectName = "vipBingoAndTurboMania_tx";
 
         CardManager.cardType = VipManiaCard;
-        CardGrid.defaultNumberSize = 50;
+        CardGridColorAndSizeSettings.defaultNumberSize = 50;
 
         PayTableManager.bingoPaytableName = "vip_bingo";
 	}

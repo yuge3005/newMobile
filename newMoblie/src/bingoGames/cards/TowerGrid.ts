@@ -28,7 +28,7 @@ class TowerGrid extends egret.Sprite{
 		this._blink = value;
 		if( !value )this.currentBgPic = this.defaultBgPic;
 		else{
-			this.numTxt.textColor = CardGrid.numberColorOnEffect;
+			this.numTxt.textColor = CardGridColorAndSizeSettings.numberColorOnEffect;
 			this.showBlink( true );
 		}
 	}
@@ -55,7 +55,7 @@ class TowerGrid extends egret.Sprite{
 	public constructor() {
 		super();
 
-		this.numTxt = MDS.addBitmapTextAt( this, "Arial Black_fnt", 0, - CardGrid.defaultNumberSize * 0.125, "center", CardGrid.defaultNumberSize, CardGrid.numberColor, CardGrid.gridSize.x, CardGrid.gridSize.y );
+		this.numTxt = MDS.addBitmapTextAt( this, "Arial Black_fnt", 0, - CardGridColorAndSizeSettings.defaultNumberSize * 0.125, "center", CardGridColorAndSizeSettings.defaultNumberSize, CardGridColorAndSizeSettings.numberColor, CardGridColorAndSizeSettings.gridSize.x, CardGridColorAndSizeSettings.gridSize.y );
 
 		this._currentBgPic = this.defaultBgPic = Com.createBitmapByName( BingoMachine.getAssetStr( CardGridUISettings.defaultBgPicName ) );
 		this.onEffBgPic = Com.createBitmapByName( BingoMachine.getAssetStr( CardGridUISettings.onEffBgPicName ) );
@@ -83,18 +83,18 @@ class TowerGrid extends egret.Sprite{
 		if( this.blink )this.blink = false;
 		this._isChecked = isShow;
 		if( isShow ){
-			if( CardGrid.colorNumberOnEffect )this.numTxt.textColor = CardGrid.numberColorOnEffect;
+			if( CardGridColorAndSizeSettings.colorNumberOnEffect )this.numTxt.textColor = CardGridColorAndSizeSettings.numberColorOnEffect;
 			this.currentBgPic = this.onEffBgPic;
 		}
 		else{
 			if( this.blink )this.blink = false;
-			if( CardGrid.colorNumberOnEffect )this.numTxt.textColor = CardGrid.numberColor;
+			if( CardGridColorAndSizeSettings.colorNumberOnEffect )this.numTxt.textColor = CardGridColorAndSizeSettings.numberColor;
 			this.currentBgPic = this.defaultBgPic;
 		}
 	}
 
 	public showRedEffect(){
-		this.numTxt.textColor = CardGrid.numberColor;
+		this.numTxt.textColor = CardGridColorAndSizeSettings.numberColor;
 		this.currentBgPic = this.linePic;
 	}
 

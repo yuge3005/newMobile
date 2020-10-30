@@ -23,7 +23,7 @@ class SuperGoal extends V2Game{
 
         CardManager.cardType = SuperGoalCard;
         CardManager.gridType = SuperGoalGrid;
-        CardGrid.defaultNumberSize = 45;
+        CardGridColorAndSizeSettings.defaultNumberSize = 45;
 
         BallManager.ballOffsetY = 6;
 

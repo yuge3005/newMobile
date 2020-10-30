@@ -23,8 +23,8 @@ class NineballCard extends GameCard{
 
 	protected createGrid( gridIndex: number ): TowerGrid{
 		let grid: TowerGrid = new TowerGrid;
-		grid.x = ( gridIndex % GameCard.gridNumbers.x ) * CardGrid.gridSpace.x + 2;
-		grid.y = Math.floor( gridIndex / GameCard.gridNumbers.x ) * CardGrid.gridSpace.y + 2;
+		grid.x = ( gridIndex % GameCard.gridNumbers.x ) * CardGridColorAndSizeSettings.gridSpace.x + 2;
+		grid.y = Math.floor( gridIndex / GameCard.gridNumbers.x ) * CardGridColorAndSizeSettings.gridSpace.y + 2;
 		this.addChild( grid );
 		return grid;
 	}

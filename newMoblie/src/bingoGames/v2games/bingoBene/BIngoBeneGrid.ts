@@ -56,9 +56,9 @@ class BingoBeneGrid extends ExtraBlinkGrid{
 	}
 
 	protected buildSmallWinText(){
-		this.extraBlinkNumTxt = Com.addLabelAt( this.extraBinkSp, 0, 3, CardGrid.gridSize.x, 45, 45, false, true );
+		this.extraBlinkNumTxt = Com.addLabelAt( this.extraBinkSp, 0, 3, CardGridColorAndSizeSettings.gridSize.x, 45, 45, false, true );
 		this.extraBlinkNumTxt.textColor = 0;
-		this.smallWinTimesText = Com.addLabelAt( this.extraBinkSp, 0, 50, CardGrid.gridSize.x, 30, 30 );
+		this.smallWinTimesText = Com.addLabelAt( this.extraBinkSp, 0, 50, CardGridColorAndSizeSettings.gridSize.x, 30, 30 );
 		this.smallWinTimesText.textColor = 0xFFFFFF;
 	}
 
@@ -80,7 +80,7 @@ class BingoBeneGrid extends ExtraBlinkGrid{
 	public showEffect( isShow: boolean ){
 		if( this.blink )this.blink = false;
 		if (isShow) {
-			this.numTxt.textColor = CardGrid.numberColorOnEffect;
+			this.numTxt.textColor = CardGridColorAndSizeSettings.numberColorOnEffect;
 			this.currentBgPic = this.onEffBgPic;
 			if( !this._isChecked ){
 				this._isChecked = true;
@@ -93,7 +93,7 @@ class BingoBeneGrid extends ExtraBlinkGrid{
 			}
 		}
 		else{
-			this.numTxt.textColor = CardGrid.numberColor;
+			this.numTxt.textColor = CardGridColorAndSizeSettings.numberColor;
 			this.currentBgPic = this.defaultBgPic;
 			if( this._isChecked ){
 				this._isChecked = false;

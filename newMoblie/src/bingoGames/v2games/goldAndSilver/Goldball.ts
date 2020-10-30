@@ -12,7 +12,7 @@ class Goldball extends GoldSilverSuper{
 
         PayTableManager.layerType = GoldBallPaytableLayer;
 
-        CardGrid.defaultNumberSize = 52;
+        CardGridColorAndSizeSettings.defaultNumberSize = 52;
 	}
 
     protected init() {

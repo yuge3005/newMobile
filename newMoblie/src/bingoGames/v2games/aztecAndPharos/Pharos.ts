@@ -13,7 +13,7 @@ class Pharos extends AztecPharosSuper{
         this.megaName = "pharo_mega";
 
         PayTableManager.layerType = PharosPaytableLayer;
-        CardGrid.defaultNumberSize = 50;
+        CardGridColorAndSizeSettings.defaultNumberSize = 50;
 
         BallManager.ballOffsetY = 8;
         BallManager.textBold = true;

@@ -33,8 +33,8 @@ class V2Game extends BingoMachine{
 
     protected positionOnCard( cardIndex: number, gridIndex: number ): egret.Point{
         let pt: egret.Point = new egret.Point;
-        pt.x = this.cardPositions[cardIndex]["x"] + GameCard.gridInitPosition.x + ( gridIndex % 5 ) * CardGrid.gridSpace.x;
-        pt.y = this.cardPositions[cardIndex]["y"] + GameCard.gridInitPosition.y + Math.floor( gridIndex / 5 ) * CardGrid.gridSpace.y;
+        pt.x = this.cardPositions[cardIndex]["x"] + GameCard.gridInitPosition.x + ( gridIndex % 5 ) * CardGridColorAndSizeSettings.gridSpace.x;
+        pt.y = this.cardPositions[cardIndex]["y"] + GameCard.gridInitPosition.y + Math.floor( gridIndex / 5 ) * CardGridColorAndSizeSettings.gridSpace.y;
         return pt;
     }
 

@@ -14,7 +14,7 @@ class SilverBall extends GoldSilverSuper{
 
         PayTableManager.layerType = SilverBallPaytableLayer;
 
-        CardGrid.defaultNumberSize = 52;
+        CardGridColorAndSizeSettings.defaultNumberSize = 52;
 
         GameCard.gridOnTop = false;
 

@@ -22,7 +22,7 @@ class Pachinko extends V2Game{
 
         CardManager.cardType = PachinkoCard;
         CardManager.gridType = PachinkoGrid;
-        CardGrid.defaultNumberSize = 55;
+        CardGridColorAndSizeSettings.defaultNumberSize = 55;
 
         PayTableManager.paytableUIType = PachinkoPaytableUI;
         BallManager.ballOffsetY = 5;

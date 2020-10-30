@@ -15,7 +15,7 @@ class Prakaramba extends V2Game{
         CardManager.cardType = PrakarambaCard;
         CardManager.gridType = PrakarambaGrid;
 
-        CardGrid.defaultNumberSize = 36;
+        CardGridColorAndSizeSettings.defaultNumberSize = 36;
         GameCard.useRedEffect = true;
 
         this.needSmallWinTimesOnCard = true;

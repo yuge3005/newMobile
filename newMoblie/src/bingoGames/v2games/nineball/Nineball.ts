@@ -21,7 +21,7 @@ class Nineball extends V2Game{
 
         GameCard.showTitleShadow = new egret.GlowFilter(0, 1, 2, 2, 4, 4);
 
-        CardGrid.defaultNumberSize = 55;
+        CardGridColorAndSizeSettings.defaultNumberSize = 55;
 
         GameCard.useRedEffect = true;
 

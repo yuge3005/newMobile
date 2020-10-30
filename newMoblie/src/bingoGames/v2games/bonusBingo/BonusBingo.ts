@@ -23,7 +23,7 @@ class BonusBingo extends V2Game{
         CardManager.cardType = BonusBingoCard;
         CardManager.gridType = ForkGrid;
 
-        CardGrid.defaultNumberSize = 36;
+        CardGridColorAndSizeSettings.defaultNumberSize = 36;
         BallManager.ballOffsetY = 4;
 
         this.ballArea.needLightCheck = true;

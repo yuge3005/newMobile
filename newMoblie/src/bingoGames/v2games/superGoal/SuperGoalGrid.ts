@@ -15,9 +15,9 @@ class SuperGoalGrid extends ExtraBlinkGrid{
 	}
 
 	protected buildSmallWinText(){
-		this.extraBlinkNumTxt = Com.addLabelAt( this.extraBinkSp, 0, 3, CardGrid.gridSize.x, 30, 30, false, true );
+		this.extraBlinkNumTxt = Com.addLabelAt( this.extraBinkSp, 0, 3, CardGridColorAndSizeSettings.gridSize.x, 30, 30, false, true );
 		this.extraBlinkNumTxt.textColor = 0;
-		this.smallWinTimesText = Com.addLabelAt( this.extraBinkSp, 0, 28, CardGrid.gridSize.x, 35, 30 );
+		this.smallWinTimesText = Com.addLabelAt( this.extraBinkSp, 0, 28, CardGridColorAndSizeSettings.gridSize.x, 35, 30 );
 		this.smallWinTimesText.textColor = 0xFFFF00;
 	}
 
@@ -56,7 +56,7 @@ class SuperGoalGrid extends ExtraBlinkGrid{
 
 		if( isShow ){
 			if( !this.forkUI ) this.forkUI = Com.createBitmapByName( BingoMachine.getAssetStr( CardGridUISettings.usefork ) );
-			Com.addObjectAt( this, this.forkUI, CardGrid.gridSize.x - this.forkUI.width >> 1, CardGrid.gridSize.y - this.forkUI.height >> 1 );
+			Com.addObjectAt( this, this.forkUI, CardGridColorAndSizeSettings.gridSize.x - this.forkUI.width >> 1, CardGridColorAndSizeSettings.gridSize.y - this.forkUI.height >> 1 );
 		}
 		else {
 			if( this.forkUI && this.contains( this.forkUI ) )this.removeChild( this.forkUI );

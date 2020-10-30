@@ -8,9 +8,9 @@ class PachinkoGrid extends ExtraBlinkGrid{
     }
 
 	protected buildSmallWinText(){
-		this.extraBlinkNumTxt = Com.addLabelAt( this.extraBinkSp, 0, 6, CardGrid.gridSize.x, 30, 30, false, true );
+		this.extraBlinkNumTxt = Com.addLabelAt( this.extraBinkSp, 0, 6, CardGridColorAndSizeSettings.gridSize.x, 30, 30, false, true );
 		this.extraBlinkNumTxt.textColor = 0;
-		this.smallWinTimesText = Com.addLabelAt( this.extraBinkSp, 0, 34, CardGrid.gridSize.x, 40, 40, true, true );
+		this.smallWinTimesText = Com.addLabelAt( this.extraBinkSp, 0, 34, CardGridColorAndSizeSettings.gridSize.x, 40, 40, true, true );
 		this.smallWinTimesText.stroke = 3;
 	}
 
@@ -50,6 +50,6 @@ class PachinkoGrid extends ExtraBlinkGrid{
 
 	public showRedEffect(){
 		super.showRedEffect();
-		this.numTxt.textColor = CardGrid.numberColorOnEffect;
+		this.numTxt.textColor = CardGridColorAndSizeSettings.numberColorOnEffect;
 	}
 }

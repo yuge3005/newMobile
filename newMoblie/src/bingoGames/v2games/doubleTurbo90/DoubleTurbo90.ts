@@ -18,7 +18,7 @@ class DoubleTurbo90 extends V2Game{
         CardManager.cardType = DoubleTurbo90Card;
         CardManager.gridType = ForkGrid;
         
-        CardGrid.defaultNumberSize = 32;
+        CardGridColorAndSizeSettings.defaultNumberSize = 32;
         GameCard.useRedEffect = true;
 
         this.ballArea.needLightCheck = true;

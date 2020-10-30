@@ -1,4 +1,4 @@
-class CardGrid extends egret.Sprite{
+class CardGridColorAndSizeSettings{
 
 	public static numberColor: number;
 	public static numberColorOnEffect: number;
@@ -12,6 +12,5 @@ class CardGrid extends egret.Sprite{
 	public static defaultNumberSize: number;
 
 	public constructor() {
-		super();
 	}
 }

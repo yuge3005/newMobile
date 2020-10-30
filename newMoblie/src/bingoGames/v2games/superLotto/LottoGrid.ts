@@ -8,7 +8,7 @@ class LottoGrid extends TowerGrid{
 		this._blink = value;
 		if( !value )this.currentBgPic = this.defaultBgPic;
 		else{
-			this.numTxt.textColor = CardGrid.numberColor;
+			this.numTxt.textColor = CardGridColorAndSizeSettings.numberColor;
 			this.showBlink( true );
 		}
 	}

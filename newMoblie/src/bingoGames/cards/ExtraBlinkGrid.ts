@@ -11,10 +11,10 @@ class ExtraBlinkGrid extends TowerGrid{
 		if( !value ){
 			this.currentBgPic = this.defaultBgPic;
 			this.extraBinkSp.visible = false;
-			this.numTxt.textColor = CardGrid.numberColor;
+			this.numTxt.textColor = CardGridColorAndSizeSettings.numberColor;
 		}
 		else{
-			this.numTxt.textColor = CardGrid.numberColorOnEffect;
+			this.numTxt.textColor = CardGridColorAndSizeSettings.numberColorOnEffect;
 			this.showBlink( true );
 		}
 	}
@@ -66,6 +66,6 @@ class ExtraBlinkGrid extends TowerGrid{
 			super.showBlink( isShow );
 			this.extraBinkSp.visible = false;
 		}
-		this.numTxt.textColor = CardGrid.numberColor;
+		this.numTxt.textColor = CardGridColorAndSizeSettings.numberColor;
 	}
 }

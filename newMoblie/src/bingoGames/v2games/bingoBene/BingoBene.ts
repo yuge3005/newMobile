@@ -24,7 +24,7 @@ class BingoBene extends V2Game{
         CardManager.cardType = BingoBeneCard;
         CardManager.gridType = BingoBeneGrid;
 
-        CardGrid.defaultNumberSize = 52;
+        CardGridColorAndSizeSettings.defaultNumberSize = 52;
 
         BallManager.ballOffsetY = 5;
 	}

@@ -14,7 +14,7 @@ class DoubleMania extends V2Game{
 
         CardManager.cardType = DoubleManiaCard;
         CardManager.gridType = DoubleManiaGrid;
-        CardGrid.defaultNumberSize = 55;
+        CardGridColorAndSizeSettings.defaultNumberSize = 55;
 
         this.needSmallWinTimesOnCard = true;
         this.ballArea.needLightCheck = true;

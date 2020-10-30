@@ -98,17 +98,17 @@ class GameCard extends GameUIItem{
 
 		let colors: Object = data["colors"];
 		let size: Object = data["size"];
-		CardGrid.numberColor = colors["numberColor"];
-		CardGrid.numberColorOnEffect = colors["numberColorOnEffect"];
-		CardGrid.numberBackgroundColorOnEffect = colors["numberBackgroundColorOnEffect"];
-		CardGrid.colorNumberOnEffect = colors["colorNumberOnEffect"];
-		CardGrid.colorNumberBackgroundOnEffect = colors["colorNumberBackgroundOnEffect"];
+		CardGridColorAndSizeSettings.numberColor = colors["numberColor"];
+		CardGridColorAndSizeSettings.numberColorOnEffect = colors["numberColorOnEffect"];
+		CardGridColorAndSizeSettings.numberBackgroundColorOnEffect = colors["numberBackgroundColorOnEffect"];
+		CardGridColorAndSizeSettings.colorNumberOnEffect = colors["colorNumberOnEffect"];
+		CardGridColorAndSizeSettings.colorNumberBackgroundOnEffect = colors["colorNumberBackgroundOnEffect"];
 		GameCard.texColor = colors["textColor"];
 
 		this.gridNumbers = new egret.Point( size["vertSize"], size["horzSize"] );
 		this.gapSize = new egret.Point( size["vertGap"], size["horzGap"] );
-		CardGrid.gridSize = new egret.Point( size["numberSizeX"], size["numberSizeY"] );
-		CardGrid.gridSpace = new egret.Point( CardGrid.gridSize.x + this.gapSize.x, CardGrid.gridSize.y + this.gapSize.y );
+		CardGridColorAndSizeSettings.gridSize = new egret.Point( size["numberSizeX"], size["numberSizeY"] );
+		CardGridColorAndSizeSettings.gridSpace = new egret.Point( CardGridColorAndSizeSettings.gridSize.x + this.gapSize.x, CardGridColorAndSizeSettings.gridSize.y + this.gapSize.y );
 		this.gridInitPosition = new egret.Point( size["numberInitialPositionX"], size["numberInitialPositionY"] );
 
 		CardGridUISettings.blink1PicName = data["blink1"];
@@ -151,8 +151,8 @@ class GameCard extends GameUIItem{
 
 	protected createGrid( gridIndex: number ): TowerGrid{
 		let grid: TowerGrid = eval( "new CardManager.gridType()" );
-		grid.x = GameCard.gridInitPosition.x + ( gridIndex % GameCard.gridNumbers.x ) * CardGrid.gridSpace.x;
-		grid.y = GameCard.gridInitPosition.y + Math.floor( gridIndex / GameCard.gridNumbers.x ) * CardGrid.gridSpace.y;
+		grid.x = GameCard.gridInitPosition.x + ( gridIndex % GameCard.gridNumbers.x ) * CardGridColorAndSizeSettings.gridSpace.x;
+		grid.y = GameCard.gridInitPosition.y + Math.floor( gridIndex / GameCard.gridNumbers.x ) * CardGridColorAndSizeSettings.gridSpace.y;
 		if( GameCard.gridOnTop )this.addChild( grid );
 		else this.addChildAt( grid, 0 );
 		return grid;

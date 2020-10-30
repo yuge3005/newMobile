@@ -22,7 +22,7 @@ class Copacabana extends V2Game{
         CardManager.cardType = CopacabanaCard;
         CardManager.gridType = CopacabanaGird;
 
-        CardGrid.defaultNumberSize = 44;
+        CardGridColorAndSizeSettings.defaultNumberSize = 44;
 
         GameCard.useRedEffect = true;
 

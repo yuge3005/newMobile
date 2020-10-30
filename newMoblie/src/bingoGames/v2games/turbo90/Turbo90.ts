@@ -21,7 +21,7 @@ class Turbo90 extends V2Game{
         CardManager.gridType = ForkGrid;
 
         GameCard.showTitleShadow = new egret.GlowFilter(0, 1, 2, 2, 4 );
-        CardGrid.defaultNumberSize = 55;
+        CardGridColorAndSizeSettings.defaultNumberSize = 55;
         GameCard.gridOnTop = false;
 
         BallManager.ballOffsetY = 2;
