@@ -13,7 +13,10 @@ class ExtraBlinkGrid extends TowerGrid{
 			this.extraBinkSp.visible = false;
 			this.numTxt.textColor = CardGrid.numberColor;
 		}
-		else this.numTxt.textColor = CardGrid.numberColorOnEffect;
+		else{
+			this.numTxt.textColor = CardGrid.numberColorOnEffect;
+			this.showBlink( true );
+		}
 	}
 
 	protected extraBlinkNumTxt: TextLabel | BmpText;

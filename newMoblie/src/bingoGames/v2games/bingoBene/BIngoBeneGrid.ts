@@ -44,6 +44,7 @@ class BingoBeneGrid extends ExtraBlinkGrid{
 		}
 		else{
 			this.blinkType = BingoBeneGrid.MISS_LINE;
+			this.showBlink( true );
 		}
 	}
 

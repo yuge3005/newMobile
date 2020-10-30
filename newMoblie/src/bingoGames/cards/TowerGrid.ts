@@ -14,6 +14,12 @@ class TowerGrid extends CardGrid{
 		this.flushGrid();
 	}
 
+	protected _isChecked: boolean;
+	public get isChecked(): boolean{
+		return this._isChecked;
+	}
+
+	protected _blink: boolean;
 	public get blink(): boolean{
 		return this._blink;
 	}
@@ -21,12 +27,17 @@ class TowerGrid extends CardGrid{
 		if( this._blink == value )return;
 		this._blink = value;
 		if( !value )this.currentBgPic = this.defaultBgPic;
-		else this.numTxt.textColor = CardGrid.numberColorOnEffect;
+		else{
+			this.numTxt.textColor = CardGrid.numberColorOnEffect;
+			this.showBlink( true );
+		}
 	}
 
 	private gridView: egret.Bitmap;
 
 	private zeroUI: egret.Bitmap;
+
+	protected numTxt: BmpText;
 
 	private num: number;
 	public set gridNumber( value: number ){
@@ -43,6 +54,8 @@ class TowerGrid extends CardGrid{
 
 	public constructor() {
 		super();
+
+		this.numTxt = MDS.addBitmapTextAt( this, "Arial Black_fnt", 0, - CardGrid.defaultNumberSize * 0.125, "center", CardGrid.defaultNumberSize, CardGrid.numberColor, CardGrid.gridSize.x, CardGrid.gridSize.y );
 
 		this._currentBgPic = this.defaultBgPic = Com.createBitmapByName( BingoMachine.getAssetStr( CardSettings.defaultBgPicName ) );
 		this.onEffBgPic = Com.createBitmapByName( BingoMachine.getAssetStr( CardSettings.onEffBgPicName ) );
