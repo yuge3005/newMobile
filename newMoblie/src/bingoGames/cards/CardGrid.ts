@@ -34,18 +34,4 @@ class CardGrid extends egret.Sprite{
 
 		this.numTxt = MDS.addBitmapTextAt( this, "Arial Black_fnt", 0, - CardGrid.defaultNumberSize * 0.125, "center", CardGrid.defaultNumberSize, CardGrid.numberColor, CardGrid.gridSize.x, CardGrid.gridSize.y );
 	}
-
-	protected smallWinTimesText: egret.TextField;
-	protected smallWinIcon: egret.DisplayObjectContainer;
-
-	public setSmallTime( winTimes: number ): void{
-		if( !winTimes ){
-			this.blink = false;
-			return;
-		}
-		this.smallWinTimesText = Com.addTextAt( this, 0, CardGrid.gridSize.y - 10 + CardGrid.winTimesOffset.x, CardGrid.gridSize.x + CardGrid.winTimesOffset.y, 10, 10 );
-		this.smallWinTimesText.textAlign = "right";
-		this.smallWinTimesText.text = "x" + winTimes;
-		this.smallWinTimesText.textColor = CardGrid.numberColor;
-	}
 }

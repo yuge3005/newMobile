@@ -266,8 +266,4 @@ class GameCard extends GameUIItem{
 			trace( "showfitEffect ignore:" + assetName );
 		}
 	}
-
-	public setSmallWinTimeAt( gridIndex: number, winTimes: number ): void{
-		this.grids[gridIndex].setSmallTime( winTimes );
-	}
 }

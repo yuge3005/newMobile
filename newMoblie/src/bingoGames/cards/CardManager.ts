@@ -104,6 +104,11 @@ class CardManager{
 	}
 
 	public static setSmallWinTime( cardIndex: number, gridIndex: number, winTimes: number ){
-		this.cards[cardIndex].setSmallWinTimeAt( gridIndex, winTimes );
+		if( this.cards[cardIndex] instanceof ExtraBlinkCard ){
+			( this.cards[cardIndex] as ExtraBlinkCard ).setSmallWinTimeAt( gridIndex, winTimes );
+		}
+		else{
+			console.error( "current card is not extra blink card, cannot setSmallWinTimeAt" );
+		}
 	}
 }

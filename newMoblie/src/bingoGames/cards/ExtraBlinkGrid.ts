@@ -18,6 +18,7 @@ class ExtraBlinkGrid extends TowerGrid{
 
 	protected extraBlinkNumTxt: TextLabel | BmpText;
 	protected extraBinkSp: egret.DisplayObjectContainer;
+	protected smallWinTimesText: egret.TextField;
 
 	public set extraBlinkNumber( value: number ){
 		this.extraBlinkNumTxt.setText( "" + value );
