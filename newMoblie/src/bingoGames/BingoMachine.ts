@@ -648,8 +648,6 @@ class BingoMachine extends GameUIItem{
 
 		this.updateCredit( data );
 
-		BingoMachine.inRound = false;
-
 		if( !this.gameToolBar.autoPlaying )this.resetGameToolBarStatus();
 		if (this.gameToolBar.buyAllExtra) this.gameToolBar.buyAllExtra = false;
 		if (this.gameToolBar.autoPlaying){
@@ -930,7 +928,7 @@ class BingoMachine extends GameUIItem{
 	}
 
 	protected roundOver(): void {
-		// CardManager.stopAllBlink();
+		BingoMachine.inRound = false;
     }
 
 	protected startPlay(): void {
