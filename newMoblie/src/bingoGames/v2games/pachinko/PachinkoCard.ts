@@ -18,7 +18,7 @@ class PachinkoCard extends ExtraBlinkCard {
         if (this.betText) this.betText.textColor = 0xFFFF00;
 
 		this.winTipTx = Com.addLabelAt( this, 310, GameCard.cardTextRect.y, GameCard.cardTextRect.width, GameCard.cardTextRect.height, GameCard.cardTextRect.height, false, true );
-		this.winTipTx.textColor = GameCard.texColor;
+		this.winTipTx.textColor = GameCardUISettings.texColor;
 		this.winTipTx.textAlign = "left";
 		this.winTipTx.scaleX = 0.9;
 		this.winTipTx.setText( MuLang.getText( "win" ) + ":" );

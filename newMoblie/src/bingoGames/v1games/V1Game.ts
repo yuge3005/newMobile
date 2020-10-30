@@ -18,8 +18,8 @@ class V1Game extends BingoMachine{
 		let newArray: Array<number> = [];
 		groupNumbers = groupNumbers.concat();
 		for( let i: number = 0; i < groupNumbers.length; i++ ){
-			let line: number = i % GameCard.gridNumbers.y;
-			let row: number = Math.floor( i / GameCard.gridNumbers.y );
+			let line: number = i % GameCardUISettings.gridNumbers.y;
+			let row: number = Math.floor( i / GameCardUISettings.gridNumbers.y );
 			newArray[line*5+row] = groupNumbers[i];
 		}
 		return newArray;
