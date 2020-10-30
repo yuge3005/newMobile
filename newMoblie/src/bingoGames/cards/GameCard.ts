@@ -11,8 +11,6 @@ class GameCard extends GameUIItem{
 	public static currentBgColorIndex: number = 0;
 	
 	public static showTitleShadow: egret.Filter;
-	public static cardTextRect: egret.Rectangle;
-	public static betTextRect: egret.Rectangle;
 	public static clickChangeNumber: boolean = true;
 	public static firstToUpperCase: boolean = false;
 
@@ -52,8 +50,8 @@ class GameCard extends GameUIItem{
 		
 		this.getBgColor();
 
-		if( GameCard.cardTextRect ){
-			this.cardText = Com.addLabelAt( this, GameCard.cardTextRect.x, GameCard.cardTextRect.y, GameCard.cardTextRect.width, GameCard.cardTextRect.height, GameCard.cardTextRect.height, false, true );
+		if( GameCardUISettings.cardTextRect ){
+			this.cardText = Com.addLabelAt( this, GameCardUISettings.cardTextRect.x, GameCardUISettings.cardTextRect.y, GameCardUISettings.cardTextRect.width, GameCardUISettings.cardTextRect.height, GameCardUISettings.cardTextRect.height, false, true );
 			this.cardText.textColor = GameCardUISettings.texColor;
 			this.cardText.textAlign = "left";
 			this.cardText.scaleX = 0.9;
@@ -61,8 +59,8 @@ class GameCard extends GameUIItem{
 			
 			if (GameCard.showTitleShadow) this.cardText.filters = [GameCard.showTitleShadow];
 		}
-		if( GameCard.betTextRect ){
-			this.betText = Com.addLabelAt( this, GameCard.betTextRect.x, GameCard.betTextRect.y, GameCard.betTextRect.width, GameCard.betTextRect.height, GameCard.betTextRect.height, false, true );
+		if( GameCardUISettings.betTextRect ){
+			this.betText = Com.addLabelAt( this, GameCardUISettings.betTextRect.x, GameCardUISettings.betTextRect.y, GameCardUISettings.betTextRect.width, GameCardUISettings.betTextRect.height, GameCardUISettings.betTextRect.height, false, true );
 			this.betText.textColor = GameCardUISettings.texColor;
 			this.betText.textAlign = "left";
 			this.betText.scaleX = 0.9;
@@ -86,24 +84,16 @@ class GameCard extends GameUIItem{
 	}
 
 	public static getCardData( data: Object ){
-		GameCardUISettings.titleColors = data["titleColors"];
-		GameCardUISettings.bgString = data["cardBg"];
-
-		let colors: Object = data["colors"];
-		let size: Object = data["size"];
-		CardGridColorAndSizeSettings.colorSetting( colors );
-		GameCardUISettings.texColor = colors["textColor"];
-
-		GameCardUISettings.gridNumbers = new egret.Point( size["vertSize"], size["horzSize"] );
-		CardGridColorAndSizeSettings.sizeSetting( size );
-		GameCardUISettings.gridInitPosition = new egret.Point( size["numberInitialPositionX"], size["numberInitialPositionY"] );
-
+		GameCardUISettings.dataSetting( data );
 		CardGridUISettings.getSettingStrings( data );
 
-		let cardTextRect: egret.Rectangle = new egret.Rectangle( size["cardTextPositionX"], size["cardTextPositionY"], size["cardTextSizeX"], size["cardTextSizeY"] );
-		if( cardTextRect.width > 1 ) GameCard.cardTextRect = cardTextRect;
-		let betTextRect: egret.Rectangle = new egret.Rectangle( size["betTextPositionX"], size["betTextPositionY"], size["betTextSizeX"], size["betTextSizeY"] );
-		if( betTextRect.width > 1 ) GameCard.betTextRect = betTextRect;
+		let colors: Object = data["colors"];
+		CardGridColorAndSizeSettings.colorSetting( colors );
+		GameCardUISettings.colorSetting( colors );
+
+		let size: Object = data["size"];
+		CardGridColorAndSizeSettings.sizeSetting( size );
+		GameCardUISettings.sizeSetting( size );
 	}
 
 	public static changeBgColor(){

@@ -16,12 +16,12 @@ class SuperGoalCard extends ExtraBlinkCard{
 
 		if (this.cardText) this.cardText.setText( MuLang.getText( "bet" ) + ":" );
 
-		this.winTipTx = Com.addLabelAt( this, 245, GameCard.cardTextRect.y, GameCard.cardTextRect.width, GameCard.cardTextRect.height, GameCard.cardTextRect.height, false, true );
+		this.winTipTx = Com.addLabelAt( this, 245, GameCardUISettings.cardTextRect.y, GameCardUISettings.cardTextRect.width, GameCardUISettings.cardTextRect.height, GameCardUISettings.cardTextRect.height, false, true );
 		this.winTipTx.textColor = GameCardUISettings.texColor;
 		this.winTipTx.textAlign = "left";
 		this.winTipTx.scaleX = 0.9;
 		this.winTipTx.setText( MuLang.getText( "win" ) + ":" );
-		this.winTx = Com.addLabelAt( this, 325, GameCard.betTextRect.y, 200, GameCard.betTextRect.height, GameCard.betTextRect.height, false, true );
+		this.winTx = Com.addLabelAt( this, 325, GameCardUISettings.betTextRect.y, 200, GameCardUISettings.betTextRect.height, GameCardUISettings.betTextRect.height, false, true );
 		this.winTx.textAlign = "left";
 		this.winTx.scaleX = 0.9;
 		this.winTx.setText( MuLang.getText( "" ) + ": " );
