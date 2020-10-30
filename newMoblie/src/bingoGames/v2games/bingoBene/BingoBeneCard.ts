@@ -47,7 +47,7 @@ class BingoBeneCard extends ExtraBlinkCard{
 		while( firstIndex >= 0 ){
 			str = str.replace( "11111", "" );
 			let sp: egret.Sprite = new egret.Sprite;
-			Com.addObjectAt( this.waveLayer, sp, GameCard.gridInitPosition.x, GameCard.gridInitPosition.y + CardGridColorAndSizeSettings.gridSpace.y * (step + firstIndex * 0.2) );
+			Com.addObjectAt( this.waveLayer, sp, GameCardUISettings.gridInitPosition.x, GameCardUISettings.gridInitPosition.y + CardGridColorAndSizeSettings.gridSpace.y * (step + firstIndex * 0.2) );
 			let shp: egret.Shape = new egret.Shape;
 			let matrix: egret.Matrix = new egret.Matrix;
 			matrix.createBox( 0.25, 1, 0, 100 );
@@ -121,16 +121,16 @@ class BingoBeneCard extends ExtraBlinkCard{
 			( this.grids[missNumbers[column]] as BingoBeneGrid ).blinkType = BingoBeneGrid.MISS_COLUMNS_3;
 		}
 		if( missNumArray.length == 1 ){
-			if( columsNum == 0 || columsNum == 1 || columsNum == 2 ) this.fitEffectLayer.addChildAt( this.addGridCover( "mentonGrid_json.card_green", new egret.Rectangle( GameCard.gridInitPosition.x + CardGridColorAndSizeSettings.gridSpace.x * columsNum, GameCard.gridInitPosition.y, 365, 241 ) ), 0 );
+			if( columsNum == 0 || columsNum == 1 || columsNum == 2 ) this.fitEffectLayer.addChildAt( this.addGridCover( "mentonGrid_json.card_green", new egret.Rectangle( GameCardUISettings.gridInitPosition.x + CardGridColorAndSizeSettings.gridSpace.x * columsNum, GameCardUISettings.gridInitPosition.y, 365, 241 ) ), 0 );
 			else{
 				console.error( "columsNum error columns_3 columns" );
 				trace( columsNum );
 			}
 		}
 		else if( missNumArray.length == 2 ){
-			if( columsNumArr[0] == 0 && columsNumArr[1] == 1 ) this.fitEffectLayer.addChildAt( this.addGridCover( "mentonGrid_json.card_green", new egret.Rectangle( GameCard.gridInitPosition.x, GameCard.gridInitPosition.y, 488, 241 ) ), 0 );
-			else if( columsNumArr[0] == 0 && columsNumArr[1] == 2 ) this.fitEffectLayer.addChildAt( this.addGridCover( "mentonGrid_json.card_green", new egret.Rectangle( GameCard.gridInitPosition.x, GameCard.gridInitPosition.y, 611, 241 ) ), 0 );
-			else if( columsNumArr[0] == 1 && columsNumArr[1] == 2 ) this.fitEffectLayer.addChildAt( this.addGridCover( "mentonGrid_json.card_green", new egret.Rectangle( GameCard.gridInitPosition.x + CardGridColorAndSizeSettings.gridSpace.x, GameCard.gridInitPosition.y, 488, 241 ) ), 0 );
+			if( columsNumArr[0] == 0 && columsNumArr[1] == 1 ) this.fitEffectLayer.addChildAt( this.addGridCover( "mentonGrid_json.card_green", new egret.Rectangle( GameCardUISettings.gridInitPosition.x, GameCardUISettings.gridInitPosition.y, 488, 241 ) ), 0 );
+			else if( columsNumArr[0] == 0 && columsNumArr[1] == 2 ) this.fitEffectLayer.addChildAt( this.addGridCover( "mentonGrid_json.card_green", new egret.Rectangle( GameCardUISettings.gridInitPosition.x, GameCardUISettings.gridInitPosition.y, 611, 241 ) ), 0 );
+			else if( columsNumArr[0] == 1 && columsNumArr[1] == 2 ) this.fitEffectLayer.addChildAt( this.addGridCover( "mentonGrid_json.card_green", new egret.Rectangle( GameCardUISettings.gridInitPosition.x + CardGridColorAndSizeSettings.gridSpace.x, GameCardUISettings.gridInitPosition.y, 488, 241 ) ), 0 );
 			else{
 				console.error( "columsNum error columns_3 columns" );
 				trace( columsNumArr );
@@ -159,14 +159,14 @@ class BingoBeneCard extends ExtraBlinkCard{
 			( this.grids[missNumbers[column]] as BingoBeneGrid ).blinkType = BingoBeneGrid.MISS_COLUMNS_4;
 		}
 		if( missNumArray.length == 1 ){
-			if( columsNum == 0 || columsNum == 1 ) this.fitEffectLayer.addChild( this.addGridCover( "mentonGrid_json.card_pink", new egret.Rectangle( GameCard.gridInitPosition.x + CardGridColorAndSizeSettings.gridSpace.x * columsNum, GameCard.gridInitPosition.y, 488, 241 ) ) );
+			if( columsNum == 0 || columsNum == 1 ) this.fitEffectLayer.addChild( this.addGridCover( "mentonGrid_json.card_pink", new egret.Rectangle( GameCardUISettings.gridInitPosition.x + CardGridColorAndSizeSettings.gridSpace.x * columsNum, GameCardUISettings.gridInitPosition.y, 488, 241 ) ) );
 			else{
 				console.error( "columsNum error double_line" );
 				trace( columsNum );
 			}
 		}
 		else if( missNumArray.length == 2 ){
-			this.fitEffectLayer.addChild( this.addGridCover( "mentonGrid_json.card_pink", new egret.Rectangle( GameCard.gridInitPosition.x, GameCard.gridInitPosition.y, 611, 241 ) ) );
+			this.fitEffectLayer.addChild( this.addGridCover( "mentonGrid_json.card_pink", new egret.Rectangle( GameCardUISettings.gridInitPosition.x, GameCardUISettings.gridInitPosition.y, 611, 241 ) ) );
 		}
 		else{
 			console.error( "missNumArray error columns_4" );
@@ -177,8 +177,8 @@ class BingoBeneCard extends ExtraBlinkCard{
 	public showMissColumns_2_2( missNumber: number ): void{
 		this.hasMissColumns_2_2 = missNumber;
 		( this.grids[missNumber] as BingoBeneGrid ).blinkType = BingoBeneGrid.MISS_COLUMNS_2_2;
-		this.fitEffectLayer.addChild( this.addGridCover( "mentonGrid_json.card_red", new egret.Rectangle( GameCard.gridInitPosition.x, GameCard.gridInitPosition.y, 242, 241 ) ) );
-		this.fitEffectLayer.addChild( this.addGridCover( "mentonGrid_json.card_red", new egret.Rectangle( GameCard.gridInitPosition.x + CardGridColorAndSizeSettings.gridSpace.x * 3, GameCard.gridInitPosition.y, 242, 241 ) ) );
+		this.fitEffectLayer.addChild( this.addGridCover( "mentonGrid_json.card_red", new egret.Rectangle( GameCardUISettings.gridInitPosition.x, GameCardUISettings.gridInitPosition.y, 242, 241 ) ) );
+		this.fitEffectLayer.addChild( this.addGridCover( "mentonGrid_json.card_red", new egret.Rectangle( GameCardUISettings.gridInitPosition.x + CardGridColorAndSizeSettings.gridSpace.x * 3, GameCardUISettings.gridInitPosition.y, 242, 241 ) ) );
 	}
 
 	public showMissBingo( missNumber: number = -1 ): void{

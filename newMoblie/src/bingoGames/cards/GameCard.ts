@@ -6,7 +6,6 @@ class GameCard extends GameUIItem{
 	protected betText: TextLabel;
 
 	protected grids: Array<TowerGrid>;
-	public static gridInitPosition: egret.Point;
 
 	public static bgRound: number = 0;
 	public static currentBgColorIndex: number = 0;
@@ -97,7 +96,7 @@ class GameCard extends GameUIItem{
 
 		GameCardUISettings.gridNumbers = new egret.Point( size["vertSize"], size["horzSize"] );
 		CardGridColorAndSizeSettings.sizeSetting( size );
-		this.gridInitPosition = new egret.Point( size["numberInitialPositionX"], size["numberInitialPositionY"] );
+		GameCardUISettings.gridInitPosition = new egret.Point( size["numberInitialPositionX"], size["numberInitialPositionY"] );
 
 		CardGridUISettings.getSettingStrings( data );
 
@@ -134,8 +133,8 @@ class GameCard extends GameUIItem{
 
 	protected createGrid( gridIndex: number ): TowerGrid{
 		let grid: TowerGrid = eval( "new CardManager.gridType()" );
-		grid.x = GameCard.gridInitPosition.x + ( gridIndex % GameCardUISettings.gridNumbers.x ) * CardGridColorAndSizeSettings.gridSpace.x;
-		grid.y = GameCard.gridInitPosition.y + Math.floor( gridIndex / GameCardUISettings.gridNumbers.x ) * CardGridColorAndSizeSettings.gridSpace.y;
+		grid.x = GameCardUISettings.gridInitPosition.x + ( gridIndex % GameCardUISettings.gridNumbers.x ) * CardGridColorAndSizeSettings.gridSpace.x;
+		grid.y = GameCardUISettings.gridInitPosition.y + Math.floor( gridIndex / GameCardUISettings.gridNumbers.x ) * CardGridColorAndSizeSettings.gridSpace.y;
 		if( GameCard.gridOnTop )this.addChild( grid );
 		else this.addChildAt( grid, 0 );
 		return grid;

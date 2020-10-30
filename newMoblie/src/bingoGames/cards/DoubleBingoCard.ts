@@ -12,8 +12,8 @@ class DoubleBingoCard extends GameCard{
 	protected createGrid( gridIndex: number ): TowerGrid{
 		let grid: TowerGrid = new TowerGrid();
 		let line: number = gridIndex < 4 ? 0 : ( gridIndex < 9 ? 1 : 2 );
-		grid.x = GameCard.gridInitPosition.x + ( gridIndex - line * 4 ) * CardGridColorAndSizeSettings.gridSpace.x;
-		grid.y = GameCard.gridInitPosition.y + line * CardGridColorAndSizeSettings.gridSpace.y;
+		grid.x = GameCardUISettings.gridInitPosition.x + ( gridIndex - line * 4 ) * CardGridColorAndSizeSettings.gridSpace.x;
+		grid.y = GameCardUISettings.gridInitPosition.y + line * CardGridColorAndSizeSettings.gridSpace.y;
 		if( this.cardId & 1 ){
 			grid.x += ( 1 - ( line & 1 ) ) * CardGridColorAndSizeSettings.gridSpace.x * ( line >= 2 ? -1 : 1 );
 		}

@@ -38,8 +38,8 @@ class TowerCard extends GameCard{
 		let indexPt: egret.Point = TowerCard.lineIndexCounter[gridIndex];
 		let column: number = indexPt.x;
 		let line: number = indexPt.y;
-		grid.x = GameCard.gridInitPosition.x + ( ( 4 - line ) * 0.5 + column ) * CardGridColorAndSizeSettings.gridSpace.x;
-		grid.y = GameCard.gridInitPosition.y + line * CardGridColorAndSizeSettings.gridSpace.y;
+		grid.x = GameCardUISettings.gridInitPosition.x + ( ( 4 - line ) * 0.5 + column ) * CardGridColorAndSizeSettings.gridSpace.x;
+		grid.y = GameCardUISettings.gridInitPosition.y + line * CardGridColorAndSizeSettings.gridSpace.y;
 		if( GameCard.gridOnTop )this.addChild( grid );
 		else this.addChildAt( grid, 0 );
 		return grid;

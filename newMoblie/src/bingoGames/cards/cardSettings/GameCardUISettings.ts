@@ -6,6 +6,7 @@ class GameCardUISettings {
 	public static texColor: number;
 
 	public static gridNumbers: egret.Point;
+	public static gridInitPosition: egret.Point;
 	
 	public constructor() {
 	}
