@@ -16,6 +16,7 @@ class CardGridUISettings {
 	public static linePicTexture: egret.Bitmap;
 
 	public static usefork: string;
+	public static zeroUI: string;
 
 	public constructor() {
 	}

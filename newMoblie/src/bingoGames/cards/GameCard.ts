@@ -9,8 +9,6 @@ class GameCard extends GameUIItem{
 	
 	public static clickChangeNumber: boolean = true;
 
-	public static zeroUI: string;
-
 	protected fitEffectLayer: egret.DisplayObjectContainer;
 	public static fitEffectNameList: Object;
 	public static useRedEffect: boolean;

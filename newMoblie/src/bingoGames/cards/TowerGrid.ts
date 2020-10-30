@@ -43,8 +43,8 @@ class TowerGrid extends egret.Sprite{
 	public set gridNumber( value: number ){
 		this.num = value;
 		this.numTxt.text = "" + value;
-		if( value == 0 && GameCard.zeroUI ){
-			if( !this.zeroUI )this.zeroUI = Com.addBitmapAt( this, BingoMachine.getAssetStr( GameCard.zeroUI ), 0, 0 );
+		if( value == 0 && CardGridUISettings.zeroUI ){
+			if( !this.zeroUI )this.zeroUI = Com.addBitmapAt( this, BingoMachine.getAssetStr( CardGridUISettings.zeroUI ), 0, 0 );
 		}
 		this.flushGrid();
 	}

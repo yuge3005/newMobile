@@ -17,7 +17,7 @@ class Pachinko extends V2Game{
 
         PayTableManager.layerType = PachinkoPaytableLayer;
 
-        GameCard.zeroUI = "pachinko_cat";
+        CardGridUISettings.zeroUI = "pachinko_cat";
         GameCardUISettings.showTitleShadow = new egret.GlowFilter( 0, 1, 4, 4, 4, 2 );
 
         CardManager.cardType = PachinkoCard;

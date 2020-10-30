@@ -18,7 +18,7 @@ class BonusBingo extends V2Game{
         PaytableUI.textBold = true;
         PayTableManager.paytableUIType = BonusBingoPaytableUI;
 
-        GameCard.zeroUI = "card_center";
+        CardGridUISettings.zeroUI = "card_center";
 
         CardManager.cardType = BonusBingoCard;
         CardManager.gridType = ForkGrid;
