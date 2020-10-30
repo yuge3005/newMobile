@@ -38,7 +38,7 @@ class SuperGoalCard extends ExtraBlinkCard{
 	private redEffectKeys: Object = {};
 
 	public showfitEffect( assetName: string, fitIndex: Array<boolean> ){
-		if( GameCard.useRedEffect ){
+		if( GameCardUISettings.useRedEffect ){
 			if( fitIndex.length ){
 				for( let i: number = 0; i < fitIndex.length; i++ ){
 					if( fitIndex[i] ){

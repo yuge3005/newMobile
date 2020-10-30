@@ -24,7 +24,7 @@ class Copacabana extends V2Game{
 
         CardGridColorAndSizeSettings.defaultNumberSize = 44;
 
-        GameCard.useRedEffect = true;
+        GameCardUISettings.useRedEffect = true;
 
         BallManager.normalBallInterval = 40;
         BallManager.ballOffsetY = 8;

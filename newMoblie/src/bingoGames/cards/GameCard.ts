@@ -11,7 +11,6 @@ class GameCard extends GameUIItem{
 
 	protected fitEffectLayer: egret.DisplayObjectContainer;
 	public static fitEffectNameList: Object;
-	public static useRedEffect: boolean;
 
 	protected cardId: number;
 	protected numbers: Array<number>;
@@ -163,7 +162,7 @@ class GameCard extends GameUIItem{
 			this.fitEffectLayer.removeChildren();
 			this.addChild( this.fitEffectLayer );
 		}
-		if( GameCard.useRedEffect ){
+		if( GameCardUISettings.useRedEffect ){
 			if( this.redEffectArray ){
 				for( let j: number = 0; j < this.redEffectArray.length; j++ ){
 					if( this.redEffectArray[j] )this.grids[j].showEffect( true );
@@ -186,7 +185,7 @@ class GameCard extends GameUIItem{
 	}
 
 	public showfitEffect( assetName: string, fitIndex: Array<boolean> ){
-		if( GameCard.useRedEffect ){
+		if( GameCardUISettings.useRedEffect ){
 			if( fitIndex.length ){
 				for( let i: number = 0; i < fitIndex.length; i++ ){
 					if( fitIndex[i] ){

@@ -5,7 +5,7 @@ class GoldSilverSuper extends V2Game{
 
 		PaytableUI.textBold = true;
 
-		GameCard.useRedEffect = true;
+		GameCardUISettings.useRedEffect = true;
 	}
 
 	protected init(){

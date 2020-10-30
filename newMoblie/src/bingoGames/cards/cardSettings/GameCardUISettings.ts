@@ -15,6 +15,8 @@ class GameCardUISettings {
 
 	public static showTitleShadow: egret.Filter;
 	public static gridOnTop: boolean = true;
+
+	public static useRedEffect: boolean;
 	
 	public constructor() {
 	}

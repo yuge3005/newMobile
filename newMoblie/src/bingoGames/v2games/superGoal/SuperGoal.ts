@@ -15,7 +15,7 @@ class SuperGoal extends V2Game{
         this.gratisUIIsOverExtraUI = true;
 
         CardGridUISettings.zeroUI = "champion_shose";
-        GameCard.useRedEffect = true;
+        GameCardUISettings.useRedEffect = true;
 
         PaytableUI.focusColor = 0xFFFF00;
         PayTableManager.layerType = SuperGoalPaytableLayer;

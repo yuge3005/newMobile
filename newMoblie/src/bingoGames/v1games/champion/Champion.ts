@@ -21,7 +21,7 @@ class Champion extends V1Game{
 
         CardGridColorAndSizeSettings.defaultNumberSize = 40;
 
-		GameCard.useRedEffect = true;
+		GameCardUISettings.useRedEffect = true;
 
         BallManager.normalBallInterval = 20;
 

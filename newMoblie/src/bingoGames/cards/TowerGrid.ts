@@ -35,7 +35,7 @@ class TowerGrid extends egret.Sprite{
 
 	private gridView: egret.Bitmap;
 
-	private zeroUI: egret.Bitmap;
+	private zeroUIBitmap: egret.Bitmap;
 
 	protected numTxt: BmpText;
 
@@ -44,7 +44,7 @@ class TowerGrid extends egret.Sprite{
 		this.num = value;
 		this.numTxt.text = "" + value;
 		if( value == 0 && CardGridUISettings.zeroUI ){
-			if( !this.zeroUI )this.zeroUI = Com.addBitmapAt( this, BingoMachine.getAssetStr( CardGridUISettings.zeroUI ), 0, 0 );
+			if( !this.zeroUIBitmap )this.zeroUIBitmap = Com.addBitmapAt( this, BingoMachine.getAssetStr( CardGridUISettings.zeroUI ), 0, 0 );
 		}
 		this.flushGrid();
 	}

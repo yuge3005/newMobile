@@ -5,7 +5,7 @@ class AztecPharosSuper extends V2Game{
         this.languageObjectName = "pharos_tx";
 
         CardManager.cardType = TowerCard;
-        GameCard.useRedEffect = true;
+        GameCardUISettings.useRedEffect = true;
 
         this.needListenToolbarStatus = true;
         this.tipStatusTextPosition = new egret.Rectangle( 430, 85, 169, 45 );

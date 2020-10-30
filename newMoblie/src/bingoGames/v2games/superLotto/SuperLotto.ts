@@ -23,7 +23,7 @@ class SuperLotto extends V2Game{
         CardManager.cardType = LottoCard;
         CardManager.gridType = LottoGrid;
 
-        GameCard.useRedEffect = true;
+        GameCardUISettings.useRedEffect = true;
 
         BallManager.normalBallInterval = 200;
 

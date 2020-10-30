@@ -23,7 +23,7 @@ class Nineball extends V2Game{
 
         CardGridColorAndSizeSettings.defaultNumberSize = 55;
 
-        GameCard.useRedEffect = true;
+        GameCardUISettings.useRedEffect = true;
 
         BallManager.ballOffsetY = 8;
     }
