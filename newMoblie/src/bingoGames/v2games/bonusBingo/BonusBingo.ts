@@ -26,7 +26,6 @@ class BonusBingo extends V2Game{
         CardGrid.defaultNumberSize = 36;
         BallManager.ballOffsetY = 4;
 
-        this.needSmallWinTimesOnCard = true;
         this.ballArea.needLightCheck = true;
 
         BallManager.normalBallInterval = 70;
@@ -526,14 +525,6 @@ class BonusBingo extends V2Game{
         }
         else super.sendPlayRequest();
 	}
-
-    protected showSmallWinResult( cardIndex: number, blinkGrids: Object ): void{
-        for( let item in blinkGrids ){
-            if( blinkGrids[item].length == 1 && blinkGrids[item][0] == "single_line" ){
-                CardManager.setSmallWinTime( cardIndex, parseInt( item ), 0 );
-            }
-        }
-    }
 
 /******************************************************************************************************************************************************************/
     protected showJackpot( jackpot: number, jackpotMinBet: number, betConfig: Array<Object> ){
