@@ -12,6 +12,9 @@ class GameCardUISettings {
 	public static betTextRect: egret.Rectangle;
 
 	public static currentBgColorIndex: number = 0;
+
+	public static showTitleShadow: egret.Filter;
+	public static gridOnTop: boolean = true;
 	
 	public constructor() {
 	}

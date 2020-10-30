@@ -21,7 +21,7 @@ class Hotbingo extends V2Game{
         CardManager.cardType = HotbingoCard;
         CardManager.gridType = ForkGrid;
 
-        GameCard.showTitleShadow = new egret.GlowFilter(0, 1, 4, 4, 4 );
+        GameCardUISettings.showTitleShadow = new egret.GlowFilter(0, 1, 4, 4, 4 );
         CardGridColorAndSizeSettings.defaultNumberSize = 55;
 
         BallManager.ballOffsetY = 4;

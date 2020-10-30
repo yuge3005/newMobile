@@ -19,7 +19,7 @@ class Nineball extends V2Game{
 
         CardManager.cardType = NineballCard;
 
-        GameCard.showTitleShadow = new egret.GlowFilter(0, 1, 2, 2, 4, 4);
+        GameCardUISettings.showTitleShadow = new egret.GlowFilter(0, 1, 2, 2, 4, 4);
 
         CardGridColorAndSizeSettings.defaultNumberSize = 55;
 

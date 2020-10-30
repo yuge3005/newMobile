@@ -7,12 +7,9 @@ class GameCard extends GameUIItem{
 
 	protected grids: Array<TowerGrid>;
 	
-	public static showTitleShadow: egret.Filter;
 	public static clickChangeNumber: boolean = true;
 
 	public static zeroUI: string;
-
-	public static gridOnTop: boolean = true;
 
 	protected fitEffectLayer: egret.DisplayObjectContainer;
 	public static fitEffectNameList: Object;
@@ -64,7 +61,7 @@ class GameCard extends GameUIItem{
 		tx.textColor = GameCardUISettings.texColor;
 		tx.textAlign = "left";
 		tx.scaleX = 0.9;
-		if(GameCard.showTitleShadow) tx.filters = [GameCard.showTitleShadow];
+		if(GameCardUISettings.showTitleShadow) tx.filters = [GameCardUISettings.showTitleShadow];
 		return tx;
 	}
 
@@ -112,7 +109,7 @@ class GameCard extends GameUIItem{
 		let grid: TowerGrid = eval( "new CardManager.gridType()" );
 		grid.x = GameCardUISettings.gridInitPosition.x + ( gridIndex % GameCardUISettings.gridNumbers.x ) * CardGridColorAndSizeSettings.gridSpace.x;
 		grid.y = GameCardUISettings.gridInitPosition.y + Math.floor( gridIndex / GameCardUISettings.gridNumbers.x ) * CardGridColorAndSizeSettings.gridSpace.y;
-		if( GameCard.gridOnTop )this.addChild( grid );
+		if( GameCardUISettings.gridOnTop )this.addChild( grid );
 		else this.addChildAt( grid, 0 );
 		return grid;
 	}

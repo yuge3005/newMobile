@@ -40,8 +40,7 @@ class TowerCard extends GameCard{
 		let line: number = indexPt.y;
 		grid.x = GameCardUISettings.gridInitPosition.x + ( ( 4 - line ) * 0.5 + column ) * CardGridColorAndSizeSettings.gridSpace.x;
 		grid.y = GameCardUISettings.gridInitPosition.y + line * CardGridColorAndSizeSettings.gridSpace.y;
-		if( GameCard.gridOnTop )this.addChild( grid );
-		else this.addChildAt( grid, 0 );
+		this.addChild( grid );
 		return grid;
 	}
 

@@ -20,7 +20,7 @@ class DoubleBingoCard extends GameCard{
 		if( this.cardId == 1 )grid.x += 15;
 		else if( this.cardId == 2 )grid.x += 18;
 		else if( this.cardId == 3 )grid.x += 2;
-		if( GameCard.gridOnTop )this.addChild( grid );
+		if( GameCardUISettings.gridOnTop )this.addChild( grid );
 		else this.addChildAt( grid, 0 );
 		return grid;
 	}
