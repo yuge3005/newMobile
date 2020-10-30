@@ -13,14 +13,14 @@ class DoubleManiaGrid extends ExtraBlinkGrid{
 	}
 
 	protected getBlinkBg(): egret.Bitmap{
-		return Com.createBitmapByName( BingoMachine.getAssetStr( CardSettings.linePicName ) );
+		return Com.createBitmapByName( BingoMachine.getAssetStr( CardGridUISettings.linePicName ) );
 	}
 
 	public showEffect( isShow: boolean ){
 		if( this.blink )this.blink = false;
 		this._isChecked = isShow;
 		if( isShow ){
-			if( !this.forkUI ) this.forkUI = Com.createBitmapByName( BingoMachine.getAssetStr( CardSettings.usefork ) );
+			if( !this.forkUI ) this.forkUI = Com.createBitmapByName( BingoMachine.getAssetStr( CardGridUISettings.usefork ) );
 			Com.addObjectAt( this, this.forkUI, CardGrid.gridSize.x - this.forkUI.width >> 1, CardGrid.gridSize.y - this.forkUI.height >> 1 );
 		}
 		else {

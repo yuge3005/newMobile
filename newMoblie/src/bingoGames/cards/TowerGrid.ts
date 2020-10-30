@@ -1,4 +1,4 @@
-class TowerGrid extends CardGrid{
+class TowerGrid extends egret.Sprite{
 
 	protected defaultBgPic: egret.Bitmap;
 	protected onEffBgPic: egret.Bitmap;
@@ -57,11 +57,11 @@ class TowerGrid extends CardGrid{
 
 		this.numTxt = MDS.addBitmapTextAt( this, "Arial Black_fnt", 0, - CardGrid.defaultNumberSize * 0.125, "center", CardGrid.defaultNumberSize, CardGrid.numberColor, CardGrid.gridSize.x, CardGrid.gridSize.y );
 
-		this._currentBgPic = this.defaultBgPic = Com.createBitmapByName( BingoMachine.getAssetStr( CardSettings.defaultBgPicName ) );
-		this.onEffBgPic = Com.createBitmapByName( BingoMachine.getAssetStr( CardSettings.onEffBgPicName ) );
-		this.blink1Pic = Com.createBitmapByName( BingoMachine.getAssetStr( CardSettings.blink1PicName ) );
-		this.blink2Pic = Com.createBitmapByName( BingoMachine.getAssetStr( CardSettings.blink2PicName ) );
-		this.linePic = Com.createBitmapByName( BingoMachine.getAssetStr( CardSettings.linePicName ) );
+		this._currentBgPic = this.defaultBgPic = Com.createBitmapByName( BingoMachine.getAssetStr( CardGridUISettings.defaultBgPicName ) );
+		this.onEffBgPic = Com.createBitmapByName( BingoMachine.getAssetStr( CardGridUISettings.onEffBgPicName ) );
+		this.blink1Pic = Com.createBitmapByName( BingoMachine.getAssetStr( CardGridUISettings.blink1PicName ) );
+		this.blink2Pic = Com.createBitmapByName( BingoMachine.getAssetStr( CardGridUISettings.blink2PicName ) );
+		this.linePic = Com.createBitmapByName( BingoMachine.getAssetStr( CardGridUISettings.linePicName ) );
 
 		this.gridView = new egret.Bitmap;
 		this.addChild( this.gridView );

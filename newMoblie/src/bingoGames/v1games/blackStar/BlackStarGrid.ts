@@ -4,7 +4,7 @@ class BlackStarGrid extends ExtraBlinkGrid{
 	}
 
 	protected getBlinkBg(): egret.Bitmap{
-		return Com.createBitmapByName( BingoMachine.getAssetStr( CardSettings.blink2PicName ) );
+		return Com.createBitmapByName( BingoMachine.getAssetStr( CardGridUISettings.blink2PicName ) );
 	}
 
 	protected buildSmallWinText(){

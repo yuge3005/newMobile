@@ -111,12 +111,12 @@ class GameCard extends GameUIItem{
 		CardGrid.gridSpace = new egret.Point( CardGrid.gridSize.x + this.gapSize.x, CardGrid.gridSize.y + this.gapSize.y );
 		this.gridInitPosition = new egret.Point( size["numberInitialPositionX"], size["numberInitialPositionY"] );
 
-		CardSettings.blink1PicName = data["blink1"];
-        CardSettings.blink2PicName = data["blink2"];
-        CardSettings.defaultBgPicName = data["defaultBg"];
-        CardSettings.onEffBgPicName = data["onEffBg"];
-        CardSettings.linePicName = data["line"];
-		CardSettings.usefork = data["usefork"];
+		CardGridUISettings.blink1PicName = data["blink1"];
+        CardGridUISettings.blink2PicName = data["blink2"];
+        CardGridUISettings.defaultBgPicName = data["defaultBg"];
+        CardGridUISettings.onEffBgPicName = data["onEffBg"];
+        CardGridUISettings.linePicName = data["line"];
+		CardGridUISettings.usefork = data["usefork"];
 
 		let cardTextRect: egret.Rectangle = new egret.Rectangle( size["cardTextPositionX"], size["cardTextPositionY"], size["cardTextSizeX"], size["cardTextSizeY"] );
 		if( cardTextRect.width > 1 ) GameCard.cardTextRect = cardTextRect;

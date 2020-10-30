@@ -191,7 +191,7 @@ class BingoMachine extends GameUIItem{
 
 		this.cardArea = new egret.DisplayObjectContainer;
 		this.addChild(this.cardArea);
-		CardSettings.initGridAssets();
+		CardGridUISettings.initGridAssets();
 
 		if( this.extraUIName ){
 			this.extraUIObject = this.getChildByName( this.assetStr( this.extraUIName ) );

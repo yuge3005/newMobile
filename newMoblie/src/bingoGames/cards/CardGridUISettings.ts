@@ -1,4 +1,4 @@
-class CardSettings {
+class CardGridUISettings {
 
 	public static defaultBgPicName: string;
 	public static defaultBgPicTexture: egret.Bitmap;
