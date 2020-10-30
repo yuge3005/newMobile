@@ -106,8 +106,4 @@ class CardManager{
 	public static setSmallWinTime( cardIndex: number, gridIndex: number, winTimes: number ){
 		this.cards[cardIndex].setSmallWinTimeAt( gridIndex, winTimes );
 	}
-
-	public static setSmallWinIcon( cardIndex: number, gridIndex: number, winIcon: egret.DisplayObjectContainer ){
-		this.cards[cardIndex].setSmallWinIconAt( gridIndex, winIcon );
-	}
 }

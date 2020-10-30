@@ -270,8 +270,4 @@ class GameCard extends GameUIItem{
 	public setSmallWinTimeAt( gridIndex: number, winTimes: number ): void{
 		this.grids[gridIndex].setSmallTime( winTimes );
 	}
-
-	public setSmallWinIconAt( gridIndex: number, winIcon: egret.DisplayObjectContainer ): void{
-		this.grids[gridIndex].setSmallIcon( winIcon );
-	}
 }

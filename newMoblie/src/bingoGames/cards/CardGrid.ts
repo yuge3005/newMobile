@@ -48,11 +48,4 @@ class CardGrid extends egret.Sprite{
 		this.smallWinTimesText.text = "x" + winTimes;
 		this.smallWinTimesText.textColor = CardGrid.numberColor;
 	}
-
-	public setSmallIcon( winIcon: egret.DisplayObjectContainer ): void{
-		this.smallWinIcon = winIcon;
-		winIcon.x = 1;
-		winIcon.y = 1;
-		this.addChild( winIcon );
-	}
 }
