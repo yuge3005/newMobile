@@ -20,6 +20,15 @@ class CardGridUISettings {
 	public constructor() {
 	}
 
+	public static getSettingStrings( data: Object ){
+		this.blink1PicName = data["blink1"];
+        this.blink2PicName = data["blink2"];
+        this.defaultBgPicName = data["defaultBg"];
+        this.onEffBgPicName = data["onEffBg"];
+        this.linePicName = data["line"];
+		this.usefork = data["usefork"];
+	}
+
 	public static initGridAssets(){
 		this.defaultBgPicTexture = Com.createBitmapByName( BingoMachine.getAssetStr( this.defaultBgPicName ) );
 		this.onEffBgPicTexture = Com.createBitmapByName( BingoMachine.getAssetStr( this.onEffBgPicName ) );
