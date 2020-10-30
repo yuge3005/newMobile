@@ -6,8 +6,6 @@ class GameCard extends GameUIItem{
 	protected betText: TextLabel;
 
 	protected grids: Array<TowerGrid>;
-
-	public static bgRound: number = 0;
 	
 	public static showTitleShadow: egret.Filter;
 	public static clickChangeNumber: boolean = true;
@@ -93,7 +91,7 @@ class GameCard extends GameUIItem{
 
 	public getBgColor(){
 		if( GameCardUISettings.titleColors ){
-			GraphicTool.drawRect( this, new egret.Rectangle( 0, 0, this.bg.width, this.bg.height ), GameCardUISettings.cardTitleColor, true, 1, GameCard.bgRound );
+			GraphicTool.drawRect( this, new egret.Rectangle( 0, 0, this.bg.width, this.bg.height ), GameCardUISettings.cardTitleColor, true, 1 );
 		}
 	}
 
