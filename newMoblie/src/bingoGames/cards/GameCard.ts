@@ -8,7 +8,6 @@ class GameCard extends GameUIItem{
 	protected grids: Array<TowerGrid>;
 
 	public static bgRound: number = 0;
-	public static currentBgColorIndex: number = 0;
 	
 	public static showTitleShadow: egret.Filter;
 	public static clickChangeNumber: boolean = true;
@@ -92,14 +91,9 @@ class GameCard extends GameUIItem{
 		GameCardUISettings.sizeSetting( size );
 	}
 
-	public static changeBgColor(){
-		this.currentBgColorIndex++;
-		if( this.currentBgColorIndex >= GameCardUISettings.titleColors.length )this.currentBgColorIndex = 0;
-	}
-
 	public getBgColor(){
 		if( GameCardUISettings.titleColors ){
-			GraphicTool.drawRect( this, new egret.Rectangle( 0, 0, this.bg.width, this.bg.height ), GameCardUISettings.titleColors[GameCard.currentBgColorIndex], true, 1, GameCard.bgRound );
+			GraphicTool.drawRect( this, new egret.Rectangle( 0, 0, this.bg.width, this.bg.height ), GameCardUISettings.cardTitleColor, true, 1, GameCard.bgRound );
 		}
 	}
 

@@ -65,7 +65,7 @@ class CardManager{
 
 	public static changeCardsBgColor(){
 		if( !GameCardUISettings.titleColors )return;
-		GameCard.changeBgColor();
+		GameCardUISettings.changeBgColor();
 		for( let i: number = 0; i < this.cards.length; i++ ){
 			this.cards[i].getBgColor();
 		}

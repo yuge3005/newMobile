@@ -10,6 +10,8 @@ class GameCardUISettings {
 
 	public static cardTextRect: egret.Rectangle;
 	public static betTextRect: egret.Rectangle;
+
+	public static currentBgColorIndex: number = 0;
 	
 	public constructor() {
 	}
@@ -31,5 +33,14 @@ class GameCardUISettings {
 		if( cardTextRect.width > 1 ) this.cardTextRect = cardTextRect;
 		let betTextRect: egret.Rectangle = new egret.Rectangle( size["betTextPositionX"], size["betTextPositionY"], size["betTextSizeX"], size["betTextSizeY"] );
 		if( betTextRect.width > 1 ) this.betTextRect = betTextRect;
+	}
+
+	public static get cardTitleColor(): number{
+		return this.titleColors[this.currentBgColorIndex];
+	}
+
+	public static changeBgColor(){
+		this.currentBgColorIndex++;
+		if( this.currentBgColorIndex >= this.titleColors.length )this.currentBgColorIndex = 0;
 	}
 }
