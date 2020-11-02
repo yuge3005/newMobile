@@ -27,6 +27,10 @@
     {
       "name": "particle",
       "path": "../library/particle/libsrc"
+    },
+    {
+      "name": "basicUI",
+      "path": "../library/basicUI/libsrc"
     }
   ]
 }
