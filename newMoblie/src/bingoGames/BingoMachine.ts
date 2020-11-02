@@ -178,8 +178,8 @@ class BingoMachine extends GameUIItem{
 		this.dispatchEvent( new egret.Event( BingoMachine.GENERIC_MODAL_LOADED ) );
 		this.preLoader = null;
 
-		this.scaleX = Main.gameSize.x / BingoBackGroundSetting.gameMask.width;
-		this.scaleY = Main.gameSize.y / BingoBackGroundSetting.gameMask.height;
+		this.scaleX = BingoBackGroundSetting.gameSize.x / BingoBackGroundSetting.gameMask.width;
+		this.scaleY = BingoBackGroundSetting.gameSize.y / BingoBackGroundSetting.gameMask.height;
 		this.mask = BingoBackGroundSetting.gameMask;
 
 		MDS.mcFactory = BingoBackGroundSetting.initBackground( this );

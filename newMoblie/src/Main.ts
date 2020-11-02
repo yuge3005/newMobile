@@ -5,8 +5,6 @@ class Main extends egret.DisplayObjectContainer {
 
 	private isMobile: boolean;
 
-    public static gameSize: egret.Point = new egret.Point( 960, 540 );
-
     public constructor() {
         super();
         this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
@@ -106,13 +104,13 @@ class Main extends egret.DisplayObjectContainer {
     private showShadow(){
 		if( !this.shadow ){
 			this.shadow = new egret.Shape;
-			GraphicTool.drawRect( this.shadow, new egret.Rectangle( 0, 0, Main.gameSize.x, Main.gameSize.y ), 0, false, 0.5 );
+			GraphicTool.drawRect( this.shadow, new egret.Rectangle( 0, 0, BingoBackGroundSetting.gameSize.x, BingoBackGroundSetting.gameSize.y ), 0, false, 0.5 );
 			this.shadow.touchEnabled = true;
 		}
 		this.addChild( this.shadow );
 
 		if( !this.modalPreloader ){
-			this.modalPreloader = Com.addBitmapAt( this, "modalGeneric_json.loader", Main.gameSize.x >> 1, Main.gameSize.y >> 1 );
+			this.modalPreloader = Com.addBitmapAt( this, "modalGeneric_json.loader", BingoBackGroundSetting.gameSize.x >> 1, BingoBackGroundSetting.gameSize.y >> 1 );
 			this.modalPreloader.anchorOffsetX = this.modalPreloader.width >> 1;
 			this.modalPreloader.anchorOffsetY = this.modalPreloader.height >> 1;
 		}
@@ -125,8 +123,8 @@ class Main extends egret.DisplayObjectContainer {
 	}
 
 	private addPo( event:egret.Event = null ){
-		this.currentPo.x = Main.gameSize.x >> 1;
-		this.currentPo.y = Main.gameSize.y >> 1;
+		this.currentPo.x = BingoBackGroundSetting.gameSize.x >> 1;
+		this.currentPo.y = BingoBackGroundSetting.gameSize.y >> 1;
 		this.currentPo.scaleX = 0.2;
 		this.currentPo.scaleY = 0.2;
 		this.currentPo.addEventListener( GenericModal.CLOSE_MODAL, this.closeCurrentPo, this );

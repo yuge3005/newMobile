@@ -24,7 +24,7 @@ class SFSConnector {
     constructor() {
         SFSConnector.connection = false;
         SFSConnector.login = false;
-        SFSConnector._config = {
+        if( !SFSConnector._config ) SFSConnector._config = {
             host: "52.2.30.161",
             port: 8989,
             debug: false,

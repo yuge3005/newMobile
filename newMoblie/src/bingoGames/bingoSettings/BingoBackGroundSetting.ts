@@ -6,6 +6,7 @@ class BingoBackGroundSetting{
 	private static bgItems: Array<string>;
 
 	public static gameMask: egret.Rectangle = new egret.Rectangle( 0, 0, 2000, 1125 );
+	public static gameSize: egret.Point = new egret.Point( 960, 540 );
 
 	public constructor() {
 	}
