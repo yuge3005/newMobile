@@ -7,12 +7,13 @@ class CopaToolBar extends BingoGameToolbar{
 	public constructor() {
 		super();
 
-		this.miniGameBtn = this.addBtn( "btn_go", 1724, 22, GameCommands.showMini, this.playContainer, true );
-		this.addButtonText( this.miniGameBtn, GlobelSettings.language == "pt"? 22 : 25, "board" );
+		this.miniGameBtn = this.addBtn( "btn_go", 1724, 22, GameCommands.showMini, this, true );
+		this.addButtonText( this.miniGameBtn, 72, "board" );
 	}
 
 	public setMiniButton( isShow: boolean ): void{
 		this.miniGameBtn.visible = isShow;
+		this.extraContainer.touchChildren = this.playContainer.touchChildren = !isShow;
 	}
 
 	private soundTimerCount: Date;
