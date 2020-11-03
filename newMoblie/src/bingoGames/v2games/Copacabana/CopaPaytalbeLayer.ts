@@ -3,6 +3,7 @@ class CopaPaytalbeLayer extends PaytableLayer{
 		super();
 
 		this.buildFgs();
+		this.buildTitleText();
 	}
 
 	protected buildFgs(){
@@ -33,5 +34,20 @@ class CopaPaytalbeLayer extends PaytableLayer{
             tx.textAlign = "center";
 			if( payTable == "bingo" ) tx.width = 180;
 		}
+	}
+
+	protected buildTitleText(){
+        let line: TextLabel = this.addCopaPtText( 327, "1L", 108 );
+        let double: TextLabel = this.addCopaPtText( 598, "2L", 108 );
+	    let bingo: TextLabel = this.addCopaPtText( 842, "bingo", 210 );
+		bingo.text = bingo.text.toUpperCase();
+	}
+
+	private addCopaPtText( x: number, tex: string, width: number ): TextLabel{
+		let tx: TextLabel = Com.addLabelAt( this, x, 130, width, 40, 40, false, false );
+		tx.bold = true;
+		tx.textColor = 0x083A00;
+		tx.setText( MuLang.getText( tex ) );
+		return tx;
 	}
 }
