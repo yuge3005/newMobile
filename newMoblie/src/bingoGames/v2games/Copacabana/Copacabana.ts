@@ -979,10 +979,8 @@ class Copacabana extends V2Game{
 
     /******************************************************************************************************************************************************************/    
     protected showJackpot( jackpot: number, jackpotMinBet: number, betConfig: Array<Object> ){
-        this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 612, 16 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 16, -11 ), new egret.Rectangle( 0, 0, 145, 13 ), 14, 0xFFFFFF ) );
-        let jkText: egret.Bitmap = Com.addBitmapAt( this, this.assetStr( "jackpot_" + GlobelSettings.language ), 551 + 35, 12 + 13 );
-        jkText.anchorOffsetX = jkText.width >> 1;
-        jkText.anchorOffsetY = jkText.height >> 1;
+        this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 1411, 120 ), jackpot, jackpotMinBet, betConfig, new egret.Point( -15, -10 ), new egret.Rectangle( 0, 4, 250, 50 ), 30, 0xFFFFFF, null, 0, 0, true ) );
+        let jkText: egret.Bitmap = Com.addBitmapAtMiddle( this, this.assetStr( "jackpot_" + GlobelSettings.language ), 1331, 148 );
     }
 
     protected afterCheck( resultList: Array<Object> ): void{
