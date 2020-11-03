@@ -157,9 +157,7 @@ class Copacabana extends V2Game{
 
     private needWaitForChoose: boolean;
     private cutBallsArray: Array<number>;
-    private chooseBar: egret.DisplayObjectContainer;
-    private chooseGrids: Array<egret.Shape>;
-    private chooseNotGrids: Array<egret.Shape>;
+    private chooseBar: CopaChooseBar;
 
     private markColumn: Array<number>;
     private markNumber1: number;
@@ -505,44 +503,9 @@ class Copacabana extends V2Game{
     }
 
     private buildChooseBar(): void{
-        this.chooseBar = new egret.DisplayObjectContainer;
-        this.chooseGrids = [];
-        this.chooseNotGrids = [];
+        this.chooseBar = new CopaChooseBar( this.getIndexOnCard.bind(this), this.setTargetToPositionOnCard.bind(this) );
         this.addChild( this.chooseBar );
-        let selectNumberContainer: egret.DisplayObjectContainer = new egret.DisplayObjectContainer;
-        let selectNumberMaskContainer: egret.DisplayObjectContainer = new egret.DisplayObjectContainer;
-        this.chooseBar.addChild( selectNumberContainer );
-        this.chooseBar.addChild( selectNumberMaskContainer );
-        for( let i: number = 0; i < 60; i++ ){
-            let indexPt: egret.Point = this.getIndexOnCard( i );
-            this.chooseGrids[i] = new egret.Shape;
-            this.chooseNotGrids[i] = new egret.Shape;
-            GraphicTool.drawRect( this.chooseGrids[i], new egret.Rectangle( 0, 0, 52, 37 ), 0xFFFFFF );
-            GraphicTool.drawRect( this.chooseNotGrids[i], new egret.Rectangle( 0, 0, 52, 37 ), 0, false, 0.7 );
-            this.chooseGrids[i].name = "" + i;
-            this.chooseGrids[i].touchEnabled = true;
-            this.chooseGrids[i].addEventListener( egret.TouchEvent.TOUCH_TAP, this.onNumberChoise, this );
-            selectNumberContainer.addChild( this.chooseGrids[i] );
-            selectNumberMaskContainer.addChild( this.chooseNotGrids[i] );
-            this.setTargetToPositionOnCard( this.chooseGrids[i], indexPt.x, indexPt.y );
-            this.setTargetToPositionOnCard( this.chooseNotGrids[i], indexPt.x, indexPt.y );
-        }
-        let toolBarMask: egret.Shape = new egret.Shape;
-        GraphicTool.drawRect( toolBarMask, new egret.Rectangle( 0, 0, 755, 48 ) );
-        GraphicTool.drawRect( toolBarMask, new egret.Rectangle( 0, 48, 68, 275 ) );
-        GraphicTool.drawRect( toolBarMask, new egret.Rectangle( 345, 48, 66, 275 ) );
-        GraphicTool.drawRect( toolBarMask, new egret.Rectangle( 689, 48, 66, 275 ) );
-        GraphicTool.drawRect( toolBarMask, new egret.Rectangle( 0, 323, 755, 277 ) );
-        toolBarMask.alpha = 0.5;
-        toolBarMask.touchEnabled = true;
-        Com.addObjectAt( this.chooseBar, toolBarMask, 0, 0 );
-
-        Com.addBitmapAt( this.chooseBar, this.assetStr( "ball_silver" ), 323, 339 );
-        Com.addMovieClipAt( this.chooseBar, MDS.mcFactory, "choose_" + GlobelSettings.language, 323, 340 );
-
         this.chooseBar.visible = false;
-
-        selectNumberContainer.addEventListener( egret.Event.ENTER_FRAME, this.onSelectBarFrame, this );
     }
 
     private onSelectBarFrame( event: egret.Event ): void{
@@ -588,14 +551,7 @@ class Copacabana extends V2Game{
     }
 
     private showChooseBar(): void{
-        this.chooseBar.visible = true;
-        let checkingString: Array<string> = CardManager.getCheckingStrings();
-        for( let i: number = 0; i < checkingString.length; i++ ){
-            for( let j: number = 0; j < checkingString[i].length ; j++ ){
-                this.chooseGrids[i*15+j].visible = checkingString[i].charAt( j ) == "0";
-                this.chooseNotGrids[i*15+j].visible = !this.chooseGrids[i*15+j].visible;
-            }
-        }
+        this.chooseBar.show();
     }
 
     private sendSelectNumberRequest( num: number ): void{
