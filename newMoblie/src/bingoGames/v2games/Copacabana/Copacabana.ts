@@ -18,6 +18,7 @@ class Copacabana extends V2Game{
 
         this.gratisUIIsOverExtraUI = true;
         PaytableUI.textBold = true;
+        PayTableManager.layerType = CopaPaytalbeLayer;
 
         CardManager.cardType = CopacabanaCard;
         CardManager.gridType = CopacabanaGird;
