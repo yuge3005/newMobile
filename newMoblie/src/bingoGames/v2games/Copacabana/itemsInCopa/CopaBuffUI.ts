@@ -1,7 +1,8 @@
 class CopaBuffUI extends egret.DisplayObjectContainer{
 
-	private bgSp: egret.Shape;
-	private buffLeftUI: egret.Shape;
+	private bgSp: egret.Bitmap;
+	private buffLeftUI: egret.Bitmap;
+	private buffLeftOverMaxUI: egret.Bitmap;
 	private buffIcon: egret.Bitmap;
 
 	private progressRect: egret.Rectangle = new egret.Rectangle( 120, 45, 212, 16 );
@@ -11,24 +12,34 @@ class CopaBuffUI extends egret.DisplayObjectContainer{
 	public constructor() {
 		super();
 
-		this.bgSp = new egret.Shape;
-		GraphicTool.drawRect( this.bgSp, new egret.Rectangle( 54, 22, 300, 63 ), 0x3c1b08, false, 1, 10 );
-		GraphicTool.drawRect( this.bgSp, this.progressRect );
+		this.bgSp = Com.addBitmapAt( this, BingoMachine.getAssetStr( "buff_bg" ), 54, 22 );
+		this.bgSp.scale9Grid = new egret.Rectangle( 10, 10, 66, 66 );
+		this.bgSp.width = 300;
+		this.bgSp.height = 65;
 		this.addChild( this.bgSp );
 
-		this.buffLeftUI = new egret.Shape;
+		let blackBg: egret.Bitmap = Com.addBitmapAt( this, BingoMachine.getAssetStr( "buff_progress_bg" ), 120, 45 );
+		blackBg.width = 212;
+
+		this.buffLeftUI = Com.addBitmapAt( this, BingoMachine.getAssetStr( "buff_progress" ), 120, 45 );
 		this.addChild( this.buffLeftUI );
+
+		this.buffLeftOverMaxUI = Com.addBitmapAt( this, BingoMachine.getAssetStr( "buff_progress" ), 120, 45 );
+		this.addChild( this.buffLeftOverMaxUI );
+		this.buffLeftOverMaxUI.filters = [ MatrixTool.colorMatrixPure( 0xFF0000 ) ];
 
 		this.cacheAsBitmap = true;
 	}
 
 	public setCurrentBuff( bufLeftTurns: number, bufMaxTurns: number, buffId: number ){
         if( bufLeftTurns > bufMaxTurns ){
-            GraphicTool.drawRect( this.buffLeftUI, this.progressRect, 0x7EFC53, true );
-            GraphicTool.drawRect( this.buffLeftUI, new egret.Rectangle( 120, 45, Math.floor( ( bufLeftTurns - bufMaxTurns ) / bufMaxTurns * 212 ), 16 ), 0xFF0000 );
+			this.buffLeftOverMaxUI.visible = true;
+			this.buffLeftUI.width = 212;
+			this.buffLeftOverMaxUI.width = ( bufLeftTurns - bufMaxTurns ) / bufMaxTurns * 212;
         }
         else{
-            GraphicTool.drawRect( this.buffLeftUI, new egret.Rectangle( 120, 45, Math.floor( bufLeftTurns / bufMaxTurns * 212 ), 16 ), 0x7EFC53, true );
+			this.buffLeftOverMaxUI.visible = false;
+			this.buffLeftUI.width = bufLeftTurns / bufMaxTurns * 212;
         }
 
 		this.changeBuffIcon( buffId );
