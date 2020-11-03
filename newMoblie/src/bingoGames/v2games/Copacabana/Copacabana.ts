@@ -503,17 +503,9 @@ class Copacabana extends V2Game{
     }
 
     private buildChooseBar(): void{
-        this.chooseBar = new CopaChooseBar( this.getIndexOnCard.bind(this), this.setTargetToPositionOnCard.bind(this) );
+        this.chooseBar = new CopaChooseBar( this.getIndexOnCard.bind(this), this.setTargetToPositionOnCard.bind(this), this.onNumberChoise.bind(this) );
         this.addChild( this.chooseBar );
         this.chooseBar.visible = false;
-    }
-
-    private onSelectBarFrame( event: egret.Event ): void{
-        if( !this.needWaitForChoose )return;
-        let dt: Date = new Date;
-        event.target.alpha = dt.getMilliseconds() > 500 ? 0.4 : 0.01;
-
-        if( !this.stage ) event.target.removeEventListener( egret.Event.ENTER_FRAME, this.onSelectBarFrame, this );
     }
 
     private onNumberChoise( event: egret.Event ): void{

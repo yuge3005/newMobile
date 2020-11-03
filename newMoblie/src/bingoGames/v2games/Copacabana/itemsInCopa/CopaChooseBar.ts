@@ -5,8 +5,9 @@ class CopaChooseBar extends egret.DisplayObjectContainer{
 
 	public getIndexOnCard: Function;
 	public setTargetToPositionOnCard: Function;
+	public onNumberChoise: Function;
 
-	public constructor( getIndexOnCard: Function, setTargetToPositionOnCard: Function ) {
+	public constructor( getIndexOnCard: Function, setTargetToPositionOnCard: Function, onNumberChoise: Function ) {
 		super();
 
 		this.chooseGrids = [];
@@ -14,6 +15,7 @@ class CopaChooseBar extends egret.DisplayObjectContainer{
 
 		this.getIndexOnCard = getIndexOnCard;
         this.setTargetToPositionOnCard = setTargetToPositionOnCard;
+		this.onNumberChoise = onNumberChoise;
 
 		let selectNumberContainer: egret.DisplayObjectContainer = new egret.DisplayObjectContainer;
         let selectNumberMaskContainer: egret.DisplayObjectContainer = new egret.DisplayObjectContainer;
@@ -24,11 +26,11 @@ class CopaChooseBar extends egret.DisplayObjectContainer{
             let indexPt: egret.Point = this.getIndexOnCard( i );
             this.chooseGrids[i] = new egret.Shape;
             this.chooseNotGrids[i] = new egret.Shape;
-            GraphicTool.drawRect( this.chooseGrids[i], new egret.Rectangle( 0, 0, CardGridColorAndSizeSettings.gridSize.x, CardGridColorAndSizeSettings.gridSize.y ), 0xFFFFFF );
-            GraphicTool.drawRect( this.chooseNotGrids[i], new egret.Rectangle( 0, 0, CardGridColorAndSizeSettings.gridSize.x, CardGridColorAndSizeSettings.gridSize.y ), 0, false, 0.7 );
+            GraphicTool.drawRect( this.chooseGrids[i], new egret.Rectangle( 0, 0, CardGridColorAndSizeSettings.gridSize.x, CardGridColorAndSizeSettings.gridSize.y ), 0xFFFFFF, false, 0.5 );
+            GraphicTool.drawRect( this.chooseNotGrids[i], new egret.Rectangle( 0, 0, CardGridColorAndSizeSettings.gridSize.x, CardGridColorAndSizeSettings.gridSize.y ), 0, false, 0.5 );
             this.chooseGrids[i].name = "" + i;
             this.chooseGrids[i].touchEnabled = true;
-            // this.chooseGrids[i].addEventListener( egret.TouchEvent.TOUCH_TAP, this.onNumberChoise, this );
+            this.chooseGrids[i].addEventListener( egret.TouchEvent.TOUCH_TAP, this.onNumberChoise, this );
             selectNumberContainer.addChild( this.chooseGrids[i] );
             selectNumberMaskContainer.addChild( this.chooseNotGrids[i] );
             this.setTargetToPositionOnCard( this.chooseGrids[i], indexPt.x, indexPt.y );
@@ -58,7 +60,7 @@ class CopaChooseBar extends egret.DisplayObjectContainer{
         let mc: egret.MovieClip = Com.addMovieClipAt( this, MDS.mcFactory, "choose_" + GlobelSettings.language, 878, 676 );
 		mc.scaleX = mc.scaleY = 245 / 110;
 
-		// selectNumberContainer.addEventListener( egret.Event.ENTER_FRAME, this.onSelectBarFrame, this );
+		selectNumberContainer.addEventListener( egret.Event.ENTER_FRAME, this.onSelectBarFrame, this );
 	}
 
 	public show(){
@@ -71,4 +73,12 @@ class CopaChooseBar extends egret.DisplayObjectContainer{
             }
         }
 	}
+
+	private onSelectBarFrame( event: egret.Event ): void{
+        if( !this.stage ) event.target.removeEventListener( egret.Event.ENTER_FRAME, this.onSelectBarFrame, this );
+		
+        if( !this.visible )return;
+        let dt: Date = new Date;
+        event.target.alpha = dt.getMilliseconds() > 500 ? 0.4 : 0.01;
+    }
 }
