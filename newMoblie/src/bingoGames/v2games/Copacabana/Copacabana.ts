@@ -123,8 +123,7 @@ class Copacabana extends V2Game{
 
     /******************************************************************************************************************************************************************/
 
-    private buffLeftUI: egret.Shape;
-    private buffIcon: egret.DisplayObjectContainer;
+    private buffUI: CopaBuffUI;
 
     private buffBallPositions: Array<Array<Object>>;
     private buffBallBg1: egret.Bitmap;
@@ -207,11 +206,8 @@ class Copacabana extends V2Game{
         this.buffWheel = data["buffWheel"];
         this.goKartRewards = data["goKartRewards"];
 
-        this.buffLeftUI = new egret.Shape;
-        Com.addObjectAt( this, this.buffLeftUI, 57, 17 );
-
-        this.buffIcon = new egret.DisplayObjectContainer;
-        Com.addObjectAt( this, this.buffIcon, 12, 5 );
+        this.buffUI = new CopaBuffUI;
+        Com.addObjectAt( this, this.buffUI, 1320, 5 );
 
         this.rewardUinit = Com.addBitmapAt( this, this.assetStr( "free_extra_ball_star" ), 0, 0 );
         this.rewardUinit.visible = false;
@@ -269,16 +265,7 @@ class Copacabana extends V2Game{
     }
 
     private showCurrentBuff(): void{
-        if( this.bufLeftTurns > this.bufMaxTurns ){
-            GraphicTool.drawRect( this.buffLeftUI, new egret.Rectangle( 0, 0, 61, 14 ), 0x7EFC53, true );
-            GraphicTool.drawRect( this.buffLeftUI, new egret.Rectangle( 0, 0, Math.floor( ( this.bufLeftTurns - this.bufMaxTurns ) / this.bufMaxTurns * 61 ), 14 ), 0xFF0000 );
-        }
-        else{
-            GraphicTool.drawRect( this.buffLeftUI, new egret.Rectangle( 0, 0, Math.floor( this.bufLeftTurns / this.bufMaxTurns * 61 ), 14 ), 0x7EFC53, true );
-        }
-
-        this.buffIcon.removeChildren();
-        Com.addBitmapAt( this.buffIcon, this.assetStr( "buff_" + this.currentBuf ), 0, 0 );
+        this.buffUI.setCurrentBuff( this.bufLeftTurns, this.bufMaxTurns, this.currentBuf );
 
         if( this.bufLeftTurns ){
             ( this.gameToolBar as CopaToolBar ).lockBet( false );
