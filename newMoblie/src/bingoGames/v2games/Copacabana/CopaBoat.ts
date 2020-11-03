@@ -53,6 +53,9 @@ class CopaBoat extends egret.DisplayObjectContainer {
     constructor( goKartRewards: any ) {
         super();
 
+        this.scaleX = 2000 / 755;
+        this.scaleY = 1125 / 462
+
         this.assetJson = "pipa_boat_json";
         this.lightResult = [0, 0, 0, 0, 0];
         this.pointPrize = [];

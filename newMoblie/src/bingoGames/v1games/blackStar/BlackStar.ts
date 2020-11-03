@@ -78,9 +78,6 @@ class BlackStar extends V1Game{
 
 		this.topbar = new Topbar;
 		this.addChild( this.topbar );
-		
-		this.topbar.scaleX = this.gameToolBar.scaleX = BingoBackGroundSetting.gameMask.width / 2000;
-		this.topbar.scaleY = this.gameToolBar.scaleY = BingoBackGroundSetting.gameMask.height / 1125;
 	}
 
     protected winChange( event: egret.Event ): void{

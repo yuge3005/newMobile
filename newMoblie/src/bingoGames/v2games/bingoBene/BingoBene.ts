@@ -129,9 +129,6 @@ class BingoBene extends V2Game{
 
 		this.topbar = new Topbar;
 		this.addChild( this.topbar );
-		
-		this.topbar.scaleX = this.gameToolBar.scaleX = BingoBackGroundSetting.gameMask.width / 2000;
-		this.topbar.scaleY = this.gameToolBar.scaleY = BingoBackGroundSetting.gameMask.height / 1125;
 	}
 
     protected paytableResultFilter( resultList: Array<Object> ): void{
