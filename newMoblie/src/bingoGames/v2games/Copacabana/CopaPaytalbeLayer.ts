@@ -22,4 +22,16 @@ class CopaPaytalbeLayer extends PaytableLayer{
 		if( height ) bitmap.height = height;
 		return bitmap;
 	}
+
+	public addPaytableUI(){
+        super.addPaytableUI();
+
+		let pts: Object = PayTableManager.payTablesDictionary;
+        for( let payTable in pts ){
+            let tx: egret.TextField = pts[payTable].UI["tx"];
+            tx.width = 135;
+            tx.textAlign = "center";
+			if( payTable == "bingo" ) tx.width = 180;
+		}
+	}
 }
