@@ -10,10 +10,10 @@ class CardManager{
 	public constructor() {
 	}
 
-	public static getCardData( data: Object, cardNumbers: number ){
+	public static getCardData( data: Object ){
 		this.cards = new Array<GameCard>();
 		GameCard.getCardData( data );
-		for( let i: number = 0; i < cardNumbers; i++ ){
+		for( let i: number = 0; i < GameCardUISettings.cardPositions.length; i++ ){
 			this.cards[i] = eval( "new CardManager.cardType( i )" );
 		}
 	}

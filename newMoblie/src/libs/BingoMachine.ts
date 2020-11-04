@@ -30,17 +30,12 @@ class BingoMachine extends GameUIItem{
 
 	protected connetKeys: Object;
 	protected tokenObject: Object;
-	protected cardPositions: Array<Object>;
 
 	private static currentGame: BingoMachine;
 
 	public static soundManager: GameSoundManager;
 	protected soundManager: GameSoundManager;
 	protected ballRunforStop: boolean;
-
-	protected get cardNumbers(): number{
-		return this.cardPositions.length;
-	}
 
 	protected assetStr( str: string ): string{
 		return this.assetName + "_json." + str;
@@ -102,8 +97,7 @@ class BingoMachine extends GameUIItem{
 		this.extraUIName = obj["extraUIName"];
 
 		PayTableManager.getPayTableData( obj["payTables"] );
-		this.cardPositions = obj["card"].cardPositions;
-		CardManager.getCardData( obj["card"], this.cardNumbers );
+		CardManager.getCardData( obj["card"] );
 
 		CardManager.startBlinkTimer();
 		this.addEventListener(egret.Event.REMOVED_FROM_STAGE, this.onRemove, this);
@@ -322,8 +316,8 @@ class BingoMachine extends GameUIItem{
 		let numbersOnCards: number = numeros.length / cards.length;
 
 		for( let i: number = 0; i < cards.length; i++ ){
-			cards[i].x = this.cardPositions[i]["x"];
-			cards[i].y = this.cardPositions[i]["y"];
+			cards[i].x = GameCardUISettings.cardPositions[i]["x"];
+			cards[i].y = GameCardUISettings.cardPositions[i]["y"];
 			this.cardArea.addChild( cards[i] );
 			cards[i].getNumbers( numeros.slice( i * numbersOnCards, ( i+1 ) * numbersOnCards ) );
 		}
