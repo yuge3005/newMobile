@@ -779,9 +779,9 @@ class Copacabana extends V2Game{
         this.bombs = [];
         this.bombsTxts = [];
         this.bombExplode = [];
-        for( let i: number = 0; i < this.cardPositions.length; i++ ){
+        for( let i: number = 0; i < GameCardUISettings.cardPositions.length; i++ ){
             this.bombs[i] = new egret.DisplayObjectContainer;
-            Com.addObjectAt( this, this.bombs[i], this.cardPositions[i]["x"] + 120, this.cardPositions[i]["y"] + 48 );
+            Com.addObjectAt( this, this.bombs[i], GameCardUISettings.cardPositions[i]["x"] + 120, GameCardUISettings.cardPositions[i]["y"] + 48 );
 
             this.bombExplode[i] = Com.addMovieClipAt( this.bombs[i], MDS.mcFactory, "bomb_02", -193, -158 );
             this.bombExplode[i].gotoAndStop(1);

@@ -69,8 +69,8 @@ class BonusBingo extends V2Game{
 
         this.chooseCardButtons = [];
         for( let i: number = 0; i < 4; i++ ){
-            let offsetX: number = this.cardPositions[i]["x"];
-            let offsetY: number = this.cardPositions[i]["y"];
+            let offsetX: number = GameCardUISettings.cardPositions[i]["x"];
+            let offsetY: number = GameCardUISettings.cardPositions[i]["y"];
             this.chooseCardButtons[i] = Com.addDownButtonAt( this, this.assetStr( "card_front" ), this.assetStr( "card_front" ), offsetX, offsetY, this.onCardChoose, true );
             this.chooseCardButtons[i].filters = [ MatrixTool.colorMatrixPure( 0xffc200 ), new egret.GlowFilter( 0xffc200, 1, 15, 15, 5, 2 ) ];
             this.addChildAt( this.chooseCardButtons[i], 1 );
@@ -298,8 +298,8 @@ class BonusBingo extends V2Game{
         let curtains: Array<egret.MovieClip> = [];
         this.setbonusByBet();
         for( let i: number = 0; i < 4; i++ ){
-            let offsetX: number = this.cardPositions[i]["x"];
-            let offsetY: number = this.cardPositions[i]["y"];
+            let offsetX: number = GameCardUISettings.cardPositions[i]["x"];
+            let offsetY: number = GameCardUISettings.cardPositions[i]["y"];
             curtains[i] = Com.addMovieClipAt( this, MDS.mcFactory, "bonusBingo_curtains_02", offsetX, offsetY );
             curtains[i].gotoAndPlay(1);
             if( this.curtains1[i].parent ){
@@ -329,8 +329,8 @@ class BonusBingo extends V2Game{
     private showCurtainAnimation(): void{
         let curtains: Array<egret.MovieClip> = [];
         for( let i: number = 0; i < 4; i++ ){
-            let offsetX: number = this.cardPositions[i]["x"];
-            let offsetY: number = this.cardPositions[i]["y"];
+            let offsetX: number = GameCardUISettings.cardPositions[i]["x"];
+            let offsetY: number = GameCardUISettings.cardPositions[i]["y"];
             curtains[i] = Com.addMovieClipAt( this, MDS.mcFactory, "bonusBingo_curtains_01", offsetX, offsetY );
             curtains[i].gotoAndPlay(1);
         }
