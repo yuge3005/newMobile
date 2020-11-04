@@ -1,10 +1,11 @@
 class CardArrowLayer extends egret.DisplayObjectContainer{
 	private arrowMcs: Array<Array<egret.MovieClip>>;
 
-	public constructor( mcf: egret.MovieClipDataFactory, assetName: string, cardPositions: Array<Object>, offsetPt: egret.Point, disY: number, scaleX: number = 1 ) {
+	public constructor( mcf: egret.MovieClipDataFactory, assetName: string, offsetPt: egret.Point, disY: number, scaleX: number = 1 ) {
 		super();
 
 		this.arrowMcs = [];
+		let cardPositions: Array<egret.Point> = GameCardUISettings.cardPositions;
 		for( let i: number = 0; i < cardPositions.length; i++ ){
 			this.arrowMcs[i] = [];
 			for( let j: number = 0; j < 3; j++ ){

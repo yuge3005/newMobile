@@ -2,7 +2,7 @@ class GameCardUISettings {
 
 	public static titleColors: Array<number>;
 	public static bgString: string;
-	public static cardPositions: Array<Object>;
+	public static cardPositions: Array<egret.Point>;
 
 	public static texColor: number;
 
@@ -25,7 +25,11 @@ class GameCardUISettings {
 	public static dataSetting( data: Object ){
 		this.titleColors = data["titleColors"];
 		this.bgString = data["cardBg"];
-		this.cardPositions = data["cardPositions"];
+		this.cardPositions = [];
+		for( let i: number = 0; i < data["cardPositions"].length; i++ ){
+			let ob: Object = data["cardPositions"];
+			this.cardPositions[i] = new egret.Point( ob["x"], ob["y"] );
+		}
 	}
 
 	public static colorSetting( colors: Object ){
