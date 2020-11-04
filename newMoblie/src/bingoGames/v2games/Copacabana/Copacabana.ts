@@ -444,7 +444,7 @@ class Copacabana extends V2Game{
                 continue;
             }
             this.squareGridsOnCard[i] = new egret.Shape;
-            GraphicTool.drawRect( this.squareGridsOnCard[i], new egret.Rectangle( 0, 0, 52, 38 ), 0xCCCC00 );
+            GraphicTool.drawRect( this.squareGridsOnCard[i], new egret.Rectangle( 0, 0, CardGridColorAndSizeSettings.gridSize.x, CardGridColorAndSizeSettings.gridSize.y ), 0xCCCC00 );
             this.squareUIOnCard.addChild( this.squareGridsOnCard[i] );
             this.setTargetToPositionOnCard( this.squareGridsOnCard[i], indexPt.x, indexPt.y );
         }

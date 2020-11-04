@@ -52,6 +52,6 @@ class CopaBuffUI extends egret.DisplayObjectContainer{
 		this.iconAssetsName = iconAssetsName;
 		if( this.buffIcon && this.contains( this.buffIcon ) ) this.removeChild( this.buffIcon );
         this.buffIcon = Com.addBitmapAt( this, iconAssetsName, 0, 0 );
-        this.buffIcon.scaleX = this.buffIcon.scaleY = 2.7;
+        this.buffIcon.scaleX = this.buffIcon.scaleY = 0.76;
 	}
 }
