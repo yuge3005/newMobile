@@ -53,7 +53,7 @@ class BlackStar extends V1Game{
         this.runningBallContainer = new egret.DisplayObjectContainer;
         Com.addObjectAt(this, this.runningBallContainer, 408, 155);
 
-        this.arrowArea = new BlackStarCardArrowLayer( MDS.mcFactory, "", GameCardUISettings.cardPositions, new egret.Point(0, 44), 73 );
+        this.arrowArea = new BlackStarCardArrowLayer( MDS.mcFactory, "", new egret.Point(0, 44), 73 );
         this.addChild( this.arrowArea );
 
         this.tipStatusUI = new BlackStarTipStatus;
