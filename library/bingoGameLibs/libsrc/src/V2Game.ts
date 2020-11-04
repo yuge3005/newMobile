@@ -18,32 +18,8 @@ class V2Game extends BingoMachine{
     }
 
 /*******************************************************************************************************/
-    protected getIndexOnCard( index: number ): egret.Point{
-        let cardIndex: number = Math.floor( index / 15 );
-        let gridIndex: number = index % 15;
-        let pt: egret.Point = new egret.Point( cardIndex, gridIndex );
-        return pt;
-    }
-    
-    protected setTargetToPositionOnCard( target: egret.DisplayObject, cardIndex: number, gridIndex: number ){
-        let pt: egret.Point = this.positionOnCard( cardIndex, gridIndex );
-        target.x = pt.x;
-        target.y = pt.y;
-    }
-
-    protected positionOnCard( cardIndex: number, gridIndex: number ): egret.Point{
-        let pt: egret.Point = new egret.Point;
-        pt.x = this.cardPositions[cardIndex]["x"] + GameCardUISettings.gridInitPosition.x + ( gridIndex % 5 ) * CardGridColorAndSizeSettings.gridSpace.x;
-        pt.y = this.cardPositions[cardIndex]["y"] + GameCardUISettings.gridInitPosition.y + Math.floor( gridIndex / 5 ) * CardGridColorAndSizeSettings.gridSpace.y;
-        return pt;
-    }
-
-    protected numberAtCard( cardIndex: number, gridIndex: number ): number{
-        return CardManager.cards[cardIndex].getNumberAt(gridIndex);
-    }
-
     protected getNumberOnCard( cardIndex: number, gridIndex: number ): void{
-        let num: number = this.numberAtCard( cardIndex, gridIndex );
+        let num: number = GameCardUISettings.numberAtCard( cardIndex, gridIndex );
         CardManager.getBall( num );
     }
     
