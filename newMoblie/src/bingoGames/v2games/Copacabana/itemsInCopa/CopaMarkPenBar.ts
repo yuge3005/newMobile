@@ -10,6 +10,10 @@ class CopaMarkPenBar extends egret.DisplayObjectContainer{
     private bigMarkPenContainer2: egret.DisplayObjectContainer;
 
 	public needMarkLine: boolean;
+    public markColumn: Array<number>;
+
+    private markNumber1: number;
+    private markNumber2: number;
 
 	public constructor() {
 		super();
@@ -52,23 +56,37 @@ class CopaMarkPenBar extends egret.DisplayObjectContainer{
         pen.parent.addChildAt( pt, 0 );
     }
 
-	public hideMarkPen(){
-		this.markPen1.visible = this.markPen2.visible = false;
+	public showMarkPen( isMark: boolean ){
+        if( isMark ){
+            let indexPt1: egret.Point = GameCardUISettings.getIndexOnCard( this.markColumn[0] );
+            this.markNumber1 = GameCardUISettings.numberAtCard( indexPt1.x, indexPt1.y );
 
-		this.bigMarkPenContainer1.removeChildren();
-		this.bigMarkPenContainer2.removeChildren();
+            let indexPt2: egret.Point = GameCardUISettings.getIndexOnCard( this.markColumn[1] );
+            this.markNumber2 = GameCardUISettings.numberAtCard( indexPt2.x, indexPt2.y );
+
+            GameCardUISettings.setTargetToPositionOnCard( this.markPen1, indexPt1.x, indexPt1.y );
+            GameCardUISettings.setTargetToPositionOnCard( this.markPen2, indexPt2.x, indexPt2.y );
+        }
+        else{
+            this.bigMarkPenContainer1.removeChildren();
+            this.bigMarkPenContainer2.removeChildren();
+        }
+        this.markPen1.visible = this.markPen2.visible = this.needMarkLine = isMark;
 	}
 
-	public showMarkPenAt( indexPt1: egret.Point, indexPt2: egret.Point ){
-		GameCardUISettings.setTargetToPositionOnCard( this.markPen1, indexPt1.x, indexPt1.y );
-		GameCardUISettings.setTargetToPositionOnCard( this.markPen2, indexPt2.x, indexPt2.y );
-		this.markPen1.visible = this.markPen2.visible = true;
-	}
+    public checkColumNumbers( ballIndex: number ): egret.Point{
+        if( ballIndex == this.markNumber1 || ballIndex == this.markNumber2 ){
+            let indexPt: egret.Point = GameCardUISettings.getIndexOnCard( this.markColumn[ ballIndex == this.markNumber1 ? 0 : 1 ] );
+            indexPt.y %= 5;
+            return indexPt;
+        }
+        return null;
+    }
 
 	public getColumnNumbers( card1: number, grid1: number ): void{
         let pt: egret.Point = GameCardUISettings.positionOnCard( card1, grid1 );
         let paper: egret.DisplayObjectContainer = card1 ? this.bigMarkPenContainer1 : this.bigMarkPenContainer2;
-        let pen: egret.Bitmap = Com.addBitmapAt( paper, BingoMachine.getAssetStr( "icon_mark_big" ), pt.x + 20, pt.y - 35 );
+        let pen: egret.Bitmap = Com.addBitmapAt( paper, BingoMachine.getAssetStr( "icon_mark_big" ), pt.x + 55, pt.y - 12 );
         pen.name = "pen";
         if( card1 ){
             this.bigPen2 = pen;
@@ -79,7 +97,7 @@ class CopaMarkPenBar extends egret.DisplayObjectContainer{
             this.markPen1.visible = false;
         }
         let tw: egret.Tween = egret.Tween.get( pen );
-        tw.to( { y: pen.y + 230 }, 600 );
+        tw.to( { y: pen.y + 390 }, 600 );
         tw.wait( 500 );
         tw.call( () => { if( pen.parent )pen.parent.removeChildren() } );
     }
