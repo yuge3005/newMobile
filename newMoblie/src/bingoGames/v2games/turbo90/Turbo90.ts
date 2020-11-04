@@ -41,7 +41,7 @@ class Turbo90 extends V2Game{
 
         this.buildSuperEbArea( "mega_" + GlobelSettings.language, 447, 222 );
 
-        this.arrowArea = new CardArrowLayer( MDS.mcFactory, "arrowAnimationInT90", GameCardUISettings.cardPositions, new egret.Point( -52, 65 ), 72 );
+        this.arrowArea = new CardArrowLayer( MDS.mcFactory, "arrowAnimationInT90", new egret.Point( -52, 65 ), 72 );
         this.addChild( this.arrowArea );
     }
 

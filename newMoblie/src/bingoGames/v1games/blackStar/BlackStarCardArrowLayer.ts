@@ -1,7 +1,7 @@
 class BlackStarCardArrowLayer extends CardArrowLayer{
 	
-	public constructor( mcf: egret.MovieClipDataFactory, assetName: string, cardPositions: Array<Object>, offsetPt: egret.Point, disY: number ) {
-		super( mcf, assetName, cardPositions, offsetPt, disY );
+	public constructor( mcf: egret.MovieClipDataFactory, assetName: string, offsetPt: egret.Point, disY: number ) {
+		super( mcf, assetName, offsetPt, disY );
 	}
 
 	protected buildArrowByPoint( mcf: egret.MovieClipDataFactory, assetName: string, cardPosition: Object, j: number, offsetPt: egret.Point, disY: number, scaleX: number ): egret.MovieClip{
