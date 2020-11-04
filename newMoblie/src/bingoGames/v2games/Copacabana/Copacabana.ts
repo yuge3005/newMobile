@@ -142,8 +142,6 @@ class Copacabana extends V2Game{
 
     private newBuffId: number;
 
-    private unUsingPaytable: Object;
-    private squarePaytable: Object;
     private squareUIOnCard: egret.DisplayObjectContainer;
     private squareGridsOnCard: Array<egret.Shape>;
     private squareNumbers: Array<number>;
@@ -188,7 +186,6 @@ class Copacabana extends V2Game{
     private letsCopa( data: Object ): void{
 
         this.getBuffBallPosition();
-        this.deleteDoubleLine2();
         this.deletesquare();
         this.buildBombs();
         this.buildMarkUI();
@@ -401,33 +398,8 @@ class Copacabana extends V2Game{
         }
     }
 
-    private deleteDoubleLine2(): void{
-        this.unUsePaytable( "double_line" );
-        this.getChildByName( this.assetStr( "bg_db_line" ) ).visible = false;
-    }
-
-    private unUsePaytable( ptName: string ): void{
-        this.unUsingPaytable = PayTableManager.payTablesDictionary[ ptName ];
-        this.unUsingPaytable["ui"].visible = false;
-        PayTableManager.payTablesDictionary[ ptName ] = null;
-        delete PayTableManager.payTablesDictionary[ ptName ];
-    }
-
     private dblineDoubled( isDoubled: boolean ): void{
-        if( isDoubled ){
-            PayTableManager.payTablesDictionary[ "double_line" ] = this.unUsingPaytable;
-            this.unUsingPaytable["ui"].visible = true;
-            this.getChildByName( this.assetStr( "bg_db_line" ) ).visible = true;
-
-            this.unUsePaytable( "double_line2" );
-        }
-        else{
-            PayTableManager.payTablesDictionary[ "double_line2" ] = this.unUsingPaytable;
-            this.unUsingPaytable["ui"].visible = true;
-            this.getChildByName( this.assetStr( "bg_db_line" ) ).visible = false;
-
-            this.unUsePaytable( "double_line" );
-        }
+        ( this.payTableArea as CopaPaytalbeLayer ).dblineDoubled( isDoubled );
     }
 
     private deletesquare(): void{

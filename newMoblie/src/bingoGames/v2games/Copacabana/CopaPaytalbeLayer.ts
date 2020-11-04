@@ -1,4 +1,11 @@
 class CopaPaytalbeLayer extends PaytableLayer{
+
+	private dbLine2Bg: egret.Bitmap;
+	private squareBg: egret.DisplayObjectContainer;
+
+	private unUsingPaytable: Object;
+    private squarePaytable: Object;
+
 	public constructor() {
 		super();
 
@@ -13,6 +20,11 @@ class CopaPaytalbeLayer extends PaytableLayer{
 		let lineBg: egret.Bitmap = this.buildScaleBg( "paytable_prize_bg", 434, 122, 55, 135, 50 );
 		let DBLineBg: egret.Bitmap = this.buildScaleBg( "paytable_prize_bg", 707, 122, 55, 135, 50 );
 		let bingoBg: egret.Bitmap = this.buildScaleBg( "paytable_prize_bg", 1052, 122, 55, 180, 50 );
+
+		this.dbLine2Bg = this.buildScaleBg( "paytable_prize_bg", 707, 122, 55, 135, 50 );
+		this.dbLine2Bg.filters = [ MatrixTool.colorMatrixPure( 0xDB7D2D ) ];
+		this.dbLine2Bg.visible = false;
+
     }
 
 	private buildScaleBg( assetsName: string, x: number, y: number, a: number, width: number, height: number = 0 ): egret.Bitmap{
@@ -34,6 +46,8 @@ class CopaPaytalbeLayer extends PaytableLayer{
             tx.textAlign = "center";
 			if( payTable == "bingo" ) tx.width = 180;
 		}
+
+		this.unUsePaytable( "double_line" );
 	}
 
 	protected buildTitleText(){
@@ -49,5 +63,25 @@ class CopaPaytalbeLayer extends PaytableLayer{
 		tx.textColor = 0x083A00;
 		tx.setText( MuLang.getText( tex ) );
 		return tx;
+	}
+
+	private unUsePaytable( ptName: string ): void{
+        this.unUsingPaytable = PayTableManager.payTablesDictionary[ ptName ];
+        this.unUsingPaytable["ui"].visible = false;
+        PayTableManager.payTablesDictionary[ ptName ] = null;
+        delete PayTableManager.payTablesDictionary[ ptName ];
+    }
+
+	public dblineDoubled( isDoubled: boolean ): void{
+		this.unUsingPaytable["ui"].visible = true;
+		this.dbLine2Bg.visible = isDoubled;
+		if( isDoubled ){
+            PayTableManager.payTablesDictionary[ "double_line" ] = this.unUsingPaytable;
+            this.unUsePaytable( "double_line2" );
+        }
+        else{
+            PayTableManager.payTablesDictionary[ "double_line2" ] = this.unUsingPaytable;
+            this.unUsePaytable( "double_line" );
+        }
 	}
 }
