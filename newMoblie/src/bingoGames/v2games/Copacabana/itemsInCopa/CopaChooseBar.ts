@@ -1,12 +1,12 @@
-class CopaChooseBar extends V2FuntionBar{
+class CopaChooseBar extends egret.DisplayObjectContainer{
 
 	private chooseGrids: Array<egret.Shape>;
     private chooseNotGrids: Array<egret.Shape>;
 
 	public onNumberChoise: Function;
 
-	public constructor( getIndexOnCard: Function, setTargetToPositionOnCard: Function, onNumberChoise: Function ) {
-		super( getIndexOnCard, setTargetToPositionOnCard );
+	public constructor( onNumberChoise: Function ) {
+		super();
 
 		this.chooseGrids = [];
         this.chooseNotGrids = [];
@@ -19,7 +19,7 @@ class CopaChooseBar extends V2FuntionBar{
         this.addChild( selectNumberMaskContainer );
 
         for( let i: number = 0; i < 60; i++ ){
-            let indexPt: egret.Point = this.getIndexOnCard( i );
+            let indexPt: egret.Point = GameCardUISettings.getIndexOnCard( i );
             this.chooseGrids[i] = new egret.Shape;
             this.chooseNotGrids[i] = new egret.Shape;
             GraphicTool.drawRect( this.chooseGrids[i], new egret.Rectangle( 0, 0, CardGridColorAndSizeSettings.gridSize.x, CardGridColorAndSizeSettings.gridSize.y ), 0xFFFFFF, false, 0.5 );
@@ -29,8 +29,8 @@ class CopaChooseBar extends V2FuntionBar{
             this.chooseGrids[i].addEventListener( egret.TouchEvent.TOUCH_TAP, this.onNumberChoise, this );
             selectNumberContainer.addChild( this.chooseGrids[i] );
             selectNumberMaskContainer.addChild( this.chooseNotGrids[i] );
-            this.setTargetToPositionOnCard( this.chooseGrids[i], indexPt.x, indexPt.y );
-            this.setTargetToPositionOnCard( this.chooseNotGrids[i], indexPt.x, indexPt.y );
+            GameCardUISettings.setTargetToPositionOnCard( this.chooseGrids[i], indexPt.x, indexPt.y );
+            GameCardUISettings.setTargetToPositionOnCard( this.chooseNotGrids[i], indexPt.x, indexPt.y );
         }
 
 		let toolBarMask: egret.Shape = new egret.Shape;

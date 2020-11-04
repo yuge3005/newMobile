@@ -52,7 +52,7 @@ class Copacabana extends V2Game{
 
         if( this.needMarkLine ){
             if( ballIndex == this.markNumber1 || ballIndex == this.markNumber2 ){
-                let indexPt: egret.Point = this.getIndexOnCard( this.markColumn[ ballIndex == this.markNumber1 ? 0 : 1 ] );
+                let indexPt: egret.Point = GameCardUISettings.getIndexOnCard( this.markColumn[ ballIndex == this.markNumber1 ? 0 : 1 ] );
                 let gridIndexY: number = indexPt.y % 5;
                 this.getColumnNumbers( indexPt.x, gridIndexY );
             }
@@ -398,7 +398,7 @@ class Copacabana extends V2Game{
     }
 
     private deletesquare(): void{
-        this.squareUIOnCard = new CopaSquareBar( this.getIndexOnCard.bind(this), this.setTargetToPositionOnCard.bind(this), this.numberAtCard.bind( this ) );
+        this.squareUIOnCard = new CopaSquareBar();
         this.addChild( this.squareUIOnCard );
 
         this.squareUIOnCard.getSquareNumbers();
@@ -421,15 +421,15 @@ class Copacabana extends V2Game{
     }
 
     private buildChooseBar(): void{
-        this.chooseBar = new CopaChooseBar( this.getIndexOnCard.bind(this), this.setTargetToPositionOnCard.bind(this), this.onNumberChoise.bind(this) );
+        this.chooseBar = new CopaChooseBar( this.onNumberChoise.bind(this) );
         this.addChild( this.chooseBar );
         this.chooseBar.visible = false;
     }
 
     private onNumberChoise( event: egret.Event ): void{
         let numIndex: number = Math.floor( event.target.name );
-        let indexPt: egret.Point = this.getIndexOnCard( numIndex );
-        let getNumber: number = this.numberAtCard( indexPt.x, indexPt.y );
+        let indexPt: egret.Point = GameCardUISettings.getIndexOnCard( numIndex );
+        let getNumber: number = GameCardUISettings.numberAtCard( indexPt.x, indexPt.y );
         let indexInCutArray: number = this.cutBallsArray.indexOf( getNumber );
 
         if( indexInCutArray >= 0 ){
@@ -638,13 +638,13 @@ class Copacabana extends V2Game{
         this.needMarkLine = isMark;
 
         if( isMark ){
-            let indexPt1: egret.Point = this.getIndexOnCard( this.markColumn[0] );
-            this.markNumber1 = this.numberAtCard( indexPt1.x, indexPt1.y );
-            this.setTargetToPositionOnCard( this.markPen1, indexPt1.x, indexPt1.y );
+            let indexPt1: egret.Point = GameCardUISettings.getIndexOnCard( this.markColumn[0] );
+            this.markNumber1 = GameCardUISettings.numberAtCard( indexPt1.x, indexPt1.y );
+            GameCardUISettings.setTargetToPositionOnCard( this.markPen1, indexPt1.x, indexPt1.y );
 
-            let indexPt2: egret.Point = this.getIndexOnCard( this.markColumn[1] );
-            this.markNumber2 = this.numberAtCard( indexPt2.x, indexPt2.y );
-            this.setTargetToPositionOnCard( this.markPen2, indexPt2.x, indexPt2.y );
+            let indexPt2: egret.Point = GameCardUISettings.getIndexOnCard( this.markColumn[1] );
+            this.markNumber2 = GameCardUISettings.numberAtCard( indexPt2.x, indexPt2.y );
+            GameCardUISettings.setTargetToPositionOnCard( this.markPen2, indexPt2.x, indexPt2.y );
             this.markPen1.visible = this.markPen2.visible = true;
         }
         else{
@@ -695,7 +695,7 @@ class Copacabana extends V2Game{
             this.getNumberOnCard( card1 + 2, grid1 + i * 5 );
         }
 
-        let pt: egret.Point = this.positionOnCard( card1, grid1 );
+        let pt: egret.Point = GameCardUISettings.positionOnCard( card1, grid1 );
         let paper: egret.DisplayObjectContainer = card1 ? this.bigMarkPenContainer1 : this.bigMarkPenContainer2;
         let pen: egret.Bitmap = Com.addBitmapAt( paper, this.assetStr( "icon_mark_big" ), pt.x + 20, pt.y - 35 );
         pen.name = "pen";
@@ -729,8 +729,8 @@ class Copacabana extends V2Game{
         if( isMark ){
             for( let i: number = 0; i < 4; i++ ){
                 this.markUIs[i].visible = true;
-                let pt: egret.Point = this.getIndexOnCard( this.markOnCard[i] );
-                this.setTargetToPositionOnCard( this.markUIs[i], pt.x, pt.y );
+                let pt: egret.Point = GameCardUISettings.getIndexOnCard( this.markOnCard[i] );
+                GameCardUISettings.setTargetToPositionOnCard( this.markUIs[i], pt.x, pt.y );
             }
         }
         else{
@@ -742,7 +742,7 @@ class Copacabana extends V2Game{
 
     private addMarkNumbers(): void{
         for( let i: number = 0; i < this.markOnCard.length; i++ ){
-            let pt: egret.Point = this.getIndexOnCard( this.markOnCard[i] );
+            let pt: egret.Point = GameCardUISettings.getIndexOnCard( this.markOnCard[i] );
             this.getNumberOnCard( pt.x, pt.y );
         }
     }
@@ -810,7 +810,7 @@ class Copacabana extends V2Game{
     private getBombNumbers(): void{
         this.bombNumbers = [];
         for( let i: number = 0; i < 4; i++ ){
-            this.bombNumbers[i] = this.numberAtCard( i, 7 );
+            this.bombNumbers[i] = GameCardUISettings.numberAtCard( i, 7 );
         }
     }
 
@@ -829,8 +829,8 @@ class Copacabana extends V2Game{
 
         if( isNeedReward ){
             this.rewardUinit.visible = true;
-            let indexPt: egret.Point = this.getIndexOnCard( this.rewardNumIndex );
-            this.setTargetToPositionOnCard( this.rewardUinit, indexPt.x, indexPt.y );
+            let indexPt: egret.Point = GameCardUISettings.getIndexOnCard( this.rewardNumIndex );
+            GameCardUISettings.setTargetToPositionOnCard( this.rewardUinit, indexPt.x, indexPt.y );
         }
         else{
             this.rewardUinit.visible = false;
@@ -947,7 +947,7 @@ class Copacabana extends V2Game{
     }
 
     private pushMissOneNumber( ar: Array<number>, cardIndex: number, gridIndex: number ): void{
-        let missNumber: number = this.numberAtCard( cardIndex, gridIndex );
+        let missNumber: number = GameCardUISettings.numberAtCard( cardIndex, gridIndex );
         if( ar.indexOf( missNumber ) < 0 )ar.push( missNumber );
     }
 

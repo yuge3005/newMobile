@@ -1,19 +1,15 @@
-class CopaSquareBar extends V2FuntionBar{
+class CopaSquareBar extends egret.DisplayObjectContainer{
 
 	private squareGridsOnCard: Array<egret.Shape>;
 	private squareNumbers: Array<number>;
-
-	private numberAtCard: Function;
 	
-	public constructor( getIndexOnCard: Function, setTargetToPositionOnCard: Function, numberAtCard: Function ) {
-		super( getIndexOnCard, setTargetToPositionOnCard );
+	public constructor() {
+		super();
 
 		this.squareGridsOnCard = [];
 
-		this.numberAtCard = numberAtCard;
-
 		for( let i: number = 0; i < 60; i++ ){
-            let indexPt: egret.Point = this.getIndexOnCard( i );
+            let indexPt: egret.Point = GameCardUISettings.getIndexOnCard( i );
             let yIndex: number = indexPt.y % 5;
             if( yIndex > 3 || yIndex < 1 ){
                 this.squareGridsOnCard[i] = null;
@@ -22,7 +18,7 @@ class CopaSquareBar extends V2FuntionBar{
             this.squareGridsOnCard[i] = new egret.Shape;
             GraphicTool.drawRect( this.squareGridsOnCard[i], new egret.Rectangle( 0, 0, CardGridColorAndSizeSettings.gridSize.x, CardGridColorAndSizeSettings.gridSize.y ), 0xCCCC00 );
             this.addChild( this.squareGridsOnCard[i] );
-            this.setTargetToPositionOnCard( this.squareGridsOnCard[i], indexPt.x, indexPt.y );
+            GameCardUISettings.setTargetToPositionOnCard( this.squareGridsOnCard[i], indexPt.x, indexPt.y );
         }
 
         this.alpha = 0.25;
@@ -31,7 +27,7 @@ class CopaSquareBar extends V2FuntionBar{
 
 	public reShowSquareNumbers(): void{
         for( let i: number = 0; i < 60; i++ ){
-            let indexPt: egret.Point = this.getIndexOnCard( i );
+            let indexPt: egret.Point = GameCardUISettings.getIndexOnCard( i );
             let yIndex: number = indexPt.y % 5;
             if( yIndex > 3 || yIndex < 1 ){
                 continue;
@@ -43,13 +39,13 @@ class CopaSquareBar extends V2FuntionBar{
 	public getSquareNumbers(): void{
         this.squareNumbers = [];
         for( let i: number = 0; i < 60; i++ ){
-            let indexPt: egret.Point = this.getIndexOnCard( i );
+            let indexPt: egret.Point = GameCardUISettings.getIndexOnCard( i );
             let yIndex: number = indexPt.y % 5;
             if( yIndex > 3 || yIndex < 1 ){
                 this.squareNumbers[i] = 0;
                 continue;
             }
-            this.squareNumbers[i] = this.numberAtCard( indexPt.x, indexPt.y );
+            this.squareNumbers[i] = GameCardUISettings.numberAtCard( indexPt.x, indexPt.y );
         }
     }
 
