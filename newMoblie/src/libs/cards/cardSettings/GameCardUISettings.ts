@@ -28,7 +28,7 @@ class GameCardUISettings {
 		this.cardPositions = [];
 		for( let i: number = 0; i < data["cardPositions"].length; i++ ){
 			let ob: Object = data["cardPositions"];
-			this.cardPositions[i] = new egret.Point( ob["x"], ob["y"] );
+			this.cardPositions[i] = new egret.Point( ob[i]["x"], ob[i]["y"] );
 		}
 	}
 
