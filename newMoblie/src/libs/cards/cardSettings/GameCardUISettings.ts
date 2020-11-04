@@ -2,6 +2,7 @@ class GameCardUISettings {
 
 	public static titleColors: Array<number>;
 	public static bgString: string;
+	public static cardPositions: Array<Object>;
 
 	public static texColor: number;
 
@@ -24,6 +25,7 @@ class GameCardUISettings {
 	public static dataSetting( data: Object ){
 		this.titleColors = data["titleColors"];
 		this.bgString = data["cardBg"];
+		this.cardPositions = data["cardPositions"];
 	}
 
 	public static colorSetting( colors: Object ){
@@ -48,4 +50,29 @@ class GameCardUISettings {
 		this.currentBgColorIndex++;
 		if( this.currentBgColorIndex >= this.titleColors.length )this.currentBgColorIndex = 0;
 	}
+
+	public static getIndexOnCard( index: number ): egret.Point{
+		let gridPerCard: number = this.gridNumbers.x * this.gridNumbers.y;
+        let cardIndex: number = Math.floor( index / gridPerCard );
+        let gridIndex: number = index % gridPerCard;
+        let pt: egret.Point = new egret.Point( cardIndex, gridIndex );
+        return pt;
+    }
+
+    public static positionOnCard( cardIndex: number, gridIndex: number ): egret.Point{
+        let pt: egret.Point = new egret.Point;
+        pt.x = this.cardPositions[cardIndex]["x"] + this.gridInitPosition.x + ( gridIndex % this.gridNumbers.x ) * CardGridColorAndSizeSettings.gridSpace.x;
+        pt.y = this.cardPositions[cardIndex]["y"] + this.gridInitPosition.y + Math.floor( gridIndex / this.gridNumbers.x ) * CardGridColorAndSizeSettings.gridSpace.y;
+        return pt;
+    }
+
+	public static setTargetToPositionOnCard( target: egret.DisplayObject, cardIndex: number, gridIndex: number ){
+        let pt: egret.Point = this.positionOnCard( cardIndex, gridIndex );
+        target.x = pt.x;
+        target.y = pt.y;
+    }
+
+	public static numberAtCard( cardIndex: number, gridIndex: number ): number{
+        return CardManager.cards[cardIndex].getNumberAt(gridIndex);
+    }
 }
