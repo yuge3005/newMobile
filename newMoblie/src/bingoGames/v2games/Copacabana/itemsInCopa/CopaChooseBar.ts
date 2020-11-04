@@ -1,20 +1,16 @@
-class CopaChooseBar extends egret.DisplayObjectContainer{
+class CopaChooseBar extends V2FuntionBar{
 
 	private chooseGrids: Array<egret.Shape>;
     private chooseNotGrids: Array<egret.Shape>;
 
-	public getIndexOnCard: Function;
-	public setTargetToPositionOnCard: Function;
 	public onNumberChoise: Function;
 
 	public constructor( getIndexOnCard: Function, setTargetToPositionOnCard: Function, onNumberChoise: Function ) {
-		super();
+		super( getIndexOnCard, setTargetToPositionOnCard );
 
 		this.chooseGrids = [];
         this.chooseNotGrids = [];
 
-		this.getIndexOnCard = getIndexOnCard;
-        this.setTargetToPositionOnCard = setTargetToPositionOnCard;
 		this.onNumberChoise = onNumberChoise;
 
 		let selectNumberContainer: egret.DisplayObjectContainer = new egret.DisplayObjectContainer;

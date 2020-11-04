@@ -2209,7 +2209,7 @@
 			"url": "game/copacabana/pipa.json",
 			"type": "sheet",
 			"name": "pipa_json",
-			"subkeys": "arrow_30,ball_bg,ball_bg_01,ball_blue,ball_gray,ball_green,ball_library,ball_pink,ball_purple,ball_red,ball_silver,ball_yellow,bar_long,bar_loyalty_point,bar_loyalty_point_write,bg,bg_db_line,big_ball_bg,big_ball_bg2,big_star,big_star_face,box_blue,box_green,box_green_blink,box_orange,box_red,box_white,buff_0,buff_1,buff_11,buff_2,buff_3,buff_4,buff_5,buff_6,buff_7,buff_8,buff_9,buff_bg,buff_progress,buff_progress_bg,card_bg,confirm_bg,confirm_btn,cover_number,ex_bar,free_extra_ball_star,icon_add_ball,icon_mark,icon_mark_big,icon_x,jackpot_en,jackpot_es,jackpot_lock,jackpot_pt,loyalty_lock,marker_lightball,paytable_prize_bg,peel_01,peel_02,peel_03,yellow_point"
+			"subkeys": "arrow_30,ball_bg,ball_bg_01,ball_blue,ball_gray,ball_green,ball_library,ball_pink,ball_purple,ball_red,ball_silver,ball_yellow,bar_long,bar_loyalty_point,bar_loyalty_point_write,bg,big_ball_bg,big_ball_bg2,big_star,big_star_face,box_blue,box_green,box_green_blink,box_orange,box_red,box_white,btn_popup,buff_0,buff_1,buff_11,buff_2,buff_3,buff_4,buff_5,buff_6,buff_7,buff_8,buff_9,buff_bg,buff_progress,buff_progress_bg,card_bg,confirm_bg,confirm_btn,cover_number,free_extra_ball_star,icon_add_ball,icon_dice02,icon_mark,icon_mark_big,icon_ninebox,icon_x,jackpot_en,jackpot_es,jackpot_lock,jackpot_pt,loyalty_lock,marker_lightball,paytable_prize_bg,peel_01,peel_02,peel_03,yellow_point"
 		},
 		{
 			"url": "config/pipa.conf",

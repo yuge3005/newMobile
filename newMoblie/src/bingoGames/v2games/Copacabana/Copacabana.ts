@@ -66,10 +66,7 @@ class Copacabana extends V2Game{
         }
 
         if( this.squareUIOnCard.visible ){
-            let squareIndex: number = this.squareNumbers.indexOf( ballIndex );
-            if( squareIndex >= 0 ){
-                this.squareGridsOnCard[squareIndex].visible = false;
-            }
+            this.squareUIOnCard.showLastBall( ballIndex );
         }
 
         if( this.currentBallIndex > 34 ){
@@ -142,9 +139,7 @@ class Copacabana extends V2Game{
 
     private newBuffId: number;
 
-    private squareUIOnCard: egret.DisplayObjectContainer;
-    private squareGridsOnCard: Array<egret.Shape>;
-    private squareNumbers: Array<number>;
+    private squareUIOnCard: CopaSquareBar;
 
     private needShowFreeEb: boolean;
     private ebColorList: Array<number>;
@@ -403,68 +398,18 @@ class Copacabana extends V2Game{
     }
 
     private deletesquare(): void{
-        this.squarePaytable = PayTableManager.payTablesDictionary[ "square" ];
-
-        this.squareUIOnCard = new egret.DisplayObjectContainer;
-        this.squareGridsOnCard = [];
+        this.squareUIOnCard = new CopaSquareBar( this.getIndexOnCard.bind(this), this.setTargetToPositionOnCard.bind(this), this.numberAtCard.bind( this ) );
         this.addChild( this.squareUIOnCard );
-        for( let i: number = 0; i < 60; i++ ){
-            let indexPt: egret.Point = this.getIndexOnCard( i );
-            let yIndex: number = indexPt.y % 5;
-            if( yIndex > 3 || yIndex < 1 ){
-                this.squareGridsOnCard[i] = null;
-                continue;
-            }
-            this.squareGridsOnCard[i] = new egret.Shape;
-            GraphicTool.drawRect( this.squareGridsOnCard[i], new egret.Rectangle( 0, 0, CardGridColorAndSizeSettings.gridSize.x, CardGridColorAndSizeSettings.gridSize.y ), 0xCCCC00 );
-            this.squareUIOnCard.addChild( this.squareGridsOnCard[i] );
-            this.setTargetToPositionOnCard( this.squareGridsOnCard[i], indexPt.x, indexPt.y );
-        }
-        this.squareUIOnCard.alpha = 0.25;
 
-        this.getSquareNumbers();
+        this.squareUIOnCard.getSquareNumbers();
         this.showSquare( false );
     }
 
     private showSquare( isShow: boolean ): void{
         this.squareUIOnCard.visible = isShow;
-        if( isShow ){
-            PayTableManager.payTablesDictionary[ "square" ] = this.squarePaytable;
-            this.squarePaytable["ui"].visible = true;
-            this.getChildByName( this.assetStr( "ex_bar" ) ).visible = true;
+        ( this.payTableArea as CopaPaytalbeLayer ).squareHappend( isShow );
 
-            this.reShowSquareNumbers();
-        }
-        else{
-            this.squarePaytable["ui"].visible = false;
-            PayTableManager.payTablesDictionary[ "square" ] = null;
-            delete PayTableManager.payTablesDictionary[ "square" ];
-            this.getChildByName( this.assetStr( "ex_bar" ) ).visible = false;
-        }
-    }
-
-    private getSquareNumbers(): void{
-        this.squareNumbers = [];
-        for( let i: number = 0; i < 60; i++ ){
-            let indexPt: egret.Point = this.getIndexOnCard( i );
-            let yIndex: number = indexPt.y % 5;
-            if( yIndex > 3 || yIndex < 1 ){
-                this.squareNumbers[i] = 0;
-                continue;
-            }
-            this.squareNumbers[i] = this.numberAtCard( indexPt.x, indexPt.y );
-        }
-    }
-
-    private reShowSquareNumbers(): void{
-        for( let i: number = 0; i < 60; i++ ){
-            let indexPt: egret.Point = this.getIndexOnCard( i );
-            let yIndex: number = indexPt.y % 5;
-            if( yIndex > 3 || yIndex < 1 ){
-                continue;
-            }
-            this.squareGridsOnCard[i].visible = true;
-        }
+        if( isShow ) this.squareUIOnCard.reShowSquareNumbers();
     }
 
     private showEbColor( isShow: boolean ): void{
@@ -541,7 +486,7 @@ class Copacabana extends V2Game{
     protected startPlay(): void {
         super.startPlay();
         
-        if( this.squareUIOnCard.visible )this.reShowSquareNumbers();
+        if( this.squareUIOnCard.visible )this.squareUIOnCard.reShowSquareNumbers();
 
         if( this.needMarkLine ){
             this.markPen1.visible = true;
@@ -714,7 +659,7 @@ class Copacabana extends V2Game{
         super.onChangeNumber( data );
 
         this.getBombNumbers();
-        this.getSquareNumbers();
+        this.squareUIOnCard.getSquareNumbers();
 
         if( this.bufLeftTurns <= 0 )return;
         if( this.currentBuf == 7 ){

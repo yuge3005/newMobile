@@ -48,6 +48,7 @@ class CopaPaytalbeLayer extends PaytableLayer{
 		}
 
 		this.unUsePaytable( "double_line" );
+		this.squarePaytable = PayTableManager.payTablesDictionary[ "square" ];
 	}
 
 	protected buildTitleText(){
@@ -82,6 +83,19 @@ class CopaPaytalbeLayer extends PaytableLayer{
         else{
             PayTableManager.payTablesDictionary[ "double_line2" ] = this.unUsingPaytable;
             this.unUsePaytable( "double_line" );
+        }
+	}
+
+	public squareHappend( isShow: boolean ): void{
+		this.squarePaytable["ui"].visible = isShow;
+		if( isShow ){
+            PayTableManager.payTablesDictionary[ "square" ] = this.squarePaytable;
+            // this.getChildByName( this.assetStr( "ex_bar" ) ).visible = true;
+        }
+        else{
+            PayTableManager.payTablesDictionary[ "square" ] = null;
+            delete PayTableManager.payTablesDictionary[ "square" ];
+            // this.getChildByName( this.assetStr( "ex_bar" ) ).visible = false;
         }
 	}
 }
