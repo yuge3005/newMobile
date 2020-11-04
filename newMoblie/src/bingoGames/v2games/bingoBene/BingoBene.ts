@@ -273,8 +273,8 @@ class BingoBene extends V2Game{
         }
 
         for( let i: number = 0; i < bellIndexs.length; i++ ){
-            let pt: egret.Point = this.getIndexOnCard( bellIndexs[i] );
-            this.setTargetToPositionOnCard( this.bellIndexIcons[i], pt.x, pt.y );
+            let pt: egret.Point = GameCardUISettings.getIndexOnCard( bellIndexs[i] );
+            GameCardUISettings.setTargetToPositionOnCard( this.bellIndexIcons[i], pt.x, pt.y );
             this.bellIndexIcons[i].alpha = 0.4;
         }
     }
@@ -341,7 +341,7 @@ class BingoBene extends V2Game{
         }
         else if( this.currentBuf == 2 ){
             for( let i: number = 0; i < this.bombIndexs.length; i++ ){
-                let indexPt: egret.Point = this.getIndexOnCard( this.bombIndexs[i] );
+                let indexPt: egret.Point = GameCardUISettings.getIndexOnCard( this.bombIndexs[i] );
                 this.getNumberOnCard( indexPt.x, indexPt.y );
 
                 if( i % 4 == 0 )this.showTomatoAnimationAt( indexPt );
@@ -361,7 +361,7 @@ class BingoBene extends V2Game{
 
     private showTomatoAnimationAt( indexPt: egret.Point ){
         let tomato: MentonTomatoAnimation = new MentonTomatoAnimation( new egret.Point );
-        this.setTargetToPositionOnCard( tomato, indexPt.x, indexPt.y );
+        GameCardUISettings.setTargetToPositionOnCard( tomato, indexPt.x, indexPt.y );
         this.addChild( tomato );
 
         this.tomatoArray.push( tomato );
