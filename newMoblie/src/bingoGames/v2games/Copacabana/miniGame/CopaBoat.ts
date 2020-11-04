@@ -54,7 +54,7 @@ class CopaBoat extends egret.DisplayObjectContainer {
         super();
 
         this.scaleX = 2000 / 755;
-        this.scaleY = 1125 / 462
+        this.scaleY = 1125 / 447;
 
         this.assetJson = "pipa_boat_json";
         this.lightResult = [0, 0, 0, 0, 0];

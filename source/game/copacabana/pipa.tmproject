@@ -1,13 +1,9 @@
 {
-    "options": {
-        "layoutMath": "3",
-        "sizeMode": "2n",
-        "useExtension": 0,
-        "layoutGap": 1,
-        "extend": 0
-    },
     "projectName": "pipa",
     "files": [
+        "./ball_bg_01.png",
+        "./ball_bg.png",
+        "./arrow_30.png",
         "./yellow_point.png",
         "./peel_03.png",
         "./peel_02.png",
@@ -22,6 +18,7 @@
         "./icon_x.png",
         "./icon_mark_big.png",
         "./icon_mark.png",
+        "./icon_dice02.png",
         "./icon_add_ball.png",
         "./free_extra_ball_star.png",
         "./ex_bar.png",
@@ -43,6 +40,7 @@
         "./buff_2.png",
         "./buff_1.png",
         "./buff_0.png",
+        "./btn_popup.png",
         "./box_white.png",
         "./box_red.png",
         "./box_orange.png",
@@ -66,10 +64,14 @@
         "./ball_library.png",
         "./ball_green.png",
         "./ball_gray.png",
-        "./ball_blue.png",
-        "./ball_bg_01.png",
-        "./ball_bg.png",
-        "./arrow_30.png"
+        "./ball_blue.png"
     ],
+    "options": {
+        "extend": 0,
+        "layoutMath": "3",
+        "sizeMode": "2n",
+        "useExtension": 0,
+        "layoutGap": 1
+    },
     "version": 5
 }
