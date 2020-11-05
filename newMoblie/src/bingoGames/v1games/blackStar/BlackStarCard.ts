@@ -15,6 +15,8 @@ class BlackStarCard extends ExtraBlinkCard{
 		this.unFitEffectLayer = new egret.DisplayObjectContainer;
 		this.addChildAt( this.unFitEffectLayer, this.getChildIndex( this.fitEffectLayer ) );
 
+		this.fitEffectLayer.filters = [ MatrixTool.colorMatrixPure( 0xFF0000 ) ];
+
 		this.winTx = Com.addLabelAt( this, 395, GameCardUISettings.betTextRect.y, 300, GameCardUISettings.betTextRect.height, GameCardUISettings.betTextRect.height, false, true );
 		this.winTx.textColor = 0;
 		this.winTx.textAlign = "right";
