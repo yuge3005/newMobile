@@ -51,14 +51,13 @@ class Copacabana extends V2Game{
         this.showLastBallAt( ballIndex, 0, 0 );
 
         if( this.markPenLayer.needMarkLine ){
-            if( ballIndex == this.markNumber1 || ballIndex == this.markNumber2 ){
-                let indexPt: egret.Point = GameCardUISettings.getIndexOnCard( this.markColumn[ ballIndex == this.markNumber1 ? 0 : 1 ] );
-                let gridIndexY: number = indexPt.y % 5;
+            let columPt: egret.Point = this.markPenLayer.checkColumNumbers( ballIndex );
+            if( columPt ){
                 for( let i: number = 0; i < 3; i++ ){
-                    this.getNumberOnCard( indexPt.x, gridIndexY + i * 5 );
-                    this.getNumberOnCard( indexPt.x + 2, gridIndexY + i * 5 );
+                    this.getNumberOnCard( columPt.x, columPt.y + i * 5 );
+                    this.getNumberOnCard( columPt.x + 2, columPt.y + i * 5 );
                 }
-                this.markPenLayer.getColumnNumbers( indexPt.x, gridIndexY );
+                this.markPenLayer.getColumnNumbers( columPt.x, columPt.y );
 
                 this.playSound( "pipa_mark_pen_mp3" );
             }
@@ -159,9 +158,6 @@ class Copacabana extends V2Game{
     private cutBallsArray: Array<number>;
     private chooseBar: CopaChooseBar;
 
-    private markColumn: Array<number>;
-    private markNumber1: number;
-    private markNumber2: number;
     private markPenLayer: CopaMarkPenBar;
 
     private markOnCard: Array<number>;
@@ -285,7 +281,7 @@ class Copacabana extends V2Game{
         this.bufMaxTurns = data["buffMaxValue"];
 
         if( this.currentBuf == 7 ){
-            this.markColumn = data["mark_column"];
+            this.markPenLayer.markColumn = data["mark_column"];
         }
         else if( this.currentBuf == 8 ){
             this.markOnCard = data["mark_on_card"];
@@ -632,24 +628,7 @@ class Copacabana extends V2Game{
     }
 
     private markTwoNumbers( isMark: boolean ): void{
-        this.markPenLayer.needMarkLine = isMark;
-
-        if( isMark ){
-            trace( this.markColumn[0] )
-            trace( this.markNumber1 )
-            let indexPt1: egret.Point = GameCardUISettings.getIndexOnCard( this.markColumn[0] );
-            this.markNumber1 = GameCardUISettings.numberAtCard( indexPt1.x, indexPt1.y );
-
-            trace( this.markColumn[1] )
-            trace( this.markNumber2 )
-            let indexPt2: egret.Point = GameCardUISettings.getIndexOnCard( this.markColumn[1] );
-            this.markNumber2 = GameCardUISettings.numberAtCard( indexPt2.x, indexPt2.y );
-
-            this.markPenLayer.showMarkPenAt( indexPt1, indexPt2 );
-        }
-        else{
-            this.markPenLayer.hideMarkPen();
-        }
+        this.markPenLayer.showMarkPen( isMark );
     }
 
     public onChangeNumber( data: Object ){
@@ -660,7 +639,7 @@ class Copacabana extends V2Game{
 
         if( this.bufLeftTurns <= 0 )return;
         if( this.currentBuf == 7 ){
-            this.markColumn = data["mark_column"];
+            this.markPenLayer.markColumn = data["mark_column"];
             this.markTwoNumbers( true );
         }
         else if( this.currentBuf == 8 ){
@@ -1094,7 +1073,7 @@ class Copacabana extends V2Game{
             this.bufMaxTurns = this.bufLeftTurns;
             this.bufPos = data["buff_pos"];
             if( this.newBuffId == 7 ){
-                this.markColumn = data["mark_column"];
+                this.markPenLayer.markColumn = data["mark_column"];
             }
             else if( this.newBuffId == 8 ){
                 this.markOnCard = data["mark_on_card"];

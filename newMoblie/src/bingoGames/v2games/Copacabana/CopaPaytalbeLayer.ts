@@ -25,6 +25,14 @@ class CopaPaytalbeLayer extends PaytableLayer{
 		this.dbLine2Bg.filters = [ MatrixTool.colorMatrixPure( 0xDB7D2D ) ];
 		this.dbLine2Bg.visible = false;
 
+		this.squareBg = new egret.DisplayObjectContainer;
+		this.squareBg.mask = new egret.Rectangle( 610, 117, 235, 59 );
+		let bbg: egret.Bitmap = this.buildScaleBg( "bar_long", 327, 113, 70, 1000 );
+		this.squareBg.addChild( bbg );
+		let bIcon: egret.Bitmap = Com.addBitmapAt( this.squareBg, BingoMachine.getAssetStr("icon_ninebox"), 615, 119 );
+		let dbg: egret.Bitmap = this.buildScaleBg( "paytable_prize_bg", 707, 122, 55, 135, 50 );
+		dbg.filters = [ MatrixTool.colorMatrixPure( 0xDB7D2D ) ];
+		this.squareBg.addChild( dbg );
     }
 
 	private buildScaleBg( assetsName: string, x: number, y: number, a: number, width: number, height: number = 0 ): egret.Bitmap{
@@ -90,12 +98,13 @@ class CopaPaytalbeLayer extends PaytableLayer{
 		this.squarePaytable["ui"].visible = isShow;
 		if( isShow ){
             PayTableManager.payTablesDictionary[ "square" ] = this.squarePaytable;
-            // this.getChildByName( this.assetStr( "ex_bar" ) ).visible = true;
+            this.squareBg.visible = true;
+			if( !this.contains(this.squareBg) )	this.addChildAt( this.squareBg, this.getChildIndex( this.squarePaytable["ui"] ) );
         }
         else{
             PayTableManager.payTablesDictionary[ "square" ] = null;
             delete PayTableManager.payTablesDictionary[ "square" ];
-            // this.getChildByName( this.assetStr( "ex_bar" ) ).visible = false;
+            this.squareBg.visible = false;
         }
 	}
 }
