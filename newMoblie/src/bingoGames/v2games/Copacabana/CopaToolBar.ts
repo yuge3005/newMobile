@@ -16,6 +16,11 @@ class CopaToolBar extends BingoGameToolbar{
 		this.extraContainer.touchChildren = this.playContainer.touchChildren = !isShow;
 	}
 
+	public roundOverWhenAuto(){
+		this.autoPlaying = false;
+		this.miniGameBtn.enabled = true;
+	}
+
 	private soundTimerCount: Date;
 	private bgmPlaying: boolean;
 
