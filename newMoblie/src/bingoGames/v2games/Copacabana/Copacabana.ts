@@ -497,16 +497,19 @@ class Copacabana extends V2Game{
         this.startMiniGame();
     }
 
-    private countBuffLeft(): void{
+    private countBuffLeft(): boolean{
         this.bufLeftTurns--;
+        let bufEnd: boolean = false;
         if( this.bufLeftTurns <= 0 ){
             ( this.gameToolBar as CopaToolBar ).setMiniButton( true );
             if( this.bufLeftTurns == 0 ){
                 this.cancelBuff();
+                bufEnd = true;
             }
         }
         this.showCurrentBuff();
         this.saveBuffLeftTurnsChange();
+        return bufEnd;
     }
 
     private saveBuffLeftTurnsChange(): void{
@@ -993,7 +996,14 @@ class Copacabana extends V2Game{
 
         this.updateCredit( data );
 
-        this.countBuffLeft();
+        let bufEnd: boolean = this.countBuffLeft();
+
+        if( !bufEnd )this.checkAuto();
+        else{
+            if(this.gameToolBar.autoPlaying){
+                ( this.gameToolBar as CopaToolBar ).roundOverWhenAuto();
+            }
+        }
     }
 
     public onCancelExtra( data: Object ){
