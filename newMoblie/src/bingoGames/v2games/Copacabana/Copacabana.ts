@@ -145,12 +145,13 @@ class Copacabana extends V2Game{
     private squareUIOnCard: CopaSquareBar;
 
     private needShowFreeEb: boolean;
-    private ebColorList: Array<number>;
     private freeEbList: Array<number>;
-    private ebColorsSp: egret.DisplayObjectContainer;
-    private superEbColorsSp: egret.DisplayObjectContainer;
     private freeEbUI1: egret.Bitmap;
     private freeEbUI2: egret.Bitmap;
+
+    private ebColorList: Array<number>;
+    private ebColorsSp: egret.DisplayObjectContainer;
+    private superEbColorsSp: egret.DisplayObjectContainer;
 
     private needWaitForChoose: boolean;
     private cutBallsArray: Array<number>;
@@ -591,11 +592,10 @@ class Copacabana extends V2Game{
     private drawEbColors(): void{
         if( this.ebColorList ){
             this.ebColorsSp = new egret.DisplayObjectContainer;
-            this.ebColorsSp.x = this.extraUIObject.x;
-            this.ebColorsSp.y = this.extraUIObject.y;
             this.addChildAt( this.ebColorsSp, this.getChildIndex( this.extraUIObject ) + 1 );
             for( let i: number = 0; i < this.ebColorList.length; i++ ){
-                Com.addBitmapAt( this.ebColorsSp, this.assetStr( "ball_bg_01" ), 15, 36 * i ).filters = [ MatrixTool.colorMatrixPure( CopacabanaGird.rangeColors[this.ebColorList[i]] ) ];
+                let ballPt: egret.Point = BallManager.getBallLastPosition( this.currentBallIndex + i );
+                Com.addBitmapAt( this.ebColorsSp, this.assetStr( "ball_bg_01" ), ballPt.x, ballPt.y ).filters = [ MatrixTool.colorMatrixPure( CopacabanaGird.rangeColors[this.ebColorList[i]] ) ];
             }
             this.ebColorList = null;
         }
