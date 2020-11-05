@@ -642,6 +642,10 @@ class BingoMachine extends GameUIItem{
 
 		this.updateCredit( data );
 
+		this.checkAuto();
+	}
+
+	protected checkAuto(){
 		if( !this.gameToolBar.autoPlaying )this.resetGameToolBarStatus();
 		if (this.gameToolBar.buyAllExtra) this.gameToolBar.buyAllExtra = false;
 		if (this.gameToolBar.autoPlaying){
