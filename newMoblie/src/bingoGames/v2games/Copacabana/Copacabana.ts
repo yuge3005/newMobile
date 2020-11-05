@@ -63,11 +63,9 @@ class Copacabana extends V2Game{
             }
         }
 
-        if( this.needBombOnCard ){
-            let bombCardIndex: number = this.bombNumbers.indexOf( ballIndex );
-            if( bombCardIndex >= 0 ){
-                this.bombCard( bombCardIndex );
-            }
+        if( this.bombLayer.needBombOnCard ){
+            let bombCardIndex: number = this.bombLayer.checkBomb( ballIndex );
+            if( bombCardIndex >= 0 ) this.bombCard( bombCardIndex );
         }
 
         if( this.squareUIOnCard.visible ){
@@ -147,12 +145,13 @@ class Copacabana extends V2Game{
     private squareUIOnCard: CopaSquareBar;
 
     private needShowFreeEb: boolean;
-    private ebColorList: Array<number>;
     private freeEbList: Array<number>;
-    private ebColorsSp: egret.DisplayObjectContainer;
-    private superEbColorsSp: egret.DisplayObjectContainer;
     private freeEbUI1: egret.Bitmap;
     private freeEbUI2: egret.Bitmap;
+
+    private ebColorList: Array<number>;
+    private ebColorsSp: egret.DisplayObjectContainer;
+    private superEbColorsSp: egret.DisplayObjectContainer;
 
     private needWaitForChoose: boolean;
     private cutBallsArray: Array<number>;
@@ -164,11 +163,7 @@ class Copacabana extends V2Game{
     private markUIs: Array<egret.Bitmap>;
     private needMarkOnCard: boolean;
 
-    private needBombOnCard: boolean;
-    private bombNumbers: Array<number>;
-    private bombs: Array<egret.DisplayObjectContainer>;
-    private bombsTxts: Array<egret.TextField>;
-    private bombExplode: Array<egret.MovieClip>;
+    private bombLayer: CopaBombBar;
 
     private needRewardOnCard: boolean;
     private rewardUinit: egret.Bitmap;
@@ -488,7 +483,7 @@ class Copacabana extends V2Game{
             this.markPenLayer.start();
         }
         
-        if( this.needBombOnCard ){
+        if( this.bombLayer.needBombOnCard ){
             this.needBomb( true );
         }
     }
@@ -597,11 +592,10 @@ class Copacabana extends V2Game{
     private drawEbColors(): void{
         if( this.ebColorList ){
             this.ebColorsSp = new egret.DisplayObjectContainer;
-            this.ebColorsSp.x = this.extraUIObject.x;
-            this.ebColorsSp.y = this.extraUIObject.y;
             this.addChildAt( this.ebColorsSp, this.getChildIndex( this.extraUIObject ) + 1 );
             for( let i: number = 0; i < this.ebColorList.length; i++ ){
-                Com.addBitmapAt( this.ebColorsSp, this.assetStr( "ball_bg_01" ), 15, 36 * i ).filters = [ MatrixTool.colorMatrixPure( CopacabanaGird.rangeColors[this.ebColorList[i]] ) ];
+                let ballPt: egret.Point = BallManager.getBallLastPosition( this.currentBallIndex + i );
+                Com.addBitmapAt( this.ebColorsSp, this.assetStr( "ball_bg_01" ), ballPt.x, ballPt.y ).filters = [ MatrixTool.colorMatrixPure( CopacabanaGird.rangeColors[this.ebColorList[i]] ) ];
             }
             this.ebColorList = null;
         }
@@ -637,7 +631,7 @@ class Copacabana extends V2Game{
     public onChangeNumber( data: Object ){
         super.onChangeNumber( data );
 
-        this.getBombNumbers();
+        this.bombLayer.getBombNumbers();
         this.squareUIOnCard.getSquareNumbers();
 
         if( this.bufLeftTurns <= 0 )return;
@@ -659,7 +653,7 @@ class Copacabana extends V2Game{
             this.needReward( true );
         }
         else if( this.currentBuf == 9 ){
-            if( this.needBombOnCard ){
+            if( this.bombLayer.needBombOnCard ){
                 this.needBomb( true );
             }
             else{
@@ -706,43 +700,14 @@ class Copacabana extends V2Game{
     }
 
     private buildBombs(): void{
-        this.getBombNumbers();
-        this.bombs = [];
-        this.bombsTxts = [];
-        this.bombExplode = [];
-        for( let i: number = 0; i < GameCardUISettings.cardPositions.length; i++ ){
-            this.bombs[i] = new egret.DisplayObjectContainer;
-            Com.addObjectAt( this, this.bombs[i], GameCardUISettings.cardPositions[i]["x"] + 120, GameCardUISettings.cardPositions[i]["y"] + 48 );
+        this.bombLayer = new CopaBombBar;
+        this.addChild( this.bombLayer );
 
-            this.bombExplode[i] = Com.addMovieClipAt( this.bombs[i], MDS.mcFactory, "bomb_02", -193, -158 );
-            this.bombExplode[i].gotoAndStop(1);
-        }
         this.needBomb( false );
     }
 
     private needBomb( isNeedBomb: boolean ): void{
-        this.needBombOnCard = isNeedBomb;
-
-        for( let i: number = 0; i < 4; i++ ){
-            this.bombs[i].removeChildren();
-        }
-
-        if( isNeedBomb ){
-            for( let i: number = 0; i < 4; i++ ){
-                this.bombs[i].addChild( this.bombExplode[i] );
-                this.bombsTxts[i] = Com.addTextAt( this.bombs[i], 0, 13, 37, 22, 22, false, true );
-                this.bombsTxts[i].text = "" + this.bombNumbers[i];
-                this.bombsTxts[i].textColor = 0;
-                this.bombExplode[i].gotoAndStop(1);
-            }
-        }
-    }
-
-    private getBombNumbers(): void{
-        this.bombNumbers = [];
-        for( let i: number = 0; i < 4; i++ ){
-            this.bombNumbers[i] = GameCardUISettings.numberAtCard( i, 7 );
-        }
+        this.bombLayer.showBomb( isNeedBomb );
     }
 
     private bombCard( cardId: number ): void{
@@ -750,8 +715,7 @@ class Copacabana extends V2Game{
         this.getNumberOnCard( cardId, 3 );
         this.getNumberOnCard( cardId, 11 );
         this.getNumberOnCard( cardId, 13 );
-        if( this.bombs[cardId].numChildren == 2 )this.bombs[cardId].removeChildAt( 1 );
-        this.bombExplode[ cardId ].gotoAndPlay( 1, 1 );
+        this.bombLayer.explode( cardId );
         this.playSound("pipa_bomb_mp3");
     }
 

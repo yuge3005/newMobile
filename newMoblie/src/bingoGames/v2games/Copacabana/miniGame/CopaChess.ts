@@ -345,20 +345,21 @@ class CopaChess extends egret.DisplayObjectContainer {
         this.buffInfoIntroduce.textColor = 0xFFFFFF;
 
         // play btn
-        this.playBtn = Com.addDownButtonAt(this, this.assetJson + ".btn_popup", this.assetJson + ".btn_popup", 595, 376, this.rollDice, true);
+        this.playBtn = Com.addDownButtonAt(this, BingoMachine.getAssetStr("btn_popup"), BingoMachine.getAssetStr("btn_popup"), 595, 376, this.rollDice, true);
         this.playBtn.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.rollDice, this);
-        this.playBtn.scaleX = this.playBtn.scaleY = 1.66;
+        this.playBtn.scaleX = 136 / 208;
+        this.playBtn.scaleY = 60 / 84;
 
         // text
-        let playBtnText = Com.addTextAt(this, 25, 10, 50, 91, 15, false, false);
-        playBtnText.filters = [new egret.DropShadowFilter(0, 45, 0x999999, 1, 2, 2)];
+        let playBtnText = Com.addTextAt(this, 70, 10, 120, 65, 30, false, true);
+        playBtnText.filters = [new egret.DropShadowFilter(5, 45, 0x0, 0.6, 4, 4)];
         playBtnText.textColor = 0xFFFFFF;
+        playBtnText.verticalAlign = "middle";
         playBtnText.text = MuLang.getText( "RollDice" );
 
         this.playBtn.addChild(playBtnText);
-        let ds: egret.Bitmap = Com.addBitmapAt( this.playBtn, this.assetJson + ".icon_dice", 0, 3 );
+        let ds: egret.Bitmap = Com.addBitmapAt( this.playBtn, BingoMachine.getAssetStr("icon_dice02"), 0, 5 );
         ds.scaleX = ds.scaleY = 0.6;
-        ds.mask = new egret.Rectangle( 0, 0, 41, 44 );
 
         this.visible = false;
     }

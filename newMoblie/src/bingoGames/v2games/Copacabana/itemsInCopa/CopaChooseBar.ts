@@ -22,7 +22,7 @@ class CopaChooseBar extends egret.DisplayObjectContainer{
             let indexPt: egret.Point = GameCardUISettings.getIndexOnCard( i );
             this.chooseGrids[i] = new egret.Shape;
             this.chooseNotGrids[i] = new egret.Shape;
-            GraphicTool.drawRect( this.chooseGrids[i], new egret.Rectangle( 0, 0, CardGridColorAndSizeSettings.gridSize.x, CardGridColorAndSizeSettings.gridSize.y ), 0xFFFFFF, false, 0.5 );
+            GraphicTool.drawRect( this.chooseGrids[i], new egret.Rectangle( 0, 0, CardGridColorAndSizeSettings.gridSize.x, CardGridColorAndSizeSettings.gridSize.y ), 0xFFFFFF );
             GraphicTool.drawRect( this.chooseNotGrids[i], new egret.Rectangle( 0, 0, CardGridColorAndSizeSettings.gridSize.x, CardGridColorAndSizeSettings.gridSize.y ), 0, false, 0.5 );
             this.chooseGrids[i].name = "" + i;
             this.chooseGrids[i].touchEnabled = true;

@@ -109,7 +109,7 @@
 			"name": "menton"
 		},
 		{
-			"keys": "bad_buff_mp3,chess_mp3,collect_bonus_mp3,dice_mp3,engine_mp3,nice_buff_mp3,pipa_ball_mp3,pipa_bgm_mp3,pipa_bomb_mp3,pipa_double_line_mp3,pipa_mark_pen_mp3,pipa_peel_mp3,pipa_singe_line_mp3,pipa_square_mp3,pipa_win_bingo_mp3,pipa_json,pipa_dice_png,pipa_dice_json,pipa_chess_json,pipa_boat_json,Arial Black_png,pipaSquare_json,pipaDoubleLine_json,pipaParticle_png,pipaParticle_json,pipaAnimation_png,pipaAnimation_json,pipa_conf,copacabana_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,blank_sound_mp3,Arial Black_fnt",
+			"keys": "bad_buff_mp3,chess_mp3,collect_bonus_mp3,dice_mp3,engine_mp3,nice_buff_mp3,pipa_ball_mp3,pipa_bgm_mp3,pipa_bomb_mp3,pipa_double_line_mp3,pipa_mark_pen_mp3,pipa_peel_mp3,pipa_singe_line_mp3,pipa_square_mp3,pipa_win_bingo_mp3,pipa_json,pipa_dice_png,pipa_dice_json,pipa_chess_json,pipa_boat_json,Arial Black_png,pipaSquare_json,pipaDoubleLine_json,pipa_en_json,pipa_es_json,pipa_pt_json,pipaParticle_png,pipaParticle_json,pipaAnimation_png,pipaAnimation_json,pipa_conf,copacabana_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,blank_sound_mp3,Arial Black_fnt",
 			"name": "pipa"
 		}
 	],
@@ -2264,6 +2264,24 @@
 			"type": "sheet",
 			"name": "pipa_boat_json",
 			"subkeys": "big_bar,black_cover,boat,boat_bg,boat_green,boat_red,boat_wave,boat_yellow,btn_choose,btn_go,btn_go_dark,cloud_01,cloud_02,cloud_03,float,float_cover,game_bg,green_point,icon_boat,icon_coin,icon_coins,icon_oil,icon_oil_blur,icon_stopwatch,icon_x,light_choice,lock,progress_bg,red_point,spray_01,spray_02,spray_03,starting_line,time_bg,title_bg"
+		},
+		{
+			"url": "game/copacabana/pt/pipa_pt.json",
+			"type": "sheet",
+			"name": "pipa_pt_json",
+			"subkeys": "boat_title,end_title,icon_boat_game"
+		},
+		{
+			"url": "game/copacabana/es/pipa_es.json",
+			"type": "sheet",
+			"name": "pipa_es_json",
+			"subkeys": "boat_title,end_title,icon_boat_game"
+		},
+		{
+			"url": "game/copacabana/en/pipa_en.json",
+			"type": "sheet",
+			"name": "pipa_en_json",
+			"subkeys": "boat_title,end_title,icon_boat_game"
 		}
 	]
 }
