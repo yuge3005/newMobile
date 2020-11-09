@@ -22,7 +22,7 @@ class Pharos extends AztecPharosSuper{
     protected init(){
         super.init();
 
-        this.buildSuperEbArea( "mega_" + GlobelSettings.language, 427, 16 );
+        this.buildSuperEbArea( "mega_" + MuLang.language, 427, 16 );
     }
 
     protected buildSuperEbArea( superEbBgName: string, superEbAreaX: number, superEbAreaY: number ): void{

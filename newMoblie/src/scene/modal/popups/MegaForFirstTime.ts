@@ -5,7 +5,7 @@ class MegaForFirstTime extends GenericPo {
 	public static lastRect: egret.Rectangle = new egret.Rectangle( 318, 150, 67, 67 );
 
 	protected static get classAssetName() {
-        return "megaForFirst_" + GlobelSettings.language;
+        return "megaForFirst_" + MuLang.language;
     }
 
 	public constructor() {
@@ -13,7 +13,7 @@ class MegaForFirstTime extends GenericPo {
 	}
 
 	protected init() {
-        this.langResource = "megaForFirst_" + GlobelSettings.language + "_json";
+        this.langResource = "megaForFirst_" + MuLang.language + "_json";
         this.bgAssetName = this.langResource + ".firstMega_bg";
 
         super.init();
@@ -35,7 +35,7 @@ class MegaForFirstTime extends GenericPo {
 		star.anchorOffsetY = star.height >> 1;
 		star.scaleX = star.scaleY = 0.2;
 
-		let bigMegaBg: egret.Bitmap = Com.addBitmapAt( this, this.langResource + ".megaball_" + GlobelSettings.language, 510, 300 );
+		let bigMegaBg: egret.Bitmap = Com.addBitmapAt( this, this.langResource + ".megaball_" + MuLang.language, 510, 300 );
 		bigMegaBg.anchorOffsetX = bigMegaBg.width >> 1;
 		bigMegaBg.anchorOffsetY = bigMegaBg.height >> 1;
 		bigMegaBg.scaleX = bigMegaBg.scaleY = 0.2;
@@ -66,7 +66,7 @@ class MegaForFirstTime extends GenericPo {
 	}
 
 	private showDailog(){
-		let dailog: egret.Bitmap = Com.addBitmapAt( this, this.langResource + ".dialog_" + GlobelSettings.language, 100, 220 );
+		let dailog: egret.Bitmap = Com.addBitmapAt( this, this.langResource + ".dialog_" + MuLang.language, 100, 220 );
 		this.setChildIndex( dailog, 1 );
 		dailog.alpha = 0.2;
 

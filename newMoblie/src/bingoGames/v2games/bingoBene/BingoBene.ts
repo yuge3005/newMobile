@@ -41,15 +41,15 @@ class BingoBene extends V2Game{
         Com.addObjectAt( this, this.runningBallContainer, 210, 678 );
         this.buildSuperEbArea( "megaball_bg", 151, 79 );
 
-        if( GlobelSettings.language != "pt" ){
+        if( MuLang.language != "pt" ){
             let exBitmap: egret.Bitmap = this.getChildByName( this.assetStr("extra_ball_pt") ) as egret.Bitmap;
             let jpBitmap: egret.Bitmap = this.getChildByName( this.assetStr("jackpot_pt") ) as egret.Bitmap;
 
-            let newEx: egret.Bitmap = Com.addBitmapAt( this, this.assetStr( "extra_ball_" + GlobelSettings.language ), exBitmap.x, exBitmap.y );
+            let newEx: egret.Bitmap = Com.addBitmapAt( this, this.assetStr( "extra_ball_" + MuLang.language ), exBitmap.x, exBitmap.y );
             this.setChildIndex( newEx, this.getChildIndex( exBitmap ) );
             this.removeChild( exBitmap );
 
-            let newJp: egret.Bitmap = Com.addBitmapAt( this, this.assetStr( "jackpot_" + GlobelSettings.language ), jpBitmap.x, jpBitmap.y );
+            let newJp: egret.Bitmap = Com.addBitmapAt( this, this.assetStr( "jackpot_" + MuLang.language ), jpBitmap.x, jpBitmap.y );
             this.setChildIndex( newJp, this.getChildIndex( jpBitmap ) );
             this.removeChild( jpBitmap );
         }

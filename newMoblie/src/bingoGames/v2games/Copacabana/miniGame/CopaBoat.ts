@@ -257,7 +257,7 @@ class CopaBoat extends egret.DisplayObjectContainer {
         titleBg.fillMode = egret.BitmapFillMode.REPEAT;
         // title text
         let titlePosition = { en: { x: 180, y: 29 }, es: { x: 203, y: 28 }, pt: { x: 169, y: 21 } };
-        Com.addBitmapAt(this.choicePrizeContainer, "pipa_" + GlobelSettings.language + "_json.boat_title", titlePosition[GlobelSettings.language]["x"], titlePosition[GlobelSettings.language]["y"]);
+        Com.addBitmapAt(this.choicePrizeContainer, "pipa_" + MuLang.language + "_json.boat_title", titlePosition[MuLang.language]["x"], titlePosition[MuLang.language]["y"]);
         // choice boats
         let boatsAssets = [".boat_yellow", ".boat_red", ".boat_green"];
         let choiceBtnTextArray = ["choose", "choose", "vip"];
@@ -311,7 +311,7 @@ class CopaBoat extends egret.DisplayObjectContainer {
                     // choiceBtn.touchEnabled = false;
                     // choiceBtn.filters = [MatrixTool.colorMatrix(0.33, 0.33, 1)];
                     // loyalty icon
-                    this.vipLoyaltyIcon = Com.addBitmapAt(this.choicePrizeCard[i], "loyalty_system_" + GlobelSettings.language + "_json.level_1", 26, 192);
+                    this.vipLoyaltyIcon = Com.addBitmapAt(this.choicePrizeCard[i], "loyalty_system_" + MuLang.language + "_json.level_1", 26, 192);
                     this.vipLoyaltyIcon.scaleX = this.vipLoyaltyIcon.scaleY = 0.5;
                 }
 
@@ -329,7 +329,7 @@ class CopaBoat extends egret.DisplayObjectContainer {
         Com.addObjectAt(this, this.rewardContainer, 224, 8);
         // title
         let position = { en: { x: 0, y: 17 }, es: { x: 62, y: 0 }, pt: { x: 60, y: 0 } };
-        Com.addBitmapAt(this.rewardContainer, "pipa_" + GlobelSettings.language + "_json.end_title", position[GlobelSettings.language]["x"], position[GlobelSettings.language]["y"]);
+        Com.addBitmapAt(this.rewardContainer, "pipa_" + MuLang.language + "_json.end_title", position[MuLang.language]["x"], position[MuLang.language]["y"]);
         // coins
         Com.addBitmapAt(this.rewardContainer, this.assetJson + ".icon_coin", 37, 84);
         // reward text

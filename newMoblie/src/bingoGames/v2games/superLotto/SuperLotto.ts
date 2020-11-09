@@ -258,7 +258,7 @@ class SuperLotto extends V2Game{
         }
 
         if( GameData.maxBet <= 250 ) {
-            let betTip: egret.Bitmap = Com.addBitmapAt( this, this.assetStr( "tips_" + GlobelSettings.language ), 85, 460 );
+            let betTip: egret.Bitmap = Com.addBitmapAt( this, this.assetStr( "tips_" + MuLang.language ), 85, 460 );
             TweenerTool.tweenTo( betTip, { alpha: 0 }, 8000, 8000, () => { betTip.parent.removeChild( betTip ) } );
         }
     }

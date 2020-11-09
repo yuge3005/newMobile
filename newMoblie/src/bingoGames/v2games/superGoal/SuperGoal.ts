@@ -43,7 +43,7 @@ class SuperGoal extends V2Game{
         this.runningBallContainer = new egret.DisplayObjectContainer;
         Com.addObjectAt( this, this.runningBallContainer, 1105, 125 );
 
-        this.buildSuperEbArea( "mega_" + GlobelSettings.language, 784, 172 );
+        this.buildSuperEbArea( "mega_" + MuLang.language, 784, 172 );
 
         this.letsSupergoal();
         

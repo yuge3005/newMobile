@@ -37,7 +37,7 @@ class Champion extends V1Game{
 
 		if( this.extraUIObject ) this.championExtraUIBg();
 
-		this.buildSuperEbArea( "mega_" + GlobelSettings.language, 702, 524 );
+		this.buildSuperEbArea( "mega_" + MuLang.language, 702, 524 );
 
 		this.ganhoCounter = new ChampionGanhoCounter( this.showWinAnimationAt.bind( this ) );
     }

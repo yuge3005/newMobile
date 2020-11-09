@@ -52,7 +52,7 @@ class Pachinko extends V2Game{
         this.ballCountText = MDS.addGameTextCenterShadow( this, 1445, 204, 55, 0x88FF88, "", false, 100, true, false );
         this.ballCountText.fontFamily = "Arial";
 
-        this.buildSuperEbArea( "mega_" + GlobelSettings.language, 1456, 312 );
+        this.buildSuperEbArea( "mega_" + MuLang.language, 1456, 312 );
 
         this.letsPachinko();
 

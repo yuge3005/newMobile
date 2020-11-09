@@ -14,7 +14,7 @@ class MentonWine extends egret.DisplayObjectContainer {
         this.mc.scaleX = this.mc.scaleY = 1;
         this.mc.gotoAndPlay( 1, 1 );
 
-        let paytableStr: string = "wineText_json.wine_" + GlobelSettings.language;
+        let paytableStr: string = "wineText_json.wine_" + MuLang.language;
         switch (paytableName) {
             case "columns_3": paytableStr += "_03";
                 break;

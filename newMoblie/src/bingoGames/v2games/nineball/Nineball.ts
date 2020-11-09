@@ -35,7 +35,7 @@ class Nineball extends V2Game{
 
         if( this.extraUIObject ) this.extraUIShowNumber();
 
-        this.buildSuperEbArea( "mega_" + GlobelSettings.language, 54, 19 );
+        this.buildSuperEbArea( "mega_" + MuLang.language, 54, 19 );
 
         this.arrowArea = new NineballCardArrowLayer( MDS.mcFactory, "", new egret.Point(0, 75), 70 );
         this.addChild( this.arrowArea );
