@@ -5,10 +5,6 @@ class GlobelSettings {
 	public constructor() {
 	}
 
-    public static get isRightClick(): boolean{
-        return document["isRightClick"];
-    }
-
 	public static get language(): string{
 		if( localStorage && ["pt","en","es"].indexOf( localStorage["language"] ) >= 0 )return localStorage["language"];
 		var resLan: string = requestStr( "lan" );
