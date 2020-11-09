@@ -14,7 +14,7 @@ class MuLang {
 		if( !MuLang.txt ) return null;
 		let lanObject: Object = MuLang.txt[key];
 		if( !lanObject ) return key;
-		let str: string = lanObject[GlobelSettings.language];
+		let str: string = lanObject[MuLang.language];
 		if( str ){
 			switch( caseType ){
 				default: return str;
@@ -24,5 +24,17 @@ class MuLang {
 			}
 		}
 		else return key;
+	}
+
+	public static get language(): string{
+		if( localStorage && ["pt","en","es"].indexOf( localStorage["language"] ) >= 0 )return localStorage["language"];
+		var resLan: string = requestStr( "lan" );
+		if( resLan ) return resLan;
+		return "en";
+	}
+	public static lanuageNames: Object = {en:"english",es:"spanish",pt:"portuguese"};
+
+	public static get languageName(){
+		return this.lanuageNames[this.language];
 	}
 }

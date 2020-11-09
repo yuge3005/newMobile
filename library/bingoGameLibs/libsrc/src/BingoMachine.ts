@@ -72,7 +72,7 @@ class BingoMachine extends GameUIItem{
 
 		this.connetKeys = { zona: "Zona" + gameId, sala: "Sala" + gameId };
 		this.tokenObject = {};
-		this.tokenObject["value"] = { tipo:"jogar", version: GlobelSettings.serverVertion };
+		this.tokenObject["value"] = { tipo:"jogar", version: PlayerConfig.serverVertion };
 
 		this.gameConfigFile = gameConfigFile;
 		this.ballArea = new BallManager;
@@ -255,7 +255,7 @@ class BingoMachine extends GameUIItem{
 		if( this.megaName ){
 			if( !localStorage.getItem( this.megaName ) ){
 				try{
-					RES.loadGroup( "megaForFirst_" + GlobelSettings.language );
+					RES.loadGroup( "megaForFirst_" + MuLang.language );
 				}catch(e){}
 			}
 		}
