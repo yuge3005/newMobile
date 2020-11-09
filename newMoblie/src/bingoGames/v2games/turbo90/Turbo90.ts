@@ -39,7 +39,7 @@ class Turbo90 extends V2Game{
         this.runningBallContainer.mask = new egret.Rectangle( 255, 68, 270, 270 );
         this.coverRunningBall = this.getChildByName( this.assetStr("wheel_eject") );
 
-        this.buildSuperEbArea( "mega_" + GlobelSettings.language, 447, 222 );
+        this.buildSuperEbArea( "mega_" + MuLang.language, 447, 222 );
 
         this.arrowArea = new CardArrowLayer( MDS.mcFactory, "arrowAnimationInT90", new egret.Point( -52, 65 ), 72 );
         this.addChild( this.arrowArea );

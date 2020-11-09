@@ -9,13 +9,13 @@ class JackpotLayerForHotbingo extends JackpotLayer{
 		super( jackpotContainerPosition, jackpot, jackpotMinBet, betConfig, lockPosition, jackpotTextRect, jackpotTextSize, jackpotTextColor );
 
 		let bgName: string = BingoMachine.getAssetStr( "Jackpot_enable" );
-		if( GlobelSettings.language == "pt" ) bgName += "_pt";
+		if( MuLang.language == "pt" ) bgName += "_pt";
 		this.mcBg = Com.addBitmapAt( this, bgName, 0, 0 );
 		this.addChildAt( this.mcBg, 0 );
 
 		this.jackpotText.filters = [new egret.GlowFilter( 0, 1, 6, 6, 4 )];
 
-		if( GlobelSettings.language == "pt" ){
+		if( MuLang.language == "pt" ){
 			this.removeChild( this.jackpotLock );
 			this.jackpotLock = Com.addBitmapAt(this, BingoMachine.getAssetStr("Jackpot_lock_pt"), lockPosition.x, lockPosition.y );
 			this.jackpotLock.touchEnabled = true;

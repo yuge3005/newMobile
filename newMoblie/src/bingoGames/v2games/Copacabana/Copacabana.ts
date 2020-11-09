@@ -792,7 +792,7 @@ class Copacabana extends V2Game{
     /******************************************************************************************************************************************************************/    
     protected showJackpot( jackpot: number, jackpotMinBet: number, betConfig: Array<Object> ){
         this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 1411, 120 ), jackpot, jackpotMinBet, betConfig, new egret.Point( -15, -10 ), new egret.Rectangle( 0, 4, 250, 50 ), 30, 0xFFFFFF, null, 0, 0, true ) );
-        let jkText: egret.Bitmap = Com.addBitmapAtMiddle( this, this.assetStr( "jackpot_" + GlobelSettings.language ), 1331, 148 );
+        let jkText: egret.Bitmap = Com.addBitmapAtMiddle( this, this.assetStr( "jackpot_" + MuLang.language ), 1331, 148 );
     }
 
     protected afterCheck( resultList: Array<Object> ): void{

@@ -153,3 +153,7 @@ class Main extends egret.DisplayObjectContainer {
 		}, this);
 	}
 }
+
+var trace = function( a ){
+	console.log(a);
+};

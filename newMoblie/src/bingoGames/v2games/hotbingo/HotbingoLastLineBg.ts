@@ -13,8 +13,8 @@ class HotbingoLastLineBg extends egret.DisplayObjectContainer{
 				this.arrows[i] = Com.addBitmapAt( this, "superLine_json.Arrow2", i * 53, 0 );
 			}
 			else if( i == 9 ){
-				Com.addBitmapAt( this, "superLine_json.Superline1_" + GlobelSettings.language, i * 53, 7 );
-				this.arrows[i] = Com.addBitmapAt( this, "superLine_json.Superline2_" + GlobelSettings.language, i * 53, 7 );
+				Com.addBitmapAt( this, "superLine_json.Superline1_" + MuLang.language, i * 53, 7 );
+				this.arrows[i] = Com.addBitmapAt( this, "superLine_json.Superline2_" + MuLang.language, i * 53, 7 );
 			}
 			else{
 				Com.addBitmapAt( this, "superLine_json.Arrow1", i * 53 + 163, 0 );

@@ -253,7 +253,7 @@ class LemonGame extends egret.DisplayObjectContainer {
 		this.getRoundsTxt.text = "" + this.roundCount + "  ROUNDS" ;
 		let str: string = "";
 		let num: number = LemonGame.maxPlateCount - this.plateCount;
-		switch( GlobelSettings.language ){
+		switch( MuLang.language ){
 			case "en": str = "Choose  " + num + "  plates";
 				break;
 			case "es": str = "Elige  " + num + "  platos";
@@ -519,7 +519,7 @@ class LemonGame extends egret.DisplayObjectContainer {
 		let tx: egret.TextField = Com.addTextAt( this.rightArea, 10, 420, 400, 600, 45, false, true );
 
 		let str: string = "";
-		switch( GlobelSettings.language ){
+		switch( MuLang.language ){
 			case "en": str = "YOU WIN\n" + rewardCoins + "\ncoins";
 				break;
 			case "es": str = "TU GANAS\n" + rewardCoins + "\nmonedas";

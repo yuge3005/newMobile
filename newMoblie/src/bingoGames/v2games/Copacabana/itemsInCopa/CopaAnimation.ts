@@ -35,7 +35,7 @@ class CopaAnimation extends egret.Sprite{
 	}
 
 	private addTitle(){
-		let tittle: egret.Bitmap = Com.addBitmapAtMiddle( this, this.assetName + ".title_" + GlobelSettings.language, 2500, 550 );
+		let tittle: egret.Bitmap = Com.addBitmapAtMiddle( this, this.assetName + ".title_" + MuLang.language, 2500, 550 );
 		tittle.scaleX = tittle.scaleY = 2;
 		this.addTween( tittle, { "x": 1000 }, 300, 100, this.titleLeave.bind(this, tittle), true );
 	}

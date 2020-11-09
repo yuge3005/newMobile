@@ -661,7 +661,7 @@ class CopaChess extends egret.DisplayObjectContainer {
      * start boat game
      */
     public startBoatGame() {
-        let iconBoatGame = Com.addBitmapAt(this, "pipa_" + GlobelSettings.language + "_json.icon_boat_game", 212, 161);
+        let iconBoatGame = Com.addBitmapAt(this, "pipa_" + MuLang.language + "_json.icon_boat_game", 212, 161);
         iconBoatGame.alpha = 0;
 
         egret.Tween.get(iconBoatGame).to({ alpha: 1 }, 500).wait(1000).to({ alpha: 0 }, 500).call(function (icon: egret.Bitmap) {

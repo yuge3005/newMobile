@@ -53,7 +53,7 @@ class CopaChooseBar extends egret.DisplayObjectContainer{
 
         let bit: egret.Bitmap = Com.addBitmapAt( this, BingoMachine.getAssetStr( "ball_silver" ), 878, 676 );
 		bit.scaleX = bit.scaleY = 245 / 177;
-        let mc: egret.MovieClip = Com.addMovieClipAt( this, MDS.mcFactory, "choose_" + GlobelSettings.language, 878, 676 );
+        let mc: egret.MovieClip = Com.addMovieClipAt( this, MDS.mcFactory, "choose_" + MuLang.language, 878, 676 );
 		mc.scaleX = mc.scaleY = 245 / 110;
 
 		selectNumberContainer.addEventListener( egret.Event.ENTER_FRAME, this.onSelectBarFrame, this );
