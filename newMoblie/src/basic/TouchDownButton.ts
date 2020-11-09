@@ -6,6 +6,10 @@ class TouchDownButton extends egret.DisplayObjectContainer {
 
 	public disabledFilter: egret.ColorMatrixFilter;
 
+    public static get isRightClick(): boolean{
+        return document["isRightClick"];
+    }
+
 	public get enabled(){
 		return this.touchEnabled;
 	}
@@ -46,7 +50,7 @@ class TouchDownButton extends egret.DisplayObjectContainer {
 	}
 
 	protected onTouchTap(event:egret.TouchEvent){
-		if( GlobelSettings.isRightClick ){
+		if( TouchDownButton.isRightClick ){
 			event.stopImmediatePropagation();
 			return;
 		}

@@ -1,7 +1,6 @@
-class BlackStarCard extends ExtraBlinkCard{
+class Showball2Card extends ShowballCard{
 
 	private unFitEffectLayer: egret.DisplayObjectContainer;
-	private winTx: TextLabel;
 
 	public constructor( cardId: number ) {
 		super( cardId );
@@ -10,33 +9,10 @@ class BlackStarCard extends ExtraBlinkCard{
 	protected onAdd( event: egret.Event ){
 		super.onAdd( event );
 
-		Com.addBitmapAt( this, BingoMachine.getAssetStr( "card_bg03" ), 13, 34 );
-
 		this.unFitEffectLayer = new egret.DisplayObjectContainer;
 		this.addChildAt( this.unFitEffectLayer, this.getChildIndex( this.fitEffectLayer ) );
 
-		this.fitEffectLayer.filters = [ MatrixTool.colorMatrixPure( 0xFF0000 ) ];
-
-		this.winTx = Com.addLabelAt( this, 395, GameCardUISettings.betTextRect.y, 300, GameCardUISettings.betTextRect.height, GameCardUISettings.betTextRect.height, false, true );
-		this.winTx.textColor = 0;
-		this.winTx.textAlign = "right";
-		this.winTx.scaleX = 0.9;
-		this.winTx.setText( "" );
-	}
-
-	public showWinCount( winNumber: number ): void{
-		this.winTx.setText( "" + winNumber );
-	}
-
-	public clearStatus(){
-		super.clearStatus();
-		this.winTx.setText( "" );
-	}
-
-	public getBgColor(){
-		if( GameCardUISettings.titleColors ){
-			this.bg.filters = [ MatrixTool.colorMatrixPure( GameCardUISettings.cardTitleColor ) ];
-		}
+		this.fitEffectLayer.filters = [ MatrixTool.colorMatrixPure( 0xFF0000 ), new egret.GlowFilter( 0xFF0000, 1, 4, 4, 5, 5 ) ];
 	}
 
 	public clearFitEffect(){
