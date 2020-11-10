@@ -43,7 +43,6 @@ class CopaBoat extends egret.DisplayObjectContainer {
     private choicePrizeContainer: egret.DisplayObjectContainer;
     private choicePrizeCard: Array<egret.DisplayObjectContainer>;
     private vipChoiceBtn: egret.DisplayObjectContainer;
-    private vipLoyaltyIcon: egret.Bitmap;
     private prizeMaxText: Array<egret.TextField>;
     private prizeType: number;
 
@@ -306,15 +305,6 @@ class CopaBoat extends egret.DisplayObjectContainer {
                 choiceBtn.touchEnabled = false;
                 choiceBtn.filters = [MatrixTool.colorMatrix(0.33, 0.33, 1)];
 
-                if (i == 2 && Number(LoyaltyVo.get("loyaltyLevel")) < 3) {
-                    this.vipChoiceBtn = choiceBtn;
-                    // choiceBtn.touchEnabled = false;
-                    // choiceBtn.filters = [MatrixTool.colorMatrix(0.33, 0.33, 1)];
-                    // loyalty icon
-                    this.vipLoyaltyIcon = Com.addBitmapAt(this.choicePrizeCard[i], "loyalty_system_" + MuLang.language + "_json.level_1", 26, 192);
-                    this.vipLoyaltyIcon.scaleX = this.vipLoyaltyIcon.scaleY = 0.5;
-                }
-
                 let cover = Com.addBitmapAt(this.choicePrizeCard[i], this.assetJson + ".black_cover", 0, 0);
                 cover.alpha = 0.5;
                 Com.addBitmapAt(this.choicePrizeCard[i], this.assetJson + ".lock", 100, 90);
@@ -373,12 +363,9 @@ class CopaBoat extends egret.DisplayObjectContainer {
             this.progressPoints[i]["trigger"](false);
         }
 
-        if (Number(LoyaltyVo.get("loyaltyLevel")) >= 3) {
-            if (this.vipChoiceBtn) {
-                this.vipChoiceBtn.touchEnabled = true;
-                this.vipChoiceBtn.filters = [];
-            }
-            if (this.vipLoyaltyIcon) this.vipLoyaltyIcon.parent.removeChild(this.vipLoyaltyIcon);
+        if (this.vipChoiceBtn) {
+            this.vipChoiceBtn.touchEnabled = true;
+            this.vipChoiceBtn.filters = [];
         }
 
         let totalCoins = 0;
