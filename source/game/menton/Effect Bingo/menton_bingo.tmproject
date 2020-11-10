@@ -1,18 +1,19 @@
 {
+    "files": [
+        "./bg.png",
+        "./bottle.png",
+        "./effect_bg.png",
+        "./pizza.png",
+        "./pizza_plate.png",
+        "./title.png"
+    ],
+    "projectName": "menton_bingo",
+    "version": 5,
     "options": {
-        "useExtension": 0,
-        "layoutGap": 1,
         "extend": 0,
         "layoutMath": "3",
-        "sizeMode": "2n"
-    },
-    "files": [
-        "./title.png",
-        "./pizza_plate.png",
-        "./pizza.png",
-        "./effect_bg.png",
-        "./bottle.png"
-    ],
-    "version": 5,
-    "projectName": "menton_bingo"
+        "sizeMode": "2n",
+        "useExtension": 0,
+        "layoutGap": 1
+    }
 }
