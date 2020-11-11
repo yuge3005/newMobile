@@ -1713,7 +1713,7 @@
 			"url": "game/turbomania/turbomania.json",
 			"type": "sheet",
 			"name": "turbomania_json",
-			"subkeys": "jackpot_lock,mania_ball_blue,mania_ball_green,mania_ball_red,mania_ball_yellow,mania_bg,mania_card_bg,mania_card_bingo,mania_card_corner,mania_card_dbline1,mania_card_dbline2,mania_card_dbline3,mania_card_gun,mania_card_h,mania_card_l,mania_card_line1,mania_card_line2,mania_card_line3,mania_card_mouse,mania_card_round,mania_card_t,mania_card_v,mania_card_v2,mania_extra,mark_gray,mark_green,mark_red,mark_white,vip_bingo,vip_corner,vip_double_line,vip_gun,vip_h,vip_l,vip_line,vip_mouse,vip_round,vip_t,vip_v,vip_v2"
+			"subkeys": "cross,jackpot_lock,mania_ball_blue,mania_ball_green,mania_ball_red,mania_ball_yellow,mania_bg,mania_card_bg,mania_card_bingo,mania_card_corner,mania_card_dbline1,mania_card_dbline2,mania_card_dbline3,mania_card_gun,mania_card_h,mania_card_l,mania_card_line1,mania_card_line2,mania_card_line3,mania_card_mouse,mania_card_round,mania_card_t,mania_card_v,mania_card_v2,mania_extra,mark_gray,mark_green,mark_red,mark_white,thin_mania_card_gun,thin_mania_card_h,thin_mania_card_l,thin_mania_card_mouse,thin_mania_card_round,thin_mania_card_t,thin_mania_card_v,thin_mania_card_v2,vip_bingo,vip_corner,vip_double_line,vip_gun,vip_h,vip_l,vip_line,vip_mouse,vip_round,vip_t,vip_v,vip_v2"
 		},
 		{
 			"url": "config/turbomania.conf",
@@ -1804,7 +1804,7 @@
 			"url": "game/vipbingo/vipbingo.json",
 			"type": "sheet",
 			"name": "vipbingo_json",
-			"subkeys": "Background_ENG,Extra-Ball_ENG,card_bingo,card_corner,card_dbline1,card_dbline2,card_dbline3,card_gun,card_h,card_l,card_line1,card_line2,card_line3,card_mouse,card_round,card_t,card_v,card_v2,jackpot_lock,mark_black,mark_red,mark_white,mark_yellow,vip_ball_blue,vip_ball_cyan,vip_ball_green,vip_ball_purple,vip_ball_red,vip_ball_yellow,vip_bingo,vip_corner,vip_double_line,vip_gun,vip_h,vip_l,vip_line,vip_mouse,vip_round,vip_t,vip_v,vip_v2,vipbingo_card_bg"
+			"subkeys": "Background_ENG,Extra-Ball_ENG,card_bingo,card_corner,card_dbline1,card_dbline2,card_dbline3,card_gun,card_h,card_l,card_line1,card_line2,card_line3,card_mouse,card_round,card_t,card_v,card_v2,cross,jackpot_lock,mark_black,mark_red,mark_white,mark_yellow,thin_card_gun,thin_card_h,thin_card_l,thin_card_mouse,thin_card_round,thin_card_t,thin_card_v,thin_card_v2,vip_ball_blue,vip_ball_cyan,vip_ball_green,vip_ball_purple,vip_ball_red,vip_ball_yellow,vip_bingo,vip_corner,vip_double_line,vip_gun,vip_h,vip_l,vip_line,vip_mouse,vip_round,vip_t,vip_v,vip_v2,vipbingo_card_bg"
 		},
 		{
 			"url": "game/showball2/showball2.json",
