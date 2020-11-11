@@ -19,6 +19,14 @@ class VipManiaCard extends GameCard{
 		}
 	}
 
+	public clearFitEffect(){
+		super.clearFitEffect();
+		if( this.unFitEffectLayer ){
+			this.unFitEffectLayer.removeChildren();
+			this.addChildAt( this.unFitEffectLayer, this.getChildIndex( this.fitEffectLayer ) - 1 );
+		}
+	}
+
 	public showunfitEffect( assetName: string, unfitRules: Array<number> ){
 		try{
 			let effectImage: egret.Bitmap;
@@ -29,7 +37,7 @@ class VipManiaCard extends GameCard{
 				}
 			}
 			else{
-				if( GameCard.fitEffectNameList[assetName].indexOf("card_bingo") < 0 && GameCard.fitEffectNameList[assetName].indexOf("card_corner") < 0 ){
+				if( GameCard.fitEffectNameList[assetName][0].indexOf( "card_bingo" ) < 0 && GameCard.fitEffectNameList[assetName][0].indexOf( "card_corner" ) < 0 ){
 					effectImage = Com.addBitmapAt( this.unFitEffectLayer, BingoMachine.getAssetStr( "thin_" + GameCard.fitEffectNameList[assetName] ), 0, 0 );
 				}
 			}
