@@ -1,16 +1,20 @@
 {
-    "projectName": "vipbingo",
     "files": [
-        "./vip_ball_purple.png",
-        "./vip_ball_green.png",
-        "./vip_ball_cyan.png",
-        "./vip_ball_blue.png",
+        "./thin_card_v2.png",
+        "./thin_card_v.png",
+        "./thin_card_t.png",
+        "./thin_card_round.png",
+        "./thin_card_mouse.png",
+        "./thin_card_l.png",
+        "./thin_card_h.png",
+        "./thin_card_gun.png",
         "./mark_yellow.png",
         "./mark_white.png",
         "./mark_red.png",
         "./mark_black.png",
         "./jackpot_lock.png",
         "./Extra-Ball_ENG.png",
+        "./cross.png",
         "./card_v2.png",
         "./card_v.png",
         "./card_t.png",
@@ -42,14 +46,19 @@
         "./vip_corner.png",
         "./vip_bingo.png",
         "./vip_ball_yellow.png",
-        "./vip_ball_red.png"
+        "./vip_ball_red.png",
+        "./vip_ball_purple.png",
+        "./vip_ball_green.png",
+        "./vip_ball_cyan.png",
+        "./vip_ball_blue.png"
     ],
+    "projectName": "vipbingo",
+    "version": 5,
     "options": {
+        "extend": 0,
+        "layoutMath": "0",
         "sizeMode": "free",
         "useExtension": 0,
-        "layoutGap": 1,
-        "extend": 0,
-        "layoutMath": "0"
-    },
-    "version": 5
+        "layoutGap": 1
+    }
 }
