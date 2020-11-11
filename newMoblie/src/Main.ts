@@ -155,5 +155,5 @@ class Main extends egret.DisplayObjectContainer {
 }
 
 var trace = function( a ){
-	console.log(a);
+	egret.log(a);
 };
