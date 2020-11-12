@@ -32,7 +32,7 @@ class VipManiaCard extends GameCard{
 			let effectImage: egret.Bitmap;
 			if( unfitRules ){
 				for( let i: number = 0; i< unfitRules.length; i++ ){
-					if( GameCard.fitEffectNameList[assetName][unfitRules[i]].indexOf( "card_dbline" ) >= 0 || GameCard.fitEffectNameList[assetName][unfitRules[i]].indexOf( "card_line" ) ) break;
+					if( GameCard.fitEffectNameList[assetName][unfitRules[i]].indexOf( "card_dbline" ) >= 0 || GameCard.fitEffectNameList[assetName][unfitRules[i]].indexOf( "card_line" ) >= 0 ) break;
 					else effectImage = Com.addBitmapAt( this.unFitEffectLayer, BingoMachine.getAssetStr( "thin_" + GameCard.fitEffectNameList[assetName][unfitRules[i]] ), 0, 0 );
 				}
 			}
