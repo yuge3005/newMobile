@@ -17,10 +17,25 @@ class Pharos extends AztecPharosSuper{
 
         BallManager.ballOffsetY = 8;
         BallManager.textBold = true;
+
+        this.needListenToolbarStatus = true;
+        this.tipStatusTextPosition = new egret.Rectangle( 430, 85, 169, 45 );
+        this.tipStatusTextColor = 0x0;
 	}
 
     protected init(){
         super.init();
+
+        let betTip: TextLabel = MDS.addGameText( this, 295, 678, 36, 0xE8D4AF, "bet", true, 150, "", 0.9 );
+        betTip.fontFamily = "Arial";
+        betTip.bold = true;
+
+        this.betText = MDS.addGameTextCenterShadow( this, 425, 678, 36, 0xE8D4AF, "bet", true, 178, true, false );
+        this.betText.textAlign = "right";
+        this.betText.fontFamily = "Arial";
+        this.betText.bold = true;
+        this.betText.scaleX = 0.9;
+        this.creditText = new TextLabel;
 
         this.buildSuperEbArea( "mega_" + MuLang.language, 427, 16 );
     }

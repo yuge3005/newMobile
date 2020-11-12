@@ -17,6 +17,10 @@
 			"name": "pharos"
 		},
 		{
+			"keys": "azt10_wav,azt12_wav,azt13_wav,azt14_wav,azt2_wav,azt3_wav,azt5_wav,azt6_wav,azt9_wav,aztec_json,aztec_conf",
+			"name": "aztec"
+		},
+		{
 			"keys": "megaForFirst_en_json",
 			"name": "megaForFirst_en"
 		},
@@ -2282,6 +2286,62 @@
 			"type": "sheet",
 			"name": "pipa_en_json",
 			"subkeys": "boat_title,end_title,icon_boat_game"
+		},
+		{
+			"url": "game/aztec/sound/azt10.wav",
+			"type": "sound",
+			"name": "azt10_wav"
+		},
+		{
+			"url": "game/aztec/sound/azt12.wav",
+			"type": "sound",
+			"name": "azt12_wav"
+		},
+		{
+			"url": "game/aztec/sound/azt13.wav",
+			"type": "sound",
+			"name": "azt13_wav"
+		},
+		{
+			"url": "game/aztec/sound/azt14.wav",
+			"type": "sound",
+			"name": "azt14_wav"
+		},
+		{
+			"url": "game/aztec/sound/azt2.wav",
+			"type": "sound",
+			"name": "azt2_wav"
+		},
+		{
+			"url": "game/aztec/sound/azt3.wav",
+			"type": "sound",
+			"name": "azt3_wav"
+		},
+		{
+			"url": "game/aztec/sound/azt5.wav",
+			"type": "sound",
+			"name": "azt5_wav"
+		},
+		{
+			"url": "game/aztec/sound/azt6.wav",
+			"type": "sound",
+			"name": "azt6_wav"
+		},
+		{
+			"url": "game/aztec/sound/azt9.wav",
+			"type": "sound",
+			"name": "azt9_wav"
+		},
+		{
+			"url": "game/aztec/aztec.json",
+			"type": "sheet",
+			"name": "aztec_json",
+			"subkeys": "BallDisplay,Ball_Large,ClosedCard,FreeEB,StoneDefault,StoneGreen,StoneRed,StoneYellow,aztec_bg,jackpot_lock"
+		},
+		{
+			"url": "config/aztec.conf",
+			"type": "json",
+			"name": "aztec_conf"
 		}
 	]
 }
