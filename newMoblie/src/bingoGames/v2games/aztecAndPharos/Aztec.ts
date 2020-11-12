@@ -15,6 +15,9 @@ class Aztec extends AztecPharosSuper{
 
         BallManager.ballOffsetY = 8;
         BallManager.textBold = true;
+
+        this.extraPosition1 = -220;
+        this.extraPosition2 = -380;
 	}
 
     protected init(){

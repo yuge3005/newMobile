@@ -1,5 +1,8 @@
 class AztecPharosSuper extends V2Game{
 
+    protected extraPosition1: number;
+    protected extraPosition2: number;
+
 	public constructor( gameConfigFile: string, configUrl: string, gameId: number ) {
 		super( gameConfigFile, configUrl, gameId );
         this.languageObjectName = "pharos_tx";
@@ -22,9 +25,9 @@ class AztecPharosSuper extends V2Game{
 	protected showExtraUI( show: boolean = true ){
         if( this.extraUIObject ){
             let tw: egret.Tween = egret.Tween.get( this.extraUIObject );
-            if( !show )tw.to( { x: -24 }, 500 );
+            if( !show )tw.to( { x: this.extraPosition1 }, 500 );
             else{
-                if( this.currentBallIndex == 36 )tw.to( { x: -190 }, 500 );
+                if( this.currentBallIndex == 36 )tw.to( { x: this.extraPosition2 }, 500 );
             }
         }
         if( !show )if( !show && this.gratisUI && this.contains( this.gratisUI ) )this.removeChild( this.gratisUI );

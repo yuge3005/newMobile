@@ -21,6 +21,9 @@ class Pharos extends AztecPharosSuper{
         this.needListenToolbarStatus = true;
         this.tipStatusTextPosition = new egret.Rectangle( 430, 85, 169, 45 );
         this.tipStatusTextColor = 0x0;
+
+        this.extraPosition1 = -24;
+        this.extraPosition2 = -190;
 	}
 
     protected init(){
