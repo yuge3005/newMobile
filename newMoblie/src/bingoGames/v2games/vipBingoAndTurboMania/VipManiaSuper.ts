@@ -15,6 +15,8 @@ class VipManiaSuper extends V2Game{
         super.init();
 
         this.showNoBetAndCredit();
+
+        this.ganhoCounter = new CopaGanhoCounter( this.showWinPopup.bind( this ) );
     }
 
     protected showLastBall( ballIndex: number ): void{
@@ -25,9 +27,15 @@ class VipManiaSuper extends V2Game{
     protected afterCheck( resultList: Array<Object> ): void{
 		super.afterCheck( resultList );
 
+        this.ganhoCounter.countGanhoAndPlayAnimation(resultList);
+
         if( !this.inLightCheck ){
             this.showUnfitEffect( resultList );
 		}
+    }
+
+    protected showWinPopup( cardId: number, paytableName: string ){
+        ( CardManager.cards[cardId] as VipManiaCard ).showPatternAnimation( paytableName );
     }
 
 /******************************************************************************************************************************************************************/    

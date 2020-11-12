@@ -1,6 +1,7 @@
 class VipManiaCard extends GameCard{
 
 	private unFitEffectLayer: egret.DisplayObjectContainer;
+	private winPaytableAnimationLayer: egret.DisplayObjectContainer;
 
 	public constructor( cardId: number ) {
 		super( cardId );
@@ -11,6 +12,9 @@ class VipManiaCard extends GameCard{
 
 		this.unFitEffectLayer = new egret.DisplayObjectContainer;
 		this.addChildAt( this.unFitEffectLayer, this.getChildIndex( this.fitEffectLayer ) );
+
+		this.winPaytableAnimationLayer = new egret.DisplayObjectContainer;
+		this.addChild( this.winPaytableAnimationLayer );
 	}
 
 	public getBgColor(){
@@ -24,6 +28,8 @@ class VipManiaCard extends GameCard{
 		if( this.unFitEffectLayer ){
 			this.unFitEffectLayer.removeChildren();
 			this.addChildAt( this.unFitEffectLayer, this.getChildIndex( this.fitEffectLayer ) - 1 );
+			this.winPaytableAnimationLayer.removeChildren();
+			this.addChild( this.winPaytableAnimationLayer );
 		}
 	}
 
@@ -45,5 +51,11 @@ class VipManiaCard extends GameCard{
 		catch( e ){
 			trace( "showfitEffect ignore:" + assetName );
 		}
+	}
+
+	public showPatternAnimation( paytableName: string ){
+		this.winPaytableAnimationLayer.removeChildren();
+		trace( paytableName );
+		// let ptBitmap: egret.Bitmap = Com.addBitmapAtMiddle( this.winPaytableAnimationLayer, BingoMachine.getAssetStr(  ), 331, 142 );
 	}
 }
