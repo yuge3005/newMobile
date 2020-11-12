@@ -37,7 +37,7 @@ class AztecPharosSuper extends V2Game{
         super.showMissExtraBall( balls );
         if( this.extraUIObject ){
             let tw: egret.Tween = egret.Tween.get( this.extraUIObject );
-            tw.to( { x: -190 }, 200 );
+            tw.to( { x: this.extraPosition2 }, 200 );
         }
     }
 
@@ -85,5 +85,10 @@ class AztecPharosSuper extends V2Game{
                 this.tipStatusCoinTypeText.text = "";
 			    break;
 		}
+    }
+
+    protected showFreeExtraPosition(){
+        super.showFreeExtraPosition();
+        this.addChildAt( this.gratisUI, this.getChildIndex( this.ballArea ) );
     }
 }

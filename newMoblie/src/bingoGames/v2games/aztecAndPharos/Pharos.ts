@@ -110,9 +110,4 @@ class Pharos extends AztecPharosSuper{
 	protected changeNumberSound(): void {
 		this.playSound("pr_card_mp3");
 	}
-
-    protected showFreeExtraPosition(){
-        super.showFreeExtraPosition();
-        this.addChildAt( this.gratisUI, this.getChildIndex( this.ballArea ) );
-    }
 }
