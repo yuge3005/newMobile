@@ -84,6 +84,7 @@ class VipManiaCard extends GameCard{
 		if( !ptBitmap ) return;
 
 		ptBitmap.scaleX = ptBitmap.scaleY = 0.1;
+		ptBitmap.filters = [new egret.DropShadowFilter( 10, 45, 0, 0.7, 10, 10, 1 )];
 		let tw: egret.Tween = egret.Tween.get( ptBitmap, { loop: true } );
 		tw.to( { scaleX: 0.5, scaleY: 0.5 }, 500 );
 		tw.to( { scaleX: 0.2, scaleY: 0.2 }, 500 );
