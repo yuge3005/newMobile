@@ -13,8 +13,12 @@
 			"name": "nineball"
 		},
 		{
-			"keys": "pr_1side_mp3,pr_2side_mp3,pr_3side_mp3,pr_acumulado_mp3,pr_ball_mp3,pr_bet_mp3,pr_bingo_mp3,pr_card_mp3,pr_collect_mp3,pr_drag_in_mp3,pr_drag_out_mp3,pr_extra_ball_mp3,pr_free_extra_ball_mp3,pr_have_extra_ball_mp3,pharos_json,pharosAnimation_png,pharosAnimation_json,pharos_conf,pharos_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,getCoinsParticle_png,getCoinsParticle_json,Arial Black_fnt,Arial Black_png",
+			"keys": "pr_1side_mp3,pr_2side_mp3,pr_3side_mp3,pr_acumulado_mp3,pr_ball_mp3,pr_bet_mp3,pr_bingo_mp3,pr_card_mp3,pr_collect_mp3,pr_drag_in_mp3,pr_drag_out_mp3,pr_extra_ball_mp3,pr_free_extra_ball_mp3,pr_have_extra_ball_mp3,pharos_json,pharosAnimation_png,pharosAnimation_json,pharos_conf,pharos_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,Arial Black_fnt,Arial Black_png",
 			"name": "pharos"
+		},
+		{
+			"keys": "azt10_wav,azt12_wav,azt13_wav,azt14_wav,azt2_wav,azt3_wav,azt5_wav,azt6_wav,azt9_wav,aztec_json,aztec_conf,pharos_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,Arial Black_fnt,Arial Black_png",
+			"name": "aztec"
 		},
 		{
 			"keys": "megaForFirst_en_json",
@@ -1713,7 +1717,7 @@
 			"url": "game/turbomania/turbomania.json",
 			"type": "sheet",
 			"name": "turbomania_json",
-			"subkeys": "jackpot_lock,mania_ball_blue,mania_ball_green,mania_ball_red,mania_ball_yellow,mania_bg,mania_card_bg,mania_card_bingo,mania_card_corner,mania_card_dbline1,mania_card_dbline2,mania_card_dbline3,mania_card_gun,mania_card_h,mania_card_l,mania_card_line1,mania_card_line2,mania_card_line3,mania_card_mouse,mania_card_round,mania_card_t,mania_card_v,mania_card_v2,mania_extra,mark_gray,mark_green,mark_red,mark_white,vip_bingo,vip_corner,vip_double_line,vip_gun,vip_h,vip_l,vip_line,vip_mouse,vip_round,vip_t,vip_v,vip_v2"
+			"subkeys": "cross,jackpot_lock,mania_ball_blue,mania_ball_green,mania_ball_red,mania_ball_yellow,mania_bg,mania_card_bg,mania_card_bingo,mania_card_corner,mania_card_dbline1,mania_card_dbline2,mania_card_dbline3,mania_card_gun,mania_card_h,mania_card_l,mania_card_line1,mania_card_line2,mania_card_line3,mania_card_mouse,mania_card_round,mania_card_t,mania_card_v,mania_card_v2,mania_extra,mark_gray,mark_green,mark_red,mark_white,partten_bingo,partten_linha,partten_linha_dupla,partten_quadra,thin_mania_card_gun,thin_mania_card_h,thin_mania_card_l,thin_mania_card_mouse,thin_mania_card_round,thin_mania_card_t,thin_mania_card_v,thin_mania_card_v2,vip_bingo,vip_corner,vip_double_line,vip_gun,vip_h,vip_l,vip_line,vip_mouse,vip_round,vip_t,vip_v,vip_v2"
 		},
 		{
 			"url": "config/turbomania.conf",
@@ -1804,7 +1808,7 @@
 			"url": "game/vipbingo/vipbingo.json",
 			"type": "sheet",
 			"name": "vipbingo_json",
-			"subkeys": "Background_ENG,Extra-Ball_ENG,card_bingo,card_corner,card_dbline1,card_dbline2,card_dbline3,card_gun,card_h,card_l,card_line1,card_line2,card_line3,card_mouse,card_round,card_t,card_v,card_v2,jackpot_lock,mark_black,mark_red,mark_white,mark_yellow,vip_ball_blue,vip_ball_cyan,vip_ball_green,vip_ball_purple,vip_ball_red,vip_ball_yellow,vip_bingo,vip_corner,vip_double_line,vip_gun,vip_h,vip_l,vip_line,vip_mouse,vip_round,vip_t,vip_v,vip_v2,vipbingo_card_bg"
+			"subkeys": "Background_ENG,Extra-Ball_ENG,card_bingo,card_corner,card_dbline1,card_dbline2,card_dbline3,card_gun,card_h,card_l,card_line1,card_line2,card_line3,card_mouse,card_round,card_t,card_v,card_v2,cross,jackpot_lock,mark_black,mark_red,mark_white,mark_yellow,partten_bingo,partten_linha,partten_linha_dupla,partten_quadra,thin_card_gun,thin_card_h,thin_card_l,thin_card_mouse,thin_card_round,thin_card_t,thin_card_v,thin_card_v2,vip_ball_blue,vip_ball_cyan,vip_ball_green,vip_ball_purple,vip_ball_red,vip_ball_yellow,vip_bingo,vip_corner,vip_double_line,vip_gun,vip_h,vip_l,vip_line,vip_mouse,vip_round,vip_t,vip_v,vip_v2,vipbingo_card_bg"
 		},
 		{
 			"url": "game/showball2/showball2.json",
@@ -2282,6 +2286,62 @@
 			"type": "sheet",
 			"name": "pipa_en_json",
 			"subkeys": "boat_title,end_title,icon_boat_game"
+		},
+		{
+			"url": "game/aztec/sound/azt10.wav",
+			"type": "sound",
+			"name": "azt10_wav"
+		},
+		{
+			"url": "game/aztec/sound/azt12.wav",
+			"type": "sound",
+			"name": "azt12_wav"
+		},
+		{
+			"url": "game/aztec/sound/azt13.wav",
+			"type": "sound",
+			"name": "azt13_wav"
+		},
+		{
+			"url": "game/aztec/sound/azt14.wav",
+			"type": "sound",
+			"name": "azt14_wav"
+		},
+		{
+			"url": "game/aztec/sound/azt2.wav",
+			"type": "sound",
+			"name": "azt2_wav"
+		},
+		{
+			"url": "game/aztec/sound/azt3.wav",
+			"type": "sound",
+			"name": "azt3_wav"
+		},
+		{
+			"url": "game/aztec/sound/azt5.wav",
+			"type": "sound",
+			"name": "azt5_wav"
+		},
+		{
+			"url": "game/aztec/sound/azt6.wav",
+			"type": "sound",
+			"name": "azt6_wav"
+		},
+		{
+			"url": "game/aztec/sound/azt9.wav",
+			"type": "sound",
+			"name": "azt9_wav"
+		},
+		{
+			"url": "game/aztec/aztec.json",
+			"type": "sheet",
+			"name": "aztec_json",
+			"subkeys": "BallDisplay,Ball_Large,ClosedCard,FreeEB,StoneDefault,StoneGreen,StoneRed,StoneYellow,aztec_bg,jackpot_lock"
+		},
+		{
+			"url": "config/aztec.conf",
+			"type": "json",
+			"name": "aztec_conf"
 		}
 	]
 }

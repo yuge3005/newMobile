@@ -1,5 +1,8 @@
 class AztecPharosSuper extends V2Game{
 
+    protected extraPosition1: number;
+    protected extraPosition2: number;
+
 	public constructor( gameConfigFile: string, configUrl: string, gameId: number ) {
 		super( gameConfigFile, configUrl, gameId );
         this.languageObjectName = "pharos_tx";
@@ -7,26 +10,11 @@ class AztecPharosSuper extends V2Game{
         CardManager.cardType = TowerCard;
         GameCardUISettings.useRedEffect = true;
 
-        this.needListenToolbarStatus = true;
-        this.tipStatusTextPosition = new egret.Rectangle( 430, 85, 169, 45 );
-        this.tipStatusTextColor = 0x0;
-
         this.ballArea.needLightCheck = true;
 	}
 
 	protected init(){
         super.init();
-
-        let betTip: TextLabel = MDS.addGameText( this, 295, 678, 36, 0xE8D4AF, "bet", true, 150, "", 0.9 );
-        betTip.fontFamily = "Arial";
-        betTip.bold = true;
-
-        this.betText = MDS.addGameTextCenterShadow( this, 425, 678, 36, 0xE8D4AF, "bet", true, 178, true, false );
-        this.betText.textAlign = "right";
-        this.betText.fontFamily = "Arial";
-        this.betText.bold = true;
-        this.betText.scaleX = 0.9;
-        this.creditText = new TextLabel;
 
         if( this.extraUIObject ){
             this.extraUIShowNumber();
@@ -37,9 +25,9 @@ class AztecPharosSuper extends V2Game{
 	protected showExtraUI( show: boolean = true ){
         if( this.extraUIObject ){
             let tw: egret.Tween = egret.Tween.get( this.extraUIObject );
-            if( !show )tw.to( { x: -24 }, 500 );
+            if( !show )tw.to( { x: this.extraPosition1 }, 500 );
             else{
-                if( this.currentBallIndex == 36 )tw.to( { x: -190 }, 500 );
+                if( this.currentBallIndex == 36 )tw.to( { x: this.extraPosition2 }, 500 );
             }
         }
         if( !show )if( !show && this.gratisUI && this.contains( this.gratisUI ) )this.removeChild( this.gratisUI );

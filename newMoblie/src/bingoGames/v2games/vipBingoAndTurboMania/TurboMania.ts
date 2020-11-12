@@ -15,8 +15,6 @@ class TurboMania extends VipManiaSuper{
     protected init(){
         super.init();
 
-        this.showNoBetAndCredit();
-
         this.runningBallContainer = new egret.DisplayObjectContainer;
         Com.addObjectAt( this, this.runningBallContainer, 880, 258 );
     }

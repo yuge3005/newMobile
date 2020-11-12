@@ -15,12 +15,8 @@ class Vipbingo extends VipManiaSuper{
     protected init(){
         super.init();
 
-        this.showNoBetAndCredit();
-
         this.runningBallContainer = new egret.DisplayObjectContainer;
         Com.addObjectAt( this, this.runningBallContainer, 900, 279 );
-
-        this.ballArea.needLightCheck = true;
     }
 
     protected hasExtraBallFit(): void {

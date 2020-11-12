@@ -47,7 +47,7 @@ class Main extends egret.DisplayObjectContainer {
     }
 
 	private showGame(){
-		this.currentGame = new Copacabana("resource/default.res.json");
+		this.currentGame = new Aztec("resource/default.res.json");
 
 		const loadingView = new LoadingUI();
 		this.currentGame.preLoader = loadingView;
@@ -155,5 +155,5 @@ class Main extends egret.DisplayObjectContainer {
 }
 
 var trace = function( a ){
-	console.log(a);
+	egret.log(a);
 };
