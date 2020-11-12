@@ -11,6 +11,7 @@ class Aztec extends AztecPharosSuper{
 	public constructor( assetsPath: string ) {
 		super( "aztec.conf", assetsPath, 50 );
 
+        PayTableManager.layerType = AztecPaytableLayer;
         CardGridColorAndSizeSettings.defaultNumberSize = 45;
 
         BallManager.ballOffsetY = 5;
@@ -24,11 +25,6 @@ class Aztec extends AztecPharosSuper{
         super.init();
 
         this.showNoBetAndCredit();
-
-        // this.addGameText( 35, 352, 16, 0xE8D4AF, "bingo",false, 200 );
-        // this.addGameText( 35, 379, 16, 0xE8D4AF, "three side",false, 200 );
-        // this.addGameText( 35, 406, 16, 0xE8D4AF, "two side",false, 200 );
-        // this.addGameText( 35, 433, 16, 0xE8D4AF, "one side",false, 200 );
     }
 
     protected showLastBall( ballIndex: number ): void{
