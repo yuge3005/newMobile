@@ -13,7 +13,7 @@ class Aztec extends AztecPharosSuper{
 
         CardGridColorAndSizeSettings.defaultNumberSize = 45;
 
-        BallManager.ballOffsetY = 8;
+        BallManager.ballOffsetY = 5;
         BallManager.textBold = true;
 
         this.extraPosition1 = -220;
@@ -33,7 +33,7 @@ class Aztec extends AztecPharosSuper{
 
     protected showLastBall( ballIndex: number ): void{
         super.showLastBall( ballIndex );
-        super.showLastBallAt( ballIndex, 119, 22 );
+        super.showLastBallAt( ballIndex, 613, 39 );
 
         SoundManager.play( "azt14_wav" );
         if (this.btExtra && (this.currentBallIndex === this.gratisNumber - 1)) this.playSound("azt3_wav");
