@@ -55,7 +55,37 @@ class VipManiaCard extends GameCard{
 
 	public showPatternAnimation( paytableName: string ){
 		this.winPaytableAnimationLayer.removeChildren();
-		trace( paytableName );
-		// let ptBitmap: egret.Bitmap = Com.addBitmapAtMiddle( this.winPaytableAnimationLayer, BingoMachine.getAssetStr(  ), 331, 142 );
+		let ptBitmap: egret.Bitmap;
+		if( paytableName == "vip_line" ){
+			ptBitmap = Com.addBitmapAtMiddle( this.winPaytableAnimationLayer, BingoMachine.getAssetStr( "partten_linha" ), 331, 142 );
+			let checkStr: string = this.getCheckString();
+			if( checkStr.substr( 0, 5 ) == "11111" ){
+				ptBitmap.y -= CardGridColorAndSizeSettings.gridSpace.y;
+			}
+			else if( checkStr.substr( 5, 10 ) == "11111" ){
+			}
+			else if( checkStr.substr( 10, 15 ) == "11111" ){
+				ptBitmap.y += CardGridColorAndSizeSettings.gridSpace.y;
+			}
+			else{
+				egret.error( "line paytable error" );
+			}
+		}
+		else if( paytableName == "vip_double_line" ){
+			ptBitmap = Com.addBitmapAtMiddle( this.winPaytableAnimationLayer, BingoMachine.getAssetStr( "partten_linha_dupla" ), 331, 142 );
+		}
+		else if( paytableName == "vip_round" ){
+			ptBitmap = Com.addBitmapAtMiddle( this.winPaytableAnimationLayer, BingoMachine.getAssetStr( "partten_quadra" ), 331, 142 );
+		}
+		else if( paytableName == "vip_bingo" ){
+			ptBitmap = Com.addBitmapAtMiddle( this.winPaytableAnimationLayer, BingoMachine.getAssetStr( "partten_bingo" ), 331, 142 );
+		}
+		
+		if( !ptBitmap ) return;
+
+		ptBitmap.scaleX = ptBitmap.scaleY = 0.1;
+		let tw: egret.Tween = egret.Tween.get( ptBitmap, { loop: true } );
+		tw.to( { scaleX: 0.5, scaleY: 0.5 }, 500 );
+		tw.to( { scaleX: 0.2, scaleY: 0.2 }, 500 );
 	}
 }
