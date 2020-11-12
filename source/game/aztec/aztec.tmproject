@@ -1,0 +1,22 @@
+{
+    "projectName": "aztec",
+    "files": [
+        "./BallDisplay.png",
+        "./Ball_Large.png",
+        "./aztec_bg.png",
+        "./StoneYellow.png",
+        "./StoneRed.png",
+        "./StoneGreen.png",
+        "./StoneDefault.png",
+        "./jackpot_lock.png",
+        "./FreeEB.png"
+    ],
+    "options": {
+        "layoutMath": "0",
+        "sizeMode": "free",
+        "useExtension": 0,
+        "layoutGap": 1,
+        "extend": 0
+    },
+    "version": 5
+}

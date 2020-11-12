@@ -1,0 +1,10 @@
+{"file":"aztec.png","frames":{
+"FreeEB":{"x":0,"y":1806,"w":68,"h":73,"offX":5,"offY":1,"sourceW":76,"sourceH":76},
+"jackpot_lock":{"x":0,"y":1363,"w":397,"h":119,"offX":0,"offY":0,"sourceW":397,"sourceH":119},
+"StoneDefault":{"x":0,"y":1606,"w":122,"h":59,"offX":0,"offY":0,"sourceW":122,"sourceH":59},
+"StoneGreen":{"x":0,"y":1545,"w":122,"h":59,"offX":0,"offY":0,"sourceW":122,"sourceH":59},
+"StoneRed":{"x":0,"y":1484,"w":122,"h":59,"offX":0,"offY":0,"sourceW":122,"sourceH":59},
+"StoneYellow":{"x":0,"y":1667,"w":122,"h":59,"offX":0,"offY":0,"sourceW":122,"sourceH":59},
+"aztec_bg":{"x":0,"y":0,"w":2000,"h":1124,"offX":0,"offY":0,"sourceW":2000,"sourceH":1124},
+"Ball_Large":{"x":0,"y":1728,"w":76,"h":76,"offX":0,"offY":0,"sourceW":76,"sourceH":76},
+"BallDisplay":{"x":0,"y":1126,"w":803,"h":235,"offX":0,"offY":0,"sourceW":803,"sourceH":235}}}
