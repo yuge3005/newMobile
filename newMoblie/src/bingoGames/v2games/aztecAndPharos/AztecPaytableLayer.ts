@@ -32,8 +32,6 @@ class AztecPaytableLayer extends PaytableLayer{
             let tx: egret.TextField = pts[payTable].UI["tx"];
             tx.width = 120;
             tx.textAlign = "right";
-            tx.stroke = 2;
-            tx.strokeColor = 0;
 		}
 	}
 
