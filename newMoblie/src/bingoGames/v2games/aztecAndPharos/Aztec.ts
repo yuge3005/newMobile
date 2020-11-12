@@ -46,7 +46,7 @@ class Aztec extends AztecPharosSuper{
 /******************************************************************************************************************************************************************/    
 
     protected showJackpot( jackpot: number, jackpotMinBet: number, betConfig: Array<Object> ){
-        this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 20, 205 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 2, 18 ), new egret.Rectangle( 0, 45, 165, 20 ), 20, 0xd6c576, new egret.Rectangle( 0, 0, 165, 20 ), 20, 0xeddb93 ) );
+        this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 60, 360 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 0, 0 ), new egret.Rectangle( 0, 0, 397, 119 ), 36, 0xFFEC80, new egret.Rectangle( 0, -50, 397, 36 ), 36, 0xFEEB82, true ) );
     }
     
     protected hasExtraBallFit(): void {
