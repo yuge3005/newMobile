@@ -115,6 +115,10 @@
 		{
 			"keys": "bad_buff_mp3,chess_mp3,collect_bonus_mp3,dice_mp3,engine_mp3,nice_buff_mp3,pipa_ball_mp3,pipa_bgm_mp3,pipa_bomb_mp3,pipa_double_line_mp3,pipa_mark_pen_mp3,pipa_peel_mp3,pipa_singe_line_mp3,pipa_square_mp3,pipa_win_bingo_mp3,pipa_json,pipa_dice_png,pipa_dice_json,pipa_chess_json,pipa_boat_json,Arial Black_png,pipaSquare_json,pipaDoubleLine_json,pipa_en_json,pipa_es_json,pipa_pt_json,pipaParticle_png,pipaParticle_json,pipaAnimation_png,pipaAnimation_json,pipa_conf,copacabana_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,blank_sound_mp3,Arial Black_fnt",
 			"name": "pipa"
+		},
+		{
+			"keys": "b3_2line_mp3,b3_3line_mp3,b3_4line_mp3,b3_acumulado_mp3,b3_ball_mp3,b3_bet_mp3,b3_bingo_mp3,b3_blink_mp3,b3_card_mp3,b3_cross_line_mp3,b3_extra_ball_mp3,b3_no_credito_mp3,b3_rect_mp3,b3_t_mp3,b3_x_mp3,bingo3_json,bingo3Animation_png,bingo3Animation_json,bingo3_conf,forAll_tx,bingoGameToolbar_json,topbar_json,getCoinsParticle_png,getCoinsParticle_json,Bingo3Cartoes_json,Arial Black_fnt,Arial Black_png",
+			"name": "bingo3"
 		}
 	],
 	"resources": [
@@ -2342,6 +2346,107 @@
 			"url": "config/aztec.conf",
 			"type": "json",
 			"name": "aztec_conf"
+		},
+		{
+			"url": "config/cartoesConfig/Bingo3Cartoes.json",
+			"type": "json",
+			"name": "Bingo3Cartoes_json"
+		},
+		{
+			"url": "config/bingo3.conf",
+			"type": "json",
+			"name": "bingo3_conf"
+		},
+		{
+			"url": "game/bingo3/bingo3Animation.png",
+			"type": "image",
+			"name": "bingo3Animation_png"
+		},
+		{
+			"url": "game/bingo3/bingo3Animation.json",
+			"type": "json",
+			"name": "bingo3Animation_json"
+		},
+		{
+			"url": "game/bingo3/bingo3.json",
+			"type": "sheet",
+			"name": "bingo3_json",
+			"subkeys": "bingo3_pt_flower,bingo3_pt_round,bingo3_pt_t,bingo_pt_2l,bingo_pt_3l,bingo_pt_4l,bingo_pt_corner,bingo_pt_diagonal,bingo_pt_diagonal2,bingo_pt_x,card_bg02,card_bg02_gray,card_bg02_purple,card_bg02_red,card_bg02_yellow,fundo_cartela,fundo_tela-1,image-234_ENG,img_boca_baixo,img_boca_cima,jackpot_lock,mania_ball_blue,mania_ball_green,mania_ball_red,mania_ball_yellow,middle_grid"
+		},
+		{
+			"url": "game/bingo3/sound/b3_2line.mp3",
+			"type": "sound",
+			"name": "b3_2line_mp3"
+		},
+		{
+			"url": "game/bingo3/sound/b3_3line.mp3",
+			"type": "sound",
+			"name": "b3_3line_mp3"
+		},
+		{
+			"url": "game/bingo3/sound/b3_4line.mp3",
+			"type": "sound",
+			"name": "b3_4line_mp3"
+		},
+		{
+			"url": "game/bingo3/sound/b3_acumulado.mp3",
+			"type": "sound",
+			"name": "b3_acumulado_mp3"
+		},
+		{
+			"url": "game/bingo3/sound/b3_ball.mp3",
+			"type": "sound",
+			"name": "b3_ball_mp3"
+		},
+		{
+			"url": "game/bingo3/sound/b3_bet.mp3",
+			"type": "sound",
+			"name": "b3_bet_mp3"
+		},
+		{
+			"url": "game/bingo3/sound/b3_bingo.mp3",
+			"type": "sound",
+			"name": "b3_bingo_mp3"
+		},
+		{
+			"url": "game/bingo3/sound/b3_blink.mp3",
+			"type": "sound",
+			"name": "b3_blink_mp3"
+		},
+		{
+			"url": "game/bingo3/sound/b3_card.mp3",
+			"type": "sound",
+			"name": "b3_card_mp3"
+		},
+		{
+			"url": "game/bingo3/sound/b3_cross_line.mp3",
+			"type": "sound",
+			"name": "b3_cross_line_mp3"
+		},
+		{
+			"url": "game/bingo3/sound/b3_extra_ball.mp3",
+			"type": "sound",
+			"name": "b3_extra_ball_mp3"
+		},
+		{
+			"url": "game/bingo3/sound/b3_no_credito.mp3",
+			"type": "sound",
+			"name": "b3_no_credito_mp3"
+		},
+		{
+			"url": "game/bingo3/sound/b3_rect.mp3",
+			"type": "sound",
+			"name": "b3_rect_mp3"
+		},
+		{
+			"url": "game/bingo3/sound/b3_t.mp3",
+			"type": "sound",
+			"name": "b3_t_mp3"
+		},
+		{
+			"url": "game/bingo3/sound/b3_x.mp3",
+			"type": "sound",
+			"name": "b3_x_mp3"
 		}
 	]
 }
