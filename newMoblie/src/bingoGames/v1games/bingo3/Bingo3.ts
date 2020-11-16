@@ -88,8 +88,9 @@ class Bingo3 extends V1Game{
 /******************************************************************************************************************************************************************/    
 
     protected showJackpot( jackpot: number, jackpotMinBet: number, betConfig: Array<Object> ){
-		this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 550, 15 ), jackpot, jackpotMinBet, betConfig, new egret.Point( -7, -4 ), new egret.Rectangle( 0, 35, 220, 22 ), 22, 0xFFFF00, new egret.Rectangle( 0, 0, 220, 24 ), 24, 0xd6c576 ) );
-    }
+		this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 1473, 26 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 0, 0 ), new egret.Rectangle( 43, 20, 257, 35 ), 25, 0xFFFF00, null, 0, 0, true ) );
+		this.jackpotArea.jackpotText.fontFamily = "Arial";
+	}
 
 	protected afterCheck( resultList: Array<Object> ): void{
 		super.afterCheck( resultList );
