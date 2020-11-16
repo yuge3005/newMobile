@@ -42,9 +42,9 @@ class Bingo3 extends V1Game{
 
 	protected showLastBall( ballIndex: number ): void{
 		super.showLastBall( ballIndex );
-		super.showLastBallAt( ballIndex, 25, 0 );
+		super.showLastBallAt( ballIndex, 45, -13 );
 		Com.addObjectAt( this.runningBallContainer, this.coverRunningBall, 0, 0 );
-		Com.addObjectAt( this, this.runningBallContainer, 220, -10 );
+		Com.addObjectAt( this, this.runningBallContainer, 194, 0 );
 		if (this.doNotShowLastBall) this.runningBallUI.visible = false;
 		
 		this.playSound("b3_ball_mp3");
