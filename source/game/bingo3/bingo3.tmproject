@@ -1,5 +1,16 @@
 {
+    "options": {
+        "useExtension": 0,
+        "layoutGap": 1,
+        "extend": 0,
+        "layoutMath": "0",
+        "sizeMode": "free"
+    },
     "files": [
+        "./bingo_pt_x.png",
+        "./bingo_pt_diagonal2.png",
+        "./bingo_pt_diagonal.png",
+        "./bingo_pt_corner.png",
         "./bingo_pt_4l.png",
         "./bingo_pt_3l.png",
         "./bingo_pt_2l.png",
@@ -13,6 +24,7 @@
         "./img_boca_baixo.png",
         "./image-234_ENG.png",
         "./fundo_tela-1.png",
+        "./fundo_cartela_blink.png",
         "./fundo_cartela.png",
         "./card_bg02_yellow.png",
         "./card_bg02_red.png",
@@ -21,19 +33,8 @@
         "./card_bg02.png",
         "./bingo3_pt_t.png",
         "./bingo3_pt_round.png",
-        "./bingo3_pt_flower.png",
-        "./bingo_pt_x.png",
-        "./bingo_pt_diagonal2.png",
-        "./bingo_pt_diagonal.png",
-        "./bingo_pt_corner.png"
+        "./bingo3_pt_flower.png"
     ],
-    "projectName": "bingo3",
     "version": 5,
-    "options": {
-        "extend": 0,
-        "layoutMath": "0",
-        "sizeMode": "free",
-        "useExtension": 0,
-        "layoutGap": 1
-    }
+    "projectName": "bingo3"
 }

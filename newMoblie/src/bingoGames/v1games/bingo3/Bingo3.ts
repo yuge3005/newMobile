@@ -14,7 +14,7 @@ class Bingo3 extends V1Game{
 
 		CardGridUISettings.zeroUI = "middle_grid";
 
-		CardGridColorAndSizeSettings.defaultNumberSize = 22;
+		CardGridColorAndSizeSettings.defaultNumberSize = 45;
 
 		CardManager.cardType = Bingo3Card;
 		GameCardUISettings.useRedEffect = true;
@@ -110,6 +110,11 @@ class Bingo3 extends V1Game{
         super.roundOver();
 		this.stopSound("b3_ball_mp3");
 		this.stopSound("b3_blink_mp3");
+
+		let card: Array<GameCard> = CardManager.cards;
+		for( let i: number = 0; i < card.length; i++ ){
+			( card[i] as Bingo3Card ).showPaytablesGot();
+		}
     }
 
 	protected getExtraBallFit(): void {
