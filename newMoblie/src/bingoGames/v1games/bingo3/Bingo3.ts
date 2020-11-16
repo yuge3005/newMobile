@@ -20,6 +20,7 @@ class Bingo3 extends V1Game{
 
 		CardGridColorAndSizeSettings.defaultNumberSize = 22;
 
+		CardManager.cardType = Bingo3Card;
 		GameCardUISettings.useRedEffect = true;
 
 		this.needListenToolbarStatus = true;
