@@ -2371,7 +2371,7 @@
 			"url": "game/bingo3/bingo3.json",
 			"type": "sheet",
 			"name": "bingo3_json",
-			"subkeys": "bingo3_pt_flower,bingo3_pt_round,bingo3_pt_t,bingo_pt_2l,bingo_pt_3l,bingo_pt_4l,bingo_pt_corner,bingo_pt_diagonal,bingo_pt_diagonal2,bingo_pt_x,card_bg02,card_bg02_gray,card_bg02_purple,card_bg02_red,card_bg02_yellow,fundo_cartela,fundo_tela-1,image-234_ENG,img_boca_baixo,img_boca_cima,jackpot_lock,mania_ball_blue,mania_ball_green,mania_ball_red,mania_ball_yellow,middle_grid"
+			"subkeys": "bingo3_pt_flower,bingo3_pt_round,bingo3_pt_t,bingo_pt_2l,bingo_pt_3l,bingo_pt_4l,bingo_pt_corner,bingo_pt_diagonal,bingo_pt_diagonal2,bingo_pt_x,card_bg02,card_bg02_gray,card_bg02_purple,card_bg02_red,card_bg02_yellow,fundo_cartela,fundo_cartela_blink,fundo_tela-1,image-234_ENG,img_boca_baixo,img_boca_cima,jackpot_lock,mania_ball_blue,mania_ball_green,mania_ball_red,mania_ball_yellow,middle_grid"
 		},
 		{
 			"url": "game/bingo3/sound/b3_2line.mp3",
