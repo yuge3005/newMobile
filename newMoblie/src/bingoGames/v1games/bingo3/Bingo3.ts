@@ -23,10 +23,6 @@ class Bingo3 extends V1Game{
 		CardManager.cardType = Bingo3Card;
 		GameCardUISettings.useRedEffect = true;
 
-		this.needListenToolbarStatus = true;
-		this.tipStatusTextPosition = new egret.Rectangle( 15, 24, 225, 20 );
-		this.tipStatusTextColor = 0xFE0000;
-
 		PayTableManager.bingoPaytableName = "bingo3_flower";
 	}
 
@@ -64,15 +60,6 @@ class Bingo3 extends V1Game{
 		if( this.runningBallContainer && this.contains( this.runningBallContainer ) )this.removeChild( this.runningBallContainer );
 		this.getChildByName( this.assetStr( "bingo3Animation" ) ).visible = true;
 	}
-
-	protected tipStatus( e: egret.Event ): void{
-        this.tipStatusText.height = 45;
-        super.tipStatus( e, true );
-    }
-
-	protected winChange( e: egret.Event ): void{
-        super.winChange( e, true );
-    }
 
 	public de_duplication( balls: Array<number> ){
 		for( let i: number = 1; i < balls.length; ){
