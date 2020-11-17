@@ -15,6 +15,8 @@ class Showball1 extends ShowballSuper{
 		PayTableManager.paytableUIType = ShowballPaytableUI;
 		
 		BallManager.ballOffsetY = 5;
+
+		this.heartPosition = new egret.Point( 760, 550 );
     }
 
 	protected init(){

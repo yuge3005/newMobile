@@ -15,6 +15,8 @@ class Showball2 extends ShowballSuper{
         CardManager.cardType = Showball2Card;
 
         BallManager.ballOffsetY = 15;
+
+        this.heartPosition = new egret.Point( 893, 580 );
     }
 
     protected init(){
