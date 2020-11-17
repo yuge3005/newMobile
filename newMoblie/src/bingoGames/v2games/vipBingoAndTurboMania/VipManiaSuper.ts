@@ -7,6 +7,7 @@ class VipManiaSuper extends V2Game{
         CardManager.cardType = VipManiaCard;
         CardManager.gridType = ForkGrid;
         CardGridColorAndSizeSettings.defaultNumberSize = 50;
+        GameCardUISettings.useRedEffect = true;
 
         PayTableManager.bingoPaytableName = "vip_bingo";
 	}

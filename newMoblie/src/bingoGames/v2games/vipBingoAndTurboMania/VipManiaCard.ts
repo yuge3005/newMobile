@@ -84,8 +84,51 @@ class VipManiaCard extends GameCard{
 		if( !ptBitmap ) return;
 
 		ptBitmap.scaleX = ptBitmap.scaleY = 0.1;
+		ptBitmap.filters = [new egret.DropShadowFilter( 10, 45, 0, 0.7, 10, 10, 1 )];
 		let tw: egret.Tween = egret.Tween.get( ptBitmap, { loop: true } );
 		tw.to( { scaleX: 0.5, scaleY: 0.5 }, 500 );
 		tw.to( { scaleX: 0.2, scaleY: 0.2 }, 500 );
+	}
+
+	public showfitEffect( assetName: string, fitIndex: Array<boolean> ){
+		if( fitIndex.length ){
+			for( let i: number = 0; i < fitIndex.length; i++ ){
+				if( fitIndex[i] ) {
+					this.removeFork( PayTableManager.payTablesDictionary[assetName].rules[i] );
+					this.setGridsToRed( PayTableManager.payTablesDictionary[assetName].rules[i] );
+				}
+			}
+		}
+		else{
+			this.removeFork( PayTableManager.payTablesDictionary[assetName].rule );
+			this.setGridsToRed( PayTableManager.payTablesDictionary[assetName].rule );
+		}
+		
+		if( !GameCard.fitEffectNameList )return;
+
+		try{
+			let effectImage: egret.Bitmap;
+			if( fitIndex.length ){
+				for( let i: number = 0; i< fitIndex.length; i++ ){
+					if( fitIndex[i] ){
+						if( GameCard.fitEffectNameList[assetName][i] ) effectImage = Com.addBitmapAt( this.fitEffectLayer, BingoMachine.getAssetStr( GameCard.fitEffectNameList[assetName][i] ), 0, 0 );
+					}
+				}
+			}
+			else{
+				effectImage = Com.addBitmapAt( this.fitEffectLayer, BingoMachine.getAssetStr( GameCard.fitEffectNameList[assetName] ), 0, 0 );
+			}
+		}
+		catch( e ){
+			trace( "showfitEffect ignore:" + assetName );
+		}
+	}
+
+	protected removeFork( str: string ): void{
+		for( let j: number = 0; j < str.length; j++ ){
+			if( str[j] == "1" ){
+				(this.grids[j] as ForkGrid).removeFork();
+			}
+		}
 	}
 }

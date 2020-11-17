@@ -1,0 +1,40 @@
+{
+    "options": {
+        "useExtension": 0,
+        "layoutGap": 1,
+        "extend": 0,
+        "layoutMath": "0",
+        "sizeMode": "free"
+    },
+    "files": [
+        "./bingo_pt_x.png",
+        "./bingo_pt_diagonal2.png",
+        "./bingo_pt_diagonal.png",
+        "./bingo_pt_corner.png",
+        "./bingo_pt_4l.png",
+        "./bingo_pt_3l.png",
+        "./bingo_pt_2l.png",
+        "./middle_grid.png",
+        "./mania_ball_yellow.png",
+        "./mania_ball_red.png",
+        "./mania_ball_green.png",
+        "./mania_ball_blue.png",
+        "./jackpot_lock.png",
+        "./img_boca_cima.png",
+        "./img_boca_baixo.png",
+        "./image-234_ENG.png",
+        "./fundo_tela-1.png",
+        "./fundo_cartela_blink.png",
+        "./fundo_cartela.png",
+        "./card_bg02_yellow.png",
+        "./card_bg02_red.png",
+        "./card_bg02_purple.png",
+        "./card_bg02_gray.png",
+        "./card_bg02.png",
+        "./bingo3_pt_t.png",
+        "./bingo3_pt_round.png",
+        "./bingo3_pt_flower.png"
+    ],
+    "version": 5,
+    "projectName": "bingo3"
+}

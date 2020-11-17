@@ -194,12 +194,13 @@ class ShowballSuper extends V1Game{
 	}
 
 	private heartAnimation: egret.MovieClip;
+	protected heartPosition: egret.Point;
 
 	private showHeart(): void{
 		this.clearHeartAnimation();
 
 		if( !this.heartAnimation ){
-			this.heartAnimation = Com.addMovieClipAt( this, MDS.mcFactory, "showball_heart", 893, 580 );
+			this.heartAnimation = Com.addMovieClipAt( this, MDS.mcFactory, "showball_heart", this.heartPosition.x, this.heartPosition.y );
 		}
 	}
 

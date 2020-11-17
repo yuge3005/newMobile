@@ -15,6 +15,8 @@ class Showball1 extends ShowballSuper{
 		PayTableManager.paytableUIType = ShowballPaytableUI;
 		
 		BallManager.ballOffsetY = 5;
+
+		this.heartPosition = new egret.Point( 760, 550 );
     }
 
 	protected init(){
@@ -25,7 +27,8 @@ class Showball1 extends ShowballSuper{
 		this.runningBallContainer = new egret.Sprite;
 		Com.addObjectAt( this, this.runningBallContainer, 1395, 28 );
 
-		this.buildSuperEbArea( "mega_" + MuLang.language, 371, 8 );
+		this.buildSuperEbArea( "mega_" + MuLang.language, 528, 8 );
+		this.superExtraBg.scaleX = this.superExtraBg.scaleY = 65 / 34;
 
 		this.showballLogo = this.getChildByName( this.assetStr("logo_rails") ) as egret.Bitmap;
 	}

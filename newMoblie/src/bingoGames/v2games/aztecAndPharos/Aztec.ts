@@ -11,6 +11,7 @@ class Aztec extends AztecPharosSuper{
 	public constructor( assetsPath: string ) {
 		super( "aztec.conf", assetsPath, 50 );
 
+        PayTableManager.layerType = AztecPaytableLayer;
         CardGridColorAndSizeSettings.defaultNumberSize = 45;
 
         BallManager.ballOffsetY = 5;
@@ -24,11 +25,6 @@ class Aztec extends AztecPharosSuper{
         super.init();
 
         this.showNoBetAndCredit();
-
-        // this.addGameText( 35, 352, 16, 0xE8D4AF, "bingo",false, 200 );
-        // this.addGameText( 35, 379, 16, 0xE8D4AF, "three side",false, 200 );
-        // this.addGameText( 35, 406, 16, 0xE8D4AF, "two side",false, 200 );
-        // this.addGameText( 35, 433, 16, 0xE8D4AF, "one side",false, 200 );
     }
 
     protected showLastBall( ballIndex: number ): void{
@@ -46,7 +42,7 @@ class Aztec extends AztecPharosSuper{
 /******************************************************************************************************************************************************************/    
 
     protected showJackpot( jackpot: number, jackpotMinBet: number, betConfig: Array<Object> ){
-        this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 20, 205 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 2, 18 ), new egret.Rectangle( 0, 45, 165, 20 ), 20, 0xd6c576, new egret.Rectangle( 0, 0, 165, 20 ), 20, 0xeddb93 ) );
+        this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 60, 360 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 0, 0 ), new egret.Rectangle( 0, 0, 397, 119 ), 36, 0xFFEC80, new egret.Rectangle( 0, -50, 397, 36 ), 36, 0xFEEB82, true ) );
     }
     
     protected hasExtraBallFit(): void {
