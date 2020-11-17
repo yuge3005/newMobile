@@ -26,7 +26,8 @@ class Showball2 extends ShowballSuper{
         this.runningBallContainer = new egret.Sprite;
 		Com.addObjectAt( this, this.runningBallContainer, 1362, 24 );
 
-		this.buildSuperEbArea( "mega_" + MuLang.language, 371, 8 );
+		this.buildSuperEbArea( "mega_" + MuLang.language, 654, 5 );
+        this.superExtraBg.scaleX = this.superExtraBg.scaleY = 72 / 34;
 
         let ballMc: egret.MovieClip = this.getChildByName( this.assetStr( "showball_bolas" ) ) as egret.MovieClip;
         ballMc.scaleX = 216 / 262;
