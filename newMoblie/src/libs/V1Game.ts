@@ -45,6 +45,7 @@ class V1Game extends BingoMachine{
 	protected sendPlayRequest(){
 		IBingoServer.playCallback = this.onPlay.bind( this );
 		IBingoServer.round( GameData.currentBet, CardManager.enabledCards, CardManager.groupNumber, GameData.currentBetIndex );
+		BingoMachine.inRound = true;
 	}
 
 	protected sendExtraRequest( saving: boolean = false ){
