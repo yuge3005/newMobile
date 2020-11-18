@@ -1,0 +1,25 @@
+{
+    "options": {
+        "layoutMath": "0",
+        "sizeMode": "free",
+        "useExtension": 0,
+        "layoutGap": 1,
+        "extend": 0
+    },
+    "projectName": "doublebingo",
+    "files": [
+        "./doublebingo_ball.png",
+        "./cartela_superior_esquerda_4.png",
+        "./cartela_superior_esquerda_3.png",
+        "./cartela_superior_esquerda_2.png",
+        "./cartela_superior_esquerda_1.png",
+        "./cartela_superior_direita_verde_4.png",
+        "./cartela_superior_direita_verde_3.png",
+        "./cartela_superior_direita_verde_2.png",
+        "./cartela_superior_direita_verde_1.png",
+        "./bg_normal.png",
+        "./bg_extra.png",
+        "./jackpot_lock.png"
+    ],
+    "version": 5
+}
