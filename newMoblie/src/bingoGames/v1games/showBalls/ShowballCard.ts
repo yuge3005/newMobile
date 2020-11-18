@@ -12,5 +12,11 @@ class ShowballCard extends ExtraBlinkCard{
         this.betText.fontFamily = "Arial";
 		this.cardText.bold = true;
         this.betText.bold = true;
+        this.cardText.text = MuLang.getText("prize") + ":";
     }
+
+    public showWinCount( winNumber: number ): void{
+		if( winNumber > 0 ) this.cardText.setText( MuLang.getText("prize") + ": " + ( winNumber ? Utils.formatCoinsNumber( winNumber ) : "" ) );
+        else this.cardText.text = MuLang.getText("prize") + ":";
+	}
 }

@@ -30,6 +30,13 @@ class Bingo3 extends V1Game{
 		this.runningBallContainer = new egret.DisplayObjectContainer;
 		Com.addBitmapAt( this.runningBallContainer, this.assetStr( "img_boca_baixo" ), 0, 0 );
 		this.coverRunningBall = Com.addBitmapAt( this.runningBallContainer, this.assetStr( "img_boca_cima" ), 0, 0 );
+
+		Com.addBitmapAt( this, this.assetStr( "box" ), 1570, 151 );
+		let tx: egret.TextField = Com.addTextAt( this, 1560, 151, 200, 88, 30 );
+		tx.text = "x2500\n+" + MuLang.getText( "jackpot", MuLang.CASE_LOWER );
+		tx.verticalAlign = "middle";
+		tx.textAlign = "right";
+		tx.textColor = 0xFFFF2D;
 	}
 
 	private doNotShowLastBall: boolean = false;
