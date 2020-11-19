@@ -119,6 +119,10 @@
 		{
 			"keys": "b3_2line_mp3,b3_3line_mp3,b3_4line_mp3,b3_acumulado_mp3,b3_ball_mp3,b3_bet_mp3,b3_bingo_mp3,b3_blink_mp3,b3_card_mp3,b3_cross_line_mp3,b3_extra_ball_mp3,b3_no_credito_mp3,b3_rect_mp3,b3_t_mp3,b3_x_mp3,bingo3_json,bingo3Animation_png,bingo3Animation_json,bingo3_conf,forAll_tx,bingoGameToolbar_json,topbar_json,getCoinsParticle_png,getCoinsParticle_json,Bingo3Cartoes_json,Arial Black_fnt,Arial Black_png",
 			"name": "bingo3"
+		},
+		{
+			"keys": "db_ball_wav,db10_mp3,db2_mp3,db4_mp3,db6_mp3,db7_mp3,db8_mp3,doubleBingo_json,doubleBingoAnimation_png,doubleBingoAnimation_json,doubleBingo_conf,forAll_tx,bingoGameToolbar_json,topbar_json,getCoinsParticle_png,getCoinsParticle_json,Arial Black_fnt,Arial Black_png",
+			"name": "doubleBingo"
 		}
 	],
 	"resources": [
@@ -2447,6 +2451,62 @@
 			"url": "game/bingo3/sound/b3_x.mp3",
 			"type": "sound",
 			"name": "b3_x_mp3"
+		},
+		{
+			"url": "game/doubleBingo/doubleBingoAnimation.png",
+			"type": "image",
+			"name": "doubleBingoAnimation_png"
+		},
+		{
+			"url": "game/doubleBingo/sound/db10.mp3",
+			"type": "sound",
+			"name": "db10_mp3"
+		},
+		{
+			"url": "game/doubleBingo/sound/db2.mp3",
+			"type": "sound",
+			"name": "db2_mp3"
+		},
+		{
+			"url": "game/doubleBingo/sound/db4.mp3",
+			"type": "sound",
+			"name": "db4_mp3"
+		},
+		{
+			"url": "game/doubleBingo/sound/db6.mp3",
+			"type": "sound",
+			"name": "db6_mp3"
+		},
+		{
+			"url": "game/doubleBingo/sound/db7.mp3",
+			"type": "sound",
+			"name": "db7_mp3"
+		},
+		{
+			"url": "game/doubleBingo/sound/db8.mp3",
+			"type": "sound",
+			"name": "db8_mp3"
+		},
+		{
+			"url": "game/doubleBingo/sound/db_ball.wav",
+			"type": "sound",
+			"name": "db_ball_wav"
+		},
+		{
+			"url": "game/doubleBingo/doubleBingoAnimation.json",
+			"type": "json",
+			"name": "doubleBingoAnimation_json"
+		},
+		{
+			"url": "game/doubleBingo/doubleBingo.json",
+			"type": "sheet",
+			"name": "doubleBingo_json",
+			"subkeys": "Gradient,bg_extra,bg_normal,card_bg,card_gray,card_green,card_red,card_white,cartela_superior_direita_verde_1,cartela_superior_direita_verde_2,cartela_superior_direita_verde_3,cartela_superior_direita_verde_4,doublebingo_ball,jackpot_lock,red_ballpng"
+		},
+		{
+			"url": "config/doubleBingo.conf",
+			"type": "json",
+			"name": "doubleBingo_conf"
 		}
 	]
 }

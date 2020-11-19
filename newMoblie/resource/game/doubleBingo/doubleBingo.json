@@ -1,0 +1,16 @@
+{"file":"doubleBingo.png","frames":{
+"card_bg":{"x":770,"y":1947,"w":99,"h":55,"offX":99,"offY":55,"sourceW":198,"sourceH":110},
+"card_gray":{"x":669,"y":1947,"w":99,"h":55,"offX":0,"offY":0,"sourceW":99,"sourceH":55},
+"card_green":{"x":568,"y":1947,"w":99,"h":55,"offX":0,"offY":0,"sourceW":99,"sourceH":55},
+"card_red":{"x":467,"y":1947,"w":99,"h":55,"offX":0,"offY":0,"sourceW":99,"sourceH":55},
+"card_white":{"x":366,"y":1947,"w":99,"h":55,"offX":0,"offY":0,"sourceW":99,"sourceH":55},
+"cartela_superior_direita_verde_1":{"x":2179,"y":1595,"w":573,"h":226,"offX":0,"offY":0,"sourceW":573,"sourceH":226},
+"cartela_superior_direita_verde_2":{"x":1604,"y":1595,"w":573,"h":226,"offX":0,"offY":0,"sourceW":573,"sourceH":226},
+"cartela_superior_direita_verde_3":{"x":1604,"y":1361,"w":590,"h":232,"offX":0,"offY":0,"sourceW":590,"sourceH":232},
+"cartela_superior_direita_verde_4":{"x":1604,"y":1127,"w":590,"h":232,"offX":0,"offY":0,"sourceW":590,"sourceH":232},
+"doublebingo_ball":{"x":2002,"y":0,"w":224,"h":224,"offX":0,"offY":0,"sourceW":224,"sourceH":224},
+"Gradient":{"x":0,"y":1890,"w":972,"h":55,"offX":0,"offY":0,"sourceW":972,"sourceH":55},
+"jackpot_lock":{"x":0,"y":1947,"w":364,"h":68,"offX":0,"offY":0,"sourceW":364,"sourceH":68},
+"red_ballpng":{"x":871,"y":1947,"w":64,"h":65,"offX":0,"offY":0,"sourceW":64,"sourceH":65},
+"bg_extra":{"x":0,"y":1127,"w":1602,"h":761,"offX":199,"offY":0,"sourceW":2000,"sourceH":1125},
+"bg_normal":{"x":0,"y":0,"w":2000,"h":1125,"offX":0,"offY":0,"sourceW":2000,"sourceH":1125}}}

@@ -1,4 +1,21 @@
 {
+    "projectName": "doubleBingo",
+    "files": [
+        "./cartela_superior_direita_verde_3.png",
+        "./cartela_superior_direita_verde_2.png",
+        "./cartela_superior_direita_verde_1.png",
+        "./card_white.png",
+        "./card_red.png",
+        "./card_green.png",
+        "./card_gray.png",
+        "./bg_normal.png",
+        "./bg_extra.png",
+        "./red_ballpng.png",
+        "./jackpot_lock.png",
+        "./Gradient.png",
+        "./doublebingo_ball.png",
+        "./cartela_superior_direita_verde_4.png"
+    ],
     "options": {
         "layoutMath": "0",
         "sizeMode": "free",
@@ -6,20 +23,5 @@
         "layoutGap": 1,
         "extend": 0
     },
-    "projectName": "doublebingo",
-    "files": [
-        "./doublebingo_ball.png",
-        "./cartela_superior_esquerda_4.png",
-        "./cartela_superior_esquerda_3.png",
-        "./cartela_superior_esquerda_2.png",
-        "./cartela_superior_esquerda_1.png",
-        "./cartela_superior_direita_verde_4.png",
-        "./cartela_superior_direita_verde_3.png",
-        "./cartela_superior_direita_verde_2.png",
-        "./cartela_superior_direita_verde_1.png",
-        "./bg_normal.png",
-        "./bg_extra.png",
-        "./jackpot_lock.png"
-    ],
     "version": 5
 }
