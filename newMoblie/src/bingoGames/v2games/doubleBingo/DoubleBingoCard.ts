@@ -4,11 +4,6 @@ class DoubleBingoCard extends GameCard{
 		super( cardId );
 	}
 
-	protected onAdd( event: egret.Event ){
-		this.bg = Com.addBitmapAt( this, BingoMachine.getAssetStr( GameCardUISettings.bgString.replace( "_1", "" ) + "_" + ( this.cardId + 1 ) ), 0, 0 );
-		super.onAdd( event );
-	}
-
 	protected createGrid( gridIndex: number ): TowerGrid{
 		let grid: TowerGrid = new TowerGrid();
 		let line: number = gridIndex < 4 ? 0 : ( gridIndex < 9 ? 1 : 2 );

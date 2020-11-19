@@ -10,17 +10,12 @@ class DoubleBingo extends V2Game{
 
 	public constructor( assetsPath: string ) {
 		super( "doubleBingo.conf", assetsPath, 45 );
-        this.ptFilterConfig = "doubleBingo.filt";
+        this.languageObjectName = "forAll_tx";
 
 		CardManager.cardType = DoubleBingoCard;
 
         CardGridColorAndSizeSettings.defaultNumberSize = 50;
-        GameCard.useRedEffect = true;
-
-        let languageText = GameUIItem.languageText;
-        languageText["bingo"] = { en: "BINGO", es: "BINGO", pt: "BINGO" };
-        languageText["double"] = { en: "DOUBLE", es: "DOBLE", pt: "DUPLA" };
-        languageText["line"] = { en: "LINE", es: "LÍNEA", pt: "LINHA" };
+        GameCardUISettings.useRedEffect = true;
 
         this.ballArea.needLightCheck = true;
 
@@ -32,19 +27,19 @@ class DoubleBingo extends V2Game{
     protected init(){
         super.init();
 
-        this.addGameText( 625, 45, 20, 0xFEFE00, "bingo", true, 200 );
-        this.addGameText( 640, 85, 20, 0xFEFE00, "double", true, 200 );
-        this.addGameText( 645, 130, 20, 0xFEFE00, "line", true, 200 );
+        MDS.addGameText( this, 625, 45, 20, 0xFEFE00, "bingo", true, 200 );
+        MDS.addGameText( this, 640, 85, 20, 0xFEFE00, "double", true, 200 );
+        MDS.addGameText( this, 645, 130, 20, 0xFEFE00, "line", true, 200 );
 
-        this.addGameText( 90, 85, 20, 0xFEFE00, "bet", true, 100 );
-        this.addGameText( 100, 45, 20, 0xFEFE00, "credit", true, 100 );
-        this.addGameText( 90, 128, 20, 0xFEFE00, "prize", true, 100 );
+        MDS.addGameText( this, 90, 85, 20, 0xFEFE00, "bet", true, 100 );
+        MDS.addGameText( this, 100, 45, 20, 0xFEFE00, "credit", true, 100 );
+        MDS.addGameText( this, 90, 128, 20, 0xFEFE00, "prize", true, 100 );
 
-        this.betText = this.addGameText( 180, 90, 17, 0xFEFE00, "bet", false, 150 );
+        this.betText = MDS.addGameText( this, 180, 90, 17, 0xFEFE00, "bet", false, 150 );
         this.betText.textAlign = "right";
-        this.creditText = this.addGameText( 200, 47, 17, 0xFEFE00, "credit", false, 140 );
+        this.creditText = MDS.addGameText( this, 200, 47, 17, 0xFEFE00, "credit", false, 140 );
         this.creditText.textAlign = "right";
-        this.prizeText = this.addGameText( 162, 132, 17, 0xFEFE00, "prize", false, 160 );
+        this.prizeText = MDS.addGameText( this, 162, 132, 17, 0xFEFE00, "prize", false, 160 );
         this.prizeText.textAlign = "right";
         this.prizeText.text = "0";
 
