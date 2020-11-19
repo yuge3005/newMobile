@@ -7,16 +7,16 @@ class DoubleBingoCard extends GameCard{
 	protected createGrid( gridIndex: number ): TowerGrid{
 		let grid: TowerGrid = new TowerGrid();
 		let line: number = gridIndex < 4 ? 0 : ( gridIndex < 9 ? 1 : 2 );
-		grid.x = GameCardUISettings.gridInitPosition.x + ( gridIndex - line * 4 ) * CardGridColorAndSizeSettings.gridSpace.x;
+		let row: number = gridIndex < 4 ? gridIndex : ( gridIndex < 9 ? gridIndex - 4 : gridIndex - 9 );
+		grid.x = GameCardUISettings.gridInitPosition.x + row * CardGridColorAndSizeSettings.gridSpace.x;
 		grid.y = GameCardUISettings.gridInitPosition.y + line * CardGridColorAndSizeSettings.gridSpace.y;
 		if( this.cardId & 1 ){
-			grid.x += ( 1 - ( line & 1 ) ) * CardGridColorAndSizeSettings.gridSpace.x * ( line >= 2 ? -1 : 1 );
+			if( line == 0 )	grid.x += CardGridColorAndSizeSettings.gridSpace.x;
 		}
-		if( this.cardId == 1 )grid.x += 15;
-		else if( this.cardId == 2 )grid.x += 18;
-		else if( this.cardId == 3 )grid.x += 2;
-		if( GameCardUISettings.gridOnTop )this.addChild( grid );
-		else this.addChildAt( grid, 0 );
+		else{
+			if( line == 2 ) grid.x += CardGridColorAndSizeSettings.gridSpace.x;
+		}
+		this.addChild( grid );
 		return grid;
 	}
 }
