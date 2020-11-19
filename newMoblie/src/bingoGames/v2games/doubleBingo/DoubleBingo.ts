@@ -22,6 +22,8 @@ class DoubleBingo extends V2Game{
         this.needListenToolbarStatus = true;
         this.tipStatusTextPosition = new egret.Rectangle( 342, 108, 150, 18 );
         this.tipStatusTextColor = 0xFEFE00;
+
+        BallManager.ballOffsetY = 12;
 	}
 
     protected init(){
@@ -44,13 +46,12 @@ class DoubleBingo extends V2Game{
         this.prizeText.text = "0";
 
         this.runningBallContainer = new egret.DisplayObjectContainer;
-        this.runningBallContainer.scaleX = this.runningBallContainer.scaleY = 140 / 102;
+        Com.addObjectAt(this, this.runningBallContainer, 884, 107);
     }
 
     protected showLastBall( ballIndex: number ): void{
         super.showLastBall( ballIndex );
         super.showLastBallAt( ballIndex, 0, 0 );
-        Com.addObjectAt(this, this.runningBallContainer, 333, 200);
         
         this.playSound("db_ball_wav");
 	}

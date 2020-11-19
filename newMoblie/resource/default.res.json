@@ -2501,7 +2501,7 @@
 			"url": "game/doubleBingo/doubleBingo.json",
 			"type": "sheet",
 			"name": "doubleBingo_json",
-			"subkeys": "Gradient,bg_extra,bg_normal,card_gray,card_green,card_red,card_white,cartela_superior_direita_verde_1,cartela_superior_direita_verde_2,cartela_superior_direita_verde_3,cartela_superior_direita_verde_4,doublebingo_ball,jackpot_lock,red_ballpng"
+			"subkeys": "Gradient,bg_extra,bg_normal,card_bg,card_gray,card_green,card_red,card_white,cartela_superior_direita_verde_1,cartela_superior_direita_verde_2,cartela_superior_direita_verde_3,cartela_superior_direita_verde_4,doublebingo_ball,jackpot_lock,red_ballpng"
 		},
 		{
 			"url": "config/doubleBingo.conf",
