@@ -29,6 +29,9 @@ class DoubleBingo extends V2Game{
     protected init(){
         super.init();
 
+        this.extraUIObject.visible = true;
+        this.extraUIObject.alpha = 0;
+
         MDS.addGameText( this, 625, 45, 20, 0xFEFE00, "bingo", true, 200 );
         MDS.addGameText( this, 640, 85, 20, 0xFEFE00, "double", true, 200 );
         MDS.addGameText( this, 645, 130, 20, 0xFEFE00, "line", true, 200 );
@@ -56,10 +59,6 @@ class DoubleBingo extends V2Game{
         this.playSound("db_ball_wav");
 	}
 
-    protected clearRunningBallUI(): void{
-        if( this.runningBallContainer && this.contains( this.runningBallContainer ) )this.removeChild( this.runningBallContainer );
-	}
-
     protected tipStatus( e: egret.Event ): void{
         this.tipStatusText.height = 40;
         super.tipStatus( e, true );
@@ -69,25 +68,15 @@ class DoubleBingo extends V2Game{
         this.prizeText.text = "" + e["winCoins"];
     }
 
+    protected showExtraUI( show: boolean = true ){
+        if( show ) TweenerTool.tweenTo( this.extraUIObject, { alpha: 1 }, 300 );
+        else TweenerTool.tweenTo( this.extraUIObject, { alpha: 0 }, 300 );
+    }
+
 /******************************************************************************************************************************************************************/    
 
     protected showJackpot( jackpot: number, jackpotMinBet: number, betConfig: Array<Object> ){
         this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 342, 48 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 1, 14 ), new egret.Rectangle( 0, 25, 120, 12 ), 16, 0xffcc00, new egret.Rectangle( 0, 0, 120, 10), 10, 0x93c448 ) );
-    }
-
-    protected getPaytablesFit(paytabledName: string, callback: Function = null): void{
-        let soundName = "";
-        switch (paytabledName) {
-            case "line": soundName = "db2_mp3"; break;
-            case "double": soundName = "db4_mp3"; break;
-            case "bingo": soundName = "db10_mp3"; break;
-            default: break;
-        }
-        if (SoundManager.soundOn && soundName !== "") {
-            this.playSound(soundName, 1, callback);
-        } else {
-            callback();
-        }
     }
 
     protected hasExtraBallFit(): void {
