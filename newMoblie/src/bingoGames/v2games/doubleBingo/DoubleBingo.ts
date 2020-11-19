@@ -34,25 +34,33 @@ class DoubleBingo extends V2Game{
         this.doubleBingoText( 1564, 124, "double", true );
         this.doubleBingoText( 1586, 196, "line", true );
 
-        this.doubleBingoText( 90, 124, "bet", true );
-        this.doubleBingoText( 90, 196, "prize", true );
+        this.doubleBingoText( 218, 124, "bet", false );
+        this.doubleBingoText( 234, 196, "prize", false );
 
-        this.betText = MDS.addGameText( this, 180, 90, 17, 0xFEFE00, "bet", false, 150 );
-        this.betText.textAlign = "right";
+        this.betText = this.doubleBingoNumberText( 518, 126 );
         this.creditText = new TextLabel;
-        this.creditText.visible = false;
-        this.prizeText = MDS.addGameText( this, 162, 132, 17, 0xFEFE00, "prize", false, 160 );
-        this.prizeText.textAlign = "right";
+        this.prizeText = this.doubleBingoNumberText( 510, 200 );
         this.prizeText.text = "0";
 
         this.runningBallContainer = new egret.DisplayObjectContainer;
         Com.addObjectAt(this, this.runningBallContainer, 884, 107);
     }
 
-    private doubleBingoText( x: number, y: number, str: string, isLeft: boolean ){
+    private doubleBingoText( x: number, y: number, str: string, isLeft: boolean ): TextLabel{
         let lb: TextLabel = MDS.addGameText( this, x, y, 36, 0xFEFE00, str, true, 200 );
         lb.stroke = 2;
         lb.text = lb.text.toUpperCase();
+        lb.scaleX = 0.9;
+        if( !isLeft ) lb.textAlign = "right";
+        return lb;
+    }
+
+    private doubleBingoNumberText( x: number, y: number, ): TextLabel{
+        let lb: TextLabel = Com.addLabelAt( this, x, y, 200, 36, 36 );
+        lb.textColor = 0xFEFE00;
+        lb.scaleX = 0.9;
+        lb.textAlign = "right";
+        return lb;
     }
 
     protected showLastBall( ballIndex: number ): void{
