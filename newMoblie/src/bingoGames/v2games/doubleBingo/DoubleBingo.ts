@@ -87,6 +87,12 @@ class DoubleBingo extends V2Game{
     protected afterCheck( resultList: Array<Object> ): void{
         super.afterCheck( resultList );
         this.arrowArea.arrowBlink(resultList);
+
+        if( !this.inLightCheck ){
+			if( PaytableResultListOprator.missOneCounter( resultList, "bingo" ) ){
+                this.shack( 15 );
+			}
+		}
     }
 
     protected startPlay(): void {
@@ -129,5 +135,13 @@ class DoubleBingo extends V2Game{
 
     private delayClearArrow(){
         this.arrowArea.clearArrow();
+    }
+
+    private shakeProgess: number;
+
+    private shack( shakeTime: number = 0 ){
+        if( shakeTime ) this.shakeProgess = shakeTime;
+        this.x = Math.random() * 20 - 10;
+        if( this.shakeProgess-- > 0 ) TweenerTool.tweenTo( this, { y: 0 }, 33, 0, this.shack.bind(this) );
     }
 }
