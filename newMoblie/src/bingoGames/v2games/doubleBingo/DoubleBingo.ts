@@ -27,8 +27,7 @@ class DoubleBingo extends V2Game{
     protected init(){
         super.init();
 
-        this.extraUIObject.visible = true;
-        this.extraUIObject.alpha = 0;
+        this.extraUIObject = new DoubleBingoExtraUIObject( this.extraUIObject );
 
         this.doubleBingoText( 1548, 58, "bingo", true );
         this.doubleBingoText( 1564, 124, "double", true );
@@ -45,7 +44,7 @@ class DoubleBingo extends V2Game{
         this.runningBallContainer = new egret.DisplayObjectContainer;
         Com.addObjectAt(this, this.runningBallContainer, 884, 107);
 
-        this.arrowArea = new NineballCardArrowLayer( MDS.mcFactory, "", new egret.Point(0, 75), 70 );
+        this.arrowArea = new DoubleBingoCardArrowLayer( MDS.mcFactory, "", new egret.Point(0, 5), 55 );
         this.addChild( this.arrowArea );
     }
 
@@ -80,18 +79,25 @@ class DoubleBingo extends V2Game{
     }
 
     protected showExtraUI( show: boolean = true ){
-        if( show ) TweenerTool.tweenTo( this.extraUIObject, { alpha: 1 }, 300 );
-        else TweenerTool.tweenTo( this.extraUIObject, { alpha: 0 }, 300 );
+        ( this.extraUIObject as DoubleBingoExtraUIObject ).showExtraUI( show );
     }
 
     protected afterCheck( resultList: Array<Object> ): void{
         super.afterCheck( resultList );
         this.arrowArea.arrowBlink(resultList);
+
+        if( !this.inLightCheck ){
+			if( PaytableResultListOprator.missOneCounter( resultList, "bingo" ) ){
+                this.shack( 15 );
+			}
+		}
     }
 
     protected startPlay(): void {
         super.startPlay();
         this.arrowArea.clearArrow();
+
+        clearTimeout( this.clearArrowTimeoutId );
     }
 
 /******************************************************************************************************************************************************************/    
@@ -107,10 +113,14 @@ class DoubleBingo extends V2Game{
             this.playSound("db6_mp3");
         }
     }
+
+    private clearArrowTimeoutId: number;
     
     protected roundOver(): void {
         super.roundOver();
         this.stopSound("db_ball_wav");
+
+        this.clearArrowTimeoutId = setTimeout( this.delayClearArrow.bind(this), 1500 );
     }
 
 	protected getExtraBallFit(): void {
@@ -119,5 +129,19 @@ class DoubleBingo extends V2Game{
     
     protected collectExtraBall(): void {
         this.playSound("db7_mp3");
+    }
+
+    private delayClearArrow(){
+        this.arrowArea.clearArrow();
+        ( this.extraUIObject as DoubleBingoExtraUIObject ).showExtraUI( false );
+    }
+
+    private shakeProgess: number;
+
+    private shack( shakeTime: number = 0 ){
+        if( shakeTime ) this.shakeProgess = shakeTime;
+        this.x = Math.random() * 20 - 10;
+        if( this.shakeProgess-- > 0 ) TweenerTool.tweenTo( this, { y: 0 }, 33, 0, this.shack.bind(this) );
+        else this.x = 0;
     }
 }
