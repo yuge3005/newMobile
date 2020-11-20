@@ -143,5 +143,6 @@ class DoubleBingo extends V2Game{
         if( shakeTime ) this.shakeProgess = shakeTime;
         this.x = Math.random() * 20 - 10;
         if( this.shakeProgess-- > 0 ) TweenerTool.tweenTo( this, { y: 0 }, 33, 0, this.shack.bind(this) );
+        else this.x = 0;
     }
 }
