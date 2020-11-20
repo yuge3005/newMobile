@@ -1,8 +1,8 @@
 class DoubleBingoJackpotLayer extends JackpotLayer{
 
 	public constructor( jackpotContainerPosition: egret.Point, jackpot: number, jackpotMinBet: number, betConfig: Array<Object>, lockPosition: egret.Point,
-		jackpotTextRect: egret.Rectangle, jackpotTextSize: number, jackpotTextColor: number, tipRect: egret.Rectangle = null, tipTextSize: number = 0, tipTextColor: number = 0 ) {
-		super( jackpotContainerPosition, jackpot, jackpotMinBet, betConfig, lockPosition, jackpotTextRect, jackpotTextSize, jackpotTextColor, tipRect, tipTextSize, tipTextColor );
+		jackpotTextRect: egret.Rectangle, jackpotTextSize: number, jackpotTextColor: number, tipRect: egret.Rectangle = null, tipTextSize: number = 0, tipTextColor: number = 0, lockOnTop: boolean = false ) {
+		super( jackpotContainerPosition, jackpot, jackpotMinBet, betConfig, lockPosition, jackpotTextRect, jackpotTextSize, jackpotTextColor, tipRect, tipTextSize, tipTextColor, lockOnTop );
 
 		this.jackpotText.textAlign = "right";
 		this.jackpotText.fontFamily = "Arial";
