@@ -232,6 +232,10 @@ class BingoMachine extends GameUIItem{
 
 		this.setCardDatasWithNumeros( data["numerosCartelas"], data["cartela"] );
 
+		this.showJackpot( data["acumulado"], data["jackpot_min_bet"], data["betConfig"] );
+		IBingoServer.jackpotCallbak = this.jackpotArea.setJackpotNumber.bind(this.jackpotArea);
+		IBingoServer.jackpotWinCallbak = this.jackpotArea.jackpotWinCallback.bind( this.jackpotArea );
+
 		this.initToolbar();
 		this.updateCredit( data );
 
@@ -240,10 +244,6 @@ class BingoMachine extends GameUIItem{
 		this.dispatchEvent( new egret.Event( "connected_to_server" ) );
 
 		this.setLetras( data["letras"] );
-
-		this.showJackpot( data["acumulado"], data["jackpot_min_bet"], data["betConfig"] );
-		IBingoServer.jackpotCallbak = this.jackpotArea.setJackpotNumber.bind(this.jackpotArea);
-		IBingoServer.jackpotWinCallbak = this.jackpotArea.jackpotWinCallback.bind( this.jackpotArea );
 
 		if( this.needListenToolbarStatus )this.listenToGameToolbarStatus();
 
