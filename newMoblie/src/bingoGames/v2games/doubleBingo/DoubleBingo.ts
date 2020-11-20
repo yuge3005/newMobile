@@ -27,8 +27,7 @@ class DoubleBingo extends V2Game{
     protected init(){
         super.init();
 
-        this.extraUIObject.visible = true;
-        this.extraUIObject.alpha = 0;
+        this.extraUIObject = new DoubleBingoExtraUIObject( this.extraUIObject );
 
         this.doubleBingoText( 1548, 58, "bingo", true );
         this.doubleBingoText( 1564, 124, "double", true );
@@ -80,8 +79,7 @@ class DoubleBingo extends V2Game{
     }
 
     protected showExtraUI( show: boolean = true ){
-        if( show ) TweenerTool.tweenTo( this.extraUIObject, { alpha: 1 }, 300 );
-        else TweenerTool.tweenTo( this.extraUIObject, { alpha: 0 }, 300 );
+        ( this.extraUIObject as DoubleBingoExtraUIObject ).showExtraUI( show );
     }
 
     protected afterCheck( resultList: Array<Object> ): void{
@@ -135,6 +133,7 @@ class DoubleBingo extends V2Game{
 
     private delayClearArrow(){
         this.arrowArea.clearArrow();
+        ( this.extraUIObject as DoubleBingoExtraUIObject ).showExtraUI( false );
     }
 
     private shakeProgess: number;
