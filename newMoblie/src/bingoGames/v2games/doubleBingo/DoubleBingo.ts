@@ -20,8 +20,6 @@ class DoubleBingo extends V2Game{
         this.ballArea.needLightCheck = true;
 
         this.needListenToolbarStatus = true;
-        this.tipStatusTextPosition = new egret.Rectangle( 342, 108, 150, 18 );
-        this.tipStatusTextColor = 0xFEFE00;
 
         BallManager.ballOffsetY = 12;
 	}
@@ -29,24 +27,40 @@ class DoubleBingo extends V2Game{
     protected init(){
         super.init();
 
-        MDS.addGameText( this, 625, 45, 20, 0xFEFE00, "bingo", true, 200 );
-        MDS.addGameText( this, 640, 85, 20, 0xFEFE00, "double", true, 200 );
-        MDS.addGameText( this, 645, 130, 20, 0xFEFE00, "line", true, 200 );
+        this.extraUIObject.visible = true;
+        this.extraUIObject.alpha = 0;
 
-        MDS.addGameText( this, 90, 85, 20, 0xFEFE00, "bet", true, 100 );
-        MDS.addGameText( this, 100, 45, 20, 0xFEFE00, "credit", true, 100 );
-        MDS.addGameText( this, 90, 128, 20, 0xFEFE00, "prize", true, 100 );
+        this.doubleBingoText( 1548, 58, "bingo", true );
+        this.doubleBingoText( 1564, 124, "double", true );
+        this.doubleBingoText( 1586, 196, "line", true );
 
-        this.betText = MDS.addGameText( this, 180, 90, 17, 0xFEFE00, "bet", false, 150 );
-        this.betText.textAlign = "right";
-        this.creditText = MDS.addGameText( this, 200, 47, 17, 0xFEFE00, "credit", false, 140 );
-        this.creditText.textAlign = "right";
-        this.prizeText = MDS.addGameText( this, 162, 132, 17, 0xFEFE00, "prize", false, 160 );
-        this.prizeText.textAlign = "right";
+        this.doubleBingoText( 218, 124, "bet", false );
+        this.doubleBingoText( 234, 196, "prize", false );
+
+        this.betText = this.doubleBingoNumberText( 518, 126 );
+        this.creditText = new TextLabel;
+        this.prizeText = this.doubleBingoNumberText( 510, 200 );
         this.prizeText.text = "0";
 
         this.runningBallContainer = new egret.DisplayObjectContainer;
         Com.addObjectAt(this, this.runningBallContainer, 884, 107);
+    }
+
+    private doubleBingoText( x: number, y: number, str: string, isLeft: boolean ): TextLabel{
+        let lb: TextLabel = MDS.addGameText( this, x, y, 36, 0xFEFE00, str, true, 200 );
+        lb.stroke = 2;
+        lb.text = lb.text.toUpperCase();
+        lb.scaleX = 0.9;
+        if( !isLeft ) lb.textAlign = "right";
+        return lb;
+    }
+
+    private doubleBingoNumberText( x: number, y: number, ): TextLabel{
+        let lb: TextLabel = Com.addLabelAt( this, x, y, 200, 36, 36 );
+        lb.textColor = 0xFEFE00;
+        lb.scaleX = 0.9;
+        lb.textAlign = "right";
+        return lb;
     }
 
     protected showLastBall( ballIndex: number ): void{
@@ -56,38 +70,21 @@ class DoubleBingo extends V2Game{
         this.playSound("db_ball_wav");
 	}
 
-    protected clearRunningBallUI(): void{
-        if( this.runningBallContainer && this.contains( this.runningBallContainer ) )this.removeChild( this.runningBallContainer );
-	}
-
     protected tipStatus( e: egret.Event ): void{
-        this.tipStatusText.height = 40;
-        super.tipStatus( e, true );
+    }
+    protected winChange( e: egret.Event ): void{
+        ( this.prizeText as TextLabel ).setText( Utils.formatCoinsNumber( e["winCoins"] ) );
     }
 
-    protected winChange( e: egret.Event ): void{
-        this.prizeText.text = "" + e["winCoins"];
+    protected showExtraUI( show: boolean = true ){
+        if( show ) TweenerTool.tweenTo( this.extraUIObject, { alpha: 1 }, 300 );
+        else TweenerTool.tweenTo( this.extraUIObject, { alpha: 0 }, 300 );
     }
 
 /******************************************************************************************************************************************************************/    
 
     protected showJackpot( jackpot: number, jackpotMinBet: number, betConfig: Array<Object> ){
-        this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 342, 48 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 1, 14 ), new egret.Rectangle( 0, 25, 120, 12 ), 16, 0xffcc00, new egret.Rectangle( 0, 0, 120, 10), 10, 0x93c448 ) );
-    }
-
-    protected getPaytablesFit(paytabledName: string, callback: Function = null): void{
-        let soundName = "";
-        switch (paytabledName) {
-            case "line": soundName = "db2_mp3"; break;
-            case "double": soundName = "db4_mp3"; break;
-            case "bingo": soundName = "db10_mp3"; break;
-            default: break;
-        }
-        if (SoundManager.soundOn && soundName !== "") {
-            this.playSound(soundName, 1, callback);
-        } else {
-            callback();
-        }
+        this.addChild( this.jackpotArea = new DoubleBingoJackpotLayer( new egret.Point( 468, 37 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 0, 0 ), new egret.Rectangle( 0, 21, 250, 36 ), 36, 0xFEFE00, new egret.Rectangle( -170, 21, 170, 36 ), 36, 0xFEFE00 ) );
     }
 
     protected hasExtraBallFit(): void {
