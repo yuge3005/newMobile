@@ -169,8 +169,8 @@ class LemonGame extends egret.DisplayObjectContainer {
 	}
 
 	private getRoundString(): string{
-		let str: string = "" + this.roundCount;
-		let roundStr: string = "ROUND";
+		let str: string = "" + this.roundCount + "\n ";
+		let roundStr: string = "ROUNDS";
 		let tempArr: Array<string> = roundStr.split("");
 		roundStr = "\n" + tempArr.join("\n");
 		return str + roundStr;
