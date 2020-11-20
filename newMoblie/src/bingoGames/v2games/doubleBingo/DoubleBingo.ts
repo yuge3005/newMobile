@@ -5,7 +5,7 @@ class DoubleBingo extends V2Game{
 	}
 
     protected static get animationAssetName(){
-		return "lotto";
+		return "doubleBingoAnimation";
 	}
 
 	public constructor( assetsPath: string ) {
@@ -44,6 +44,9 @@ class DoubleBingo extends V2Game{
 
         this.runningBallContainer = new egret.DisplayObjectContainer;
         Com.addObjectAt(this, this.runningBallContainer, 884, 107);
+
+        this.arrowArea = new NineballCardArrowLayer( MDS.mcFactory, "", new egret.Point(0, 75), 70 );
+        this.addChild( this.arrowArea );
     }
 
     private doubleBingoText( x: number, y: number, str: string, isLeft: boolean ): TextLabel{
@@ -79,6 +82,16 @@ class DoubleBingo extends V2Game{
     protected showExtraUI( show: boolean = true ){
         if( show ) TweenerTool.tweenTo( this.extraUIObject, { alpha: 1 }, 300 );
         else TweenerTool.tweenTo( this.extraUIObject, { alpha: 0 }, 300 );
+    }
+
+    protected afterCheck( resultList: Array<Object> ): void{
+        super.afterCheck( resultList );
+        this.arrowArea.arrowBlink(resultList);
+    }
+
+    protected startPlay(): void {
+        super.startPlay();
+        this.arrowArea.clearArrow();
     }
 
 /******************************************************************************************************************************************************************/    
