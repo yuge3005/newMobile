@@ -5,7 +5,7 @@ class DoubleBingo extends V2Game{
 	}
 
     protected static get animationAssetName(){
-		return "lotto";
+		return "doubleBingoAnimation";
 	}
 
 	public constructor( assetsPath: string ) {
@@ -44,6 +44,9 @@ class DoubleBingo extends V2Game{
 
         this.runningBallContainer = new egret.DisplayObjectContainer;
         Com.addObjectAt(this, this.runningBallContainer, 884, 107);
+
+        this.arrowArea = new NineballCardArrowLayer( MDS.mcFactory, "", new egret.Point(0, 75), 70 );
+        this.addChild( this.arrowArea );
     }
 
     private doubleBingoText( x: number, y: number, str: string, isLeft: boolean ): TextLabel{
@@ -81,10 +84,20 @@ class DoubleBingo extends V2Game{
         else TweenerTool.tweenTo( this.extraUIObject, { alpha: 0 }, 300 );
     }
 
+    protected afterCheck( resultList: Array<Object> ): void{
+        super.afterCheck( resultList );
+        this.arrowArea.arrowBlink(resultList);
+    }
+
+    protected startPlay(): void {
+        super.startPlay();
+        this.arrowArea.clearArrow();
+    }
+
 /******************************************************************************************************************************************************************/    
 
     protected showJackpot( jackpot: number, jackpotMinBet: number, betConfig: Array<Object> ){
-        this.addChild( this.jackpotArea = new DoubleBingoJackpotLayer( new egret.Point( 468, 37 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 0, 0 ), new egret.Rectangle( 0, 21, 250, 36 ), 36, 0xFEFE00, new egret.Rectangle( -170, 21, 170, 36 ), 36, 0xFEFE00 ) );
+        this.addChild( this.jackpotArea = new DoubleBingoJackpotLayer( new egret.Point( 468, 37 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 0, 0 ), new egret.Rectangle( 0, 21, 250, 36 ), 36, 0xFEFE00, new egret.Rectangle( -170, 21, 170, 36 ), 36, 0xFEFE00, true ) );
     }
 
     protected hasExtraBallFit(): void {
