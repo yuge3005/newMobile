@@ -71,12 +71,9 @@ class DoubleBingo extends V2Game{
 	}
 
     protected tipStatus( e: egret.Event ): void{
-        this.tipStatusText.height = 40;
-        super.tipStatus( e, true );
     }
-
     protected winChange( e: egret.Event ): void{
-        this.prizeText.text = "" + e["winCoins"];
+        ( this.prizeText as TextLabel ).setText( Utils.formatCoinsNumber( e["winCoins"] ) );
     }
 
     protected showExtraUI( show: boolean = true ){
