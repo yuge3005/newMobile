@@ -1,5 +1,5 @@
 class CardArrowLayer extends egret.DisplayObjectContainer{
-	private arrowMcs: Array<Array<egret.MovieClip>>;
+	protected arrowMcs: Array<Array<egret.MovieClip>>;
 
 	public constructor( mcf: egret.MovieClipDataFactory, assetName: string, offsetPt: egret.Point, disY: number, scaleX: number = 1 ) {
 		super();
