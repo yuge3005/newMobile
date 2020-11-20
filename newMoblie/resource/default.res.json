@@ -37,7 +37,7 @@
 			"name": "generic"
 		},
 		{
-			"keys": "slb_1line_mp3,slb_2line_mp3,slb_ball_mp3,slb_bingo_mp3,slb_card_mp3,slb_extra_ball_mp3,slb_have_extra_ball_wav,slb_jackpot_mp3,silver_ball_json,silver_animation_png,silver_animation_json,silver_ball_conf,silver_ball_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,getCoinsParticle_json,getCoinsParticle_png,Arial Black_fnt,Arial Black_png",
+			"keys": "slb_1line_mp3,slb_2line_mp3,slb_ball_mp3,slb_bingo_mp3,slb_card_mp3,slb_extra_ball_mp3,slb_have_extra_ball_wav,slb_jackpot_mp3,silver_ball_json,silver_animation_png,silver_animation_json,silver_ball_conf,silver_ball_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,Arial Black_fnt,Arial Black_png",
 			"name": "silver_ball"
 		},
 		{
