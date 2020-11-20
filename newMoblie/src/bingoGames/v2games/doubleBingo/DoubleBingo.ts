@@ -45,7 +45,7 @@ class DoubleBingo extends V2Game{
         this.runningBallContainer = new egret.DisplayObjectContainer;
         Com.addObjectAt(this, this.runningBallContainer, 884, 107);
 
-        this.arrowArea = new NineballCardArrowLayer( MDS.mcFactory, "", new egret.Point(0, 75), 70 );
+        this.arrowArea = new DoubleBingoCardArrowLayer( MDS.mcFactory, "", new egret.Point(0, 5), 55 );
         this.addChild( this.arrowArea );
     }
 
@@ -92,6 +92,8 @@ class DoubleBingo extends V2Game{
     protected startPlay(): void {
         super.startPlay();
         this.arrowArea.clearArrow();
+
+        clearTimeout( this.clearArrowTimeoutId );
     }
 
 /******************************************************************************************************************************************************************/    
@@ -107,10 +109,14 @@ class DoubleBingo extends V2Game{
             this.playSound("db6_mp3");
         }
     }
+
+    private clearArrowTimeoutId: number;
     
     protected roundOver(): void {
         super.roundOver();
         this.stopSound("db_ball_wav");
+
+        this.clearArrowTimeoutId = setTimeout( this.delayClearArrow.bind(this), 1500 );
     }
 
 	protected getExtraBallFit(): void {
@@ -119,5 +125,9 @@ class DoubleBingo extends V2Game{
     
     protected collectExtraBall(): void {
         this.playSound("db7_mp3");
+    }
+
+    private delayClearArrow(){
+        this.arrowArea.clearArrow();
     }
 }
