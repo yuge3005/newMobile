@@ -3,10 +3,10 @@
 		,"card":{"en":"CARD","es": "TARJETA", "pt":"CARTELA"}
 		,"select cards":{"en":"Select Cards.", "es":"Seleccione Tarjeta.","pt":"Selecione Cartões."}
 		,"pulse game":{"en":"Pulse Game.", "es":"Juego de pulso.","pt": "Pulse Jogue."}
-		,"good luck":{"en": "GOOD LUCK","es": "BUENA SUERTE","pt": "BOA SORTE"}
-		,"extra ball":{"en": "EXTRA BALL", "es":"BOLA EXTRA","pt": "BOLA EXTRA"}
+		,"good luck":{"en": "Good luck","es": "Buena suerte","pt": "Boa sorte"}
+		,"extra ball":{"en": "Extra ball", "es":"Bola extra","pt": "Bola extra"}
 		,"play extra":{"en": "Play Extra Ball", "es":"Bola del juego extra", "pt":"Aperte Bola Extra"}
-		,"win":{ "en":"WIN","es": "GANÕ","pt": "GANHO"}
+		,"win":{ "en":"Win","es": "Ganó","pt": "Ganho"}
 		,"jackpot":{"en":"JACKPOT", "es":"JACKPOT", "pt":"ACUMULADO"}
 		,"prize":{"en":"PRIZE","es": "PRÉMIO", "pt":"PRÉMIO"}
 		,"jackpot_tooltip":{"en":"Your current bet does not qualify\nPlease increase your bet to {1}\nand play {2} cards",
@@ -30,4 +30,5 @@
 		,"bingo":{ "en": "Bingo", "es": "Bingo", "pt": "Bingo" }
 		,"double":{ "en": "Double", "es": "Doble", "pt": "Dupla" }
 		,"line":{ "en": "Line", "es": "Línea", "pt": "Linha" }
-			}
+		,"press play":{ "en": "Press play", "es": "Pulse jugar", "pt": "Tecle Jogar" }
+}
