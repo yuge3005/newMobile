@@ -90,8 +90,8 @@ class SilverBall extends GoldSilverSuper{
         this.runningBallContainer.y = 55;
 		this.extraUIObject.width = 230;
 		this.extraUIObject.height = 230;
-        this.addChildAt( this.runningBallContainer, this.getChildIndex( this.extraUIObject ) );
         Com.addObjectAt( this.runningBallContainer, this.extraUIObject, 0, 0 );
+        this.addChildAt( this.runningBallContainer, this.getChildIndex( this.ballArea ) + 1 );
         this.extraUIObject = this.runningBallContainer;
     }
 
