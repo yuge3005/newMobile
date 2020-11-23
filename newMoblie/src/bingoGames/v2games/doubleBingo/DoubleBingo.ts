@@ -148,4 +148,20 @@ class DoubleBingo extends V2Game{
         if( this.shakeProgess-- > 0 ) TweenerTool.tweenTo( this, { y: 0 }, 33, 0, this.shack.bind(this) );
         else this.x = 0;
     }
+
+    protected winBingo(): void {
+        super.winBingo();
+
+        let cardStr: Array<string> = CardManager.getCheckingStrings();
+        let bingoIndex: number = -1;
+        for( let i: number = 0; i < cardStr.length; i++ ){
+            if( cardStr[i].indexOf( "0" ) == -1 ){
+                bingoIndex = i;
+                break;
+            }
+        }
+
+        let cardPosition: egret.Point = GameCardUISettings.cardPositions[bingoIndex];
+        Com.addObjectAt(this, new DropCoins( 15 ), cardPosition.x + 150, cardPosition.y );
+    }
 }
