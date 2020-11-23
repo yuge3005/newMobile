@@ -110,6 +110,8 @@ class DoubleBingo extends V2Game{
         this.stopSound("db_ball_wav");
         if (this.firstHaveExtraBall) {
             this.firstHaveExtraBall = false;
+
+            ( this.extraUIObject as DoubleBingoExtraUIObject ).showRedBallsAnimation();
             this.playSound("db6_mp3");
         }
     }

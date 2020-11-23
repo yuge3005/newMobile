@@ -28,14 +28,15 @@ class SilverBall extends GoldSilverSuper{
     protected init() {
         super.init();
 
-        MDS.addGameText( this, 242, 170, 33, 0xF9CC15, "extraball", false, 170);
-        MDS.addGameText( this, 242, 235, 33, 0xF9CC15, "bet", false, 170);
+        MDS.addGameText( this, 242, 172, 33, 0xF9CC15, "extra ball", false, 240 );
+        let betTx: TextLabel = MDS.addGameText( this, 242, 235, 33, 0xF9CC15, "bet", false, 170);
+        betTx.text = Utils.toFirstUpperCase( betTx.text );
 
         this.betText = MDS.addGameText( this, 400, 235, 33, 0xF9CC15, "bet", false, 250, "", 0.9 );
         this.betText.textAlign = "right";
         this.creditText = MDS.addGameTextCenterShadow( this, 1370, 235, 33, 0xF9CC15, "credit", false, 378, true, false );
 
-        this.extraPriceText = MDS.addGameText( this, 400, 170, 33, 0xF9CC15, "extraball", false, 250, "", 0.9 );
+        this.extraPriceText = MDS.addGameText( this, 400, 172, 33, 0xF9CC15, "extra ball", false, 250, "", 0.9 );
         this.extraPriceText.textAlign = "right";
         this.extraPriceText.text = "";
 
@@ -90,8 +91,8 @@ class SilverBall extends GoldSilverSuper{
         this.runningBallContainer.y = 55;
 		this.extraUIObject.width = 230;
 		this.extraUIObject.height = 230;
-        this.addChildAt( this.runningBallContainer, this.getChildIndex( this.extraUIObject ) );
         Com.addObjectAt( this.runningBallContainer, this.extraUIObject, 0, 0 );
+        this.addChildAt( this.runningBallContainer, this.getChildIndex( this.ballArea ) + 1 );
         this.extraUIObject = this.runningBallContainer;
     }
 
