@@ -114,6 +114,8 @@ class DoubleBingo extends V2Game{
             ( this.extraUIObject as DoubleBingoExtraUIObject ).showRedBallsAnimation();
             this.playSound("db6_mp3");
         }
+
+        ( this.extraUIObject as DoubleBingoExtraUIObject ).nextExtra( this.currentBallIndex );
     }
 
     private clearArrowTimeoutId: number;
