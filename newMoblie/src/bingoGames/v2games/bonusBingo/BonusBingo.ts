@@ -528,7 +528,7 @@ class BonusBingo extends V2Game{
 
 /******************************************************************************************************************************************************************/
     protected showJackpot( jackpot: number, jackpotMinBet: number, betConfig: Array<Object> ){
-        this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 1443, 26 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 0, 0 ), new egret.Rectangle( 25, 0, 300, 55 ), 30, 0xFFFFFF ) );
+        this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 1443, 26 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 0, 0 ), new egret.Rectangle( 25, 0, 300, 55 ), 30, 0xFFFFFF, null, 0, 0, true ) );
         this.jackpotArea.jackpotText.textAlign = "left";
     }
 
