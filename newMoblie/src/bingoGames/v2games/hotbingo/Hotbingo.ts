@@ -121,7 +121,16 @@ class Hotbingo extends V2Game{
 
     protected getPaytablesFit( paytabledName: string, callback: Function = null ): void{
         if( paytabledName == "line" && this.currentBallIndex <= 18 ) this.playSuperLine( callback );
-        else super.getPaytablesFit( paytabledName, callback );
+        else{
+            super.getPaytablesFit( paytabledName, callback );
+            switch (paytabledName) {
+                case "double line": this.dropCoinsAt( 1500, 78, 2 ); break;
+                case "four corners": this.dropCoinsAt( 1500, 144, 1 ); break;
+                case "bingo": this.dropCoinsAt( 1500, 45, 3 ); break;
+                case "line": this.dropCoinsAt( 1500, 113, 1 ); break;
+                default: break;
+            }
+        }
 	}
 
     protected playSuperLine( callback: Function ): void{
