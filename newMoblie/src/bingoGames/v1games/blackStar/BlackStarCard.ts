@@ -10,6 +10,8 @@ class BlackStarCard extends ExtraBlinkCard{
 	protected onAdd( event: egret.Event ){
 		super.onAdd( event );
 
+		this.cardText.setText( MuLang.getText( "card" ) + ":      " + (this.cardId + 1) );
+
 		Com.addBitmapAt( this, BingoMachine.getAssetStr( "card_bg03" ), 13, 34 );
 
 		this.unFitEffectLayer = new egret.DisplayObjectContainer;
