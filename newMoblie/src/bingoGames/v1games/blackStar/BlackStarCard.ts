@@ -3,6 +3,11 @@ class BlackStarCard extends ExtraBlinkCard{
 	private unFitEffectLayer: egret.DisplayObjectContainer;
 	private winTx: TextLabel;
 
+	public set bet( value: number ){
+		if( !this.betText )return;
+		this.betText.setText( MuLang.getText("bet") + ":      " + Utils.formatCoinsNumber( value ) );
+	}
+
 	public constructor( cardId: number ) {
 		super( cardId );
 	}
@@ -19,20 +24,21 @@ class BlackStarCard extends ExtraBlinkCard{
 
 		this.fitEffectLayer.filters = [ MatrixTool.colorMatrixPure( 0xFF0000 ) ];
 
-		this.winTx = Com.addLabelAt( this, 395, GameCardUISettings.betTextRect.y, 300, GameCardUISettings.betTextRect.height, GameCardUISettings.betTextRect.height, false, true );
-		this.winTx.textColor = 0;
-		this.winTx.textAlign = "right";
+		this.winTx = Com.addLabelAt( this, GameCardUISettings.betTextRect.x, GameCardUISettings.betTextRect.y, 300, GameCardUISettings.betTextRect.height, GameCardUISettings.betTextRect.height, false, true );
 		this.winTx.scaleX = 0.9;
 		this.winTx.setText( "" );
+		this.winTx.filters = [GameCardUISettings.showTitleShadow];
 	}
 
 	public showWinCount( winNumber: number ): void{
-		this.winTx.setText( "" + winNumber );
+		this.winTx.setText( MuLang.getText("win") + ":      " + Utils.formatCoinsNumber( winNumber ) );
+		this.betText.visible = false;
 	}
 
 	public clearStatus(){
 		super.clearStatus();
 		this.winTx.setText( "" );
+		this.betText.visible = true;
 	}
 
 	public getBgColor(){
