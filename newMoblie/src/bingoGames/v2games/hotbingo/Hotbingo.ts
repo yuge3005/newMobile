@@ -89,7 +89,8 @@ class Hotbingo extends V2Game{
         let pt: egret.Point = this.superLineUI.getLinePosition( CardManager.getCheckingStrings() );
 
         if( pt ){
-            let linePosition: egret.Point = GameCardUISettings.positionOnCard( pt.x, pt.y );
+            let cardPosition: egret.Point = GameCardUISettings.cardPositions[pt.x];
+            let linePosition: egret.Point = new egret.Point( cardPosition.x + GameCardUISettings.gridInitPosition.x, cardPosition.y + GameCardUISettings.gridInitPosition.y + pt.y * CardGridColorAndSizeSettings.gridSpace.y );
             this.superLineIcon = Com.addBitmapAt( this, this.assetStr("super_line"), linePosition.x, linePosition.y );
             this.superLineIcon.alpha = 0.2;
             let tw: egret.Tween = egret.Tween.get( this.superLineIcon );
