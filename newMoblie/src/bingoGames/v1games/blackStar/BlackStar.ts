@@ -156,10 +156,32 @@ class BlackStar extends V1Game{
         let tx: BmpText = MDS.addBitmapTextAt( this.effectLayer, "Arial Black_fnt", 250, 200, "center", 160, color, 1600, 160 );
 		tx.verticalAlign = "middle";
         tx.text = letters.toUpperCase();
+
+        this.addStarEffect( tx );
     }
 
     private showBitmapAnimation( bitmapName: string ){
         let bit: egret.Bitmap = Com.addBitmapAtMiddle( this.effectLayer, this.assetStr( bitmapName ), 1050, 270 );
+
+        this.addStarEffect( bit );
+    }
+
+    private addStarEffect( target: egret.DisplayObject ){
+        TweenerTool.tweenTo( target, {alpha:1}, 3000, 0, MDS.removeSelf.bind( this, target ) );
+
+        let starParticle1: particle.GravityParticleSystem = new particle.GravityParticleSystem(RES.getRes("starParticle_png"), RES.getRes("starParticle_json"));
+		Com.addObjectAt(this.effectLayer, starParticle1, 0, 40);
+        starParticle1.start(3000);
+
+        let starParticle2: particle.GravityParticleSystem = new particle.GravityParticleSystem(RES.getRes("starParticle_png"), RES.getRes("starParticle_json"));
+		Com.addObjectAt(this.effectLayer, starParticle2, 0, 40);
+        starParticle2.texture = RES.getRes("starParticle_blue_png");
+        starParticle2.start(3000);
+
+        let starParticle3: particle.GravityParticleSystem = new particle.GravityParticleSystem(RES.getRes("starParticle_png"), RES.getRes("starParticle_json"));
+		Com.addObjectAt(this.effectLayer, starParticle3, 0, 40);
+        starParticle3.texture = RES.getRes("starParticle_yellow_png");
+        starParticle3.start(3000);
     }
 
 /******************************************************************************************************************************************************************/    
