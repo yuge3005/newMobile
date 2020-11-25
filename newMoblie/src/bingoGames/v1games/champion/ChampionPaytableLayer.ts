@@ -20,14 +20,21 @@ class ChampionPaytableLayer extends PaytableLayer{
     }
 
 	protected buildTitleText(){
-		// this.addGameText( 700, 74, 15, 0x46C8F5, "bingo",false, 200 );
-        // this.addGameText( 700, 130, 15, 0x46C8F5, "4 lines",false, 200 );
-        // this.addGameText( 700, 183, 15, 0x46C8F5, "perimeter",false, 200 );
-        // this.addGameText( 700, 238, 15, 0x46C8F5, "3 lines",false, 200 );
-		// this.addGameText( 700, 292, 15, 0x46C8F5, "letterXT",false, 200 );
-		// this.addGameText( 700, 346, 15, 0x46C8F5, "2 lines",false, 200 );
-		// this.addGameText( 700, 400, 15, 0x46C8F5, "4 corners",false, 200 );
-		// this.addGameText( 700, 455, 15, 0x46C8F5, "diagonal",false, 200 );
+		this.chamoionText( 140 - this.y, "bingo" );
+        this.chamoionText( 218 - this.y, "4 lines" );
+        this.chamoionText( 296 - this.y, "perimeter" );
+        this.chamoionText( 374 - this.y, "3 lines" );
+		this.chamoionText( 452 - this.y, "letterXT" );
+		this.chamoionText( 530 - this.y, "2 lines" );
+		this.chamoionText( 608 - this.y, "4 corners" );
+		this.chamoionText( 686 - this.y, "diagonal" );
+    }
+
+    private chamoionText( yPos: number, tx: string ){
+        let lb: TextLabel = MDS.addGameText( this, 20, yPos, 30, 0x8DDAFF, tx, false, 225, "", 1 );
+        lb.fontFamily = "Arial";
+        lb.bold = true;
+        lb.textAlign = "center";
     }
 
 	public addPaytableUI(){

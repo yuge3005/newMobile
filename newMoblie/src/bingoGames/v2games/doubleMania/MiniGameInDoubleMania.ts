@@ -229,7 +229,7 @@ class MiniGameInDoubleMania extends GameUIItem {
 
 	private showPtBg( index: number, prizeType: number ): void{
 		index = index * 3 + prizeType;
-		this.gettingPaytableBg.x = this.prizeAwardPositions[index].x;
+		this.gettingPaytableBg.x = this.prizeAwardPositions[index].x + 50;
 		this.gettingPaytableBg.y = this.prizeAwardPositions[index].y;
 		this.gettingPaytableBg.visible = true;
 	}
@@ -255,8 +255,8 @@ class MiniGameInDoubleMania extends GameUIItem {
 	private delayShowPrizeAwardNumber(){
 		this.gettingPaytableBg.visible = false;
 		if( !this.ganhoText1 ){
-			this.ganhoText1 = Com.addTextAt( this, 432, 140, 200, 40, 25, false, true );
-			this.ganhoText2 = Com.addTextAt( this, 432, 220, 200, 40, 25, false, true );
+			this.ganhoText1 = Com.addTextAt( this, 1205, 150, 200, 40, 25, false, true );
+			this.ganhoText2 = Com.addTextAt( this, 1205, 220, 200, 40, 25, false, true );
 			this.ganhoNumber1 = 0;
 		}
 		this.ganhoNumber2 = 0;
