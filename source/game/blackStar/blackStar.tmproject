@@ -1,8 +1,13 @@
 {
+    "options": {
+        "layoutMath": "0",
+        "sizeMode": "free",
+        "useExtension": 0,
+        "layoutGap": 1,
+        "extend": 0
+    },
     "projectName": "blackStar",
     "files": [
-        "./ball_bg.png",
-        "./radar_trangle.png",
         "./radar_round.png",
         "./radar_mouse.png",
         "./radar_line.png",
@@ -23,6 +28,7 @@
         "./Image-216.png",
         "./Image-215.png",
         "./Image-213.png",
+        "./H_BIG.png",
         "./FCartela1.png",
         "./card_trangle2.png",
         "./card_trangle.png",
@@ -38,17 +44,12 @@
         "./card_dbline1.png",
         "./card_bingo.png",
         "./card_bg03.png",
-        "./card_bg_light.png",
         "./btn_savings.png",
         "./blackStar_bg.png",
-        "./barraextra.png"
+        "./bingo.png",
+        "./barraextra.png",
+        "./ball_bg.png",
+        "./radar_trangle.png"
     ],
-    "options": {
-        "layoutMath": "0",
-        "sizeMode": "free",
-        "useExtension": 0,
-        "layoutGap": 1,
-        "extend": 0
-    },
     "version": 5
 }

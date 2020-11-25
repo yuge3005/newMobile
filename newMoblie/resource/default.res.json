@@ -1568,7 +1568,7 @@
 			"url": "game/blackStar/blackStar.json",
 			"type": "sheet",
 			"name": "blackStar_json",
-			"subkeys": "FCartela1,Image-213,Image-215,Image-216,Image-217,Image-219,Image-220,PLAY_01,PLAY_02,ball_bg,barraextra,blackStar_bg,btn_savings,card_bg03,card_bg_light,card_bingo,card_dbline1,card_dbline2,card_dbline3,card_h,card_ii,card_line1,card_line2,card_line3,card_mouse,card_round,card_trangle,card_trangle2,jackpot_bg,jackpot_lock,number_bg,number_bg_black,number_bg_blue,radar_bingo,radar_double_line,radar_h,radar_ii,radar_line,radar_mouse,radar_round,radar_trangle"
+			"subkeys": "FCartela1,H_BIG,Image-213,Image-215,Image-216,Image-217,Image-219,Image-220,PLAY_01,PLAY_02,ball_bg,barraextra,bingo,blackStar_bg,btn_savings,card_bg03,card_bingo,card_dbline1,card_dbline2,card_dbline3,card_h,card_ii,card_line1,card_line2,card_line3,card_mouse,card_round,card_trangle,card_trangle2,jackpot_bg,jackpot_lock,number_bg,number_bg_black,number_bg_blue,radar_bingo,radar_double_line,radar_h,radar_ii,radar_line,radar_mouse,radar_round,radar_trangle"
 		},
 		{
 			"url": "config/blackStar.conf",

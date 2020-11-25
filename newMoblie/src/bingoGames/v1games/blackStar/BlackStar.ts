@@ -24,6 +24,8 @@ class BlackStar extends V1Game{
 
     private tipStatusUI: BlackStarTipStatus;
 
+    private effectLayer: egret.DisplayObjectContainer;
+
 	public constructor( assetsPath: string ) {
 		super( "blackStar.conf", assetsPath, 23 );
         this.languageObjectName = "blackStar_tx";
@@ -60,6 +62,9 @@ class BlackStar extends V1Game{
         Com.addObjectAt( this, this.tipStatusUI, 300, 150 );
 
         this.ganhoCounter = new GanhoCounter( this.showWinAnimationAt.bind( this ) );
+
+        this.effectLayer = new egret.DisplayObjectContainer;
+        this.addChild( this.effectLayer );
     }
 
     protected onServerData( data: Object ){
@@ -135,6 +140,28 @@ class BlackStar extends V1Game{
         ( CardManager.cards[cardId] as BlackStarCard ).showWinCount( win * GameData.currentBet );
     }
 
+    protected getPaytablesFit( paytabledName: string, callback: Function = null ): void{
+		super.getPaytablesFit( paytabledName, callback );
+        switch (paytabledName) {
+            case "bingo": this.showBitmapAnimation( "bingo" ); break;
+            case "round": this.showLetterAnimation( "perimetro", 0xFFFF00 ); break;
+            case "ii": this.showLetterAnimation( "estrela", 0x0000FF ); break;
+            case "double_line": this.showLetterAnimation( "linha dupla", 0xFF00FF ); break;
+            case "h": this.showBitmapAnimation( "H_BIG" ); break;
+            default: break;
+        }
+	}
+
+    private showLetterAnimation( letters: string, color: number ){
+        let tx: BmpText = MDS.addBitmapTextAt( this.effectLayer, "Arial Black_fnt", 250, 200, "center", 160, color, 1600, 160 );
+		tx.verticalAlign = "middle";
+        tx.text = letters.toUpperCase();
+    }
+
+    private showBitmapAnimation( bitmapName: string ){
+        let bit: egret.Bitmap = Com.addBitmapAtMiddle( this.effectLayer, this.assetStr( bitmapName ), 1050, 270 );
+    }
+
 /******************************************************************************************************************************************************************/    
 
     protected showJackpot( jackpot: number, jackpotMinBet: number, betConfig: Array<Object> ){
@@ -161,6 +188,7 @@ class BlackStar extends V1Game{
      protected startPlay(): void {
         super.startPlay();
         this.arrowArea.clearArrow();
+        this.effectLayer.removeChildren();
      }
 
 	protected onBetChanged( event: egret.Event ): void{
