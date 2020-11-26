@@ -23,6 +23,7 @@ class BonusBingo extends V2Game{
         CardManager.cardType = BonusBingoCard;
         CardManager.gridType = ForkGrid;
 
+        GameCardUISettings.showTitleShadow = new egret.GlowFilter(0, 1, 4, 4, 2, 2);
         CardGridColorAndSizeSettings.defaultNumberSize = 36;
         BallManager.ballOffsetY = 4;
 
