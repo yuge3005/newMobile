@@ -215,6 +215,7 @@ class DoubleMania extends V2Game{
     protected startPlay(): void {
         super.startPlay();
         this.removeEb();
+        this.hasBonusGame = false;
     }
 
     private miniGame: MiniGameInDoubleMania;
@@ -223,6 +224,7 @@ class DoubleMania extends V2Game{
         if( this.gameToolBar.autoPlaying ) this.gameToolBar.autoPlaying = false;
         this.miniGame = new MiniGameInDoubleMania;
         this.miniGame.addEventListener( egret.Event.REMOVED_FROM_STAGE, this.onMiniGameRemove, this );
+        this.miniGame.addEventListener( "miniGameCoins", this.miniGameCoins, this );
         this.addChild( this.miniGame );
     }
 
@@ -232,10 +234,16 @@ class DoubleMania extends V2Game{
 
     private onMiniGameRemove( e: egret.Event ): void{
         this.miniGame.removeEventListener( egret.Event.REMOVED_FROM_STAGE, this.onMiniGameRemove, this );
+        this.miniGame.removeEventListener( "miniGameCoins", this.miniGameCoins, this );
         this.miniGame = null;
         if( this.roundOverWaitingMiniGame ){
             super.sendRoundOverRequest();
             this.roundOverWaitingMiniGame = false;
         }
+    }
+
+    private miniGameCoins( e: egret.Event ): void{
+        let pt: egret.Point = e.data as egret.Point;
+        this.dropCoinsAt( pt.x + 180, pt.y, 2 );
     }
 }
