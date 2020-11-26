@@ -19,8 +19,13 @@ class MiniGameInDoubleMania extends GameUIItem {
 		this.showBonusTip();
 
 		DoubleManiaMiniItem.itemAssetList = [ this.getAsset("funny_face"), this.getAsset("triplebonus"), this.getAsset("dr_bingo"), this.getAsset("doctor"), this.getAsset("x") ];
-		this.prizeAwardPositions = [new egret.Point( 43, 123 ),new egret.Point( 43, 153 ),new egret.Point( 43, 183 ),new egret.Point( 43, 213 ),new egret.Point( 43, 243 ),new egret.Point( 43, 273 ),
-		new egret.Point( 222, 123 ),new egret.Point( 222, 153 ),new egret.Point( 222, 183 ),new egret.Point( 222, 213 ),new egret.Point( 222, 243 ),new egret.Point( 222, 273 )];
+		let leftPosX: number = 25 + 270 - 25;
+		let RightPosX: number = 425 + 270 - 25;
+		let topUpY: number = 25 + 130 - 30;
+		let topDownY: number = 180 + 130 - 30;
+		let lineHeight: number = 56;
+		this.prizeAwardPositions = [new egret.Point( leftPosX, topUpY ),new egret.Point( leftPosX, topUpY + lineHeight ),new egret.Point( leftPosX, topUpY + lineHeight * 2 ),new egret.Point( leftPosX, topDownY ),new egret.Point( leftPosX, topDownY + lineHeight ),new egret.Point( leftPosX, topDownY + lineHeight * 2 ),
+		new egret.Point( RightPosX, topUpY ),new egret.Point( RightPosX, topUpY + lineHeight ),new egret.Point( RightPosX, topUpY + lineHeight * 2 ),new egret.Point( RightPosX, topDownY ),new egret.Point( RightPosX, topDownY + lineHeight ),new egret.Point( RightPosX, topDownY + lineHeight * 2 )];
 	}
 
 	private getAsset( str: string ): string{
@@ -229,7 +234,7 @@ class MiniGameInDoubleMania extends GameUIItem {
 
 	private showPtBg( index: number, prizeType: number ): void{
 		index = index * 3 + prizeType;
-		this.gettingPaytableBg.x = this.prizeAwardPositions[index].x + 50;
+		this.gettingPaytableBg.x = this.prizeAwardPositions[index].x;
 		this.gettingPaytableBg.y = this.prizeAwardPositions[index].y;
 		this.gettingPaytableBg.visible = true;
 	}
