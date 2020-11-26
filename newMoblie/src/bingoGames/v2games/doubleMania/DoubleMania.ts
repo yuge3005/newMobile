@@ -118,7 +118,8 @@ class DoubleMania extends V2Game{
             }
         } else callback();
 
-        if( paytableName == "round" || paytableName == "bingo" ){//miniGame
+        if( this.hasBonusGame ){//miniGame
+            this.hasBonusGame = false;
             this.showMiniGame();
         }
 	}
@@ -140,6 +141,21 @@ class DoubleMania extends V2Game{
         super.onServerData( data );
         RES.loadGroup( "doublemania_mini" );
     }
+
+    private hasBonusGame: boolean = false;
+
+    public onPlay( data: Object ){
+        super.onPlay( data );
+
+        if( data["bonusGame"] ) this.hasBonusGame = true;
+    }
+
+    public onExtra( data: Object ){
+        super.onExtra( data );
+
+        if( data["bonusGame"] ) this.hasBonusGame = true;
+    }
+
 /******************************************************************************************************************************************************************/    
     protected showJackpot( jackpot: number, jackpotMinBet: number, betConfig: Array<Object> ){
         this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 1302, 0 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 0, 0 ), new egret.Rectangle( 0, 80, 454, 35 ), 35, 0xFFFFFF, null, 0, 0, true ) );
