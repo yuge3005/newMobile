@@ -164,9 +164,6 @@ class MiniGameInDoubleMania extends GameUIItem {
 		for( let i: number = 0; i < this.miniTtems.length; i++ ){
 			this.miniTtems[i].runRandomBlur();
 		}
-
-		/*********************************/
-		// this.onBonusGame( { iconIdx: [3,3,3,3], over: Math.random() < 0.2, prize: 500, prizeIconIdx: [3] } );
 	}
 
 	private spinData: Object;
@@ -218,7 +215,7 @@ class MiniGameInDoubleMania extends GameUIItem {
 	}
 
 	private delayShowPrize(){
-		setTimeout( this.showAnPrize.bind( this ), 2000 );
+		setTimeout( this.showAnPrize.bind( this ), 800 );
 	}
 
 	private showAnPrize(){
@@ -258,7 +255,6 @@ class MiniGameInDoubleMania extends GameUIItem {
 	}
 
 	private delayShowPrizeAwardNumber(){
-		this.gettingPaytableBg.visible = false;
 		if( !this.ganhoText1 ){
 			this.ganhoText1 = Com.addTextAt( this, 1205, 150, 200, 40, 25, false, true );
 			this.ganhoText2 = Com.addTextAt( this, 1205, 220, 200, 40, 25, false, true );
@@ -272,6 +268,7 @@ class MiniGameInDoubleMania extends GameUIItem {
 	}
 
 	private ganhoOver(): void{
+		this.gettingPaytableBg.visible = false;
 		if( this.spinData["over"] === false ){
 			this.playBtn.enabled = true;
 			this.spinData = null;
