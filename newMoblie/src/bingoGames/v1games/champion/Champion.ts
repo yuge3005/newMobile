@@ -37,7 +37,7 @@ class Champion extends V1Game{
 
 		if( this.extraUIObject ) this.championExtraUIBg();
 
-		this.buildSuperEbArea( "mega_" + MuLang.language, 702, 524 );
+		this.buildSuperEbArea( "mega_" + MuLang.language, 1759, 787 );
 
 		this.ganhoCounter = new ChampionGanhoCounter( this.showWinAnimationAt.bind( this ) );
     }
@@ -125,7 +125,7 @@ class Champion extends V1Game{
 			this.superExtraBg.visible = true;
 			this.gameToolBar.megeExtraOnTop( true );
 
-			this.tryFirstMega( new egret.Rectangle( 842, 543, 53, 43 ) );
+			this.tryFirstMega( new egret.Rectangle( 890, 485, 43, 43 ) );
 		}
 	}
 
