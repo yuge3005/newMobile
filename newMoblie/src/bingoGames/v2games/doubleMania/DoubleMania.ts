@@ -240,6 +240,8 @@ class DoubleMania extends V2Game{
         let coins: number = e.data;
         this.removeChild( this.miniGame );
 
+        this.gameToolBar.showWinResult( this.ganho + coins );
+
         this.miniGame.removeEventListener( "miniGameCoins", this.miniGameCoins, this );
         this.miniGame.removeEventListener( "miniGameEnd", this.miniGameEnd, this );
         this.miniGame = null;
