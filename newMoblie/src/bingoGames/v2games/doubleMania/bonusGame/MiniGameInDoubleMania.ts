@@ -7,8 +7,8 @@ class MiniGameInDoubleMania extends GameUIItem {
 
 	private prizeAwardPositions: Array<egret.Point>;
 
-	private ganhoText1: egret.TextField;
-	private ganhoText2: egret.TextField;
+	private ganhoText1: TextLabel;
+	private ganhoText2: TextLabel;
 
 	public constructor() {
 		super();
@@ -243,7 +243,7 @@ class MiniGameInDoubleMania extends GameUIItem {
 	private _ganhoNumber1: number;
 	private set ganhoNumber1( value: number ){
 		this._ganhoNumber1 = value;
-		this.ganhoText1.text = "" + Utils.formatCoinsNumber( Math.round( value ) );
+		this.ganhoText1.setText( Utils.formatCoinsNumber( Math.round( value ) ) );
 	}
 	private get ganhoNumber1(){
 		return this._ganhoNumber1;
@@ -252,7 +252,7 @@ class MiniGameInDoubleMania extends GameUIItem {
 	private _ganhoNumber2: number;
 	private set ganhoNumber2( value: number ){
 		this._ganhoNumber2 = value;
-		this.ganhoText2.text = "" + Utils.formatCoinsNumber( Math.round( value ) );
+		this.ganhoText2.setText( Utils.formatCoinsNumber( Math.round( value ) ) );
 	}
 	private get ganhoNumber2(){
 		return this._ganhoNumber2;
@@ -260,8 +260,10 @@ class MiniGameInDoubleMania extends GameUIItem {
 
 	private delayShowPrizeAwardNumber(){
 		if( !this.ganhoText1 ){
-			this.ganhoText1 = Com.addTextAt( this, 1205, 150, 200, 40, 25, false, true );
-			this.ganhoText2 = Com.addTextAt( this, 1205, 220, 200, 40, 25, false, true );
+			this.ganhoText1 = Com.addLabelAt( this, 1185, 180, 240, 40, 40, true, true );
+			this.ganhoText1.textColor = 0xFFFF00;
+			this.ganhoText2 = Com.addLabelAt( this, 1185, 280, 240, 40, 40, true, true );
+			this.ganhoText2.textColor = 0xFFFF00;
 			this.ganhoNumber1 = 0;
 		}
 		this.ganhoNumber2 = 0;
