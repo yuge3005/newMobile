@@ -145,15 +145,14 @@ class DoubleMania extends V2Game{
     private hasBonusGame: boolean = false;
 
     public onPlay( data: Object ){
+        if( data["bonusGame"] ) this.hasBonusGame = true;
         super.onPlay( data );
 
-        if( data["bonusGame"] ) this.hasBonusGame = true;
     }
 
     public onExtra( data: Object ){
-        super.onExtra( data );
-
         if( data["bonusGame"] ) this.hasBonusGame = true;
+        super.onExtra( data );
     }
 
 /******************************************************************************************************************************************************************/    
