@@ -279,7 +279,9 @@ class MiniGameInDoubleMania extends GameUIItem {
 		this.gettingPaytableBg.visible = false;
 		if( isOver ){
 			if( this.stage ){
-				this.parent.removeChild( this );
+				let ev: egret.Event = new egret.Event( "miniGameEnd" );
+				ev.data = this.ganhoNumber1;
+				this.dispatchEvent( ev );
 			}
 		}
 	}
