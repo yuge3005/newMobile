@@ -19,8 +19,13 @@ class MiniGameInDoubleMania extends GameUIItem {
 		this.showBonusTip();
 
 		DoubleManiaMiniItem.itemAssetList = [ this.getAsset("funny_face"), this.getAsset("triplebonus"), this.getAsset("dr_bingo"), this.getAsset("doctor"), this.getAsset("x") ];
-		this.prizeAwardPositions = [new egret.Point( 43, 123 ),new egret.Point( 43, 153 ),new egret.Point( 43, 183 ),new egret.Point( 43, 213 ),new egret.Point( 43, 243 ),new egret.Point( 43, 273 ),
-		new egret.Point( 222, 123 ),new egret.Point( 222, 153 ),new egret.Point( 222, 183 ),new egret.Point( 222, 213 ),new egret.Point( 222, 243 ),new egret.Point( 222, 273 )];
+		let leftPosX: number = 270;
+		let RightPosX: number = 670;
+		let topUpY: number = 125;
+		let topDownY: number = 280;
+		let lineHeight: number = 56;
+		this.prizeAwardPositions = [new egret.Point( leftPosX, topUpY ),new egret.Point( leftPosX, topUpY + lineHeight ),new egret.Point( leftPosX, topUpY + lineHeight * 2 ),new egret.Point( leftPosX, topDownY ),new egret.Point( leftPosX, topDownY + lineHeight ),new egret.Point( leftPosX, topDownY + lineHeight * 2 ),
+		new egret.Point( RightPosX, topUpY ),new egret.Point( RightPosX, topUpY + lineHeight ),new egret.Point( RightPosX, topUpY + lineHeight * 2 ),new egret.Point( RightPosX, topDownY ),new egret.Point( RightPosX, topDownY + lineHeight ),new egret.Point( RightPosX, topDownY + lineHeight * 2 )];
 	}
 
 	private getAsset( str: string ): string{
@@ -159,9 +164,6 @@ class MiniGameInDoubleMania extends GameUIItem {
 		for( let i: number = 0; i < this.miniTtems.length; i++ ){
 			this.miniTtems[i].runRandomBlur();
 		}
-
-		/*********************************/
-		// this.onBonusGame( { iconIdx: [3,3,3,3], over: Math.random() < 0.2, prize: 500, prizeIconIdx: [3] } );
 	}
 
 	private spinData: Object;
@@ -213,7 +215,7 @@ class MiniGameInDoubleMania extends GameUIItem {
 	}
 
 	private delayShowPrize(){
-		setTimeout( this.showAnPrize.bind( this ), 2000 );
+		setTimeout( this.showAnPrize.bind( this ), 800 );
 	}
 
 	private showAnPrize(){
@@ -229,9 +231,13 @@ class MiniGameInDoubleMania extends GameUIItem {
 
 	private showPtBg( index: number, prizeType: number ): void{
 		index = index * 3 + prizeType;
-		this.gettingPaytableBg.x = this.prizeAwardPositions[index].x + 50;
+		this.gettingPaytableBg.x = this.prizeAwardPositions[index].x;
 		this.gettingPaytableBg.y = this.prizeAwardPositions[index].y;
 		this.gettingPaytableBg.visible = true;
+
+		let ev: egret.Event = new egret.Event( "miniGameCoins" );
+		ev.data = this.prizeAwardPositions[index];
+		this.dispatchEvent( ev );
 	}
 
 	private _ganhoNumber1: number;
@@ -253,7 +259,6 @@ class MiniGameInDoubleMania extends GameUIItem {
 	}
 
 	private delayShowPrizeAwardNumber(){
-		this.gettingPaytableBg.visible = false;
 		if( !this.ganhoText1 ){
 			this.ganhoText1 = Com.addTextAt( this, 1205, 150, 200, 40, 25, false, true );
 			this.ganhoText2 = Com.addTextAt( this, 1205, 220, 200, 40, 25, false, true );
@@ -267,6 +272,7 @@ class MiniGameInDoubleMania extends GameUIItem {
 	}
 
 	private ganhoOver(): void{
+		this.gettingPaytableBg.visible = false;
 		if( this.spinData["over"] === false ){
 			this.playBtn.enabled = true;
 			this.spinData = null;

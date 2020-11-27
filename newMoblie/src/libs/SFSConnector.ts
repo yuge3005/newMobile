@@ -278,6 +278,8 @@ class SFSConnector {
                 gameData["bombIndexs"] = data.getIntArray("bomb_indexs");
             }
 
+            gameData["bonusGame"] = data.getBool("bonusGame");
+
             gameData["isMegaBall"] = data.getBool("isMegaBall");
             gameData["ebPosition"] = data.getInt("ebPosition");
             let prizeBalls = data.getSFSArray("multi_prize_balls");
@@ -400,6 +402,8 @@ class SFSConnector {
             gameData["secondCurrency"] = data.getLong("hard_currency");
             gameData["winSecondCurrency"] = data.getLong("total_win_hard_currency");
             gameData["buffRewardSecondCurrency"] = data.getLong("buff_reward_hard_currency");
+
+            gameData["bonusGame"] = data.getBool("bonusGame");
 
             gameData["wonAllBells"] = data.getBool("won_all_bells");
             if( gameData["wonAllBells"] ){
