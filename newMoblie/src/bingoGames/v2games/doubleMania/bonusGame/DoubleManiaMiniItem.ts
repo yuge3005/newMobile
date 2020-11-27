@@ -60,8 +60,11 @@ class DoubleManiaMiniItem extends egret.DisplayObjectContainer {
 		this.showItem( rd, true );
 	}
 
+	public currentItem: number;
+
 	public shopOn( i: number ){
 		clearInterval( this.intervalId );
 		this.showItem( i );
+		this.currentItem = i;
 	}
 }

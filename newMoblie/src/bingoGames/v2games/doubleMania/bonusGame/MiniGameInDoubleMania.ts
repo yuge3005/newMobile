@@ -10,6 +10,8 @@ class MiniGameInDoubleMania extends GameUIItem {
 	private ganhoText1: TextLabel;
 	private ganhoText2: TextLabel;
 
+	private fireOnItem: egret.DisplayObjectContainer;
+
 	public constructor() {
 		super();
 
@@ -68,6 +70,9 @@ class MiniGameInDoubleMania extends GameUIItem {
 		this.miniTtems[1] = this.buildMiniItemAt( 2, 645, 571 );
 		this.miniTtems[2] = this.buildMiniItemAt( 3, 1008, 571 );
 		this.miniTtems[3] = this.buildMiniItemAt( 4, 1356, 571 );
+
+		this.fireOnItem = new egret.DisplayObjectContainer;
+		this.addChild( this.fireOnItem );
 	}
 
 	private buildMiniItemAt( type: number, xPos: number, yPos: number ): DoubleManiaMiniItem{
@@ -225,6 +230,7 @@ class MiniGameInDoubleMania extends GameUIItem {
 			let j: number = data["prizePositionIndex"].shift() - 1;
 			this.delayShowPrize();
 			this.showPtBg( i, j );
+			this.showFireOnItems( i, j );
 		}
 		else this.delayShowPrizeAwardNumber();
 	}
@@ -238,6 +244,26 @@ class MiniGameInDoubleMania extends GameUIItem {
 		let ev: egret.Event = new egret.Event( "miniGameCoins" );
 		ev.data = this.prizeAwardPositions[index];
 		this.dispatchEvent( ev );
+	}
+
+	private showFireOnItems( index: number, prizeType: number ): void{
+		this.fireOnItem.removeChildren();
+
+		let offsetXArr: Array<number> = [ 3, -10, -12, 1 ];
+		if( this.miniTtems[0].currentItem == index && this.miniTtems[1].currentItem == index ){
+			for( let i: number = 0; i < 4; i++ ){
+				let item: DoubleManiaMiniItem = this.miniTtems[i];
+				if( item.currentItem == index )	Com.addObjectAt( this.fireOnItem, new MiniItemEffect, item.x + offsetXArr[i], item.y - 14 );
+				else break;
+			}
+		}
+		else{
+			for( let i: number = 3; i >= 0; i-- ){
+				let item: DoubleManiaMiniItem = this.miniTtems[i];
+				if( item.currentItem == index )	Com.addObjectAt( this.fireOnItem, new MiniItemEffect, item.x + offsetXArr[i], item.y - 14 );
+				else break;
+			}
+		}
 	}
 
 	private _ganhoNumber1: number;
@@ -279,6 +305,7 @@ class MiniGameInDoubleMania extends GameUIItem {
 
 	private ganhoOver( isOver: boolean ): void{
 		this.gettingPaytableBg.visible = false;
+		this.fireOnItem.removeChildren();
 		if( isOver ){
 			if( this.stage ){
 				let ev: egret.Event = new egret.Event( "miniGameEnd" );

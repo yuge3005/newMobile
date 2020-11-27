@@ -1477,7 +1477,7 @@
 			"url": "game/doubleMania/doublemania_mini.json",
 			"type": "sheet",
 			"name": "doublemania_mini_json",
-			"subkeys": "1,2,3,4,BonusEffect,background,background_machine,bg,button,doctor,doctor_blur,dr_bingo,dr_bingo_blur,funny_face,funny_face_blur,line_horizontal,line_vertical,paytable_doctor,paytable_drbingo,paytable_funnyface,paytable_outline,paytable_triplebonus,prize_bg,prize_title,pt_bg,pt_title,title,triplebonus,triplebonus_blur,x,x_blur"
+			"subkeys": "1,2,3,4,BonusEffect,background,background_machine,bg,button,doctor,doctor_blur,dr_bingo,dr_bingo_blur,funny_face,funny_face_blur,line_horizontal,line_vertical,outline,outline_bg,paytable_doctor,paytable_drbingo,paytable_funnyface,paytable_outline,paytable_triplebonus,prize_bg,prize_title,pt_bg,pt_title,title,triplebonus,triplebonus_blur,x,x_blur"
 		},
 		{
 			"url": "game/blackStar/sound/bs138.mp3",
