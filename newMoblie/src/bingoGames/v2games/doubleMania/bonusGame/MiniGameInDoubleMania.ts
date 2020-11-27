@@ -266,20 +266,22 @@ class MiniGameInDoubleMania extends GameUIItem {
 		}
 		this.ganhoNumber2 = 0;
 
+		let isOver: boolean = this.spinData["over"];
+		if( !isOver )this.playBtn.enabled = true;
+
 		let tw: egret.Tween = egret.Tween.get( this );
 		tw.to( { ganhoNumber2: this.spinData["prize"], ganhoNumber1: this.ganhoNumber1 + this.spinData["prize"] }, 2000 );
-		tw.call( this.ganhoOver.bind(this) );
+		tw.call( this.ganhoOver.bind(this, isOver) );
+
 	}
 
-	private ganhoOver(): void{
+	private ganhoOver( isOver: boolean ): void{
 		this.gettingPaytableBg.visible = false;
-		if( this.spinData["over"] === false ){
-			this.playBtn.enabled = true;
-			this.spinData = null;
-		}
-		else{
+		if( isOver ){
 			if( this.stage ){
-				this.parent.removeChild( this );
+				let ev: egret.Event = new egret.Event( "miniGameEnd" );
+				ev.data = this.ganhoNumber1;
+				this.dispatchEvent( ev );
 			}
 		}
 	}

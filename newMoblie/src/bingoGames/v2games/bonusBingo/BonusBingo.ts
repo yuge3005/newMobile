@@ -436,15 +436,15 @@ class BonusBingo extends V2Game{
         Com.addObjectAt( this, blinkSp, CardManager.cards[cardId].x, CardManager.cards[cardId].y );
         Com.addBitmapAt( blinkSp, BingoMachine.getAssetStr( "card_head_bg" ), 0, 0 );
         let lightEf: egret.Bitmap = Com.addBitmapAt( blinkSp, BingoMachine.getAssetStr( "card_head_outerlight" ), -15, -15 );
-        let tx: egret.TextField = Com.addTextAt( blinkSp, 12, 12, 300, 30, 30, false, true );
+        let tx: TextLabel = Com.addLabelAt( blinkSp, GameCardUISettings.betTextRect.x, GameCardUISettings.betTextRect.y, 300, GameCardUISettings.betTextRect.height, GameCardUISettings.betTextRect.height, false, true );
         tx.textAlign = "left";
         tx.scaleX = 0.9;
+        tx.filters = [GameCardUISettings.showTitleShadow];
         let winTimes: number = 1;
         if( this.isSuper ) winTimes = 50;
         else if( this.bonusLetter.luckMultiTimes && cardId == this.luckMultiCardId - 1 ) winTimes = this.bonusLetter.luckMultiTimes;
-        tx.text = MuLang.getText( "win" ) + " " + ( win * GameData.currentBet * winTimes );
+        tx.text = MuLang.getText( "win" ) + ": " + ( win * GameData.currentBet * winTimes );
         this.blinkSpArray.push(blinkSp);
-        tx.textColor = 0;
         let tw: egret.Tween = egret.Tween.get( lightEf );
         for( let i: number = 0; i < 5; i++ ){
             tw.to( { alpha: 0.5 }, 500 );
