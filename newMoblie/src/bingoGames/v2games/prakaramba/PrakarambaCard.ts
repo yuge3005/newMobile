@@ -10,7 +10,9 @@ class PrakarambaCard extends ExtraBlinkCard{
         super.onAdd(event);
 
 		this.cardText.fontFamily = "Arial";
+		this.cardText.bold = true;
 		this.betText.fontFamily = "Arial";
+		this.betText.bold = true;
 
 		this.winTx = this.cardText;
 		this.winTx.setText( MuLang.getText("win") + ": 0" );

@@ -1,12 +1,11 @@
 {
     "options": {
-        "layoutMath": "0",
-        "sizeMode": "free",
         "useExtension": 0,
         "layoutGap": 1,
-        "extend": 0
+        "extend": 0,
+        "layoutMath": "0",
+        "sizeMode": "free"
     },
-    "projectName": "doublemania_mini",
     "files": [
         "./doctor.png",
         "./button.png",
@@ -32,6 +31,8 @@
         "./paytable_funnyface.png",
         "./paytable_drbingo.png",
         "./paytable_doctor.png",
+        "./outline_bg.png",
+        "./outline.png",
         "./line_vertical.png",
         "./line_horizontal.png",
         "./funny_face_blur.png",
@@ -40,5 +41,6 @@
         "./dr_bingo.png",
         "./doctor_blur.png"
     ],
-    "version": 5
+    "version": 5,
+    "projectName": "doublemania_mini"
 }

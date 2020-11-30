@@ -7,8 +7,10 @@ class MiniGameInDoubleMania extends GameUIItem {
 
 	private prizeAwardPositions: Array<egret.Point>;
 
-	private ganhoText1: egret.TextField;
-	private ganhoText2: egret.TextField;
+	private ganhoText1: TextLabel;
+	private ganhoText2: TextLabel;
+
+	private fireOnItem: egret.DisplayObjectContainer;
 
 	public constructor() {
 		super();
@@ -68,6 +70,9 @@ class MiniGameInDoubleMania extends GameUIItem {
 		this.miniTtems[1] = this.buildMiniItemAt( 2, 645, 571 );
 		this.miniTtems[2] = this.buildMiniItemAt( 3, 1008, 571 );
 		this.miniTtems[3] = this.buildMiniItemAt( 4, 1356, 571 );
+
+		this.fireOnItem = new egret.DisplayObjectContainer;
+		this.addChild( this.fireOnItem );
 	}
 
 	private buildMiniItemAt( type: number, xPos: number, yPos: number ): DoubleManiaMiniItem{
@@ -225,6 +230,7 @@ class MiniGameInDoubleMania extends GameUIItem {
 			let j: number = data["prizePositionIndex"].shift() - 1;
 			this.delayShowPrize();
 			this.showPtBg( i, j );
+			this.showFireOnItems( i, j );
 		}
 		else this.delayShowPrizeAwardNumber();
 	}
@@ -240,10 +246,30 @@ class MiniGameInDoubleMania extends GameUIItem {
 		this.dispatchEvent( ev );
 	}
 
+	private showFireOnItems( index: number, prizeType: number ): void{
+		this.fireOnItem.removeChildren();
+
+		let offsetXArr: Array<number> = [ 3, -10, -12, 1 ];
+		if( this.miniTtems[0].currentItem == index && this.miniTtems[1].currentItem == index ){
+			for( let i: number = 0; i < 4; i++ ){
+				let item: DoubleManiaMiniItem = this.miniTtems[i];
+				if( item.currentItem == index )	Com.addObjectAt( this.fireOnItem, new MiniItemEffect, item.x + offsetXArr[i], item.y - 14 );
+				else break;
+			}
+		}
+		else{
+			for( let i: number = 3; i >= 0; i-- ){
+				let item: DoubleManiaMiniItem = this.miniTtems[i];
+				if( item.currentItem == index )	Com.addObjectAt( this.fireOnItem, new MiniItemEffect, item.x + offsetXArr[i], item.y - 14 );
+				else break;
+			}
+		}
+	}
+
 	private _ganhoNumber1: number;
 	private set ganhoNumber1( value: number ){
 		this._ganhoNumber1 = value;
-		this.ganhoText1.text = "" + Utils.formatCoinsNumber( Math.round( value ) );
+		this.ganhoText1.setText( Utils.formatCoinsNumber( Math.round( value ) ) );
 	}
 	private get ganhoNumber1(){
 		return this._ganhoNumber1;
@@ -252,7 +278,7 @@ class MiniGameInDoubleMania extends GameUIItem {
 	private _ganhoNumber2: number;
 	private set ganhoNumber2( value: number ){
 		this._ganhoNumber2 = value;
-		this.ganhoText2.text = "" + Utils.formatCoinsNumber( Math.round( value ) );
+		this.ganhoText2.setText( Utils.formatCoinsNumber( Math.round( value ) ) );
 	}
 	private get ganhoNumber2(){
 		return this._ganhoNumber2;
@@ -260,8 +286,10 @@ class MiniGameInDoubleMania extends GameUIItem {
 
 	private delayShowPrizeAwardNumber(){
 		if( !this.ganhoText1 ){
-			this.ganhoText1 = Com.addTextAt( this, 1205, 150, 200, 40, 25, false, true );
-			this.ganhoText2 = Com.addTextAt( this, 1205, 220, 200, 40, 25, false, true );
+			this.ganhoText1 = Com.addLabelAt( this, 1185, 180, 240, 40, 40, true, true );
+			this.ganhoText1.textColor = 0xFFFF00;
+			this.ganhoText2 = Com.addLabelAt( this, 1185, 280, 240, 40, 40, true, true );
+			this.ganhoText2.textColor = 0xFFFF00;
 			this.ganhoNumber1 = 0;
 		}
 		this.ganhoNumber2 = 0;
@@ -277,6 +305,7 @@ class MiniGameInDoubleMania extends GameUIItem {
 
 	private ganhoOver( isOver: boolean ): void{
 		this.gettingPaytableBg.visible = false;
+		this.fireOnItem.removeChildren();
 		if( isOver ){
 			if( this.stage ){
 				let ev: egret.Event = new egret.Event( "miniGameEnd" );
