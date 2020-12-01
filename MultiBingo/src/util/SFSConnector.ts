@@ -49,32 +49,14 @@ class SFSConnector {
     public static onPastJoinedRoomCallback: Function;
 
     constructor() {
-        // PlayerConfig.config("host")
-        new Http().instance( "https://" + "staging.doutorbingo.com/xmlconfig/config.xml", "GET", null, true, this.getSFSConfigSuccess.bind(this)).send();
-    }
-
-    /**
-     * get sfs server config
-     **/
-    private getSFSConfigSuccess(data: string): void {
-        let serverConfig: egret.XML = egret.XML.parse(data);
         SFSConnector.connection = false;
         SFSConnector.login = false;
-        SFSConnector._config = {
-            host: "",
-            port: 8090,
+        if( !SFSConnector._config ) SFSConnector._config = {
+            host: "52.2.30.161",
+            port: 8989,
             debug: false,
-            useSSL: false
+            useSSL: true
         };
-
-        for (let i = 0; i < serverConfig.children.length; i++) {
-            if ((<egret.XML>serverConfig.children[i]).name === "ip") {
-                SFSConnector._config["host"] = (<egret.XMLText>(<egret.XML>serverConfig.children[i]).children[0]).text;
-            } else if ((<egret.XML>serverConfig.children[i]).name === "porta") {
-                // SFSConnector._config["port"] = Number((<egret.XMLText>(<egret.XML>serverConfig.children[i]).children[0]).text);
-            }
-        }
-
         this.connection();
     }
 
