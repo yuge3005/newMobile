@@ -1,0 +1,8 @@
+{"file":"mara_lucky_ball.png","frames":{
+"pick a ball":{"x":129,"y":210,"w":299,"h":20,"offX":0,"offY":0,"sourceW":299,"sourceH":20},
+"red light":{"x":374,"y":1,"w":137,"h":137,"offX":0,"offY":0,"sourceW":137,"sourceH":137},
+"title":{"x":1,"y":1,"w":371,"h":112,"offX":0,"offY":0,"sourceW":371,"sourceH":112},
+"write light":{"x":1,"y":115,"w":126,"h":132,"offX":0,"offY":0,"sourceW":126,"sourceH":132},
+"drawn":{"x":388,"y":140,"w":37,"h":32,"offX":0,"offY":0,"sourceW":37,"sourceH":32},
+"LUCKY BALL":{"x":129,"y":140,"w":257,"h":35,"offX":0,"offY":0,"sourceW":257,"sourceH":35},
+"not this time":{"x":129,"y":177,"w":282,"h":31,"offX":0,"offY":0,"sourceW":282,"sourceH":31}}}

@@ -24,6 +24,22 @@ let Utils = {
 	toFirstUpperCase: function(str: string): string {
         return str.substring(0, 1).toUpperCase() + str.substring(1, str.length).toLowerCase();
 	},
+    /**
+     * download bitmap data by facebook id
+     */
+    downloadBitmapDataByFacebookID: function(facebookId: string, width: number, height: number, callback: Function, thisObject: any) {
+        Utils.downloadBitmapDataByURL("https://graph.facebook.com/" + facebookId + "/picture?width=" + width + "&height=" + height, callback, thisObject);
+    },
+
+    /**
+     * download bitmap data by url
+     */
+    downloadBitmapDataByURL: function(url: string, callback: Function, thisObject: any) {
+        let imgLoader:egret.ImageLoader = new egret.ImageLoader;
+		imgLoader.once(egret.Event.COMPLETE, callback, thisObject);
+		imgLoader.crossOrigin = "anonymous";
+		imgLoader.load(url);
+    },
 
 	/**
      * transform the format of seconds to 'HH:mm:ss'.

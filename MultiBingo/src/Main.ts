@@ -1,6 +1,6 @@
 class Main extends egret.DisplayObjectContainer {
 
-    private currentGame: BingoMachine;
+    private currentGame: MultiPlayerMachine;
 	private currentPo: GenericPo;
 
 	private isMobile: boolean;
@@ -43,16 +43,15 @@ class Main extends egret.DisplayObjectContainer {
      */
     private createGameScene() {
         this.showGame();
-		IBingoServer.serverInit();
+		MultiServer.serverInit();
     }
 
 	private showGame(){
-		this.currentGame = new DoubleBingo("resource/default.res.json");
+		this.currentGame = new MultyPlayerBingo("resource/default.res.json");
 
 		const loadingView = new LoadingUI();
 		this.currentGame.preLoader = loadingView;
-		this.currentGame.addEventListener( BingoMachine.GENERIC_MODAL_LOADED, this.addGame, this );
-		this.currentGame.addEventListener("megaFirst", this.showMegaFirst, this);
+		this.currentGame.addEventListener( MultiPlayerMachine.GENERIC_MODAL_LOADED, this.addGame, this );
 	}
 
 	private addGame(){
@@ -69,34 +68,9 @@ class Main extends egret.DisplayObjectContainer {
             this.rotation = 90;
         }
 		this.addChild( this.currentGame );
-		document.addEventListener("keydown", this.keyDown.bind(this) );
         var loadingBar = document.getElementById( "loading_bar" );
         if( loadingBar ) loadingBar.parentNode.removeChild( loadingBar );
 	}
-
-	/**
-	 * key down
-	 */
-	private keyDown(event): void {
-		if (this.currentGame) {
-			if (event.keyCode === 32) {
-				event.preventDefault();
-				this.currentGame.quickPlay();
-			} else if (event.keyCode === 67) {
-				event.preventDefault();
-				this.currentGame.collectCredit();
-			}
-		}
-	}
-
-    private showMegaFirst( event: egret.Event ){
-		this.showShadow();
-
-        MegaForFirstTime.lastRect = event.data;
-        this.currentPo = new MegaForFirstTime;
-		if (this.currentPo.inited) this.addPo();
-		else this.currentPo.addEventListener( GenericModal.GENERIC_MODAL_LOADED, this.addPo, this );
-    }
 
     private shadow: egret.Shape;
     private modalPreloader: egret.Bitmap;

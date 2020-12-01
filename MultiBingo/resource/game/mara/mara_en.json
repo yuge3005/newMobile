@@ -1,0 +1,15 @@
+{"file":"mara_en.png","frames":{
+"city_of_light":{"x":426,"y":134,"w":80,"h":14,"offX":0,"offY":0,"sourceW":80,"sourceH":14},
+"city_big":{"x":349,"y":208,"w":127,"h":15,"offX":0,"offY":0,"sourceW":127,"sourceH":15},
+"buy_next":{"x":1,"y":173,"w":271,"h":21,"offX":0,"offY":0,"sourceW":271,"sourceH":21},
+"bet":{"x":480,"y":1,"w":30,"h":20,"offX":0,"offY":0,"sourceW":30,"sourceH":20},
+"base":{"x":353,"y":76,"w":136,"h":56,"offX":0,"offY":0,"sourceW":136,"sourceH":56},
+"welcome":{"x":274,"y":173,"w":172,"h":33,"offX":0,"offY":0,"sourceW":172,"sourceH":33},
+"wait":{"x":1,"y":263,"w":283,"h":16,"offX":0,"offY":0,"sourceW":283,"sourceH":16},
+"to_start":{"x":353,"y":1,"w":125,"h":73,"offX":0,"offY":0,"sourceW":125,"sourceH":73},
+"round_start":{"x":1,"y":196,"w":172,"h":33,"offX":0,"offY":0,"sourceW":172,"sourceH":33},
+"round_over_tip":{"x":1,"y":1,"w":350,"h":132,"offX":10,"offY":13,"sourceW":375,"sourceH":155},
+"round_over":{"x":175,"y":208,"w":172,"h":33,"offX":0,"offY":0,"sourceW":172,"sourceH":33},
+"pick":{"x":1,"y":243,"w":280,"h":18,"offX":4,"offY":0,"sourceW":290,"sourceH":18},
+"luck":{"x":1,"y":135,"w":233,"h":29,"offX":2,"offY":0,"sourceW":239,"sourceH":29},
+"choose":{"x":236,"y":135,"w":188,"h":36,"offX":0,"offY":0,"sourceW":188,"sourceH":36}}}

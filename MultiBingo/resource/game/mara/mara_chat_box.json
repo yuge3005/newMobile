@@ -1,0 +1,14 @@
+{"file":"mara_chat_box.png","frames":{
+"1":{"x":379,"y":239,"w":46,"h":46,"offX":0,"offY":0,"sourceW":46,"sourceH":46},
+"2":{"x":447,"y":1,"w":40,"h":43,"offX":6,"offY":3,"sourceW":46,"sourceH":46},
+"3":{"x":447,"y":46,"w":40,"h":42,"offX":6,"offY":4,"sourceW":46,"sourceH":46},
+"Bottom frame":{"x":490,"y":1,"w":13,"h":154,"offX":0,"offY":0,"sourceW":13,"sourceH":154},
+"frame":{"x":1,"y":1,"w":200,"h":359,"offX":0,"offY":0,"sourceW":200,"sourceH":359},
+"Head frame":{"x":447,"y":90,"w":33,"h":36,"offX":0,"offY":0,"sourceW":33,"sourceH":36},
+"Head frame2":{"x":410,"y":130,"w":78,"h":66,"offX":0,"offY":0,"sourceW":78,"sourceH":66},
+"light":{"x":203,"y":130,"w":205,"h":104,"offX":0,"offY":0,"sourceW":205,"sourceH":104},
+"number of people":{"x":203,"y":236,"w":174,"h":83,"offX":0,"offY":0,"sourceW":174,"sourceH":83},
+"photo frame":{"x":203,"y":1,"w":242,"h":127,"offX":0,"offY":0,"sourceW":242,"sourceH":144},
+"photo Head frame":{"x":477,"y":198,"w":30,"h":30,"offX":0,"offY":0,"sourceW":30,"sourceH":30},
+"Send out":{"x":410,"y":198,"w":65,"h":39,"offX":0,"offY":0,"sourceW":65,"sourceH":39},
+"Slide":{"x":490,"y":157,"w":11,"h":19,"offX":0,"offY":0,"sourceW":11,"sourceH":19}}}

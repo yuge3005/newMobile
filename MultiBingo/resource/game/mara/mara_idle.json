@@ -1,0 +1,16 @@
+{"file":"mara_idle.png","frames":{
+"waiting":{"x":395,"y":329,"w":90,"h":80,"offX":0,"offY":0,"sourceW":90,"sourceH":80},
+"menu":{"x":1,"y":1,"w":392,"h":362,"offX":0,"offY":0,"sourceW":392,"sourceH":362},
+"green":{"x":487,"y":329,"w":19,"h":12,"offX":0,"offY":2,"sourceW":19,"sourceH":14},
+"D":{"x":395,"y":248,"w":102,"h":79,"offX":0,"offY":1,"sourceW":103,"sourceH":81},
+"coin":{"x":487,"y":343,"w":14,"h":14,"offX":3,"offY":0,"sourceW":19,"sourceH":14},
+"C":{"x":395,"y":84,"w":102,"h":80,"offX":0,"offY":1,"sourceW":103,"sourceH":81},
+"B":{"x":395,"y":1,"w":102,"h":81,"offX":0,"offY":0,"sourceW":103,"sourceH":81},
+"A":{"x":395,"y":166,"w":102,"h":80,"offX":0,"offY":0,"sourceW":103,"sourceH":81},
+"3":{"x":185,"y":365,"w":90,"h":26,"offX":0,"offY":0,"sourceW":90,"sourceH":26},
+"-2":{"x":277,"y":365,"w":28,"h":29,"offX":0,"offY":0,"sourceW":28,"sourceH":29},
+"2":{"x":93,"y":365,"w":90,"h":26,"offX":0,"offY":0,"sourceW":90,"sourceH":26},
+"-1":{"x":337,"y":365,"w":28,"h":26,"offX":0,"offY":2,"sourceW":28,"sourceH":29},
+"1":{"x":1,"y":365,"w":90,"h":26,"offX":0,"offY":0,"sourceW":90,"sourceH":26},
+"+2":{"x":307,"y":365,"w":28,"h":29,"offX":0,"offY":0,"sourceW":28,"sourceH":29},
+"+1":{"x":1,"y":393,"w":28,"h":26,"offX":0,"offY":2,"sourceW":28,"sourceH":29}}}

@@ -18,8 +18,15 @@
     {
       "name": "assetsmanager"
     },
-    {
+		{
+			"name": "eui"
+		},
+		{
       "name": "promise"
+		},
+		{
+			"name": "particle",
+			"path": "../library/particle/libsrc"
     }
   ]
 }
