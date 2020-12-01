@@ -125,6 +125,8 @@ class MultiPlayerMachine extends egret.Sprite{
 		this.inited = true;
 		this.dispatchEvent( new egret.Event( MultiPlayerMachine.GENERIC_MODAL_LOADED ) );
 
+		this.scaleX = BingoBackGroundSetting.gameSize.x / BingoBackGroundSetting.gameMask.width;
+		this.scaleY = BingoBackGroundSetting.gameSize.y / BingoBackGroundSetting.gameMask.height;
 		this.mask = BingoBackGroundSetting.gameMask;
 
 		this._mcf = BingoBackGroundSetting.initBackground( this );
