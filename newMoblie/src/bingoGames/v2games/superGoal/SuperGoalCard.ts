@@ -149,10 +149,4 @@ class SuperGoalCard extends ExtraBlinkCard{
 			( this.grids[order[i]] as SuperGoalGrid ).showWaveEffect( 100 + 100 * i );
 		}
 	}
-
-	public stopBlink(){
-		for( let i: number = 0; i < this.grids.length; i++ ){
-			if( this.grids[i].blink )this.grids[i]["_blink"] = false;
-		}
-	}
 }
