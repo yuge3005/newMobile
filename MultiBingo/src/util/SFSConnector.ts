@@ -1,15 +1,9 @@
-let SFSServerCommandHandlerMapping = {};
-let connectionComplete = [];
 //,"src/javascripts/sfs2x-api-1.7.5.js"
 class SFSConnector {
     private static _config: any;
     private static _sfs: any;
     private static connection: boolean;
-    public static get connected():boolean{
-        return this.connection;
-    }
     private static login: boolean;
-    private static connectionComplete: Array<Function>;
 
     private static gettingRoom: string;
     private static joinRoomCallback: Function;
@@ -114,12 +108,7 @@ class SFSConnector {
         if (event.success) {
             // success
             console.log("connected to SFS Server 2X " + SFSConnector._sfs.version);
-
             SFSConnector.connection = true;
-            // ConnectionLost.showReconnectUI();
-            // console.log( "ConnectionLost" );
-            // login
-            // SFSConnector.loginIn();
         } else {
             // failed
         }
@@ -131,7 +120,7 @@ class SFSConnector {
     private onSfsConnectionLost(event): void {
         console.log("SFS Server connection lost!");
         console.log(event);
-
+        alert( "connection lost!" );
         // remove event listeners
         SFSConnector._sfs.removeEventListener(eval("SFS2X.SFSEvent.USER_VARIABLES_UPDATE"), this.onUserVarUpdate);
         SFSConnector._sfs.removeEventListener(eval("SFS2X.SFSEvent.ROOM_VARIABLES_UPDATE"), this.onRoomVarsUpdate, this);
@@ -160,11 +149,6 @@ class SFSConnector {
      **/
     private onLogin(event): void {
         console.log("login success!");
-
-        for (let i = 0; i < connectionComplete.length; i++) {
-            eval("connectionComplete[i]()");
-        }
-        connectionComplete = [];
 
         if( SFSConnector.gettingRoom == "Multi75" ) return;
         SFSConnector._sfs.send(eval("new SFS2X.JoinRoomRequest('" + SFSConnector.gettingRoom + "')"));
@@ -1113,10 +1097,6 @@ class SFSConnector {
             gameData["roomName"] = data.getUtfString("roomName");
             SFSConnector.onBlackoutMatching(gameData);
         }
-
-        if (SFSServerCommandHandlerMapping[event.cmd]) {
-            SFSServerCommandHandlerMapping[event.cmd](event.params);
-        }
     }
 
     /**
@@ -1143,17 +1123,6 @@ class SFSConnector {
         SFSConnector._sfs.send(eval("new SFS2X.LoginRequest('" + PlayerConfig.player( "user.id" ) + "', '', null, 'Generic')"));
     }
 
-    /**
-     * push sfs server command handler mapping
-     * @param cmd      command name
-     * @param callback handler callback function
-     */
-    public static pushSFSServerCommandHandlerMapping(cmd: string, callback: Function, hard: boolean = false): void {
-        if (!SFSServerCommandHandlerMapping[cmd] || hard) {
-            SFSServerCommandHandlerMapping[cmd] = callback;
-        }
-    }
-
     private getBetConfig( configData: any ): Array<Object>{
         let ar: Array<Object> = [];
         for( let i: number = 0; i < configData.size(); i++ ){
@@ -1162,13 +1131,6 @@ class SFSConnector {
             ar[i]["jackpotRate"] = configData.get(i).getDouble("jackpotRate");
         }
         return ar;
-    }
-
-    /**
-     * push functions in array that execute it after connection complete
-     */
-    public static onConnectionComplete(func: Function): void {
-        connectionComplete.push(func);
     }
 
     public static loginTo( zona: string, room: string = null, joinRoomCallback: Function ):void{
