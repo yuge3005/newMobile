@@ -13,7 +13,11 @@ class LottoCard extends GameCard{
 
 	public constructor( cardId: number ) {
 		super( cardId );
+	}
 
+	protected onAdd( event: egret.Event ){
+		super.onAdd( event );
+		
 		this.addBtn( "btn_orange", 0, 232, this.onIncreaceButtonClick.bind(this), this.cardId, "increase" );
 		this.addBtn( "btn_orange", 363, 232, this.onShuffleButtonClick.bind(this), this.cardId, "shuffle" );
 		this.addChangeNumberButtons();
