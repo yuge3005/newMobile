@@ -55,9 +55,6 @@ class MultyPlayerBingo extends Multi75Super{
 	public static openBoxTimes: number;
 	public static powerUpCoins: number;
 
-	private chatButton: TouchDownButton;
-	private gameButton: TouchDownButton;
-
 	private exitCardPlaying: boolean;
 
 	protected letsWait(): void{
@@ -92,14 +89,6 @@ class MultyPlayerBingo extends Multi75Super{
 
 		this.chatBar = new MultiPlayerBingoChatBar;
 		Com.addObjectAt( this.chatAndMiniGameLayer, this.chatBar, 570, 265 );
-
-		if( Variable.isVideoBingo ){
-			this.miniGame = new MiniTurbo90;
-			this.miniGame.visible = false;
-			Com.addObjectAt( this.chatAndMiniGameLayer, this.miniGame, 570, 265 );
-			this.chatButton = Com.addDownButtonAt( this.chatAndMiniGameLayer, this.assetStr( "button_chat" ), this.assetStr( "button_chat" ), 740, 207, this.showChatBar.bind(this), true );
-			this.gameButton = Com.addDownButtonAt( this.chatAndMiniGameLayer, this.assetStr( "button_game" ), this.assetStr( "button_game" ), 735, 247, this.showMiniGameBar.bind(this), true );
-		}
 
 		Com.addDownButtonAt( this, this.assetStr( "power_up_info" ), this.assetStr( "power_up_info" ), 690, 47, this.showHelp, true );
 	}
@@ -367,18 +356,6 @@ class MultyPlayerBingo extends Multi75Super{
 		light2.scaleY = light1.scaleY = light2.scaleX = light1.scaleX = 3;
 		TweenerTool.tweenTo( light1, { rotation: 720 }, 600, 0, MDS.removeSelf.bind( this, light1 ), null, egret.Ease.sineInOut );
 		TweenerTool.tweenTo( light2, { rotation: -720 }, 600, 0, MDS.removeSelf.bind( this, light2 ), null, egret.Ease.sineInOut );
-	}
-
-	private showChatBar( event: egret.TouchEvent ){
-		this.miniGame.visible = false;
-		this.chatButton.x = 740;
-		this.gameButton.x = 735;
-	}
-
-	private showMiniGameBar( event: egret.TouchEvent ){
-		this.miniGame.visible = true;
-		this.chatButton.x = 735;
-		this.gameButton.x = 740;
 	}
 
 	protected getFinalWinner(){
