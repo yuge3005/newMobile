@@ -9,7 +9,6 @@ class MultiPlayerMachine extends egret.Sprite{
 	public inited: boolean = false;
 	private configUrl: string;
 	protected gameConfigFile: string;
-	protected _mcf: egret.MovieClipDataFactory;
 	protected languageObjectName: string;
 
 	protected ballArea: MultiGameBallLayer;
@@ -119,7 +118,7 @@ class MultiPlayerMachine extends egret.Sprite{
 		this.scaleY = BingoBackGroundSetting.gameSize.y / BingoBackGroundSetting.gameMask.height;
 		this.mask = BingoBackGroundSetting.gameMask;
 
-		this._mcf = BingoBackGroundSetting.initBackground( this );
+		MDS.mcFactory = BingoBackGroundSetting.initBackground( this );
 
 		this.addChild( this.ballArea );
 		this.addChild( this.cardArea );

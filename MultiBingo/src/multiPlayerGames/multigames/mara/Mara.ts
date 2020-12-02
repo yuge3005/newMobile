@@ -45,8 +45,6 @@ class Mara extends Multi75Super{
 	protected init(){
 		super.init();
 
-		MDS.mcFactory = this._mcf;
-
 		this.ballCountText = MDS.addGameText( this, 460, 8, 28, 0xda4d28, "ball", false, 58 );
 		this.ballCountText.textAlign = "center";
 		this.ballCountText.text = "";

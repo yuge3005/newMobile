@@ -34,8 +34,6 @@ class MultyPlayerBingo extends Multi75Super{
 	protected init(){
         super.init();
 
-		MDS.mcFactory = this._mcf;
-
 		this.ballCountText = MDS.addGameText( this, 575, 24, 20, 0xFFFFFF, "ball", false, 88 );
 		this.ballCountText.textAlign = "center";
 		this.ballCountText.text = "";
