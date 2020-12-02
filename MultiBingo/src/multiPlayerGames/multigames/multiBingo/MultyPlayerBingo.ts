@@ -28,7 +28,7 @@ class MultyPlayerBingo extends Multi75Super{
 		MultiPlayerGrid.linePicName = "11";
 		MultiPlayerGrid.zeroUIName = "12";
 
-		MultiPlayerGrid.defaultNumberSize = 22;
+		MultiPlayerGrid.defaultNumberSize = 55;
 	}
 
 	protected init(){

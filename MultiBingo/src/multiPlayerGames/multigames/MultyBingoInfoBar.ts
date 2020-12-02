@@ -19,6 +19,8 @@ class MultyBingoInfoBar extends egret.DisplayObjectContainer{
 		Com.addObjectAt( this, this.paytableUILayer, 311, 25 );
 
 		this.addFixText();
+
+		this.cacheAsBitmap = true;
 	}
 
 	protected addFixText(){
