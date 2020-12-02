@@ -33,10 +33,10 @@ class MultyPlayerBingo extends Multi75Super{
 	protected init(){
         super.init();
 
-		this.ballCountText = MDS.addGameText( this, 575, 24, 20, 0xFFFFFF, "ball", false, 88 );
+		this.ballCountText = MDS.addGameText( this, 300, 274, 40, 0xFFFFFF, "ball", false, 165 );
 		this.ballCountText.textAlign = "center";
 		this.ballCountText.text = "";
-		MDS.addGameText( this, 575, 49, 20, 0xFFFFFF, "ball", false, 88 ).textAlign = "center";
+		MDS.addGameText( this, 300, 327, 40, 0xFFFFFF, "ball", false, 165 ).textAlign = "center";
 
 		this.letsWait();
 	}
@@ -70,7 +70,7 @@ class MultyPlayerBingo extends Multi75Super{
 		this.recordPaytalbes();
 
 		this.energyBar = new MultiPlayerEnergy;
-		Com.addObjectAt( this, this.energyBar, 10, 235 );
+		Com.addObjectAt( this, this.energyBar, 293, 656 );
 		this.energyBar.addEventListener( "useEnergy", this.useEnergy, this );
 
 		this.bingoInfo = new MultiPlayerBingoInfoBar;
