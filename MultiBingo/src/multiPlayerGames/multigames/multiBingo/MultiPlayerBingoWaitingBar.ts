@@ -36,21 +36,20 @@ class MultiPlayerBingoWaitingBar extends Multi75WaitingBar{
 		this.rightButton = Com.addDownButtonAt( this.bottomBtnsContainer, "IdleTime_json.+", "IdleTime_json.+", 1206, 929, this.onBetIconStep.bind(this), true );
 		this.betStep = 1;
 
-		let titleSize: number = MuLang.language == "en" ? 20 : 16;
-		this.titleTxt = Com.addTextAt( this, 180, 150, 400, 32, titleSize, true, true );
+		let titleSize: number = MuLang.language == "en" ? 45 : 35;
+		this.titleTxt = Com.addTextAt( this, 540, 315, 940, 70, titleSize, true, true );
 		this.titleTxt.textColor = 0xF8A626;
 		this.titleTxt.verticalAlign = "middle";
 		this.titleTxt.text = MuLang.getText( "Boost your cards for better rewards!" );
-		this.upToTxt = Com.addTextAt( this, 100, 220, 385, 18, 18 );
+		this.upToTxt = Com.addTextAt( this, 100, 470, 400, 40, 40 );
 		this.upToTxt.textColor = 0x843B1C;
 		this.upToTxt.textAlign = "right";
 		this.upToTxt.text = MuLang.getText( "Up to" );
-		this.bingoAwardTxt = Com.addTextAt( this, 100, 217, 385, 24, 24, false, true );
+		this.bingoAwardTxt = Com.addTextAt( this, 970, 450, 440, 80, 80, false, true );
 		this.bingoAwardTxt.textColor = 0x3A1301;
 		this.bingoAwardTxt.textAlign = "left";
 		this.bingoAwardTxt.filters = [ new egret.DropShadowFilter(2, 45, 0x8A410D, 1, 3, 3, 3, egret.BitmapFilterQuality.HIGH) ];
-		this.bingoCoin = Com.addBitmapAt( this, "IdleTime_json.03" , 280, 212 );
-		this.bingoCoin.scaleX = this.bingoCoin.scaleY = 0.5;
+		this.bingoCoin = Com.addBitmapAt( this, "IdleTime_json.03" , 875, 450 );
 
 		this.initShowPrice();
 	}
@@ -80,10 +79,10 @@ class MultiPlayerBingoWaitingBar extends Multi75WaitingBar{
 		super.resetCardPrize();
 		this.bingoAwardTxt.text = "" + Math.floor( MultiPlayerMachine.oneCardPrize );
 
-		let len: number = 28 + this.upToTxt.textWidth + this.bingoAwardTxt.textWidth + 20;
-		this.bingoAwardTxt.x = 360 + len * 0.5 - this.bingoAwardTxt.textWidth;
-		this.bingoCoin.x = this.bingoAwardTxt.x - 38;
-		this.upToTxt.x = this.bingoCoin.x - this.upToTxt.width - 10;
+		let len: number = 120 + this.upToTxt.textWidth + this.bingoAwardTxt.textWidth;
+		this.bingoAwardTxt.x = 972 + len * 0.5 - this.bingoAwardTxt.textWidth;
+		this.bingoCoin.x = this.bingoAwardTxt.x - 100;
+		this.upToTxt.x = this.bingoCoin.x - this.upToTxt.width - 20;
 	}
 	
 	public hideBottomBtns( amount: number = 0 ){
@@ -98,10 +97,10 @@ class MultiPlayerBingoWaitingBar extends Multi75WaitingBar{
 		this.countDonwContainer = new egret.DisplayObjectContainer;
 		this.addChild( this.countDonwContainer );
 
-		Com.addBitmapAt( this.countDonwContainer, "IdleTime_json.!bg", 253, 272 );
-		Com.addBitmapAt( this.countDonwContainer, "IdleTime_json.!", 233, 258 );
+		Com.addBitmapAt( this.countDonwContainer, "IdleTime_json.!bg", 694, 596 );
+		Com.addBitmapAt( this.countDonwContainer, "IdleTime_json.!", 641, 547 );
 
-		this.waitingTxt = Com.addTextAt( this.countDonwContainer, 253, 272, 223, 82, 19 );
+		this.waitingTxt = Com.addTextAt( this.countDonwContainer, 718, 624, 560, 160, 48 );
 		this.waitingTxt.textColor = 0xE4AB23;
 		this.waitingTxt.textAlign = "center";
 		this.waitingTxt.verticalAlign = "middle";
@@ -110,7 +109,7 @@ class MultiPlayerBingoWaitingBar extends Multi75WaitingBar{
 
 	public showCountDown( countDown: number ){
 		if( this.waitingTxt ){
-			this.waitingTxt.size = 32;
+			this.waitingTxt.size = 80;
 			this.waitingTxt.bold = true;
 			this.waitingTxt.text = "" + countDown;
 		}

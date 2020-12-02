@@ -24,6 +24,8 @@ class Multi75WaitingBar extends WaitingBar{
 
 	public constructor() {
 		super();
+
+		this.cacheAsBitmap = true;
 	}
 
 	protected initShowPrice(){
