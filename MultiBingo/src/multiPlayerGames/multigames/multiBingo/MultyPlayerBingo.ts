@@ -15,7 +15,6 @@ class MultyPlayerBingo extends Multi75Super{
 		this.connetKeys = { zona: "MultiplayerZone", sala: "Multi67" };
 
 		this.ballArea = new MultiBingoBallLayer;
-		this.ballArea.mask = new egret.Rectangle( 0, 0, 560, 92 );
 
 		MultiCardLayer.cardType = MultiPlayerBingoCard;
 		MultiCardLayer.gridType = MultiPlayerBingoGrid;

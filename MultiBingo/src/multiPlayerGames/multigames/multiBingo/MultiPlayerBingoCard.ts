@@ -62,6 +62,7 @@ class MultiPlayerBingoCard extends Multi75Card{
 		Com.addBitmapAt( this.bingoMask, MultiPlayerMachine.getAssetStr( "BINGO-BG" ), 0, 0 );
 
 		let mc: egret.MovieClip = Com.addMovieClipAt( this.bingoMask, MDS.mcFactory, "multiBingo", 0, 0 );
+		mc.scaleX = mc.scaleY = 3.15;
 		mc.play();
 
 		MultyPlayerBingo.callBingoTimes++;
