@@ -191,10 +191,10 @@ class MultyPlayerBingo extends Multi75Super{
 		}
 
 		if( data.length == 1 ){
-			cards[0].scaleX = cards[0].scaleY = 2.05;
+			cards[0].scaleX = cards[0].scaleY = 1.4;
 		}
 		else{
-			cards[0].scaleX = cards[0].scaleY = 1;
+			cards[0].scaleX = cards[0].scaleY = 0.7;
 		}
 
 		this.waitingForStart = true;

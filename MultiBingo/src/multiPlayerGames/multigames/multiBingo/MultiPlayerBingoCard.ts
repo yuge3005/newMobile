@@ -2,6 +2,8 @@ class MultiPlayerBingoCard extends Multi75Card{
 
 	public constructor( cardId: number ) {
 		super( cardId );
+
+		this.scaleX = this.scaleY = 0.7;
 	}
 
 	protected wrongGridClick( event: egret.TouchEvent ): void{
