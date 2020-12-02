@@ -90,14 +90,12 @@ class MultiPlayerMachine extends egret.Sprite{
 	
 	private loadAsset( assetName: string ){
 		RES.addEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.loaded, this );
-		RES.addEventListener(RES.ResourceEvent.GROUP_PROGRESS, this.loadSoundsProgress, this);
 		RES.loadGroup( assetName, 0, this.preLoader );
 	}
 	
 	private loaded( event: RES.ResourceEvent ){
 		if( event.groupName != this.assetName )return;
 		MultiPlayerMachine.assetLoaded[this.assetName] = true;
-		RES.removeEventListener(RES.ResourceEvent.GROUP_PROGRESS, this.loadSoundsProgress, this);
 		RES.removeEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.loaded, this );
 
 		this.assetReady = true;
@@ -111,14 +109,6 @@ class MultiPlayerMachine extends egret.Sprite{
 		else loadedPart += this._assetLoaded * 0.9;
 		if( this.connectReady ) loadedPart += 0.1;
 		return loadedPart;
-	}
-
-	/**
-	 * init sounds
-	 */
-	private loadSoundsProgress(event: RES.ResourceEvent): void {
-		if( event.groupName != this.assetName )return;
-		this._assetLoaded = event.itemsLoaded / event.itemsTotal;
 	}
 
 	protected init(){
