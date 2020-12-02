@@ -25,15 +25,15 @@ class MultiPlayerBingoWaitingBar extends Multi75WaitingBar{
 		this.cardPriceCoins = [];
 		for( let i: number = 0; i < 4; i++ ){
 			let assetsName: string = "IdleTime_json." + nameLetter[i];
-			Com.addDownButtonAt( this.cardsBtnsContainer, assetsName, assetsName, 230 + i * 90, 320, this.onCardNumbersConfirm.bind(this), true ).name = "" + ( i + 1 );
-			this.cardPriceTexts[i] = Com.addTextAt( this.cardsBtnsContainer, 230 + i * 90 - 20, 339, 52, 11, 11 );
+			let itemX: number =  646 + i * 182;
+			Com.addDownButtonAt( this.cardsBtnsContainer, assetsName, assetsName, itemX, 597, this.onCardNumbersConfirm.bind(this), true ).name = "" + ( i + 1 );
+			this.cardPriceTexts[i] = Com.addTextAt( this.cardsBtnsContainer, itemX + 45, 597 + 132, 100, 25, 25 );
 			this.cardPriceTexts[i].bold = true;
-			this.cardPriceCoins[i] = Com.addBitmapAt( this.cardsBtnsContainer, MultiPlayerMachine.getAssetStr( "36" ), 230 + i * 90 - 35, 335 );
-			this.cardPriceCoins[i].scaleX = this.cardPriceCoins[i].scaleY = 0.45;
+			this.cardPriceCoins[i] = Com.addBitmapAt( this.cardsBtnsContainer, MultiPlayerMachine.getAssetStr( "36" ), itemX + 12, 597 + 122 );
 		}
 
-		this.leftButton = Com.addDownButtonAt( this.bottomBtnsContainer, "IdleTime_json.-", "IdleTime_json.-", 235, 410, this.onBetIconStep.bind(this), true );
-		this.rightButton = Com.addDownButtonAt( this.bottomBtnsContainer, "IdleTime_json.+", "IdleTime_json.+", 455, 410, this.onBetIconStep.bind(this), true );
+		this.leftButton = Com.addDownButtonAt( this.bottomBtnsContainer, "IdleTime_json.-", "IdleTime_json.-", 706, 929, this.onBetIconStep.bind(this), true );
+		this.rightButton = Com.addDownButtonAt( this.bottomBtnsContainer, "IdleTime_json.+", "IdleTime_json.+", 1206, 929, this.onBetIconStep.bind(this), true );
 		this.betStep = 1;
 
 		let titleSize: number = MuLang.language == "en" ? 20 : 16;
@@ -56,7 +56,7 @@ class MultiPlayerBingoWaitingBar extends Multi75WaitingBar{
 	}
 
 	protected rebuiltBetIcon( value: number ): egret.Bitmap{
-		return Com.addBitmapAt( this.bottomBtnsContainer,  "IdleTime_json." + value, 280, 415 );;
+		return Com.addBitmapAt( this.bottomBtnsContainer,  "IdleTime_json." + value, 812, 943 );
 	}
 
 	protected cardBought( amount: number ){
@@ -71,7 +71,8 @@ class MultiPlayerBingoWaitingBar extends Multi75WaitingBar{
 
 	protected cardPriceCoinPosition(){
 		for( let i: number = 0; i < 4; i++ ){
-			this.cardPriceCoins[i].x = ( 230 + i * 90 - 20 ) + ( this.cardPriceTexts[i].width - this.cardPriceTexts[i].textWidth >> 1 ) - 20;
+			let itemX: number =  646 + i * 182;
+			this.cardPriceCoins[i].x = ( itemX + 12 ) + ( this.cardPriceTexts[i].width - this.cardPriceTexts[i].textWidth >> 1 ) - 20;
 		}
 	}
 
