@@ -15,11 +15,11 @@ class MultiPlayerBingoWaitingBar extends Multi75WaitingBar{
 
 		this.bottomBtnsContainer = new egret.DisplayObjectContainer;
 		this.addChild( this.bottomBtnsContainer );
-		Com.addBitmapAt( this, "IdleTime_json.bg1", 95, 90 );
+		Com.addBitmapAt( this, "IdleTime_json.bg1", 397, 172 );
 		this.cardsBtnsContainer = new egret.DisplayObjectContainer;
 		this.addChild( this.cardsBtnsContainer );
 
-		Com.addBitmapAt( this.bottomBtnsContainer, "IdleTime_json.bg2", 180, 340 );
+		Com.addBitmapAt( this.bottomBtnsContainer, "IdleTime_json.bg2", 527, 757 );
 		let nameLetter: Array<string> = ["A","B","C","D"];
 		this.cardPriceTexts = [];
 		this.cardPriceCoins = [];
@@ -87,7 +87,7 @@ class MultiPlayerBingoWaitingBar extends Multi75WaitingBar{
 	
 	public hideBottomBtns( amount: number = 0 ){
 		this.bottomBtnsContainer.touchChildren = false;
-		TweenerTool.tweenTo( this.bottomBtnsContainer, { y: -100 }, 800 );
+		TweenerTool.tweenTo( this.bottomBtnsContainer, { y: -208 }, 800 );
 		this.cardsBtnsContainer.visible = false;
 
 		this.buildCountDownButtons();
