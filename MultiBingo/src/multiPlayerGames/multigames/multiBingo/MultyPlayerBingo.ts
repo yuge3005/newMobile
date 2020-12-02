@@ -75,7 +75,7 @@ class MultyPlayerBingo extends Multi75Super{
 		this.energyBar.addEventListener( "useEnergy", this.useEnergy, this );
 
 		this.bingoInfo = new MultiPlayerBingoInfoBar;
-		Com.addObjectAt( this, this.bingoInfo, 571, 95 );
+		Com.addObjectAt( this, this.bingoInfo, 1503, 246 );
 
 		this.dailogLayer = new egret.DisplayObjectContainer;
 		Com.addObjectAt( this, this.dailogLayer, 0, 0 );
@@ -86,9 +86,9 @@ class MultyPlayerBingo extends Multi75Super{
 		this.buildWaitingBar();
 
 		this.chatBar = new MultiPlayerBingoChatBar;
-		Com.addObjectAt( this.chatAndMiniGameLayer, this.chatBar, 570, 265 );
+		Com.addObjectAt( this.chatAndMiniGameLayer, this.chatBar, 1500, 588 );
 
-		Com.addDownButtonAt( this, this.assetStr( "power_up_info" ), this.assetStr( "power_up_info" ), 690, 47, this.showHelp, true );
+		Com.addDownButtonAt( this, this.assetStr( "power_up_info" ), this.assetStr( "power_up_info" ), 1565, 123, this.showHelp, true );
 	}
 
 	protected buildWaitingBar(){
