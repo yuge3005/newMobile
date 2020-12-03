@@ -346,10 +346,10 @@ class MultyPlayerBingo extends Multi75Super{
 	}
 
 	private endPowerLight(){
-		let light1: egret.Bitmap = Com.addBitmapAt( this, this.assetStr( "bg light" ), 35, 265 );
-		let light2: egret.Bitmap = Com.addBitmapAt( this, this.assetStr( "bg light" ), 35, 265 );
-		light2.anchorOffsetX = light1.anchorOffsetX = 35;
-		light2.anchorOffsetY = light1.anchorOffsetY = 21;
+		let light1: egret.Bitmap = Com.addBitmapAt( this, this.assetStr( "bg light" ), 365, 607 );
+		let light2: egret.Bitmap = Com.addBitmapAt( this, this.assetStr( "bg light" ), 365, 607 );
+		light2.anchorOffsetX = light1.anchorOffsetX = 91;
+		light2.anchorOffsetY = light1.anchorOffsetY = 54;
 		light2.scaleY = light1.scaleY = light2.scaleX = light1.scaleX = 3;
 		TweenerTool.tweenTo( light1, { rotation: 720 }, 600, 0, MDS.removeSelf.bind( this, light1 ), null, egret.Ease.sineInOut );
 		TweenerTool.tweenTo( light2, { rotation: -720 }, 600, 0, MDS.removeSelf.bind( this, light2 ), null, egret.Ease.sineInOut );
