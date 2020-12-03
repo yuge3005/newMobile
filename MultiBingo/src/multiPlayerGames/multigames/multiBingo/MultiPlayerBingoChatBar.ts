@@ -11,7 +11,7 @@ class MultiPlayerBingoChatBar extends MultiChatBar{
 		this.playerCountTxt = MDS.addGameText( this, 230 - 1500, - 428, 48, 0xFFFFFF, "", false, 230 );
 
 		this.avatarList = new MultiBingoAvatarArea;
-		Com.addObjectAt( this, this.avatarList, 4, -50 );
+		Com.addObjectAt( this, this.avatarList, 6, -105 );
 
 		this.headSize = 36;
 		this.lineGap = 5;
