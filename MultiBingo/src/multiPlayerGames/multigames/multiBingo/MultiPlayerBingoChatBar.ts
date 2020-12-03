@@ -5,7 +5,7 @@ class MultiPlayerBingoChatBar extends MultiChatBar{
 		Com.addBitmapAt( this, MultiPlayerMachine.getAssetStr( "3" ), 0, 0 );
 
 		this.addScrollArea( new egret.Rectangle( 13, 0, 160, 205 ), new egret.Point( 0, 15 ) );
-		this.addTextInput( new egret.Rectangle( 22, 240, 140, 18 ), 15 );
+		this.addTextInput( new egret.Rectangle( 50, 420, 340, 32 ), 32 );
 
 		this.cardCountTxt = MDS.addGameText( this, 35 - 1500, - 428, 48, 0xFFFFFF, "", false, 230 );
 		this.playerCountTxt = MDS.addGameText( this, 230 - 1500, - 428, 48, 0xFFFFFF, "", false, 230 );

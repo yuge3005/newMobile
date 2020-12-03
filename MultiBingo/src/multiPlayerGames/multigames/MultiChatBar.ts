@@ -33,9 +33,11 @@ class MultiChatBar extends egret.DisplayObjectContainer{
 		this.enterText.width = textRect.width;
 		this.enterText.height = textRect.height;
 		this.enterText.size = size;
+		this.enterText.textAlign = "center";
 		this.enterText.verticalAlign = "middle";
 		this.enterText.multiline = true;
 		this.enterText.prompt = MuLang.getText( "enter_text" );
+		this.enterText.promptColor = 0xFFFFFF;
 		Com.addObjectAt( this, this.enterText, textRect.x, textRect.y );
 		this.enterText.addEventListener( egret.Event.CHANGE, this.onTxtChang, this);
 	}
