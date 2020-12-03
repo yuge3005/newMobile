@@ -339,7 +339,7 @@ class MultyPlayerBingo extends Multi75Super{
 		let pos: egret.Point = this.cardArea.positionOnCard( cardIndex, gridIndex );
 		let charger: egret.Bitmap = Com.addBitmapAt( this, this.assetStr( "charger-icon" ), pos.x, pos.y );
 		let tw: egret.Tween = egret.Tween.get( charger );
-		tw.to( { x: 10, y: 235 }, 400, egret.Ease.sineIn );
+		tw.to( { x: 300, y: 537 }, 400, egret.Ease.sineIn );
 		tw.call( this.endPowerLight.bind( this ) );
 		tw.to( { alpha: 0 }, 133 );
 		tw.call( MDS.removeSelf.bind( this, charger ) );
@@ -350,9 +350,9 @@ class MultyPlayerBingo extends Multi75Super{
 		let light2: egret.Bitmap = Com.addBitmapAt( this, this.assetStr( "bg light" ), 365, 607 );
 		light2.anchorOffsetX = light1.anchorOffsetX = 91;
 		light2.anchorOffsetY = light1.anchorOffsetY = 54;
-		light2.scaleY = light1.scaleY = light2.scaleX = light1.scaleX = 3;
-		TweenerTool.tweenTo( light1, { rotation: 720 }, 600, 0, MDS.removeSelf.bind( this, light1 ), null, egret.Ease.sineInOut );
-		TweenerTool.tweenTo( light2, { rotation: -720 }, 600, 0, MDS.removeSelf.bind( this, light2 ), null, egret.Ease.sineInOut );
+		light2.scaleY = light1.scaleY = light2.scaleX = light1.scaleX = 2;
+		TweenerTool.tweenTo( light1, { rotation: 360 }, 500, 0, MDS.removeSelf.bind( this, light1 ), null, egret.Ease.sineInOut );
+		TweenerTool.tweenTo( light2, { rotation: -360 }, 500, 0, MDS.removeSelf.bind( this, light2 ), null, egret.Ease.sineInOut );
 	}
 
 	protected getFinalWinner(){

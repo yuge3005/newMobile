@@ -47,6 +47,7 @@ class MultiPlayerBingoChatBar extends MultiChatBar{
 		tipTxt.text = message;
 		if( tipTxt.textHeight > tipTxt.height ) tipTxt.height = tipTxt.textHeight;
 
+		userInfo.cacheAsBitmap = true;
 		return userInfo;
 	}
 }

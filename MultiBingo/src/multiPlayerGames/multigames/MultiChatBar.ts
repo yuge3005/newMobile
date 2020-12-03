@@ -26,7 +26,6 @@ class MultiChatBar extends egret.DisplayObjectContainer{
 		Com.addObjectAt( this, this.scrollArea, startPoint.x, startPoint.y );
 		this.scrollBar = new egret.DisplayObjectContainer;
 		this.scrollArea.setContent( this.scrollBar );
-		this.scrollBar.cacheAsBitmap = true;
 	}
 
 	protected addTextInput( textRect: egret.Rectangle, size: number ){
@@ -69,6 +68,7 @@ class MultiChatBar extends egret.DisplayObjectContainer{
 		let tipTxt: TextLabel = Com.addLabelAt( roundOverInfo, 70, 22, 160, 24, 24 );
 		tipTxt.textColor = 0;
 		tipTxt.setText( MuLang.getText( "round_over" ) );
+		roundOverInfo.cacheAsBitmap = true;
 		this.resetScroll();
 	}
 
@@ -79,6 +79,7 @@ class MultiChatBar extends egret.DisplayObjectContainer{
 		let tipTxt: TextLabel = Com.addLabelAt( roundStartInfo, 70, 22, 160, 24, 24 );
 		tipTxt.textColor = 0;
 		tipTxt.setText( MuLang.getText( "round_start" ) );
+		roundStartInfo.cacheAsBitmap = true;
 		this.resetScroll();
 	}
 
