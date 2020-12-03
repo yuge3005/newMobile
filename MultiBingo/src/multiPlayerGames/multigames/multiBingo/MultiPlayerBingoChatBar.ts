@@ -7,10 +7,8 @@ class MultiPlayerBingoChatBar extends MultiChatBar{
 		this.addScrollArea( new egret.Rectangle( 13, 0, 160, 205 ), new egret.Point( 0, 15 ) );
 		this.addTextInput( new egret.Rectangle( 22, 240, 140, 18 ), 15 );
 
-		this.cardCountTxt = Com.addTextAt( this, 10, 294 + BrowserInfo.textUp, 100, 12, 12, false, true );
-		this.cardCountTxt.scaleX = 0.8;
-		this.playerCountTxt = Com.addTextAt( this, 90, 294 + BrowserInfo.textUp, 100, 12, 12, false, true );
-		this.playerCountTxt.scaleX = 0.8;
+		this.cardCountTxt = MDS.addGameText( this, 35 - 1500, - 428, 48, 0xFFFFFF, "", false, 230 );
+		this.playerCountTxt = MDS.addGameText( this, 230 - 1500, - 428, 48, 0xFFFFFF, "", false, 230 );
 
 		this.avatarList = new MultiBingoAvatarArea;
 		Com.addObjectAt( this, this.avatarList, 4, -50 );

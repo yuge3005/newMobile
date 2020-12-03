@@ -24,10 +24,10 @@ class MaraChatBar extends MultiChatBar{
 		tx.bold = true;
 		tx.text = MuLang.getText( "send", MuLang.CASE_UPPER );
 
-		this.cardCountTxt = Com.addTextAt( this, -500, -192 + BrowserInfo.textUp, 100, 12, 12, false, true );
+		this.cardCountTxt = Com.addLabelAt( this, -500, -192 + BrowserInfo.textUp, 100, 12, 12, false, true );
 		this.cardCountTxt.textAlign = "left";
 		this.cardCountTxt.scaleX = 0.77;
-		this.playerCountTxt = Com.addTextAt( this, -500, -224 + BrowserInfo.textUp, 100, 12, 12, false, true );
+		this.playerCountTxt = Com.addLabelAt( this, -500, -224 + BrowserInfo.textUp, 100, 12, 12, false, true );
 		this.playerCountTxt.textAlign = "left";
 		this.playerCountTxt.scaleX = 0.77;
 

@@ -71,7 +71,7 @@ class MultiPlayerBingoCard extends Multi75Card{
 	public checkNumber( ballIndex: number ): number {
 		let index: number = super.checkNumber( ballIndex );
 		if( index >= 0 && !this.handPt ){
-			this.handPt = Com.addMovieClipAt( this, MDS.mcFactory, index % 5 == 4 ? "hand2" : "hand1", ( index % 5 ) * 43 + 9, Math.floor( index / 5 ) * 40 + 25 );
+			this.handPt = Com.addMovieClipAt( this, MDS.mcFactory, index % 5 == 4 ? "hand2" : "hand1", ( index % 5 ) * 135 + 28, Math.floor( index / 5 ) * 125 + 76 );
 			this.handPt.name = "" + index;
 		}
 		return index;
