@@ -18,7 +18,7 @@ class MultiPlayerEnergy extends egret.DisplayObjectContainer{
 			this.powerUpParticle.start();
 
 			this.powerUpBlinkLight = Com.addMovieClipAt( this, MDS.mcFactory, "blinkLight", 0, 5 );
-			
+
 			this.cacheAsBitmap = false;
 		}
 		this.powerUpBtn.enabled = value >= 1;
@@ -37,7 +37,7 @@ class MultiPlayerEnergy extends egret.DisplayObjectContainer{
 	public constructor() {
 		super();
 
-		this.powerUpBtn = Com.addDownButtonAt( this, MultiPlayerMachine.getAssetStr( "charger-icon" ), MultiPlayerMachine.getAssetStr( "charger-icon" ), 0, 5, this.onPowerBtnClick.bind(this), false );
+		this.powerUpBtn = Com.addDownButtonAt( this, MultiPlayerMachine.getAssetStr( "charger-icon" ), MultiPlayerMachine.getAssetStr( "charger-icon" ), 8, -120, this.onPowerBtnClick.bind(this), false );
 		this.powerUpBtn.disabledFilter = MatrixTool.colorMatrix( 1, 0, 1 );
 		this.powerUpBtn.enabled = false;
 		this.powerProcess = Com.addBitmapAt( this, MultiPlayerMachine.getAssetStr( "chargerbar_01" ), 38, 36 );
@@ -45,8 +45,8 @@ class MultiPlayerEnergy extends egret.DisplayObjectContainer{
 		this.powerProcess.mask = new egret.Rectangle( 0, 369, 72, 0 );
 
 		this.powerUpTypeIcon = new egret.Bitmap;
-		this.powerUpTypeIcon.x = -10
-		this.powerUpTypeIcon.y = -3;
+		this.powerUpTypeIcon.x = 8 - 23;
+		this.powerUpTypeIcon.y = -120 - 21;
 		this.addChild( this.powerUpTypeIcon );
 	}
 

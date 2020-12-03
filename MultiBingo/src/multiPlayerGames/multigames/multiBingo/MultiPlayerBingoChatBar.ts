@@ -30,7 +30,7 @@ class MultiPlayerBingoChatBar extends MultiChatBar{
 		nameTxt.setText( userName );
 
 		if( tipBg ){
-			Com.addBitmapAt( userInfo, MultiPlayerMachine.getAssetStr( "user_join" ), 98, 38 );
+			Com.addBitmapAt( userInfo, MultiPlayerMachine.getAssetStr( "user_join" ), 92, 38 );
 		}
 
 		let tipTxt: egret.TextField = Com.addTextAt( userInfo, 98, this.tipPositionY, 280, 25, 25 );
