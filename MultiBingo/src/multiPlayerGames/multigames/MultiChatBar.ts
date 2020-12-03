@@ -26,6 +26,7 @@ class MultiChatBar extends egret.DisplayObjectContainer{
 		Com.addObjectAt( this, this.scrollArea, startPoint.x, startPoint.y );
 		this.scrollBar = new egret.DisplayObjectContainer;
 		this.scrollArea.setContent( this.scrollBar );
+		this.scrollBar.cacheAsBitmap = true;
 	}
 
 	protected addTextInput( textRect: egret.Rectangle, size: number ){
@@ -65,9 +66,9 @@ class MultiChatBar extends egret.DisplayObjectContainer{
 		let roundOverInfo: egret.DisplayObjectContainer = new egret.DisplayObjectContainer;
 		Com.addObjectAt( this.scrollBar, roundOverInfo, this.leftMargin, this.scrollHeight );
 		let headIcon: egret.Bitmap = Com.addBitmapAt( roundOverInfo, MultiPlayerMachine.getAssetStr( "round_over" ), 0, 0 );
-		let tipTxt: egret.TextField = Com.addTextAt( roundOverInfo, 38, 13 + BrowserInfo.textUp, 104, 13, 13 );
+		let tipTxt: TextLabel = Com.addLabelAt( roundOverInfo, 70, 22, 160, 24, 24 );
 		tipTxt.textColor = 0;
-		tipTxt.text = MuLang.getText( "round_over" );
+		tipTxt.setText( MuLang.getText( "round_over" ) );
 		this.resetScroll();
 	}
 
@@ -75,9 +76,9 @@ class MultiChatBar extends egret.DisplayObjectContainer{
 		let roundStartInfo: egret.DisplayObjectContainer = new egret.DisplayObjectContainer;
 		Com.addObjectAt( this.scrollBar, roundStartInfo, this.leftMargin, this.scrollHeight );
 		let headIcon: egret.Bitmap = Com.addBitmapAt( roundStartInfo, MultiPlayerMachine.getAssetStr( "round_start" ), 0, 0 );
-		let tipTxt: egret.TextField = Com.addTextAt( roundStartInfo, 38, 13 + BrowserInfo.textUp, 104, 13, 13 );
+		let tipTxt: TextLabel = Com.addLabelAt( roundStartInfo, 70, 22, 160, 24, 24 );
 		tipTxt.textColor = 0;
-		tipTxt.text = MuLang.getText( "round_start" );
+		tipTxt.setText( MuLang.getText( "round_start" ) );
 		this.resetScroll();
 	}
 
