@@ -12,19 +12,19 @@
 			"name": "multiPlayerBingo_conf"
 		},
 		{
-			"url": "assets/multiPlayerBingo.json",
+			"url": "game/carnaval/multiPlayerBingo.json",
 			"type": "sheet",
 			"name": "multiPlayerBingo_json",
 			"subkeys": "02,03,04,05,06,08,09,1,10,11,12,12_alpha,19,3,36,BG2,BINGO,BINGO-BG,HAND,alphaBg,bg light,bingoDeltaBlank,bingoDeltaMark,box1,box2,button_chat,button_game,charger bar,charger-icon,chargerbar_01,chargerbar_01_bg,coins_ball_ppwer,coins_number3_power,coins_number5_power,gift_number_power,head_icon,history,lucky_ball,lucky_ball3_power,power_up_info,round_over,round_start,user_join"
 		},
 		{
-			"url": "assets/roundOverTime.json",
+			"url": "game/carnaval/roundOverTime.json",
 			"type": "sheet",
 			"name": "roundOverTime_json",
 			"subkeys": "bg,box1,box2,x,x1,x3"
 		},
 		{
-			"url": "assets/IdleTime.json",
+			"url": "game/carnaval/IdleTime.json",
 			"type": "sheet",
 			"name": "IdleTime_json",
 			"subkeys": "!,!bg,+,-,03,1,2,3,34,A,B,C,D,bg1,bg2,e"
@@ -50,22 +50,22 @@
 			"name": "mpb_wrong_number_clicked_mp3"
 		},
 		{
-			"url": "assets/multiPlayerBingoAnimation.png",
+			"url": "game/carnaval/multiPlayerBingoAnimation.png",
 			"type": "image",
 			"name": "multiPlayerBingoAnimation_png"
 		},
 		{
-			"url": "assets/multiPlayerBingoAnimation.json",
+			"url": "game/carnaval/multiPlayerBingoAnimation.json",
 			"type": "json",
 			"name": "multiPlayerBingoAnimation_json"
 		},
 		{
-			"url": "assets/multiPlayerParticle.png",
+			"url": "game/carnaval/multiPlayerParticle.png",
 			"type": "image",
 			"name": "multiPlayerParticle_png"
 		},
 		{
-			"url": "assets/multiPlayerParticle.json",
+			"url": "game/carnaval/multiPlayerParticle.json",
 			"type": "json",
 			"name": "multiPlayerParticle_json"
 		},
