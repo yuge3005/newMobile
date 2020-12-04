@@ -30,22 +30,22 @@
 			"subkeys": "!,!bg,+,-,03,1,2,3,34,A,B,C,D,bg1,bg2,e"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/mpb_bingo_reduced.mp3",
+			"url": "game/carnaval/sound/mpb_bingo_reduced.mp3",
 			"type": "sound",
 			"name": "mpb_bingo_reduced_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/mpb_right_number_clicked.mp3",
+			"url": "game/carnaval/sound/mpb_right_number_clicked.mp3",
 			"type": "sound",
 			"name": "mpb_right_number_clicked_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/mpb_round_start.mp3",
+			"url": "game/carnaval/sound/mpb_round_start.mp3",
 			"type": "sound",
 			"name": "mpb_round_start_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/mpb_wrong_number_clicked.mp3",
+			"url": "game/carnaval/sound/mpb_wrong_number_clicked.mp3",
 			"type": "sound",
 			"name": "mpb_wrong_number_clicked_mp3"
 		},
@@ -80,392 +80,392 @@
 			"name": "flyingCoins_json"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/67.mp3",
+			"url": "game/carnaval/sound/67.mp3",
 			"type": "sound",
 			"name": "67_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/70.mp3",
+			"url": "game/carnaval/sound/70.mp3",
 			"type": "sound",
 			"name": "70_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/69.mp3",
+			"url": "game/carnaval/sound/69.mp3",
 			"type": "sound",
 			"name": "69_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/68.mp3",
+			"url": "game/carnaval/sound/68.mp3",
 			"type": "sound",
 			"name": "68_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/71.mp3",
+			"url": "game/carnaval/sound/71.mp3",
 			"type": "sound",
 			"name": "71_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/72.mp3",
+			"url": "game/carnaval/sound/72.mp3",
 			"type": "sound",
 			"name": "72_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/74.mp3",
+			"url": "game/carnaval/sound/74.mp3",
 			"type": "sound",
 			"name": "74_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/73.mp3",
+			"url": "game/carnaval/sound/73.mp3",
 			"type": "sound",
 			"name": "73_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/75.mp3",
+			"url": "game/carnaval/sound/75.mp3",
 			"type": "sound",
 			"name": "75_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/mpb_Bingo.mp3",
+			"url": "game/carnaval/sound/mpb_Bingo.mp3",
 			"type": "sound",
 			"name": "mpb_Bingo_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/mpb_powerup_activate.mp3",
+			"url": "game/carnaval/sound/mpb_powerup_activate.mp3",
 			"type": "sound",
 			"name": "mpb_powerup_activate_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/1.mp3",
+			"url": "game/carnaval/sound/1.mp3",
 			"type": "sound",
 			"name": "1_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/2.mp3",
+			"url": "game/carnaval/sound/2.mp3",
 			"type": "sound",
 			"name": "2_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/3.mp3",
+			"url": "game/carnaval/sound/3.mp3",
 			"type": "sound",
 			"name": "3_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/5.mp3",
+			"url": "game/carnaval/sound/5.mp3",
 			"type": "sound",
 			"name": "5_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/4.mp3",
+			"url": "game/carnaval/sound/4.mp3",
 			"type": "sound",
 			"name": "4_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/6.mp3",
+			"url": "game/carnaval/sound/6.mp3",
 			"type": "sound",
 			"name": "6_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/7.mp3",
+			"url": "game/carnaval/sound/7.mp3",
 			"type": "sound",
 			"name": "7_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/10.mp3",
+			"url": "game/carnaval/sound/10.mp3",
 			"type": "sound",
 			"name": "10_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/9.mp3",
+			"url": "game/carnaval/sound/9.mp3",
 			"type": "sound",
 			"name": "9_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/8.mp3",
+			"url": "game/carnaval/sound/8.mp3",
 			"type": "sound",
 			"name": "8_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/11.mp3",
+			"url": "game/carnaval/sound/11.mp3",
 			"type": "sound",
 			"name": "11_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/12.mp3",
+			"url": "game/carnaval/sound/12.mp3",
 			"type": "sound",
 			"name": "12_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/14.mp3",
+			"url": "game/carnaval/sound/14.mp3",
 			"type": "sound",
 			"name": "14_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/15.mp3",
+			"url": "game/carnaval/sound/15.mp3",
 			"type": "sound",
 			"name": "15_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/13.mp3",
+			"url": "game/carnaval/sound/13.mp3",
 			"type": "sound",
 			"name": "13_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/16.mp3",
+			"url": "game/carnaval/sound/16.mp3",
 			"type": "sound",
 			"name": "16_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/17.mp3",
+			"url": "game/carnaval/sound/17.mp3",
 			"type": "sound",
 			"name": "17_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/19.mp3",
+			"url": "game/carnaval/sound/19.mp3",
 			"type": "sound",
 			"name": "19_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/18.mp3",
+			"url": "game/carnaval/sound/18.mp3",
 			"type": "sound",
 			"name": "18_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/20.mp3",
+			"url": "game/carnaval/sound/20.mp3",
 			"type": "sound",
 			"name": "20_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/21.mp3",
+			"url": "game/carnaval/sound/21.mp3",
 			"type": "sound",
 			"name": "21_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/22.mp3",
+			"url": "game/carnaval/sound/22.mp3",
 			"type": "sound",
 			"name": "22_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/23.mp3",
+			"url": "game/carnaval/sound/23.mp3",
 			"type": "sound",
 			"name": "23_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/24.mp3",
+			"url": "game/carnaval/sound/24.mp3",
 			"type": "sound",
 			"name": "24_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/25.mp3",
+			"url": "game/carnaval/sound/25.mp3",
 			"type": "sound",
 			"name": "25_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/28.mp3",
+			"url": "game/carnaval/sound/28.mp3",
 			"type": "sound",
 			"name": "28_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/29.mp3",
+			"url": "game/carnaval/sound/29.mp3",
 			"type": "sound",
 			"name": "29_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/27.mp3",
+			"url": "game/carnaval/sound/27.mp3",
 			"type": "sound",
 			"name": "27_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/26.mp3",
+			"url": "game/carnaval/sound/26.mp3",
 			"type": "sound",
 			"name": "26_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/30.mp3",
+			"url": "game/carnaval/sound/30.mp3",
 			"type": "sound",
 			"name": "30_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/31.mp3",
+			"url": "game/carnaval/sound/31.mp3",
 			"type": "sound",
 			"name": "31_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/32.mp3",
+			"url": "game/carnaval/sound/32.mp3",
 			"type": "sound",
 			"name": "32_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/33.mp3",
+			"url": "game/carnaval/sound/33.mp3",
 			"type": "sound",
 			"name": "33_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/34.mp3",
+			"url": "game/carnaval/sound/34.mp3",
 			"type": "sound",
 			"name": "34_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/35.mp3",
+			"url": "game/carnaval/sound/35.mp3",
 			"type": "sound",
 			"name": "35_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/37.mp3",
+			"url": "game/carnaval/sound/37.mp3",
 			"type": "sound",
 			"name": "37_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/36.mp3",
+			"url": "game/carnaval/sound/36.mp3",
 			"type": "sound",
 			"name": "36_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/39.mp3",
+			"url": "game/carnaval/sound/39.mp3",
 			"type": "sound",
 			"name": "39_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/38.mp3",
+			"url": "game/carnaval/sound/38.mp3",
 			"type": "sound",
 			"name": "38_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/41.mp3",
+			"url": "game/carnaval/sound/41.mp3",
 			"type": "sound",
 			"name": "41_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/40.mp3",
+			"url": "game/carnaval/sound/40.mp3",
 			"type": "sound",
 			"name": "40_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/42.mp3",
+			"url": "game/carnaval/sound/42.mp3",
 			"type": "sound",
 			"name": "42_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/43.mp3",
+			"url": "game/carnaval/sound/43.mp3",
 			"type": "sound",
 			"name": "43_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/46.mp3",
+			"url": "game/carnaval/sound/46.mp3",
 			"type": "sound",
 			"name": "46_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/47.mp3",
+			"url": "game/carnaval/sound/47.mp3",
 			"type": "sound",
 			"name": "47_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/45.mp3",
+			"url": "game/carnaval/sound/45.mp3",
 			"type": "sound",
 			"name": "45_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/44.mp3",
+			"url": "game/carnaval/sound/44.mp3",
 			"type": "sound",
 			"name": "44_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/48.mp3",
+			"url": "game/carnaval/sound/48.mp3",
 			"type": "sound",
 			"name": "48_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/49.mp3",
+			"url": "game/carnaval/sound/49.mp3",
 			"type": "sound",
 			"name": "49_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/50.mp3",
+			"url": "game/carnaval/sound/50.mp3",
 			"type": "sound",
 			"name": "50_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/51.mp3",
+			"url": "game/carnaval/sound/51.mp3",
 			"type": "sound",
 			"name": "51_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/52.mp3",
+			"url": "game/carnaval/sound/52.mp3",
 			"type": "sound",
 			"name": "52_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/53.mp3",
+			"url": "game/carnaval/sound/53.mp3",
 			"type": "sound",
 			"name": "53_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/54.mp3",
+			"url": "game/carnaval/sound/54.mp3",
 			"type": "sound",
 			"name": "54_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/55.mp3",
+			"url": "game/carnaval/sound/55.mp3",
 			"type": "sound",
 			"name": "55_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/56.mp3",
+			"url": "game/carnaval/sound/56.mp3",
 			"type": "sound",
 			"name": "56_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/57.mp3",
+			"url": "game/carnaval/sound/57.mp3",
 			"type": "sound",
 			"name": "57_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/60.mp3",
+			"url": "game/carnaval/sound/60.mp3",
 			"type": "sound",
 			"name": "60_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/58.mp3",
+			"url": "game/carnaval/sound/58.mp3",
 			"type": "sound",
 			"name": "58_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/59.mp3",
+			"url": "game/carnaval/sound/59.mp3",
 			"type": "sound",
 			"name": "59_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/61.mp3",
+			"url": "game/carnaval/sound/61.mp3",
 			"type": "sound",
 			"name": "61_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/62.mp3",
+			"url": "game/carnaval/sound/62.mp3",
 			"type": "sound",
 			"name": "62_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/65.mp3",
+			"url": "game/carnaval/sound/65.mp3",
 			"type": "sound",
 			"name": "65_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/63.mp3",
+			"url": "game/carnaval/sound/63.mp3",
 			"type": "sound",
 			"name": "63_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/64.mp3",
+			"url": "game/carnaval/sound/64.mp3",
 			"type": "sound",
 			"name": "64_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/66.mp3",
+			"url": "game/carnaval/sound/66.mp3",
 			"type": "sound",
 			"name": "66_mp3"
 		},
 		{
-			"url": "assets/sound/multiPlayerBingo/mpb_round_end.mp3",
+			"url": "game/carnaval/sound/mpb_round_end.mp3",
 			"type": "sound",
 			"name": "mpb_round_end_mp3"
 		},
