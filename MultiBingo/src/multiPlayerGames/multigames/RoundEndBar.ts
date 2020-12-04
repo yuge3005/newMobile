@@ -1,9 +1,6 @@
 class RoundEndBar extends MultiCoverBars{
 
 	private titleTxt: egret.TextField;
-	private bingoNum: egret.TextField;
-	private treasureNum: egret.TextField;
-	private powerUpNum: egret.TextField;
 	private totalWinNum: egret.TextField;
 	private winCoinIcon: egret.Bitmap;
 
@@ -55,45 +52,46 @@ class RoundEndBar extends MultiCoverBars{
 		tw.to( { scaleX: 1, scaleY: 1, alpha: 1 }, 300, egret.Ease.sineOut );
 		tw.wait( 100 );
 		tw.to( { x: itemBg.x + offsetX }, 200 );
-		tw.call( callback.bind( this ) );
+		tw.call( callback.bind( this, itemBg ) );
 
 		TweenerTool.tweenTo( whiteMask, { alpha: 0 }, 100, 300 + delay );
 	}
 
-	private bingoWin(){
-		let bingoTxt: egret.TextField = Com.addTextAt( this, 228, 240, 80, 14, 14 );
-		bingoTxt.textColor = 0x0;
-		bingoTxt.text = MuLang.getText( "bingo", MuLang.CASE_UPPER );
-		this.bingoNum = Com.addTextAt( this, 228, 325, 80, 14, 14 );
-		this.bingoNum.textColor = 0x0;
-		this.bingoNum.text = "x" + MultyPlayerBingo.callBingoTimes;
-		Com.addBitmapAt( this, "roundOverTime_json.x1", 240, 258 );
+	private bingoWin( itemBg: egret.DisplayObjectContainer ){
+		this.itemText( itemBg, 25, "bingo" );
+		let bingoNum: TextLabel  = this.itemText( itemBg, 227 );
+		bingoNum.setText( "x" + MultyPlayerBingo.callBingoTimes );
+		Com.addBitmapAtMiddle( itemBg, "roundOverTime_json.x1", 105, 140 );
 
+		itemBg.cacheAsBitmap = true;
 		if( MultyPlayerBingo.callBingoTimes )this.flyCoinsFrom( 270 );
 	}
 
-	private powerUpWin(){
-		let powerUpTxt: egret.TextField = Com.addTextAt( this, 438, 240, 80, 14, 14 );
-		powerUpTxt.textColor = 0x0;
-		powerUpTxt.text = MuLang.getText( "powerUp", MuLang.CASE_UPPER );
-		this.powerUpNum = Com.addTextAt( this, 438, 325, 80, 14, 14 );
-		this.powerUpNum.textColor = 0x0;
-		this.powerUpNum.text = "x" + MultyPlayerBingo.powerUpTimes;
-		Com.addBitmapAt( this, "roundOverTime_json.x3", 455, 255 );
+	private powerUpWin( itemBg: egret.DisplayObjectContainer ){
+		this.itemText( itemBg, 25, "powerUp" );
+		let powerUpNum: TextLabel = this.itemText( itemBg, 227 );
+		powerUpNum.setText( "x" + MultyPlayerBingo.powerUpTimes );
+		Com.addBitmapAtMiddle( itemBg, "roundOverTime_json.x3", 105, 140 );
 
+		itemBg.cacheAsBitmap = true;
 		if( MultyPlayerBingo.powerUpTimes )this.flyCoinsFrom( 476 );
 	}
 
-	private treasureWin(){
-		let treasureTxt: egret.TextField = Com.addTextAt( this, 333, 240, 80, 14, 14 );
-		treasureTxt.textColor = 0x0;
-		treasureTxt.text = MuLang.getText( "treasure", MuLang.CASE_UPPER );
-		this.treasureNum = Com.addTextAt( this, 333, 325, 80, 14, 14 );
-		this.treasureNum.textColor = 0x0;
-		this.treasureNum.text = "x" + MultyPlayerBingo.openBoxTimes;
-		Com.addBitmapAt( this, "roundOverTime_json.box2", 330, 245 );
+	private treasureWin( itemBg: egret.DisplayObjectContainer ){
+		this.itemText( itemBg, 25, "treasure" );
+		let treasureNum: TextLabel = this.itemText( itemBg, 227 );
+		treasureNum.setText( "x" + MultyPlayerBingo.openBoxTimes );
+		Com.addBitmapAtMiddle( itemBg, "roundOverTime_json.box2", 105, 140 );
 
+		itemBg.cacheAsBitmap = true;
 		if( MultyPlayerBingo.openBoxTimes )this.flyCoinsFrom( 373 );
+	}
+
+	private itemText( itemBg: egret.DisplayObjectContainer, y: number, tx: string = null ): TextLabel{
+		let lb: TextLabel = Com.addLabelAt( itemBg, 10, y, 190, 36, 36 );
+		lb.textColor = 0x0;
+		if( tx )lb.setText( MuLang.getText( tx, MuLang.CASE_UPPER ) );
+		return lb;
 	}
 
 	private flyCoinsFrom( startX: number ){
