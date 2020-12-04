@@ -30,13 +30,12 @@ class RoundEndBar extends MultiCoverBars{
 		this.showItemBg( 270, this.powerUpWin, 400 );
 		this.showItemBg( 0, this.treasureWin, 800 );
 
-		this.totalWinNum = Com.addTextAt( this, 200, 368, 385, 24, 24, false, true );
+		this.totalWinNum = Com.addTextAt( this, 595, 709, 850, 80, 80, false, true );
 		this.totalWinNum.textColor = 0x3A1301;
 		this.totalWinNum.filters = [ new egret.DropShadowFilter(2, 45, 0x8A410D, 1, 3, 3, 3, egret.BitmapFilterQuality.HIGH) ];
 		this.totalWinNum.text = "" + Math.floor( MultyPlayerBingo.powerUpCoins + MultiPlayerMachine.oneCardPrize * MultyPlayerBingo.callBingoTimes );
-		this.winCoinIcon = Com.addBitmapAt( this, "IdleTime_json.03", 0, 365 );
-		this.winCoinIcon.scaleX = this.winCoinIcon.scaleY = 0.5;
-		this.winCoinIcon.x = 320 + this.totalWinNum.width - this.totalWinNum.textWidth >> 1;
+		this.winCoinIcon = Com.addBitmapAt( this, "IdleTime_json.03", 0, 709 );
+		this.winCoinIcon.x = 510 * 2 + this.totalWinNum.width - this.totalWinNum.textWidth >> 1;
 	}
 
 	private showItemBg( offsetX: number, callback: Function, delay: number ){
