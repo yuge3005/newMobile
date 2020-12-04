@@ -26,8 +26,8 @@ class RoundEndBar extends MultiCoverBars{
 		this.titleTxt.textColor = 0xFBE12D;
 		this.titleTxt.text = MuLang.getText( "rewardsFrom" );
 
-		this.showItemBg( -105, this.bingoWin, 0 );
-		this.showItemBg( 105, this.powerUpWin, 400 );
+		this.showItemBg( -270, this.bingoWin, 0 );
+		this.showItemBg( 270, this.powerUpWin, 400 );
 		this.showItemBg( 0, this.treasureWin, 800 );
 
 		this.totalWinNum = Com.addTextAt( this, 200, 368, 385, 24, 24, false, true );
@@ -41,14 +41,14 @@ class RoundEndBar extends MultiCoverBars{
 
 	private showItemBg( offsetX: number, callback: Function, delay: number ){
 		let itemBg: egret.DisplayObjectContainer = new egret.DisplayObjectContainer;
-		itemBg.anchorOffsetX = 43;
-		itemBg.anchorOffsetY = 56;
+		itemBg.anchorOffsetX = 105;
+		itemBg.anchorOffsetY = 140;
 		itemBg.alpha = 0.0;
-		Com.addObjectAt( this, itemBg, 275 + 43 + 55, 141 + 56 + 90 );
+		Com.addObjectAt( this, itemBg, 893 + 105, 372 + 140 );
 		Com.addBitmapAt( itemBg, "roundOverTime_json.x", 0, 0 );
 
 		let whiteMask: egret.Shape = new egret.Shape;
-		GraphicTool.drawRect( whiteMask, new egret.Rectangle( 0, 0, 85, 112 ), 0xFFFFFF, false, 1, 8 );
+		GraphicTool.drawRect( whiteMask, new egret.Rectangle( 3, 2, 204, 273 ), 0xFFFFFF, false, 1, 16 );
 		Com.addObjectAt( itemBg, whiteMask, 0, 0 );
 
 		let tw: egret.Tween = egret.Tween.get( itemBg );
