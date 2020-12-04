@@ -241,9 +241,9 @@ class MultyPlayerBingo extends Multi75Super{
 		if( data["powerUpType"] == MultiPlayerBingoGrid.AWARDTYPE_COINSBALL ){
 			this.clearLuckyBall();
 			this.luckyBall = new egret.DisplayObjectContainer;
-			Com.addObjectAt( this, this.luckyBall, 0, 235 );
-			Com.addBitmapAt( this.luckyBall, this.assetStr("lucky_ball"), 0, 0 );
-			let txt: egret.TextField = Com.addTextAt(this, 0, 0, 70, 70, 30, true, false);
+			Com.addObjectAt( this, this.luckyBall, 366, 607 );
+			Com.addBitmapAtMiddle( this.luckyBall, this.assetStr("lucky_ball"), 0, 0 );
+			let txt: egret.TextField = Com.addTextAt(this, -32, -32, 64, 64, 55, true, false);
 			this.luckyBall.addChild( txt );
 			txt.verticalAlign = "middle";
 			txt.fontFamily = "Righteous";
@@ -251,7 +251,7 @@ class MultyPlayerBingo extends Multi75Super{
 			txt.text = "" + data["luckyBall"];
 			this.luckyBall.name = "" + data["luckyBall"];
 
-			TweenerTool.tweenTo( this.luckyBall, { y: 150 }, 200 );
+			TweenerTool.tweenTo( this.luckyBall, { y: 475 }, 200 );
 		}
 		else if( data["powerUpType"] == MultiPlayerBingoGrid.AWARDTYPE_MARKNUMBER || data["powerUpType"] == MultiPlayerBingoGrid.AWARDTYPE_COINSAWARDTHREE ){
 			for( let i: number = 0; i < data["cards"].length; i++ ){
