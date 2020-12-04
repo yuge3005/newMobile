@@ -17,7 +17,8 @@ class MultiPlayerEnergy extends egret.DisplayObjectContainer{
 			Com.addObjectAt(this, this.powerUpParticle, 0, 0 );
 			this.powerUpParticle.start();
 
-			this.powerUpBlinkLight = Com.addMovieClipAt( this, MDS.mcFactory, "blinkLight", 0, 5 );
+			this.powerUpBlinkLight = Com.addMovieClipAt( this, MDS.mcFactory, "blinkLight", 20, -106 );
+			this.powerUpBlinkLight.scaleX = this.powerUpBlinkLight.scaleY = 2;
 
 			this.cacheAsBitmap = false;
 		}
