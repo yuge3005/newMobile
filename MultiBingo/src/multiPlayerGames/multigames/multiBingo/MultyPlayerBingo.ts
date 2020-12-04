@@ -123,6 +123,8 @@ class MultyPlayerBingo extends Multi75Super{
 		this.buildWaitingBar();
 
 		this.clearLuckyBall();
+
+		this.hideBallForWinPanel( false );
 	}
 
 	private clearLuckyBall(){
@@ -369,7 +371,16 @@ class MultyPlayerBingo extends Multi75Super{
 		this.roundEndBar.addEventListener( "roundEndBarContinue", this.onRoundEndContinue, this );
 		this.bingoPlayerHeads = [];
 
+		this.hideBallForWinPanel( true );
+
 		SoundManager.play( "mpb_round_end_mp3" );
+	}
+
+	private hideBallForWinPanel( hide: boolean ){
+		this.energyBar.visible = !hide;
+		this.ballArea.visible = !hide;
+		this.getChildByName( this.assetStr( "charger bar" ) ).visible = !hide;
+		this.getChildByName( this.assetStr( "chargerbar_01_bg" ) ).visible = !hide;
 	}
 
 	private bingoPlayerHeads: Array<string> = [];
