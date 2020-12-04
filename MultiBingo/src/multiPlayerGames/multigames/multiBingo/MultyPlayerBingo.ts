@@ -57,6 +57,9 @@ class MultyPlayerBingo extends Multi75Super{
 	protected letsWait(): void{
 		this.setCardDatasWithNumeros(MDS.fakeArr(100));
 
+		let bg: egret.Bitmap = this.getChildByName( this.assetStr( "BG2" ) ) as egret.Bitmap;
+		bg.texture = RES.getRes( "multiBingo_bg_png" );
+
 		let cards: Array<MultiPlayerCard> = this.cardArea.cards;
 		for( let i: number = 0; i < cards.length; i++ ){
 			cards[i].visible = false;
@@ -360,10 +363,10 @@ class MultyPlayerBingo extends Multi75Super{
 
 		if( !this.inPlayerRound ) return;
 
+		this.showBingoHeads( this.bingoPlayerHeads );
 		this.roundEndBar = new RoundEndBar;
 		this.addChild( this.roundEndBar );
 		this.roundEndBar.addEventListener( "roundEndBarContinue", this.onRoundEndContinue, this );
-		this.showBingoHeads( this.bingoPlayerHeads );
 		this.bingoPlayerHeads = [];
 
 		SoundManager.play( "mpb_round_end_mp3" );
@@ -379,16 +382,23 @@ class MultyPlayerBingo extends Multi75Super{
 
 	private showBingoHeads( heads: Array<string> ){
 		this.bingoPlayerHeadsContainer = new egret.DisplayObjectContainer;
-		Com.addObjectAt( this, this.bingoPlayerHeadsContainer, 24, 472 );
+		Com.addObjectAt( this, this.bingoPlayerHeadsContainer, 20, 240 );
 		Com.addBitmapAt( this.bingoPlayerHeadsContainer, this.assetStr( "alphaBg" ), 0, 0 );
+		let winnerTitle: egret.Bitmap = Com.addBitmapAt( this.bingoPlayerHeadsContainer, this.assetStr( "bingo_winner" ), 32, 60 );
+		winnerTitle.width = 440;
+		winnerTitle.height = 72;
 		for( let i: number = 0; i < heads.length; i++ ){
 			let userHead: egret.Bitmap;
-			if( i >= 24 ) break;
-			userHead = Com.addBitmapAt( this.bingoPlayerHeadsContainer, this.assetStr( "head_icon" ), 19 + 58 * ( i % 12 ), 13 + ( i >= 12 ? 50 : 0 ) );
-			userHead.scaleX = userHead.scaleY = 0.75;
+			if( i >= 15 ) break;
+			let offsetX: number = 140 * ( i % 3 );
+			let offsetY: number = Math.floor( i / 3 ) * 140;
+			Com.addBitmapAt( this.bingoPlayerHeadsContainer, this.assetStr( "bingo_winner_bg" ), 64 + offsetX, 166 + offsetY );
+			userHead = Com.addBitmapAt( this.bingoPlayerHeadsContainer, this.assetStr( "head_icon" ), 77 + offsetX, 179 + offsetY );
+			userHead.width = userHead.height = 100;
 			if( heads[i] != "" ){
-				Utils.downloadBitmapDataByFacebookID( heads[i], 50, 50, MDS.onUserHeadLoaded.bind( this, userHead, 36 ), this );
+				Utils.downloadBitmapDataByFacebookID( heads[i], 100, 100, MDS.onUserHeadLoaded.bind( this, userHead, 100 ), this );
 			}
 		}
+		this.bingoPlayerHeadsContainer.cacheAsBitmap = true;
 	}
 }
