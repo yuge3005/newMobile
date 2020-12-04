@@ -10,21 +10,19 @@ class RoundEndBar extends MultiCoverBars{
 	public constructor() {
 		super();
 
-		Com.addBitmapAt( this, "roundOverTime_json.bg", 55, 90 );
+		Com.addBitmapAt( this, "roundOverTime_json.bg", 235, 62 );
 
 		let btn: egret.Shape = new egret.Shape;
-		Com.addObjectAt( this, btn, 315, 430 );
-		GraphicTool.drawRect( btn, new egret.Rectangle( 0, 0, 116, 37 ), 0, false, 0.0 );
+		Com.addObjectAt( this, btn, 865, 867 );
+		GraphicTool.drawRect( btn, new egret.Rectangle( 0, 0, 267, 81 ), 0, false, 0.0 );
 		btn.touchEnabled = true;
 		btn.addEventListener( egret.TouchEvent.TOUCH_TAP, this.onContinue, this );
 
-		let continueTxt: egret.TextField = Com.addTextAt( this, 319, 430, 112, 20, 20, false, true );
+		let continueTxt: TextLabel = Com.addLabelAt( this, 865, 867, 267, 81, 44, false, true );
 		continueTxt.textColor = 0x0;
-		continueTxt.height = 36;
-		continueTxt.verticalAlign = "middle";
-		continueTxt.text = MuLang.getText( "continue" );
+		continueTxt.setText( MuLang.getText( "continue" ) );
 
-		this.titleTxt = Com.addTextAt( this, 180, 172, 385, 18, 18, true, true );
+		this.titleTxt = Com.addTextAt( this, 792, 225, 416, 50, 48, true, true );
 		this.titleTxt.textColor = 0xFBE12D;
 		this.titleTxt.text = MuLang.getText( "rewardsFrom" );
 
@@ -45,7 +43,6 @@ class RoundEndBar extends MultiCoverBars{
 		let itemBg: egret.DisplayObjectContainer = new egret.DisplayObjectContainer;
 		itemBg.anchorOffsetX = 43;
 		itemBg.anchorOffsetY = 56;
-		itemBg.scaleX = itemBg.scaleY = 1.4;
 		itemBg.alpha = 0.0;
 		Com.addObjectAt( this, itemBg, 275 + 43 + 55, 141 + 56 + 90 );
 		Com.addBitmapAt( itemBg, "roundOverTime_json.x", 0, 0 );
