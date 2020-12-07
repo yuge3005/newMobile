@@ -1,27 +1,28 @@
 {
     "options": {
-        "useExtension": 0,
         "layoutGap": 1,
         "extend": 0,
         "layoutMath": "3",
-        "sizeMode": "2n"
+        "sizeMode": "2n",
+        "useExtension": 0
     },
     "files": [
-        "./welcome.png",
-        "./wait.png",
-        "./to_start.png",
-        "./round_start.png",
-        "./round_over_tip.png",
-        "./round_over.png",
-        "./pick.png",
         "./luck.png",
         "./city_of_light.png",
         "./city_big.png",
         "./choose.png",
         "./buy_next.png",
         "./bet.png",
-        "./base.png"
+        "./base.png",
+        "./welcome.png",
+        "./wait.png",
+        "./to_start.png",
+        "./round_start_tip.png",
+        "./round_start.png",
+        "./round_over_tip.png",
+        "./round_over.png",
+        "./pick.png"
     ],
-    "version": 5,
-    "projectName": "mara_es"
+    "projectName": "mara_es",
+    "version": 5
 }

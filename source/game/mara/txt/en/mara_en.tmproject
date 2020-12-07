@@ -1,27 +1,28 @@
 {
+    "files": [
+        "./luck.png",
+        "./city_of_light.png",
+        "./city_big.png",
+        "./choose.png",
+        "./buy_next.png",
+        "./bet.png",
+        "./base.png",
+        "./welcome.png",
+        "./wait.png",
+        "./to_start.png",
+        "./round_start_tip.png",
+        "./round_start.png",
+        "./round_over_tip.png",
+        "./round_over.png",
+        "./pick.png"
+    ],
+    "projectName": "mara_en",
+    "version": 5,
     "options": {
-        "useExtension": 0,
-        "layoutGap": 1,
         "extend": 0,
         "layoutMath": "3",
-        "sizeMode": "2n"
-    },
-    "files": [
-        "./choose.png",
-        "./luck.png",
-        "./pick.png",
-        "./round_over.png",
-        "./round_over_tip.png",
-        "./round_start.png",
-        "./to_start.png",
-        "./wait.png",
-        "./welcome.png",
-        "./base.png",
-        "./bet.png",
-        "./buy_next.png",
-        "./city_big.png",
-        "./city_of_light.png"
-    ],
-    "version": 5,
-    "projectName": "mara_en"
+        "sizeMode": "2n",
+        "useExtension": 0,
+        "layoutGap": 1
+    }
 }
