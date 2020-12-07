@@ -7,19 +7,19 @@
         "sizeMode": "2n"
     },
     "files": [
-        "./Slide.png",
-        "./Send out.png",
-        "./photo Head frame.png",
-        "./photo frame.png",
-        "./number of people.png",
-        "./light.png",
         "./Head frame2.png",
         "./Head frame.png",
         "./frame.png",
         "./Bottom frame.png",
         "./3.png",
         "./2.png",
-        "./1.png"
+        "./1.png",
+        "./Slide.png",
+        "./Send out.png",
+        "./photo Head frame.png",
+        "./photo frame.png",
+        "./number of people.png",
+        "./light.png"
     ],
     "version": 5,
     "projectName": "mara_chat_box"

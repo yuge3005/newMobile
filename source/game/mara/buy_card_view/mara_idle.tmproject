@@ -7,7 +7,11 @@
         "sizeMode": "2n"
     },
     "files": [
-        "./waiting.png",
+        "./2.png",
+        "./-1.png",
+        "./1.png",
+        "./+2.png",
+        "./+1.png",
         "./menu.png",
         "./green.png",
         "./D.png",
@@ -16,12 +20,7 @@
         "./B.png",
         "./A.png",
         "./3.png",
-        "./-2.png",
-        "./2.png",
-        "./-1.png",
-        "./1.png",
-        "./+2.png",
-        "./+1.png"
+        "./-2.png"
     ],
     "version": 5,
     "projectName": "mara_idle"

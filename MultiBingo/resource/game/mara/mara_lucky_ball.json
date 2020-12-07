@@ -1,5 +1,4 @@
 {"file":"mara_lucky_ball.png","frames":{
-"LUCKY BALL":{"x":1,"y":783,"w":635,"h":79,"offX":0,"offY":0,"sourceW":635,"sourceH":79},
 "not this time":{"x":1,"y":706,"w":700,"h":75,"offX":0,"offY":0,"sourceW":700,"sourceH":75},
 "pick a ball":{"x":635,"y":419,"w":299,"h":20,"offX":0,"offY":0,"sourceW":299,"sourceH":20},
 "red light":{"x":1,"y":273,"w":354,"h":354,"offX":0,"offY":0,"sourceW":354,"sourceH":354},
@@ -8,4 +7,5 @@
 "title":{"x":1,"y":1,"w":917,"h":270,"offX":0,"offY":0,"sourceW":917,"sourceH":270},
 "write light":{"x":357,"y":273,"w":276,"h":276,"offX":0,"offY":0,"sourceW":276,"sourceH":276},
 "coin":{"x":920,"y":1,"w":80,"h":80,"offX":0,"offY":0,"sourceW":80,"sourceH":80},
-"drawn":{"x":635,"y":273,"w":151,"h":144,"offX":0,"offY":0,"sourceW":151,"sourceH":144}}}
+"drawn":{"x":635,"y":273,"w":151,"h":144,"offX":0,"offY":0,"sourceW":151,"sourceH":144},
+"LUCKY BALL":{"x":1,"y":783,"w":635,"h":79,"offX":0,"offY":0,"sourceW":635,"sourceH":79}}}

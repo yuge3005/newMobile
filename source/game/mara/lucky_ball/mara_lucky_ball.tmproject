@@ -1,12 +1,14 @@
 {
+    "projectName": "mara_lucky_ball",
     "options": {
+        "sizeMode": "2n",
         "useExtension": 0,
         "layoutGap": 1,
         "extend": 0,
-        "layoutMath": "3",
-        "sizeMode": "2n"
+        "layoutMath": "3"
     },
     "files": [
+        "./LUCKY BALL.png",
         "./drawn.png",
         "./coin.png",
         "./write light.png",
@@ -15,9 +17,7 @@
         "./red.png",
         "./red light.png",
         "./pick a ball.png",
-        "./not this time.png",
-        "./LUCKY BALL.png"
+        "./not this time.png"
     ],
-    "version": 5,
-    "projectName": "mara_lucky_ball"
+    "version": 5
 }
