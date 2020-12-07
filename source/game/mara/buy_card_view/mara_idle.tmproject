@@ -1,0 +1,28 @@
+{
+    "options": {
+        "useExtension": 0,
+        "layoutGap": 1,
+        "extend": 0,
+        "layoutMath": "3",
+        "sizeMode": "2n"
+    },
+    "files": [
+        "./waiting.png",
+        "./menu.png",
+        "./green.png",
+        "./D.png",
+        "./coin.png",
+        "./C.png",
+        "./B.png",
+        "./A.png",
+        "./3.png",
+        "./-2.png",
+        "./2.png",
+        "./-1.png",
+        "./1.png",
+        "./+2.png",
+        "./+1.png"
+    ],
+    "version": 5,
+    "projectName": "mara_idle"
+}

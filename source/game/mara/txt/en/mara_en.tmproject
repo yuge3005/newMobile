@@ -1,0 +1,27 @@
+{
+    "options": {
+        "useExtension": 0,
+        "layoutGap": 1,
+        "extend": 0,
+        "layoutMath": "3",
+        "sizeMode": "2n"
+    },
+    "files": [
+        "./choose.png",
+        "./luck.png",
+        "./pick.png",
+        "./round_over.png",
+        "./round_over_tip.png",
+        "./round_start.png",
+        "./to_start.png",
+        "./wait.png",
+        "./welcome.png",
+        "./base.png",
+        "./bet.png",
+        "./buy_next.png",
+        "./city_big.png",
+        "./city_of_light.png"
+    ],
+    "version": 5,
+    "projectName": "mara_en"
+}
