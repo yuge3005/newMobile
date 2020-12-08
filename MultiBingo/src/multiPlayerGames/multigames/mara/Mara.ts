@@ -135,7 +135,7 @@ class Mara extends Multi75Super{
 		Com.addObjectAt( this.chatAndMiniGameLayer, this.chatBar, 1519, 593 );
 
 		this.tipTxt = new MaraFeatureTip;
-		Com.addObjectAt( this, this.tipTxt, 0, 360 );
+		Com.addObjectAt( this, this.tipTxt, 0, 770 );
 
 		this.featureAnimationLayer = new MaraAnimationManager;
 		this.addChild( this.featureAnimationLayer );

@@ -1,7 +1,7 @@
 class MaraFeatureTip extends egret.DisplayObjectContainer{
 	
 	private tipTxt: egret.TextField;
-	private titleTxt: egret.TextField;
+	private titleTxt: TextLabel;
 	private tipIcon: egret.Bitmap;
 
 	private timer: egret.Timer;
@@ -15,15 +15,14 @@ class MaraFeatureTip extends egret.DisplayObjectContainer{
 
 		Com.addBitmapAt( this, MultiPlayerMachine.getAssetStr("tips frame"), 0, 0 );
 
-		this.tipTxt = MDS.addGameText( this, 20, 80, 14, 0xFFFFFF, "ball", false, 145 );
-		this.tipTxt.height = 170;
+		this.tipTxt = MDS.addGameText( this, 40, 153, 35, 0xFFFFFF, "ball", false, 375 );
+		this.tipTxt.height = 70;
 		this.tipTxt.fontFamily = "Arial";
 		this.tipTxt.bold = true;
 		this.tipTxt.wordWrap = true;
 
-		this.titleTxt = MDS.addGameText( this, 65, 30, 15, 0xFFFFFF, "ball", false, 145, null, 0.75 );
-		this.titleTxt.height = 40;
-		this.titleTxt.verticalAlign = "middle";
+		this.titleTxt = MDS.addGameText( this, 163, 70, 35, 0xFFFFFF, "ball", false, 230 );
+		this.titleTxt.height = 70;
 
 		this.addEventListener( egret.Event.ADDED_TO_STAGE, this.onAdd, this );
 	}
@@ -50,10 +49,10 @@ class MaraFeatureTip extends egret.DisplayObjectContainer{
 
 	private showFeatureInfo( tipStr: string ){
 		this.tipTxt.text =  MuLang.getText( tipStr + "_tip" );
-		this.titleTxt.text = MuLang.getText( tipStr, MuLang.CASE_UPPER ).replace( " ", "\n" );
+		this.titleTxt.setText( MuLang.getText( tipStr, MuLang.CASE_UPPER ).replace( " ", "\n" ) );
 
 		if( this.tipIcon ) this.removeChild( this.tipIcon );
-		this.tipIcon = Com.addBitmapAt( this, MultiPlayerMachine.getAssetStr( "icon_" + tipStr ), 20, 30 );
+		this.tipIcon = Com.addBitmapAt( this, MultiPlayerMachine.getAssetStr( "icon_" + tipStr ), 56, 50 );
 	}
 
 	private onTimer( event: egret.Event ){
