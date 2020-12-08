@@ -14,15 +14,12 @@ class MaraChatBar extends MultiChatBar{
 		this.addTextInput( new egret.Rectangle( 15, 322, 112, 18 ), 15 );
 		this.enterText.textColor = 0;
 
-		let sendBtn: TouchDownButton = Com.addDownButtonAt( this, "mara_chat_box_json.Send out", "mara_chat_box_json.Send out", 128, 311, this.onSendOutButton.bind(this), true );
-		let tx: egret.TextField = new egret.TextField;
-		sendBtn.setButtonText( tx );
-		tx.width = 81;
-		tx.scaleX = 0.8;
-		tx.size = 17;
-		tx.fontFamily = "Arial";
+		let sendBtn: TouchDownButton = Com.addDownButtonAt( this, "mara_chat_box_json.Send out", "mara_chat_box_json.Send out", 300, 382, this.onSendOutButton.bind(this), true );
+		let tx: TextLabel = Com.addLabelAt( sendBtn, 0, 0, 170, 82, 50 );
+		sendBtn.addChild( tx );
 		tx.bold = true;
-		tx.text = MuLang.getText( "send", MuLang.CASE_UPPER );
+		tx.scaleX = 0.81;
+		tx.setText( MuLang.getText( "send", MuLang.CASE_UPPER ) );
 
 		this.cardCountTxt = Com.addLabelAt( this, -500, -192 + BrowserInfo.textUp, 100, 12, 12, false, true );
 		this.cardCountTxt.textAlign = "left";
