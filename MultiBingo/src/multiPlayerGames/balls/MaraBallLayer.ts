@@ -10,7 +10,7 @@ class MaraBallLayer extends Multi75BallLayer{
 	
 	public constructor() {
 		super();
-		this.ballOffsetY = 2;
+		this.ballOffsetY = 6;
 		this.ballNormalSize = 110 / 120;
 		this.ballBigSize = 110 / 120;
 	}

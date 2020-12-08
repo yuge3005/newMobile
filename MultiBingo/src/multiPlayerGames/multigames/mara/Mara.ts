@@ -45,10 +45,10 @@ class Mara extends Multi75Super{
 	protected init(){
 		super.init();
 
-		this.ballCountText = MDS.addGameText( this, 460, 8, 28, 0xda4d28, "ball", false, 58 );
+		this.ballCountText = MDS.addGameText( this, 1387, 150, 36, 0xda4d28, "ball", false, 90 );
 		this.ballCountText.textAlign = "center";
 		this.ballCountText.text = "";
-		MDS.addGameText( this, 460, 32, 14, 0xda4d28, "ball", false, 58 ).textAlign = "center";
+		MDS.addGameText( this, 1388, 190, 28, 0xda4d28, "ball", false, 90 ).textAlign = "center";
 
 		this.letsWait();
 	}
