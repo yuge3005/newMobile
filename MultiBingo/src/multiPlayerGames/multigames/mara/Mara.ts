@@ -92,6 +92,9 @@ class Mara extends Multi75Super{
 	protected letsWait(): void{
 		this.setCardDatasWithNumeros(MDS.fakeArr(100));
 
+		let bg: egret.Bitmap = this.getChildByName( this.assetStr( "bg" ) ) as egret.Bitmap;
+		bg.texture = RES.getRes( "mara_bg_png" );
+
 		let cards: Array<MultiPlayerCard> = this.cardArea.cards;
 		this.cardDisabledBgs = [];
 		for( let i: number = 0; i < cards.length; i++ ){
