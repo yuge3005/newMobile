@@ -45,7 +45,7 @@ class MaraChatBar extends MultiChatBar{
 		this.slider.addEventListener( "sliderPosition", this.sliderScroll, this );
 
 		this.nextRoundBar = new MaraChatNextRound;
-		Com.addObjectAt( this, this.nextRoundBar, 0, -58 );
+		Com.addObjectAt( this, this.nextRoundBar, -36, -192 );
 
 		let userInfo: egret.DisplayObjectContainer = new egret.DisplayObjectContainer;
 		Com.addBitmapAt( userInfo, "mara_" + MuLang.language + "_json.welcome", 0, 0 );

@@ -125,7 +125,7 @@ class Mara extends Multi75Super{
 		this.buildWaitingBar();
 
 		this.bingoInfo = new MaraBingoInfoBar;
-		Com.addObjectAt( this, this.bingoInfo, 550, 25 );
+		Com.addObjectAt( this, this.bingoInfo, 1468, 131 );
 		this.startBingoInfoTick();
 
 		this.chatAndMiniGameLayer = new egret.DisplayObjectContainer;

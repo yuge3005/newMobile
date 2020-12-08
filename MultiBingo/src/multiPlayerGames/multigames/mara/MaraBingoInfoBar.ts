@@ -17,7 +17,7 @@ class MaraBingoInfoBar extends MultyBingoInfoBar{
 		Com.addBitmapAt( this.bgTip, "mara_chat_box_json.number of people", 3, 0 );
 		Com.addBitmapAtMiddle( this.bgTip, "mara_" + MuLang.language + "_json.city_big", 90, 56 );
 		this.addChildAt( this.bgLight, 0 );
-		this.addChildAt( Com.addBitmapAt( this, "mara_chat_box_json.photo frame", -40, -8 ), 0 );
+		this.addChildAt( Com.addBitmapAt( this, "mara_chat_box_json.photo frame", 0, 0 ), 0 );
 		this.addChildAt( this.bgTip, 0 );
 		this.bgLight.alpha = 0;
 
