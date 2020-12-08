@@ -33,9 +33,9 @@ class MaraChatBar extends MultiChatBar{
 		this.avatarList = new MaraAvatarArea;
 		Com.addObjectAt( this, this.avatarList, 4, -158 );
 
-		this.headSize = 28;
+		this.headSize = 61;
 		this.lineGap = 2;
-		this.tipPositionY = 14;
+		this.tipPositionY = 45;
 		this.leftMargin = 0;
 
 		this.slider = new MaraChatSlider;
@@ -81,21 +81,21 @@ class MaraChatBar extends MultiChatBar{
 	protected buildMessageItem( userName: string, message: string, tipBg: boolean, redBigTip: boolean ): egret.DisplayObjectContainer{
 		let userInfo: egret.DisplayObjectContainer = new egret.DisplayObjectContainer;
 
-		let headIcon: egret.Bitmap = Com.addBitmapAt( userInfo, MultiPlayerMachine.getAssetStr( "head_icon" ), 3, 5 );
-		headIcon.scaleX = 28/31;
-		headIcon.scaleY = 28/36;
+		let headIcon: egret.Bitmap = Com.addBitmapAt( userInfo, MultiPlayerMachine.getAssetStr( "head_icon" ), 6, 10 );
+		headIcon.width = 61
+		headIcon.height = 52;
 		Com.addBitmapAt( userInfo, "mara_chat_box_json.Head frame", 0, 0 );
 
-		let nameTxt: egret.TextField = Com.addTextAt( userInfo, 40, 2 + BrowserInfo.textUp, 110, 11, 11 );
+		let nameTxt: TextLabel = Com.addLabelAt( userInfo, 91, 10, 250, 30, 30, false, true );
 		nameTxt.textAlign = "left";
 		nameTxt.textColor = 0;
-		nameTxt.text = userName;
+		nameTxt.setText( userName );
 
 		if( tipBg ){
 			Com.addBitmapAt( userInfo, MultiPlayerMachine.getAssetStr( "user_join" ), 40, 19 );
 		}
 
-		let tipTxt: egret.TextField = Com.addTextAt( userInfo, 42, this.tipPositionY + BrowserInfo.textUp, 110, 11, 11 );
+		let tipTxt: egret.TextField = Com.addTextAt( userInfo, 91, this.tipPositionY, 280, 25, 25 );
 		tipTxt.textAlign = "left";
 		tipTxt.scaleX = 0.88;
 		if( redBigTip ){
@@ -108,6 +108,7 @@ class MaraChatBar extends MultiChatBar{
 		tipTxt.text = message;
 		if( tipTxt.textHeight > tipTxt.height ) tipTxt.height = tipTxt.textHeight;
 
+		userInfo.cacheAsBitmap = true;
 		return userInfo;
 	}
 
