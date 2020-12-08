@@ -19,7 +19,7 @@ class Mara extends Multi75Super{
 		this.connetKeys = { zona: "MultiplayerZone", sala: "Multi72" };
 
 		this.ballArea = new MaraBallLayer;
-		this.ballArea.mask = new egret.Rectangle( 120, 0, 460, 135 );
+		this.ballArea.mask = new egret.Rectangle( 480, 130, 850, 126 );
 
 		MultiCardLayer.cardType = MaraCard;
 		MultiCardLayer.gridType = MaraGrid;

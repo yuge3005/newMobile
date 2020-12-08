@@ -17,7 +17,7 @@ class MaraBallLayer extends Multi75BallLayer{
 
 	protected setBallNumber( ball: egret.Sprite, num: number, ballTextColor: number, offsetX: number = 0 ){
 		super.setBallNumber( ball, num, ballTextColor, offsetX );
-		this.setBallLetter( ball, num, 45, 20, 5 );
+		this.setBallLetter( ball, num, 60, 25, 15 );
 	}
 
 	public getABall( index: number ): egret.Sprite{
