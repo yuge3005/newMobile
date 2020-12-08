@@ -10,9 +10,11 @@ class MaraChatBar extends MultiChatBar{
 
 		Com.addBitmapAt( this, "mara_chat_box_json.frame", 0, 0 );
 
-		this.addScrollArea( new egret.Rectangle( 0, 0, 190, 248 ), new egret.Point( 4, 30 ) );
-		this.addTextInput( new egret.Rectangle( 15, 322, 112, 18 ), 15 );
+		this.addScrollArea( new egret.Rectangle( 0, 0, 381, 276 ), new egret.Point( 13, 65 ) );
+		this.addTextInput( new egret.Rectangle( 30, 400, 250, 40 ), 28 );
 		this.enterText.textColor = 0;
+		this.enterText.promptColor = 0;
+		this.enterText.textAlign = "left";
 
 		let sendBtn: TouchDownButton = Com.addDownButtonAt( this, "mara_chat_box_json.Send out", "mara_chat_box_json.Send out", 300, 382, this.onSendOutButton.bind(this), true );
 		let tx: TextLabel = Com.addLabelAt( sendBtn, 0, 0, 170, 82, 50 );
@@ -37,7 +39,7 @@ class MaraChatBar extends MultiChatBar{
 		this.leftMargin = 0;
 
 		this.slider = new MaraChatSlider;
-		Com.addObjectAt( this, this.slider, 176, 68 );
+		Com.addObjectAt( this, this.slider, 397, 73 );
 		this.slider.addEventListener( "startDrag", this.startDrag, this );
 		this.slider.addEventListener( "stopDrag", this.stopDrag, this );
 		this.slider.addEventListener( "sliderPosition", this.sliderScroll, this );
