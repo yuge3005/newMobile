@@ -3,7 +3,8 @@ class MaraChatSlider extends egret.DisplayObjectContainer{
 	private slider: egret.Bitmap;
 	private sliderRange: number;
 
-	private dragOffsetY: number;
+	private dragStarStageY: number;
+	private dragStarSliderY: number;
 
 	public constructor() {
 		super();
@@ -35,7 +36,8 @@ class MaraChatSlider extends egret.DisplayObjectContainer{
 		this.dispatchEvent( new egret.Event( "startDrag" ) );
 		this.stage.addEventListener( egret.TouchEvent.TOUCH_MOVE, this.onTouchMove, this );
 		this.stage.addEventListener( egret.TouchEvent.TOUCH_END, this.onTouchEnd, this );
-		this.dragOffsetY = event.stageY - event.localY;
+		this.dragStarStageY = event.stageY;
+		this.dragStarSliderY = this.slider.y;
 		this.setSliderPosition( event.stageY );
 		this.dispatchEvent( new egret.Event( "sliderPosition" ) );
 	}
@@ -52,8 +54,10 @@ class MaraChatSlider extends egret.DisplayObjectContainer{
 	}
 
 	private setSliderPosition( y: number ){
-		y -= this.dragOffsetY;
-		let p: number = y - this.slider.height * 0.5;
+		y -= this.dragStarStageY;
+		y /= 0.54;
+		y += this.dragStarSliderY;
+		let p: number = y;
 		if( p < 0 ) p = 0;
 		if( p > this.sliderRange ) p = this.sliderRange;
 		this.slider.y = p;
