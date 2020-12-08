@@ -11,8 +11,8 @@ class MaraBallLayer extends Multi75BallLayer{
 	public constructor() {
 		super();
 		this.ballOffsetY = 2;
-		this.ballNormalSize = 54 / 90;
-		this.ballBigSize = 66 / 90;
+		this.ballNormalSize = 110 / 120;
+		this.ballBigSize = 110 / 120;
 	}
 
 	protected setBallNumber( ball: egret.Sprite, num: number, ballTextColor: number, offsetX: number = 0 ){
