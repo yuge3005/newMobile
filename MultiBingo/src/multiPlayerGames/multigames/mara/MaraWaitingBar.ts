@@ -21,7 +21,7 @@ class MaraWaitingBar extends Multi75WaitingBar{
 		this.cardPriceTexts = [];
 		this.btnItem = [];
 		for( let i: number = 0; i < 4; i++ ){
-			let pt: egret.Point = new egret.Point( 240 + (i&1) * 232, 344 + Math.floor(i*0.5) * 97 );
+			let pt: egret.Point = new egret.Point( 83 + (i&1) * 590, 349 + Math.floor(i*0.5) * 239 );
 			this.btnItem[i] = new egret.DisplayObjectContainer;
 			Com.addObjectAt( this.cardsBtnsContainer, this.btnItem[i], pt.x, pt.y );
 			let assetsName: string = "mara_idle_json." + nameLetter[i];
@@ -70,10 +70,10 @@ class MaraWaitingBar extends Multi75WaitingBar{
 
 		for( let i: number = 0; i < 4; i++ ) this.btnItem[i].visible = false;
 		this.btnItem[amount-1].visible = true;
-		TweenerTool.tweenTo( this.btnItem[amount-1], { x: 354, y: 390 }, 300, 50 );
+		TweenerTool.tweenTo( this.btnItem[amount-1], { x: 367, y: 465 }, 300, 50 );
 
 		if( this.titleTxt && this.contains( this.titleTxt ) ) this.removeChild( this.titleTxt );
-		this.titleTxt = Com.addBitmapAtMiddle( this, "mara_" + MuLang.language + "_json.wait", 355, 182 );
+		this.titleTxt = Com.addBitmapAtMiddle( this, "mara_" + MuLang.language + "_json.wait", 503, 85 );
 	}
 
 	protected resetCardPrice(){
