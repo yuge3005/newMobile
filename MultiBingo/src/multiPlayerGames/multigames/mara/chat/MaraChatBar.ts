@@ -81,10 +81,10 @@ class MaraChatBar extends MultiChatBar{
 	protected buildMessageItem( userName: string, message: string, tipBg: boolean, redBigTip: boolean ): egret.DisplayObjectContainer{
 		let userInfo: egret.DisplayObjectContainer = new egret.DisplayObjectContainer;
 
-		let headIcon: egret.Bitmap = Com.addBitmapAt( userInfo, MultiPlayerMachine.getAssetStr( "head_icon" ), 6, 10 );
+		let headIcon: egret.Bitmap = Com.addBitmapAt( userInfo, MultiPlayerMachine.getAssetStr( "head_icon" ), 11, 10 );
 		headIcon.width = 61
 		headIcon.height = 52;
-		Com.addBitmapAt( userInfo, "mara_chat_box_json.Head frame", 0, 0 );
+		Com.addBitmapAt( userInfo, "mara_chat_box_json.Head frame", 5, 0 );
 
 		let nameTxt: TextLabel = Com.addLabelAt( userInfo, 91, 10, 250, 30, 30, false, true );
 		nameTxt.textAlign = "left";
