@@ -13,7 +13,7 @@ class MaraWaitingBar extends Multi75WaitingBar{
 
 		let cover: egret.Shape = this.getChildAt(0) as egret.Shape;
 		cover.alpha = 0;
-		Com.addBitmapAt( this, "mara_idle_json." + "menu", 156, 153 );
+		Com.addBitmapAt( this, "mara_idle_json." + "menu", 0, 0 );
 
 		this.cardsBtnsContainer = new egret.DisplayObjectContainer;
 		this.addChild( this.cardsBtnsContainer );
@@ -31,12 +31,12 @@ class MaraWaitingBar extends Multi75WaitingBar{
 			this.cardPriceTexts[i].textColor = 0xFFD77F;
 		}
 
-		this.leftButton = Com.addDownButtonAt( this, "mara_idle_json.-1", "mara_idle_json.-2", 276, 261, this.onBetIconStep.bind(this), true );
-		this.rightButton = Com.addDownButtonAt( this, "mara_idle_json.+1", "mara_idle_json.+2", 400, 261, this.onBetIconStep.bind(this), true );
+		this.leftButton = Com.addDownButtonAt( this, "mara_idle_json.-1", "mara_idle_json.-2", 310, 275, this.onBetIconStep.bind(this), true );
+		this.rightButton = Com.addDownButtonAt( this, "mara_idle_json.+1", "mara_idle_json.+2", 630, 275, this.onBetIconStep.bind(this), true );
 		this.betStep = 1;
 
-		this.titleTxt = Com.addBitmapAtMiddle( this, "mara_" + MuLang.language + "_json.buy_next", 355, 182 );
-		this.betTxt = Com.addBitmapAtMiddle( this, "mara_" + MuLang.language + "_json.bet", 352, 250 );
+		this.titleTxt = Com.addBitmapAtMiddle( this, "mara_" + MuLang.language + "_json.buy_next", 503, 85 );
+		this.betTxt = Com.addBitmapAtMiddle( this, "mara_" + MuLang.language + "_json.bet", 503, 207 );
 
 		setTimeout( this.initShowPrice.bind(this), 50 );
 	}
@@ -53,7 +53,7 @@ class MaraWaitingBar extends Multi75WaitingBar{
 
 	protected rebuiltBetIcon( value: number ): egret.Bitmap{
 		Mara.betStep = value;
-		return Com.addBitmapAt( this,  "mara_idle_json." + value, 307, 263 );
+		return Com.addBitmapAt( this,  "mara_idle_json." + value, 385, 275 );
 	}
 
 	protected cardBought( amount: number ){

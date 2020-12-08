@@ -161,7 +161,7 @@ class Mara extends Multi75Super{
 
 	protected buildWaitingBar(){
 		this.waitingBar = new MaraWaitingBar;
-		Com.addObjectAt( this.dailogLayer, this.waitingBar, 494, 309 );
+		Com.addObjectAt( this.dailogLayer, this.waitingBar, 493, 309 );
 		this.waitingBar.scaleX = this.waitingBar.scaleY = 0.9;
 		this.waitingBar.addEventListener( "waitingBarBuyCard", this.onBuyCard, this );
 		this.waitingBar.addEventListener( "prizeChanged", this.onPrizeChange, this );
