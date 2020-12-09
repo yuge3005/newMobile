@@ -104,13 +104,12 @@ class MaraWaitingBar extends Multi75WaitingBar{
 
 	public startWaiting(){
 		this.countDownBar = new egret.DisplayObjectContainer;
-		Com.addObjectAt( this, this.countDownBar, 115, 5 );
+		Com.addObjectAt( this, this.countDownBar, -52, -194 );
 		Com.addBitmapAt( this.countDownBar, "mara_" + MuLang.language + "_json.to_start", 0, 0 );
 
-		this.waitingTxt = Com.addTextAt( this.countDownBar, 22, 15, 100, 32, 32 );
+		this.waitingTxt = Com.addTextAt( this.countDownBar, 60, 23, 127, 50, 50 );
 		this.waitingTxt.fontFamily = "Righteous";
 		this.waitingTxt.scaleX = 0.8;
-		this.waitingTxt.textAlign = "center";
 	}
 
 	public showCountDown( countDown: number ){
