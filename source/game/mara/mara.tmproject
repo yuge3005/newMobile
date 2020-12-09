@@ -1,12 +1,16 @@
 {
-    "options": {
-        "useExtension": 0,
-        "layoutGap": 1,
-        "extend": 0,
-        "layoutMath": "3",
-        "sizeMode": "2n"
-    },
+    "projectName": "mara",
     "files": [
+        "./BINGO.png",
+        "./bingo mark.png",
+        "./bg.png",
+        "./base.png",
+        "./baloon.png",
+        "./06.png",
+        "./05.png",
+        "./04.png",
+        "./03.png",
+        "./02.png",
         "./zero_grid.png",
         "./win.png",
         "./white_macaroon_grid.png",
@@ -19,8 +23,6 @@
         "./skill selection2.png",
         "./skill gray.png",
         "./shading.png",
-        "./round_start_txt.png",
-        "./round_over_txt.png",
         "./round.png",
         "./right arrow.png",
         "./red_macaroon_grid.png",
@@ -53,7 +55,6 @@
         "./effect_grid.png",
         "./dinero_big.png",
         "./dinero.png",
-        "./detail.png",
         "./default_grid.png",
         "./deco.png",
         "./cube.png",
@@ -79,18 +80,14 @@
         "./bule.png",
         "./BINGO-BG.png",
         "./bingo_city_of_light.png",
-        "./bingo_1st-3rd.png",
-        "./BINGO.png",
-        "./bingo mark.png",
-        "./bg.png",
-        "./base.png",
-        "./baloon.png",
-        "./06.png",
-        "./05.png",
-        "./04.png",
-        "./03.png",
-        "./02.png"
+        "./bingo_1st-3rd.png"
     ],
-    "version": 5,
-    "projectName": "mara"
+    "options": {
+        "layoutMath": "3",
+        "sizeMode": "2n",
+        "useExtension": 0,
+        "layoutGap": 1,
+        "extend": 0
+    },
+    "version": 5
 }
