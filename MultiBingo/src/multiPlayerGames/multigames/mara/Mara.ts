@@ -32,7 +32,7 @@ class Mara extends Multi75Super{
 		MultiPlayerGrid.linePicName = "orange";
 		MultiPlayerGrid.zeroUIName = "zero_grid";
 
-		MultiPlayerGrid.defaultNumberSize = 44;
+		MultiPlayerGrid.defaultNumberSize = 40;
 
 		this.cardClickMode( false );
 	}
