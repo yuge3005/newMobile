@@ -65,7 +65,7 @@ class MaraFeatureLayer extends egret.DisplayObjectContainer{
 
 	private addComflixLock( lockNumber: number ){
 		if( this.featureLocks[lockNumber] && this.contains( this.featureLocks[lockNumber] ) ) this.removeChild( this.featureLocks[lockNumber] );
-		this.featureLocks[lockNumber] = Com.addBitmapAt( this, MultiPlayerMachine.getAssetStr( "gray base" ), 0, this.locksPosition[lockNumber] );
+		this.featureLocks[lockNumber] = Com.addBitmapAt( this, MultiPlayerMachine.getAssetStr( "next_base" ), 20, this.locksPosition[lockNumber] );
 		this.featureLocks[lockNumber].touchEnabled = true;
 		this.addChild( this.featureLocks[lockNumber] );
 	}
@@ -91,7 +91,7 @@ class MaraFeatureLayer extends egret.DisplayObjectContainer{
 			console.error( "cancel used feature" );
 		}
 		if( !this.cancelMaskBg ){
-			this.cancelMaskBg = Com.addBitmapAt( this, MultiPlayerMachine.getAssetStr( "skill gray" ), 0, 75 );
+			this.cancelMaskBg = Com.addBitmapAt( this, MultiPlayerMachine.getAssetStr( "skill gray" ), -24, 238 );
 			this.cancelMaskBg.touchEnabled = true;
 		}
 		this.addChild( this.cancelMaskBg );

@@ -59,6 +59,5 @@ class MaraFeatureItem extends egret.DisplayObjectContainer{
 
 	public betStepPrice(){
 		this.priceTx.text = "" + this.price * Mara.betStep;
-		this.priceIcon.x = 45 + ( 45 - this.priceTx.textWidth ) * 0.4;
 	}
 }
