@@ -144,7 +144,8 @@ class Mara extends Multi75Super{
 
 		this.firstTimePlayShowTutorail();
 
-		Com.addDownButtonAt( this, this.assetStr("I"), this.assetStr("I"), 81, 537, this.showInfo.bind(this), true );
+		let infoButton: TouchDownButton = Com.addDownButtonAt( this, this.assetStr("I"), this.assetStr("I"), 272, 1017, this.showInfo.bind(this), true );
+		infoButton.scaleX = infoButton.scaleY = 2;
 	}
 
 	public showInfo( event: egret.TouchEvent ){
