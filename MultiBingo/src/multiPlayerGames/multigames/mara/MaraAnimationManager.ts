@@ -165,13 +165,13 @@ class MaraAnimationManager extends egret.DisplayObjectContainer{
 	public roundOver(){
 		let rs: egret.DisplayObjectContainer = new egret.DisplayObjectContainer;
 		Com.addBitmapAt( rs, MultiPlayerMachine.getAssetStr("round"), 0, 0 );
-		Com.addBitmapAt( rs, "mara_" + MuLang.language + "_json.round_over_tip", 10, 128 );
-		Com.addObjectAt( this, rs, 755 - rs.width - 44 >> 1, - rs.height );
-		TweenerTool.tweenTo( rs, { y: 600 - rs.height >> 1 }, 500, 0, this.roundStartHide.bind( this, rs ), null, egret.Ease.circOut );
+		Com.addBitmapAtMiddle( rs, "mara_" + MuLang.language + "_json.round_over_tip", 448, 457 );
+		Com.addObjectAt( this, rs, BingoBackGroundSetting.gameMask.width - rs.width >> 1, - rs.height );
+		TweenerTool.tweenTo( rs, { y: BingoBackGroundSetting.gameMask.height - rs.height >> 1 }, 500, 0, this.roundStartHide.bind( this, rs ), null, egret.Ease.circOut );
 	}
 
 	private roundStartHide( rs: egret.DisplayObjectContainer ){
-		TweenerTool.tweenTo( rs, { y: 600 }, 500, 1500, MDS.removeSelf.bind( this, rs ), null, egret.Ease.circIn );
+		TweenerTool.tweenTo( rs, { y: BingoBackGroundSetting.gameMask.width }, 500, 1500, MDS.removeSelf.bind( this, rs ), null, egret.Ease.circIn );
 	}
 
 	public changeModeAnimation(){
