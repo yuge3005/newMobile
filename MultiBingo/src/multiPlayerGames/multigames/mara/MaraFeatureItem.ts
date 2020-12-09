@@ -12,38 +12,37 @@ class MaraFeatureItem extends egret.DisplayObjectContainer{
 		super();
 
 		this.featureName = obj["name"];
-		Com.addBitmapAt( this, MultiPlayerMachine.getAssetStr( "icon_" + this.featureName ), 28, 6 );
+		Com.addBitmapAt( this, MultiPlayerMachine.getAssetStr( "icon_" + this.featureName ), 53, -7 );
 
-		Com.addDownButtonAt( this, MultiPlayerMachine.getAssetStr( "buySkill" ), MultiPlayerMachine.getAssetStr( "buySkill" ), 45, 40, this.onTap.bind(this), true );
+		Com.addDownButtonAt( this, MultiPlayerMachine.getAssetStr( "buySkill" ), MultiPlayerMachine.getAssetStr( "buySkill" ), 106, 81, this.onTap.bind(this), true );
 
 		this.type = obj["type"];
 		let typeIcon: string;
-		if( this.type == "coins" ) typeIcon = "coin";
+		if( this.type == "coins" ) typeIcon = "coin_big";
 		else if( this.type == "hard_currency" ){
 			 this.type = "dinero";
-			 typeIcon = "green";
+			 typeIcon = "dinero_big";
 		}
 		else{
-			typeIcon = "green";
+			typeIcon = "dinero_big";
 			console.error( "typeError" );
 		}
 
 		this.price = obj["price"];
-		this.priceTx = Com.addTextAt( this, 70, 44 + BrowserInfo.textUp, 45, 15, 15, false, true );
+		this.priceTx = Com.addTextAt( this, 176, 92, 55, 28, 28, false, true );
 		this.priceTx.textColor = 0;
 		this.priceTx.scaleX = 0.8;
 		this.priceTx.text = "" + this.price * Mara.betStep;
 
-		this.priceIcon = Com.addBitmapAt( this, "mara_idle_json." + typeIcon, 45 + ( 45 - this.priceTx.textWidth ) * 0.4, 45 );
+		this.priceIcon = Com.addBitmapAtMiddle( this, MultiPlayerMachine.getAssetStr( typeIcon ), 150, 105 );
+		if( this.type == "dinero" ) this.priceIcon.rotation = -20;
 
-		let featureNameTxt: egret.TextField = Com.addTextAt( this, 80, 12, 180, 25, 12 );
+		let featureNameTxt: TextLabel = Com.addLabelAt( this, 160, 20, 140, 48, 36 );
 		featureNameTxt.bold = true;
-		featureNameTxt.scaleX = 0.7;
-		featureNameTxt.textAlign = "left";
 		featureNameTxt.verticalAlign = "middle";
-		featureNameTxt.text = MuLang.getText( this.featureName, MuLang.CASE_UPPER ).replace( " ", "\n" );
+		featureNameTxt.setText( MuLang.getText( this.featureName, MuLang.CASE_UPPER ).replace( " ", "\n" ) );
 
-		this.buyButton = Com.addDownButtonAt( this, MultiPlayerMachine.getAssetStr( "tips" ), MultiPlayerMachine.getAssetStr( "tips" ), 0, 0, this.onTip.bind(this), true );
+		this.buyButton = Com.addDownButtonAt( this, MultiPlayerMachine.getAssetStr( "tips" ), MultiPlayerMachine.getAssetStr( "tips" ), -3, 3, this.onTip.bind(this), true );
 	}
 
 	private onTap( event: egret.TouchEvent ){

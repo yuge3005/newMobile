@@ -18,7 +18,7 @@ class MaraFeatureLayer extends egret.DisplayObjectContainer{
 		this.featureItems = [];
 		for( let i: number = 0; i < features.length; i++ ){
 			this.featureItems[i] = new MaraFeatureItem( features[i] );
-			this.featureItems[i].y = i * 70 + 115;
+			this.featureItems[i].y = i * 150 + 331;
 			this.addChild( this.featureItems[i] );
 			this.featureItems[i].addEventListener( "featureEvent", this.onFeatrue, this );
 			this.featureItems[i].addEventListener( "featureTip", this.onFeatrue, this );
