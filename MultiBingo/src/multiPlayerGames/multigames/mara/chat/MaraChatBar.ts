@@ -129,11 +129,11 @@ class MaraChatBar extends MultiChatBar{
 		Com.addObjectAt( this.scrollBar, userInfo, this.leftMargin, this.scrollHeight );
 		if( fbId != "" ) Utils.downloadBitmapDataByFacebookID( fbId, 50, 50, MDS.onUserHeadLoaded.bind( this, headIcon, this.headSize ), this );
 
-		let tipTxt: egret.TextField = Com.addTextAt( userInfo, 42, 8 + BrowserInfo.textUp, 110, 11, 11 );
+		let tipTxt: TextLabel = Com.addLabelAt( userInfo, 95, 27, 142, 32, 32 );
 		tipTxt.textAlign = "left";
 		tipTxt.scaleX = 0.88;
 		tipTxt.textColor = 0;
-		tipTxt.text = userName;
+		tipTxt.setText( userName );
 
 		this.resetScroll();
 
@@ -147,6 +147,7 @@ class MaraChatBar extends MultiChatBar{
 			else bingoBg = Com.addBitmapAt( userInfo, MultiPlayerMachine.getAssetStr( "player_bingo" ), 0, 0 );
 		}
 		userInfo.addChildAt( bingoBg, 0 );
+		userInfo.cacheAsBitmap = true;
 	}
 
 	public otherJoin( userName: string, fbId: string ){

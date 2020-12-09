@@ -25,6 +25,8 @@ class MaraFeatureTip extends egret.DisplayObjectContainer{
 		this.titleTxt.height = 70;
 
 		this.addEventListener( egret.Event.ADDED_TO_STAGE, this.onAdd, this );
+
+		this.cacheAsBitmap = true;
 	}
 
 	private onAdd( event: egret.Event ){

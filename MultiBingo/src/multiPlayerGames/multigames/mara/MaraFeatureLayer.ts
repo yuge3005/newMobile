@@ -10,6 +10,7 @@ class MaraFeatureLayer extends egret.DisplayObjectContainer{
 		super();
 
 		this.featureLocks = [];
+		this.cacheAsBitmap = true;
 	}
 
 	public getNewFeatureItems( features : Array<Object> ){
