@@ -146,6 +146,8 @@ class MaraCard extends Multi75Card{
 			MaraCard.bingoFactory = new egret.MovieClipDataFactory( data, tex );
 		}
 		let mc: egret.MovieClip = Com.addMovieClipAt( this.bingoMask, MaraCard.bingoFactory, "bingo", 0, 0 );
+		mc.scaleX = 409 / 180;
+		mc.scaleY = 393 / 175;
 		TweenerTool.tweenTo( mc, { alpha: 0 }, 400, 3500, MDS.removeSelf.bind( this, mc ) );
 		SoundManager.play( "mara_bingo_mp3" );
 	}

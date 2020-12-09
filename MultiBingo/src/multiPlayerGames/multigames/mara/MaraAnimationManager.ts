@@ -61,7 +61,14 @@ class MaraAnimationManager extends egret.DisplayObjectContainer{
 
 		let mc: egret.MovieClip = Com.addMovieClipAt( this, this.redWineFactory, "redWine", x, y );
 		mc.play(1);
-		if( this.oneCardMode ) mc.scaleX = mc.scaleY = 2.05;
+		if( this.oneCardMode ){
+			mc.scaleX = 409 / 180 * 2.05;
+			mc.scaleY = 393 / 175 * 2.05;
+		}
+		else{
+			mc.scaleX = 409 / 180;
+			mc.scaleY = 393 / 175;
+		}
 		TweenerTool.tweenTo( mc, { alpha: 0 }, 300, 2500, MDS.removeSelf.bind( this, mc ) );
 	}
 

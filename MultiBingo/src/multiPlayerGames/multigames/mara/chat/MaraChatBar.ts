@@ -129,8 +129,9 @@ class MaraChatBar extends MultiChatBar{
 		Com.addObjectAt( this.scrollBar, userInfo, this.leftMargin, this.scrollHeight );
 		if( fbId != "" ) Utils.downloadBitmapDataByFacebookID( fbId, 50, 50, MDS.onUserHeadLoaded.bind( this, headIcon, this.headSize ), this );
 
-		let tipTxt: TextLabel = Com.addLabelAt( userInfo, 95, 27, 142, 32, 32 );
+		let tipTxt: TextLabel = Com.addLabelAt( userInfo, 95, 22, 142, 32, 32 );
 		tipTxt.textAlign = "left";
+		tipTxt.bold = true;
 		tipTxt.scaleX = 0.88;
 		tipTxt.textColor = 0;
 		tipTxt.setText( userName );
