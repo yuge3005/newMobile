@@ -2,7 +2,7 @@ class MaraFeatureLayer extends egret.DisplayObjectContainer{
 
 	private featureItems: Array<MaraFeatureItem>;
 	private featureLocks: Array<egret.DisplayObject>;
-	private locksPosition: Array<number> = [119, 189, 257];
+	private locksPosition: Array<number> = [331, 481, 631];
 
 	private static cardFeatureNames: Array<string> = ["fishingNet", "swirl"];
 
@@ -72,7 +72,7 @@ class MaraFeatureLayer extends egret.DisplayObjectContainer{
 
 	private addSelfLock( lockNumber: number ){
 		if( this.featureLocks[lockNumber] && this.contains( this.featureLocks[lockNumber] ) ) this.removeChild( this.featureLocks[lockNumber] );
-		this.featureLocks[lockNumber] = Com.addBitmapAt( this, MultiPlayerMachine.getAssetStr( "used" ), 0, this.locksPosition[lockNumber] );
+		this.featureLocks[lockNumber] = Com.addBitmapAt( this, MultiPlayerMachine.getAssetStr( "used" ), 20, this.locksPosition[lockNumber] );
 		this.featureLocks[lockNumber].touchEnabled = true;
 		this.addChild( this.featureLocks[lockNumber] );
 	}
@@ -95,7 +95,7 @@ class MaraFeatureLayer extends egret.DisplayObjectContainer{
 			this.cancelMaskBg.touchEnabled = true;
 		}
 		this.addChild( this.cancelMaskBg );
-		this.featureLocks[lockNumber] = Com.addDownButtonAt( this, "mara_" + MuLang.language + "_json.base", "mara_" + MuLang.language + "_json.base", 9, this.locksPosition[lockNumber], this.cencelSkill.bind(this), true );
+		this.featureLocks[lockNumber] = Com.addDownButtonAt( this, "mara_" + MuLang.language + "_json.base", "mara_" + MuLang.language + "_json.base", 20, this.locksPosition[lockNumber], this.cencelSkill.bind(this), true );
 	}
 
 	private cencelSkill( event: egret.TouchEvent ){
