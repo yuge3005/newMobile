@@ -22,9 +22,10 @@ class MaraBingoInfoBar extends MultyBingoInfoBar{
 		this.bgLight.alpha = 0;
 
 		this.awardLayer = new egret.DisplayObjectContainer;
-		Com.addObjectAt( this, this.awardLayer, 0, 25 );
-		Com.addBitmapAt( this.awardLayer, MultiPlayerMachine.getAssetStr( "coin" ), 0, 0 );
-		this.awardText = Com.addTextAt( this.awardLayer, 35, 4, 200, 19, 19 );
+		Com.addObjectAt( this, this.awardLayer, 0, 0 );
+		let coin: egret.Bitmap = Com.addBitmapAtMiddle( this.awardLayer, MultiPlayerMachine.getAssetStr( "coin_big" ), 134, 100 );
+		coin.scaleX = coin.scaleY = 1.6;
+		this.awardText = Com.addTextAt( this.awardLayer, 180, 80, 200, 45, 45 );
 		this.awardText.textAlign = "left";
 		this.awardText.fontFamily = "Righteous";
 		this.awardText.text = Utils.formatCoinsNumber( 1000 );
@@ -36,33 +37,37 @@ class MaraBingoInfoBar extends MultyBingoInfoBar{
 		this.specialHeadFrame = Com.addBitmapAt( this,  "mara_chat_box_json.Head frame2", 0, 3 );
 		this.specialHead.visible = this.specialHeadFrame.visible = false;
 
-		this.paytableUILayer.y = 3;
+		this.paytableUILayer.x = 400;
+		this.paytableUILayer.y = 22;
 	}
 
 	protected addFixText(){
-		this.bingoTxt = Com.addTextAt( this, 20, 5, 75, 18, 18 );
+		this.bingoTxt = Com.addTextAt( this, 143, 22, 170, 45, 45 );
+		this.bingoTxt.textAlign = "left";
 		this.bingoTxt.bold = true;
 		this.bingoTxt.fontFamily = "Righteous";
 		this.bingoTxt.text = "BINGO";
+		this.bingoTxt.textColor = 0xEEFFFF;
 		this.bingoTxt.filters = [ new egret.DropShadowFilter( 3, 45, 0, 0.5, 4, 4, 2, 1 ) ];
 
-		this.bingoLeftTxt = Com.addTextAt( this, 5, 5, 35, 18, 18 );
-		this.bingoLeftTxt.textAlign = "left";
+		this.bingoLeftTxt = Com.addTextAt( this, 90, 22, 40, 45, 45 );
+		this.bingoLeftTxt.textAlign = "right";
 		this.bingoLeftTxt.bold = true;
 		this.bingoLeftTxt.fontFamily = "Righteous";
+		this.bingoLeftTxt.textColor = 0xEEFFFF;
 		this.bingoLeftTxt.filters = [ new egret.DropShadowFilter( 3, 45, 0, 0.5, 4, 4, 2, 1 ) ];
 	}
 
 	protected showCurrentPattern( ptIndex: number ){
 		let rule: string = this.currentPaytableRules[ptIndex];
-		GraphicTool.drawRect( this.paytableUILayer, new egret.Rectangle( 0, 0, 56, 51 ), 0x0C303B, true );
+		GraphicTool.drawRect( this.paytableUILayer, new egret.Rectangle( 0, 0, 90, 90 ), 0x0C303B, true );
 		for( let i: number = 0; i < rule.length; i++ ){
 			let str: String = rule.charAt(i);
 			if( str == "1" ){
-				GraphicTool.drawRect( this.paytableUILayer, new egret.Rectangle( i % 5 * 11 + 1, Math.floor( i / 5 ) * 10 + 1, 10, 9 ), this.patternColor );
+				GraphicTool.drawRect( this.paytableUILayer, new egret.Rectangle( i % 5 * 18 + 1, Math.floor( i / 5 ) * 18 + 1, 16, 16 ), this.patternColor );
 			}
 			else{
-				GraphicTool.drawRect( this.paytableUILayer, new egret.Rectangle( i % 5 * 11 + 1, Math.floor( i / 5 ) * 10 + 1, 10, 9 ), 0x1E3C47 );
+				GraphicTool.drawRect( this.paytableUILayer, new egret.Rectangle( i % 5 * 18 + 1, Math.floor( i / 5 ) * 18 + 1, 16, 16 ), 0x1E3C47 );
 			}
 		}
 	}
@@ -91,7 +96,7 @@ class MaraBingoInfoBar extends MultyBingoInfoBar{
 		TweenerTool.tweenTo( this.bgTip, { y: 0 }, 500, 100 );
 		egret.Tween.removeTweens(this.bgLight);
 		TweenerTool.tweenTo( this.bgLight, { alpha: 0 }, 500, 100 );
-		this.awardLayer.y = 25;
+		this.awardLayer.y = 0;
 		this.bingoTxt.visible = true;
 		this.bingoLeftTxt.visible = true;
 
