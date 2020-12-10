@@ -157,7 +157,7 @@ class MaraAnimationManager extends egret.DisplayObjectContainer{
 		TweenerTool.tweenTo( mc, { alpha: 0 }, 300, 1500, MDS.removeSelf.bind( this, mc ) );
 		let mcBig: egret.MovieClip = Com.addMovieClipAt( this, MDS.mcFactory, "perfume", x, y );
 		mcBig.play(1);
-		this.setScaleToNew( mc, this.oneCardMode );
+		this.setScaleToNew( mcBig, this.oneCardMode );
 		TweenerTool.tweenTo( mcBig, { alpha: 0 }, 300, 2200, MDS.removeSelf.bind( this, mcBig ) );
 	}
 
