@@ -37,7 +37,7 @@ class MaraFeatureItem extends egret.DisplayObjectContainer{
 		this.priceIcon = Com.addBitmapAtMiddle( this, MultiPlayerMachine.getAssetStr( typeIcon ), 150, 105 );
 		if( this.type == "dinero" ) this.priceIcon.rotation = -20;
 
-		let featureNameTxt: TextLabel = Com.addLabelAt( this, 160, 20, 140, 48, 36 );
+		let featureNameTxt: TextLabel = Com.addLabelAt( this, 160, 16, 140, 55, 36 );
 		featureNameTxt.bold = true;
 		featureNameTxt.verticalAlign = "middle";
 		featureNameTxt.setText( MuLang.getText( this.featureName, MuLang.CASE_UPPER ).replace( " ", "\n" ) );
