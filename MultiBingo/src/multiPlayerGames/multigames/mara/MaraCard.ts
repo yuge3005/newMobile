@@ -129,7 +129,7 @@ class MaraCard extends Multi75Card{
 		this.bingoMask.touchEnabled = true;
 		this.addChild( this.bingoMask );
 		Com.addBitmapAt( this.bingoMask, MultiPlayerMachine.getAssetStr( "BINGO-BG" ), 0, 0 );
-		Com.addDownButtonAt( this.bingoMask, MultiPlayerMachine.getAssetStr( "BINGO" ), MultiPlayerMachine.getAssetStr( "BINGO" ), this.bg.width >> 1, this.bg.height >> 1, this.callBingo.bind(this), true );
+		Com.addDownButtonAt( this.bingoMask, MultiPlayerMachine.getAssetStr( "BINGO" ), MultiPlayerMachine.getAssetStr( "BINGO" ), this.bg.width - 174 >> 1, this.bg.height - 73 >> 1, this.callBingo.bind(this), true );
 	}
 
 	private callBingo( event: egret.Event ){
@@ -296,7 +296,7 @@ class MaraCard extends Multi75Card{
 	}
 
 	public sharkChoosing( choosing: boolean ){
-		if( !this.choosingBit ) this.choosingBit = Com.addBitmapAt( this, MultiPlayerMachine.getAssetStr( "glow" ), -13, -10 );
+		if( !this.choosingBit ) this.choosingBit = Com.addBitmapAt( this, MultiPlayerMachine.getAssetStr( "glow" ), -45, -53 );
 		this.choosingBit.visible = choosing;
 	}
 
@@ -332,7 +332,7 @@ class MaraCard extends Multi75Card{
 	private cardChoosingBit: egret.Bitmap;
 
 	public cardClickMode( isClickMode: boolean ){
-		if( !this.cardChoosingBit ) this.cardChoosingBit = Com.addBitmapAt( this, MultiPlayerMachine.getAssetStr( "glow" ), -13, -10 );
+		if( !this.cardChoosingBit ) this.cardChoosingBit = Com.addBitmapAt( this, MultiPlayerMachine.getAssetStr( "glow" ), -45, -53 );
 		this.cardChoosingBit.visible = isClickMode;
 	}
 
