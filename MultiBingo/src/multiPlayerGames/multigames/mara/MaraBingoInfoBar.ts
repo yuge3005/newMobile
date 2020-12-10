@@ -15,9 +15,10 @@ class MaraBingoInfoBar extends MultyBingoInfoBar{
 		this.bgLight = Com.addBitmapAt( this, "mara_chat_box_json.light", 60, 0 );
 		this.bgTip = new egret.DisplayObjectContainer;
 		Com.addBitmapAt( this.bgTip, "mara_chat_box_json.number of people", 102, 0 );
-		let txCity: TextLabel = MDS.addGameText( this.bgTip, 130, 90, 60, 0xffb500, "City of Light", false, 400 );
+		let txCity: TextLabel = MDS.addGameText( this.bgTip, 132, 90, 60, 0xffb500, "City of Light", false, 400 );
 		txCity.textAlign = "center";
 		txCity.filters = [ new egret.DropShadowFilter( 3, 135, 0, 0.5, 4, 4, 2, 1 ) ];
+		txCity.text = txCity.text.toUpperCase();
 		this.addChildAt( this.bgLight, 0 );
 		this.addChildAt( Com.addBitmapAt( this, "mara_chat_box_json.photo frame", 0, 0 ), 0 );
 		this.addChildAt( this.bgTip, 0 );

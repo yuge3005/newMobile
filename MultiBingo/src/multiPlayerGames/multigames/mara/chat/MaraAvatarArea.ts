@@ -65,8 +65,7 @@ class MaraAvatarArea extends AvatarContainer{
 		let texture: egret.Texture = RES.getRes("mara_chat_box_json.photo Head frame");
 		for( let i: number = 0; i < 3; i++ ){
 			this.headList[i].texture = texture;
-			this.headList[i].width = 30;
-			this.headList[i].height = 30;
+			this.headList[i].scaleX = this.headList[i].scaleY = 1;
 		}
 	}
 
