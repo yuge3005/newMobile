@@ -12,10 +12,12 @@ class MaraBingoInfoBar extends MultyBingoInfoBar{
 	public constructor() {
 		super();
 
-		this.bgLight = Com.addBitmapAt( this, "mara_chat_box_json.light", -18, -7 );
+		this.bgLight = Com.addBitmapAt( this, "mara_chat_box_json.light", 60, 0 );
 		this.bgTip = new egret.DisplayObjectContainer;
-		Com.addBitmapAt( this.bgTip, "mara_chat_box_json.number of people", 3, 0 );
-		Com.addBitmapAtMiddle( this.bgTip, "mara_" + MuLang.language + "_json.city_big", 90, 56 );
+		Com.addBitmapAt( this.bgTip, "mara_chat_box_json.number of people", 102, 0 );
+		let txCity: TextLabel = MDS.addGameText( this.bgTip, 130, 90, 60, 0xffb500, "City of Light", false, 400 );
+		txCity.textAlign = "center";
+		txCity.filters = [ new egret.DropShadowFilter( 3, 135, 0, 0.5, 4, 4, 2, 1 ) ];
 		this.addChildAt( this.bgLight, 0 );
 		this.addChildAt( Com.addBitmapAt( this, "mara_chat_box_json.photo frame", 0, 0 ), 0 );
 		this.addChildAt( this.bgTip, 0 );
@@ -79,7 +81,7 @@ class MaraBingoInfoBar extends MultyBingoInfoBar{
 
 	public specialUI(){
 		egret.Tween.removeTweens(this.bgTip);
-		TweenerTool.tweenTo( this.bgTip, { y: 66 }, 500, 100, null, { y: 0 } );
+		TweenerTool.tweenTo( this.bgTip, { y: 184 }, 500, 100, null, { y: 0 } );
 		egret.Tween.removeTweens(this.bgLight);
 		TweenerTool.tweenTo( this.bgLight, { alpha: 1 }, 500, 100, null, { y: 0 } );
 		this.awardLayer.y = 90;

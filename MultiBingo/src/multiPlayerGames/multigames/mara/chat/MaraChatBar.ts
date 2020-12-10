@@ -168,7 +168,7 @@ class MaraChatBar extends MultiChatBar{
 
 	public specialUI(){
 		egret.Tween.removeTweens(this.nextRoundBar);
-		TweenerTool.tweenTo( this.nextRoundBar, { x: 200 }, 800 );
+		TweenerTool.tweenTo( this.nextRoundBar, { x: 520 }, 800 );
 		this.avatarList.visible = false;
 	}
 
