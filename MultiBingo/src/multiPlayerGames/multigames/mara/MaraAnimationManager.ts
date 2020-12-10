@@ -141,7 +141,7 @@ class MaraAnimationManager extends egret.DisplayObjectContainer{
 	public playStar( x: number, y: number ){
 		let mc: egret.MovieClip = Com.addMovieClipAt( this, MDS.mcFactory, "sandwich", x, y );
 		mc.play(1);
-		if( this.oneCardMode ) mc.scaleX = mc.scaleY = 2.05;
+		this.setScaleToNew( mc, this.oneCardMode );
 		TweenerTool.tweenTo( mc, { alpha: 0 }, 300, 3200, MDS.removeSelf.bind( this, mc ) );
 	}
 
@@ -153,11 +153,11 @@ class MaraAnimationManager extends egret.DisplayObjectContainer{
 		}
 		let mc: egret.MovieClip = Com.addMovieClipAt( this, MDS.mcFactory, "perfume_bottle", pt.x, pt.y );
 		mc.play(1);
-		if( this.oneCardMode ) mc.scaleX = mc.scaleY = 2.05;
+		this.setScaleToNew( mc, this.oneCardMode );
 		TweenerTool.tweenTo( mc, { alpha: 0 }, 300, 1500, MDS.removeSelf.bind( this, mc ) );
 		let mcBig: egret.MovieClip = Com.addMovieClipAt( this, MDS.mcFactory, "perfume", x, y );
 		mcBig.play(1);
-		if( this.oneCardMode ) mcBig.scaleX = mcBig.scaleY = 2.05;
+		this.setScaleToNew( mc, this.oneCardMode );
 		TweenerTool.tweenTo( mcBig, { alpha: 0 }, 300, 2200, MDS.removeSelf.bind( this, mcBig ) );
 	}
 
@@ -169,7 +169,7 @@ class MaraAnimationManager extends egret.DisplayObjectContainer{
 		}
 		let mc: egret.MovieClip = Com.addMovieClipAt( this, MDS.mcFactory, "perfume_cap", pt.x, pt.y );
 		mc.play(1);
-		if( this.oneCardMode ) mc.scaleX = mc.scaleY = 2.05;
+		this.setScaleToNew( mc, this.oneCardMode );
 		TweenerTool.tweenTo( mc, { alpha: 0 }, 100, 700, MDS.removeSelf.bind( this, mc ) );
 	}
 
