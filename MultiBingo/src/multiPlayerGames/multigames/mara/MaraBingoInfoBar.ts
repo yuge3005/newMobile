@@ -36,8 +36,8 @@ class MaraBingoInfoBar extends MultyBingoInfoBar{
 
 		this.patternColor = 0xFDBA2A;
 
-		this.specialHead = Com.addBitmapAt( this,  "mara_chat_box_json.photo Head frame", 16, 12 );
-		this.specialHeadFrame = Com.addBitmapAt( this,  "mara_chat_box_json.Head frame2", 0, 3 );
+		this.specialHead = Com.addBitmapAt( this,  "mara_chat_box_json.photo Head frame", 152, 45 );
+		this.specialHeadFrame = Com.addBitmapAt( this,  "mara_chat_box_json.Head frame2", 118, 22 );
 		this.specialHead.visible = this.specialHeadFrame.visible = false;
 
 		this.paytableUILayer.x = 400;
@@ -90,7 +90,6 @@ class MaraBingoInfoBar extends MultyBingoInfoBar{
 		this.bingoLeftTxt.visible = false;
 
 		this.specialHead.visible = true;
-		this.specialHead.width = this.specialHead.height = 44;
 		this.specialHeadFrame.visible = true;
 	}
 

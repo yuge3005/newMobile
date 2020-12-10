@@ -37,7 +37,7 @@ class MaraChatBar extends MultiChatBar{
 		this.avatarList = new MaraAvatarArea;
 		Com.addObjectAt( this, this.avatarList, 45, -341 );
 
-		this.headSize = 61;
+		this.headSize = 60;
 		this.lineGap = 2;
 		this.tipPositionY = 45;
 		this.leftMargin = 0;
@@ -85,9 +85,9 @@ class MaraChatBar extends MultiChatBar{
 	protected buildMessageItem( userName: string, message: string, tipBg: boolean, redBigTip: boolean ): egret.DisplayObjectContainer{
 		let userInfo: egret.DisplayObjectContainer = new egret.DisplayObjectContainer;
 
-		let headIcon: egret.Bitmap = Com.addBitmapAt( userInfo, MultiPlayerMachine.getAssetStr( "head_icon" ), 11, 10 );
-		headIcon.width = 61
-		headIcon.height = 52;
+		let headIcon: egret.Bitmap = Com.addBitmapAt( userInfo, MultiPlayerMachine.getAssetStr( "head_icon" ), 12, 13 );
+		headIcon.width = 60
+		headIcon.height = 55;
 		Com.addBitmapAt( userInfo, "mara_chat_box_json.Head frame", 5, 0 );
 
 		let nameTxt: TextLabel = Com.addLabelAt( userInfo, 91, 10, 250, 30, 30, false, true );
@@ -122,10 +122,10 @@ class MaraChatBar extends MultiChatBar{
 
 	public showBingoPlayerName( userName: string, fbId: string ){
 		let userInfo: egret.DisplayObjectContainer = new egret.DisplayObjectContainer;
-		let headIcon: egret.Bitmap = Com.addBitmapAt( userInfo, MultiPlayerMachine.getAssetStr( "head_icon" ), 5, 3 );
-		headIcon.scaleX = 28/31;
-		headIcon.scaleY = 28/36;
-		Com.addBitmapAt( userInfo, "mara_chat_box_json.Head frame", 2, -2 );
+		let headIcon: egret.Bitmap = Com.addBitmapAt( userInfo, MultiPlayerMachine.getAssetStr( "head_icon" ), 12, 13 );
+		headIcon.width = 60
+		headIcon.height = 55;
+		Com.addBitmapAt( userInfo, "mara_chat_box_json.Head frame", 5, 0 );
 		Com.addObjectAt( this.scrollBar, userInfo, this.leftMargin, this.scrollHeight );
 		if( fbId != "" ) Utils.downloadBitmapDataByFacebookID( fbId, 50, 50, MDS.onUserHeadLoaded.bind( this, headIcon, this.headSize ), this );
 
