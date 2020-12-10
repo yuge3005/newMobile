@@ -35,7 +35,7 @@ class MaraChatBar extends MultiChatBar{
 		this.playerCountTxt.scaleX = 0.75;
 
 		this.avatarList = new MaraAvatarArea;
-		Com.addObjectAt( this, this.avatarList, 4, -158 );
+		Com.addObjectAt( this, this.avatarList, 45, -341 );
 
 		this.headSize = 61;
 		this.lineGap = 2;

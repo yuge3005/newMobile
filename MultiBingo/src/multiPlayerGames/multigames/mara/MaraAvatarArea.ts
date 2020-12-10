@@ -10,30 +10,32 @@ class MaraAvatarArea extends AvatarContainer{
 		this.headCount = 0;
 		this.headList = [];
 		this.timeTxts = [];
+		let perX: number = 131;
 		for( let i: number = 0; i < 3; i++ ){
 			this.headList[i] = this.newHead();
-			this.headList[i].x = 58 * i + 6;
+			this.headList[i].x = perX * i + 1;
 			this.headList[i].y = 8;
 			let maskCircle: egret.Shape = new egret.Shape;
 			maskCircle.graphics.beginFill(0);
-			maskCircle.graphics.drawCircle( 15, 15, 15 );
+			maskCircle.graphics.drawCircle( 30, 30, 30 );
 			maskCircle.graphics.endFill();
-			maskCircle.x = 58 * i + 6;
-			maskCircle.y = 8;
+			maskCircle.x = perX * i + 18;
+			maskCircle.y = 21;
 			this.avatarLayer.addChild( maskCircle );
 			this.headList[i].mask = maskCircle;
-			let tx: egret.TextField = Com.addTextAt( this.avatarLayer, 58 * i + 32, 15, 35, 20, 20 );
-			tx.scaleX = 0.8;
+			let tx: egret.TextField = Com.addTextAt( this.avatarLayer, perX * i + 90, 40, 50, 36, 36 );
+			tx.scaleX = 0.82;
 			tx.bold = true;
 			tx.text = "X2";
+			tx.textAlign = "left";
 			this.timeTxts[i] = tx;
-			Com.addBitmapAt( this.avatarLayer, "mara_chat_box_json." + ( i + 1 ), 58 * i, 0 )
+			Com.addBitmapAt( this.avatarLayer, "mara_chat_box_json." + ( i + 1 ), perX * i, 0 )
 		}
 	}
 
 	protected setArea(){
-		this.width = 170;
-		this.height = 46;
+		this.width = 393;
+		this.height = 106;
 	}
 
 	public updataList( list: Array<Object> ){
