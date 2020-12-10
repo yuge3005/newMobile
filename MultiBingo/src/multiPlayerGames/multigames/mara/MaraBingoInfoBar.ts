@@ -82,7 +82,7 @@ class MaraBingoInfoBar extends MultyBingoInfoBar{
 		TweenerTool.tweenTo( this.bgTip, { y: 66 }, 500, 100, null, { y: 0 } );
 		egret.Tween.removeTweens(this.bgLight);
 		TweenerTool.tweenTo( this.bgLight, { alpha: 1 }, 500, 100, null, { y: 0 } );
-		this.awardLayer.y = 65;
+		this.awardLayer.y = 90;
 		this.bingoTxt.visible = false;
 		this.bingoLeftTxt.visible = false;
 
