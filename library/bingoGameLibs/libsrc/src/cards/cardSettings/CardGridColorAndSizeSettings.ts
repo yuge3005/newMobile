@@ -3,7 +3,6 @@ class CardGridColorAndSizeSettings{
 	public static numberColor: number;
 	public static numberColorOnEffect: number;
 	public static colorNumberOnEffect: boolean;
-	public static colorNumberBackgroundOnEffect: boolean;
 
 	public static gridSize: egret.Point;
 	public static gridSpace: egret.Point;
@@ -17,7 +16,6 @@ class CardGridColorAndSizeSettings{
 		this.numberColor = colors["numberColor"];
 		this.numberColorOnEffect = colors["numberColorOnEffect"];
 		this.colorNumberOnEffect = colors["colorNumberOnEffect"];
-		this.colorNumberBackgroundOnEffect = colors["colorNumberBackgroundOnEffect"];
 	}
 
 	public static sizeSetting( size: Object ){

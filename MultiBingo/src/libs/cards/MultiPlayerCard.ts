@@ -40,9 +40,7 @@ class MultiPlayerCard extends egret.Sprite{
 
 		let colors: Object = data["colors"];
 		let size: Object = data["size"];
-		CardGridColorAndSizeSettings.numberColor = colors["numberColor"];
-		CardGridColorAndSizeSettings.numberColorOnEffect = colors["numberColorOnEffect"];
-		MultiPlayerGrid.colorNumberOnEffect = colors["colorNumberOnEffect"];
+		CardGridColorAndSizeSettings.colorSetting( colors );
 
 		this.gridNumbers = new egret.Point( size["vertSize"], size["horzSize"] );
 		this.gapSize = new egret.Point( size["vertGap"], size["horzGap"] );

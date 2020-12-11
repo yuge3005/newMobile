@@ -35,8 +35,6 @@ class MultiPlayerGrid extends egret.Sprite{
 		if( !value )this.currentBgPic = this.defaultBgPic;
 	}
 
-	public static colorNumberOnEffect: boolean;
-
 	protected numTxt: egret.TextField;
 
 	protected zeroUI: egret.Bitmap;
@@ -85,7 +83,7 @@ class MultiPlayerGrid extends egret.Sprite{
 		if( this.blink )this.blink = false;
 		this._isChecked = isShow;
 		if( isShow ){
-			if( MultiPlayerGrid.colorNumberOnEffect )this.numTxt.textColor = CardGridColorAndSizeSettings.numberColorOnEffect;
+			if( CardGridColorAndSizeSettings.colorNumberOnEffect )this.numTxt.textColor = CardGridColorAndSizeSettings.numberColorOnEffect;
 			this.currentBgPic = this.onEffBgPic;
 		}
 		else{
