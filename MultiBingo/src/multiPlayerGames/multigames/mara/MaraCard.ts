@@ -18,8 +18,8 @@ class MaraCard extends Multi75Card{
 		}
 		if( this.isSharkChoosing && !this.specialMode ){
 			let innerPosition: egret.Point = new egret.Point( event.localX - MultiPlayerCard.gridInitPosition.x, event.localY - MultiPlayerCard.gridInitPosition.y );
-			let cow: number = Math.floor( innerPosition.x / MultiPlayerGrid.gridSpace.x );
-			let line: number = Math.floor( innerPosition.y / MultiPlayerGrid.gridSpace.y );
+			let cow: number = Math.floor( innerPosition.x / CardGridColorAndSizeSettings.gridSpace.x );
+			let line: number = Math.floor( innerPosition.y / CardGridColorAndSizeSettings.gridSpace.y );
 			if( cow >= 0 && cow <= 5 && cow >= 0 && cow <= 5 ){
 				let gridIndex: number = line * 5 + cow;
 				let grid: MaraGrid = this.grids[gridIndex] as MaraGrid;
@@ -213,8 +213,8 @@ class MaraCard extends Multi75Card{
 			this.addChild( this.jellyBombLayer );
 		}
 		let pt: egret.Point = new egret.Point;
-		pt.x = MultiPlayerCard.gridInitPosition.x + ( cow - 1 ) * MultiPlayerGrid.gridSpace.x;
-		pt.y = MultiPlayerCard.gridInitPosition.y + ( line - 1 ) * MultiPlayerGrid.gridSpace.y;
+		pt.x = MultiPlayerCard.gridInitPosition.x + ( cow - 1 ) * CardGridColorAndSizeSettings.gridSpace.x;
+		pt.y = MultiPlayerCard.gridInitPosition.y + ( line - 1 ) * CardGridColorAndSizeSettings.gridSpace.y;
 		Com.addBitmapAt( this.jellyBombLayer, MultiPlayerMachine.getAssetStr( "cicon_jellyFish" ), pt.x, pt.y );
 		
 		this.jellyBombPosition = [];
@@ -263,7 +263,7 @@ class MaraCard extends Multi75Card{
 		if( index < 0 ) return;
 		let grid: MaraGrid = this.grids[index] as MaraGrid;
 		if( !grid.isCollected ){
-			this.handPt = Com.addMovieClipAt( this, MDS.mcFactory, index % 5 == 4 ? "hand2" : "hand1", ( index % 5 ) * MultiPlayerGrid.gridSpace.x + MultiPlayerCard.gridInitPosition.x, Math.floor( index / 5 ) * MultiPlayerGrid.gridSpace.y + MultiPlayerCard.gridInitPosition.y );
+			this.handPt = Com.addMovieClipAt( this, MDS.mcFactory, index % 5 == 4 ? "hand2" : "hand1", ( index % 5 ) * CardGridColorAndSizeSettings.gridSpace.x + MultiPlayerCard.gridInitPosition.x, Math.floor( index / 5 ) * CardGridColorAndSizeSettings.gridSpace.y + MultiPlayerCard.gridInitPosition.y );
 			this.handPt.name = "" + index;
 			this.handPt.scaleX = this.handPt.scaleY = 2.25;
 			grid.showYellowBg();

@@ -76,8 +76,8 @@ class MultiPlayerCard extends egret.Sprite{
 
 	public static getGridPosition( gridIndex: number ): egret.Point{
 		let pt: egret.Point = new egret.Point;
-		pt.x = MultiPlayerCard.gridInitPosition.x + ( gridIndex % MultiPlayerCard.gridNumbers.x ) * MultiPlayerGrid.gridSpace.x;
-		pt.y = MultiPlayerCard.gridInitPosition.y + Math.floor( gridIndex / MultiPlayerCard.gridNumbers.x ) * MultiPlayerGrid.gridSpace.y;
+		pt.x = MultiPlayerCard.gridInitPosition.x + ( gridIndex % MultiPlayerCard.gridNumbers.x ) * CardGridColorAndSizeSettings.gridSpace.x;
+		pt.y = MultiPlayerCard.gridInitPosition.y + Math.floor( gridIndex / MultiPlayerCard.gridNumbers.x ) * CardGridColorAndSizeSettings.gridSpace.y;
 		return pt;
 	}
 
