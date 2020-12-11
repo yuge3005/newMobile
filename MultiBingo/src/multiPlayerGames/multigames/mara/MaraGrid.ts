@@ -15,7 +15,7 @@ class MaraGrid extends Multi75Grid{
 		this._blink = value;
 		if( !value ){
 			this.currentBgPic = this.defaultBgPic;
-			this.numTxt.textColor = MultiPlayerGrid.numberColor;
+			this.numTxt.textColor = CardGridColorAndSizeSettings.numberColor;
 		}
 	}
 

@@ -35,14 +35,7 @@ class MultiPlayerGrid extends egret.Sprite{
 		if( !value )this.currentBgPic = this.defaultBgPic;
 	}
 
-	public static numberColor: number;
-	public static numberColorOnEffect: number;
 	public static colorNumberOnEffect: boolean;
-
-	public static gridSize: egret.Point;
-	public static gridSpace: egret.Point;
-
-	public static defaultNumberSize: number;
 
 	protected numTxt: egret.TextField;
 
@@ -77,10 +70,10 @@ class MultiPlayerGrid extends egret.Sprite{
 		this.defaultBgPic = Com.createBitmapByName( MultiPlayerMachine.getAssetStr( MultiPlayerGrid.defaultBgPicName ) );
 		this.addChild( this.defaultBgPic );
 
-		this.numTxt = Com.addTextAt( this, 0, BrowserInfo.textUp * 2 + MultiPlayerGrid.gridSize.y - MultiPlayerGrid.defaultNumberSize >> 1, MultiPlayerGrid.gridSize.x, MultiPlayerGrid.defaultNumberSize, MultiPlayerGrid.defaultNumberSize, false, true );
+		this.numTxt = Com.addTextAt( this, 0, CardGridColorAndSizeSettings.gridSize.y - CardGridColorAndSizeSettings.defaultNumberSize >> 1, CardGridColorAndSizeSettings.gridSize.x, CardGridColorAndSizeSettings.defaultNumberSize, CardGridColorAndSizeSettings.defaultNumberSize, false, true );
 		this.numTxt.textAlign = "center";
 		this.numTxt.verticalAlign = "middle";
-		this.numTxt.textColor = MultiPlayerGrid.numberColor;
+		this.numTxt.textColor = CardGridColorAndSizeSettings.numberColor;
 
 		this.onEffBgPic = Com.createBitmapByName( MultiPlayerMachine.getAssetStr( MultiPlayerGrid.onEffBgPicName ) );
 		this.blink1Pic = Com.createBitmapByName( MultiPlayerMachine.getAssetStr( MultiPlayerGrid.blink1PicName ) );
@@ -92,17 +85,17 @@ class MultiPlayerGrid extends egret.Sprite{
 		if( this.blink )this.blink = false;
 		this._isChecked = isShow;
 		if( isShow ){
-			if( MultiPlayerGrid.colorNumberOnEffect )this.numTxt.textColor = MultiPlayerGrid.numberColorOnEffect;
+			if( MultiPlayerGrid.colorNumberOnEffect )this.numTxt.textColor = CardGridColorAndSizeSettings.numberColorOnEffect;
 			this.currentBgPic = this.onEffBgPic;
 		}
 		else{
-			this.numTxt.textColor = MultiPlayerGrid.numberColor;
+			this.numTxt.textColor = CardGridColorAndSizeSettings.numberColor;
 			this.currentBgPic = this.defaultBgPic;
 		}
 	}
 
 	public showRedEffect(){
-		this.numTxt.textColor = MultiPlayerGrid.numberColor;
+		this.numTxt.textColor = CardGridColorAndSizeSettings.numberColor;
 		this.currentBgPic = this.linePic;
 	}
 

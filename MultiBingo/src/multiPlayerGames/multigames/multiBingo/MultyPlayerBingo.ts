@@ -27,7 +27,7 @@ class MultyPlayerBingo extends Multi75Super{
 		MultiPlayerGrid.linePicName = "11";
 		MultiPlayerGrid.zeroUIName = "12";
 
-		MultiPlayerGrid.defaultNumberSize = 55;
+		CardGridColorAndSizeSettings.defaultNumberSize = 55;
 	}
 
 	protected init(){
@@ -407,7 +407,7 @@ class MultyPlayerBingo extends Multi75Super{
 			userHead = Com.addBitmapAt( this.bingoPlayerHeadsContainer, this.assetStr( "head_icon" ), 77 + offsetX, 179 + offsetY );
 			userHead.width = userHead.height = 100;
 			if( heads[i] != "" ){
-				Utils.downloadBitmapDataByFacebookID( heads[i], 100, 100, MDS.onUserHeadLoaded.bind( this, userHead, 100 ), this );
+				FacebookBitmap.downloadBitmapDataByFacebookID( heads[i], 100, 100, MDS.onUserHeadLoaded.bind( this, userHead, 100 ), this );
 			}
 		}
 		this.bingoPlayerHeadsContainer.cacheAsBitmap = true;
