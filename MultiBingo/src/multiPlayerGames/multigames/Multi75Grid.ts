@@ -64,7 +64,7 @@ class Multi75Grid extends MultiPlayerGrid{
 			}
 		}
 		else{
-			if( this.numTxt.size != MultiPlayerGrid.defaultNumberSize ) this.numTxt.size = MultiPlayerGrid.defaultNumberSize;
+			if( this.numTxt.size != CardGridColorAndSizeSettings.defaultNumberSize ) this.numTxt.size = CardGridColorAndSizeSettings.defaultNumberSize;
 		}
 	}
 
@@ -76,7 +76,7 @@ class Multi75Grid extends MultiPlayerGrid{
 	public showRedEffect(){
 		super.showRedEffect();
 		this._isCollected = true;
-		this.txtSize = MultiPlayerGrid.defaultNumberSize;
+		this.txtSize = CardGridColorAndSizeSettings.defaultNumberSize;
 
 		if( this.additionPic && this.contains( this.additionPic ) ) this.removeChild( this.additionPic );
 	}

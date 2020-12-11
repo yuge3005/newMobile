@@ -39,8 +39,6 @@ class MultiPlayerGrid extends egret.Sprite{
 	public static numberColorOnEffect: number;
 	public static colorNumberOnEffect: boolean;
 
-	public static defaultNumberSize: number;
-
 	protected numTxt: egret.TextField;
 
 	protected zeroUI: egret.Bitmap;
@@ -74,7 +72,7 @@ class MultiPlayerGrid extends egret.Sprite{
 		this.defaultBgPic = Com.createBitmapByName( MultiPlayerMachine.getAssetStr( MultiPlayerGrid.defaultBgPicName ) );
 		this.addChild( this.defaultBgPic );
 
-		this.numTxt = Com.addTextAt( this, 0, CardGridColorAndSizeSettings.gridSize.y - MultiPlayerGrid.defaultNumberSize >> 1, CardGridColorAndSizeSettings.gridSize.x, MultiPlayerGrid.defaultNumberSize, MultiPlayerGrid.defaultNumberSize, false, true );
+		this.numTxt = Com.addTextAt( this, 0, CardGridColorAndSizeSettings.gridSize.y - CardGridColorAndSizeSettings.defaultNumberSize >> 1, CardGridColorAndSizeSettings.gridSize.x, CardGridColorAndSizeSettings.defaultNumberSize, CardGridColorAndSizeSettings.defaultNumberSize, false, true );
 		this.numTxt.textAlign = "center";
 		this.numTxt.verticalAlign = "middle";
 		this.numTxt.textColor = MultiPlayerGrid.numberColor;
