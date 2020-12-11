@@ -324,7 +324,7 @@ class MaraCard extends Multi75Card{
 		this.specialCardBg.graphics.clear();
 		this.specialCardBg.graphics.beginFill( 0x2EC8CE, 0.3 );
 		for( let i: number = 0; i < specialPattern.length; i++ ){
-			if( specialPattern.charAt( i ) == "1" ) this.specialCardBg.graphics.drawRect( MultiPlayerCard.gridInitPosition.x + i % 5 * MultiPlayerGrid.gridSpace.x, MultiPlayerCard.gridInitPosition.y + Math.floor( i / 5 ) * MultiPlayerGrid.gridSpace.y, MultiPlayerGrid.gridSize.x, MultiPlayerGrid.gridSize.y );
+			if( specialPattern.charAt( i ) == "1" ) this.specialCardBg.graphics.drawRect( MultiPlayerCard.gridInitPosition.x + i % 5 * CardGridColorAndSizeSettings.gridSpace.x, MultiPlayerCard.gridInitPosition.y + Math.floor( i / 5 ) * CardGridColorAndSizeSettings.gridSpace.y, CardGridColorAndSizeSettings.gridSize.x, CardGridColorAndSizeSettings.gridSize.y );
 		}
 		this.specialCardBg.graphics.endFill();
 	}
