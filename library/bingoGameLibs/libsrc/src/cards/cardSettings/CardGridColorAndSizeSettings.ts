@@ -2,7 +2,6 @@ class CardGridColorAndSizeSettings{
 
 	public static numberColor: number;
 	public static numberColorOnEffect: number;
-	public static numberBackgroundColorOnEffect: number;
 	public static colorNumberOnEffect: boolean;
 	public static colorNumberBackgroundOnEffect: boolean;
 
@@ -17,7 +16,6 @@ class CardGridColorAndSizeSettings{
 	public static colorSetting( colors: Object ){
 		this.numberColor = colors["numberColor"];
 		this.numberColorOnEffect = colors["numberColorOnEffect"];
-		this.numberBackgroundColorOnEffect = colors["numberBackgroundColorOnEffect"];
 		this.colorNumberOnEffect = colors["colorNumberOnEffect"];
 		this.colorNumberBackgroundOnEffect = colors["colorNumberBackgroundOnEffect"];
 	}

@@ -1,7 +1,5 @@
 class BingoBackGroundSetting{
 
-	public static gameAreaWidth: number = 800;
-	public static gameAreaHeight: number = 680;
 	private static bgColor: number;
 	private static bgItems: Array<string>;
 
