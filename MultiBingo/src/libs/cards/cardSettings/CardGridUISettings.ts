@@ -1,7 +1,7 @@
 class CardGridUISettings {
 
 	public static defaultBgPicName: string;
-	public static onEffBgPicName: string;	
+	public static onEffBgPicName: string;
 	public static blink1PicName: string;
 	public static blink2PicName: string;
 	public static linePicName: string;

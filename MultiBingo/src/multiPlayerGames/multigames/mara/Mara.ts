@@ -23,7 +23,6 @@ class Mara extends Multi75Super{
 
 		MultiCardLayer.cardType = MaraCard;
 		MultiCardLayer.gridType = MaraGrid;
-		MultiPlayerCard.useRedEffect = false;
 
 		CardGridUISettings.zeroUIName = "zero_grid";
 

@@ -18,7 +18,6 @@ class MultyPlayerBingo extends Multi75Super{
 
 		MultiCardLayer.cardType = MultiPlayerBingoCard;
 		MultiCardLayer.gridType = MultiPlayerBingoGrid;
-		MultiPlayerCard.useRedEffect = false;
 
 		CardGridUISettings.zeroUIName = "12";
 

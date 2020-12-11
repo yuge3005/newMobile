@@ -3,15 +3,8 @@ class MultiPlayerCard extends egret.Sprite{
 	public uuid: string;
 	
 	protected bg: egret.Bitmap;
-	protected static bgString: string;
 
 	protected grids: Array<MultiPlayerGrid>;
-
-	public static gridNumbers: egret.Point;
-	public static gapSize: egret.Point;
-	public static gridInitPosition: egret.Point;
-
-	public static useRedEffect: boolean;
 
 	protected cardId: number;
 	protected numbers: Array<number>;
@@ -32,20 +25,18 @@ class MultiPlayerCard extends egret.Sprite{
 	}
 
 	protected onAdd( event: egret.Event ){
-		if( !this.bg )this.bg = Com.addBitmapAt( this, MultiPlayerMachine.getAssetStr( MultiPlayerCard.bgString ), 0, 0 );
+		if( !this.bg )this.bg = Com.addBitmapAt( this, MultiPlayerMachine.getAssetStr( GameCardUISettings.bgString ), 0, 0 );
 	}
 
 	public static getCardData( data: Object ){
-		this.bgString = data["cardBg"];
+		GameCardUISettings.dataSetting( data );
 		CardGridUISettings.getSettingStrings( data );
 		let colors: Object = data["colors"];
-		let size: Object = data["size"];
 		CardGridColorAndSizeSettings.colorSetting( colors );
 
-		this.gridNumbers = new egret.Point( size["vertSize"], size["horzSize"] );
-		this.gapSize = new egret.Point( size["vertGap"], size["horzGap"] );
+		let size: Object = data["size"];
 		CardGridColorAndSizeSettings.sizeSetting( size );
-		this.gridInitPosition = new egret.Point( size["numberInitialPositionX"], size["numberInitialPositionY"] );
+		GameCardUISettings.sizeSetting( size );
 	}
 
 	public getNumbers( numbers: Array<number> ){
@@ -73,8 +64,8 @@ class MultiPlayerCard extends egret.Sprite{
 
 	public static getGridPosition( gridIndex: number ): egret.Point{
 		let pt: egret.Point = new egret.Point;
-		pt.x = MultiPlayerCard.gridInitPosition.x + ( gridIndex % MultiPlayerCard.gridNumbers.x ) * CardGridColorAndSizeSettings.gridSpace.x;
-		pt.y = MultiPlayerCard.gridInitPosition.y + Math.floor( gridIndex / MultiPlayerCard.gridNumbers.x ) * CardGridColorAndSizeSettings.gridSpace.y;
+		pt.x = GameCardUISettings.gridInitPosition.x + ( gridIndex % GameCardUISettings.gridNumbers.x ) * CardGridColorAndSizeSettings.gridSpace.x;
+		pt.y = GameCardUISettings.gridInitPosition.y + Math.floor( gridIndex / GameCardUISettings.gridNumbers.x ) * CardGridColorAndSizeSettings.gridSpace.y;
 		return pt;
 	}
 
@@ -121,7 +112,7 @@ class MultiPlayerCard extends egret.Sprite{
 	}
 
 	public clearFitEffect(){
-		if( MultiPlayerCard.useRedEffect ){
+		if( GameCardUISettings.useRedEffect ){
 			if( this.redEffectArray ){
 				for( let j: number = 0; j < this.redEffectArray.length; j++ ){
 					if( this.redEffectArray[j] )this.grids[j].showEffect( true );
@@ -144,7 +135,7 @@ class MultiPlayerCard extends egret.Sprite{
 	}
 
 	public showfitEffect( assetName: string, fitIndex: Array<boolean> ){
-		if( MultiPlayerCard.useRedEffect ){
+		if( GameCardUISettings.useRedEffect ){
 			if( fitIndex.length ){
 				for( let i: number = 0; i < fitIndex.length; i++ ){
 					if( fitIndex[i] ){

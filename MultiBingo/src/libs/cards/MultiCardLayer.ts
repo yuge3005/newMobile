@@ -1,7 +1,6 @@
 class MultiCardLayer extends egret.DisplayObjectContainer{
 
 	public cards: Array<MultiPlayerCard>;
-	public cardPositions: Array<Object>;
 
 	private static currentCardLayer: MultiCardLayer;
 
@@ -17,12 +16,11 @@ class MultiCardLayer extends egret.DisplayObjectContainer{
 	public getCardData( data: Object ){
 		this.cards = new Array<MultiPlayerCard>();
 		MultiPlayerCard.getCardData( data );
-		this.cardPositions = data["cardPositions"];
-		let cardNumbers: number = this.cardPositions.length;
+		let cardNumbers: number = GameCardUISettings.cardPositions.length;
 		for( let i: number = 0; i < cardNumbers; i++ ){
 			this.cards[i] = eval( "new MultiCardLayer.cardType( i )" );
-			this.cards[i].x = this.cardPositions[i]["x"];
-			this.cards[i].y = this.cardPositions[i]["y"];
+			this.cards[i].x = GameCardUISettings.cardPositions[i]["x"];
+			this.cards[i].y = GameCardUISettings.cardPositions[i]["y"];
 		}
 	}
 
@@ -101,8 +99,8 @@ class MultiCardLayer extends egret.DisplayObjectContainer{
 	public positionOnCard( cardIndex: number, gridIndex: number ): egret.Point{
 		let pt: egret.Point = new egret.Point;
 		let position: egret.Point = MultiPlayerCard.getGridPosition( gridIndex );
-		pt.x = this.cardPositions[cardIndex]["x"] + position.x;
-		pt.y = this.cardPositions[cardIndex]["y"] + position.y;
+		pt.x = GameCardUISettings.cardPositions[cardIndex]["x"] + position.x;
+		pt.y = GameCardUISettings.cardPositions[cardIndex]["y"] + position.y;
 		return pt;
 	}
 
