@@ -60,7 +60,7 @@ class MultiPlayerMachine extends egret.Sprite{
 
 	protected onConfigLoadComplete():void{
 		var obj: Object = RES.getRes( this.gameConfigFile.replace( ".", "_" ) );
-		BingoBackGroundSetting.getBackgroundData( obj["backgroundColor"], obj["backgroundItems"], this.assetName );
+		BingoBackGroundSetting.getBackgroundData( obj["backgroundColor"], obj["backgroundItems"] );
 
 		this.ballArea.getBallSettings( obj["balls"], obj["ballSize"], obj["ballTextSize"] );
 

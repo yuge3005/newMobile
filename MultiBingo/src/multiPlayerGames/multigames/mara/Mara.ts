@@ -37,11 +37,6 @@ class Mara extends Multi75Super{
 		this.cardClickMode( false );
 	}
 
-	protected onConfigLoadComplete():void{
-		super.onConfigLoadComplete();
-		BingoBackGroundSetting.assetName = "mara";
-	}
-
 	protected init(){
 		super.init();
 
