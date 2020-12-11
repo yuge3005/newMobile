@@ -99,7 +99,7 @@ class MultiChatBar extends egret.DisplayObjectContainer{
 		let userInfo: egret.DisplayObjectContainer = this.buildMessageItem( userName, message, tipBg, redBigTip );
 		Com.addObjectAt( this.scrollBar, userInfo, this.leftMargin, this.scrollHeight );
 
-		if( fbId != "" ) Utils.downloadBitmapDataByFacebookID( fbId, 50, 50, MDS.onUserHeadLoaded.bind( this, userInfo.getChildAt( 0 ), this.headSize ), this );
+		if( fbId != "" ) FacebookBitmap.downloadBitmapDataByFacebookID( fbId, 50, 50, MDS.onUserHeadLoaded.bind( this, userInfo.getChildAt( 0 ), this.headSize ), this );
 	}
 
 	protected buildMessageItem( userName: string, message: string, tipBg: boolean, redBigTip: boolean ): egret.DisplayObjectContainer{

@@ -53,7 +53,7 @@ class MaraAvatarArea extends AvatarContainer{
 
 	public showHead( fbId: string ): boolean{
 		if( this.headCount < 3 ){
-			if( fbId != "" ) Utils.downloadBitmapDataByFacebookID( fbId, 100, 100, MDS.onUserHeadLoaded.bind( this, this.headList[this.headCount], 90 ), this );
+			if( fbId != "" ) FacebookBitmap.downloadBitmapDataByFacebookID( fbId, 100, 100, MDS.onUserHeadLoaded.bind( this, this.headList[this.headCount], 90 ), this );
 			this.headCount++;
 			return true;
 		}
