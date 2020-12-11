@@ -25,12 +25,7 @@ class Mara extends Multi75Super{
 		MultiCardLayer.gridType = MaraGrid;
 		MultiPlayerCard.useRedEffect = false;
 
-		MultiPlayerGrid.blink1PicName = "bule";
-		MultiPlayerGrid.blink2PicName = "bule";
-		MultiPlayerGrid.defaultBgPicName = "default_grid";
-		MultiPlayerGrid.onEffBgPicName = "effect_grid";
-		MultiPlayerGrid.linePicName = "orange";
-		MultiPlayerGrid.zeroUIName = "zero_grid";
+		CardGridUISettings.zeroUIName = "zero_grid";
 
 		CardGridColorAndSizeSettings.defaultNumberSize = 40;
 

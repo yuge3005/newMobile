@@ -37,15 +37,14 @@ class MultiPlayerCard extends egret.Sprite{
 
 	public static getCardData( data: Object ){
 		this.bgString = data["cardBg"];
-
+		CardGridUISettings.getSettingStrings( data );
 		let colors: Object = data["colors"];
 		let size: Object = data["size"];
 		CardGridColorAndSizeSettings.colorSetting( colors );
 
 		this.gridNumbers = new egret.Point( size["vertSize"], size["horzSize"] );
 		this.gapSize = new egret.Point( size["vertGap"], size["horzGap"] );
-		CardGridColorAndSizeSettings.gridSize = new egret.Point( size["numberSizeX"], size["numberSizeY"] );
-		CardGridColorAndSizeSettings.gridSpace = new egret.Point( CardGridColorAndSizeSettings.gridSize.x + this.gapSize.x, CardGridColorAndSizeSettings.gridSize.y + this.gapSize.y );
+		CardGridColorAndSizeSettings.sizeSetting( size );
 		this.gridInitPosition = new egret.Point( size["numberInitialPositionX"], size["numberInitialPositionY"] );
 	}
 
