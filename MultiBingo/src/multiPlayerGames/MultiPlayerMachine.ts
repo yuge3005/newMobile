@@ -9,7 +9,6 @@ class MultiPlayerMachine extends egret.Sprite{
 	public inited: boolean = false;
 	private configUrl: string;
 	protected gameConfigFile: string;
-	protected _mcf: egret.MovieClipDataFactory;
 	protected languageObjectName: string;
 
 	protected ballArea: MultiGameBallLayer;
@@ -90,14 +89,12 @@ class MultiPlayerMachine extends egret.Sprite{
 	
 	private loadAsset( assetName: string ){
 		RES.addEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.loaded, this );
-		RES.addEventListener(RES.ResourceEvent.GROUP_PROGRESS, this.loadSoundsProgress, this);
 		RES.loadGroup( assetName, 0, this.preLoader );
 	}
 	
 	private loaded( event: RES.ResourceEvent ){
 		if( event.groupName != this.assetName )return;
 		MultiPlayerMachine.assetLoaded[this.assetName] = true;
-		RES.removeEventListener(RES.ResourceEvent.GROUP_PROGRESS, this.loadSoundsProgress, this);
 		RES.removeEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.loaded, this );
 
 		this.assetReady = true;
@@ -113,21 +110,15 @@ class MultiPlayerMachine extends egret.Sprite{
 		return loadedPart;
 	}
 
-	/**
-	 * init sounds
-	 */
-	private loadSoundsProgress(event: RES.ResourceEvent): void {
-		if( event.groupName != this.assetName )return;
-		this._assetLoaded = event.itemsLoaded / event.itemsTotal;
-	}
-
 	protected init(){
 		this.inited = true;
 		this.dispatchEvent( new egret.Event( MultiPlayerMachine.GENERIC_MODAL_LOADED ) );
 
+		this.scaleX = BingoBackGroundSetting.gameSize.x / BingoBackGroundSetting.gameMask.width;
+		this.scaleY = BingoBackGroundSetting.gameSize.y / BingoBackGroundSetting.gameMask.height;
 		this.mask = BingoBackGroundSetting.gameMask;
 
-		this._mcf = BingoBackGroundSetting.initBackground( this );
+		MDS.mcFactory = BingoBackGroundSetting.initBackground( this );
 
 		this.addChild( this.ballArea );
 		this.addChild( this.cardArea );

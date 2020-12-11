@@ -91,7 +91,7 @@ class MultiGameBallLayer extends egret.Sprite{
 		tx.size = this.ballTextSize;
 		tx.bold = true;
 		tx.textAlign = "center";
-		tx.textColor = ballTextColor;
+		tx.textColor = Number( ballTextColor );
 		tx.text = "" + num;
 		tx.y = ball.height - tx.textHeight >> 1;
 		if( offsetX )tx.x = offsetX;
@@ -106,6 +106,7 @@ class MultiGameBallLayer extends egret.Sprite{
 		this.setBallBg( ball, ballObj["ui"] );
 		ball.scaleX = ball.scaleY = this.ballSize / ball.height;
 		this.setBallNumber( ball, num, ballObj["color"], ballObj["offsetX"] );
+		ball.cacheAsBitmap = true;
 		return ball;
 	}
 

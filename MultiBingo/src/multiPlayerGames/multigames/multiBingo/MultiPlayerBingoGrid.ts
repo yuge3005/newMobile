@@ -8,8 +8,8 @@ class MultiPlayerBingoGrid extends Multi75Grid{
 	public constructor() {
 		super();
 
-		this.blinkTextSizeMin = 19;
-		this.blinkTextSizeMax = 22;
+		this.blinkTextSizeMin = 45;
+		this.blinkTextSizeMax = 55;
 	}
 
 	protected getBitmapByAwardType( awardType: string ): egret.Bitmap{

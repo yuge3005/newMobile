@@ -10,8 +10,8 @@ class MultiChatBar extends egret.DisplayObjectContainer{
 	protected lineGap: number;
 	protected tipPositionY: number;
 
-	protected cardCountTxt: egret.TextField;
-	protected playerCountTxt: egret.TextField;
+	protected cardCountTxt: TextLabel;
+	protected playerCountTxt: TextLabel;
 
 	protected avatarList: AvatarContainer;
 
@@ -33,9 +33,11 @@ class MultiChatBar extends egret.DisplayObjectContainer{
 		this.enterText.width = textRect.width;
 		this.enterText.height = textRect.height;
 		this.enterText.size = size;
+		this.enterText.textAlign = "center";
 		this.enterText.verticalAlign = "middle";
 		this.enterText.multiline = true;
 		this.enterText.prompt = MuLang.getText( "enter_text" );
+		this.enterText.promptColor = 0xFFFFFF;
 		Com.addObjectAt( this, this.enterText, textRect.x, textRect.y );
 		this.enterText.addEventListener( egret.Event.CHANGE, this.onTxtChang, this);
 	}
@@ -63,9 +65,10 @@ class MultiChatBar extends egret.DisplayObjectContainer{
 		let roundOverInfo: egret.DisplayObjectContainer = new egret.DisplayObjectContainer;
 		Com.addObjectAt( this.scrollBar, roundOverInfo, this.leftMargin, this.scrollHeight );
 		let headIcon: egret.Bitmap = Com.addBitmapAt( roundOverInfo, MultiPlayerMachine.getAssetStr( "round_over" ), 0, 0 );
-		let tipTxt: egret.TextField = Com.addTextAt( roundOverInfo, 38, 13 + BrowserInfo.textUp, 104, 13, 13 );
+		let tipTxt: TextLabel = Com.addLabelAt( roundOverInfo, 70, 22, 160, 24, 24 );
 		tipTxt.textColor = 0;
-		tipTxt.text = MuLang.getText( "round_over" );
+		tipTxt.setText( MuLang.getText( "round_over" ) );
+		roundOverInfo.cacheAsBitmap = true;
 		this.resetScroll();
 	}
 
@@ -73,9 +76,10 @@ class MultiChatBar extends egret.DisplayObjectContainer{
 		let roundStartInfo: egret.DisplayObjectContainer = new egret.DisplayObjectContainer;
 		Com.addObjectAt( this.scrollBar, roundStartInfo, this.leftMargin, this.scrollHeight );
 		let headIcon: egret.Bitmap = Com.addBitmapAt( roundStartInfo, MultiPlayerMachine.getAssetStr( "round_start" ), 0, 0 );
-		let tipTxt: egret.TextField = Com.addTextAt( roundStartInfo, 38, 13 + BrowserInfo.textUp, 104, 13, 13 );
+		let tipTxt: TextLabel = Com.addLabelAt( roundStartInfo, 70, 22, 160, 24, 24 );
 		tipTxt.textColor = 0;
-		tipTxt.text = MuLang.getText( "round_start" );
+		tipTxt.setText( MuLang.getText( "round_start" ) );
+		roundStartInfo.cacheAsBitmap = true;
 		this.resetScroll();
 	}
 
@@ -103,8 +107,8 @@ class MultiChatBar extends egret.DisplayObjectContainer{
 	}
 
 	public updateCardAndPlayerNumbers( cardCount: number, playerCount: number, playerFbIds: Array<Object> ){
-		this.cardCountTxt.text = cardCount + " " + MuLang.getText( "cards", MuLang.CASE_UPPER );
-		this.playerCountTxt.text = playerCount + " " + MuLang.getText( "players", MuLang.CASE_UPPER );
+		this.cardCountTxt.setText( cardCount + " " + MuLang.getText( "cards", MuLang.CASE_UPPER ) );
+		this.playerCountTxt.setText( playerCount + " " + MuLang.getText( "players", MuLang.CASE_UPPER ) );
 
 		if( playerFbIds ){
 			this.avatarList.updataList( playerFbIds );

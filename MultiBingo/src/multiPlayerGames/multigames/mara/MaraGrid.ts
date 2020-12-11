@@ -22,8 +22,8 @@ class MaraGrid extends Multi75Grid{
 	public constructor() {
 		super();
 
-		this.blinkTextSizeMin = 15;
-		this.blinkTextSizeMax = 18;
+		this.blinkTextSizeMin = 35;
+		this.blinkTextSizeMax = 40;
 	}
 
 	protected getBitmapByAwardType( awardType: string ): egret.Bitmap{

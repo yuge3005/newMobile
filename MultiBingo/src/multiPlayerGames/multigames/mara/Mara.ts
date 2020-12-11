@@ -19,20 +19,20 @@ class Mara extends Multi75Super{
 		this.connetKeys = { zona: "MultiplayerZone", sala: "Multi72" };
 
 		this.ballArea = new MaraBallLayer;
-		this.ballArea.mask = new egret.Rectangle( 120, 0, 460, 135 );
+		this.ballArea.mask = new egret.Rectangle( 480, 130, 850, 126 );
 
 		MultiCardLayer.cardType = MaraCard;
 		MultiCardLayer.gridType = MaraGrid;
 		MultiPlayerCard.useRedEffect = false;
 
 		MultiPlayerGrid.blink1PicName = "bule";
-		MultiPlayerGrid.blink2PicName = "purple";
+		MultiPlayerGrid.blink2PicName = "bule";
 		MultiPlayerGrid.defaultBgPicName = "default_grid";
 		MultiPlayerGrid.onEffBgPicName = "effect_grid";
 		MultiPlayerGrid.linePicName = "orange";
 		MultiPlayerGrid.zeroUIName = "zero_grid";
 
-		MultiPlayerGrid.defaultNumberSize = 15;
+		MultiPlayerGrid.defaultNumberSize = 40;
 
 		this.cardClickMode( false );
 	}
@@ -45,12 +45,10 @@ class Mara extends Multi75Super{
 	protected init(){
 		super.init();
 
-		MDS.mcFactory = this._mcf;
-
-		this.ballCountText = MDS.addGameText( this, 460, 8, 28, 0xda4d28, "ball", false, 58 );
+		this.ballCountText = MDS.addGameText( this, 1387, 150, 36, 0xda4d28, "ball", false, 90 );
 		this.ballCountText.textAlign = "center";
 		this.ballCountText.text = "";
-		MDS.addGameText( this, 460, 32, 14, 0xda4d28, "ball", false, 58 ).textAlign = "center";
+		MDS.addGameText( this, 1388, 190, 28, 0xda4d28, "ball", false, 90 ).textAlign = "center";
 
 		this.letsWait();
 	}
@@ -94,6 +92,9 @@ class Mara extends Multi75Super{
 	protected letsWait(): void{
 		this.setCardDatasWithNumeros(MDS.fakeArr(100));
 
+		let bg: egret.Bitmap = this.getChildByName( this.assetStr( "bg" ) ) as egret.Bitmap;
+		bg.texture = RES.getRes( "mara_bg_png" );
+
 		let cards: Array<MultiPlayerCard> = this.cardArea.cards;
 		this.cardDisabledBgs = [];
 		for( let i: number = 0; i < cards.length; i++ ){
@@ -124,17 +125,17 @@ class Mara extends Multi75Super{
 		this.buildWaitingBar();
 
 		this.bingoInfo = new MaraBingoInfoBar;
-		Com.addObjectAt( this, this.bingoInfo, 550, 25 );
+		Com.addObjectAt( this, this.bingoInfo, 1468, 131 );
 		this.startBingoInfoTick();
 
 		this.chatAndMiniGameLayer = new egret.DisplayObjectContainer;
 		Com.addObjectAt( this, this.chatAndMiniGameLayer, 0, 0 );
 
 		this.chatBar = new MaraChatBar;
-		Com.addObjectAt( this.chatAndMiniGameLayer, this.chatBar, 554, 234 );
+		Com.addObjectAt( this.chatAndMiniGameLayer, this.chatBar, 1519, 593 );
 
 		this.tipTxt = new MaraFeatureTip;
-		Com.addObjectAt( this, this.tipTxt, 0, 360 );
+		Com.addObjectAt( this, this.tipTxt, 0, 770 );
 
 		this.featureAnimationLayer = new MaraAnimationManager;
 		this.addChild( this.featureAnimationLayer );
@@ -143,7 +144,8 @@ class Mara extends Multi75Super{
 
 		this.firstTimePlayShowTutorail();
 
-		Com.addDownButtonAt( this, this.assetStr("I"), this.assetStr("I"), 81, 537, this.showInfo.bind(this), true );
+		let infoButton: TouchDownButton = Com.addDownButtonAt( this, this.assetStr("I"), this.assetStr("I"), 272, 1017, this.showInfo.bind(this), true );
+		infoButton.scaleX = infoButton.scaleY = 2;
 	}
 
 	public showInfo( event: egret.TouchEvent ){
@@ -160,7 +162,8 @@ class Mara extends Multi75Super{
 
 	protected buildWaitingBar(){
 		this.waitingBar = new MaraWaitingBar;
-		this.dailogLayer.addChild( this.waitingBar );
+		Com.addObjectAt( this.dailogLayer, this.waitingBar, 493, 309 );
+		this.waitingBar.scaleX = this.waitingBar.scaleY = 0.9;
 		this.waitingBar.addEventListener( "waitingBarBuyCard", this.onBuyCard, this );
 		this.waitingBar.addEventListener( "prizeChanged", this.onPrizeChange, this );
 	}

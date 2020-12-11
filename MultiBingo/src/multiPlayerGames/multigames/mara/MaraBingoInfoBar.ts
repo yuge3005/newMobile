@@ -12,19 +12,24 @@ class MaraBingoInfoBar extends MultyBingoInfoBar{
 	public constructor() {
 		super();
 
-		this.bgLight = Com.addBitmapAt( this, "mara_chat_box_json.light", -18, -7 );
+		this.bgLight = Com.addBitmapAt( this, "mara_chat_box_json.light", 60, 0 );
 		this.bgTip = new egret.DisplayObjectContainer;
-		Com.addBitmapAt( this.bgTip, "mara_chat_box_json.number of people", 3, 0 );
-		Com.addBitmapAtMiddle( this.bgTip, "mara_" + MuLang.language + "_json.city_big", 90, 56 );
+		Com.addBitmapAt( this.bgTip, "mara_chat_box_json.number of people", 102, 0 );
+		let txCity: TextLabel = MDS.addGameText( this.bgTip, 132, 90, 60, 0xffb500, "City of Light", false, 400 );
+		txCity.textAlign = "center";
+		txCity.fontFamily = "Righteous";
+		txCity.filters = [ new egret.DropShadowFilter( 3, 135, 0, 0.5, 4, 4, 2, 1 ) ];
+		txCity.setText( txCity.text.toUpperCase() );
 		this.addChildAt( this.bgLight, 0 );
-		this.addChildAt( Com.addBitmapAt( this, "mara_chat_box_json.photo frame", -40, -8 ), 0 );
+		this.addChildAt( Com.addBitmapAt( this, "mara_chat_box_json.photo frame", 0, 0 ), 0 );
 		this.addChildAt( this.bgTip, 0 );
 		this.bgLight.alpha = 0;
 
 		this.awardLayer = new egret.DisplayObjectContainer;
-		Com.addObjectAt( this, this.awardLayer, 0, 25 );
-		Com.addBitmapAt( this.awardLayer, MultiPlayerMachine.getAssetStr( "coin" ), 0, 0 );
-		this.awardText = Com.addTextAt( this.awardLayer, 35, 4, 200, 19, 19 );
+		Com.addObjectAt( this, this.awardLayer, 0, 0 );
+		let coin: egret.Bitmap = Com.addBitmapAtMiddle( this.awardLayer, MultiPlayerMachine.getAssetStr( "coin_big" ), 134, 100 );
+		coin.scaleX = coin.scaleY = 1.6;
+		this.awardText = Com.addTextAt( this.awardLayer, 180, 80, 200, 45, 45 );
 		this.awardText.textAlign = "left";
 		this.awardText.fontFamily = "Righteous";
 		this.awardText.text = Utils.formatCoinsNumber( 1000 );
@@ -32,37 +37,41 @@ class MaraBingoInfoBar extends MultyBingoInfoBar{
 
 		this.patternColor = 0xFDBA2A;
 
-		this.specialHead = Com.addBitmapAt( this,  "mara_chat_box_json.photo Head frame", 16, 12 );
-		this.specialHeadFrame = Com.addBitmapAt( this,  "mara_chat_box_json.Head frame2", 0, 3 );
+		this.specialHead = Com.addBitmapAt( this,  "mara_chat_box_json.photo Head frame", 152, 45 );
+		this.specialHeadFrame = Com.addBitmapAt( this,  "mara_chat_box_json.Head frame2", 118, 22 );
 		this.specialHead.visible = this.specialHeadFrame.visible = false;
 
-		this.paytableUILayer.y = 3;
+		this.paytableUILayer.x = 400;
+		this.paytableUILayer.y = 22;
 	}
 
 	protected addFixText(){
-		this.bingoTxt = Com.addTextAt( this, 20, 5, 75, 18, 18 );
+		this.bingoTxt = Com.addTextAt( this, 143, 22, 170, 45, 45 );
+		this.bingoTxt.textAlign = "left";
 		this.bingoTxt.bold = true;
 		this.bingoTxt.fontFamily = "Righteous";
 		this.bingoTxt.text = "BINGO";
+		this.bingoTxt.textColor = 0xEEFFFF;
 		this.bingoTxt.filters = [ new egret.DropShadowFilter( 3, 45, 0, 0.5, 4, 4, 2, 1 ) ];
 
-		this.bingoLeftTxt = Com.addTextAt( this, 5, 5, 35, 18, 18 );
-		this.bingoLeftTxt.textAlign = "left";
+		this.bingoLeftTxt = Com.addTextAt( this, 90, 22, 40, 45, 45 );
+		this.bingoLeftTxt.textAlign = "right";
 		this.bingoLeftTxt.bold = true;
 		this.bingoLeftTxt.fontFamily = "Righteous";
+		this.bingoLeftTxt.textColor = 0xEEFFFF;
 		this.bingoLeftTxt.filters = [ new egret.DropShadowFilter( 3, 45, 0, 0.5, 4, 4, 2, 1 ) ];
 	}
 
 	protected showCurrentPattern( ptIndex: number ){
 		let rule: string = this.currentPaytableRules[ptIndex];
-		GraphicTool.drawRect( this.paytableUILayer, new egret.Rectangle( 0, 0, 56, 51 ), 0x0C303B, true );
+		GraphicTool.drawRect( this.paytableUILayer, new egret.Rectangle( 0, 0, 90, 90 ), 0x0C303B, true );
 		for( let i: number = 0; i < rule.length; i++ ){
 			let str: String = rule.charAt(i);
 			if( str == "1" ){
-				GraphicTool.drawRect( this.paytableUILayer, new egret.Rectangle( i % 5 * 11 + 1, Math.floor( i / 5 ) * 10 + 1, 10, 9 ), this.patternColor );
+				GraphicTool.drawRect( this.paytableUILayer, new egret.Rectangle( i % 5 * 18 + 1, Math.floor( i / 5 ) * 18 + 1, 16, 16 ), this.patternColor );
 			}
 			else{
-				GraphicTool.drawRect( this.paytableUILayer, new egret.Rectangle( i % 5 * 11 + 1, Math.floor( i / 5 ) * 10 + 1, 10, 9 ), 0x1E3C47 );
+				GraphicTool.drawRect( this.paytableUILayer, new egret.Rectangle( i % 5 * 18 + 1, Math.floor( i / 5 ) * 18 + 1, 16, 16 ), 0x1E3C47 );
 			}
 		}
 	}
@@ -74,15 +83,14 @@ class MaraBingoInfoBar extends MultyBingoInfoBar{
 
 	public specialUI(){
 		egret.Tween.removeTweens(this.bgTip);
-		TweenerTool.tweenTo( this.bgTip, { y: 66 }, 500, 100, null, { y: 0 } );
+		TweenerTool.tweenTo( this.bgTip, { y: 184 }, 500, 100, null, { y: 0 } );
 		egret.Tween.removeTweens(this.bgLight);
 		TweenerTool.tweenTo( this.bgLight, { alpha: 1 }, 500, 100, null, { y: 0 } );
-		this.awardLayer.y = 65;
+		this.awardLayer.y = 90;
 		this.bingoTxt.visible = false;
 		this.bingoLeftTxt.visible = false;
 
 		this.specialHead.visible = true;
-		this.specialHead.width = this.specialHead.height = 44;
 		this.specialHeadFrame.visible = true;
 	}
 
@@ -91,7 +99,7 @@ class MaraBingoInfoBar extends MultyBingoInfoBar{
 		TweenerTool.tweenTo( this.bgTip, { y: 0 }, 500, 100 );
 		egret.Tween.removeTweens(this.bgLight);
 		TweenerTool.tweenTo( this.bgLight, { alpha: 0 }, 500, 100 );
-		this.awardLayer.y = 25;
+		this.awardLayer.y = 0;
 		this.bingoTxt.visible = true;
 		this.bingoLeftTxt.visible = true;
 

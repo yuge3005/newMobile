@@ -9,15 +9,18 @@ class MultiPlayerEnergy extends egret.DisplayObjectContainer{
 	private powerUpBlinkLight: egret.MovieClip;
 
 	private set process( value: number ){
-		this.powerProcess.mask = new egret.Rectangle( 0, 258 * (1 - value), 50, 258 * value );
+		this.powerProcess.mask = new egret.Rectangle( 0, 369 * (1 - value), 72, 369 * value );
 		if( !this.powerUpBtn.enabled && value >= 1 ){
 			SoundManager.play( "mpb_powerup_activate_mp3" );
 
 			this.powerUpParticle = new particle.GravityParticleSystem(RES.getRes("multiPlayerParticle_png"), RES.getRes("multiPlayerParticle_json"));
-			Com.addObjectAt(this, this.powerUpParticle, 2, 67 );
+			Com.addObjectAt(this, this.powerUpParticle, 0, 0 );
 			this.powerUpParticle.start();
 
-			this.powerUpBlinkLight = Com.addMovieClipAt( this, MDS.mcFactory, "blinkLight", 0, 5 );
+			this.powerUpBlinkLight = Com.addMovieClipAt( this, MDS.mcFactory, "blinkLight", 20, -106 );
+			this.powerUpBlinkLight.scaleX = this.powerUpBlinkLight.scaleY = 2;
+
+			this.cacheAsBitmap = false;
 		}
 		this.powerUpBtn.enabled = value >= 1;
 
@@ -27,22 +30,24 @@ class MultiPlayerEnergy extends egret.DisplayObjectContainer{
 
 			if( this.powerUpBlinkLight.parent ) this.powerUpBlinkLight.parent.removeChild( this.powerUpBlinkLight );
 			this.powerUpBlinkLight = null;
+
+			this.cacheAsBitmap = true;
 		}
 	}
 
 	public constructor() {
 		super();
 
-		this.powerUpBtn = Com.addDownButtonAt( this, MultiPlayerMachine.getAssetStr( "charger-icon" ), MultiPlayerMachine.getAssetStr( "charger-icon" ), 0, 5, this.onPowerBtnClick.bind(this), false );
+		this.powerUpBtn = Com.addDownButtonAt( this, MultiPlayerMachine.getAssetStr( "charger-icon" ), MultiPlayerMachine.getAssetStr( "charger-icon" ), 8, -120, this.onPowerBtnClick.bind(this), false );
 		this.powerUpBtn.disabledFilter = MatrixTool.colorMatrix( 1, 0, 1 );
 		this.powerUpBtn.enabled = false;
-		this.powerProcess = Com.addBitmapAt( this, MultiPlayerMachine.getAssetStr( "chargerbar_01" ), 2, 67 );
+		this.powerProcess = Com.addBitmapAt( this, MultiPlayerMachine.getAssetStr( "chargerbar_01" ), 38, 36 );
 
-		this.powerProcess.mask = new egret.Rectangle( 10, 227, 0, 0 );
+		this.powerProcess.mask = new egret.Rectangle( 0, 369, 72, 0 );
 
 		this.powerUpTypeIcon = new egret.Bitmap;
-		this.powerUpTypeIcon.x = -10
-		this.powerUpTypeIcon.y = -3;
+		this.powerUpTypeIcon.x = 8 - 23;
+		this.powerUpTypeIcon.y = -120 - 21;
 		this.addChild( this.powerUpTypeIcon );
 	}
 

@@ -17,6 +17,15 @@ class MaraAnimationManager extends egret.DisplayObjectContainer{
 		super();
 	}
 
+	private setScaleToNew( mc: egret.MovieClip, withBigCard: boolean = false ){
+		mc.scaleX = 409 / 180;
+		mc.scaleY = 393 / 175;
+		if( withBigCard ){
+			mc.scaleX *= 2.05;
+			mc.scaleY *= 2.05;
+		}
+	}
+
 	public playLafayette(){
 		if( !this.lafayetteFactory ){
 			let data = RES.getRes( "maraLafayette_json" );
@@ -24,8 +33,10 @@ class MaraAnimationManager extends egret.DisplayObjectContainer{
 			this.lafayetteFactory = new egret.MovieClipDataFactory( data, tex );
 		}
 
-		let mc: egret.MovieClip = Com.addMovieClipAt( this, this.lafayetteFactory, "lafayette", 264, 231 );
+		let mc: egret.MovieClip = Com.addMovieClipAt( this, this.lafayetteFactory, "lafayette", 970, 480 );
+		mc.anchorOffsetX = mc.anchorOffsetY = 90;
 		mc.play(1);
+		this.setScaleToNew( mc );
 		TweenerTool.tweenTo( mc, { alpha: 0 }, 300, 2500, MDS.removeSelf.bind( this, mc ) );
 	}
 
@@ -61,14 +72,14 @@ class MaraAnimationManager extends egret.DisplayObjectContainer{
 
 		let mc: egret.MovieClip = Com.addMovieClipAt( this, this.redWineFactory, "redWine", x, y );
 		mc.play(1);
-		if( this.oneCardMode ) mc.scaleX = mc.scaleY = 2.05;
+		this.setScaleToNew( mc, this.oneCardMode );
 		TweenerTool.tweenTo( mc, { alpha: 0 }, 300, 2500, MDS.removeSelf.bind( this, mc ) );
 	}
 
 	public bread( x: number, y: number ){
 		let mc: egret.MovieClip = Com.addMovieClipAt( this, MDS.mcFactory, "bread", x, y );
 		mc.play(1);
-		if( this.oneCardMode ) mc.scaleX = mc.scaleY = 2.05;
+		this.setScaleToNew( mc, this.oneCardMode );
 		TweenerTool.tweenTo( mc, { alpha: 0 }, 300, 1200, MDS.removeSelf.bind( this, mc ) );
 	}
 
@@ -91,14 +102,14 @@ class MaraAnimationManager extends egret.DisplayObjectContainer{
 	public playMacaroon( effectName: string, x: number, y: number ){
 		let mc: egret.MovieClip = Com.addMovieClipAt( this, MDS.mcFactory, effectName, x, y );
 		mc.play(1);
-		if( this.oneCardMode ) mc.scaleX = mc.scaleY = 2.05;
+		this.setScaleToNew( mc, this.oneCardMode );
 		TweenerTool.tweenTo( mc, { alpha: 0 }, 300, 1200, MDS.removeSelf.bind( this, mc ) );
 	}
 
 	public playShark( startPosition: egret.Point, endPosition: egret.Point, x: number, y: number ){
 		let mc: egret.MovieClip = Com.addMovieClipAt( this, MDS.mcFactory, "croissant", x, y );
 		mc.play(1);
-		if( this.oneCardMode ) mc.scaleX = mc.scaleY = 2.05;
+		this.setScaleToNew( mc, this.oneCardMode );
 		TweenerTool.tweenTo( mc, { alpha: 1 }, 10, 1200, this.sharkBallMove.bind( this, mc, startPosition, endPosition ) );
 	}
 
@@ -130,7 +141,7 @@ class MaraAnimationManager extends egret.DisplayObjectContainer{
 	public playStar( x: number, y: number ){
 		let mc: egret.MovieClip = Com.addMovieClipAt( this, MDS.mcFactory, "sandwich", x, y );
 		mc.play(1);
-		if( this.oneCardMode ) mc.scaleX = mc.scaleY = 2.05;
+		this.setScaleToNew( mc, this.oneCardMode );
 		TweenerTool.tweenTo( mc, { alpha: 0 }, 300, 3200, MDS.removeSelf.bind( this, mc ) );
 	}
 
@@ -142,11 +153,11 @@ class MaraAnimationManager extends egret.DisplayObjectContainer{
 		}
 		let mc: egret.MovieClip = Com.addMovieClipAt( this, MDS.mcFactory, "perfume_bottle", pt.x, pt.y );
 		mc.play(1);
-		if( this.oneCardMode ) mc.scaleX = mc.scaleY = 2.05;
+		this.setScaleToNew( mc, this.oneCardMode );
 		TweenerTool.tweenTo( mc, { alpha: 0 }, 300, 1500, MDS.removeSelf.bind( this, mc ) );
 		let mcBig: egret.MovieClip = Com.addMovieClipAt( this, MDS.mcFactory, "perfume", x, y );
 		mcBig.play(1);
-		if( this.oneCardMode ) mcBig.scaleX = mcBig.scaleY = 2.05;
+		this.setScaleToNew( mcBig, this.oneCardMode );
 		TweenerTool.tweenTo( mcBig, { alpha: 0 }, 300, 2200, MDS.removeSelf.bind( this, mcBig ) );
 	}
 
@@ -158,20 +169,20 @@ class MaraAnimationManager extends egret.DisplayObjectContainer{
 		}
 		let mc: egret.MovieClip = Com.addMovieClipAt( this, MDS.mcFactory, "perfume_cap", pt.x, pt.y );
 		mc.play(1);
-		if( this.oneCardMode ) mc.scaleX = mc.scaleY = 2.05;
+		this.setScaleToNew( mc, this.oneCardMode );
 		TweenerTool.tweenTo( mc, { alpha: 0 }, 100, 700, MDS.removeSelf.bind( this, mc ) );
 	}
 
 	public roundOver(){
 		let rs: egret.DisplayObjectContainer = new egret.DisplayObjectContainer;
 		Com.addBitmapAt( rs, MultiPlayerMachine.getAssetStr("round"), 0, 0 );
-		Com.addBitmapAt( rs, "mara_" + MuLang.language + "_json.round_over_tip", 10, 128 );
-		Com.addObjectAt( this, rs, 755 - rs.width - 44 >> 1, - rs.height );
-		TweenerTool.tweenTo( rs, { y: 600 - rs.height >> 1 }, 500, 0, this.roundStartHide.bind( this, rs ), null, egret.Ease.circOut );
+		Com.addBitmapAtMiddle( rs, "mara_" + MuLang.language + "_json.round_over_tip", 448, 457 );
+		Com.addObjectAt( this, rs, BingoBackGroundSetting.gameMask.width - rs.width >> 1, - rs.height );
+		TweenerTool.tweenTo( rs, { y: BingoBackGroundSetting.gameMask.height - rs.height >> 1 }, 500, 0, this.roundStartHide.bind( this, rs ), null, egret.Ease.circOut );
 	}
 
 	private roundStartHide( rs: egret.DisplayObjectContainer ){
-		TweenerTool.tweenTo( rs, { y: 600 }, 500, 1500, MDS.removeSelf.bind( this, rs ), null, egret.Ease.circIn );
+		TweenerTool.tweenTo( rs, { y: BingoBackGroundSetting.gameMask.width }, 500, 1500, MDS.removeSelf.bind( this, rs ), null, egret.Ease.circIn );
 	}
 
 	public changeModeAnimation(){
@@ -181,7 +192,8 @@ class MaraAnimationManager extends egret.DisplayObjectContainer{
 			this.changeModeFactory = new egret.MovieClipDataFactory( data, tex );
 		}
 		let mc: egret.MovieClip = Com.addMovieClipAt( this, this.changeModeFactory, "mara_change_mode", 0, 0 );
-		mc.scaleX = mc.scaleY = 2;
+		mc.scaleX = BingoBackGroundSetting.gameMask.width / 378;
+		mc.scaleY = BingoBackGroundSetting.gameMask.height / 300;
 		mc.play(1);
 		TweenerTool.tweenTo( mc, { alpha: 0 }, 200, 1100, MDS.removeSelf.bind( this, mc ) );
 	}
@@ -189,7 +201,7 @@ class MaraAnimationManager extends egret.DisplayObjectContainer{
 	public playGetMacaroon( type: string, x: number, y: number, num: number ){
 		let mc: egret.MovieClip = Com.addMovieClipAt( this, MDS.mcFactory, type + "_macaroon_award", x, y );
 		mc.play(1);
-		if( this.oneCardMode ) mc.scaleX = mc.scaleY = 2.05;
+		this.setScaleToNew( mc, this.oneCardMode );
 		TweenerTool.tweenTo( mc, { alpha: 0 }, 200, 1300, MDS.removeSelf.bind( this, mc ) );
 
 		if( type == "white" ){
@@ -242,7 +254,7 @@ class MaraAnimationManager extends egret.DisplayObjectContainer{
 		}
 		let fireworkBg: egret.Shape = new egret.Shape;
 		Com.addObjectAt( this, fireworkBg, 0, 0 );
-		GraphicTool.drawRect( fireworkBg, new egret.Rectangle( 0, 0, 755, 600 ), 0x000F41, false, 0.4 );
+		GraphicTool.drawRect( fireworkBg, BingoBackGroundSetting.gameMask, 0x000F41, false, 0.4 );
 		TweenerTool.tweenTo( fireworkBg, { alpha: 0 }, 200, 3300, MDS.removeSelf.bind( this, fireworkBg ) );
 		let mc0: egret.MovieClip = Com.addMovieClipAt( this, this.towerFactory, "mara_fireworks1", 226, 0 );
 		mc0.play( 1 );
@@ -258,9 +270,13 @@ class MaraAnimationManager extends egret.DisplayObjectContainer{
 		TweenerTool.tweenTo( mc2, { alpha: 0 }, 200, 1500, MDS.removeSelf.bind( this, mc2 ) );
 		let mc3: egret.MovieClip = Com.addMovieClipAt( this, this.fireworksFactory, "mara_fireworks3", 0, 0 );
 		mc3.play( 1 );
+		mc3.scaleX = BingoBackGroundSetting.gameMask.width / 755;
+		mc3.scaleY = BingoBackGroundSetting.gameMask.height / 600;
 		TweenerTool.tweenTo( mc3, { alpha: 0 }, 200, 3300, MDS.removeSelf.bind( this, mc3 ) );
 		let mc4: egret.MovieClip = Com.addMovieClipAt( this, this.fireworksFactory, "mara_fireworks4", 0, 0 );
 		mc4.play( 1 );
+		mc4.scaleX = BingoBackGroundSetting.gameMask.width / 755;
+		mc4.scaleY = BingoBackGroundSetting.gameMask.height / 600;
 		TweenerTool.tweenTo( mc4, { alpha: 0 }, 200, 3300, MDS.removeSelf.bind( this, mc4 ) );
 	}
 }

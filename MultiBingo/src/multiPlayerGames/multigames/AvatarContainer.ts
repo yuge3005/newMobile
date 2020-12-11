@@ -51,7 +51,7 @@ class AvatarContainer extends egret.ScrollView{
 				let headIcon: egret.Bitmap = this.newHead();
 				this.iconList.push( headIcon );
 
-				if( headUrlList[i]["headUrl"] != "" ) Utils.downloadBitmapDataByFacebookID( headUrlList[i]["headUrl"], 50, 50, MDS.onUserHeadLoaded.bind( this, headIcon, 36 ), this );
+				if( headUrlList[i]["headUrl"] != "" ) Utils.downloadBitmapDataByFacebookID( headUrlList[i]["headUrl"], 100, 100, MDS.onUserHeadLoaded.bind( this, headIcon, 100 ), this );
 			}
 		}
 	}

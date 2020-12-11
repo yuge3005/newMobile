@@ -1,7 +1,0 @@
-{"file":"roundOverTime.png","frames":{
-"x":{"x":643,"y":1,"w":86,"h":113,"offX":0,"offY":0,"sourceW":86,"sourceH":113},
-"x1":{"x":888,"y":1,"w":56,"h":56,"offX":0,"offY":0,"sourceW":56,"sourceH":56},
-"x3":{"x":946,"y":1,"w":47,"h":66,"offX":0,"offY":0,"sourceW":47,"sourceH":66},
-"bg":{"x":1,"y":1,"w":640,"h":382,"offX":0,"offY":0,"sourceW":640,"sourceH":382},
-"box1":{"x":818,"y":1,"w":68,"h":55,"offX":0,"offY":0,"sourceW":68,"sourceH":55},
-"box2":{"x":731,"y":1,"w":85,"h":85,"offX":0,"offY":0,"sourceW":85,"sourceH":85}}}

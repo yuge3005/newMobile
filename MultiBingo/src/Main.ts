@@ -47,7 +47,7 @@ class Main extends egret.DisplayObjectContainer {
     }
 
 	private showGame(){
-		this.currentGame = new MultyPlayerBingo("resource/default.res.json");
+		this.currentGame = new Mara("resource/default.res.json");
 
 		const loadingView = new LoadingUI();
 		this.currentGame.preLoader = loadingView;

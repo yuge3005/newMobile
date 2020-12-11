@@ -2,6 +2,8 @@ class MultiPlayerBingoCard extends Multi75Card{
 
 	public constructor( cardId: number ) {
 		super( cardId );
+
+		this.scaleX = this.scaleY = 0.7;
 	}
 
 	protected wrongGridClick( event: egret.TouchEvent ): void{
@@ -51,7 +53,7 @@ class MultiPlayerBingoCard extends Multi75Card{
 		this.bingoMask.touchEnabled = true;
 		this.addChild( this.bingoMask );
 		Com.addBitmapAt( this.bingoMask, MultiPlayerMachine.getAssetStr( "BINGO-BG" ), 0, 0 );
-		Com.addDownButtonAt( this.bingoMask, MultiPlayerMachine.getAssetStr( "BINGO" ), MultiPlayerMachine.getAssetStr( "BINGO" ), this.bg.width >> 1, this.bg.height >> 1, this.callBingo.bind(this), true );
+		Com.addDownButtonAt( this.bingoMask, MultiPlayerMachine.getAssetStr( "BINGO" ), MultiPlayerMachine.getAssetStr( "BINGO" ), this.bg.width - 508 >> 1, this.bg.height >> 1, this.callBingo.bind(this), true );
 	}
 
 	private callBingo(){
@@ -60,6 +62,7 @@ class MultiPlayerBingoCard extends Multi75Card{
 		Com.addBitmapAt( this.bingoMask, MultiPlayerMachine.getAssetStr( "BINGO-BG" ), 0, 0 );
 
 		let mc: egret.MovieClip = Com.addMovieClipAt( this.bingoMask, MDS.mcFactory, "multiBingo", 0, 0 );
+		mc.scaleX = mc.scaleY = 3.15;
 		mc.play();
 
 		MultyPlayerBingo.callBingoTimes++;
@@ -68,7 +71,7 @@ class MultiPlayerBingoCard extends Multi75Card{
 	public checkNumber( ballIndex: number ): number {
 		let index: number = super.checkNumber( ballIndex );
 		if( index >= 0 && !this.handPt ){
-			this.handPt = Com.addMovieClipAt( this, MDS.mcFactory, index % 5 == 4 ? "hand2" : "hand1", ( index % 5 ) * 43 + 9, Math.floor( index / 5 ) * 40 + 25 );
+			this.handPt = Com.addMovieClipAt( this, MDS.mcFactory, index % 5 == 4 ? "hand2" : "hand1", ( index % 5 ) * 135 + 28, Math.floor( index / 5 ) * 125 + 76 );
 			this.handPt.name = "" + index;
 		}
 		return index;

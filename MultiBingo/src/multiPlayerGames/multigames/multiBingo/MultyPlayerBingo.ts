@@ -15,7 +15,6 @@ class MultyPlayerBingo extends Multi75Super{
 		this.connetKeys = { zona: "MultiplayerZone", sala: "Multi67" };
 
 		this.ballArea = new MultiBingoBallLayer;
-		this.ballArea.mask = new egret.Rectangle( 0, 0, 560, 92 );
 
 		MultiCardLayer.cardType = MultiPlayerBingoCard;
 		MultiCardLayer.gridType = MultiPlayerBingoGrid;
@@ -28,18 +27,16 @@ class MultyPlayerBingo extends Multi75Super{
 		MultiPlayerGrid.linePicName = "11";
 		MultiPlayerGrid.zeroUIName = "12";
 
-		MultiPlayerGrid.defaultNumberSize = 22;
+		MultiPlayerGrid.defaultNumberSize = 55;
 	}
 
 	protected init(){
         super.init();
 
-		MDS.mcFactory = this._mcf;
-
-		this.ballCountText = MDS.addGameText( this, 575, 24, 20, 0xFFFFFF, "ball", false, 88 );
+		this.ballCountText = MDS.addGameText( this, 300, 274, 40, 0xFFFFFF, "ball", false, 165 );
 		this.ballCountText.textAlign = "center";
 		this.ballCountText.text = "";
-		MDS.addGameText( this, 575, 49, 20, 0xFFFFFF, "ball", false, 88 ).textAlign = "center";
+		MDS.addGameText( this, 300, 327, 40, 0xFFFFFF, "ball", false, 165 ).textAlign = "center";
 
 		this.letsWait();
 	}
@@ -60,6 +57,9 @@ class MultyPlayerBingo extends Multi75Super{
 	protected letsWait(): void{
 		this.setCardDatasWithNumeros(MDS.fakeArr(100));
 
+		let bg: egret.Bitmap = this.getChildByName( this.assetStr( "BG2" ) ) as egret.Bitmap;
+		bg.texture = RES.getRes( "multiBingo_bg_png" );
+
 		let cards: Array<MultiPlayerCard> = this.cardArea.cards;
 		for( let i: number = 0; i < cards.length; i++ ){
 			cards[i].visible = false;
@@ -73,11 +73,11 @@ class MultyPlayerBingo extends Multi75Super{
 		this.recordPaytalbes();
 
 		this.energyBar = new MultiPlayerEnergy;
-		Com.addObjectAt( this, this.energyBar, 10, 235 );
+		Com.addObjectAt( this, this.energyBar, 293, 656 );
 		this.energyBar.addEventListener( "useEnergy", this.useEnergy, this );
 
 		this.bingoInfo = new MultiPlayerBingoInfoBar;
-		Com.addObjectAt( this, this.bingoInfo, 571, 95 );
+		Com.addObjectAt( this, this.bingoInfo, 1503, 246 );
 
 		this.dailogLayer = new egret.DisplayObjectContainer;
 		Com.addObjectAt( this, this.dailogLayer, 0, 0 );
@@ -88,9 +88,9 @@ class MultyPlayerBingo extends Multi75Super{
 		this.buildWaitingBar();
 
 		this.chatBar = new MultiPlayerBingoChatBar;
-		Com.addObjectAt( this.chatAndMiniGameLayer, this.chatBar, 570, 265 );
+		Com.addObjectAt( this.chatAndMiniGameLayer, this.chatBar, 1500, 588 );
 
-		Com.addDownButtonAt( this, this.assetStr( "power_up_info" ), this.assetStr( "power_up_info" ), 690, 47, this.showHelp, true );
+		Com.addDownButtonAt( this, this.assetStr( "power_up_info" ), this.assetStr( "power_up_info" ), 1565, 123, this.showHelp, true );
 	}
 
 	protected buildWaitingBar(){
@@ -123,6 +123,8 @@ class MultyPlayerBingo extends Multi75Super{
 		this.buildWaitingBar();
 
 		this.clearLuckyBall();
+
+		this.hideBallForWinPanel( false );
 	}
 
 	private clearLuckyBall(){
@@ -193,10 +195,10 @@ class MultyPlayerBingo extends Multi75Super{
 		}
 
 		if( data.length == 1 ){
-			cards[0].scaleX = cards[0].scaleY = 2.05;
+			cards[0].scaleX = cards[0].scaleY = 1.4;
 		}
 		else{
-			cards[0].scaleX = cards[0].scaleY = 1;
+			cards[0].scaleX = cards[0].scaleY = 0.7;
 		}
 
 		this.waitingForStart = true;
@@ -244,9 +246,9 @@ class MultyPlayerBingo extends Multi75Super{
 		if( data["powerUpType"] == MultiPlayerBingoGrid.AWARDTYPE_COINSBALL ){
 			this.clearLuckyBall();
 			this.luckyBall = new egret.DisplayObjectContainer;
-			Com.addObjectAt( this, this.luckyBall, 0, 235 );
-			Com.addBitmapAt( this.luckyBall, this.assetStr("lucky_ball"), 0, 0 );
-			let txt: egret.TextField = Com.addTextAt(this, 0, 0, 70, 70, 30, true, false);
+			Com.addObjectAt( this, this.luckyBall, 366, 607 );
+			Com.addBitmapAtMiddle( this.luckyBall, this.assetStr("lucky_ball"), 0, 0 );
+			let txt: egret.TextField = Com.addTextAt(this, -32, -32, 64, 64, 55, true, false);
 			this.luckyBall.addChild( txt );
 			txt.verticalAlign = "middle";
 			txt.fontFamily = "Righteous";
@@ -254,7 +256,7 @@ class MultyPlayerBingo extends Multi75Super{
 			txt.text = "" + data["luckyBall"];
 			this.luckyBall.name = "" + data["luckyBall"];
 
-			TweenerTool.tweenTo( this.luckyBall, { y: 150 }, 200 );
+			TweenerTool.tweenTo( this.luckyBall, { y: 475 }, 200 );
 		}
 		else if( data["powerUpType"] == MultiPlayerBingoGrid.AWARDTYPE_MARKNUMBER || data["powerUpType"] == MultiPlayerBingoGrid.AWARDTYPE_COINSAWARDTHREE ){
 			for( let i: number = 0; i < data["cards"].length; i++ ){
@@ -342,20 +344,20 @@ class MultyPlayerBingo extends Multi75Super{
 		let pos: egret.Point = this.cardArea.positionOnCard( cardIndex, gridIndex );
 		let charger: egret.Bitmap = Com.addBitmapAt( this, this.assetStr( "charger-icon" ), pos.x, pos.y );
 		let tw: egret.Tween = egret.Tween.get( charger );
-		tw.to( { x: 10, y: 235 }, 400, egret.Ease.sineIn );
+		tw.to( { x: 300, y: 537 }, 400, egret.Ease.sineIn );
 		tw.call( this.endPowerLight.bind( this ) );
 		tw.to( { alpha: 0 }, 133 );
 		tw.call( MDS.removeSelf.bind( this, charger ) );
 	}
 
 	private endPowerLight(){
-		let light1: egret.Bitmap = Com.addBitmapAt( this, this.assetStr( "bg light" ), 35, 265 );
-		let light2: egret.Bitmap = Com.addBitmapAt( this, this.assetStr( "bg light" ), 35, 265 );
-		light2.anchorOffsetX = light1.anchorOffsetX = 35;
-		light2.anchorOffsetY = light1.anchorOffsetY = 21;
-		light2.scaleY = light1.scaleY = light2.scaleX = light1.scaleX = 3;
-		TweenerTool.tweenTo( light1, { rotation: 720 }, 600, 0, MDS.removeSelf.bind( this, light1 ), null, egret.Ease.sineInOut );
-		TweenerTool.tweenTo( light2, { rotation: -720 }, 600, 0, MDS.removeSelf.bind( this, light2 ), null, egret.Ease.sineInOut );
+		let light1: egret.Bitmap = Com.addBitmapAt( this, this.assetStr( "bg light" ), 365, 607 );
+		let light2: egret.Bitmap = Com.addBitmapAt( this, this.assetStr( "bg light" ), 365, 607 );
+		light2.anchorOffsetX = light1.anchorOffsetX = 91;
+		light2.anchorOffsetY = light1.anchorOffsetY = 54;
+		light2.scaleY = light1.scaleY = light2.scaleX = light1.scaleX = 2;
+		TweenerTool.tweenTo( light1, { rotation: 360 }, 500, 0, MDS.removeSelf.bind( this, light1 ), null, egret.Ease.sineInOut );
+		TweenerTool.tweenTo( light2, { rotation: -360 }, 500, 0, MDS.removeSelf.bind( this, light2 ), null, egret.Ease.sineInOut );
 	}
 
 	protected getFinalWinner(){
@@ -363,13 +365,22 @@ class MultyPlayerBingo extends Multi75Super{
 
 		if( !this.inPlayerRound ) return;
 
+		this.showBingoHeads( this.bingoPlayerHeads );
 		this.roundEndBar = new RoundEndBar;
 		this.addChild( this.roundEndBar );
 		this.roundEndBar.addEventListener( "roundEndBarContinue", this.onRoundEndContinue, this );
-		this.showBingoHeads( this.bingoPlayerHeads );
 		this.bingoPlayerHeads = [];
 
+		this.hideBallForWinPanel( true );
+
 		SoundManager.play( "mpb_round_end_mp3" );
+	}
+
+	private hideBallForWinPanel( hide: boolean ){
+		this.energyBar.visible = !hide;
+		this.ballArea.visible = !hide;
+		this.getChildByName( this.assetStr( "charger bar" ) ).visible = !hide;
+		this.getChildByName( this.assetStr( "chargerbar_01_bg" ) ).visible = !hide;
 	}
 
 	private bingoPlayerHeads: Array<string> = [];
@@ -382,16 +393,23 @@ class MultyPlayerBingo extends Multi75Super{
 
 	private showBingoHeads( heads: Array<string> ){
 		this.bingoPlayerHeadsContainer = new egret.DisplayObjectContainer;
-		Com.addObjectAt( this, this.bingoPlayerHeadsContainer, 24, 472 );
+		Com.addObjectAt( this, this.bingoPlayerHeadsContainer, 20, 240 );
 		Com.addBitmapAt( this.bingoPlayerHeadsContainer, this.assetStr( "alphaBg" ), 0, 0 );
+		let winnerTitle: egret.Bitmap = Com.addBitmapAt( this.bingoPlayerHeadsContainer, this.assetStr( "bingo_winner" ), 32, 60 );
+		winnerTitle.width = 440;
+		winnerTitle.height = 72;
 		for( let i: number = 0; i < heads.length; i++ ){
 			let userHead: egret.Bitmap;
-			if( i >= 24 ) break;
-			userHead = Com.addBitmapAt( this.bingoPlayerHeadsContainer, this.assetStr( "head_icon" ), 19 + 58 * ( i % 12 ), 13 + ( i >= 12 ? 50 : 0 ) );
-			userHead.scaleX = userHead.scaleY = 0.75;
+			if( i >= 15 ) break;
+			let offsetX: number = 140 * ( i % 3 );
+			let offsetY: number = Math.floor( i / 3 ) * 140;
+			Com.addBitmapAt( this.bingoPlayerHeadsContainer, this.assetStr( "bingo_winner_bg" ), 64 + offsetX, 166 + offsetY );
+			userHead = Com.addBitmapAt( this.bingoPlayerHeadsContainer, this.assetStr( "head_icon" ), 77 + offsetX, 179 + offsetY );
+			userHead.width = userHead.height = 100;
 			if( heads[i] != "" ){
-				Utils.downloadBitmapDataByFacebookID( heads[i], 50, 50, MDS.onUserHeadLoaded.bind( this, userHead, 36 ), this );
+				Utils.downloadBitmapDataByFacebookID( heads[i], 100, 100, MDS.onUserHeadLoaded.bind( this, userHead, 100 ), this );
 			}
 		}
+		this.bingoPlayerHeadsContainer.cacheAsBitmap = true;
 	}
 }

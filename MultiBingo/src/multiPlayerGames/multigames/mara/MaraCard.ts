@@ -129,7 +129,7 @@ class MaraCard extends Multi75Card{
 		this.bingoMask.touchEnabled = true;
 		this.addChild( this.bingoMask );
 		Com.addBitmapAt( this.bingoMask, MultiPlayerMachine.getAssetStr( "BINGO-BG" ), 0, 0 );
-		Com.addDownButtonAt( this.bingoMask, MultiPlayerMachine.getAssetStr( "BINGO" ), MultiPlayerMachine.getAssetStr( "BINGO" ), this.bg.width >> 1, this.bg.height >> 1, this.callBingo.bind(this), true );
+		Com.addDownButtonAt( this.bingoMask, MultiPlayerMachine.getAssetStr( "BINGO" ), MultiPlayerMachine.getAssetStr( "BINGO" ), this.bg.width - 174 >> 1, this.bg.height - 73 >> 1, this.callBingo.bind(this), true );
 	}
 
 	private callBingo( event: egret.Event ){
@@ -146,6 +146,8 @@ class MaraCard extends Multi75Card{
 			MaraCard.bingoFactory = new egret.MovieClipDataFactory( data, tex );
 		}
 		let mc: egret.MovieClip = Com.addMovieClipAt( this.bingoMask, MaraCard.bingoFactory, "bingo", 0, 0 );
+		mc.scaleX = 409 / 180;
+		mc.scaleY = 393 / 175;
 		TweenerTool.tweenTo( mc, { alpha: 0 }, 400, 3500, MDS.removeSelf.bind( this, mc ) );
 		SoundManager.play( "mara_bingo_mp3" );
 	}
@@ -261,8 +263,9 @@ class MaraCard extends Multi75Card{
 		if( index < 0 ) return;
 		let grid: MaraGrid = this.grids[index] as MaraGrid;
 		if( !grid.isCollected ){
-			this.handPt = Com.addMovieClipAt( this, MDS.mcFactory, index % 5 == 4 ? "hand2" : "hand1", ( index % 5 ) * 34 + 5, Math.floor( index / 5 ) * 30 + 16 );
+			this.handPt = Com.addMovieClipAt( this, MDS.mcFactory, index % 5 == 4 ? "hand2" : "hand1", ( index % 5 ) * MultiPlayerGrid.gridSpace.x + MultiPlayerCard.gridInitPosition.x, Math.floor( index / 5 ) * MultiPlayerGrid.gridSpace.y + MultiPlayerCard.gridInitPosition.y );
 			this.handPt.name = "" + index;
+			this.handPt.scaleX = this.handPt.scaleY = 2.25;
 			grid.showYellowBg();
 		}
 	}
@@ -293,7 +296,7 @@ class MaraCard extends Multi75Card{
 	}
 
 	public sharkChoosing( choosing: boolean ){
-		if( !this.choosingBit ) this.choosingBit = Com.addBitmapAt( this, MultiPlayerMachine.getAssetStr( "glow" ), -13, -10 );
+		if( !this.choosingBit ) this.choosingBit = Com.addBitmapAt( this, MultiPlayerMachine.getAssetStr( "glow" ), -45, -53 );
 		this.choosingBit.visible = choosing;
 	}
 
@@ -321,7 +324,7 @@ class MaraCard extends Multi75Card{
 		this.specialCardBg.graphics.clear();
 		this.specialCardBg.graphics.beginFill( 0x2EC8CE, 0.3 );
 		for( let i: number = 0; i < specialPattern.length; i++ ){
-			if( specialPattern.charAt( i ) == "1" ) this.specialCardBg.graphics.drawRect( 6 + i % 5 * 34, 22 + Math.floor( i / 5 ) * 30, 32, 28 );
+			if( specialPattern.charAt( i ) == "1" ) this.specialCardBg.graphics.drawRect( MultiPlayerCard.gridInitPosition.x + i % 5 * MultiPlayerGrid.gridSpace.x, MultiPlayerCard.gridInitPosition.y + Math.floor( i / 5 ) * MultiPlayerGrid.gridSpace.y, MultiPlayerGrid.gridSize.x, MultiPlayerGrid.gridSize.y );
 		}
 		this.specialCardBg.graphics.endFill();
 	}
@@ -329,7 +332,7 @@ class MaraCard extends Multi75Card{
 	private cardChoosingBit: egret.Bitmap;
 
 	public cardClickMode( isClickMode: boolean ){
-		if( !this.cardChoosingBit ) this.cardChoosingBit = Com.addBitmapAt( this, MultiPlayerMachine.getAssetStr( "glow" ), -13, -10 );
+		if( !this.cardChoosingBit ) this.cardChoosingBit = Com.addBitmapAt( this, MultiPlayerMachine.getAssetStr( "glow" ), -45, -53 );
 		this.cardChoosingBit.visible = isClickMode;
 	}
 
