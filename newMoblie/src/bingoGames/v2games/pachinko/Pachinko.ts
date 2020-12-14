@@ -212,7 +212,7 @@ class Pachinko extends V2Game{
     private showPachinkoLetterAnimation(): void{
         let pachinkoStr: string = Pachinko.pachinkoString;
         let i: number = pachinkoStr.indexOf( this.currentPachinkoStr );
-        this.pachinkoLetters1.showPachinkoLetterAnimation( i );
+        this.pachinkoLetters1.showPachinkoLetterAnimation( i, true );
         this.pachinkoLetters2.showPachinkoLetterAnimation( i );
     }
 
