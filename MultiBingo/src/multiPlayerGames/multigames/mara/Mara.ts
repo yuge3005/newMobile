@@ -662,8 +662,8 @@ class Mara extends Multi75Super{
 			let pos: egret.Point = new egret.Point;
 			pos.x = cards[i].x;
 			pos.y = cards[i].y;
-			pos.x += MultiPlayerCard.gridInitPosition.x + cow * CardGridColorAndSizeSettings.gridSpace.x;
-			pos.y += MultiPlayerCard.gridInitPosition.y + line * CardGridColorAndSizeSettings.gridSpace.y;
+			pos.x += GameCardUISettings.gridInitPosition.x + cow * CardGridColorAndSizeSettings.gridSpace.x;
+			pos.y += GameCardUISettings.gridInitPosition.y + line * CardGridColorAndSizeSettings.gridSpace.y;
 			let powerUpIcon: egret.Bitmap = Com.addBitmapAt( this, this.assetStr( "cicon_jellyFish" ), 200, -50 );
 			TweenerTool.tweenTo( powerUpIcon, { x: pos.x, y: pos.y }, 300, 0, MDS.removeSelf.bind( this, powerUpIcon ) );
 			setTimeout( cards[i].jellyBomb.bind(cards[i], cow, line ), 300 );

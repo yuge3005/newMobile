@@ -87,8 +87,8 @@ class MaraAnimationManager extends egret.DisplayObjectContainer{
 		let cow: number = num % 6;
 		let line: number = Math.floor( num / 6 );
 		let pt: egret.Point = new egret.Point;
-		pt.x = MultiPlayerCard.gridInitPosition.x + ( cow - 1 ) * CardGridColorAndSizeSettings.gridSpace.x;
-		pt.y = MultiPlayerCard.gridInitPosition.y + ( line - 1 ) * CardGridColorAndSizeSettings.gridSpace.y;
+		pt.x = GameCardUISettings.gridInitPosition.x + ( cow - 1 ) * CardGridColorAndSizeSettings.gridSpace.x;
+		pt.y = GameCardUISettings.gridInitPosition.y + ( line - 1 ) * CardGridColorAndSizeSettings.gridSpace.y;
 		let mc: egret.MovieClip = Com.addMovieClipAt( this, MDS.mcFactory, "cheese", x + pt.x, y + pt.y );
 		mc.play(1);
 		if( this.oneCardMode ){
