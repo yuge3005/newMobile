@@ -1,18 +1,9 @@
 class MultiPlayerGrid extends egret.Sprite{
 	
-	public static defaultBgPicName: string;
 	protected defaultBgPic: egret.Bitmap;
-
-	public static onEffBgPicName: string;
 	protected onEffBgPic: egret.Bitmap;
-
-	public static blink1PicName: string;
 	private blink1Pic: egret.Bitmap;
-
-	public static blink2PicName: string;
 	private blink2Pic: egret.Bitmap;
-
-	public static linePicName: string;
 	protected linePic: egret.Bitmap;
 
 	protected _currentBgPic: egret.Bitmap;
@@ -38,14 +29,13 @@ class MultiPlayerGrid extends egret.Sprite{
 	protected numTxt: egret.TextField;
 
 	protected zeroUI: egret.Bitmap;
-	public static zeroUIName: string;
 
 	protected num: number;
 	public set gridNumber( value: number ){
 		this.num = value;
 		this.numTxt.text = "" + value;
-		if( value == 0 && MultiPlayerGrid.zeroUIName ){
-			if( !this.zeroUI )this.zeroUI = Com.addBitmapAt( this, MultiPlayerMachine.getAssetStr( MultiPlayerGrid.zeroUIName ), 0, 0 );
+		if( value == 0 && CardGridUISettings.zeroUIName ){
+			if( !this.zeroUI )this.zeroUI = Com.addBitmapAt( this, MultiPlayerMachine.getAssetStr( CardGridUISettings.zeroUIName ), 0, 0 );
 		}
 	}
 	public get gridNumber(): number{
@@ -65,7 +55,7 @@ class MultiPlayerGrid extends egret.Sprite{
 	}
 
 	protected init(): void {
-		this.defaultBgPic = Com.createBitmapByName( MultiPlayerMachine.getAssetStr( MultiPlayerGrid.defaultBgPicName ) );
+		this.defaultBgPic = Com.createBitmapByName( MultiPlayerMachine.getAssetStr( CardGridUISettings.defaultBgPicName ) );
 		this.addChild( this.defaultBgPic );
 
 		this.numTxt = Com.addTextAt( this, 0, CardGridColorAndSizeSettings.gridSize.y - CardGridColorAndSizeSettings.defaultNumberSize >> 1, CardGridColorAndSizeSettings.gridSize.x, CardGridColorAndSizeSettings.defaultNumberSize, CardGridColorAndSizeSettings.defaultNumberSize, false, true );
@@ -73,10 +63,10 @@ class MultiPlayerGrid extends egret.Sprite{
 		this.numTxt.verticalAlign = "middle";
 		this.numTxt.textColor = CardGridColorAndSizeSettings.numberColor;
 
-		this.onEffBgPic = Com.createBitmapByName( MultiPlayerMachine.getAssetStr( MultiPlayerGrid.onEffBgPicName ) );
-		this.blink1Pic = Com.createBitmapByName( MultiPlayerMachine.getAssetStr( MultiPlayerGrid.blink1PicName ) );
-		this.blink2Pic = Com.createBitmapByName( MultiPlayerMachine.getAssetStr( MultiPlayerGrid.blink2PicName ) );
-		this.linePic = Com.createBitmapByName( MultiPlayerMachine.getAssetStr( MultiPlayerGrid.linePicName ) );
+		this.onEffBgPic = Com.createBitmapByName( MultiPlayerMachine.getAssetStr( CardGridUISettings.onEffBgPicName ) );
+		this.blink1Pic = Com.createBitmapByName( MultiPlayerMachine.getAssetStr( CardGridUISettings.blink1PicName ) );
+		this.blink2Pic = Com.createBitmapByName( MultiPlayerMachine.getAssetStr( CardGridUISettings.blink2PicName ) );
+		this.linePic = Com.createBitmapByName( MultiPlayerMachine.getAssetStr( CardGridUISettings.linePicName ) );
 	}
 
 	public showEffect( isShow: boolean ){

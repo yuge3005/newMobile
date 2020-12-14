@@ -18,14 +18,8 @@ class MultyPlayerBingo extends Multi75Super{
 
 		MultiCardLayer.cardType = MultiPlayerBingoCard;
 		MultiCardLayer.gridType = MultiPlayerBingoGrid;
-		MultiPlayerCard.useRedEffect = false;
 
-		MultiPlayerGrid.blink1PicName = "bingoDeltaMark";
-		MultiPlayerGrid.blink2PicName = "bingoDeltaMark";
-		MultiPlayerGrid.defaultBgPicName = "bingoDeltaBlank";
-		MultiPlayerGrid.onEffBgPicName = "history";
-		MultiPlayerGrid.linePicName = "11";
-		MultiPlayerGrid.zeroUIName = "12";
+		CardGridUISettings.zeroUIName = "12";
 
 		CardGridColorAndSizeSettings.defaultNumberSize = 55;
 	}
