@@ -34,11 +34,20 @@ class PachinkoLetterLayer extends egret.DisplayObjectContainer{
         tw.call( callback );
 	}
 
-	public showPachinkoLetterAnimation( i: number ){
+	public showPachinkoLetterAnimation( i: number, needAnimation: boolean = false ){
         this.pachinkoLetters[i].filters = [MatrixTool.colorMatrixPure(0xFFFF00)];
-        this.pachinkoLetters[i].scaleX = 5;
-        this.pachinkoLetters[i].scaleY = 5;
-        let tw: egret.Tween = egret.Tween.get( this.pachinkoLetters[i] );
-        tw.to( { scaleX: 1, scaleY: 1 }, 1200 );
+        if( needAnimation ){
+            let originX: number = this.pachinkoLetters[i].x;
+            let zoomMaxX: number = originX - this.pachinkoLetters[i].width * 2;
+            this.pachinkoLetters[i].scaleX = 5;
+            this.pachinkoLetters[i].scaleY = 5;
+            this.pachinkoLetters[i].x = zoomMaxX;
+            let tw: egret.Tween = egret.Tween.get( this.pachinkoLetters[i] );
+            tw.to( { scaleX: 1, scaleY: 1, x: originX }, 600 );
+            tw.to( { scaleX: 5, scaleY: 5, x: zoomMaxX }, 300 );
+            tw.to( { scaleX: 1, scaleY: 1, x: originX }, 600 );
+            tw.to( { scaleX: 5, scaleY: 5, x: zoomMaxX }, 300 );
+            tw.to( { scaleX: 1, scaleY: 1, x: originX }, 600 );
+        }
 	}
 }
