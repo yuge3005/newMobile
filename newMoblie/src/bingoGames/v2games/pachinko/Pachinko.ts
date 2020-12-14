@@ -11,7 +11,7 @@ class Pachinko extends V2Game{
     public constructor( assetsPath: string ) {
         super("pachinko.conf", assetsPath, 41);
         this.languageObjectName = "pachinko_tx";
-        this.megaName = "turbo90_mega";
+        this.megaName = "pachinko_mega";
 
         this.gratisUIIsOverExtraUI = true;
 
@@ -312,7 +312,7 @@ class Pachinko extends V2Game{
             this.superExtraBg.visible = true;
             this.gameToolBar.megeExtraOnTop( true );
 
-            this.tryFirstMega( new egret.Rectangle( 626, 233, 30, 30 ) );
+            this.tryFirstMega( new egret.Rectangle( 580, 240, 30, 30 ) );
         }
     }
     
