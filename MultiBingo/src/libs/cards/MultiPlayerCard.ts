@@ -65,6 +65,7 @@ class MultiPlayerCard extends egret.Sprite{
 		grid.x = position.x;
 		grid.y = position.y;
 		this.gridLayer.addChild( grid );
+		grid.defaultPosition = position;
 		return grid;
 	}
 
@@ -135,15 +136,21 @@ class MultiPlayerCard extends egret.Sprite{
 		if( toCardLayer ){
 			if( this.gridLayer.contains( grid ) ){
 				this.parent.addChild( grid );
-				grid.x += this.x;
-				grid.y += this.y;
+				let gridIndex: number = this.grids.indexOf( grid );
+				let onCardPt: egret.Point = MultiPlayerCard.getGridPosition( gridIndex );
+				onCardPt.x *= this.scaleX;
+				onCardPt.y *= this.scaleY;
+				grid.x = this.x + onCardPt.x;
+				grid.y = this.y + onCardPt.y;
+				grid.scaleX = grid.scaleY = this.scaleX;
 			}
 		}
 		else{
 			if( this.parent.contains( grid ) ){
 				this.gridLayer.addChild( grid );
-				grid.x -= this.x;
-				grid.y -= this.y;
+				grid.x = grid.defaultPosition.x;
+				grid.y = grid.defaultPosition.y;
+				grid.scaleX = grid.scaleY = 1;
 			}
 		}
 	}

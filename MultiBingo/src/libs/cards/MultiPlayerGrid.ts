@@ -16,6 +16,8 @@ class MultiPlayerGrid extends egret.Sprite{
 		return this._currentBgPic;
 	}
 
+	public defaultPosition: egret.Point;
+
 	protected _blink: boolean;
 	public get blink(): boolean{
 		return this._blink;
