@@ -53,6 +53,7 @@ class MaraCard extends Multi75Card{
 		trace( this.uuid );
 		grid.touchEnabled = false;
 		grid.showRedEffect();
+		this.addGridToCardLayer( grid, false );
 		let gridIndex: number = this.grids.indexOf( grid );
 		MultiServer.numberSelect( this.uuid, gridIndex );
 		if( grid.awardType ){
@@ -263,7 +264,7 @@ class MaraCard extends Multi75Card{
 		if( index < 0 ) return;
 		let grid: MaraGrid = this.grids[index] as MaraGrid;
 		if( !grid.isCollected ){
-			this.handPt = Com.addMovieClipAt( this, MDS.mcFactory, index % 5 == 4 ? "hand2" : "hand1", ( index % 5 ) * CardGridColorAndSizeSettings.gridSpace.x + GameCardUISettings.gridInitPosition.x, Math.floor( index / 5 ) * CardGridColorAndSizeSettings.gridSpace.y + GameCardUISettings.gridInitPosition.y );
+			this.handPt = Com.addMovieClipAt( this.parent, MDS.mcFactory, index % 5 == 4 ? "hand2" : "hand1", ( index % 5 ) * CardGridColorAndSizeSettings.gridSpace.x + GameCardUISettings.gridInitPosition.x + this.x, Math.floor( index / 5 ) * CardGridColorAndSizeSettings.gridSpace.y + GameCardUISettings.gridInitPosition.y + this.y );
 			this.handPt.name = "" + index;
 			this.handPt.scaleX = this.handPt.scaleY = 2.25;
 			grid.showYellowBg();

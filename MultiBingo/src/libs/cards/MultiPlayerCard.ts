@@ -17,11 +17,15 @@ class MultiPlayerCard extends egret.Sprite{
 		this._enabled = value;
 	}
 
+	protected gridLayer: egret.DisplayObjectContainer;
+
 	public constructor( cardId: number ) {
 		super();
 
 		this.cardId = cardId;
 		this.addEventListener( egret.Event.ADDED_TO_STAGE, this.onAdd, this );
+
+		this.cacheAsBitmap = true;
 	}
 
 	protected onAdd( event: egret.Event ){
@@ -44,6 +48,8 @@ class MultiPlayerCard extends egret.Sprite{
 		let i: number;
 		if( !this.grids ){
 			this.grids = [];
+			this.gridLayer = new egret.DisplayObjectContainer;
+			this.addChild( this.gridLayer );
 			for( i = 0; i < numbers.length; i++ ){
 				this.grids[i] = this.createGrid( i );
 			}
@@ -58,7 +64,7 @@ class MultiPlayerCard extends egret.Sprite{
 		let position: egret.Point = MultiPlayerCard.getGridPosition( gridIndex );
 		grid.x = position.x;
 		grid.y = position.y;
-		this.addChild( grid );
+		this.gridLayer.addChild( grid );
 		return grid;
 	}
 
@@ -71,7 +77,10 @@ class MultiPlayerCard extends egret.Sprite{
 
 	public checkNumber( ballIndex: number ): number {
 		let index: number = this.numbers.indexOf( ballIndex );
-		if( index >= 0 )this.grids[index].showEffect( true );
+		if( index >= 0 ){
+			this.grids[index].showEffect( true );
+			this.addGridToCardLayer( this.grids[index] );
+		}
 		return index;
 	}
 
@@ -118,6 +127,23 @@ class MultiPlayerCard extends egret.Sprite{
 					if( this.redEffectArray[j] )this.grids[j].showEffect( true );
 				}
 				this.redEffectArray = null;
+			}
+		}
+	}
+
+	protected addGridToCardLayer( grid: MultiPlayerGrid, toCardLayer: boolean = true ){
+		if( toCardLayer ){
+			if( this.gridLayer.contains( grid ) ){
+				this.parent.addChild( grid );
+				grid.x += this.x;
+				grid.y += this.y;
+			}
+		}
+		else{
+			if( this.parent.contains( grid ) ){
+				this.gridLayer.addChild( grid );
+				grid.x -= this.x;
+				grid.y -= this.y;
 			}
 		}
 	}

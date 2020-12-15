@@ -16,6 +16,7 @@ class MultiPlayerBingoCard extends Multi75Card{
 		trace( this.uuid );
 		grid.touchEnabled = false;
 		grid.showRedEffect();
+		this.addGridToCardLayer( grid, false );
 		let gridIndex: number = this.grids.indexOf( grid );
 		MultiServer.numberSelect( this.uuid, gridIndex );
 		if( grid.awardType ){
@@ -71,7 +72,7 @@ class MultiPlayerBingoCard extends Multi75Card{
 	public checkNumber( ballIndex: number ): number {
 		let index: number = super.checkNumber( ballIndex );
 		if( index >= 0 && !this.handPt ){
-			this.handPt = Com.addMovieClipAt( this, MDS.mcFactory, index % 5 == 4 ? "hand2" : "hand1", ( index % 5 ) * 135 + 28, Math.floor( index / 5 ) * 125 + 76 );
+			this.handPt = Com.addMovieClipAt( this.parent, MDS.mcFactory, index % 5 == 4 ? "hand2" : "hand1", ( index % 5 ) * 135 + 28 + this.x, Math.floor( index / 5 ) * 125 + 76 + this.y );
 			this.handPt.name = "" + index;
 		}
 		return index;
