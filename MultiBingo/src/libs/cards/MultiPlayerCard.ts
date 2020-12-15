@@ -19,6 +19,8 @@ class MultiPlayerCard extends egret.Sprite{
 
 	protected gridLayer: egret.DisplayObjectContainer;
 
+	public inTurnMode: boolean;
+
 	public constructor( cardId: number ) {
 		super();
 
@@ -134,7 +136,7 @@ class MultiPlayerCard extends egret.Sprite{
 
 	protected addGridToCardLayer( grid: MultiPlayerGrid, toCardLayer: boolean = true ){
 		if( toCardLayer ){
-			if( this.gridLayer.contains( grid ) ){
+			if( this.inTurnMode && this.gridLayer.contains( grid ) ){
 				this.parent.addChild( grid );
 				let gridIndex: number = this.grids.indexOf( grid );
 				let onCardPt: egret.Point = MultiPlayerCard.getGridPosition( gridIndex );

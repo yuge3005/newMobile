@@ -211,6 +211,7 @@ class MultyPlayerBingo extends Multi75Super{
 		for( let i: number = 0; i < cards.length; i++ ){
 			if( cards[i].enabled ){
 				cards[i].visible = true;
+				cards[i].inTurnMode = true;
 				( cards[i] as MultiPlayerBingoCard ).flyBox();
 			}
 		}
