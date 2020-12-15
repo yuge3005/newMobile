@@ -70,4 +70,14 @@ class Multi75Card extends MultiPlayerCard{
 		}
 		return str;
 	}
+
+	public quitInturnMode(){
+		this.inTurnMode = false;
+		for( let i: number = 0; i < this.grids.length; i++ ){
+			this.addGridToCardLayer( this.grids[i], false );
+		}
+		if( this.handPt ){
+			this.removeHand();
+		}
+	}
 }

@@ -574,6 +574,8 @@ class Mara extends Multi75Super{
 		else{
 			this.bingoInfo.currentPaytableRules = [this.specialPattern];
 		}
+
+		this.quitInturnMode();
 	}
 
 	public static durringSpecial: boolean;

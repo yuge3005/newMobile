@@ -369,6 +369,8 @@ class MultyPlayerBingo extends Multi75Super{
 		this.hideBallForWinPanel( true );
 
 		SoundManager.play( "mpb_round_end_mp3" );
+
+		this.quitInturnMode();
 	}
 
 	private hideBallForWinPanel( hide: boolean ){
