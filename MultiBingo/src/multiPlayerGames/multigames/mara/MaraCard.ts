@@ -131,6 +131,7 @@ class MaraCard extends Multi75Card{
 		this.addChild( this.bingoMask );
 		Com.addBitmapAt( this.bingoMask, MultiPlayerMachine.getAssetStr( "BINGO-BG" ), 0, 0 );
 		Com.addDownButtonAt( this.bingoMask, MultiPlayerMachine.getAssetStr( "BINGO" ), MultiPlayerMachine.getAssetStr( "BINGO" ), this.bg.width - 174 >> 1, this.bg.height - 73 >> 1, this.callBingo.bind(this), true );
+		this.quitInturnMode();
 	}
 
 	private callBingo( event: egret.Event ){
