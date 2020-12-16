@@ -498,11 +498,6 @@
 			"name": "mara_conf"
 		},
 		{
-			"url": "assets/sound/small_button.mp3",
-			"type": "sound",
-			"name": "small_button_mp3"
-		},
-		{
 			"url": "assets/sound/open_list.mp3",
 			"type": "sound",
 			"name": "open_list_mp3"
