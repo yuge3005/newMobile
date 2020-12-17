@@ -339,7 +339,7 @@ class SuperGoal extends V2Game{
 
     protected showJackpot( jackpot: number, jackpotMinBet: number, betConfig: Array<Object> ): void{
         this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 1278, 30 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 178, -5 ), new egret.Rectangle( 240, 22, 230, 42 ), 42, 0,
-            new egret.Rectangle( 12, 18, 210, 48 ), 48, 0xFFFFFF ) );
+            new egret.Rectangle( 12, 18, 210, 48 ), 48, 0xFFFFFF, true ) );
         this.jackpotArea.tip.stroke = 3;
         this.jackpotArea.tip.strokeColor = 0;
         this.jackpotArea.tip.scaleX = 0.82;
