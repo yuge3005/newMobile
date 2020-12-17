@@ -23,13 +23,13 @@ class SuperGoalLetterLayer extends egret.DisplayObjectContainer{
 	public runSuperGoalGetAllLetterAnimation( callback: Function ){
         let tw: egret.Tween = egret.Tween.get( this );
         this.filters = [ MatrixTool.colorMatrixPure( 0xFFFF00 ) ];
-        tw.wait( 500 );
+        tw.wait( 300 );
         tw.call( ( () => { this.filters = [ MatrixTool.colorMatrixPure( 0x5b6f0b ) ]; } ).bind(this) );
-        tw.wait( 400 );
+        tw.wait( 300 );
         tw.call( ( () => { this.filters = [ MatrixTool.colorMatrixPure( 0xFFFF00 ) ]; } ).bind(this) );
         tw.wait( 300 );
         tw.call( ( () => { this.filters = [ MatrixTool.colorMatrixPure( 0x5b6f0b ) ]; } ).bind(this) );
-        tw.wait( 200 );
+        tw.wait( 300 );
         tw.call( ( () => { this.filters = [ MatrixTool.colorMatrixPure( 0xFFFF00 ) ]; } ).bind(this) );
         tw.wait( 100 );
         tw.call( callback );
