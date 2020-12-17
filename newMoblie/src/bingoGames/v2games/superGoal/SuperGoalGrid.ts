@@ -42,12 +42,12 @@ class SuperGoalGrid extends ExtraBlinkGrid{
 		else{
 			if( !this.contains( this.waveMc ) ){
 				this._currentBgPic = value;
-				this.addChildAt( this._currentBgPic, 0 );
+				this.flushGrid();
 			}
 			else if( this.contains( this.waveMc ) && SuperGoalGrid.needClear ){
 				this.removeChild( this.waveMc );
 				this._currentBgPic = value;
-				this.addChildAt( this._currentBgPic, 0 );
+				this.flushGrid();
 			}
 		}
 	}
