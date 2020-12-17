@@ -39,9 +39,9 @@ class SuperGoalLetterLayer extends egret.DisplayObjectContainer{
 		let pachinkoStr: string = SuperGoal.supergoalString;
 		this.playingLetterAnimation = true;
 
-		let letterPaytable: egret.Bitmap = Com.addBitmapAt( this, BingoMachine.getAssetStr( "champion_paytable_" + pachinkoStr[index] ), 1000, 700 );
-		letterPaytable.scaleX = letterPaytable.scaleY = 3;
-        TweenerTool.tweenTo( letterPaytable, { x: 44 * 10, y: 0, scaleX: 1, scaleY: 1 }, 800, 0, MDS.removeSelf.bind( this, letterPaytable ) );
+        let letterPaytable: egret.Bitmap = Com.addBitmapAt( this, BingoMachine.getAssetStr( "champion_letter_" + ( index + 1 ) ), 874, 667 );
+		letterPaytable.scaleX = letterPaytable.scaleY = 1.16;
+        TweenerTool.tweenTo( letterPaytable, { x: 394, y: 0, scaleX: 1, scaleY: 1 }, 800, 0, MDS.removeSelf.bind( this, letterPaytable ) );
 
         for( let i: number = pachinkoStr.length - 1; i > index; i-- ){
             TweenerTool.tweenTo( this.pachinkoLetters[i], { alpha: 1 }, 0.01, ( pachinkoStr.length - 1 - i ) * 200 + 800, this.letterTurnYellow.bind( this, i, true ) );
