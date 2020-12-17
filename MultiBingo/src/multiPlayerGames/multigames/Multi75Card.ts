@@ -47,7 +47,7 @@ class Multi75Card extends MultiPlayerCard{
 	}
 
 	protected removeHand(){
-		this.removeChild( this.handPt );
+		this.parent.removeChild( this.handPt );
 		this.handPt = null;
 	}
 
@@ -69,5 +69,15 @@ class Multi75Card extends MultiPlayerCard{
 			else str += "0";
 		}
 		return str;
+	}
+
+	public quitInturnMode(){
+		this.inTurnMode = false;
+		for( let i: number = 0; i < this.grids.length; i++ ){
+			this.addGridToCardLayer( this.grids[i], false );
+		}
+		if( this.handPt ){
+			this.removeHand();
+		}
 	}
 }

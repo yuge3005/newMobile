@@ -21,15 +21,16 @@ class PachinkoLetterLayer extends egret.DisplayObjectContainer{
 
 	public runPachinkoGetAllLetterAnimation( callback: Function ){
 		this.pachinkoLetters[this.pachinkoLetters.length-1].filters = [MatrixTool.colorMatrixPure(0xFFFF00)];
+        let scaleBig: number = 8.73684;
+        let ptOld: egret.Point = new egret.Point( this.x, this.y );
+        let ptNew: egret.Point = new egret.Point( 253, 354 );
         let tw: egret.Tween = egret.Tween.get( this );
-        tw.to( { scaleX: 4, scaleY: 4, x: -1200, y: -160 }, 400 );
-        tw.to( { scaleX: 1, scaleY: 1, x: 0, y: 0  }, 400 );
-        tw.to( { scaleX: 4, scaleY: 4, x: -1200, y: -160  }, 400 );
-        tw.to( { scaleX: 1, scaleY: 1, x: 0, y: 0  }, 400 );
-        tw.to( { scaleX: 4, scaleY: 4, x: -1200, y: -160  }, 400 );
-        tw.to( { scaleX: 1, scaleY: 1, x: 0, y: 0  }, 400 );
-        tw.to( { scaleX: 4, scaleY: 4, x: -1200, y: -160  }, 400 );
-        tw.to( { scaleX: 1, scaleY: 1, x: 0, y: 0  }, 400 );
+        tw.to( { scaleX: scaleBig, scaleY: scaleBig, x: ptNew.x, y: ptNew.y }, 400 );
+        tw.to( { scaleX: 1, scaleY: 1, x: ptOld.x, y: ptOld.y }, 400 );
+        tw.to( { scaleX: scaleBig, scaleY: scaleBig, x: ptNew.x, y: ptNew.y }, 400 );
+        tw.to( { scaleX: 1, scaleY: 1, x: ptOld.x, y: ptOld.y  }, 400 );
+        tw.to( { scaleX: scaleBig, scaleY: scaleBig, x: ptNew.x, y: ptNew.y  }, 400 );
+        tw.to( { scaleX: 1, scaleY: 1, x: ptOld.x, y: ptOld.y  }, 400 );
         tw.wait(100);
         tw.call( callback );
 	}

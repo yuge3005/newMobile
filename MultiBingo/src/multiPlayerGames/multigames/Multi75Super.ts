@@ -72,4 +72,11 @@ class Multi75Super extends MultiPlayerMachine{
 			}
 		}
 	}
+
+	protected quitInturnMode(){
+		let cards: Array<MultiPlayerCard> = this.cardArea.cards;
+		for( let i: number = 0; i < cards.length; i++ ){
+			( cards[i] as Multi75Card ).quitInturnMode();
+		}
+	}
 }

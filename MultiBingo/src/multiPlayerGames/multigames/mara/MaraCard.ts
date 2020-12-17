@@ -53,6 +53,7 @@ class MaraCard extends Multi75Card{
 		trace( this.uuid );
 		grid.touchEnabled = false;
 		grid.showRedEffect();
+		this.addGridToCardLayer( grid, false );
 		let gridIndex: number = this.grids.indexOf( grid );
 		MultiServer.numberSelect( this.uuid, gridIndex );
 		if( grid.awardType ){
@@ -130,6 +131,7 @@ class MaraCard extends Multi75Card{
 		this.addChild( this.bingoMask );
 		Com.addBitmapAt( this.bingoMask, MultiPlayerMachine.getAssetStr( "BINGO-BG" ), 0, 0 );
 		Com.addDownButtonAt( this.bingoMask, MultiPlayerMachine.getAssetStr( "BINGO" ), MultiPlayerMachine.getAssetStr( "BINGO" ), this.bg.width - 174 >> 1, this.bg.height - 73 >> 1, this.callBingo.bind(this), true );
+		this.quitInturnMode();
 	}
 
 	private callBingo( event: egret.Event ){
@@ -263,9 +265,12 @@ class MaraCard extends Multi75Card{
 		if( index < 0 ) return;
 		let grid: MaraGrid = this.grids[index] as MaraGrid;
 		if( !grid.isCollected ){
-			this.handPt = Com.addMovieClipAt( this, MDS.mcFactory, index % 5 == 4 ? "hand2" : "hand1", ( index % 5 ) * CardGridColorAndSizeSettings.gridSpace.x + GameCardUISettings.gridInitPosition.x, Math.floor( index / 5 ) * CardGridColorAndSizeSettings.gridSpace.y + GameCardUISettings.gridInitPosition.y );
+			let onCardPt: egret.Point = MultiPlayerCard.getGridPosition( index );
+			onCardPt.x *= this.scaleX;
+			onCardPt.y *= this.scaleY;
+			this.handPt = Com.addMovieClipAt( this.parent, MDS.mcFactory, index % 5 == 4 ? "hand2" : "hand1", onCardPt.x + this.x, onCardPt.y + this.y );
 			this.handPt.name = "" + index;
-			this.handPt.scaleX = this.handPt.scaleY = 2.25;
+			this.handPt.scaleX = this.handPt.scaleY = 2.25 * this.scaleX;
 			grid.showYellowBg();
 		}
 	}

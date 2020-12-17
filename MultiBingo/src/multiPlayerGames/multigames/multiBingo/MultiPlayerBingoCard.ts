@@ -16,6 +16,7 @@ class MultiPlayerBingoCard extends Multi75Card{
 		trace( this.uuid );
 		grid.touchEnabled = false;
 		grid.showRedEffect();
+		this.addGridToCardLayer( grid, false );
 		let gridIndex: number = this.grids.indexOf( grid );
 		MultiServer.numberSelect( this.uuid, gridIndex );
 		if( grid.awardType ){
@@ -54,6 +55,7 @@ class MultiPlayerBingoCard extends Multi75Card{
 		this.addChild( this.bingoMask );
 		Com.addBitmapAt( this.bingoMask, MultiPlayerMachine.getAssetStr( "BINGO-BG" ), 0, 0 );
 		Com.addDownButtonAt( this.bingoMask, MultiPlayerMachine.getAssetStr( "BINGO" ), MultiPlayerMachine.getAssetStr( "BINGO" ), this.bg.width - 508 >> 1, this.bg.height >> 1, this.callBingo.bind(this), true );
+		this.quitInturnMode();
 	}
 
 	private callBingo(){
@@ -71,8 +73,12 @@ class MultiPlayerBingoCard extends Multi75Card{
 	public checkNumber( ballIndex: number ): number {
 		let index: number = super.checkNumber( ballIndex );
 		if( index >= 0 && !this.handPt ){
-			this.handPt = Com.addMovieClipAt( this, MDS.mcFactory, index % 5 == 4 ? "hand2" : "hand1", ( index % 5 ) * 135 + 28, Math.floor( index / 5 ) * 125 + 76 );
+			let onCardPt: egret.Point = MultiPlayerCard.getGridPosition( index );
+			onCardPt.x *= this.scaleX;
+			onCardPt.y *= this.scaleY;
+			this.handPt = Com.addMovieClipAt( this.parent, MDS.mcFactory, index % 5 == 4 ? "hand2" : "hand1", onCardPt.x + this.x, onCardPt.y + this.y );
 			this.handPt.name = "" + index;
+			this.handPt.scaleX = this.handPt.scaleY = this.scaleX;
 		}
 		return index;
 	}
