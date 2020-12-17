@@ -35,7 +35,8 @@ class SuperGoalGrid extends ExtraBlinkGrid{
 			if( !this.contains( this.waveMc ) ){
 				this.waveMc.gotoAndStop(1);
 			}
-			this.addChildAt( this.waveMc, 0 );
+			this.addChild( this.waveMc );
+			this.addChild( this.numTxt );
 			if( this.forkUI && this.contains( this.forkUI ) )this.removeChild( this.forkUI );
 		}
 		else{
