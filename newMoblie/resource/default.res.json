@@ -37,6 +37,10 @@
 			"name": "generic"
 		},
 		{
+			"keys": "gameSettings_json",
+			"name": "gameSettings"
+		},
+		{
 			"keys": "slb_1line_mp3,slb_2line_mp3,slb_ball_mp3,slb_bingo_mp3,slb_card_mp3,slb_extra_ball_mp3,slb_have_extra_ball_wav,slb_jackpot_mp3,silver_ball_json,silver_animation_png,silver_animation_json,silver_ball_conf,silver_ball_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,Arial Black_fnt,Arial Black_png",
 			"name": "silver_ball"
 		},
@@ -2533,6 +2537,12 @@
 			"type": "sheet",
 			"name": "pachampionkoAnimation_json",
 			"subkeys": "bg_point,title"
+		},
+		{
+			"url": "assets/gameSettings/gameSettings.json",
+			"type": "sheet",
+			"name": "gameSettings_json",
+			"subkeys": "avatar,bg,bg_slider_off,bg_slider_on,fb_bt_settings,flag_en,flag_es,flag_pt,gl_bt_settings,icon_connect,icon_notification,music_icon,rate_icon,scroll_bar,scroll_bar_handle,slider_switch,sound_fx_icon,support_btn,support_icon,tab_bg,visual_fx_icon"
 		}
 	]
 }
