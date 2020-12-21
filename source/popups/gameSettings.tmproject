@@ -7,6 +7,15 @@
         "sizeMode": "free"
     },
     "files": [
+        "./flag_pt.png",
+        "./flag_es.png",
+        "./flag_en.png",
+        "./fb_bt_settings.png",
+        "./btn_arrow.png",
+        "./bg_slider_on.png",
+        "./bg_slider_off.png",
+        "./bg.png",
+        "./avatar.png",
         "./visual_fx_icon.png",
         "./tab_bg.png",
         "./support_icon.png",
@@ -17,17 +26,10 @@
         "./scroll_bar.png",
         "./rate_icon.png",
         "./music_icon.png",
+        "./language_icon.png",
         "./icon_notification.png",
         "./icon_connect.png",
-        "./gl_bt_settings.png",
-        "./flag_pt.jpg",
-        "./flag_es.jpg",
-        "./flag_en.jpg",
-        "./fb_bt_settings.png",
-        "./bg_slider_on.png",
-        "./bg_slider_off.png",
-        "./bg.png",
-        "./avatar.png"
+        "./gl_bt_settings.png"
     ],
     "version": 5,
     "projectName": "gameSettings"
