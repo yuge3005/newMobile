@@ -7,6 +7,11 @@ class GameSettingItem extends egret.DisplayObjectContainer{
 		bg.height = 140;
 		Com.addBitmapAtMiddle( this, "gameSettings_json." + icon, 90, 70 + offsetY );
 
+		let tx: TextLabel = MDS.addGameText( this, 180, 55, 56, 0xFFFFFF, text, true, 525, "", 1 );
+		tx.fontFamily = "Righteous";
+		tx.stroke = 2;
+		tx.strokeColor = 0x040121;
+
 		this.addChild( entity );
 	}
 }

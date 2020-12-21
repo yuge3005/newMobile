@@ -1,0 +1,7 @@
+class GameSettings {
+
+	
+
+	public constructor() {
+	}
+}
