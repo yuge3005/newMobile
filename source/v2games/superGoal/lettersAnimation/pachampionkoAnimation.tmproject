@@ -1,0 +1,15 @@
+{
+    "options": {
+        "useExtension": 0,
+        "layoutGap": 1,
+        "extend": 0,
+        "layoutMath": "0",
+        "sizeMode": "free"
+    },
+    "files": [
+        "./title.png",
+        "./bg_point.png"
+    ],
+    "version": 5,
+    "projectName": "pachampionkoAnimation"
+}

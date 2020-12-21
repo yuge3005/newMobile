@@ -214,16 +214,14 @@ class SuperGoal extends V2Game{
 
     private showAllLetters(){
         let sp: egret.Shape = new egret.Shape;
-        sp.anchorOffsetY = 45;
+        sp.anchorOffsetY = 100;
         sp.scaleY = 0.1;
-        Com.addObjectAt( this, sp, 0, 250 );
-        GraphicTool.drawRect( sp, new egret.Rectangle( 0, 0, 755, 90 ), 0, false, 0.7 );
+        Com.addObjectAt( this, sp, 0, 450 );
+        GraphicTool.drawRect( sp, new egret.Rectangle( 0, 0, 2000, 200 ), 0, false, 0.7 );
         TweenerTool.tweenTo( sp, { scaleY: 1 }, 250 );
         TweenerTool.tweenTo( sp, { alpha: 0 }, 500, 1200 );
 
-        let letters: egret.Bitmap = Com.addBitmapAt( this, "pachampionkoAnimation_json.title", 755 >> 1, 250 );
-        letters.anchorOffsetX = letters.width >> 1;
-        letters.anchorOffsetY = letters.height >> 1;
+        let letters: egret.Bitmap = Com.addBitmapAtMiddle( this, "pachampionkoAnimation_json.title", 1000, 450 );
         letters.scaleX = 0.3;
         letters.scaleY = 0.3;
         letters.alpha = 0;
@@ -232,13 +230,13 @@ class SuperGoal extends V2Game{
         twLetters.wait( 950 );
         twLetters.to( { alpha: 0 }, 500 );
 
-        let snow: egret.Bitmap = Com.addBitmapAt( this, "pachampionkoAnimation_json.bg_point", 100, -600 );
+        let snow: egret.Bitmap = Com.addBitmapAt( this, "pachampionkoAnimation_json.bg_point", 560, -1100 );
         snow.alpha = 0;
         let twSnow: egret.Tween = egret.Tween.get( snow );
         twSnow.wait(250);
         twSnow.to( { alpha: 0.4 }, 10 );
-        twSnow.to( { alpha: 1, y: -412 }, 600 );
-        twSnow.to( { alpha: 0, y: -100 }, 1000 );
+        twSnow.to( { alpha: 1, y: -400 }, 600 );
+        twSnow.to( { alpha: 0, y: 0 }, 1000 );
         twSnow.call( () => { sp.parent.removeChild(sp); letters.parent.removeChild( letters ); snow.parent.removeChild( snow ) } );
         twSnow.call( () => { this.superGoalLetters.filters = []; } );
     }
@@ -339,7 +337,7 @@ class SuperGoal extends V2Game{
 
     protected showJackpot( jackpot: number, jackpotMinBet: number, betConfig: Array<Object> ): void{
         this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 1278, 30 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 178, -5 ), new egret.Rectangle( 240, 22, 230, 42 ), 42, 0,
-            new egret.Rectangle( 12, 18, 210, 48 ), 48, 0xFFFFFF ) );
+            new egret.Rectangle( 12, 18, 210, 48 ), 48, 0xFFFFFF, true ) );
         this.jackpotArea.tip.stroke = 3;
         this.jackpotArea.tip.strokeColor = 0;
         this.jackpotArea.tip.scaleX = 0.82;
