@@ -33,7 +33,6 @@ class BingoMachine extends GameUIItem{
 
 	private static currentGame: BingoMachine;
 
-	public static soundManager: GameSoundManager;
 	protected soundManager: GameSoundManager;
 	protected ballRunforStop: boolean;
 
@@ -80,8 +79,7 @@ class BingoMachine extends GameUIItem{
 		this.assetName = egret.getDefinitionByName( egret.getQualifiedClassName(this) ).classAssetName;
 
 		BingoMachine.currentGame = this;
-		if (!BingoMachine.soundManager) BingoMachine.soundManager = new GameSoundManager();
-		this.soundManager = BingoMachine.soundManager;
+		this.soundManager = new GameSoundManager();
 
 		RES.getResByUrl( configUrl, this.analyse, this );
 
@@ -134,38 +132,15 @@ class BingoMachine extends GameUIItem{
 	
 	private loadAsset( assetName: string ){
 		RES.addEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.loaded, this );
-		RES.addEventListener(RES.ResourceEvent.GROUP_PROGRESS, this.loadSoundsProgress, this);
 		RES.loadGroup( assetName, 0, this.preLoader );
 	}
 	
 	private loaded( event: RES.ResourceEvent ){
 		if( event.groupName != this.assetName )return;
-		RES.removeEventListener(RES.ResourceEvent.GROUP_PROGRESS, this.loadSoundsProgress, this);
 		RES.removeEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.loaded, this );
 
 		this.assetReady = true;
 		this.testReady();
-	}
-
-	private _assetLoaded: number = 0;
-	public get assetLoaded(): number{
-		let loadedPart: number = 0;
-		if( this.assetReady )loadedPart += 0.9;
-		else loadedPart += this._assetLoaded * 0.9;
-		if( this.connectReady ) loadedPart += 0.1;
-		return loadedPart;
-	}
-
-	/**
-	 * init sounds
-	 */
-	private loadSoundsProgress(event: RES.ResourceEvent): void {
-		if( event.groupName != this.assetName )return;
-		this._assetLoaded = event.itemsLoaded / event.itemsTotal;
-		let resName = event.resItem.name;
-		if (resName.match(/mp3$/) || resName.match(/wav$/)) {
-			this.soundManager.pushSound(resName);
-		}
 	}
 
 	protected init(){

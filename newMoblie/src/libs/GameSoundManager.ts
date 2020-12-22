@@ -1,56 +1,9 @@
-
 class GameSoundManager {
-    private sounds: Object = {};
-    private playing: Object = {};
-    private timer: egret.Timer;
+    private playing: Array<egret.SoundChannel> = [];
     private static instance: GameSoundManager = null;
 
     constructor() {
-        // timer  clean stopped sounds every 10 seconds
-        this.timer = new egret.Timer(10000, 0);
-        this.timer.addEventListener(egret.TimerEvent.TIMER, this.cleanStoppedSounds, this);
-        this.timer.addEventListener(egret.TimerEvent.TIMER_COMPLETE, this.cleanStoppedSounds, this);
-        this.timer.start();
-
         GameSoundManager.instance = this;
-    }
-
-    /**
-     * clean stopped sounds
-     */
-    private cleanStoppedSounds(): void {
-        let soundChannel: egret.SoundChannel = null;
-        for (let sound in this.playing) {
-            if (this.playing[sound] && this.playing[sound].length > 0) {
-                for (let i = 0; i < this.playing[sound].length; i++) {
-                    soundChannel = <egret.SoundChannel>this.playing[sound][i];
-                    if (soundChannel["isStopped"]) {
-                        this.playing[sound][i] = null;
-                        this.playing[sound].splice(i, 1);
-                        i--;
-                    }
-                }
-            }
-        }
-    }
-
-    /**
-     * load sounds
-     */
-    public loadSounds(sounds: Array<string>): void {
-        for (let i = 0; i < sounds.length; i++) {
-            if (this.sounds[sounds[i]]) continue;
-            this.sounds[sounds[i]] = RES.getRes(sounds[i]);
-        }
-    }
-
-    /**
-     * push sound
-     */
-    public pushSound(sound: string): void {
-        if (typeof this.sounds[sound] === "undefined" || this.sounds[sound] === null) {
-            this.sounds[sound] = <egret.Sound>RES.getRes(sound);
-        }
     }
     
     /**
@@ -95,7 +48,7 @@ class GameSoundManager {
     /**
      * stop sound
      * @param soundAssetName the name of sound asset
-     */    
+     */
     public stop(soundAssetName: string): void {
         if (this.playing[soundAssetName]) {
             let sounds = <Array<egret.SoundChannel>>this.playing[soundAssetName];
@@ -108,29 +61,19 @@ class GameSoundManager {
         }
     }
 
-    /**
-     * stop all sounds
-     */
     public stopAll(): void {
-        for (let sound in this.playing) {
-            let sounds = <Array<egret.SoundChannel>>this.playing[sound];
-            if (sounds) {
-                for (let i = 0; i < sounds.length; i++) {
-                    if (sounds[i]["soundCallback"]){
-                        sounds[i].removeEventListener(egret.Event.SOUND_COMPLETE, this.onSoundComplete, this );
-                        sounds[i]["soundCallback"]();
-                        sounds[i]["soundCallback"] = null;
-                    }
-                    sounds[i].stop();
-                }
+        for (let i = 0; i < this.playing.length; i++) {
+            let sound: egret.SoundChannel = this.playing[i];
+            if (sound["soundCallback"]){
+                sound.removeEventListener(egret.Event.SOUND_COMPLETE, this.onSoundComplete, this );
+                sound["soundCallback"]();
+                sound["soundCallback"] = null;
             }
+            sound.stop();
         }
         this.playing = [];
     }
 
-    /**
-     * stop all sounds
-     */
     public static stopAll(): void {
         if (this.instance) this.instance.stopAll();
     }
