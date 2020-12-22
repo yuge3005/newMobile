@@ -6,59 +6,50 @@ class GameSoundManager {
         GameSoundManager.instance = this;
     }
     
-    /**
-     * play sound
-     * @param soundAssetName the name of sound asset
-     * @param repeat repeat count
-     * @param callback execute function after sound play completed
-     * @param thisObject 'this' object of callback
-     */
-    public play(soundAssetName: string, repeat: number = 1, callback: Function = null, thisObject: Object = null): void {
-        if (SoundManager.soundOn && this.sounds[soundAssetName]) {
-            if (this.playing[soundAssetName] && this.playing[soundAssetName].length > 0 && repeat === -1) return;
-            let sound = <egret.Sound>RES.getRes(soundAssetName);
-            sound.type = repeat === -1 ? egret.Sound.MUSIC : egret.Sound.EFFECT;
-            let channel = sound.play(0, repeat);
-            if (callback !== null && repeat !== -1) {
-                channel["soundCallback"] = callback;
-                channel["soundAssetName"] = soundAssetName;
-                channel.addEventListener(egret.Event.SOUND_COMPLETE, this.onSoundComplete, this );
-            }
-            if (!this.playing[soundAssetName]) { 
-                this.playing[soundAssetName] = [];
-            }
-            this.playing[soundAssetName].push(channel);
-        } else if (callback) {
+    public play( soundAssetName: string, repeat: number = 1, callback: Function = null ): void {
+        let soundChannel: egret.SoundChannel = SoundManager.play( soundAssetName, repeat === -1 );
+        if (callback !== null && repeat !== -1) {
+            soundChannel["soundCallback"] = callback;
+            soundChannel["soundAssetName"] = soundAssetName;
+            soundChannel.addEventListener(egret.Event.SOUND_COMPLETE, this.onSoundComplete, this );
+        }
+
+        if( soundChannel ){
+            this.playing.push(soundChannel);
+        }
+
+        if( !soundChannel && callback ){
             callback();
         }
     }
 
     private onSoundComplete( e: egret.Event ): void{
-        let channel: egret.SoundChannel = e.currentTarget;
-        channel.removeEventListener(egret.Event.SOUND_COMPLETE, this.onSoundComplete, this );
-        channel["soundCallback"]();
-        channel["soundCallback"] = null;
+        let soundChannel: egret.SoundChannel = e.currentTarget;
+        soundChannel.removeEventListener(egret.Event.SOUND_COMPLETE, this.onSoundComplete, this );
+        if( soundChannel["soundCallback"] ){
+            soundChannel["soundCallback"]();
+            soundChannel["soundCallback"] = null;
+        }
 
-        let soundAssetName: string = channel["soundAssetName"];
-        let sounds = <Array<egret.SoundChannel>>this.playing[soundAssetName];
-        let index: number = sounds.indexOf( channel );
-        sounds.splice( index, 1 );
+        let index: number = this.playing.indexOf( soundChannel );
+        this.playing.splice( index, 1 );
     }
 
-    /**
-     * stop sound
-     * @param soundAssetName the name of sound asset
-     */
     public stop(soundAssetName: string): void {
-        if (this.playing[soundAssetName]) {
-            let sounds = <Array<egret.SoundChannel>>this.playing[soundAssetName];
-            for (let i = 0; i < sounds.length; i++) {
-                sounds[i].stop();
-                // if (sounds[i]["soundCallback"]) sounds[i]["soundCallback"]();
-                sounds[i] = null;
+        for( let i: number = 0; i < this.playing.length; i++ ){
+            let soundChannel: egret.SoundChannel = this.playing[i];
+            if( soundChannel["soundAssetName"] == soundAssetName ){
+                soundChannel.stop();
+                if( soundChannel["soundCallback"] ){
+                    soundChannel["soundCallback"]();
+                    soundChannel["soundCallback"] = null;
+                }
+                this.playing.splice( i, 1 );
+                i--;
             }
-            this.playing[soundAssetName] = [];
         }
+
+        SoundManager.stopMusic();
     }
 
     public stopAll(): void {
