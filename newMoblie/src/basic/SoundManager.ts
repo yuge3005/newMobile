@@ -24,28 +24,35 @@ class SoundManager {
 
 	public constructor() {
 	}
+	
+	public static set soundEfOn( value: boolean ){
+		if( this.soundEfOn == value )return;
+		egret.localStorage.setItem( "soundEf", value ? "" : "false" );
+	}
+	public static get soundEfOn(){
+		if( egret.localStorage.getItem( "soundEf" ) == "false" ) return false;
+		return true;
+	}
 
-	public static play( soundName: string, loop: boolean = false ){
-		if( !this.soundOn && !loop )return;
-
+	public static play( soundName: string, loop: boolean = false ): egret.SoundChannel{
 		let sound: egret.Sound = RES.getRes( soundName );
-		if( !sound )return;//throw new Error( "can not fond sound resource" );
+		if( !sound ){
+			egret.error( "can not fond sound resource:" + soundName );
+			return;
+		}
 		
 		if( loop ){
-			if( this.currentBackgorundMusicChannel ){
-				this.currentBackgorundMusicChannel.volume = 0;
-				let musicChannel = this.currentBackgorundMusicChannel;
-				let tween: egret.Tween = egret.Tween.get( musicChannel );
-				tween.wait( 3000 );
-				tween.call( () => { musicChannel.stop() } );
-			}
+			if( this.currentBackgorundMusicChannel )this.currentBackgorundMusicChannel.stop();
 			this.currentBackgorundMusicSound = sound;
-			if( this.soundOn )this.startPlayGameMusic();
+			if( this.soundOn ){
+				this.startPlayGameMusic();
+				return this.currentBackgorundMusicChannel;
+			}
 		}
 		else{
-			if( this.soundOn ){
+			if( this.soundEfOn ){
 				sound.type = egret.Sound.EFFECT;
-				sound.play( 0, 1 );
+				return sound.play( 0, 1 );
 			}
 		}
 	}
@@ -55,6 +62,6 @@ class SoundManager {
 		this.currentBackgorundMusicChannel = this.currentBackgorundMusicSound.play( 0, 0 );
 		this.currentBackgorundMusicChannel.volume = 0;
 		let tween: egret.Tween = egret.Tween.get( this.currentBackgorundMusicChannel );
-		tween.to( { volume: 0.8 }, 3000 );
+		tween.to( { volume: 1 }, 1000 );
 	}
 }
