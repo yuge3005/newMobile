@@ -10,7 +10,6 @@ class Bingo3 extends V1Game{
 
 	public constructor( assetsPath: string ) {
 		super( "bingo3.conf", assetsPath, 24 );
-		this.languageObjectName = "forAll_tx";
 
 		CardGridUISettings.zeroUI = "middle_grid";
 

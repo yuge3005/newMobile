@@ -10,7 +10,6 @@ class DoubleBingo extends V2Game{
 
 	public constructor( assetsPath: string ) {
 		super( "doubleBingo.conf", assetsPath, 45 );
-        this.languageObjectName = "forAll_tx";
 
 		CardManager.cardType = DoubleBingoCard;
 

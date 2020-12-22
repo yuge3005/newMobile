@@ -10,7 +10,6 @@ class Pachinko2 extends V2Game{
 
 	public constructor( assetsPath: string ) {
         super( "pachinko2.conf", assetsPath, 61 );
-        this.languageObjectName = "forAll_tx";
 
         CardManager.cardType = ExtraBlinkCard;
 		CardManager.gridType = Pachinko2Grid;

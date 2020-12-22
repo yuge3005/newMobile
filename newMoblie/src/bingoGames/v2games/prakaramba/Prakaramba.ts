@@ -10,7 +10,6 @@ class Prakaramba extends V2Game{
 
 	public constructor( assetsPath: string ) {
 		super( "prakaramba.conf", assetsPath, 48 );
-        this.languageObjectName = "forAll_tx";
 
         CardManager.cardType = PrakarambaCard;
         CardManager.gridType = PrakarambaGrid;

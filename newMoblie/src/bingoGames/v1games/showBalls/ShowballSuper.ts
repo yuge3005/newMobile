@@ -74,20 +74,6 @@ class ShowballSuper extends V1Game{
 		ballLotto.visible = true;
 	}
 
-	// protected tipStatus( event: egret.Event ): void{
-	// 	switch( event["status"] ){
-	// 		case "play":
-	// 			this.showShuffling();
-	// 			break;
-	// 		case "extra":
-	// 			this.showExtraPrice( event["extraPrice"] );
-	// 			break;
-	// 		case "ready":
-	// 			this.showPressPlay();
-	// 			break;
-	// 	}
-	// }
-
 	private extraBallText: egret.TextField;
 	private creditTipText: egret.TextField;
 	private extraPriceText: egret.TextField;
