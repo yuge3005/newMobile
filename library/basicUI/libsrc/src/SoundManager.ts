@@ -10,11 +10,7 @@ class SoundManager {
 			if( this.currentBackgorundMusicSound )this.startPlayGameMusic();
 		}
 		else{
-			if( this.currentBackgorundMusicChannel ){
-				egret.Tween.removeTweens( this.currentBackgorundMusicChannel );
-				this.currentBackgorundMusicChannel.stop();
-				this.currentBackgorundMusicChannel = null;
-			}
+			this.stopMusic();
 		}
 	}
 	public static get soundOn(){
@@ -63,5 +59,13 @@ class SoundManager {
 		this.currentBackgorundMusicChannel.volume = 0;
 		let tween: egret.Tween = egret.Tween.get( this.currentBackgorundMusicChannel );
 		tween.to( { volume: 1 }, 1000 );
+	}
+
+	public static stopMusic(){
+		if( this.currentBackgorundMusicChannel ){
+			egret.Tween.removeTweens( this.currentBackgorundMusicChannel );
+			this.currentBackgorundMusicChannel.stop();
+			this.currentBackgorundMusicChannel = null;
+		}
 	}
 }
