@@ -38,7 +38,7 @@ class SoundManager {
 		let sound: egret.Sound = RES.getRes( soundName );
 		if( !sound ){
 			egret.error( "can not fond sound resource:" + soundName );
-			return;
+			return null;
 		}
 		
 		if( loop ){
@@ -46,7 +46,7 @@ class SoundManager {
 			this.currentBackgorundMusicSound = sound;
 			if( this.soundOn ){
 				this.startPlayGameMusic();
-				return this.currentBackgorundMusicChannel;
+				return null;
 			}
 		}
 		else{
