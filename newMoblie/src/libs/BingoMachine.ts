@@ -401,8 +401,8 @@ class BingoMachine extends GameUIItem{
 		//only for pachinko
 	}
 
-	protected playSound(soundName: string, repeat: number = 1, callback: Function = null, thisObject: Object = null): void {
-		this.soundManager.play(soundName, repeat, callback, thisObject);
+	protected playSound(soundName: string, repeat: number = 1, callback: Function = null ): void {
+		this.soundManager.play(soundName, repeat, callback );
 	}
 
 	protected stopSound(soundName: string): void {
@@ -869,7 +869,7 @@ class BingoMachine extends GameUIItem{
 		let soundName = this.getSoundName( paytabledName );
         if (soundName !== "") {
             this.waitingForEffect = true;
-            if( SoundManager.soundOn ){
+            if( SoundManager.soundEfOn ){
                 this.playSound(soundName, 1, this.waitForEffect.bind(this, callback));
             }
             else{

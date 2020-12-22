@@ -1106,7 +1106,7 @@ class Copacabana extends V2Game{
     private playMiniGameSound(event: egret.Event): void {
         let soundName = event.data["soundName"];
         let repeat = event.data["repeat"];
-        this.playSound(soundName, repeat ? -1 : 1, null, this);
+        this.playSound(soundName, repeat ? -1 : 1);
     }
 
     /**
