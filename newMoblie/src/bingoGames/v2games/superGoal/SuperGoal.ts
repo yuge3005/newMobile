@@ -299,7 +299,7 @@ class SuperGoal extends V2Game{
         }
 
         this.lastLightResult = lightResult;
-        if( SoundManager.soundOn && paytableName !== "" ){
+        if( SoundManager.soundEfOn && paytableName !== "" ){
             this.getResultListToCheck( true );
             this.getPaytablesFit(paytableName, callback);
         } else callback();
