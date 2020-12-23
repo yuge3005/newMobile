@@ -30,7 +30,6 @@ class GenericPo extends GenericModal{
 
 	protected onClose( event: egret.TouchEvent ){
 		this.dispatchEvent( new egret.Event( GenericModal.CLOSE_MODAL ) );
-		SoundManager.play( "close_list_mp3" );
 	}
 	
 	/**
