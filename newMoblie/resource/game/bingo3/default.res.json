@@ -1,0 +1,168 @@
+{
+	"groups": [
+		{
+			"keys": "modalGeneric_json",
+			"name": "generic"
+		},
+		{
+			"keys": "gameSettings_json",
+			"name": "gameSettings"
+		},
+		{
+			"keys": "b3_2line_mp3,b3_3line_mp3,b3_4line_mp3,b3_acumulado_mp3,b3_ball_mp3,b3_bet_mp3,b3_bingo_mp3,b3_blink_mp3,b3_card_mp3,b3_cross_line_mp3,b3_extra_ball_mp3,b3_no_credito_mp3,b3_rect_mp3,b3_t_mp3,b3_x_mp3,bingo3_json,bingo3Animation_png,bingo3Animation_json,bingo3_conf,forAll_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,Bingo3Cartoes_json,Arial Black_fnt,Arial Black_png",
+			"name": "bingo3"
+		}
+	],
+	"resources": [
+		{
+			"url": "assets/sound/blank_sound.mp3",
+			"type": "sound",
+			"name": "blank_sound_mp3"
+		},
+		{
+			"url": "game/gameToolBar/bingoGameToolbar.json",
+			"type": "sheet",
+			"name": "bingoGameToolbar_json",
+			"subkeys": "BB_EXTRA_btn_bg,BB_EXTRA_buyall,BB_EXTRA_collect_btn,BB_EXTRA_extra_btn,BB_star_open_bg,Group-22,Locked,auto_stop,back_panel,balance_chip,balance_coin,ballance,bet_down,bet_down_press,bet_screen,bet_up,bet_up_press,btn_go,btn_mega,i,i_press,max_btn,max_btn_press,middle_bar,more_games,msg_bg,play,play_bg,play_press"
+		},
+		{
+			"url": "game/topbar/topbar.json",
+			"type": "sheet",
+			"name": "topbar_json",
+			"subkeys": "buy-btn,buy_bg,hamburger,home,home_press"
+		},
+		{
+			"url": "assets/sound/open_list.mp3",
+			"type": "sound",
+			"name": "open_list_mp3"
+		},
+		{
+			"url": "assets/modalGeneric.json",
+			"type": "sheet",
+			"name": "modalGeneric_json",
+			"subkeys": "closePopUpBtn1,closePopUpBtn2,loader"
+		},
+		{
+			"url": "config/lan/forAll.tx",
+			"type": "json",
+			"name": "forAll_tx"
+		},
+		{
+			"url": "assets/Arial Black.fnt",
+			"type": "font",
+			"name": "Arial Black_fnt"
+		},
+		{
+			"url": "assets/Arial Black.png",
+			"type": "image",
+			"name": "Arial Black_png"
+		},
+		{
+			"url": "config/cartoesConfig/Bingo3Cartoes.json",
+			"type": "json",
+			"name": "Bingo3Cartoes_json"
+		},
+		{
+			"url": "config/bingo3.conf",
+			"type": "json",
+			"name": "bingo3_conf"
+		},
+		{
+			"url": "game/bingo3/bingo3Animation.png",
+			"type": "image",
+			"name": "bingo3Animation_png"
+		},
+		{
+			"url": "game/bingo3/bingo3Animation.json",
+			"type": "json",
+			"name": "bingo3Animation_json"
+		},
+		{
+			"url": "game/bingo3/bingo3.json",
+			"type": "sheet",
+			"name": "bingo3_json",
+			"subkeys": "bingo3_pt_flower,bingo3_pt_round,bingo3_pt_t,bingo_pt_2l,bingo_pt_3l,bingo_pt_4l,bingo_pt_corner,bingo_pt_diagonal,bingo_pt_diagonal2,bingo_pt_x,box,card_bg02,card_bg02_gray,card_bg02_purple,card_bg02_red,card_bg02_yellow,fundo_cartela,fundo_cartela_blink,fundo_tela-1,image-234_ENG,img_boca_baixo,img_boca_cima,jackpot_lock,mania_ball_blue,mania_ball_green,mania_ball_red,mania_ball_yellow,middle_grid"
+		},
+		{
+			"url": "game/bingo3/sound/b3_2line.mp3",
+			"type": "sound",
+			"name": "b3_2line_mp3"
+		},
+		{
+			"url": "game/bingo3/sound/b3_3line.mp3",
+			"type": "sound",
+			"name": "b3_3line_mp3"
+		},
+		{
+			"url": "game/bingo3/sound/b3_4line.mp3",
+			"type": "sound",
+			"name": "b3_4line_mp3"
+		},
+		{
+			"url": "game/bingo3/sound/b3_acumulado.mp3",
+			"type": "sound",
+			"name": "b3_acumulado_mp3"
+		},
+		{
+			"url": "game/bingo3/sound/b3_ball.mp3",
+			"type": "sound",
+			"name": "b3_ball_mp3"
+		},
+		{
+			"url": "game/bingo3/sound/b3_bet.mp3",
+			"type": "sound",
+			"name": "b3_bet_mp3"
+		},
+		{
+			"url": "game/bingo3/sound/b3_bingo.mp3",
+			"type": "sound",
+			"name": "b3_bingo_mp3"
+		},
+		{
+			"url": "game/bingo3/sound/b3_blink.mp3",
+			"type": "sound",
+			"name": "b3_blink_mp3"
+		},
+		{
+			"url": "game/bingo3/sound/b3_card.mp3",
+			"type": "sound",
+			"name": "b3_card_mp3"
+		},
+		{
+			"url": "game/bingo3/sound/b3_cross_line.mp3",
+			"type": "sound",
+			"name": "b3_cross_line_mp3"
+		},
+		{
+			"url": "game/bingo3/sound/b3_extra_ball.mp3",
+			"type": "sound",
+			"name": "b3_extra_ball_mp3"
+		},
+		{
+			"url": "game/bingo3/sound/b3_no_credito.mp3",
+			"type": "sound",
+			"name": "b3_no_credito_mp3"
+		},
+		{
+			"url": "game/bingo3/sound/b3_rect.mp3",
+			"type": "sound",
+			"name": "b3_rect_mp3"
+		},
+		{
+			"url": "game/bingo3/sound/b3_t.mp3",
+			"type": "sound",
+			"name": "b3_t_mp3"
+		},
+		{
+			"url": "game/bingo3/sound/b3_x.mp3",
+			"type": "sound",
+			"name": "b3_x_mp3"
+		},
+		{
+			"url": "assets/gameSettings/gameSettings.json",
+			"type": "sheet",
+			"name": "gameSettings_json",
+			"subkeys": "avatar,bg,bg_slider_off,bg_slider_on,btn_arrow,fb_bt_settings,flag_en,flag_es,flag_pt,gl_bt_settings,icon_connect,icon_notification,language_icon,music_icon,rate_icon,scroll_bar,scroll_bar_handle,slider_switch,sound_fx_icon,support_btn,support_icon,tab_bg,visual_fx_icon"
+		}
+	]
+}

@@ -1,0 +1,198 @@
+{
+	"groups": [
+		{
+			"keys": "modalGeneric_json",
+			"name": "generic"
+		},
+		{
+			"keys": "gameSettings_json",
+			"name": "gameSettings"
+		},
+		{
+			"keys": "bs_acumulado_wav,bs_ball_mp3,bs_bingo_mp3,bs_card_wav,bs_double_line_mp3,bs_estrela_mp3,bs_h_mp3,bs_line_wav,bs_perimeter_mp3,bs138_mp3,bs140_mp3,bs148_mp3,bs149_mp3,bs151_mp3,bs153_mp3,blackStar_json,blackStarArrow_png,blackStarArrow_json,blackStar_conf,forAll_tx,blackStar_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,v1gameDefault_json,Arial Black_fnt,Arial Black_png,Ozone_png,Ozone_fnt,starParticle_png,starParticle_yellow_png,starParticle_blue_png,starParticle_json",
+			"name": "blackStar"
+		}
+	],
+	"resources": [
+		{
+			"url": "game/gameToolBar/bingoGameToolbar.json",
+			"type": "sheet",
+			"name": "bingoGameToolbar_json",
+			"subkeys": "BB_EXTRA_btn_bg,BB_EXTRA_buyall,BB_EXTRA_collect_btn,BB_EXTRA_extra_btn,BB_star_open_bg,Group-22,Locked,auto_stop,back_panel,balance_chip,balance_coin,ballance,bet_down,bet_down_press,bet_screen,bet_up,bet_up_press,btn_go,btn_mega,i,i_press,max_btn,max_btn_press,middle_bar,more_games,msg_bg,play,play_bg,play_press"
+		},
+		{
+			"url": "game/topbar/topbar.json",
+			"type": "sheet",
+			"name": "topbar_json",
+			"subkeys": "buy-btn,buy_bg,hamburger,home,home_press"
+		},
+		{
+			"url": "assets/sound/open_list.mp3",
+			"type": "sound",
+			"name": "open_list_mp3"
+		},
+		{
+			"url": "assets/modalGeneric.json",
+			"type": "sheet",
+			"name": "modalGeneric_json",
+			"subkeys": "closePopUpBtn1,closePopUpBtn2,loader"
+		},
+		{
+			"url": "config/cartoesConfig/v1gameDefault.json",
+			"type": "json",
+			"name": "v1gameDefault_json"
+		},
+		{
+			"url": "config/lan/forAll.tx",
+			"type": "json",
+			"name": "forAll_tx"
+		},
+		{
+			"url": "game/blackStar/sound/bs138.mp3",
+			"type": "sound",
+			"name": "bs138_mp3"
+		},
+		{
+			"url": "game/blackStar/sound/bs140.mp3",
+			"type": "sound",
+			"name": "bs140_mp3"
+		},
+		{
+			"url": "game/blackStar/sound/bs148.mp3",
+			"type": "sound",
+			"name": "bs148_mp3"
+		},
+		{
+			"url": "game/blackStar/sound/bs149.mp3",
+			"type": "sound",
+			"name": "bs149_mp3"
+		},
+		{
+			"url": "game/blackStar/sound/bs151.mp3",
+			"type": "sound",
+			"name": "bs151_mp3"
+		},
+		{
+			"url": "game/blackStar/sound/bs153.mp3",
+			"type": "sound",
+			"name": "bs153_mp3"
+		},
+		{
+			"url": "game/blackStar/sound/bs_acumulado.wav",
+			"type": "sound",
+			"name": "bs_acumulado_wav"
+		},
+		{
+			"url": "game/blackStar/sound/bs_ball.mp3",
+			"type": "sound",
+			"name": "bs_ball_mp3"
+		},
+		{
+			"url": "game/blackStar/sound/bs_bingo.mp3",
+			"type": "sound",
+			"name": "bs_bingo_mp3"
+		},
+		{
+			"url": "game/blackStar/sound/bs_card.wav",
+			"type": "sound",
+			"name": "bs_card_wav"
+		},
+		{
+			"url": "game/blackStar/sound/bs_double_line.mp3",
+			"type": "sound",
+			"name": "bs_double_line_mp3"
+		},
+		{
+			"url": "game/blackStar/sound/bs_estrela.mp3",
+			"type": "sound",
+			"name": "bs_estrela_mp3"
+		},
+		{
+			"url": "game/blackStar/sound/bs_h.mp3",
+			"type": "sound",
+			"name": "bs_h_mp3"
+		},
+		{
+			"url": "game/blackStar/sound/bs_line.wav",
+			"type": "sound",
+			"name": "bs_line_wav"
+		},
+		{
+			"url": "game/blackStar/sound/bs_perimeter.mp3",
+			"type": "sound",
+			"name": "bs_perimeter_mp3"
+		},
+		{
+			"url": "game/blackStar/blackStarArrow.png",
+			"type": "image",
+			"name": "blackStarArrow_png"
+		},
+		{
+			"url": "game/blackStar/blackStarArrow.json",
+			"type": "json",
+			"name": "blackStarArrow_json"
+		},
+		{
+			"url": "game/blackStar/blackStar.json",
+			"type": "sheet",
+			"name": "blackStar_json",
+			"subkeys": "FCartela1,H_BIG,Image-213,Image-215,Image-216,Image-217,Image-219,Image-220,PLAY_01,PLAY_02,ball_bg,barraextra,bingo,blackStar_bg,btn_savings,card_bg03,card_bingo,card_dbline1,card_dbline2,card_dbline3,card_h,card_ii,card_line1,card_line2,card_line3,card_mouse,card_round,card_trangle,card_trangle2,jackpot_bg,jackpot_lock,number_bg,number_bg_black,number_bg_blue,radar_bingo,radar_double_line,radar_h,radar_ii,radar_line,radar_mouse,radar_round,radar_trangle"
+		},
+		{
+			"url": "config/blackStar.conf",
+			"type": "json",
+			"name": "blackStar_conf"
+		},
+		{
+			"url": "config/lan/blackStar.tx",
+			"type": "json",
+			"name": "blackStar_tx"
+		},
+		{
+			"url": "assets/Arial Black.fnt",
+			"type": "font",
+			"name": "Arial Black_fnt"
+		},
+		{
+			"url": "assets/Arial Black.png",
+			"type": "image",
+			"name": "Arial Black_png"
+		},
+		{
+			"url": "game/blackStar/Ozone.fnt",
+			"type": "font",
+			"name": "Ozone_fnt"
+		},
+		{
+			"url": "game/blackStar/Ozone.png",
+			"type": "image",
+			"name": "Ozone_png"
+		},
+		{
+			"url": "game/blackStar/starParticle.png",
+			"type": "image",
+			"name": "starParticle_png"
+		},
+		{
+			"url": "game/blackStar/starParticle_yellow.png",
+			"type": "image",
+			"name": "starParticle_yellow_png"
+		},
+		{
+			"url": "game/blackStar/starParticle_blue.png",
+			"type": "image",
+			"name": "starParticle_blue_png"
+		},
+		{
+			"url": "game/blackStar/starParticle.json",
+			"type": "json",
+			"name": "starParticle_json"
+		},
+		{
+			"url": "assets/gameSettings/gameSettings.json",
+			"type": "sheet",
+			"name": "gameSettings_json",
+			"subkeys": "avatar,bg,bg_slider_off,bg_slider_on,btn_arrow,fb_bt_settings,flag_en,flag_es,flag_pt,gl_bt_settings,icon_connect,icon_notification,language_icon,music_icon,rate_icon,scroll_bar,scroll_bar_handle,slider_switch,sound_fx_icon,support_btn,support_icon,tab_bg,visual_fx_icon"
+		}
+	]
+}

@@ -1,9 +1,115 @@
 {
-	"resourcePlugin":{
-		"configs":[{
-			"configPath":"resource/default.res.json",
-			"relativePath":"resource/"
-		}]
-	},
-	"theme":"resource/default.thm.json"
+    "resourcePlugin": {
+        "configs": [
+            {
+                "configPath": "resource/default.res.json",
+                "relativePath": "resource/"
+            },
+            {
+                "configPath": "resource/game/superLotto/default.res.json",
+                "relativePath": "resource/"
+            },
+            {
+                "configPath": "resource/game/vipbingo/default.res.json",
+                "relativePath": "resource/"
+            },
+            {
+                "configPath": "resource/game/turbomania/default.res.json",
+                "relativePath": "resource/"
+            },
+            {
+                "configPath": "resource/game/turbo90/default.res.json",
+                "relativePath": "resource/"
+            },
+            {
+                "configPath": "resource/game/superGoal/default.res.json",
+                "relativePath": "resource/"
+            },
+            {
+                "configPath": "resource/game/silverball/default.res.json",
+                "relativePath": "resource/"
+            },
+            {
+                "configPath": "resource/game/showball/default.res.json",
+                "relativePath": "resource/"
+            },
+            {
+                "configPath": "resource/game/showball2/default.res.json",
+                "relativePath": "resource/"
+            },
+            {
+                "configPath": "resource/game/showball1/default.res.json",
+                "relativePath": "resource/"
+            },
+            {
+                "configPath": "resource/game/prakaramba/default.res.json",
+                "relativePath": "resource/"
+            },
+            {
+                "configPath": "resource/game/pharos/default.res.json",
+                "relativePath": "resource/"
+            },
+            {
+                "configPath": "resource/game/pachinko/default.res.json",
+                "relativePath": "resource/"
+            },
+            {
+                "configPath": "resource/game/pachinko2/default.res.json",
+                "relativePath": "resource/"
+            },
+            {
+                "configPath": "resource/game/nineball/default.res.json",
+                "relativePath": "resource/"
+            },
+            {
+                "configPath": "resource/game/hotbingo/default.res.json",
+                "relativePath": "resource/"
+            },
+            {
+                "configPath": "resource/game/goldball/default.res.json",
+                "relativePath": "resource/"
+            },
+            {
+                "configPath": "resource/game/doubleTurbo90/default.res.json",
+                "relativePath": "resource/"
+            },
+            {
+                "configPath": "resource/game/doubleMania/default.res.json",
+                "relativePath": "resource/"
+            },
+            {
+                "configPath": "resource/game/doubleBingo/default.res.json",
+                "relativePath": "resource/"
+            },
+            {
+                "configPath": "resource/game/copacabana/default.res.json",
+                "relativePath": "resource/"
+            },
+            {
+                "configPath": "resource/game/champion/default.res.json",
+                "relativePath": "resource/"
+            },
+            {
+                "configPath": "resource/game/bonusBingo/default.res.json",
+                "relativePath": "resource/"
+            },
+            {
+                "configPath": "resource/game/blackStar/default.res.json",
+                "relativePath": "resource/"
+            },
+            {
+                "configPath": "resource/game/bingobene/default.res.json",
+                "relativePath": "resource/"
+            },
+            {
+                "configPath": "resource/game/bingo3/default.res.json",
+                "relativePath": "resource/"
+            },
+            {
+                "configPath": "resource/game/aztec/default.res.json",
+                "relativePath": "resource/"
+            }
+        ]
+    },
+    "theme": "resource/default.thm.json"
 }

@@ -1,0 +1,230 @@
+{
+	"groups": [
+		{
+			"keys": "modalGeneric_json",
+			"name": "generic"
+		},
+		{
+			"keys": "gameSettings_json",
+			"name": "gameSettings"
+		},
+		{
+			"keys": "bad_buff_mp3,chess_mp3,collect_bonus_mp3,dice_mp3,engine_mp3,nice_buff_mp3,pipa_ball_mp3,pipa_bgm_mp3,pipa_bomb_mp3,pipa_double_line_mp3,pipa_mark_pen_mp3,pipa_peel_mp3,pipa_singe_line_mp3,pipa_square_mp3,pipa_win_bingo_mp3,pipa_json,pipa_dice_png,pipa_dice_json,pipa_chess_json,pipa_boat_json,Arial Black_png,pipaSquare_json,pipaDoubleLine_json,pipa_en_json,pipa_es_json,pipa_pt_json,pipaParticle_png,pipaParticle_json,pipaAnimation_png,pipaAnimation_json,pipa_conf,forAll_tx,copacabana_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,blank_sound_mp3,Arial Black_fnt",
+			"name": "pipa"
+		}
+	],
+	"resources": [
+		{
+			"url": "assets/sound/blank_sound.mp3",
+			"type": "sound",
+			"name": "blank_sound_mp3"
+		},
+		{
+			"url": "game/gameToolBar/bingoGameToolbar.json",
+			"type": "sheet",
+			"name": "bingoGameToolbar_json",
+			"subkeys": "BB_EXTRA_btn_bg,BB_EXTRA_buyall,BB_EXTRA_collect_btn,BB_EXTRA_extra_btn,BB_star_open_bg,Group-22,Locked,auto_stop,back_panel,balance_chip,balance_coin,ballance,bet_down,bet_down_press,bet_screen,bet_up,bet_up_press,btn_go,btn_mega,i,i_press,max_btn,max_btn_press,middle_bar,more_games,msg_bg,play,play_bg,play_press"
+		},
+		{
+			"url": "game/topbar/topbar.json",
+			"type": "sheet",
+			"name": "topbar_json",
+			"subkeys": "buy-btn,buy_bg,hamburger,home,home_press"
+		},
+		{
+			"url": "assets/sound/open_list.mp3",
+			"type": "sound",
+			"name": "open_list_mp3"
+		},
+		{
+			"url": "assets/modalGeneric.json",
+			"type": "sheet",
+			"name": "modalGeneric_json",
+			"subkeys": "closePopUpBtn1,closePopUpBtn2,loader"
+		},
+		{
+			"url": "config/lan/forAll.tx",
+			"type": "json",
+			"name": "forAll_tx"
+		},
+		{
+			"url": "assets/Arial Black.fnt",
+			"type": "font",
+			"name": "Arial Black_fnt"
+		},
+		{
+			"url": "assets/Arial Black.png",
+			"type": "image",
+			"name": "Arial Black_png"
+		},
+		{
+			"url": "game/copacabana/sound/bad_buff.mp3",
+			"type": "sound",
+			"name": "bad_buff_mp3"
+		},
+		{
+			"url": "game/copacabana/sound/chess.mp3",
+			"type": "sound",
+			"name": "chess_mp3"
+		},
+		{
+			"url": "game/copacabana/sound/collect_bonus.mp3",
+			"type": "sound",
+			"name": "collect_bonus_mp3"
+		},
+		{
+			"url": "game/copacabana/sound/dice.mp3",
+			"type": "sound",
+			"name": "dice_mp3"
+		},
+		{
+			"url": "game/copacabana/sound/engine.mp3",
+			"type": "sound",
+			"name": "engine_mp3"
+		},
+		{
+			"url": "game/copacabana/sound/nice_buff.mp3",
+			"type": "sound",
+			"name": "nice_buff_mp3"
+		},
+		{
+			"url": "game/copacabana/sound/pipa_ball.mp3",
+			"type": "sound",
+			"name": "pipa_ball_mp3"
+		},
+		{
+			"url": "game/copacabana/sound/pipa_bgm.mp3",
+			"type": "sound",
+			"name": "pipa_bgm_mp3"
+		},
+		{
+			"url": "game/copacabana/sound/pipa_bomb.mp3",
+			"type": "sound",
+			"name": "pipa_bomb_mp3"
+		},
+		{
+			"url": "game/copacabana/sound/pipa_double_line.mp3",
+			"type": "sound",
+			"name": "pipa_double_line_mp3"
+		},
+		{
+			"url": "game/copacabana/sound/pipa_mark_pen.mp3",
+			"type": "sound",
+			"name": "pipa_mark_pen_mp3"
+		},
+		{
+			"url": "game/copacabana/sound/pipa_peel.mp3",
+			"type": "sound",
+			"name": "pipa_peel_mp3"
+		},
+		{
+			"url": "game/copacabana/sound/pipa_singe_line.mp3",
+			"type": "sound",
+			"name": "pipa_singe_line_mp3"
+		},
+		{
+			"url": "game/copacabana/sound/pipa_square.mp3",
+			"type": "sound",
+			"name": "pipa_square_mp3"
+		},
+		{
+			"url": "game/copacabana/sound/pipa_win_bingo.mp3",
+			"type": "sound",
+			"name": "pipa_win_bingo_mp3"
+		},
+		{
+			"url": "game/copacabana/pipaAnimation.png",
+			"type": "image",
+			"name": "pipaAnimation_png"
+		},
+		{
+			"url": "game/copacabana/pipaAnimation.json",
+			"type": "json",
+			"name": "pipaAnimation_json"
+		},
+		{
+			"url": "game/copacabana/pipa.json",
+			"type": "sheet",
+			"name": "pipa_json",
+			"subkeys": "arrow_30,ball_bg,ball_bg_01,ball_blue,ball_gray,ball_green,ball_library,ball_pink,ball_purple,ball_red,ball_silver,ball_yellow,bar_long,bar_loyalty_point,bar_loyalty_point_write,bg,big_ball_bg,big_ball_bg2,big_star,big_star_face,box_blue,box_green,box_green_blink,box_orange,box_red,box_white,btn_popup,buff_0,buff_1,buff_11,buff_2,buff_3,buff_4,buff_5,buff_6,buff_7,buff_8,buff_9,buff_bg,buff_progress,buff_progress_bg,card_bg,confirm_bg,confirm_btn,cover_number,free_extra_ball_star,icon_add_ball,icon_dice02,icon_mark,icon_mark_big,icon_ninebox,icon_x,jackpot_en,jackpot_es,jackpot_lock,jackpot_pt,loyalty_lock,marker_lightball,paytable_prize_bg,peel_01,peel_02,peel_03,yellow_point"
+		},
+		{
+			"url": "config/pipa.conf",
+			"type": "json",
+			"name": "pipa_conf"
+		},
+		{
+			"url": "config/lan/copacabana.tx",
+			"type": "json",
+			"name": "copacabana_tx"
+		},
+		{
+			"url": "game/copacabana/pipaParticle.png",
+			"type": "image",
+			"name": "pipaParticle_png"
+		},
+		{
+			"url": "game/copacabana/pipa_dice.png",
+			"type": "image",
+			"name": "pipa_dice_png"
+		},
+		{
+			"url": "game/copacabana/pipaParticle.json",
+			"type": "json",
+			"name": "pipaParticle_json"
+		},
+		{
+			"url": "game/copacabana/pipa_dice.json",
+			"type": "json",
+			"name": "pipa_dice_json"
+		},
+		{
+			"url": "game/copacabana/pipa_chess.json",
+			"type": "sheet",
+			"name": "pipa_chess_json",
+			"subkeys": "bg,big_board_blue,big_board_green,big_board_purple,big_board_red,btn_popup,btn_roll,btn_roll_down,coin,dinero,doctor_jump,doctor_place,icon_boat,icon_bomb,icon_card,icon_choice_number,icon_color,icon_dice,icon_doller,icon_empty,icon_mark,icon_ninebox,icon_no_bonus,icon_plus,icon_shadow,icon_star,icon_x,popup_bg,popup_bg_02,popup_title_bg,positive_blue,positive_gray,positive_green,positive_purple,positive_red,positive_x,positive_yellow,progress_bar,progress_bg,single_info_bg,small_board_card,small_board_gray,small_board_green,small_board_red,small_board_yellow"
+		},
+		{
+			"url": "game/copacabana/pipaDoubleLine.json",
+			"type": "sheet",
+			"name": "pipaDoubleLine_json",
+			"subkeys": "bg,title_en,title_es,title_pt"
+		},
+		{
+			"url": "game/copacabana/pipaSquare.json",
+			"type": "sheet",
+			"name": "pipaSquare_json",
+			"subkeys": "bg,square,title_en,title_es,title_pt"
+		},
+		{
+			"url": "game/copacabana/pipa_boat.json",
+			"type": "sheet",
+			"name": "pipa_boat_json",
+			"subkeys": "big_bar,black_cover,boat,boat_bg,boat_green,boat_red,boat_wave,boat_yellow,btn_choose,btn_go,btn_go_dark,cloud_01,cloud_02,cloud_03,float,float_cover,game_bg,green_point,icon_boat,icon_coin,icon_coins,icon_oil,icon_oil_blur,icon_stopwatch,icon_x,light_choice,lock,progress_bg,red_point,spray_01,spray_02,spray_03,starting_line,time_bg,title_bg"
+		},
+		{
+			"url": "game/copacabana/pt/pipa_pt.json",
+			"type": "sheet",
+			"name": "pipa_pt_json",
+			"subkeys": "boat_title,end_title,icon_boat_game"
+		},
+		{
+			"url": "game/copacabana/es/pipa_es.json",
+			"type": "sheet",
+			"name": "pipa_es_json",
+			"subkeys": "boat_title,end_title,icon_boat_game"
+		},
+		{
+			"url": "game/copacabana/en/pipa_en.json",
+			"type": "sheet",
+			"name": "pipa_en_json",
+			"subkeys": "boat_title,end_title,icon_boat_game"
+		},
+		{
+			"url": "assets/gameSettings/gameSettings.json",
+			"type": "sheet",
+			"name": "gameSettings_json",
+			"subkeys": "avatar,bg,bg_slider_off,bg_slider_on,btn_arrow,fb_bt_settings,flag_en,flag_es,flag_pt,gl_bt_settings,icon_connect,icon_notification,language_icon,music_icon,rate_icon,scroll_bar,scroll_bar_handle,slider_switch,sound_fx_icon,support_btn,support_icon,tab_bg,visual_fx_icon"
+		}
+	]
+}

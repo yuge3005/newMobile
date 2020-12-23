@@ -1,0 +1,208 @@
+{
+	"groups": [
+		{
+			"keys": "megaForFirst_en_json",
+			"name": "megaForFirst_en"
+		},
+		{
+			"keys": "megaForFirst_es_json",
+			"name": "megaForFirst_es"
+		},
+		{
+			"keys": "megaForFirst_pt_json",
+			"name": "megaForFirst_pt"
+		},
+		{
+			"keys": "modalGeneric_json",
+			"name": "generic"
+		},
+		{
+			"keys": "gameSettings_json",
+			"name": "gameSettings"
+		},
+		{
+			"keys": "shb_win_wav,shb_w_mp3,shb_round_mp3,shb_m_mp3,shb_m_w_mp3,shb_jackpot_mp3,shb_have_extra_ball_wav,shb_free_extra_mp3,shb_extra_ball_mp3,shb_double_line_mp3,shb_card_mp3,shb_bingo_mp3,shb_bet_mp3,shb_ball_mp3,shb_2trangle_mp3,shb_1to_bingo_mp3,shb_1line_mp3,showball1_json,showball1Animation_png,showball1Animation_json,showball1_conf,forAll_tx,showball3_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,v1gameDefault_json,Arial Black_fnt,Arial Black_png",
+			"name": "showball1"
+		}
+	],
+	"resources": [
+		{
+			"url": "game/gameToolBar/bingoGameToolbar.json",
+			"type": "sheet",
+			"name": "bingoGameToolbar_json",
+			"subkeys": "BB_EXTRA_btn_bg,BB_EXTRA_buyall,BB_EXTRA_collect_btn,BB_EXTRA_extra_btn,BB_star_open_bg,Group-22,Locked,auto_stop,back_panel,balance_chip,balance_coin,ballance,bet_down,bet_down_press,bet_screen,bet_up,bet_up_press,btn_go,btn_mega,i,i_press,max_btn,max_btn_press,middle_bar,more_games,msg_bg,play,play_bg,play_press"
+		},
+		{
+			"url": "game/topbar/topbar.json",
+			"type": "sheet",
+			"name": "topbar_json",
+			"subkeys": "buy-btn,buy_bg,hamburger,home,home_press"
+		},
+		{
+			"url": "assets/sound/open_list.mp3",
+			"type": "sound",
+			"name": "open_list_mp3"
+		},
+		{
+			"url": "assets/megaForFirstTime/megaForFirst_es.json",
+			"type": "sheet",
+			"name": "megaForFirst_es_json",
+			"subkeys": "dialog_es,doctor,firstMega_bg,light,megaball_es"
+		},
+		{
+			"url": "assets/megaForFirstTime/megaForFirst_en.json",
+			"type": "sheet",
+			"name": "megaForFirst_en_json",
+			"subkeys": "dialog_en,doctor,firstMega_bg,light,megaball_en"
+		},
+		{
+			"url": "assets/megaForFirstTime/megaForFirst_pt.json",
+			"type": "sheet",
+			"name": "megaForFirst_pt_json",
+			"subkeys": "dialog_pt,doctor,firstMega_bg,light,megaball_pt"
+		},
+		{
+			"url": "assets/modalGeneric.json",
+			"type": "sheet",
+			"name": "modalGeneric_json",
+			"subkeys": "closePopUpBtn1,closePopUpBtn2,loader"
+		},
+		{
+			"url": "game/showball1/showball1Animation.png",
+			"type": "image",
+			"name": "showball1Animation_png"
+		},
+		{
+			"url": "game/showball/sound/shb_1line.mp3",
+			"type": "sound",
+			"name": "shb_1line_mp3"
+		},
+		{
+			"url": "game/showball/sound/shb_1to_bingo.mp3",
+			"type": "sound",
+			"name": "shb_1to_bingo_mp3"
+		},
+		{
+			"url": "game/showball/sound/shb_2trangle.mp3",
+			"type": "sound",
+			"name": "shb_2trangle_mp3"
+		},
+		{
+			"url": "game/showball/sound/shb_ball.mp3",
+			"type": "sound",
+			"name": "shb_ball_mp3"
+		},
+		{
+			"url": "game/showball/sound/shb_bet.mp3",
+			"type": "sound",
+			"name": "shb_bet_mp3"
+		},
+		{
+			"url": "game/showball/sound/shb_bingo.mp3",
+			"type": "sound",
+			"name": "shb_bingo_mp3"
+		},
+		{
+			"url": "game/showball/sound/shb_card.mp3",
+			"type": "sound",
+			"name": "shb_card_mp3"
+		},
+		{
+			"url": "game/showball/sound/shb_double_line.mp3",
+			"type": "sound",
+			"name": "shb_double_line_mp3"
+		},
+		{
+			"url": "game/showball/sound/shb_extra_ball.mp3",
+			"type": "sound",
+			"name": "shb_extra_ball_mp3"
+		},
+		{
+			"url": "game/showball/sound/shb_free_extra.mp3",
+			"type": "sound",
+			"name": "shb_free_extra_mp3"
+		},
+		{
+			"url": "game/showball/sound/shb_have_extra_ball.wav",
+			"type": "sound",
+			"name": "shb_have_extra_ball_wav"
+		},
+		{
+			"url": "game/showball/sound/shb_jackpot.mp3",
+			"type": "sound",
+			"name": "shb_jackpot_mp3"
+		},
+		{
+			"url": "game/showball/sound/shb_m.mp3",
+			"type": "sound",
+			"name": "shb_m_mp3"
+		},
+		{
+			"url": "game/showball/sound/shb_m_w.mp3",
+			"type": "sound",
+			"name": "shb_m_w_mp3"
+		},
+		{
+			"url": "game/showball/sound/shb_round.mp3",
+			"type": "sound",
+			"name": "shb_round_mp3"
+		},
+		{
+			"url": "game/showball/sound/shb_w.mp3",
+			"type": "sound",
+			"name": "shb_w_mp3"
+		},
+		{
+			"url": "game/showball/sound/shb_win.wav",
+			"type": "sound",
+			"name": "shb_win_wav"
+		},
+		{
+			"url": "game/showball1/showball1Animation.json",
+			"type": "json",
+			"name": "showball1Animation_json"
+		},
+		{
+			"url": "game/showball1/showball1.json",
+			"type": "sheet",
+			"name": "showball1_json",
+			"subkeys": "Bitma1,Locked_A,Locked_B,TelaFundo1,ball_machine_eb,ball_reveal,card_black_selection,card_plus,card_pt_bingo,card_pt_dbline1,card_pt_dbline2,card_pt_dbline3,card_pt_fly,card_pt_line1,card_pt_line2,card_pt_line3,card_pt_m,card_pt_mouse,card_pt_round,card_pt_trangle,card_pt_trangle2,card_pt_v,card_pt_v2,card_pt_w,card_pt_xx,card_red_selection,card_white_selection,heartbg,jackpot_lock,kavkav1,kavkav2,logo_rails,mega_en,mega_es,mega_pt,outline,paytable_red_patch,plus,pt_bingo,pt_double_line,pt_fly,pt_line,pt_m,pt_mouse,pt_round,pt_trangle,pt_v,pt_x,pt_xx,showball_JP,showball_blue,showball_cardBg,showball_cyan,showball_dark_green,showball_extra,showball_green,showball_orange,showball_pink,showball_purple,showball_red,showball_yellow"
+		},
+		{
+			"url": "config/showball1.conf",
+			"type": "json",
+			"name": "showball1_conf"
+		},
+		{
+			"url": "config/lan/showball3.tx",
+			"type": "json",
+			"name": "showball3_tx"
+		},
+		{
+			"url": "config/lan/forAll.tx",
+			"type": "json",
+			"name": "forAll_tx"
+		},
+		{
+			"url": "assets/Arial Black.fnt",
+			"type": "font",
+			"name": "Arial Black_fnt"
+		},
+		{
+			"url": "assets/Arial Black.png",
+			"type": "image",
+			"name": "Arial Black_png"
+		},
+		{
+			"url": "config/cartoesConfig/v1gameDefault.json",
+			"type": "json",
+			"name": "v1gameDefault_json"
+		},
+		{
+			"url": "assets/gameSettings/gameSettings.json",
+			"type": "sheet",
+			"name": "gameSettings_json",
+			"subkeys": "avatar,bg,bg_slider_off,bg_slider_on,btn_arrow,fb_bt_settings,flag_en,flag_es,flag_pt,gl_bt_settings,icon_connect,icon_notification,language_icon,music_icon,rate_icon,scroll_bar,scroll_bar_handle,slider_switch,sound_fx_icon,support_btn,support_icon,tab_bg,visual_fx_icon"
+		}
+	]
+}

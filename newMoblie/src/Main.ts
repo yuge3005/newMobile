@@ -30,7 +30,7 @@ class Main extends egret.DisplayObjectContainer {
     }
 
     private async runGame() {
-        await RES.loadConfig("resource/default.res.json", "resource/");
+        await RES.loadConfig("resource/game/vipbingo/default.res.json", "resource/");
         this.createGameScene();
         await platform.login();
         const userInfo = await platform.getUserInfo();
@@ -47,12 +47,13 @@ class Main extends egret.DisplayObjectContainer {
     }
 
 	private showGame(){
-		this.currentGame = new DoubleBingo("resource/default.res.json");
+		this.currentGame = new Vipbingo("resource/game/vipbingo/default.res.json");
 
 		const loadingView = new LoadingUI();
 		this.currentGame.preLoader = loadingView;
 		this.currentGame.addEventListener( BingoMachine.GENERIC_MODAL_LOADED, this.addGame, this );
 		this.currentGame.addEventListener("megaFirst", this.showMegaFirst, this);
+		this.currentGame.addEventListener("showGameSettings", this.showGameSettings, this);
 	}
 
 	private addGame(){
@@ -97,6 +98,14 @@ class Main extends egret.DisplayObjectContainer {
 		if (this.currentPo.inited) this.addPo();
 		else this.currentPo.addEventListener( GenericModal.GENERIC_MODAL_LOADED, this.addPo, this );
     }
+
+	private showGameSettings( event: egret.Event ){
+		this.showShadow();
+
+		this.currentPo = new GameSettingPopup;
+		if (this.currentPo.inited) this.addPo();
+		else this.currentPo.addEventListener( GenericModal.GENERIC_MODAL_LOADED, this.addPo, this );
+	}
 
     private shadow: egret.Shape;
     private modalPreloader: egret.Bitmap;
@@ -153,7 +162,3 @@ class Main extends egret.DisplayObjectContainer {
 		}, this);
 	}
 }
-
-var trace = function( a ){
-	egret.log(a);
-};
