@@ -16,7 +16,6 @@ class BingoBene extends V2Game{
 
 	public constructor( assetsPath: string ) {
 		super( "menton.conf", assetsPath, 69 );
-        this.languageObjectName = "forAll_tx";
 
         PayTableManager.paytableUIType = BingoBenePaytableUI;
         PaytableUI.textBold = true;

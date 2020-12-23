@@ -66,9 +66,10 @@ class GameSettingPopup extends GenericPo {
 		let button4: TouchDownButton = Com.addDownButtonAt( this, "gameSettings_json.support_btn", "gameSettings_json.support_btn", 700, 18, this.logout, true );
 		this.addItem( 4, "rate_icon", "rate us", button4, 5 );
 		this.soundEffectBtn = new SettingsCheckbox( this.soundEffectChange.bind(this) );
-		this.soundEffectBtn.RadioOn = SoundManager.soundOn;
+		this.soundEffectBtn.RadioOn = SoundManager.soundEfOn;
 		this.addItem( 5, "sound_fx_icon", "sound_effect_on", this.soundEffectBtn, 5 );
 		this.musicBtn = new SettingsCheckbox( this.musicChange.bind(this) );
+		this.musicBtn.RadioOn = SoundManager.soundOn;
 		this.addItem( 6, "music_icon", "music_on", this.musicBtn, 5 );
 		let button7: SettingsCheckbox = new SettingsCheckbox( this.visualEffectChange.bind(this) );
 		this.addItem( 7, "visual_fx_icon", "effect_on", button7, 5 );
@@ -85,11 +86,11 @@ class GameSettingPopup extends GenericPo {
 	}
 
 	private soundEffectChange(){
-		this.soundEffectBtn.RadioOn = SoundManager.soundOn = !SoundManager.soundOn;
+		this.soundEffectBtn.RadioOn = SoundManager.soundEfOn = !SoundManager.soundEfOn;
 	}
 
 	private musicChange(){
-
+		this.musicBtn.RadioOn = SoundManager.soundOn = !SoundManager.soundOn;
 	}
 
 	private visualEffectChange(){

@@ -6,7 +6,7 @@ class BingoMachine extends GameUIItem{
 
 	protected assetName: string;
 	private gameConfigFile: string;
-	protected languageObjectName: string;
+	protected languageObjectName: string = "forAll_tx";
 	protected megaName: string;
 
 	protected ballArea: BallManager;
@@ -107,7 +107,14 @@ class BingoMachine extends GameUIItem{
 	}
 
 	protected getLanguageObject(): Object{
-		return RES.getRes( this.languageObjectName );
+		let txtObj: Object = RES.getRes( "forAll_tx" );
+		if( this.languageObjectName != "forAll_tx" ){
+			let spObj: Object = RES.getRes( this.languageObjectName );
+			for( let ob in spObj ){
+				txtObj[ob] = spObj[ob];
+			}
+		}
+		return txtObj;
 	}
 
 	protected getSoundName( paytalbeName: string ): string{
