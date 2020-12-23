@@ -16,6 +16,7 @@ class GameSettingPopup extends GenericPo {
 
 	protected init() {
         this.bgAssetName = "gameSettings_json.bg";
+		this.closeButtonAssetName = "gameSettings_json.X_btn";
 
         super.init();
 
@@ -25,12 +26,15 @@ class GameSettingPopup extends GenericPo {
 		this.anchorOffsetY = this.bg.height >> 1;
 		this.bg.visible = false;
 
+		this.closeButton.x = this.bg.width;
+		this.closeButton.visible = false;
+
 		setTimeout( this.doutorGo.bind(this), 315 );
 	}
 
 	private doutorGo(){
 		this.scaleX = this.scaleY = 0.1;
-		this.bg.visible = true;
+		this.closeButton.visible = this.bg.visible = true;
 
 		this.addScrollArea( new egret.Rectangle( 62, 41, 1040, 910 ) );
 		this.addItems();
