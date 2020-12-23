@@ -1,11 +1,12 @@
 {
     "options": {
+        "layoutMath": "0",
+        "sizeMode": "free",
         "useExtension": 0,
         "layoutGap": 1,
-        "extend": 0,
-        "layoutMath": "0",
-        "sizeMode": "free"
+        "extend": 0
     },
+    "projectName": "gameSettings",
     "files": [
         "./flag_pt.png",
         "./flag_es.png",
@@ -16,6 +17,7 @@
         "./bg_slider_off.png",
         "./bg.png",
         "./avatar.png",
+        "./X_btn.png",
         "./visual_fx_icon.png",
         "./tab_bg.png",
         "./support_icon.png",
@@ -31,6 +33,5 @@
         "./icon_connect.png",
         "./gl_bt_settings.png"
     ],
-    "version": 5,
-    "projectName": "gameSettings"
+    "version": 5
 }
