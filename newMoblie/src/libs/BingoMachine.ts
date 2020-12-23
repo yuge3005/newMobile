@@ -234,6 +234,7 @@ class BingoMachine extends GameUIItem{
 
 	private loadOtherGroup(){
 		RES.loadGroup( "generic" );
+		RES.loadGroup( "gameSettings" );
 		if( this.megaName ){
 			if( !localStorage.getItem( this.megaName ) ){
 				try{
@@ -586,6 +587,7 @@ class BingoMachine extends GameUIItem{
 		this.isMegaBall = false;
 
 		if (!data) {//out of coins
+			this.stopAutoPlay();
 			this.dispatchEvent(new egret.Event("out_of_coins_game_id"));
 			return;
 		}
@@ -672,8 +674,7 @@ class BingoMachine extends GameUIItem{
 
 		if (!data) {//out of coins
 			let needChangeCollectBtnStatus: boolean = this.gameToolBar.autoPlaying;
-			this.gameToolBar.autoPlaying = false;
-			if( this.gameToolBar.buyAllExtra ) this.gameToolBar.buyAllExtra = false;
+			this.stopAutoPlay();
 			this.dispatchEvent( new egret.Event( "out_of_coins_game_id" ) );
 			if( needChangeCollectBtnStatus )this.gameToolBar.showCollectButtonAfterOOC();
 			return;
@@ -779,6 +780,7 @@ class BingoMachine extends GameUIItem{
 	}
 
 	protected winBingo(): void {
+		this.stopAutoPlay();
 		if( this.jackpotArea.jackpotBonus ){
 			let ev: egret.Event = new egret.Event( "JACKPOT_WIN" );
 			ev.data = { bonus: this.jackpotArea.jackpotNumber };
@@ -982,11 +984,15 @@ class BingoMachine extends GameUIItem{
 		if( localStorage.getItem( this.megaName ) ) return;
 		else{
 			localStorage.setItem( this.megaName, "true" );
-			if( this.gameToolBar.autoPlaying ) this.gameToolBar.autoPlaying = false;
-			else if( this.gameToolBar.buyAllExtra ) this.gameToolBar.buyAllExtra = false;
+			this.stopAutoPlay();
 			let ev: egret.Event = new egret.Event( "megaFirst" );
 			ev.data = rect;
 			this.dispatchEvent( ev );
 		}
+	}
+
+	public stopAutoPlay(){
+		if( this.gameToolBar.autoPlaying ) this.gameToolBar.autoPlaying = false;
+		else if( this.gameToolBar.buyAllExtra ) this.gameToolBar.buyAllExtra = false;
 	}
 }
