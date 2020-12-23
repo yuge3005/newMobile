@@ -1,0 +1,148 @@
+{
+	"groups": [
+		{
+			"keys": "lotto_eb_mp3,lotto_ball_mp3,lotto_an2_mp3,lotto_an5_mp3,lotto_an4_mp3,lotto_an3_mp3,lotto_gold_mp3,lotto_se1_mp3,lotto_se2_mp3,lotto_se3_mp3,lotto_se4_mp3,lotto_silver_mp3,lotto_se5_mp3,lotto_se6_mp3,superLotto_json,superLotto_conf,forAll_tx,superLotto_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,Arial Black_fnt,Arial Black_png",
+			"name": "superLotto"
+		},
+		{
+			"keys": "modalGeneric_json",
+			"name": "generic"
+		},
+		{
+			"keys": "gameSettings_json",
+			"name": "gameSettings"
+		}
+	],
+	"resources": [
+		{
+			"url": "game/superLotto/superLotto.json",
+			"type": "sheet",
+			"name": "superLotto_json",
+			"subkeys": "any_light,ball_blue,ball_golden,ball_mega,ball_silver,bar_any,bar_sequence,bg,bg_channle,btn_down,btn_down_press,btn_orange,btn_orange_press,btn_up,btn_up_press,card_bg,card_bg_A,extra_blue,extra_golden,extra_silver,grid_black,grid_blue,grid_pink,icon_golden,icon_silver,jackpot_bg,jackpot_lock,list_01,list_02,mega_blue,mega_golden,mega_silver,sequence_light"
+		},
+		{
+			"url": "config/superLotto.conf",
+			"type": "json",
+			"name": "superLotto_conf"
+		},
+		{
+			"url": "game/superLotto/sound/lotto_ball.mp3",
+			"type": "sound",
+			"name": "lotto_ball_mp3"
+		},
+		{
+			"url": "game/superLotto/sound/lotto_eb.mp3",
+			"type": "sound",
+			"name": "lotto_eb_mp3"
+		},
+		{
+			"url": "game/superLotto/sound/lotto_an2.mp3",
+			"type": "sound",
+			"name": "lotto_an2_mp3"
+		},
+		{
+			"url": "game/superLotto/sound/lotto_an5.mp3",
+			"type": "sound",
+			"name": "lotto_an5_mp3"
+		},
+		{
+			"url": "game/superLotto/sound/lotto_an4.mp3",
+			"type": "sound",
+			"name": "lotto_an4_mp3"
+		},
+		{
+			"url": "game/superLotto/sound/lotto_an3.mp3",
+			"type": "sound",
+			"name": "lotto_an3_mp3"
+		},
+		{
+			"url": "game/superLotto/sound/lotto_gold.mp3",
+			"type": "sound",
+			"name": "lotto_gold_mp3"
+		},
+		{
+			"url": "game/superLotto/sound/lotto_se1.mp3",
+			"type": "sound",
+			"name": "lotto_se1_mp3"
+		},
+		{
+			"url": "game/superLotto/sound/lotto_se2.mp3",
+			"type": "sound",
+			"name": "lotto_se2_mp3"
+		},
+		{
+			"url": "game/superLotto/sound/lotto_se3.mp3",
+			"type": "sound",
+			"name": "lotto_se3_mp3"
+		},
+		{
+			"url": "game/superLotto/sound/lotto_se4.mp3",
+			"type": "sound",
+			"name": "lotto_se4_mp3"
+		},
+		{
+			"url": "game/superLotto/sound/lotto_silver.mp3",
+			"type": "sound",
+			"name": "lotto_silver_mp3"
+		},
+		{
+			"url": "game/superLotto/sound/lotto_se5.mp3",
+			"type": "sound",
+			"name": "lotto_se5_mp3"
+		},
+		{
+			"url": "game/superLotto/sound/lotto_se6.mp3",
+			"type": "sound",
+			"name": "lotto_se6_mp3"
+		},
+		{
+			"url": "config/lan/superLotto.tx",
+			"type": "json",
+			"name": "superLotto_tx"
+		},
+		{
+			"url": "game/gameToolBar/bingoGameToolbar.json",
+			"type": "sheet",
+			"name": "bingoGameToolbar_json",
+			"subkeys": "BB_EXTRA_btn_bg,BB_EXTRA_buyall,BB_EXTRA_collect_btn,BB_EXTRA_extra_btn,BB_star_open_bg,Group-22,Locked,auto_stop,back_panel,balance_chip,balance_coin,ballance,bet_down,bet_down_press,bet_screen,bet_up,bet_up_press,btn_go,btn_mega,i,i_press,max_btn,max_btn_press,middle_bar,more_games,msg_bg,play,play_bg,play_press"
+		},
+		{
+			"url": "game/topbar/topbar.json",
+			"type": "sheet",
+			"name": "topbar_json",
+			"subkeys": "buy-btn,buy_bg,hamburger,home,home_press"
+		},
+		{
+			"url": "assets/sound/open_list.mp3",
+			"type": "sound",
+			"name": "open_list_mp3"
+		},
+		{
+			"url": "assets/modalGeneric.json",
+			"type": "sheet",
+			"name": "modalGeneric_json",
+			"subkeys": "closePopUpBtn1,closePopUpBtn2,loader"
+		},
+		{
+			"url": "config/lan/forAll.tx",
+			"type": "json",
+			"name": "forAll_tx"
+		},
+		{
+			"url": "assets/Arial Black.fnt",
+			"type": "font",
+			"name": "Arial Black_fnt"
+		},
+		{
+			"url": "assets/Arial Black.png",
+			"type": "image",
+			"name": "Arial Black_png"
+		},
+		{
+			"url": "assets/gameSettings/gameSettings.json",
+			"type": "sheet",
+			"name": "gameSettings_json",
+			"subkeys": "avatar,bg,bg_slider_off,bg_slider_on,btn_arrow,fb_bt_settings,flag_en,flag_es,flag_pt,gl_bt_settings,icon_connect,icon_notification,language_icon,music_icon,rate_icon,scroll_bar,scroll_bar_handle,slider_switch,sound_fx_icon,support_btn,support_icon,tab_bg,visual_fx_icon"
+		}
+	]
+}

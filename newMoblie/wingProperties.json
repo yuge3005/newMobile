@@ -1,9 +1,19 @@
 {
-	"resourcePlugin":{
-		"configs":[{
-			"configPath":"resource/default.res.json",
-			"relativePath":"resource/"
-		}]
-	},
-	"theme":"resource/default.thm.json"
+    "resourcePlugin": {
+        "configs": [
+            {
+                "configPath": "resource/default.res.json",
+                "relativePath": "resource/"
+            },
+            {
+                "configPath": "resource/game/superLotto/default.res.json",
+                "relativePath": "resource/"
+            },
+            {
+                "configPath": "resource/game/vipbingo/default.res.json",
+                "relativePath": "resource/"
+            }
+        ]
+    },
+    "theme": "resource/default.thm.json"
 }
