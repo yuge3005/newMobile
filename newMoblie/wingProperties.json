@@ -80,6 +80,34 @@
             {
                 "configPath": "resource/game/doubleBingo/default.res.json",
                 "relativePath": "resource/"
+            },
+            {
+                "configPath": "resource/game/copacabana/default.res.json",
+                "relativePath": "resource/"
+            },
+            {
+                "configPath": "resource/game/champion/default.res.json",
+                "relativePath": "resource/"
+            },
+            {
+                "configPath": "resource/game/bonusBingo/default.res.json",
+                "relativePath": "resource/"
+            },
+            {
+                "configPath": "resource/game/blackStar/default.res.json",
+                "relativePath": "resource/"
+            },
+            {
+                "configPath": "resource/game/bingobene/default.res.json",
+                "relativePath": "resource/"
+            },
+            {
+                "configPath": "resource/game/bingo3/default.res.json",
+                "relativePath": "resource/"
+            },
+            {
+                "configPath": "resource/game/aztec/default.res.json",
+                "relativePath": "resource/"
             }
         ]
     },

@@ -1,0 +1,128 @@
+{
+	"groups": [
+		{
+			"keys": "azt10_wav,azt12_wav,azt13_wav,azt14_wav,azt2_wav,azt3_wav,azt5_wav,azt6_wav,azt9_wav,aztec_json,aztec_conf,forAll_tx,pharos_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,Arial Black_fnt,Arial Black_png",
+			"name": "aztec"
+		},
+		{
+			"keys": "modalGeneric_json",
+			"name": "generic"
+		},
+		{
+			"keys": "gameSettings_json",
+			"name": "gameSettings"
+		}
+	],
+	"resources": [
+		{
+			"url": "assets/sound/blank_sound.mp3",
+			"type": "sound",
+			"name": "blank_sound_mp3"
+		},
+		{
+			"url": "game/gameToolBar/bingoGameToolbar.json",
+			"type": "sheet",
+			"name": "bingoGameToolbar_json",
+			"subkeys": "BB_EXTRA_btn_bg,BB_EXTRA_buyall,BB_EXTRA_collect_btn,BB_EXTRA_extra_btn,BB_star_open_bg,Group-22,Locked,auto_stop,back_panel,balance_chip,balance_coin,ballance,bet_down,bet_down_press,bet_screen,bet_up,bet_up_press,btn_go,btn_mega,i,i_press,max_btn,max_btn_press,middle_bar,more_games,msg_bg,play,play_bg,play_press"
+		},
+		{
+			"url": "game/topbar/topbar.json",
+			"type": "sheet",
+			"name": "topbar_json",
+			"subkeys": "buy-btn,buy_bg,hamburger,home,home_press"
+		},
+		{
+			"url": "assets/sound/open_list.mp3",
+			"type": "sound",
+			"name": "open_list_mp3"
+		},
+		{
+			"url": "config/lan/pharos.tx",
+			"type": "json",
+			"name": "pharos_tx"
+		},
+		{
+			"url": "assets/modalGeneric.json",
+			"type": "sheet",
+			"name": "modalGeneric_json",
+			"subkeys": "closePopUpBtn1,closePopUpBtn2,loader"
+		},
+		{
+			"url": "config/lan/forAll.tx",
+			"type": "json",
+			"name": "forAll_tx"
+		},
+		{
+			"url": "assets/Arial Black.fnt",
+			"type": "font",
+			"name": "Arial Black_fnt"
+		},
+		{
+			"url": "assets/Arial Black.png",
+			"type": "image",
+			"name": "Arial Black_png"
+		},
+		{
+			"url": "game/aztec/sound/azt10.wav",
+			"type": "sound",
+			"name": "azt10_wav"
+		},
+		{
+			"url": "game/aztec/sound/azt12.wav",
+			"type": "sound",
+			"name": "azt12_wav"
+		},
+		{
+			"url": "game/aztec/sound/azt13.wav",
+			"type": "sound",
+			"name": "azt13_wav"
+		},
+		{
+			"url": "game/aztec/sound/azt14.wav",
+			"type": "sound",
+			"name": "azt14_wav"
+		},
+		{
+			"url": "game/aztec/sound/azt2.wav",
+			"type": "sound",
+			"name": "azt2_wav"
+		},
+		{
+			"url": "game/aztec/sound/azt3.wav",
+			"type": "sound",
+			"name": "azt3_wav"
+		},
+		{
+			"url": "game/aztec/sound/azt5.wav",
+			"type": "sound",
+			"name": "azt5_wav"
+		},
+		{
+			"url": "game/aztec/sound/azt6.wav",
+			"type": "sound",
+			"name": "azt6_wav"
+		},
+		{
+			"url": "game/aztec/sound/azt9.wav",
+			"type": "sound",
+			"name": "azt9_wav"
+		},
+		{
+			"url": "game/aztec/aztec.json",
+			"type": "sheet",
+			"name": "aztec_json",
+			"subkeys": "BallDisplay,Ball_Large,ClosedCard,FreeEB,StoneDefault,StoneGreen,StoneRed,StoneYellow,aztec_bg,jackpot_lock"
+		},
+		{
+			"url": "config/aztec.conf",
+			"type": "json",
+			"name": "aztec_conf"
+		},
+		{
+			"url": "assets/gameSettings/gameSettings.json",
+			"type": "sheet",
+			"name": "gameSettings_json",
+			"subkeys": "avatar,bg,bg_slider_off,bg_slider_on,btn_arrow,fb_bt_settings,flag_en,flag_es,flag_pt,gl_bt_settings,icon_connect,icon_notification,language_icon,music_icon,rate_icon,scroll_bar,scroll_bar_handle,slider_switch,sound_fx_icon,support_btn,support_icon,tab_bg,visual_fx_icon"
+		}
+	]
+}
