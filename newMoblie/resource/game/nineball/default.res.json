@@ -1,0 +1,198 @@
+{
+	"groups": [
+		{
+			"keys": "nb_1line_mp3,nb_1to_bingo_mp3,nb_2line_mp3,nb_acumulado_mp3,nb_ball_mp3,nb_bet_mp3,nb_bingo_mp3,nb_card_mp3,nb_collect_mp3,nb_extra_ball_mp3,nb_first_extra_mp3,nb_free_extra_mp3,nb_ooc_mp3,nb_win_round_over_mp3,nineball_json,nineballAnimation_png,nineballAnimation_json,nineball_conf,forAll_tx,nineball_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,getCoinsParticle_png,getCoinsParticle_json,Arial Black_png,Arial Black_fnt",
+			"name": "nineball"
+		},
+		{
+			"keys": "megaForFirst_en_json",
+			"name": "megaForFirst_en"
+		},
+		{
+			"keys": "megaForFirst_es_json",
+			"name": "megaForFirst_es"
+		},
+		{
+			"keys": "megaForFirst_pt_json",
+			"name": "megaForFirst_pt"
+		},
+		{
+			"keys": "modalGeneric_json",
+			"name": "generic"
+		},
+		{
+			"keys": "gameSettings_json",
+			"name": "gameSettings"
+		}
+	],
+	"resources": [
+		{
+			"url": "game/nineball/nineballAnimation.png",
+			"type": "image",
+			"name": "nineballAnimation_png"
+		},
+		{
+			"url": "game/nineball/sound/nb_1line.mp3",
+			"type": "sound",
+			"name": "nb_1line_mp3"
+		},
+		{
+			"url": "game/nineball/sound/nb_1to_bingo.mp3",
+			"type": "sound",
+			"name": "nb_1to_bingo_mp3"
+		},
+		{
+			"url": "game/nineball/sound/nb_2line.mp3",
+			"type": "sound",
+			"name": "nb_2line_mp3"
+		},
+		{
+			"url": "game/nineball/sound/nb_acumulado.mp3",
+			"type": "sound",
+			"name": "nb_acumulado_mp3"
+		},
+		{
+			"url": "game/nineball/sound/nb_ball.mp3",
+			"type": "sound",
+			"name": "nb_ball_mp3"
+		},
+		{
+			"url": "game/nineball/sound/nb_bet.mp3",
+			"type": "sound",
+			"name": "nb_bet_mp3"
+		},
+		{
+			"url": "game/nineball/sound/nb_bingo.mp3",
+			"type": "sound",
+			"name": "nb_bingo_mp3"
+		},
+		{
+			"url": "game/nineball/sound/nb_card.mp3",
+			"type": "sound",
+			"name": "nb_card_mp3"
+		},
+		{
+			"url": "game/nineball/sound/nb_collect.mp3",
+			"type": "sound",
+			"name": "nb_collect_mp3"
+		},
+		{
+			"url": "game/nineball/sound/nb_extra_ball.mp3",
+			"type": "sound",
+			"name": "nb_extra_ball_mp3"
+		},
+		{
+			"url": "game/nineball/sound/nb_first_extra.mp3",
+			"type": "sound",
+			"name": "nb_first_extra_mp3"
+		},
+		{
+			"url": "game/nineball/sound/nb_free_extra.mp3",
+			"type": "sound",
+			"name": "nb_free_extra_mp3"
+		},
+		{
+			"url": "game/nineball/sound/nb_ooc.mp3",
+			"type": "sound",
+			"name": "nb_ooc_mp3"
+		},
+		{
+			"url": "game/nineball/sound/nb_win_round_over.mp3",
+			"type": "sound",
+			"name": "nb_win_round_over_mp3"
+		},
+		{
+			"url": "game/nineball/nineballAnimation.json",
+			"type": "json",
+			"name": "nineballAnimation_json"
+		},
+		{
+			"url": "game/nineball/nineball.json",
+			"type": "sheet",
+			"name": "nineball_json",
+			"subkeys": "&#032copy-16,&#032copy-2,&#032copy-3,&#032copy-4,&#032copy-5,&#032copy-6,&#032copy-7,ball_mid,card_number_fill_blue,card_number_fill_green,card_number_fill_red,card_number_fill_white,dividi-acumulado-nine,jackpot_bg,jackpot_lock,mask,mega_en,mega_es,mega_pt,nineball_bg,nineball_top_bolas,paytable_bg,paytable_fg,top_placar"
+		},
+		{
+			"url": "config/nineball.conf",
+			"type": "json",
+			"name": "nineball_conf"
+		},
+		{
+			"url": "config/lan/nineball.tx",
+			"type": "json",
+			"name": "nineball_tx"
+		},
+		{
+			"url": "game/gameToolBar/bingoGameToolbar.json",
+			"type": "sheet",
+			"name": "bingoGameToolbar_json",
+			"subkeys": "BB_EXTRA_btn_bg,BB_EXTRA_buyall,BB_EXTRA_collect_btn,BB_EXTRA_extra_btn,BB_star_open_bg,Group-22,Locked,auto_stop,back_panel,balance_chip,balance_coin,ballance,bet_down,bet_down_press,bet_screen,bet_up,bet_up_press,btn_go,btn_mega,i,i_press,max_btn,max_btn_press,middle_bar,more_games,msg_bg,play,play_bg,play_press"
+		},
+		{
+			"url": "game/topbar/topbar.json",
+			"type": "sheet",
+			"name": "topbar_json",
+			"subkeys": "buy-btn,buy_bg,hamburger,home,home_press"
+		},
+		{
+			"url": "assets/sound/open_list.mp3",
+			"type": "sound",
+			"name": "open_list_mp3"
+		},
+		{
+			"url": "game/tropCoins/getCoinsParticle.png",
+			"type": "image",
+			"name": "getCoinsParticle_png"
+		},
+		{
+			"url": "game/tropCoins/getCoinsParticle.json",
+			"type": "json",
+			"name": "getCoinsParticle_json"
+		},
+		{
+			"url": "assets/megaForFirstTime/megaForFirst_es.json",
+			"type": "sheet",
+			"name": "megaForFirst_es_json",
+			"subkeys": "dialog_es,doctor,firstMega_bg,light,megaball_es"
+		},
+		{
+			"url": "assets/megaForFirstTime/megaForFirst_en.json",
+			"type": "sheet",
+			"name": "megaForFirst_en_json",
+			"subkeys": "dialog_en,doctor,firstMega_bg,light,megaball_en"
+		},
+		{
+			"url": "assets/megaForFirstTime/megaForFirst_pt.json",
+			"type": "sheet",
+			"name": "megaForFirst_pt_json",
+			"subkeys": "dialog_pt,doctor,firstMega_bg,light,megaball_pt"
+		},
+		{
+			"url": "assets/modalGeneric.json",
+			"type": "sheet",
+			"name": "modalGeneric_json",
+			"subkeys": "closePopUpBtn1,closePopUpBtn2,loader"
+		},
+		{
+			"url": "config/lan/forAll.tx",
+			"type": "json",
+			"name": "forAll_tx"
+		},
+		{
+			"url": "assets/Arial Black.fnt",
+			"type": "font",
+			"name": "Arial Black_fnt"
+		},
+		{
+			"url": "assets/Arial Black.png",
+			"type": "image",
+			"name": "Arial Black_png"
+		},
+		{
+			"url": "assets/gameSettings/gameSettings.json",
+			"type": "sheet",
+			"name": "gameSettings_json",
+			"subkeys": "avatar,bg,bg_slider_off,bg_slider_on,btn_arrow,fb_bt_settings,flag_en,flag_es,flag_pt,gl_bt_settings,icon_connect,icon_notification,language_icon,music_icon,rate_icon,scroll_bar,scroll_bar_handle,slider_switch,sound_fx_icon,support_btn,support_icon,tab_bg,visual_fx_icon"
+		}
+	]
+}

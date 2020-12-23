@@ -1,0 +1,164 @@
+{
+	"groups": [
+		{
+			"keys": "modalGeneric_json",
+			"name": "generic"
+		},
+		{
+			"keys": "gameSettings_json",
+			"name": "gameSettings"
+		},
+		{
+			"keys": "t90_4corners_mp3,t90_ball_mp3,t90_bet_mp3,t90_bingo_mp3,t90_blink_mp3,t90_card_mp3,t90_double_line_mp3,t90_extra_ball_mp3,t90_extra_loop_mp3,t90_jackpot_mp3,t90_line_mp3,t90_win_mp3,doubleTurbo90_json,turbo90Animation_json,turbo90Animation_png,doubleTurbo90_conf,forAll_tx,doubleTurbo90_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,getCoinsParticle_png,getCoinsParticle_json,cards_background_png,Arial Black_fnt,Arial Black_png",
+			"name": "doubleTurbo90"
+		}
+	],
+	"resources": [
+		{
+			"url": "game/turbo90/turbo90Animation.png",
+			"type": "image",
+			"name": "turbo90Animation_png"
+		},
+		{
+			"url": "game/turbo90/sound/t90_4corners.mp3",
+			"type": "sound",
+			"name": "t90_4corners_mp3"
+		},
+		{
+			"url": "game/turbo90/sound/t90_ball.mp3",
+			"type": "sound",
+			"name": "t90_ball_mp3"
+		},
+		{
+			"url": "game/turbo90/sound/t90_bet.mp3",
+			"type": "sound",
+			"name": "t90_bet_mp3"
+		},
+		{
+			"url": "game/turbo90/sound/t90_bingo.mp3",
+			"type": "sound",
+			"name": "t90_bingo_mp3"
+		},
+		{
+			"url": "game/turbo90/sound/t90_blink.mp3",
+			"type": "sound",
+			"name": "t90_blink_mp3"
+		},
+		{
+			"url": "game/turbo90/sound/t90_card.mp3",
+			"type": "sound",
+			"name": "t90_card_mp3"
+		},
+		{
+			"url": "game/turbo90/sound/t90_double_line.mp3",
+			"type": "sound",
+			"name": "t90_double_line_mp3"
+		},
+		{
+			"url": "game/turbo90/sound/t90_extra_ball.mp3",
+			"type": "sound",
+			"name": "t90_extra_ball_mp3"
+		},
+		{
+			"url": "game/turbo90/sound/t90_extra_loop.mp3",
+			"type": "sound",
+			"name": "t90_extra_loop_mp3"
+		},
+		{
+			"url": "game/turbo90/sound/t90_jackpot.mp3",
+			"type": "sound",
+			"name": "t90_jackpot_mp3"
+		},
+		{
+			"url": "game/turbo90/sound/t90_line.mp3",
+			"type": "sound",
+			"name": "t90_line_mp3"
+		},
+		{
+			"url": "game/turbo90/sound/t90_win.mp3",
+			"type": "sound",
+			"name": "t90_win_mp3"
+		},
+		{
+			"url": "game/turbo90/turbo90Animation.json",
+			"type": "json",
+			"name": "turbo90Animation_json"
+		},
+		{
+			"url": "game/gameToolBar/bingoGameToolbar.json",
+			"type": "sheet",
+			"name": "bingoGameToolbar_json",
+			"subkeys": "BB_EXTRA_btn_bg,BB_EXTRA_buyall,BB_EXTRA_collect_btn,BB_EXTRA_extra_btn,BB_star_open_bg,Group-22,Locked,auto_stop,back_panel,balance_chip,balance_coin,ballance,bet_down,bet_down_press,bet_screen,bet_up,bet_up_press,btn_go,btn_mega,i,i_press,max_btn,max_btn_press,middle_bar,more_games,msg_bg,play,play_bg,play_press"
+		},
+		{
+			"url": "game/topbar/topbar.json",
+			"type": "sheet",
+			"name": "topbar_json",
+			"subkeys": "buy-btn,buy_bg,hamburger,home,home_press"
+		},
+		{
+			"url": "assets/sound/open_list.mp3",
+			"type": "sound",
+			"name": "open_list_mp3"
+		},
+		{
+			"url": "game/tropCoins/getCoinsParticle.png",
+			"type": "image",
+			"name": "getCoinsParticle_png"
+		},
+		{
+			"url": "game/tropCoins/getCoinsParticle.json",
+			"type": "json",
+			"name": "getCoinsParticle_json"
+		},
+		{
+			"url": "assets/modalGeneric.json",
+			"type": "sheet",
+			"name": "modalGeneric_json",
+			"subkeys": "closePopUpBtn1,closePopUpBtn2,loader"
+		},
+		{
+			"url": "game/doubleTurbo90/doubleTurbo90.json",
+			"type": "sheet",
+			"name": "doubleTurbo90_json",
+			"subkeys": "Background-1,CARD_HEADER_BG_white,Card3,ball_blue,ball_eject,ball_green,ball_red,ball_yellow,card_background,cards_background,jackpot_enable,jackpot_lock,mark_orange,mark_purple,mark_red,mark_white,mark_x,paytable_bg,paytable_frame,paytable_mask,paytable_rainbow_frame,paytable_winline,rails,rainbow"
+		},
+		{
+			"url": "config/doubleTurbo90.conf",
+			"type": "json",
+			"name": "doubleTurbo90_conf"
+		},
+		{
+			"url": "game/doubleTurbo90/cards_background.png",
+			"type": "image",
+			"name": "cards_background_png",
+			"scale9grid": "28,28,24,24"
+		},
+		{
+			"url": "config/lan/doubleTurbo90.tx",
+			"type": "json",
+			"name": "doubleTurbo90_tx"
+		},
+		{
+			"url": "config/lan/forAll.tx",
+			"type": "json",
+			"name": "forAll_tx"
+		},
+		{
+			"url": "assets/Arial Black.fnt",
+			"type": "font",
+			"name": "Arial Black_fnt"
+		},
+		{
+			"url": "assets/Arial Black.png",
+			"type": "image",
+			"name": "Arial Black_png"
+		},
+		{
+			"url": "assets/gameSettings/gameSettings.json",
+			"type": "sheet",
+			"name": "gameSettings_json",
+			"subkeys": "avatar,bg,bg_slider_off,bg_slider_on,btn_arrow,fb_bt_settings,flag_en,flag_es,flag_pt,gl_bt_settings,icon_connect,icon_notification,language_icon,music_icon,rate_icon,scroll_bar,scroll_bar_handle,slider_switch,sound_fx_icon,support_btn,support_icon,tab_bg,visual_fx_icon"
+		}
+	]
+}
