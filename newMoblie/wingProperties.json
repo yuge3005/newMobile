@@ -12,6 +12,34 @@
             {
                 "configPath": "resource/game/vipbingo/default.res.json",
                 "relativePath": "resource/"
+            },
+            {
+                "configPath": "resource/game/turbomania/default.res.json",
+                "relativePath": "resource/"
+            },
+            {
+                "configPath": "resource/game/turbo90/default.res.json",
+                "relativePath": "resource/"
+            },
+            {
+                "configPath": "resource/game/superGoal/default.res.json",
+                "relativePath": "resource/"
+            },
+            {
+                "configPath": "resource/game/silverball/default.res.json",
+                "relativePath": "resource/"
+            },
+            {
+                "configPath": "resource/game/showball/default.res.json",
+                "relativePath": "resource/"
+            },
+            {
+                "configPath": "resource/game/showball2/default.res.json",
+                "relativePath": "resource/"
+            },
+            {
+                "configPath": "resource/game/showball1/default.res.json",
+                "relativePath": "resource/"
             }
         ]
     },

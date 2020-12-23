@@ -5,6 +5,10 @@
 			"name": "generic"
 		},
 		{
+			"keys": "gameSettings_json",
+			"name": "gameSettings"
+		},
+		{
 			"keys": "vb14_mp3,vb10_mp3,vb13_mp3,vb15_mp3,vb16_mp3,vb17_mp3,vb2_mp3,vb3_mp3,vb4_mp3,vb5_mp3,vb7_mp3,vb8_mp3,vipbingo_json,vipbingoAnimation_json,vipbingoAnimation_png,vipbingo_conf,forAll_tx,vipBingoAndTurboMania_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,Arial Black_fnt,Arial Black_png",
 			"name": "vipbingo"
 		}
@@ -133,6 +137,12 @@
 			"type": "sheet",
 			"name": "vipbingo_json",
 			"subkeys": "Background_ENG,Extra-Ball_ENG,card_bingo,card_corner,card_dbline1,card_dbline2,card_dbline3,card_gun,card_h,card_l,card_line1,card_line2,card_line3,card_mouse,card_round,card_t,card_v,card_v2,cross,jackpot_lock,mark_black,mark_red,mark_white,mark_yellow,partten_bingo,partten_linha,partten_linha_dupla,partten_quadra,thin_card_gun,thin_card_h,thin_card_l,thin_card_mouse,thin_card_round,thin_card_t,thin_card_v,thin_card_v2,vip_ball_blue,vip_ball_cyan,vip_ball_green,vip_ball_purple,vip_ball_red,vip_ball_yellow,vip_bingo,vip_corner,vip_double_line,vip_gun,vip_h,vip_l,vip_line,vip_mouse,vip_round,vip_t,vip_v,vip_v2,vipbingo_card_bg"
+		},
+		{
+			"url": "assets/gameSettings/gameSettings.json",
+			"type": "sheet",
+			"name": "gameSettings_json",
+			"subkeys": "avatar,bg,bg_slider_off,bg_slider_on,btn_arrow,fb_bt_settings,flag_en,flag_es,flag_pt,gl_bt_settings,icon_connect,icon_notification,language_icon,music_icon,rate_icon,scroll_bar,scroll_bar_handle,slider_switch,sound_fx_icon,support_btn,support_icon,tab_bg,visual_fx_icon"
 		}
 	]
 }
