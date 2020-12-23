@@ -30,7 +30,7 @@ class MuLang {
 		if( localStorage && ["pt","en","es"].indexOf( localStorage["language"] ) >= 0 )return localStorage["language"];
 		var resLan: string = requestStr( "lan" );
 		if( resLan ) return resLan;
-		return "en";
+		return "pt";
 	}
 	public static lanuageNames: Object = {en:"english",es:"spanish",pt:"portuguese"};
 
