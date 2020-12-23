@@ -2,6 +2,7 @@ declare class TouchDownButton extends egret.DisplayObjectContainer {
     private upState;
     private downState;
     disabledFilter: egret.ColorMatrixFilter;
+    static readonly isRightClick: boolean;
     enabled: boolean;
     constructor(upState: string, downState: string);
     protected onTouchBegin(event: egret.TouchEvent): void;
@@ -32,16 +33,6 @@ declare class GenericModal extends egret.Sprite {
     private static loaded(event);
     protected onKeyUp(keyCode: number): void;
 }
-declare class GlobelSettings {
-    static serverVertion: number;
-    constructor();
-    static readonly isRightClick: boolean;
-    static readonly language: string;
-    static lanuageNames: Object;
-    static readonly languageName: any;
-}
-declare var trace: (message?: any, ...optionalParams: any[]) => void;
-declare function requestStr(str: any): any;
 declare class GraphicTool {
     constructor();
     static drawRect(target: egret.Shape | egret.Sprite, rect: egret.Rectangle, color?: number, clearFirst?: boolean, alpha?: number, roundRect?: number, lineThick?: number, lineColor?: number, lineAlpha?: number): void;
@@ -85,8 +76,10 @@ declare class SoundManager {
     private static currentBackgorundMusicSound;
     static soundOn: boolean;
     constructor();
-    static play(soundName: string, loop?: boolean): void;
+    static soundEfOn: boolean;
+    static play(soundName: string, loop?: boolean): egret.SoundChannel;
     private static startPlayGameMusic();
+    static stopMusic(): void;
 }
 declare class TextLabel extends egret.TextField {
     maxSize: number;
