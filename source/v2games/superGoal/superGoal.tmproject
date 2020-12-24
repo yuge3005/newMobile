@@ -1,22 +1,19 @@
 {
-    "options": {
-        "layoutMath": "0",
-        "sizeMode": "free",
-        "useExtension": 0,
-        "layoutGap": 1,
-        "extend": 0
-    },
-    "projectName": "superGoal",
     "files": [
+        "./mega_pt.png",
+        "./mega_es.png",
         "./mega_en.png",
+        "./l_red.png",
         "./jackpot_pt.png",
         "./jackpot_lock.png",
         "./jackpot_icon_coin.png",
         "./jackpot_es.png",
         "./jackpot_en.png",
+        "./g_red.png",
         "./fundo-cartela.png",
         "./fundo-1.png",
         "./extraball.png",
+        "./e_red.png",
         "./champion_shose.png",
         "./champion_paytable_u.png",
         "./champion_paytable_s.png",
@@ -44,7 +41,11 @@
         "./card_number_bg.png",
         "./card_black.png",
         "./ball_green.png",
+        "./a_red.png",
         "./x.png",
+        "./u_red.png",
+        "./s_red.png",
+        "./r_red.png",
         "./paytable_bg_02.png",
         "./paytable_bg.png",
         "./pachinko_paytable12.png",
@@ -58,8 +59,16 @@
         "./pachinko_paytable3.png",
         "./pachinko_paytable2.png",
         "./pachinko_paytable1.png",
-        "./mega_pt.png",
-        "./mega_es.png"
+        "./p_red.png",
+        "./o_red.png"
     ],
-    "version": 5
+    "projectName": "superGoal",
+    "version": 5,
+    "options": {
+        "extend": 0,
+        "layoutMath": "0",
+        "sizeMode": "free",
+        "useExtension": 0,
+        "layoutGap": 1
+    }
 }
