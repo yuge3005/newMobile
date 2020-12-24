@@ -40,6 +40,7 @@ class GameSettingPopup extends GenericPo {
 
 		this.addScrollArea( new egret.Rectangle( 62, 41, 1040, 910 ) );
 		this.addItems();
+		this.addTitleAndVertion();
 		TweenerTool.tweenTo( this, { scaleX: 0.5, scaleY: 0.5 }, 300 );
 	}
 
@@ -60,10 +61,7 @@ class GameSettingPopup extends GenericPo {
 
 	protected addButtonText( button: TouchDownButton, offsetX: number, buttonText: string = null ){
 		let tx: TextLabel = Com.addLabelAt( button, offsetX, 0, button.width - offsetX - 10, button.height, 48 );
-		tx.fontFamily = "Righteous";
-		tx.stroke = 2;
-		tx.strokeColor = 0x03034B;
-		tx.filters = [ new egret.DropShadowFilter( 5, 45, 0, 0.5, 4, 4, 2, 1 ) ];
+		GameSettingItem.settingTextFormat( tx );
 		if( buttonText ) tx.setText( MuLang.getText( buttonText, MuLang.CASE_UPPER ) );
 	}
 
@@ -74,15 +72,15 @@ class GameSettingPopup extends GenericPo {
 		let button1: TouchDownButton = Com.addDownButtonAt( this, "gameSettings_json.support_btn", "gameSettings_json.support_btn", 700, 18, this.showLangugeBar, true );
 		this.addItem( 1, "language_icon", "language", button1, 5 );
 		let bt2Container: egret.DisplayObjectContainer = new egret.DisplayObjectContainer;
-		let button2_1: TouchDownButton = Com.addDownButtonAt( bt2Container, "gameSettings_json.gl_bt_settings", "gameSettings_json.gl_bt_settings", 380, 18, this.showLangugeBar, true );
-		let button2_2: TouchDownButton = Com.addDownButtonAt( bt2Container, "gameSettings_json.fb_bt_settings", "gameSettings_json.fb_bt_settings", 700, 18, this.showLangugeBar, true );
+		let button2_1: TouchDownButton = Com.addDownButtonAt( bt2Container, "gameSettings_json.gl_bt_settings", "gameSettings_json.gl_bt_settings", 380, 18, this.gotoLoginPage, true );
+		let button2_2: TouchDownButton = Com.addDownButtonAt( bt2Container, "gameSettings_json.fb_bt_settings", "gameSettings_json.fb_bt_settings", 700, 18, this.gotoLoginPage, true );
 		this.addButtonText( button2_1, 30, "login" );
 		this.addButtonText( button2_2, 30, "login" );
 		this.addItem( 2, "icon_connect", "link", bt2Container );
-		let button3: TouchDownButton = Com.addDownButtonAt( this, "gameSettings_json.support_btn", "gameSettings_json.support_btn", 700, 18, this.logout, true );
+		let button3: TouchDownButton = Com.addDownButtonAt( this, "gameSettings_json.support_btn", "gameSettings_json.support_btn", 700, 18, this.suport, true );
 		this.addButtonText( button3, 0, "contact" );
 		this.addItem( 3, "support_icon", "support", button3, 5 );
-		let button4: TouchDownButton = Com.addDownButtonAt( this, "gameSettings_json.support_btn", "gameSettings_json.support_btn", 700, 18, this.logout, true );
+		let button4: TouchDownButton = Com.addDownButtonAt( this, "gameSettings_json.support_btn", "gameSettings_json.support_btn", 700, 18, this.suport, true );
 		this.addButtonText( button4, 0, "rate_us" );
 		this.addItem( 4, "rate_icon", "rate_us", button4, 5 );
 		this.soundEffectBtn = new SettingsCheckbox( this.soundEffectChange.bind(this) );
@@ -99,12 +97,32 @@ class GameSettingPopup extends GenericPo {
 		this.addItem( 8, "icon_notification", MuLang.getText( "notification" ), this.notificationBtn, 5 );
 	}
 
+	private addTitleAndVertion(){
+		let tx: TextLabel = Com.addLabelAt( this, 0, -40, this.bg.width, 55, 55 );
+		GameSettingItem.settingTextFormat( tx );
+		tx.setText( MuLang.getText( "settings", MuLang.CASE_UPPER ) );
+		let txVersion: TextLabel = MDS.addGameText( this, 100, 980, 40, 0xFFFFFF, "", true, 525, "", 1 );
+		GameSettingItem.settingTextFormat( txVersion );
+		txVersion.setText( MuLang.getText( "settings", MuLang.CASE_UPPER ) + ":     " + GameSettings.vertion );
+		let txId: TextLabel = MDS.addGameText( this, 720, 980, 40, 0xFFFFFF, "", true, 650, "", 1 );
+		GameSettingItem.settingTextFormat( txId );
+		txId.setText( MuLang.getText( "user_id", MuLang.CASE_UPPER ) + ":     " + PlayerConfig.player( "user.id" ) );
+	}
+
 	private logout(){
 		alert( "can not logout now" );
 	}
 
 	private showLangugeBar(){
 
+	}
+
+	private gotoLoginPage(){
+		window.location.href="/"
+	}
+
+	private suport(){
+		window.location.href="/contact.php";
 	}
 
 	private soundEffectChange(){

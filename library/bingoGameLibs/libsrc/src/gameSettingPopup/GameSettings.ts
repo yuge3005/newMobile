@@ -1,5 +1,7 @@
 class GameSettings {
 
+	public static vertion: string = "2.6.2";
+
 	public static set visualEffectOn( value: boolean ){
 		if( this.visualEffectOn == value )return;
 		egret.localStorage.setItem( "visualEffect", value ? "" : "false" );
