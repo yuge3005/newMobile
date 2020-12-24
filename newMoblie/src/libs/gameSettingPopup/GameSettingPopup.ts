@@ -8,6 +8,8 @@ class GameSettingPopup extends GenericPo {
 	private visualEffectBtn: SettingsCheckbox;
 	private notificationBtn: SettingsCheckbox;
 
+	private languageBar: LanguageBar;
+
 	protected static get classAssetName() {
         return "gameSettings";
     }
@@ -41,6 +43,7 @@ class GameSettingPopup extends GenericPo {
 		this.addScrollArea( new egret.Rectangle( 62, 41, 1040, 910 ) );
 		this.addItems();
 		this.addTitleAndVertion();
+		this.addLanguageBar();
 		TweenerTool.tweenTo( this, { scaleX: 0.5, scaleY: 0.5 }, 300 );
 	}
 
@@ -70,6 +73,8 @@ class GameSettingPopup extends GenericPo {
 		this.addButtonText( button0, 0, "logout" );
 		this.addItem( 0, "avatar", "gustId:" + 1234567, button0 );
 		let button1: TouchDownButton = Com.addDownButtonAt( this, "gameSettings_json.support_btn", "gameSettings_json.support_btn", 700, 18, this.showLangugeBar, true );
+		Com.addBitmapAtMiddle( button1, "gameSettings_json.flag_" + MuLang.language, button1.width >> 1, button1.height >> 1 );
+		Com.addBitmapAtMiddle( button1, "gameSettings_json.btn_arrow", button1.width - 45, button1.height >> 1 );
 		this.addItem( 1, "language_icon", "language", button1, 5 );
 		let bt2Container: egret.DisplayObjectContainer = new egret.DisplayObjectContainer;
 		let button2_1: TouchDownButton = Com.addDownButtonAt( bt2Container, "gameSettings_json.gl_bt_settings", "gameSettings_json.gl_bt_settings", 380, 18, this.gotoLoginPage, true );
@@ -109,16 +114,22 @@ class GameSettingPopup extends GenericPo {
 		txId.setText( MuLang.getText( "user_id", MuLang.CASE_UPPER ) + ":     " + PlayerConfig.player( "user.id" ) );
 	}
 
+	private addLanguageBar(){
+		this.languageBar = new LanguageBar;
+		this.languageBar.visible = false;
+		Com.addObjectAt( this.scrollBar, this.languageBar, 708, 280 );
+	}
+
 	private logout(){
 		alert( "can not logout now" );
 	}
 
 	private showLangugeBar(){
-
+		this.languageBar.visible = !this.languageBar.visible;
 	}
 
 	private gotoLoginPage(){
-		window.location.href="/"
+		window.location.href="/";
 	}
 
 	private suport(){
