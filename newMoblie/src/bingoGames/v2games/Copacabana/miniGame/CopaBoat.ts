@@ -267,7 +267,7 @@ class CopaBoat extends egret.DisplayObjectContainer {
             this.choicePrizeCard[i].width = 252;
             this.choicePrizeCard[i].height = 267;
             // ## remove after second currency
-            this.choicePrizeCard[i].visible = i === 0;
+            // this.choicePrizeCard[i].visible = i === 0;
             Com.addObjectAt(this.choicePrizeContainer, this.choicePrizeCard[i], 36 + i * 219, 84);
             // bg
             Com.addBitmapAt(this.choicePrizeCard[i], this.assetJson + ".boat_bg", 0, 0);
@@ -401,6 +401,9 @@ class CopaBoat extends egret.DisplayObjectContainer {
             this.choicePrizeContainer.visible = false;
             this.progressBar.visible = this.speedBar.visible = true;
             this.btnEnable = true;
+            for( let i: number = 0; i < 5; i++ ){
+                this.powers[i].y = -201;
+            }
         }
     }
 
