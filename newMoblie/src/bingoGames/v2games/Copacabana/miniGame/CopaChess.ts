@@ -345,11 +345,12 @@ class CopaChess extends egret.DisplayObjectContainer {
         this.playBtn.scaleY = 60 / 84;
 
         // text
-        let playBtnText = Com.addTextAt(this, 70, 10, 120, 65, 30, false, true);
-        playBtnText.filters = [new egret.DropShadowFilter(5, 45, 0x0, 0.6, 4, 4)];
-        playBtnText.textColor = 0xFFFFFF;
+        let playBtnText = Com.addTextAt(this, 70, 10, 150, 65, 25);
+        playBtnText.filters = [new egret.DropShadowFilter(2, 45, 0x0, 0.6, 2, 2)];
         playBtnText.verticalAlign = "middle";
-        playBtnText.text = MuLang.getText( "RollDice" );
+        playBtnText.bold = true;
+        playBtnText.scaleX = 0.80;
+        playBtnText.text = MuLang.getText( "RollDice", MuLang.CASE_UPPER );
 
         this.playBtn.addChild(playBtnText);
         let ds: egret.Bitmap = Com.addBitmapAt( this.playBtn, BingoMachine.getAssetStr("icon_dice02"), 0, 5 );
