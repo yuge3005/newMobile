@@ -19,7 +19,7 @@ class CopaChess extends egret.DisplayObjectContainer {
     private isAfterBoat: boolean;
     private rerollCard: egret.DisplayObjectContainer;
     private canReroll: boolean = true;
-    private rerollPrice: egret.TextField;
+    private rerollPrice: TextLabel;
     private roundCard: egret.DisplayObjectContainer;
     private noBonusTitle: egret.DisplayObjectContainer;
     private singleBuffIcon: egret.DisplayObjectContainer;
@@ -197,7 +197,7 @@ class CopaChess extends egret.DisplayObjectContainer {
         Com.addBitmapAt(this.rerollCard, this.assetJson + ".icon_dice", 44, 69);
         // text
         let rerollText = Com.addTextAt(this.rerollCard, 18, 12, 135, 60, 20, true, false);
-        rerollText.fontFamily = "TCM_conden";
+        rerollText.fontFamily = "Righteous";
         rerollText.verticalAlign = "middle";
         rerollText.textColor = 0x143582;
         rerollText.wordWrap = true;
@@ -220,10 +220,7 @@ class CopaChess extends egret.DisplayObjectContainer {
         roundDineroIcon.anchorOffsetY = 10;
         roundDineroIcon.rotation = -45;
         // reroll price
-        this.rerollPrice = Com.addTextAt(rerollBtn, 34, 3, 44, 28, 24, false, false);
-        this.rerollPrice.fontFamily = "TCM_conden";
-        this.rerollPrice.verticalAlign = "middle";
-        this.rerollPrice.textColor = 0xFFFFFF;
+        this.rerollPrice = Com.addLabelAt(rerollBtn, 34, 6, 44, 28, 24, false, false);
         this.rerollPrice.text = "0";
 
         // round card
@@ -250,7 +247,7 @@ class CopaChess extends egret.DisplayObjectContainer {
         noBonusTitle.text = MuLang.getText( "no_bonus" );
         // text
         let roundCardText = Com.addTextAt(this.roundCard, 18, 12, 135, 60, 20, true, false);
-        roundCardText.fontFamily = "TCM_conden";
+        roundCardText.fontFamily = "Righteous";
         roundCardText.verticalAlign = "middle";
         roundCardText.textColor = 0x893E12;
         roundCardText.wordWrap = true;
@@ -267,11 +264,8 @@ class CopaChess extends egret.DisplayObjectContainer {
         // round bg
         Com.addBitmapAt(roundBtn, this.assetJson + ".btn_popup", 0, 0);
         // get round
-        let roundBtnText = Com.addTextAt(roundBtn, 0, 0, 84, 34, 24, false, false);
-        roundBtnText.fontFamily = "TCM_conden";
-        roundBtnText.verticalAlign = "middle";
-        roundBtnText.textColor = 0xFFFFFF;
-        roundBtnText.text = MuLang.getText( "accept" );
+        let roundBtnText = Com.addLabelAt(roundBtn, 2, 0, 80, 34, 24, false, false);
+        roundBtnText.setText( MuLang.getText( "accept" ) );
 
         // double power card
         this.doublePowerCard = new egret.DisplayObjectContainer();
@@ -287,7 +281,7 @@ class CopaChess extends egret.DisplayObjectContainer {
         Com.addObjectAt(this.doublePowerCard, this.doublePowerBuffIcon, 0, 0);
         // text
         let doublePowerText = Com.addTextAt(this.doublePowerCard, 18, 12, 135, 60, 20, true, false);
-        doublePowerText.fontFamily = "TCM_conden";
+        doublePowerText.fontFamily = "Righteous";
         doublePowerText.verticalAlign = "middle";
         doublePowerText.textColor = 0x143582;
         doublePowerText.wordWrap = true;
@@ -311,7 +305,7 @@ class CopaChess extends egret.DisplayObjectContainer {
         doubleDineroIcon.rotation = -45;
         // double power text
         this.doublePowerPrice = Com.addTextAt(doublePowerBtn, 34, 3, 44, 28, 24, false, false);
-        this.doublePowerPrice.fontFamily = "TCM_conden";
+        this.doublePowerPrice.fontFamily = "Righteous";
         this.doublePowerPrice.verticalAlign = "middle";
         this.doublePowerPrice.textColor = 0xFFFFFF;
         this.doublePowerPrice.text = "0";
@@ -449,8 +443,7 @@ class CopaChess extends egret.DisplayObjectContainer {
         }
 
         this.roundCardText.text = rounds + " " + MuLang.getText( "rounds" );
-        this.rerollPrice.text = rerollPrice + "";
-        this.rerollPrice.size = 24 - Math.max((rerollPrice + "").length - 4, 0) * 4;
+        this.rerollPrice.setText( "" + rerollPrice );
         this.doublePowerPrice.text = doublePowerPrice + "";
         this.doublePowerPrice.size = 24 - Math.max((doublePowerPrice + "").length - 4, 0) * 4;
 
