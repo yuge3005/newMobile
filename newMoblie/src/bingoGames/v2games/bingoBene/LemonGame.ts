@@ -229,7 +229,7 @@ class LemonGame extends egret.DisplayObjectContainer {
 		newPlate.anchorOffsetY = plate.anchorOffsetY;
 		let assetName: string;
 		if( type == 0 ){
-			assetName = "plate_knife";
+			assetName = "plate_and_knife";
 			this.type1Count++;
 		}
 		else if( type == 1 ){
