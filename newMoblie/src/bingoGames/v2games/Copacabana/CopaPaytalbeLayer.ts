@@ -56,6 +56,7 @@ class CopaPaytalbeLayer extends PaytableLayer{
 
 		this.unUsePaytable( "double_line" );
 		this.squarePaytable = PayTableManager.payTablesDictionary[ "square" ];
+		this.squarePaytable["ui"].visible = false;
 	}
 
 	protected buildTitleText(){

@@ -71,7 +71,7 @@ class GameSettingPopup extends GenericPo {
 	private addItems(){
 		let button0: TouchDownButton = Com.addDownButtonAt( this, "gameSettings_json.support_btn", "gameSettings_json.support_btn", 700, 18, this.logout, true );
 		this.addButtonText( button0, 0, "logout" );
-		this.addItem( 0, "avatar", "gustId:" + 1234567, button0 );
+		this.addItem( 0, "avatar", MuLang.getText( "user_id", MuLang.CASE_UPPER ) + ":     " + PlayerConfig.player( "user.id" ), button0 );
 		let button1: TouchDownButton = Com.addDownButtonAt( this, "gameSettings_json.support_btn", "gameSettings_json.support_btn", 700, 18, this.showLangugeBar, true );
 		Com.addBitmapAtMiddle( button1, "gameSettings_json.flag_" + MuLang.language, button1.width >> 1, button1.height >> 1 );
 		Com.addBitmapAtMiddle( button1, "gameSettings_json.btn_arrow", button1.width - 45, button1.height >> 1 );

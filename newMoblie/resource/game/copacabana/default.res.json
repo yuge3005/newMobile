@@ -11,6 +11,10 @@
 		{
 			"keys": "bad_buff_mp3,chess_mp3,collect_bonus_mp3,dice_mp3,engine_mp3,nice_buff_mp3,pipa_ball_mp3,pipa_bgm_mp3,pipa_bomb_mp3,pipa_double_line_mp3,pipa_mark_pen_mp3,pipa_peel_mp3,pipa_singe_line_mp3,pipa_square_mp3,pipa_win_bingo_mp3,pipa_json,pipa_dice_png,pipa_dice_json,pipa_chess_json,pipa_boat_json,Arial Black_png,pipaSquare_json,pipaDoubleLine_json,pipa_en_json,pipa_es_json,pipa_pt_json,pipaParticle_png,pipaParticle_json,pipaAnimation_png,pipaAnimation_json,pipa_conf,forAll_tx,copacabana_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,blank_sound_mp3,Arial Black_fnt",
 			"name": "pipa"
+		},
+		{
+			"keys": "bingo_bg_png,copa_bingo_json,copa_bingo_fireworks_json,copa_bingo_fireworks_png",
+			"name": "copa_bingo"
 		}
 	],
 	"resources": [
@@ -225,6 +229,27 @@
 			"type": "sheet",
 			"name": "gameSettings_json",
 			"subkeys": "X_btn,avatar,bg,bg_slider_off,bg_slider_on,btn_arrow,fb_bt_settings,flag_en,flag_es,flag_pt,gl_bt_settings,icon_connect,icon_notification,language_icon,music_icon,rate_icon,scroll_bar,scroll_bar_handle,slider_switch,sound_fx_icon,support_btn,support_icon,tab_bg,visual_fx_icon"
+		},
+		{
+			"url": "game/copacabana/bingo_bg.png",
+			"type": "image",
+			"name": "bingo_bg_png"
+		},
+		{
+			"url": "game/copacabana/copa_bingo_fireworks.png",
+			"type": "image",
+			"name": "copa_bingo_fireworks_png"
+		},
+		{
+			"url": "game/copacabana/copa_bingo_fireworks.json",
+			"type": "json",
+			"name": "copa_bingo_fireworks_json"
+		},
+		{
+			"url": "game/copacabana/copa_bingo.json",
+			"type": "sheet",
+			"name": "copa_bingo_json",
+			"subkeys": "B,G,GT,I,N,O,bingo_star,blank_bg"
 		}
 	]
 }
