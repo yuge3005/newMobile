@@ -1079,6 +1079,8 @@ class Copacabana extends V2Game{
         IBingoServer.goKartHandlerCallback = this.onKartTurbo.bind(this);
     }
 
+    private boatReward: number;
+
     /**
      * on kart turbo
      */
@@ -1095,6 +1097,8 @@ class Copacabana extends V2Game{
 
             this.newBuffId = this.miniGame["config"][data["buff_pos"]];
             this.bufPos = data["buff_pos"];
+
+            this.boatReward = data["buffReward"];
         }
 
         if( this.dinero != data["secondCurrency"] )this.dispatchEvent(new egret.Event("updateCoinsAndXp", false, true, data));
@@ -1127,6 +1131,12 @@ class Copacabana extends V2Game{
 
         this.showCurrentBuff();
         this.saveBuffData();
+
+        if( this.boatReward ){
+            this.gameCoins += this.boatReward;
+            this.gameToolBar.updateCoinsAndXp( this.gameCoins, this.dinero );
+            this.boatReward = 0;
+        }
     }
 
     /**
