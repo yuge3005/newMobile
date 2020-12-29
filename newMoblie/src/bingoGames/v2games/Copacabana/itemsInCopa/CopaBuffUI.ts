@@ -22,6 +22,7 @@ class CopaBuffUI extends egret.DisplayObjectContainer{
 		blackBg.width = 212;
 
 		this.buffLeftUI = Com.addBitmapAt( this, BingoMachine.getAssetStr( "buff_progress" ), 120, 45 );
+		this.buffLeftUI.scale9Grid = new egret.Rectangle( 5, 5, 7, 7 );
 		this.addChild( this.buffLeftUI );
 
 		this.buffLeftOverMaxUI = Com.addBitmapAt( this, BingoMachine.getAssetStr( "buff_progress" ), 120, 45 );
