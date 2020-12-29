@@ -31,4 +31,17 @@
 		,"buy all":{ "en": "BUY ALL", "es": "COMPRAR TODAS", "pt": "COMPRAR TODAS" }
 		,"coins":{ "en": "COINS", "es": "MONEDAS", "pt": "MOEDAS" }
 		,"dinero":{ "en": "DINERO", "es": "PLATAS", "pt": "DOLETAS" }
+		,"settings":{ "en": "SETTINGS", "es": "AJUSTES", "pt": "CONFIGURAÇÕES" }
+		,"user_id":{ "en": "User ID", "es": "ID de Usuario", "pt": "ID" }
+		,"notification":{ "en": "NOTIFICATIONS", "es": "NOTIFICACIONES", "pt": "NOTIFICAÇÕES" }
+		,"login":{ "en": "Login", "es": "Login", "pt": "Login" }
+		,"logout":{ "en": "LOGOUT", "es": "SALIR", "pt": "LOGOUT" }
+		,"contact":{ "en": "CONTACT", "es": "CONTACTO", "pt": "CONTATO" }
+		,"rate_us":{ "en": "Rate Us", "es": "¡Denos una", "pt": "Avalie-nos" }
+		,"language":{ "en": "LANGUAGE", "es": "IDIOMA", "pt": "LÍNGUA" }
+		,"link":{ "en": "LINK", "es": "ENLACE", "pt": "LINK" }
+		,"support":{ "en": "SUPPORT", "es": "Atención al Cliente", "pt": "CONTATO COM O SUPORTE" }
+		,"sound_effect_on":{ "en": "SOUND EFFECTS", "es": "EFECTOS DE SONIDO", "pt": "EFEITOS DE SONS" }
+		,"music_on":{ "en": "MUSIC", "es": "MÚSICA", "pt": "MÚSICA" }
+		,"effect_on":{ "en": "VISUAL EFFECTS", "es": "EFECTOS VISUALES", "pt": "EFEITOS VISUAIS" }
 }
