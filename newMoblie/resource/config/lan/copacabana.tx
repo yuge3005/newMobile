@@ -2,7 +2,7 @@
         ,"rounds":{ "en": "rounds", "es": "rondas", "pt": "rodadas" }
         ,"rollAgain":{ "en": "Roll the dice again", "es": "Juega el dado de nuevo", "pt": "Jogue o dado novamente" }
         ,"doubleDuration":{ "en": "Double power duration", "es": "Doblar el tiempo del poder", "pt": "Dobre o tempo do poder" }
-        ,"RollDice":{ "en": "ROLL", "es": "Juega", "pt": "Jogue" }
+        ,"RollDice":{ "en": "roll the\ndices", "es": "Juega los\ndados", "pt": "Jogue os\ndados" }
         ,"go":{ "en": "GO!", "es": "¡VA!", "pt": "VAI!" }
         ,"choose":{ "en": "Choose", "es": "Eligir", "pt": "Escolher" }
         ,"vip":{ "en": "vip", "es": "vip", "pt": "vip" }

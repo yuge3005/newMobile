@@ -54,6 +54,8 @@ class LemonGame extends egret.DisplayObjectContainer {
 
 	private roundTx: egret.TextField;
 
+	private smallKnife: egret.Bitmap;
+
 	public constructor( bet: number ) {
 		super();
 
@@ -160,6 +162,7 @@ class LemonGame extends egret.DisplayObjectContainer {
 
 		this.type1Btn = Com.addDownButtonAt( this, this.assetStr( "plate_knife" ), this.assetStr( "plate_knife" ), 20, 20, this.onType1Button.bind(this), true );
 		this.type2Btn = Com.addDownButtonAt( this, this.assetStr( "plate_scissors" ), this.assetStr( "plate_scissors" ), 1230, 20, this.onType2Button.bind(this), true );
+		this.smallKnife = Com.addBitmapAtMiddle( this.type1Btn, this.assetStr( "knife" ), this.type1Btn.width >> 1, this.type1Btn.height >> 1 );
 
 		this.enablePizzaButton( false );
 
@@ -177,12 +180,23 @@ class LemonGame extends egret.DisplayObjectContainer {
 	}
 
 	private enablePizzaButton( enable: boolean ): void{
-		let boxEnable: boolean = enable && this.roundCount > 0;
+		let boxEnable: boolean = enable && ( this.roundCount > 1 || ( this.roundCount == 1 && this.type1Count == 0 ) );
 		for( let i: number = 0; i < 3; i++ ){
 			this.choseBoxes[i].touchEnabled = boxEnable;
 		}
 		this.setTypeButtonState( this.type1Btn, enable && this.type1Count > 0 );
 		this.setTypeButtonState( this.type2Btn, enable && this.type2Count > 0 );
+
+		if( this.roundCount == 1 && this.type1Count > 0 ){
+			this.knifeZooming();
+		}
+	}
+
+	private knifeZooming(){
+		if( this.type1Btn.enabled ){
+			let toScale: number = this.smallKnife.scaleX > 1 ? 1 : 1.2;
+			TweenerTool.tweenTo( this.smallKnife, { scaleX: toScale, scaleY: toScale }, 300, 0, this.knifeZooming.bind(this) );
+		}
 	}
 
 	private setTypeButtonState( targetButton: TouchDownButton, enable: boolean ){
@@ -229,7 +243,7 @@ class LemonGame extends egret.DisplayObjectContainer {
 		newPlate.anchorOffsetY = plate.anchorOffsetY;
 		let assetName: string;
 		if( type == 0 ){
-			assetName = "plate_knife";
+			assetName = "plate_and_knife";
 			this.type1Count++;
 		}
 		else if( type == 1 ){

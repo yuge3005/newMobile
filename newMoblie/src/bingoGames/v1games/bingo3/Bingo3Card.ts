@@ -65,7 +65,7 @@ class Bingo3Card extends GameCard{
 	}
 
 	private winGanhoblink(){
-		if( !this.ganhoBg.parent ) return;
+		if( !this.ganhoBg || !this.ganhoBg.parent ) return;
 		let per: number = this.ganhoBlinkCounter++ & 1;
 		if( per ){
 			this.ganhoBg.filters = [ MatrixTool.colorMatrixPure( 0xFFFF00 ) ];
