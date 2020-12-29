@@ -1,0 +1,9 @@
+{"file":"copa_bingo.png","frames":{
+"N":{"x":1,"y":1,"w":79,"h":84,"offX":0,"offY":0,"sourceW":79,"sourceH":84},
+"I":{"x":77,"y":90,"w":35,"h":80,"offX":0,"offY":0,"sourceW":35,"sourceH":80},
+"GT":{"x":219,"y":89,"w":34,"h":90,"offX":0,"offY":0,"sourceW":34,"sourceH":90},
+"G":{"x":82,"y":1,"w":73,"h":87,"offX":0,"offY":0,"sourceW":73,"sourceH":87},
+"blank_bg":{"x":227,"y":1,"w":5,"h":5,"offX":0,"offY":0,"sourceW":785,"sourceH":611},
+"bingo_star":{"x":157,"y":89,"w":60,"h":60,"offX":0,"offY":0,"sourceW":60,"sourceH":60},
+"B":{"x":157,"y":1,"w":68,"h":86,"offX":0,"offY":0,"sourceW":68,"sourceH":86},
+"O":{"x":1,"y":87,"w":74,"h":77,"offX":0,"offY":0,"sourceW":74,"sourceH":77}}}
