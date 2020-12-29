@@ -26,11 +26,10 @@ class CopaPaytalbeLayer extends PaytableLayer{
 		this.dbLine2Bg.visible = false;
 
 		this.squareBg = new egret.DisplayObjectContainer;
-		this.squareBg.mask = new egret.Rectangle( 610, 117, 235, 59 );
-		let bbg: egret.Bitmap = this.buildScaleBg( "bar_long", 327, 113, 70, 1000 );
+		let bbg: egret.Bitmap = this.buildScaleBg( "bar_long", 327, 33, 70, 280 );
 		this.squareBg.addChild( bbg );
-		let bIcon: egret.Bitmap = Com.addBitmapAt( this.squareBg, BingoMachine.getAssetStr("icon_ninebox"), 615, 119 );
-		let dbg: egret.Bitmap = this.buildScaleBg( "paytable_prize_bg", 707, 122, 55, 135, 50 );
+		let bIcon: egret.Bitmap = Com.addBitmapAt( this.squareBg, BingoMachine.getAssetStr("icon_ninebox"), 335, 39 );
+		let dbg: egret.Bitmap = this.buildScaleBg( "paytable_prize_bg", 433, 42, 55, 135, 50 );
 		dbg.filters = [ MatrixTool.colorMatrixPure( 0xDB7D2D ) ];
 		this.squareBg.addChild( dbg );
     }
