@@ -85,24 +85,29 @@ class MultiChatBar extends egret.DisplayObjectContainer{
 
 	public otherJoin( userName: string, fbId: string ){
 		trace( userName + "join game" );
-		this.showUserMessage( userName, MuLang.getText( "join_game" ), fbId, true );
-		this.resetScroll();
+		this.showUserMessage( fbId, this.buildJoinMessage( userName, MuLang.getText( "join_game" ) ) );
 	}
 
 	public userMessage( userName: string, message: string, fbId: string ){
 		trace( userName + " says:" + message );
-		this.showUserMessage( userName, message, fbId );
+		this.showUserMessage( fbId, this.buildUserMessage( userName, message ) );
+	}
+
+	public showUserMessage( fbId: string, userInfo: egret.DisplayObjectContainer ){
+		Com.addObjectAt( this.scrollBar, userInfo, this.leftMargin, this.scrollHeight );
+		if( fbId != "" ) FacebookBitmap.downloadBitmapDataByFacebookID( fbId, 50, 50, MDS.onUserHeadLoaded.bind( this, userInfo.getChildAt( 0 ), this.headSize ), this );
 		this.resetScroll();
 	}
 
-	public showUserMessage( userName: string, message: string, fbId: string, tipBg: boolean = false, redBigTip: boolean = false ){
-		let userInfo: egret.DisplayObjectContainer = this.buildMessageItem( userName, message, tipBg, redBigTip );
-		Com.addObjectAt( this.scrollBar, userInfo, this.leftMargin, this.scrollHeight );
-
-		if( fbId != "" ) FacebookBitmap.downloadBitmapDataByFacebookID( fbId, 50, 50, MDS.onUserHeadLoaded.bind( this, userInfo.getChildAt( 0 ), this.headSize ), this );
+	protected buildUserMessage( userName: string, message: string ): egret.DisplayObjectContainer{
+		return  new egret.DisplayObjectContainer;
 	}
 
-	protected buildMessageItem( userName: string, message: string, tipBg: boolean, redBigTip: boolean ): egret.DisplayObjectContainer{
+	protected buildJoinMessage( userName: string, joinInfo: string ): egret.DisplayObjectContainer{
+		return  new egret.DisplayObjectContainer;
+	}
+
+	protected buildBingoMessage( userName: string, bingoTip: string ): egret.DisplayObjectContainer{
 		return  new egret.DisplayObjectContainer;
 	}
 
@@ -116,7 +121,15 @@ class MultiChatBar extends egret.DisplayObjectContainer{
 	}
 
 	public showBingoPlayerName( userName: string, fbId: string ){
-		this.showUserMessage( userName, "BINGO", fbId, false, true );
-		this.resetScroll();
+		trace( userName + "bingo" );
+		this.showUserMessage( fbId, this.buildBingoMessage( userName, "BINGO" ) );
+	}
+
+	protected getHead( userInfo: egret.DisplayObjectContainer ): egret.Bitmap{
+		return null;
+	}
+
+	protected getTitle( userInfo: egret.DisplayObjectContainer, userName: string ): TextLabel{
+		return null;
 	}
 }
