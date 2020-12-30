@@ -761,6 +761,7 @@ class Copacabana extends V2Game{
         tw2.to( { scaleY: 1 }, 3800 );
 
         this.playSound( "pipa_peel_mp3" );
+        clearTimeout( this.timeoutId );
     }
 
     public checkDinero( num: number ): boolean{
