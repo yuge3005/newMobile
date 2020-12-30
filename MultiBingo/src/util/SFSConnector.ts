@@ -7,8 +7,6 @@ class SFSConnector {
 
     private static gettingRoom: string;
     private static joinRoomCallback: Function;
-    public static gameInitCallback: Function;
-    public static roundOverCallback: Function;
     public static selectNumberCallback: Function;
     public static multiPlayerCallback: Function;
     public static buyCardCallback: Function;
@@ -464,113 +462,7 @@ class SFSConnector {
         trace( "onSfsExtensionResponse" );
         trace( event.cmd );
         trace( event.params.getDump() );
-        if( event.cmd == "respostainiciar" && SFSConnector.gameInitCallback ){
-            var data : any = event.params;
-            var gameData: Object = {};
-            gameData["credito"] = data.getDouble("creditos");
-            gameData["acumulado"] = data.getDouble("acumulado");
-            gameData["jackpot_min_bet"] = data.getInt("jackpot_min_bet");
-            gameData["cartela"] = data.getInt("cartela");
-            gameData["numerosCartelas"] = data.getByteArray("numeros");
-            // if( !numCards )createNumberCards();
-            // setNumberCards( numerosCartelas );
-            gameData["pendente"] = data.getBool("pendente");
-            gameData["aposta"] = data.getInt("aposta");
-            gameData["btcreditar"] = data.getBool("btcreditar");
-            gameData["btextra"] = data.getBool("btextra");
-            gameData["btpainelpendente"] = data.getBool("btpainelpendente");
-            gameData["letras"] = data.getUtfString("letras");
-            gameData["bonusBalls"] = data.getUtfString("bonusBalls");
-            gameData["bonusRounds"] = data.getUtfString("bonusRounds");
-            gameData["luckmultis"] = data.getUtfString("luckmultis");
-            let buffWheel = data.getIntArray("buffWheel");
-            if( buffWheel ){
-                gameData["buffWheel"] = buffWheel;
-
-                gameData["goKartRewards"] = data.getSFSArray("go_kart_rewards");
-                var buffs = data.getSFSArray("buffs");
-                gameData["buffs"] = [];
-                for( let i: number = 0; i < buffs.size(); i++ ){
-                    gameData["buffs"][i] = {};
-                    gameData["buffs"][i].buffValue = buffs.get(i).getInt("buffValue");
-                    gameData["buffs"][i].buff_pos = buffs.get(i).getInt("buff_pos");
-                    gameData["buffs"][i].buffID = buffs.get(i).getInt("buffID");
-                    gameData["buffs"][i].buffMaxValue = buffs.get(i).getInt("buff_max_value");
-                    gameData["buffs"][i].buffBet = buffs.get(i).getInt("buffBet");
-                }
-
-                gameData["gokartSecondCurrencyRewards"] = data.getSFSArray("go_kart_hard_currency_rewards");
-            }
-            let bellIndexs = data.getIntArray("bell_indexs");
-            if( bellIndexs ){
-                gameData["bellIndexs"] = bellIndexs;
-                var lemonBuffs = data.getSFSArray("lemon_games_buffs");
-                gameData["lemonBuffs"] = [];
-                for( let i: number = 0; i < lemonBuffs.size(); i++ ){
-                    gameData["lemonBuffs"][i] = {};
-                    gameData["lemonBuffs"][i].buffID = lemonBuffs.get(i).getInt("buffID");
-                    gameData["lemonBuffs"][i].buffBet = lemonBuffs.get(i).getInt("buffBet");
-                }
-            }
-            gameData["secondCurrency"] = data.getLong("hard_currency");
-            let betConfig = data.getSFSArray("betConfig");
-            if( betConfig ){
-                gameData["betConfig"] = this.getBetConfig( betConfig );
-            }
-            SFSConnector.gameInitCallback( gameData );
-        }
-        if( event.cmd == "login" && SFSConnector.gameInitCallback ){
-            var data : any = event.params;
-            let resposta = data.getUtfString("resposta");
-
-            var gameData: Object = {};
-            gameData["credito"] = parseInt(resposta.match( /\$.+(?=CA)/ )[0].replace( "$", "" ) );
-			var subResponse:String = resposta.substr(resposta.search("CT"));
-            var codCartela: number = parseInt( subResponse.substr(2, 4) );
-            gameData["cartela"] = codCartela;
-            gameData["acumulado"] = resposta.match( /AC.+(?=CT)/ )[0].replace( "AC", "" );
-            gameData["jackpot_min_bet"] = data.getInt("jackpot_min_bet");
-            let save = resposta.match( /P\d*/g );
-            if( save && save.length ){
-                gameData["save"] = parseInt( save[save.length-1].replace( "P", "" ) );
-            }
-            gameData["secondCurrency"] = data.getLong("hard_currency");
-            let betConfig = data.getSFSArray("betConfig");
-            if( betConfig ){
-                gameData["betConfig"] = this.getBetConfig( betConfig );
-            }
-            SFSConnector.gameInitCallback( gameData );
-
-            var params:any = eval( "new SFS2X.SFSObject()" );
-            SFSConnector._sfs.send(eval("new SFS2X.ExtensionRequest( 'respostalogin', params )"));
-        }
-        else if( event.cmd == "jogadafinalizada" && SFSConnector.roundOverCallback ){
-            var data : any = event.params;
-            var gameData: Object = {};
-            gameData["ganho"] = data.getDouble( "ganho" );
-            gameData["credito"] = data.getDouble( "creditos" );
-            gameData["luckMulti"] = data.getInt( "luckMulti" );
-            gameData["letra"] = data.getByte( "letra" );
-            gameData["bonusRound"] = data.getByte( "bonusRound" );
-            gameData["missionValue"] = data.get("mission_value");
-            gameData["secondCurrency"] = data.getLong("hard_currency");
-            gameData["winSecondCurrency"] = data.getLong("total_win_hard_currency");
-            SFSConnector.roundOverCallback( gameData );
-        }
-        else if( event.cmd == "libera" && SFSConnector.roundOverCallback ){
-            var data : any = event.params;
-            var gameData: Object = {};
-            let tempData: string = data.getUtfString("resposta");
-            try{
-                gameData["ganho"] = "unexpress";
-                gameData["credito"] = parseInt( tempData.match( /\$.+(?=CA)/ )[0].replace( "$", "" ) );
-            }
-            catch(e){ trace( "data error" ) }
-            gameData["missionValue"] = data.get("mission_value");
-            gameData["secondCurrency"] = data.getLong("hard_currency");
-            SFSConnector.roundOverCallback( gameData );
-        }
-        else if( event.cmd == "select_num_handler" && SFSConnector.selectNumberCallback ){
+        if( event.cmd == "select_num_handler" && SFSConnector.selectNumberCallback ){
             var data : any = event.params;
             var gameData: Object = {};
             gameData["credito"] = data.getDouble("creditos");
