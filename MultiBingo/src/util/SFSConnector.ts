@@ -411,8 +411,6 @@ class SFSConnector {
             var userId = event.user.containsVariable("external_uid") ? event.user.getVariable("external_uid").value : "";
             SFSConnector.otherJoinRoomCallback( userName, fbId, userId );
         }
-
-        this.updataCardsAndPlayers( true );
     }
 
     private onUserExitRoom(event): void{
@@ -733,23 +731,6 @@ class SFSConnector {
             gameData["result"] = data.getBool("result");
             gameData["roomName"] = data.getUtfString("roomName");
             SFSConnector.onBlackoutMatching(gameData);
-        }
-    }
-
-    /**
-     * send cmd request to sfs server
-     * @param cmd    the sfs server request command object
-     * @param params request parameters
-     **/
-    public static send(cmd, params) {
-        if (eval("SFS2X")) {
-            if (SFSConnector.connection) {
-                SFSConnector._sfs.send(eval("new SFS2X.ExtensionRequest(cmd, params)"));
-            } else {
-                console.error("SFS Server connection failed!");
-            }
-        } else {
-            console.log("Object SFS2X is not defined!");
         }
     }
 

@@ -82,4 +82,10 @@ class MultiPlayerBingoChatBar extends MultiChatBar{
 		userInfo.cacheAsBitmap = true;
 		return userInfo;
 	}
+
+	public otherJoin( userName: string, fbId: string, userId: string ){
+		super.otherJoin( userName, fbId, userId );
+
+		( this.avatarList as MultiBingoAvatarArea ).userJoin( userId, fbId );
+	}
 }

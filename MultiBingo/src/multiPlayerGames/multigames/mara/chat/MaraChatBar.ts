@@ -183,8 +183,7 @@ class MaraChatBar extends MultiChatBar{
 		userInfo.cacheAsBitmap = true;
 	}
 
-	public otherJoin( userName: string, fbId: string ){
-
+	public otherJoin( userName: string, fbId: string, userId: string ){
 	}
 
 	public roundStart(){

@@ -83,7 +83,7 @@ class MultiChatBar extends egret.DisplayObjectContainer{
 		this.resetScroll();
 	}
 
-	public otherJoin( userName: string, fbId: string ){
+	public otherJoin( userName: string, fbId: string, userId: string ){
 		trace( userName + "join game" );
 		this.showUserMessage( fbId, this.buildJoinMessage( userName, MuLang.getText( "join_game" ) ) );
 	}

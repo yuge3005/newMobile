@@ -20,4 +20,16 @@ class MultiBingoAvatarArea extends AvatarContainer{
 			this.iconList[i].x = 105 * i;
 		}
 	}
+
+	public userJoin( fbId: string, userId: string ){
+		if( this.userList.indexOf( userId ) < 0 ){
+			this.userList.push( userId );
+			let headIcon: egret.Bitmap = this.newHead();
+			this.iconList.push( headIcon );
+
+			if( fbId != "" ) FacebookBitmap.downloadBitmapDataByFacebookID( fbId, 100, 100, MDS.onUserHeadLoaded.bind( this, headIcon, 100 ), this );
+
+			this.resetAvatarPositions();
+		}
+	}
 }

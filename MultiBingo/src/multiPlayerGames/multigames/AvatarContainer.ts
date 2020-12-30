@@ -1,6 +1,6 @@
 class AvatarContainer extends egret.ScrollView{
 
-	private userList: Array<string>;
+	protected userList: Array<string>;
 	protected iconList: Array<egret.Bitmap>;
 
 	protected avatarLayer: egret.DisplayObjectContainer;
