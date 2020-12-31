@@ -16,6 +16,8 @@ class MultiPlayerGrid extends egret.Sprite{
 		return this._currentBgPic;
 	}
 
+	private blinkPic: egret.Bitmap;
+
 	public defaultPosition: egret.Point;
 
 	protected _blink: boolean;
@@ -25,7 +27,7 @@ class MultiPlayerGrid extends egret.Sprite{
 	public set blink( value: boolean ){
 		if( this._blink == value )return;
 		this._blink = value;
-		if( !value )this.currentBgPic = this.defaultBgPic;
+		this.blinkPic.visible = value;
 	}
 
 	protected numTxt: egret.TextField;
@@ -57,8 +59,10 @@ class MultiPlayerGrid extends egret.Sprite{
 	}
 
 	protected init(): void {
-		this.defaultBgPic = Com.createBitmapByName( MultiPlayerMachine.getAssetStr( CardGridUISettings.defaultBgPicName ) );
-		this.addChild( this.defaultBgPic );
+		this.defaultBgPic = Com.addBitmapAt( this,  MultiPlayerMachine.getAssetStr( CardGridUISettings.defaultBgPicName ), 0, 0 );
+
+		this.blinkPic = Com.addBitmapAt( this,  MultiPlayerMachine.getAssetStr( CardGridUISettings.blink1PicName ), 0, 0 );
+		this.blinkPic.visible = false;
 
 		this.numTxt = Com.addTextAt( this, 0, CardGridColorAndSizeSettings.gridSize.y - CardGridColorAndSizeSettings.defaultNumberSize >> 1, CardGridColorAndSizeSettings.gridSize.x, CardGridColorAndSizeSettings.defaultNumberSize, CardGridColorAndSizeSettings.defaultNumberSize, false, true );
 		this.numTxt.textAlign = "center";
@@ -72,7 +76,6 @@ class MultiPlayerGrid extends egret.Sprite{
 	}
 
 	public showEffect( isShow: boolean ){
-		if( this.blink )this.blink = false;
 		this._isChecked = isShow;
 		if( isShow ){
 			if( CardGridColorAndSizeSettings.colorNumberOnEffect )this.numTxt.textColor = CardGridColorAndSizeSettings.numberColorOnEffect;
@@ -87,11 +90,5 @@ class MultiPlayerGrid extends egret.Sprite{
 	public showRedEffect(){
 		this.numTxt.textColor = CardGridColorAndSizeSettings.numberColor;
 		this.currentBgPic = this.linePic;
-	}
-
-	public showBlink( isShow: boolean ): void{
-		if( isShow )this.currentBgPic = this.blink1Pic;
-		else this.currentBgPic = this.blink2Pic;
-		this.numTxt.textColor = 0xBB4249;
 	}
 }

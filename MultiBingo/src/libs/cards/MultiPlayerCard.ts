@@ -107,21 +107,12 @@ class MultiPlayerCard extends egret.Sprite{
 	}
 
 	public blinkAt( index: number ){
-		if( this.grids[index].isChecked )throw new Error( "not posible blink grid" );
 		this.grids[index].blink = true;
 	}
 
 	public stopBlink(){
 		for( let i: number = 0; i < this.grids.length; i++ ){
 			if( this.grids[i].blink )this.grids[i].blink = false;
-		}
-	}
-
-	public blink( show: number ){
-		if( !this.grids || !this.grids.length )return;
-		let isShow: boolean = Boolean( show );
-		for( let i: number = 0; i < this.grids.length; i++ ){
-			if( this.grids[i].blink )this.grids[i].showBlink( isShow );
 		}
 	}
 

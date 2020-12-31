@@ -156,7 +156,6 @@ class MaraCard extends Multi75Card{
 
 	public blinkAt( index: number ){
 		if( this.specialMode ) return;
-		if( this.grids[index].isChecked )return;
 		this.grids[index].blink = true;
 	}
 
