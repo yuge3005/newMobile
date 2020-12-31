@@ -1,6 +1,6 @@
 class RoundEndBar extends MultiCoverBars{
 
-	private titleTxt: egret.TextField;
+	private titleTxt: TextLabel;
 	private totalWinNum: egret.TextField;
 	private winCoinIcon: egret.Bitmap;
 
@@ -19,9 +19,9 @@ class RoundEndBar extends MultiCoverBars{
 		continueTxt.textColor = 0x0;
 		continueTxt.setText( MuLang.getText( "continue" ) );
 
-		this.titleTxt = Com.addTextAt( this, 792, 225, 416, 50, 48, true, true );
+		this.titleTxt = Com.addLabelAt( this, 792, 225, 416, 50, 48, true, true );
 		this.titleTxt.textColor = 0xFBE12D;
-		this.titleTxt.text = MuLang.getText( "rewardsFrom" );
+		this.titleTxt.setText( MuLang.getText( "rewardsFrom" ) );
 
 		this.showItemBg( -270, this.bingoWin, 0 );
 		this.showItemBg( 270, this.powerUpWin, 400 );
