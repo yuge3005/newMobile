@@ -163,7 +163,7 @@ class MultiPlayerMachine extends egret.Sprite{
 	}
 
 	protected getResultListToCheck(){
-		let checkingString: Array<string> = this.cardArea.getCheckingStrings();
+		let checkingString: Array<string> = this.cardArea.getCollectedStrings()
 		let payTablesDictionary: Object = MultiPayTable.payTablesDictionary;
 		let resultList: Array<Object> = [];
 		for( let i: number = 0; i < checkingString.length; i++ ){
@@ -186,18 +186,13 @@ class MultiPlayerMachine extends egret.Sprite{
 
 	protected afterCheck( resultList: Array<Object> ): void{
 
-		let fitItemOnCard: Array<Array<Object>> = [];
 		let blinkGridOnCard: Array<Array<number>> = [];
 
 		this.cardArea.clearCardsEffect();
 		for( let i: number = 0; i < resultList.length; i++ ){
-			fitItemOnCard[i] = [];
 			blinkGridOnCard[i] = [];
 			for( let ob in MultiPayTable.payTablesDictionary ){
 				let result: PaytableCheckResult = resultList[i][ob];
-				if( result.fit || result.fits ){
-					fitItemOnCard[i].push( { paytalbe:ob,fit:result.fit, fits: result.fits} );
-				}
 
 				if( result.unfitIndex >= 0 ){
 					blinkGridOnCard[i].push( result.unfitIndex );
@@ -207,14 +202,6 @@ class MultiPlayerMachine extends egret.Sprite{
 						blinkGridOnCard[i].push( result.unfitIndexs[unfitItem] );
 					}
 				}
-			}
-		}
-
-		for( let i: number = 0; i < fitItemOnCard.length; i++ ){
-			for( let j: number = 0; j < fitItemOnCard[i].length; j++ ){
-				let paytableObject: Object = fitItemOnCard[i][j];
-				let paytableName: string = paytableObject["paytalbe"];
-				this.cardArea.showPaytableResult(i, paytableName, paytableObject["fit"], paytableObject["fits"] );
 			}
 		}
 

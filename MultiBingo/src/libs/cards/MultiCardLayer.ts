@@ -54,6 +54,14 @@ class MultiCardLayer extends egret.DisplayObjectContainer{
 		return checkingString;
 	}
 
+	public getCollectedStrings(): Array<string>{
+		let collectedString: Array<string> = [];
+		for( let i: number = 0; i < this.cards.length; i++ ){
+			collectedString.push( ( this.cards[i] as Multi75Card ).getCollectedString() );
+		}
+		return collectedString;
+	}
+
 	public letCardBlink( blinkGridOnCard: Array<Array<number>> ): void{
 		for( let i: number = 0; i < blinkGridOnCard.length; i++ ){
 			for( let j: number = 0; j < blinkGridOnCard[i].length; j++ ){
