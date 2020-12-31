@@ -72,6 +72,8 @@ class MultyPlayerBingo extends Multi75Super{
 
 		this.bingoInfo = new MultiPlayerBingoInfoBar;
 		Com.addObjectAt( this, this.bingoInfo, 1503, 246 );
+		this.getRoundPattens( MultiServer.multiPlayerPattens );
+		this.bingoInfo.startShowPaytalbe();
 
 		this.dailogLayer = new egret.DisplayObjectContainer;
 		Com.addObjectAt( this, this.dailogLayer, 0, 0 );
