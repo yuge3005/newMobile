@@ -44,7 +44,7 @@ class MultiPlayerBingoWaitingBar extends Multi75WaitingBar{
 		this.upToTxt = Com.addTextAt( this, 100, 470, 400, 40, 40 );
 		this.upToTxt.textColor = 0x843B1C;
 		this.upToTxt.textAlign = "right";
-		this.upToTxt.text = MuLang.getText( "Up to" );
+		this.upToTxt.text = MuLang.getText( "Up to", MuLang.CASE_UPPER );
 		this.bingoAwardTxt = Com.addTextAt( this, 970, 450, 440, 80, 80, false, true );
 		this.bingoAwardTxt.textColor = 0x3A1301;
 		this.bingoAwardTxt.textAlign = "left";
