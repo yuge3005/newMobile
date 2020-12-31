@@ -18,6 +18,7 @@ class MultiPlayerCard extends egret.Sprite{
 	}
 
 	protected gridLayer: egret.DisplayObjectContainer;
+	protected gridBlinkLayer: egret.DisplayObjectContainer;
 
 	public inTurnMode: boolean;
 
@@ -51,6 +52,8 @@ class MultiPlayerCard extends egret.Sprite{
 			this.gridLayer = new egret.DisplayObjectContainer;
 			this.gridLayer.cacheAsBitmap = true;
 			this.addChild( this.gridLayer );
+			this.gridBlinkLayer = new egret.DisplayObjectContainer;
+			this.addChild( this.gridBlinkLayer );
 			for( i = 0; i < numbers.length; i++ ){
 				this.grids[i] = this.createGrid( i );
 			}
@@ -136,22 +139,12 @@ class MultiPlayerCard extends egret.Sprite{
 	protected addGridToCardLayer( grid: MultiPlayerGrid, toCardLayer: boolean = true ){
 		if( toCardLayer ){
 			if( this.inTurnMode && this.gridLayer.contains( grid ) ){
-				this.parent.addChild( grid );
-				let gridIndex: number = this.grids.indexOf( grid );
-				let onCardPt: egret.Point = MultiPlayerCard.getGridPosition( gridIndex );
-				onCardPt.x *= this.scaleX;
-				onCardPt.y *= this.scaleY;
-				grid.x = this.x + onCardPt.x;
-				grid.y = this.y + onCardPt.y;
-				grid.scaleX = grid.scaleY = this.scaleX;
+				this.gridBlinkLayer.addChild( grid );
 			}
 		}
 		else{
-			if( this.parent.contains( grid ) ){
+			if( this.gridBlinkLayer.contains( grid ) ){
 				this.gridLayer.addChild( grid );
-				grid.x = grid.defaultPosition.x;
-				grid.y = grid.defaultPosition.y;
-				grid.scaleX = grid.scaleY = 1;
 			}
 		}
 	}
