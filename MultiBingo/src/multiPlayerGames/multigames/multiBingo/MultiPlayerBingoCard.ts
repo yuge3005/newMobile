@@ -72,7 +72,7 @@ class MultiPlayerBingoCard extends Multi75Card{
 
 	public checkNumber( ballIndex: number ): number {
 		let index: number = super.checkNumber( ballIndex );
-		if( index >= 0 && !this.handPt ){
+		if( index >= 0 && !this.handPt && this.inTurnMode ){
 			let onCardPt: egret.Point = MultiPlayerCard.getGridPosition( index );
 			this.handPt = Com.addMovieClipAt( this, MDS.mcFactory, index % 5 == 4 ? "hand2" : "hand1", onCardPt.x, onCardPt.y );
 			this.handPt.name = "" + index;
