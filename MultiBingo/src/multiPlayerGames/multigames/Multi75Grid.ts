@@ -11,6 +11,7 @@ class Multi75Grid extends MultiPlayerGrid{
 	}
 	public set isCollected( value: boolean ){
 		this._isCollected = value;
+		if( this.blink ) this.blink = false;
 	}
 
 	protected _awardType: string;		
