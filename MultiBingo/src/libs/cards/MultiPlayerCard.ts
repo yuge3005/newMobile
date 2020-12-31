@@ -26,8 +26,6 @@ class MultiPlayerCard extends egret.Sprite{
 
 		this.cardId = cardId;
 		this.addEventListener( egret.Event.ADDED_TO_STAGE, this.onAdd, this );
-
-		this.cacheAsBitmap = true;
 	}
 
 	protected onAdd( event: egret.Event ){
@@ -51,6 +49,7 @@ class MultiPlayerCard extends egret.Sprite{
 		if( !this.grids ){
 			this.grids = [];
 			this.gridLayer = new egret.DisplayObjectContainer;
+			this.gridLayer.cacheAsBitmap = true;
 			this.addChild( this.gridLayer );
 			for( i = 0; i < numbers.length; i++ ){
 				this.grids[i] = this.createGrid( i );

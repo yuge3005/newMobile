@@ -268,7 +268,7 @@ class MaraCard extends Multi75Card{
 			let onCardPt: egret.Point = MultiPlayerCard.getGridPosition( index );
 			onCardPt.x *= this.scaleX;
 			onCardPt.y *= this.scaleY;
-			this.handPt = Com.addMovieClipAt( this.parent, MDS.mcFactory, index % 5 == 4 ? "hand2" : "hand1", onCardPt.x + this.x, onCardPt.y + this.y );
+			this.handPt = Com.addMovieClipAt( this, MDS.mcFactory, index % 5 == 4 ? "hand2" : "hand1", onCardPt.x + this.x, onCardPt.y + this.y );
 			this.handPt.name = "" + index;
 			this.handPt.scaleX = this.handPt.scaleY = 2.25 * this.scaleX;
 			grid.showYellowBg();

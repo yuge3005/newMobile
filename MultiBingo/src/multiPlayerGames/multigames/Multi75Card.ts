@@ -47,7 +47,7 @@ class Multi75Card extends MultiPlayerCard{
 	}
 
 	protected removeHand(){
-		this.parent.removeChild( this.handPt );
+		this.removeChild( this.handPt );
 		this.handPt = null;
 	}
 
