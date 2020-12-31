@@ -342,6 +342,7 @@ class MultiPlayerMachine extends egret.Sprite{
 		this.currentPaytableRules = [];
 		for( let i: number = 0; i < varValue.length; i++ ){
 			let patternName: string = varValue[i]["patternName"];
+			if( patternName == "any_double_row_pattern" ) continue;
 			if( this.allPaytables[patternName] == null ){
 				console.error( "error paytable name" );
 				continue;
