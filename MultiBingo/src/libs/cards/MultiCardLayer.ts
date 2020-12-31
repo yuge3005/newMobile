@@ -76,26 +76,6 @@ class MultiCardLayer extends egret.DisplayObjectContainer{
 	}
 
 /*****************************************************************************************************************/
-
-	private blinkTimer: egret.Timer;
-
-	public startBlinkTimer(){
-		this.blinkTimer = new egret.Timer( 500, 0 );
-		this.blinkTimer.addEventListener( egret.TimerEvent.TIMER, this.onBlinkTimer, this );
-		this.blinkTimer.start();
-	}
-
-	private onBlinkTimer( event: egret.TimerEvent ): void{
-		for( let i: number = 0; i < this.cards.length; i++ ){
-			this.cards[i].blink( ( event.target as egret.Timer ).currentCount & 1 );
-		}
-	}
-
-	public stopBlinkTimer(){
-		this.blinkTimer.reset();
-		this.blinkTimer.stop();
-	}
-
 	public clearCardsEffect(){
 		for( let i: number = 0; i < this.cards.length; i++ ){
 			this.cards[i].clearFitEffect();

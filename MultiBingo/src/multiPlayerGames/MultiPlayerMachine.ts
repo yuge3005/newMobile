@@ -67,7 +67,6 @@ class MultiPlayerMachine extends egret.Sprite{
 		MultiPayTable.getPayTableData( obj["payTables"] );
 		this.cardArea.getCardData( obj["card"] );
 
-		this.cardArea.startBlinkTimer();
 		this.addEventListener(egret.Event.REMOVED_FROM_STAGE, this.onRemove, this);
 		
 		MuLang.txt = this.getLanguageObject();
@@ -78,7 +77,6 @@ class MultiPlayerMachine extends egret.Sprite{
 	}
 
 	protected onRemove( event: egret.Event ): void{
-		this.cardArea.stopBlinkTimer();
 		this.ballArea.onRemove();
 		this.removeCallbacks();
 	}
