@@ -7,8 +7,8 @@ class MultiPlayerBingoChatBar extends MultiChatBar{
 		this.addScrollArea( new egret.Rectangle( 28, 17, 385, 375 ), new egret.Point( 28, 17 ) );
 		this.addTextInput( new egret.Rectangle( 50, 420, 340, 32 ), 32 );
 
-		this.cardCountTxt = MDS.addGameText( this, 35 - 1500, - 428, 48, 0xFFFFFF, "", false, 230 );
-		this.playerCountTxt = MDS.addGameText( this, 230 - 1500, - 428, 48, 0xFFFFFF, "", false, 230 );
+		this.cardCountTxt = MDS.addGameText( this, 35 - 1500, - 428, 48, 0xFFFFFF, "", false, 480 );
+		this.playerCountTxt = MDS.addGameText( this, 35 - 1500, - 428, 48, 0xFFFFFF, "", false, 480 );
 
 		this.avatarList = new MultiBingoAvatarArea;
 		Com.addObjectAt( this, this.avatarList, 6, -105 );
@@ -87,5 +87,12 @@ class MultiPlayerBingoChatBar extends MultiChatBar{
 		super.otherJoin( userName, fbId, userId );
 
 		( this.avatarList as MultiBingoAvatarArea ).userJoin( userId, fbId );
+	}
+
+	public updateCardAndPlayerNumbers( cardCount: number, playerCount: number, playerFbIds: Array<Object> ){
+		super.updateCardAndPlayerNumbers( cardCount, playerCount, playerFbIds );
+
+		this.cardCountTxt.setText( this.cardCountTxt.text + "  " + this.playerCountTxt.text );
+		this.playerCountTxt.text = "";
 	}
 }
