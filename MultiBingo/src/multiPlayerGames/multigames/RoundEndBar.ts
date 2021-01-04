@@ -64,7 +64,7 @@ class RoundEndBar extends MultiCoverBars{
 		Com.addBitmapAtMiddle( itemBg, "roundOverTime_json.x1", 105, 140 );
 
 		itemBg.cacheAsBitmap = true;
-		if( MultyPlayerBingo.callBingoTimes )this.flyCoinsFrom( 270 );
+		if( MultyPlayerBingo.callBingoTimes )this.flyCoinsFrom( 725 );
 	}
 
 	private powerUpWin( itemBg: egret.DisplayObjectContainer ){
@@ -74,7 +74,7 @@ class RoundEndBar extends MultiCoverBars{
 		Com.addBitmapAtMiddle( itemBg, "roundOverTime_json.x3", 105, 140 );
 
 		itemBg.cacheAsBitmap = true;
-		if( MultyPlayerBingo.powerUpTimes )this.flyCoinsFrom( 476 );
+		if( MultyPlayerBingo.powerUpTimes )this.flyCoinsFrom( 1275 );
 	}
 
 	private treasureWin( itemBg: egret.DisplayObjectContainer ){
@@ -84,7 +84,7 @@ class RoundEndBar extends MultiCoverBars{
 		Com.addBitmapAtMiddle( itemBg, "roundOverTime_json.box2", 105, 140 );
 
 		itemBg.cacheAsBitmap = true;
-		if( MultyPlayerBingo.openBoxTimes )this.flyCoinsFrom( 373 );
+		if( MultyPlayerBingo.openBoxTimes )this.flyCoinsFrom( 1000 );
 	}
 
 	private itemText( itemBg: egret.DisplayObjectContainer, y: number, tx: string = null ): TextLabel{
@@ -96,7 +96,7 @@ class RoundEndBar extends MultiCoverBars{
 
 	private flyCoinsFrom( startX: number ){
 		let flyCoins: FlyingCoins = new FlyingCoins();
-		flyCoins.fly( 10, new egret.Point( startX, 285 ), new egret.Point(385, 375), new egret.Point( 373, 300 ), 0.15, 0.1, 0.3 );
+		flyCoins.fly( 10, new egret.Point( startX, 510 ), new egret.Point(1000, 750), new egret.Point( 1000, 650 ), 0.3, 0.2, 0.6 );
 		this.addChild( flyCoins );
 	}
 
