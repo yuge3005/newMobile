@@ -287,7 +287,7 @@ class MultyPlayerBingo extends Multi75Super{
 				this.showGetCoinsOnCard( uuid, gridIndex, Math.floor( coins * MultiPlayerMachine.oneCardPrize / MultiPlayerMachine.cardPrize ) );
 			}
 			else if( type == "coinsBall" ){
-				MDS.dropCoinsAt( this, new egret.Point( 10, 150 ), Math.floor( coins * MultiPlayerMachine.oneCardPrize / MultiPlayerMachine.cardPrize ) );
+				MDS.dropCoinsAt( this, new egret.Point( 366, 468 ), Math.floor( coins * MultiPlayerMachine.oneCardPrize / MultiPlayerMachine.cardPrize ) );
 			}
 		}
 	}
