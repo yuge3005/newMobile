@@ -622,6 +622,9 @@ class CopaChess extends egret.DisplayObjectContainer {
      * update position
      */
     public kartGameOver(position: number, roundNumber: number): number {
+        this.chess.x = this.chessPlace.x = this.chessPositionArray[this.currentPosition]["x"];
+        this.chess.y = this.chessPlace.y = this.chessPositionArray[this.currentPosition]["y"];
+        
         // set rounds text
         this.roundCardText.text = roundNumber + " " + MuLang.getText( "rounds" );
 

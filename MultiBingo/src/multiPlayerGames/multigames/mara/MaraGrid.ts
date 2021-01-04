@@ -7,18 +7,6 @@ class MaraGrid extends Multi75Grid{
 	public static AWARDTYPE_PEARL_MAIN = "pearl";
 	public static AWARDTYPE_PEARL_PER = "pearl_per";
 
-	public get blink(): boolean{
-		return this._blink;
-	}
-	public set blink( value: boolean ){
-		if( this._blink == value )return;
-		this._blink = value;
-		if( !value ){
-			this.currentBgPic = this.defaultBgPic;
-			this.numTxt.textColor = CardGridColorAndSizeSettings.numberColor;
-		}
-	}
-
 	public constructor() {
 		super();
 

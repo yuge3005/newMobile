@@ -51,13 +51,14 @@ class MDS{
 
 	public static dropCoinsAt( target: egret.DisplayObjectContainer, pos: egret.Point, coins: number ){
 		let dropCoins: DropingCoins = new DropingCoins();
-		dropCoins.drop( 10, pos.add( new egret.Point( 20, 18 ) ), new egret.Point(0, 0), new egret.Point( 0, -4 ), new egret.Point( 5, 4 ), 1, 0.2, 0.2 );
+		dropCoins.drop( 10, pos, new egret.Point(0, 0), new egret.Point( 0, -4 ), new egret.Point( 5, 4 ), 1, 0.3, 0.3 );
 		target.addChild( dropCoins );
 
-		let coinsNumTxt: egret.TextField = Com.addTextAt( target, pos.x, pos.y, 50, 15, 15, false, true );
+		let coinsNumTxt: egret.TextField = Com.addTextAt( target, pos.x, pos.y, 100, 30, 30, false, true );
 		coinsNumTxt.textColor = 0xFFFF00;
 		coinsNumTxt.text = "+" + coins;
-		TweenerTool.tweenTo( coinsNumTxt, { y: coinsNumTxt.y - 20 }, 500, 0, MDS.removeSelf.bind( target, coinsNumTxt ), null, egret.Ease.sineOut );
+		coinsNumTxt.filters = [ new egret.GlowFilter( 0, 1, 2, 2, 2, 2 ) ];
+		TweenerTool.tweenTo( coinsNumTxt, { y: coinsNumTxt.y - 40 }, 500, 0, MDS.removeSelf.bind( target, coinsNumTxt ), null, egret.Ease.sineOut );
 	}
 
 	public static onUserHeadLoaded( userInfo: egret.Bitmap, size: number, event: egret.Event ){

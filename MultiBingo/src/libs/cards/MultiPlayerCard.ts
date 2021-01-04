@@ -18,6 +18,7 @@ class MultiPlayerCard extends egret.Sprite{
 	}
 
 	protected gridLayer: egret.DisplayObjectContainer;
+	protected gridBlinkLayer: egret.DisplayObjectContainer;
 
 	public inTurnMode: boolean;
 
@@ -26,8 +27,6 @@ class MultiPlayerCard extends egret.Sprite{
 
 		this.cardId = cardId;
 		this.addEventListener( egret.Event.ADDED_TO_STAGE, this.onAdd, this );
-
-		this.cacheAsBitmap = true;
 	}
 
 	protected onAdd( event: egret.Event ){
@@ -51,7 +50,10 @@ class MultiPlayerCard extends egret.Sprite{
 		if( !this.grids ){
 			this.grids = [];
 			this.gridLayer = new egret.DisplayObjectContainer;
+			this.gridLayer.cacheAsBitmap = true;
 			this.addChild( this.gridLayer );
+			this.gridBlinkLayer = new egret.DisplayObjectContainer;
+			this.addChild( this.gridBlinkLayer );
 			for( i = 0; i < numbers.length; i++ ){
 				this.grids[i] = this.createGrid( i );
 			}
@@ -105,21 +107,12 @@ class MultiPlayerCard extends egret.Sprite{
 	}
 
 	public blinkAt( index: number ){
-		if( this.grids[index].isChecked )throw new Error( "not posible blink grid" );
 		this.grids[index].blink = true;
 	}
 
 	public stopBlink(){
 		for( let i: number = 0; i < this.grids.length; i++ ){
 			if( this.grids[i].blink )this.grids[i].blink = false;
-		}
-	}
-
-	public blink( show: number ){
-		if( !this.grids || !this.grids.length )return;
-		let isShow: boolean = Boolean( show );
-		for( let i: number = 0; i < this.grids.length; i++ ){
-			if( this.grids[i].blink )this.grids[i].showBlink( isShow );
 		}
 	}
 
@@ -137,22 +130,12 @@ class MultiPlayerCard extends egret.Sprite{
 	protected addGridToCardLayer( grid: MultiPlayerGrid, toCardLayer: boolean = true ){
 		if( toCardLayer ){
 			if( this.inTurnMode && this.gridLayer.contains( grid ) ){
-				this.parent.addChild( grid );
-				let gridIndex: number = this.grids.indexOf( grid );
-				let onCardPt: egret.Point = MultiPlayerCard.getGridPosition( gridIndex );
-				onCardPt.x *= this.scaleX;
-				onCardPt.y *= this.scaleY;
-				grid.x = this.x + onCardPt.x;
-				grid.y = this.y + onCardPt.y;
-				grid.scaleX = grid.scaleY = this.scaleX;
+				this.gridBlinkLayer.addChild( grid );
 			}
 		}
 		else{
-			if( this.parent.contains( grid ) ){
+			if( this.gridBlinkLayer.contains( grid ) ){
 				this.gridLayer.addChild( grid );
-				grid.x = grid.defaultPosition.x;
-				grid.y = grid.defaultPosition.y;
-				grid.scaleX = grid.scaleY = 1;
 			}
 		}
 	}

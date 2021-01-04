@@ -42,7 +42,7 @@ class Multi75Super extends MultiPlayerMachine{
 	}
 	
 	protected otherJoinRoom( userName: string, fbId: string, userId: string ){
-		if( this.chatBar ) this.chatBar.otherJoin( userName, fbId );
+		if( this.chatBar ) this.chatBar.otherJoin( userName, fbId, userId );
 	}
 
 	protected getMessage( userName: string, message: string, fbId: string ){

@@ -1,10 +1,16 @@
 class Multi75Card extends MultiPlayerCard{
 
+	protected timer: egret.Timer;
+
 	protected bingoMask: egret.Sprite;
 	protected handPt: egret.MovieClip;
 
 	public constructor( cardId: number ) {
 		super( cardId );
+
+		this.timer = new egret.Timer( 240, 0 );
+		this.timer.addEventListener( egret.TimerEvent.TIMER, this.onTimer, this );
+		this.timer.start();
 	}
 
 	protected onAdd( event: egret.Event ){
@@ -16,6 +22,13 @@ class Multi75Card extends MultiPlayerCard{
 
 	protected wrongGridClick( event: egret.TouchEvent ): void{
 		// sub class override
+	}
+
+	private onTimer( event: egret.TimerEvent ): void{
+		if( !this.grids ) return;
+		for( let i: number = 0; i < this.grids.length; i++ ){
+			( this.grids[i] as Multi75Grid ).onEffectBlink( this.timer.currentCount );
+		}
 	}
 
 	public setFree( gridIndex: number ){
@@ -47,7 +60,7 @@ class Multi75Card extends MultiPlayerCard{
 	}
 
 	protected removeHand(){
-		this.parent.removeChild( this.handPt );
+		this.removeChild( this.handPt );
 		this.handPt = null;
 	}
 

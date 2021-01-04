@@ -1,6 +1,5 @@
 class Multi75Grid extends MultiPlayerGrid{
 
-	protected timer: egret.Timer;
 	protected blinkTextSizeMin: number;
 	protected blinkTextSizeMax: number;
 	
@@ -11,6 +10,7 @@ class Multi75Grid extends MultiPlayerGrid{
 	}
 	public set isCollected( value: boolean ){
 		this._isCollected = value;
+		if( this.blink ) this.blink = false;
 	}
 
 	protected _awardType: string;		
@@ -31,10 +31,6 @@ class Multi75Grid extends MultiPlayerGrid{
 
 	public constructor() {
 		super();
-
-		this.timer = new egret.Timer( 240, 0 );
-		this.timer.addEventListener( egret.TimerEvent.TIMER, this.onTimer, this );
-		this.timer.start();
 	}
 
 	protected getBitmapByAwardType( awardType: string ): egret.Bitmap{
@@ -54,9 +50,9 @@ class Multi75Grid extends MultiPlayerGrid{
 		return this._txtSize;
 	}
 	
-	private onTimer( event: egret.TimerEvent ): void{
+	public onEffectBlink( currentCount: number ): void{
 		if( this.currentBgPic == this.onEffBgPic ){
-			if( this.timer.currentCount & 1 ){
+			if( currentCount & 1 ){
 				TweenerTool.tweenTo( this, {txtSize: this.blinkTextSizeMin}, 231 );
 			}
 			else{

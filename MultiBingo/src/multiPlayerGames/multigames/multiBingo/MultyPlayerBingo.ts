@@ -69,9 +69,12 @@ class MultyPlayerBingo extends Multi75Super{
 		this.energyBar = new MultiPlayerEnergy;
 		Com.addObjectAt( this, this.energyBar, 293, 656 );
 		this.energyBar.addEventListener( "useEnergy", this.useEnergy, this );
+		this.energyBar.visible = false;
 
 		this.bingoInfo = new MultiPlayerBingoInfoBar;
 		Com.addObjectAt( this, this.bingoInfo, 1503, 246 );
+		this.getRoundPattens( MultiServer.multiPlayerPattens );
+		this.bingoInfo.startShowPaytalbe();
 
 		this.dailogLayer = new egret.DisplayObjectContainer;
 		Com.addObjectAt( this, this.dailogLayer, 0, 0 );
@@ -207,6 +210,8 @@ class MultyPlayerBingo extends Multi75Super{
 		this.removeWaitingBar();
 		this.bingoInfo.startShowPaytalbe();
 
+		this.energyBar.visible = true;
+
 		let cards: Array<MultiPlayerCard> = this.cardArea.cards;
 		for( let i: number = 0; i < cards.length; i++ ){
 			if( cards[i].enabled ){
@@ -243,8 +248,7 @@ class MultyPlayerBingo extends Multi75Super{
 			this.luckyBall = new egret.DisplayObjectContainer;
 			Com.addObjectAt( this, this.luckyBall, 366, 607 );
 			Com.addBitmapAtMiddle( this.luckyBall, this.assetStr("lucky_ball"), 0, 0 );
-			let txt: egret.TextField = Com.addTextAt(this, -32, -32, 64, 64, 55, true, false);
-			this.luckyBall.addChild( txt );
+			let txt: egret.TextField = Com.addTextAt(this.luckyBall, -40, -40, 80, 80, 55, true, false);
 			txt.verticalAlign = "middle";
 			txt.fontFamily = "Righteous";
 			txt.stroke = 1;
@@ -285,7 +289,7 @@ class MultyPlayerBingo extends Multi75Super{
 				this.showGetCoinsOnCard( uuid, gridIndex, Math.floor( coins * MultiPlayerMachine.oneCardPrize / MultiPlayerMachine.cardPrize ) );
 			}
 			else if( type == "coinsBall" ){
-				MDS.dropCoinsAt( this, new egret.Point( 10, 150 ), Math.floor( coins * MultiPlayerMachine.oneCardPrize / MultiPlayerMachine.cardPrize ) );
+				MDS.dropCoinsAt( this, new egret.Point( 366, 468 ), Math.floor( coins * MultiPlayerMachine.oneCardPrize / MultiPlayerMachine.cardPrize ) );
 			}
 		}
 	}
@@ -367,6 +371,7 @@ class MultyPlayerBingo extends Multi75Super{
 		this.bingoPlayerHeads = [];
 
 		this.hideBallForWinPanel( true );
+		this.energyBar.visible = false;
 
 		SoundManager.play( "mpb_round_end_mp3" );
 
@@ -374,10 +379,8 @@ class MultyPlayerBingo extends Multi75Super{
 	}
 
 	private hideBallForWinPanel( hide: boolean ){
-		this.energyBar.visible = !hide;
 		this.ballArea.visible = !hide;
 		this.getChildByName( this.assetStr( "charger bar" ) ).visible = !hide;
-		this.getChildByName( this.assetStr( "chargerbar_01_bg" ) ).visible = !hide;
 	}
 
 	private bingoPlayerHeads: Array<string> = [];

@@ -38,6 +38,8 @@ class MultiPlayerEnergy extends egret.DisplayObjectContainer{
 	public constructor() {
 		super();
 
+		Com.addBitmapAt( this, MultiPlayerMachine.getAssetStr( "chargerbar_01_bg" ), 0, 0 );
+
 		this.powerUpBtn = Com.addDownButtonAt( this, MultiPlayerMachine.getAssetStr( "charger-icon" ), MultiPlayerMachine.getAssetStr( "charger-icon" ), 8, -120, this.onPowerBtnClick.bind(this), false );
 		this.powerUpBtn.disabledFilter = MatrixTool.colorMatrix( 1, 0, 1 );
 		this.powerUpBtn.enabled = false;

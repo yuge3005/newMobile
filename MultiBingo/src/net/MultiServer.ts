@@ -29,14 +29,6 @@ class MultiServer {
 		return this.serverConnection["totalWinCount"];
 	}
 
-	public static set gameInitCallback( value: Function ){
-		this.serverConnection["gameInitCallback"] = value;
-	}
-
-	public static set roundOverCallback( value: Function ){
-		this.serverConnection["roundOverCallback"] = value;
-	}
-
 	public static set selectNumberCallback( value: Function ){
 		this.serverConnection["selectNumberCallback"] = value;
 	}
