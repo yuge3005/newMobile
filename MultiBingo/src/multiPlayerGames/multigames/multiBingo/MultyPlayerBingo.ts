@@ -248,8 +248,7 @@ class MultyPlayerBingo extends Multi75Super{
 			this.luckyBall = new egret.DisplayObjectContainer;
 			Com.addObjectAt( this, this.luckyBall, 366, 607 );
 			Com.addBitmapAtMiddle( this.luckyBall, this.assetStr("lucky_ball"), 0, 0 );
-			let txt: egret.TextField = Com.addTextAt(this, -32, -32, 64, 64, 55, true, false);
-			this.luckyBall.addChild( txt );
+			let txt: egret.TextField = Com.addTextAt(this.luckyBall, -40, -40, 80, 80, 55, true, false);
 			txt.verticalAlign = "middle";
 			txt.fontFamily = "Righteous";
 			txt.stroke = 1;
