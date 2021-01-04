@@ -361,7 +361,18 @@ class MultiPlayerMachine extends egret.Sprite{
 
 	protected showGetCoinsOnCard( uuid: string, gridIndex: number, coins: number ){
 		let cardIndex: number = this.cardArea.getIndexByUUID( uuid );
-		let pos: egret.Point = this.cardArea.positionOnCard( cardIndex, gridIndex );
+		let onCardPt: egret.Point = MultiPlayerCard.getGridPosition( gridIndex );
+		let gridPt: egret.Point = CardGridColorAndSizeSettings.gridSize;
+		onCardPt.x += gridPt.x;
+		onCardPt.y += gridPt.y;
+		let coinSizeOffsetPt: egret.Point = new egret.Point( -20, -46 );
+		onCardPt.x += coinSizeOffsetPt.x;
+		onCardPt.y += coinSizeOffsetPt.y;
+		let card: MultiPlayerCard = this.cardArea.cards[cardIndex];
+		onCardPt.x *= card.scaleX;
+		onCardPt.y *= card.scaleY;
+		let cardPt: egret.Point = new egret.Point( card.x, card.y );
+		let pos: egret.Point = cardPt.add( onCardPt );
 		MDS.dropCoinsAt( this, pos, coins );
 	}
 }
