@@ -44,7 +44,7 @@ class MultiPlayerBingoChatBar extends MultiChatBar{
 		let nameTxt: TextLabel = Com.addLabelAt( userInfo, 98, 0, 280, 25, 25 );
 		nameTxt.textAlign = "left";
 		nameTxt.textColor = 0;
-		if( userName == "" ) userName = MuLang.getText( "guest" );
+		if( !userName ) userName = MuLang.getText( "guest" );
 		nameTxt.setText( userName );
 		return nameTxt;
 	}

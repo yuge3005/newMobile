@@ -110,7 +110,7 @@ class MaraChatBar extends MultiChatBar{
 		let nameTxt: TextLabel = Com.addLabelAt( userInfo, 91, 10, 250, 30, 30, false, true );
 		nameTxt.textAlign = "left";
 		nameTxt.textColor = 0;
-		if( userName == "" ) userName = MuLang.getText( "guest" );
+		if( !userName ) userName = MuLang.getText( "guest" );
 		nameTxt.setText( userName );
 		return nameTxt;
 	}
