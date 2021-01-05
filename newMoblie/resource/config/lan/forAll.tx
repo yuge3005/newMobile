@@ -34,9 +34,9 @@
 		,"settings":{ "en": "SETTINGS", "es": "AJUSTES", "pt": "CONFIGURAÇÕES" }
 		,"user_id":{ "en": "User ID", "es": "ID de Usuario", "pt": "ID" }
 		,"facebook_id":{ "en": "Facebook ID", "es": "ID de Facebook", "pt": "ID de Facebook" }
-		,"custom_id":{ "en": "Personalizado ID", "es": "ID de Personalizado", "pt": "ID de Personalizado" }
+		,"custom_id":{ "en": "Custom ID", "es": "ID de Personalizado", "pt": "ID de Personalizado" }
 		,"google_id":{ "en": "Google ID", "es": "ID de Google", "pt": "ID de Google" }
-		,"guest_id":{ "en": "Convidado ID", "es": "ID de Convidado", "pt": "ID de Convidado" }
+		,"guest_id":{ "en": "Guest ID", "es": "ID de Convidado", "pt": "ID de Convidado" }
 		,"notification":{ "en": "NOTIFICATIONS", "es": "NOTIFICACIONES", "pt": "NOTIFICAÇÕES" }
 		,"login":{ "en": "Login", "es": "Identificándose", "pt": "Conecte-se" }
 		,"logout":{ "en": "LOGOUT", "es": "SALIR", "pt": "LOGOUT" }
