@@ -126,13 +126,15 @@ class GameSettingPopup extends GenericPo {
 	}
 
 	private addTitleAndVertion(){
-		let tx: TextLabel = Com.addLabelAt( this, 0, -40, this.bg.width, 55, 55 );
+		let tx: TextLabel = Com.addLabelAt( this, 0, -40, this.bg.width, 65, 50 );
 		GameSettingItem.settingTextFormat( tx );
 		tx.setText( MuLang.getText( "settings", MuLang.CASE_UPPER ) );
-		let txVersion: TextLabel = MDS.addGameText( this, 100, 980, 40, 0xFFFFFF, "", true, 525, "", 1 );
+		let txVersion: TextLabel = MDS.addGameText( this, 100, 975, 40, 0xFFFFFF, "", true, 525, "", 1 );
+		txVersion.height = 50;
 		GameSettingItem.settingTextFormat( txVersion );
 		txVersion.setText( MuLang.getText( "settings", MuLang.CASE_UPPER ) + ":     " + GameSettings.vertion );
-		let txId: TextLabel = MDS.addGameText( this, 720, 980, 40, 0xFFFFFF, "", true, 650, "", 1 );
+		let txId: TextLabel = MDS.addGameText( this, 720, 975, 40, 0xFFFFFF, "", true, 650, "", 1 );
+		txId.height = 50;
 		GameSettingItem.settingTextFormat( txId );
 		txId.setText( MuLang.getText( "user_id", MuLang.CASE_UPPER ) + ":     " + PlayerConfig.player( "user.id" ) );
 	}
