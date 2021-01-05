@@ -5,13 +5,35 @@ class PlayerConfig {
 	public constructor() {
 	}
 
+	private static _playerData: Object;
+	private static get playerData(): Object{
+		if( !this._playerData ){
+			let playerStr: string = localStorage.getItem("player");
+			if( playerStr ){
+				try{
+					this._playerData = JSON.parse( playerStr );
+				}
+				catch(e){
+					this._playerData = null;
+				}
+			}
+		}
+		return this._playerData;
+	} 
+
 	private static playerConfig: Object = { "user.id": requestStr( "id" ), "score.level": 2538 };
 	private static mission: Object = {};
 
 	public static player( key: string ){
-		let rs = this.playerConfig[key];
-		if( key=="user.id" && !rs ) rs = "243972732";
-		return rs;
+		try{
+			let item: any = eval( "this.playerData." + key );
+			return item;
+		}
+		catch(e){
+			let rs = this.playerConfig[key];
+			if( key=="user.id" && !rs ) rs = "243972732";
+			return rs;
+		}
 	}
 }
 
