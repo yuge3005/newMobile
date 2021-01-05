@@ -2,6 +2,9 @@ class GameSettingPopup extends GenericPo {
 
 	protected scrollArea: egret.ScrollView;
 	protected scrollBar: egret.DisplayObjectContainer;
+	protected scrollSlider: SettingSlider;
+
+	private sliderDraging: boolean;
 
 	private soundEffectBtn: SettingsCheckbox;
 	private musicBtn: SettingsCheckbox;
@@ -45,6 +48,19 @@ class GameSettingPopup extends GenericPo {
 		this.addTitleAndVertion();
 		this.addLanguageBar();
 		TweenerTool.tweenTo( this, { scaleX: 0.5, scaleY: 0.5 }, 300 );
+
+		this.scrollSlider = new SettingSlider;
+		Com.addObjectAt( this, this.scrollSlider, 1150, 70 );
+		this.scrollSlider.addEventListener( "startDrag", this.onStartDrag, this );
+		this.scrollSlider.addEventListener( "stopDrag", this.onStopDrag, this );
+
+		this.addEventListener( egret.Event.REMOVED_FROM_STAGE, this.onRemove, this );
+		this.addEventListener( egret.Event.ENTER_FRAME, this.onFrame, this );
+	}
+
+	private onRemove( event: egret.Event ){
+		this.removeEventListener( egret.Event.REMOVED_FROM_STAGE, this.onRemove, this );
+		this.removeEventListener( egret.Event.ENTER_FRAME, this.onFrame, this );
 	}
 
 	protected addScrollArea( maskRect: egret.Rectangle ){
@@ -150,5 +166,18 @@ class GameSettingPopup extends GenericPo {
 
 	private notificationChange(){
 		this.notificationBtn.RadioOn = GameSettings.notificationOn = !GameSettings.notificationOn;
+	}
+
+	private onFrame( event: egret.Event ){
+		if( this.sliderDraging ) this.scrollArea.scrollTop = this.scrollSlider.scrollTop * this.scrollArea.getMaxScrollTop();
+		else this.scrollSlider.setSliderPosition( this.scrollArea.getMaxScrollTop(), this.scrollArea.scrollTop );
+	}
+
+	private onStartDrag( event: egret.Event ){
+		this.sliderDraging = true;
+	}
+
+	private onStopDrag( event: egret.Event ){
+		this.sliderDraging = false;
 	}
 }
