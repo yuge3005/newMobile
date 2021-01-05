@@ -34,7 +34,7 @@
 		,"settings":{ "en": "SETTINGS", "es": "AJUSTES", "pt": "CONFIGURAÇÕES" }
 		,"user_id":{ "en": "User ID", "es": "ID de Usuario", "pt": "ID" }
 		,"notification":{ "en": "NOTIFICATIONS", "es": "NOTIFICACIONES", "pt": "NOTIFICAÇÕES" }
-		,"login":{ "en": "Login", "es": "Login", "pt": "Login" }
+		,"login":{ "en": "Login", "es": "Identificándose", "pt": "Conecte-se" }
 		,"logout":{ "en": "LOGOUT", "es": "SALIR", "pt": "LOGOUT" }
 		,"contact":{ "en": "CONTACT", "es": "CONTACTO", "pt": "CONTATO" }
 		,"rate_us":{ "en": "Rate Us", "es": "¡Denos una", "pt": "Avalie-nos" }
