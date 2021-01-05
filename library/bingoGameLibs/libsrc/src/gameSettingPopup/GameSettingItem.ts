@@ -7,7 +7,7 @@ class GameSettingItem extends egret.DisplayObjectContainer{
 		bg.height = 140;
 		Com.addBitmapAtMiddle( this, "gameSettings_json." + icon, 90, 70 + offsetY );
 
-		let tx: TextLabel = MDS.addGameText( this, 180, 35, 54, 0xFFFFFF, text, true, 525, "", 1 );
+		let tx: TextLabel = MDS.addGameText( this, 180, 35, 54, 0xFFFFFF, text, true, 600, "", 1 );
 		tx.height = 75;
 		GameSettingItem.settingTextFormat( tx );
 
