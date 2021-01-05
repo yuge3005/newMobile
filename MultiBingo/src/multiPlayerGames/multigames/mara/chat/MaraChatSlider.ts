@@ -55,7 +55,7 @@ class MaraChatSlider extends egret.DisplayObjectContainer{
 
 	private setSliderPosition( y: number ){
 		y -= this.dragStarStageY;
-		y /= 0.54;
+		y /= 0.48; // BingoBackGroundSetting.gameSize.y / BingoBackGroundSetting.gameMask.height
 		y += this.dragStarSliderY;
 		let p: number = y;
 		if( p < 0 ) p = 0;
