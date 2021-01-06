@@ -58,8 +58,7 @@ class MaraObserveBar extends egret.DisplayObjectContainer{
 			this.balls[i].removeEventListener( egret.TouchEvent.TOUCH_TAP, this.onBallChoose, this );
 		}
 		let sellectBit: egret.Bitmap = Com.addBitmapAtMiddle( this, "mara_lucky_ball_json.write light", this.balls[index].x, this.balls[index].y );
-		sellectBit.y -= sellectBit.height - sellectBit.width >> 1;
-		sellectBit.scaleX = sellectBit.scaleY = 0.72;
+		sellectBit.scaleX = sellectBit.scaleY = 186 / 276;
 	}
 
 	public checkLuckNum( num: number ){
@@ -68,7 +67,8 @@ class MaraObserveBar extends egret.DisplayObjectContainer{
 		let ballIndex: number = this.ballNumbers.indexOf( num );
 		if( ballIndex >= 0 ){
 			this.gotNum = true;
-			Com.addBitmapAtMiddle( this, "mara_lucky_ball_json.red light", this.balls[ballIndex].x, this.balls[ballIndex].y );
+			let sellectBit: egret.Bitmap = Com.addBitmapAtMiddle( this, "mara_lucky_ball_json.red light", this.balls[ballIndex].x, this.balls[ballIndex].y );
+			sellectBit.scaleX = sellectBit.scaleY = 0.72;
 			let redArrow: egret.Bitmap = Com.addBitmapAtMiddle( this, "mara_lucky_ball_json.drawn", this.balls[ballIndex].x, this.balls[ballIndex].y );
 			redArrow.y += this.balls[ballIndex].height + redArrow.height >> 1;
 			this.tipBg.visible = true;
