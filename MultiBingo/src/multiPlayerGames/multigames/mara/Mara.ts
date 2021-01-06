@@ -474,7 +474,7 @@ class Mara extends Multi75Super{
 			this.maskOfFeatrue = Com.addBitmapAt( this, this.assetStr( "skill gray" ), 21, 238 );
 			this.maskOfFeatrue.touchEnabled = true;
 
-			if( this.exitCardAndWaitingForMaskOfFeature ){
+			if( this.exitCardAndWaitingForMaskOfFeature && !Mara.durringSpecial ){
 				this.hideMaskOfFeatrue();
 				this.exitCardAndWaitingForMaskOfFeature = false;
 			}
