@@ -363,6 +363,7 @@ class Mara extends Multi75Super{
 					MultiPlayerMachine.oneCardPrize = MultiPlayerMachine.cardPrize * MultiServer.userMultiplier * data["amount"];
 					this.startPlay();
 					this.checkResumeBingo( data["cards"] );
+					if( !this.maskOfFeatrue ) this.exitCardAndWaitingForMaskOfFeature = true;
 				}
 			}
 			else{
@@ -455,6 +456,8 @@ class Mara extends Multi75Super{
 	private observeBar: MaraObserveBar;
 	private maskOfFeatrue: egret.Bitmap;
 
+	private exitCardAndWaitingForMaskOfFeature: boolean;
+
 	private lastTotalWinCount: number;
 
 	private nextRoundFeatures: Array<Object>;
@@ -470,6 +473,11 @@ class Mara extends Multi75Super{
 
 			this.maskOfFeatrue = Com.addBitmapAt( this, this.assetStr( "skill gray" ), 21, 238 );
 			this.maskOfFeatrue.touchEnabled = true;
+
+			if( this.exitCardAndWaitingForMaskOfFeature ){
+				this.hideMaskOfFeatrue();
+				this.exitCardAndWaitingForMaskOfFeature = false;
+			}
 		}
 
 		this.featureLayer.getNewFeatureItems( data["availableFeatures"] );
