@@ -289,7 +289,7 @@ class Mara extends Multi75Super{
 		this.dispatchEvent( new egret.Event( "onGamePlay" ) );
 
 		this.removeWaitingBar();
-		this.hideMaskOfFeatrue();
+		this.hideMaskOfFeature();
 		this.bingoInfo.startShowPaytalbe();
 
 		let cards: Array<MultiPlayerCard> = this.cardArea.cards;
@@ -363,7 +363,7 @@ class Mara extends Multi75Super{
 					MultiPlayerMachine.oneCardPrize = MultiPlayerMachine.cardPrize * MultiServer.userMultiplier * data["amount"];
 					this.startPlay();
 					this.checkResumeBingo( data["cards"] );
-					if( !this.maskOfFeatrue ) this.exitCardAndWaitingForMaskOfFeature = true;
+					if( !this.maskOfFeature ) this.exitCardAndWaitingForMaskOfFeature = true;
 				}
 			}
 			else{
@@ -454,7 +454,7 @@ class Mara extends Multi75Super{
 	private featureLayer: MaraFeatureLayer;
 	private specialPattern: string;
 	private observeBar: MaraObserveBar;
-	private maskOfFeatrue: egret.Bitmap;
+	private maskOfFeature: egret.Bitmap;
 
 	private exitCardAndWaitingForMaskOfFeature: boolean;
 
@@ -471,11 +471,11 @@ class Mara extends Multi75Super{
 			this.featureLayer.addEventListener( "featureTip", this.featureTip, this );
 			this.featureLayer.addEventListener( "featureCancel", this.featureCancel, this );
 
-			this.maskOfFeatrue = Com.addBitmapAt( this, this.assetStr( "skill gray" ), 21, 238 );
-			this.maskOfFeatrue.touchEnabled = true;
+			this.maskOfFeature = Com.addBitmapAt( this, this.assetStr( "skill gray" ), 21, 238 );
+			this.maskOfFeature.touchEnabled = true;
 
 			if( this.exitCardAndWaitingForMaskOfFeature && !Mara.durringSpecial ){
-				this.hideMaskOfFeatrue();
+				this.hideMaskOfFeature();
 				this.exitCardAndWaitingForMaskOfFeature = false;
 			}
 		}
@@ -587,7 +587,7 @@ class Mara extends Multi75Super{
 		}
 
 		this.quitInturnMode();
-		this.showMaskOfFeatrue();
+		this.showMaskOfFeature();
 	}
 
 	public static durringSpecial: boolean;
@@ -630,12 +630,12 @@ class Mara extends Multi75Super{
 		this.addChildAt( this.observeBar, this.getChildIndex( this.cardArea ) + 1 );
 	}
 
-	private showMaskOfFeatrue(){
-		if( this.maskOfFeatrue ) this.maskOfFeatrue.visible = true;
+	private showMaskOfFeature(){
+		if( this.maskOfFeature ) this.maskOfFeature.visible = true;
 	}
 
-	private hideMaskOfFeatrue(){
-		if( this.maskOfFeatrue ) this.maskOfFeatrue.visible = false;
+	private hideMaskOfFeature(){
+		if( this.maskOfFeature ) this.maskOfFeature.visible = false;
 	}
 
 	private waitForLuckyNumber( luckNums: Array<number> ){
