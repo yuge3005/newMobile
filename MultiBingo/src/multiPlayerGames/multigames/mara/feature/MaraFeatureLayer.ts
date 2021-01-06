@@ -92,7 +92,7 @@ class MaraFeatureLayer extends egret.DisplayObjectContainer{
 			console.error( "cancel used feature" );
 		}
 		if( !this.cancelMaskBg ){
-			this.cancelMaskBg = Com.addBitmapAt( this, MultiPlayerMachine.getAssetStr( "skill gray" ), -24, 238 );
+			this.cancelMaskBg = Com.addBitmapAt( this, MultiPlayerMachine.getAssetStr( "skill gray" ), 21, 238 );
 			this.cancelMaskBg.touchEnabled = true;
 		}
 		this.addChild( this.cancelMaskBg );
