@@ -626,7 +626,7 @@ class Mara extends Multi75Super{
 	private observeMode(){
 		this.observeBar = new MaraObserveBar;
 		MultiServer.luckNumberCallback = this.waitForLuckyNumber.bind( this );
-		Com.addObjectAt( this, this.observeBar, 171, 137 );
+		Com.addObjectAt( this, this.observeBar, 0, 0 );
 		this.addChildAt( this.observeBar, this.getChildIndex( this.cardArea ) + 1 );
 	}
 
@@ -644,6 +644,7 @@ class Mara extends Multi75Super{
 		for( let i: number = 0; i < luckNums.length; i++ ){
 			balls[i] = ( this.ballArea as MaraBallLayer ).getABall( luckNums[i] );
 			balls[i].name = "" + luckNums[i];
+			balls[i].scaleX = balls[i].scaleY = 1.375;
 		}
 		this.observeBar.showLuckNums( balls );
 	}
