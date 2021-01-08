@@ -23,12 +23,12 @@ class MaraChatBar extends MultiChatBar{
 		tx.scaleX = 0.81;
 		tx.setText( MuLang.getText( "send", MuLang.CASE_UPPER ) );
 
-		this.cardCountTxt = Com.addLabelAt( this, -1329, -453, 225, 40, 40 );
+		this.cardCountTxt = Com.addLabelAt( this, -1329, -410, 225, 40, 40 );
 		this.cardCountTxt.textAlign = "left";
 		this.cardCountTxt.fontFamily = "Arial";
 		this.cardCountTxt.bold = true;
 		this.cardCountTxt.scaleX = 0.75;
-		this.playerCountTxt = Com.addLabelAt( this, -1329, -410, 225, 40, 40 );
+		this.playerCountTxt = Com.addLabelAt( this, -1329, -453, 225, 40, 40 );
 		this.playerCountTxt.textAlign = "left";
 		this.playerCountTxt.fontFamily = "Arial";
 		this.playerCountTxt.bold = true;
@@ -110,7 +110,7 @@ class MaraChatBar extends MultiChatBar{
 		let nameTxt: TextLabel = Com.addLabelAt( userInfo, 91, 10, 250, 30, 30, false, true );
 		nameTxt.textAlign = "left";
 		nameTxt.textColor = 0;
-		if( !userName ) userName = MuLang.getText( "guest" );
+		if( !userName ) userName = MuLang.getText( "guest" ) + PlayerConfig.player( "user.id" ).substr(-4);
 		nameTxt.setText( userName );
 		return nameTxt;
 	}

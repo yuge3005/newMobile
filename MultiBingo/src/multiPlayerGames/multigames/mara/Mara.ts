@@ -289,6 +289,7 @@ class Mara extends Multi75Super{
 		this.dispatchEvent( new egret.Event( "onGamePlay" ) );
 
 		this.removeWaitingBar();
+		this.hideMaskOfFeature();
 		this.bingoInfo.startShowPaytalbe();
 
 		let cards: Array<MultiPlayerCard> = this.cardArea.cards;
@@ -362,6 +363,7 @@ class Mara extends Multi75Super{
 					MultiPlayerMachine.oneCardPrize = MultiPlayerMachine.cardPrize * MultiServer.userMultiplier * data["amount"];
 					this.startPlay();
 					this.checkResumeBingo( data["cards"] );
+					if( !this.maskOfFeature ) this.exitCardAndWaitingForMaskOfFeature = true;
 				}
 			}
 			else{
@@ -380,7 +382,6 @@ class Mara extends Multi75Super{
 		if( this.observeBar ){
 			this.removeChild( this.observeBar );
 			this.observeBar = null;
-			this.hideMaskOfFeatrue();
 		}
 
 		this.resetCardsStatus();
@@ -453,7 +454,9 @@ class Mara extends Multi75Super{
 	private featureLayer: MaraFeatureLayer;
 	private specialPattern: string;
 	private observeBar: MaraObserveBar;
-	private maskOfFeatrue: egret.Bitmap;
+	private maskOfFeature: egret.Bitmap;
+
+	private exitCardAndWaitingForMaskOfFeature: boolean;
 
 	private lastTotalWinCount: number;
 
@@ -467,6 +470,14 @@ class Mara extends Multi75Super{
 			this.featureLayer.addEventListener( "featureEvent", this.buyFeatrue, this );
 			this.featureLayer.addEventListener( "featureTip", this.featureTip, this );
 			this.featureLayer.addEventListener( "featureCancel", this.featureCancel, this );
+
+			this.maskOfFeature = Com.addBitmapAt( this, this.assetStr( "skill gray" ), 21, 238 );
+			this.maskOfFeature.touchEnabled = true;
+
+			if( this.exitCardAndWaitingForMaskOfFeature && !Mara.durringSpecial ){
+				this.hideMaskOfFeature();
+				this.exitCardAndWaitingForMaskOfFeature = false;
+			}
 		}
 
 		this.featureLayer.getNewFeatureItems( data["availableFeatures"] );
@@ -576,6 +587,7 @@ class Mara extends Multi75Super{
 		}
 
 		this.quitInturnMode();
+		this.showMaskOfFeature();
 	}
 
 	public static durringSpecial: boolean;
@@ -614,21 +626,16 @@ class Mara extends Multi75Super{
 	private observeMode(){
 		this.observeBar = new MaraObserveBar;
 		MultiServer.luckNumberCallback = this.waitForLuckyNumber.bind( this );
-		Com.addObjectAt( this, this.observeBar, 171, 137 );
+		Com.addObjectAt( this, this.observeBar, 0, 0 );
 		this.addChildAt( this.observeBar, this.getChildIndex( this.cardArea ) + 1 );
-		this.showMaskOfFeatrue();
 	}
 
-	private showMaskOfFeatrue(){
-		if( !this.maskOfFeatrue ) {
-			this.maskOfFeatrue = Com.addBitmapAt( this, this.assetStr( "skill gray" ), 0, 75 );
-			this.maskOfFeatrue.touchEnabled = true;
-		}
-		this.maskOfFeatrue.visible = true;
+	private showMaskOfFeature(){
+		if( this.maskOfFeature ) this.maskOfFeature.visible = true;
 	}
 
-	private hideMaskOfFeatrue(){
-		if( this.maskOfFeatrue ) this.maskOfFeatrue.visible = false;
+	private hideMaskOfFeature(){
+		if( this.maskOfFeature ) this.maskOfFeature.visible = false;
 	}
 
 	private waitForLuckyNumber( luckNums: Array<number> ){
@@ -637,6 +644,7 @@ class Mara extends Multi75Super{
 		for( let i: number = 0; i < luckNums.length; i++ ){
 			balls[i] = ( this.ballArea as MaraBallLayer ).getABall( luckNums[i] );
 			balls[i].name = "" + luckNums[i];
+			balls[i].scaleX = balls[i].scaleY = 1.375;
 		}
 		this.observeBar.showLuckNums( balls );
 	}

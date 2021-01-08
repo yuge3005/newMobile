@@ -94,7 +94,8 @@ class GameSettingPopup extends GenericPo {
 	private addItems(){
 		let button0: TouchDownButton = Com.addDownButtonAt( this, "gameSettings_json.support_btn", "gameSettings_json.support_btn", 700, 18, this.logout, true );
 		this.addButtonText( button0, "logout" );
-		this.addItem( 0, "avatar", MuLang.getText( "user_id", MuLang.CASE_UPPER ) + ":     " + PlayerConfig.player( "user.id" ), button0 );
+		let playType: string = this.getPlayerType();
+		this.addItem( 0, "avatar", MuLang.getText( playType, MuLang.CASE_UPPER ) + ":   " + PlayerConfig.player( playType == "user_id" ? "user.id" : playType ), button0 );
 		let button1: TouchDownButton = Com.addDownButtonAt( this, "gameSettings_json.support_btn", "gameSettings_json.support_btn", 700, 18, this.showLangugeBar, true );
 		Com.addBitmapAtMiddle( button1, "gameSettings_json.flag_" + MuLang.language, button1.width >> 1, button1.height >> 1 );
 		Com.addBitmapAtMiddle( button1, "gameSettings_json.btn_arrow", button1.width - 45, button1.height >> 1 );
@@ -123,6 +124,15 @@ class GameSettingPopup extends GenericPo {
 		this.notificationBtn = new SettingsCheckbox( this.notificationChange.bind(this) );
 		this.notificationBtn.RadioOn = GameSettings.notificationOn;
 		this.addItem( 8, "icon_notification", MuLang.getText( "notification" ), this.notificationBtn, 5 );
+	}
+
+	private getPlayerType(): string{
+		let typeStr: string;
+		if( PlayerConfig.player( "facebook_id" ) ) return "facebook_id";
+		else if( PlayerConfig.player( "custom_id" ) ) return "custom_id";
+		else if( PlayerConfig.player( "google_id" ) ) return "google_id";
+		else if( PlayerConfig.player( "guest_id" ) ) return "guest_id";
+		else return "user_id";
 	}
 
 	private addTitleAndVertion(){

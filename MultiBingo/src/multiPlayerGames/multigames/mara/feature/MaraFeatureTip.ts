@@ -50,7 +50,7 @@ class MaraFeatureTip extends egret.DisplayObjectContainer{
 	}
 
 	private showFeatureInfo( tipStr: string ){
-		this.tipTxt.text =  MuLang.getText( tipStr + "_tip" );
+		this.tipTxt.text =  MuLang.getText( tipStr + "_tip", MuLang.CASE_UPPER );
 		this.titleTxt.setText( MuLang.getText( tipStr, MuLang.CASE_UPPER ).replace( " ", "\n" ) );
 
 		if( this.tipIcon ) this.removeChild( this.tipIcon );

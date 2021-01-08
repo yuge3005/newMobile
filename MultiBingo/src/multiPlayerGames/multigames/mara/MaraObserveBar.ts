@@ -1,7 +1,7 @@
 class MaraObserveBar extends egret.DisplayObjectContainer{
 
 	private balls: Array<egret.Sprite>;
-	private ballPositions: Array<number> = [ 53, 184, 315 ];
+	private ballPositions: Array<number> = [ 625, 940, 1255 ];
 	private choosedNum: number;
 	private ballNumbers: Array<number>;
 
@@ -12,12 +12,17 @@ class MaraObserveBar extends egret.DisplayObjectContainer{
 	public constructor() {
 		super();
 
-		Com.addBitmapAt( this, "mara_lucky_ball_json.title", 0, 0 );
-		this.tipBg = Com.addBitmapAt( this, "mara_lucky_ball_json.not this time", 47, 297 );
+		let titleBg: egret.Bitmap = Com.addBitmapAt( this, "mara_lucky_ball_json.title", 510, 268 );
+		titleBg.width = 865;
+		titleBg.height = 235;
+		this.tipBg = Com.addBitmapAt( this, "mara_lucky_ball_json.not this time", 625, 965 );
+		this.tipBg.scaleX = this.tipBg.scaleY = 0.9;
 		this.tipBg.visible = false;
 
-		Com.addBitmapAtMiddle( this, "mara_" + MuLang.language + "_json.pick", 187, 128 );
-		Com.addBitmapAtMiddle( this, "mara_" + MuLang.language + "_json.luck", 215, 52 );
+		let pickTx: egret.Bitmap =  Com.addBitmapAtMiddle( this, "mara_" + MuLang.language + "_json.pick", 943, 534 );
+		pickTx.scaleX = pickTx.scaleY = 0.9;
+		let lickTx: egret.Bitmap = Com.addBitmapAtMiddle( this, "mara_" + MuLang.language + "_json.luck", 943, 377 );
+		lickTx.scaleX = lickTx.scaleY = 0.9;
 	}
 
 	public showLuckNums( balls: Array<egret.Sprite> ){
@@ -26,7 +31,7 @@ class MaraObserveBar extends egret.DisplayObjectContainer{
 		for( let i: number = 0; i < balls.length; i++ ){
 			this.addChild( balls[i] );
 			balls[i].x = this.ballPositions[i];
-			balls[i].y = 213;
+			balls[i].y = 745;
 			balls[i].touchEnabled = true;
 			balls[i].addEventListener( egret.TouchEvent.TOUCH_TAP, this.onBallChoose, this );
 
@@ -53,7 +58,7 @@ class MaraObserveBar extends egret.DisplayObjectContainer{
 			this.balls[i].removeEventListener( egret.TouchEvent.TOUCH_TAP, this.onBallChoose, this );
 		}
 		let sellectBit: egret.Bitmap = Com.addBitmapAtMiddle( this, "mara_lucky_ball_json.write light", this.balls[index].x, this.balls[index].y );
-		sellectBit.y -= sellectBit.height - sellectBit.width >> 1;
+		sellectBit.scaleX = sellectBit.scaleY = 186 / 276;
 	}
 
 	public checkLuckNum( num: number ){
@@ -62,7 +67,8 @@ class MaraObserveBar extends egret.DisplayObjectContainer{
 		let ballIndex: number = this.ballNumbers.indexOf( num );
 		if( ballIndex >= 0 ){
 			this.gotNum = true;
-			Com.addBitmapAtMiddle( this, "mara_lucky_ball_json.red light", this.balls[ballIndex].x, this.balls[ballIndex].y );
+			let sellectBit: egret.Bitmap = Com.addBitmapAtMiddle( this, "mara_lucky_ball_json.red light", this.balls[ballIndex].x, this.balls[ballIndex].y );
+			sellectBit.scaleX = sellectBit.scaleY = 0.72;
 			let redArrow: egret.Bitmap = Com.addBitmapAtMiddle( this, "mara_lucky_ball_json.drawn", this.balls[ballIndex].x, this.balls[ballIndex].y );
 			redArrow.y += this.balls[ballIndex].height + redArrow.height >> 1;
 			this.tipBg.visible = true;
@@ -71,16 +77,14 @@ class MaraObserveBar extends egret.DisplayObjectContainer{
 				MultiServer.triggerPowerUp( "guessNum", "", 0 );
 			}
 			else{
-				let tx: egret.TextField = Com.addTextAt( this, 47, 297, 282, 31, 22 );
-				tx.verticalAlign = "middle";
+				let tx: TextLabel = Com.addLabelAt( this, 675, 977, 530, 48, 48 );
 				tx.text = MuLang.getText( "lost luck" );
 			}
 		}
 	}
 
 	public showLuckPrize( prize: number ){
-		let tx: egret.TextField = Com.addTextAt( this, 60, 297, 282, 31, 22 );
-		tx.verticalAlign = "middle";
+		let tx: TextLabel = Com.addLabelAt( this, 675, 977, 530, 48, 48 );
 		tx.text = Utils.formatCoinsNumber( prize );
 		let coin: egret.Bitmap = Com.addBitmapAtMiddle( this, MultiPlayerMachine.getAssetStr( "coin" ), 60 + tx.width - tx.textWidth >> 1, 311 );
 	}
