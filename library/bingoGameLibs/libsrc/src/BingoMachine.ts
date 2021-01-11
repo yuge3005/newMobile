@@ -206,6 +206,7 @@ class BingoMachine extends GameUIItem{
     
 	protected sendInitDataRequest(): void {
 		IBingoServer.gameInitCallback = this.onServerData.bind( this );
+		IBingoServer.tounamentCallback = this.onTounamentData.bind( this );
 		IBingoServer.sendMessage( this.tokenObject["key"], this.tokenObject["value"] );
 	}
 
@@ -994,5 +995,9 @@ class BingoMachine extends GameUIItem{
 	public stopAutoPlay(){
 		if( this.gameToolBar.autoPlaying ) this.gameToolBar.autoPlaying = false;
 		else if( this.gameToolBar.buyAllExtra ) this.gameToolBar.buyAllExtra = false;
+	}
+
+	public onTounamentData( cmd: string, data: any ){
+		let tmData: Object = TounamentDataFormat.parse( cmd, data );
 	}
 }

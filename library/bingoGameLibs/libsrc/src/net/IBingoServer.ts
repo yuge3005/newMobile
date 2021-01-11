@@ -21,6 +21,10 @@ class IBingoServer {
 		this.serverConnection["gameInitCallback"] = value;
 	}
 
+	public static set tounamentCallback( value: Function ){
+		this.serverConnection["tounamentCallback"] = value;
+	}
+
 	public static set changeNumberCallback( value: Function ){
 		this.serverConnection["changeNumberCallback"] = value;
 	}

@@ -8,6 +8,7 @@ class SFSConnector {
     private static gettingRoom: string;
     private static joinRoomCallback: Function;
     public static gameInitCallback: Function;
+    public static tounamentCallback: Function;
     public static changeNumberCallback: Function;
     public static playCallback: Function;
     public static roundOverCallback: Function;
@@ -546,6 +547,9 @@ class SFSConnector {
                     callbackFun( null );
                 }
             }
+        }
+        else if( event.cmd.indexOf( "trm." ) == 0 && SFSConnector.tounamentCallback ){
+            SFSConnector.tounamentCallback( event.cmd, event.params );
         }
     }
 
