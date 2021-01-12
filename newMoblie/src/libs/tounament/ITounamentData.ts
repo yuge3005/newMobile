@@ -5,15 +5,19 @@ interface ITounamentData {
 	prize: number;
 	normalPrize: number;
 	goldPrize: number;
-	fromLevel: number;
-	toLevel: number;
 	prizes: Array<ITounamentPrize>;
-	gameIDs: Array<number>;
 	userList: Array<ITounamentUser>;
+	winners: Array<ITounamentUser>;
+}
+
+interface ITounamentInitData extends ITounamentData {
+	isGold: boolean;
 	threshold: number;
 	currentTreshold: number
 	eligible: boolean;
-	winners: Array<ITounamentUser>;
+	fromLevel: number;
+	toLevel: number;
+	gameIDs: Array<number>;
 }
 
 interface ITounamentPrize{

@@ -401,8 +401,7 @@ class CopaChess extends egret.DisplayObjectContainer {
      * start game
      */
     public startGame(): void {
-        this.chess.x = this.chessPlace.x = this.chessPositionArray[this.currentPosition]["x"];
-        this.chess.y = this.chessPlace.y = this.chessPositionArray[this.currentPosition]["y"];
+        this.updateChessPosition();
 
         this.visible = true;
         this.noBonusProgress.width = 0;
@@ -618,13 +617,16 @@ class CopaChess extends egret.DisplayObjectContainer {
         this.showBuffResult();
     }
 
+    public updateChessPosition(){
+        this.chess.x = this.chessPlace.x = this.chessPositionArray[this.currentPosition]["x"];
+        this.chess.y = this.chessPlace.y = this.chessPositionArray[this.currentPosition]["y"];
+    }
+
     /**
      * update position
      */
     public kartGameOver(position: number, roundNumber: number): number {
-        this.chess.x = this.chessPlace.x = this.chessPositionArray[this.currentPosition]["x"];
-        this.chess.y = this.chessPlace.y = this.chessPositionArray[this.currentPosition]["y"];
-        
+        this.updateChessPosition();
         // set rounds text
         this.roundCardText.text = roundNumber + " " + MuLang.getText( "rounds" );
 

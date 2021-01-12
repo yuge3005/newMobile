@@ -1148,6 +1148,8 @@ class Copacabana extends V2Game{
         this.miniGame.visible = true;
         this.boatGame.visible = false;
 
+        this.miniGame.updateChessPosition();
+        
         egret.setTimeout(function (buffPos: number) {
             this.miniGame.kartGameOver(buffPos, this.bufLeftTurns);
         }.bind(this, event.data["buffPos"]), this, 1000);

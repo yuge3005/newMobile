@@ -9,7 +9,7 @@
 			"name": "gameSettings"
 		},
 		{
-			"keys": "b3_2line_mp3,b3_3line_mp3,b3_4line_mp3,b3_acumulado_mp3,b3_ball_mp3,b3_bet_mp3,b3_bingo_mp3,b3_blink_mp3,b3_card_mp3,b3_cross_line_mp3,b3_extra_ball_mp3,b3_no_credito_mp3,b3_rect_mp3,b3_t_mp3,b3_x_mp3,bingo3_json,bingo3Animation_png,bingo3Animation_json,bingo3_conf,forAll_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,Bingo3Cartoes_json,Arial Black_fnt,Arial Black_png",
+			"keys": "b3_2line_mp3,b3_3line_mp3,b3_4line_mp3,b3_acumulado_mp3,b3_ball_mp3,b3_bet_mp3,b3_bingo_mp3,b3_blink_mp3,b3_card_mp3,b3_cross_line_mp3,b3_extra_ball_mp3,b3_no_credito_mp3,b3_rect_mp3,b3_t_mp3,b3_x_mp3,bingo3_json,bingo3Animation_png,bingo3Animation_json,bingo3_conf,forAll_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,Bingo3Cartoes_json,Arial Black_fnt,Arial Black_png,tounament_json",
 			"name": "bingo3"
 		}
 	],
@@ -163,6 +163,12 @@
 			"type": "sheet",
 			"name": "gameSettings_json",
 			"subkeys": "X_btn,avatar,bg,bg_slider_off,bg_slider_on,btn_arrow,fb_bt_settings,flag_en,flag_es,flag_pt,gl_bt_settings,icon_connect,icon_notification,language_icon,music_icon,rate_icon,scroll_bar,scroll_bar_handle,slider_switch,sound_fx_icon,support_btn,support_icon,tab_bg,visual_fx_icon"
+		},
+		{
+			"url": "assets/tounament/tounament.json",
+			"type": "sheet",
+			"name": "tounament_json",
+			"subkeys": "avatar,bar_bg,btn_arrow,btn_arrow_bg,deviding_line,head_bg,mechanism_pending_bg,mechanism_pending_timer_bg,mechanism_pending_timer_fill,own_bg,own_progress_bar,own_progress_bar_bg,own_progress_bar_bg_light,player_bg,progress_bar,progress_bar_point,ranking_bg,ranking_en,ranking_es,ranking_pt"
 		}
 	]
 }

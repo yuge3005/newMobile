@@ -997,7 +997,29 @@ class BingoMachine extends GameUIItem{
 		else if( this.gameToolBar.buyAllExtra ) this.gameToolBar.buyAllExtra = false;
 	}
 
+/**************************************************************************************************************/
+
+	private tounamentBar: TounamentLayer;
+
 	public onTounamentData( cmd: string, data: any ){
 		let tmData: Object = TounamentDataFormat.parse( cmd, data );
+
+		if( cmd == "trm.start" ) {
+			let initData: ITounamentInitData = tmData as ITounamentInitData;
+			if( initData.isGold )this.tounamentBar = new GoldTounamentLayer( initData );
+			else this.tounamentBar = new TounamentLayer( initData );
+			Com.addObjectAt( this, this.tounamentBar, -235, 117 );
+			TweenerTool.tweenTo( this.tounamentBar, {x: 0}, 600, 1000 );
+		}
+		else if( cmd == "trm.update" ){
+			let updateData: ITounamentData = tmData as ITounamentData;
+			if( this.tounamentBar ) this.tounamentBar.updata( updateData );
+		}
+		else if( cmd == "trm.end" ){
+			
+		}
+		else{
+			egret.error( "tounament command error!" );
+		}
 	}
 }

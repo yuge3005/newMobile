@@ -1,0 +1,33 @@
+{
+    "options": {
+        "layoutGap": 1,
+        "extend": 0,
+        "layoutMath": "3",
+        "sizeMode": "2n",
+        "useExtension": 0
+    },
+    "files": [
+        "./mechanism_pending_timer_bg.png",
+        "./mechanism_pending_bg.png",
+        "./head_bg.png",
+        "./deviding_line.png",
+        "./btn_arrow_bg.png",
+        "./btn_arrow.png",
+        "./bar_bg.png",
+        "./avatar.png",
+        "./ranking_pt.png",
+        "./ranking_es.png",
+        "./ranking_en.png",
+        "./ranking_bg.png",
+        "./progress_bar_point.png",
+        "./progress_bar.png",
+        "./player_bg.png",
+        "./own_progress_bar_bg_light.png",
+        "./own_progress_bar_bg.png",
+        "./own_progress_bar.png",
+        "./own_bg.png",
+        "./mechanism_pending_timer_fill.png"
+    ],
+    "projectName": "tounament",
+    "version": 5
+}

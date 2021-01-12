@@ -9,7 +9,7 @@
 			"name": "gameSettings"
 		},
 		{
-			"keys": "bs_acumulado_wav,bs_ball_mp3,bs_bingo_mp3,bs_card_wav,bs_double_line_mp3,bs_estrela_mp3,bs_h_mp3,bs_line_wav,bs_perimeter_mp3,bs138_mp3,bs140_mp3,bs148_mp3,bs149_mp3,bs151_mp3,bs153_mp3,blackStar_json,blackStarArrow_png,blackStarArrow_json,blackStar_conf,forAll_tx,blackStar_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,v1gameDefault_json,Arial Black_fnt,Arial Black_png,Ozone_png,Ozone_fnt,starParticle_png,starParticle_yellow_png,starParticle_blue_png,starParticle_json",
+			"keys": "bs_acumulado_wav,bs_ball_mp3,bs_bingo_mp3,bs_card_wav,bs_double_line_mp3,bs_estrela_mp3,bs_h_mp3,bs_line_wav,bs_perimeter_mp3,bs138_mp3,bs140_mp3,bs148_mp3,bs149_mp3,bs151_mp3,bs153_mp3,blackStar_json,blackStarArrow_png,blackStarArrow_json,blackStar_conf,forAll_tx,blackStar_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,v1gameDefault_json,Arial Black_fnt,Arial Black_png,Ozone_png,Ozone_fnt,starParticle_png,starParticle_yellow_png,starParticle_blue_png,starParticle_json,tounament_json",
 			"name": "blackStar"
 		}
 	],
@@ -193,6 +193,12 @@
 			"type": "sheet",
 			"name": "gameSettings_json",
 			"subkeys": "X_btn,avatar,bg,bg_slider_off,bg_slider_on,btn_arrow,fb_bt_settings,flag_en,flag_es,flag_pt,gl_bt_settings,icon_connect,icon_notification,language_icon,music_icon,rate_icon,scroll_bar,scroll_bar_handle,slider_switch,sound_fx_icon,support_btn,support_icon,tab_bg,visual_fx_icon"
+		},
+		{
+			"url": "assets/tounament/tounament.json",
+			"type": "sheet",
+			"name": "tounament_json",
+			"subkeys": "avatar,bar_bg,btn_arrow,btn_arrow_bg,deviding_line,head_bg,mechanism_pending_bg,mechanism_pending_timer_bg,mechanism_pending_timer_fill,own_bg,own_progress_bar,own_progress_bar_bg,own_progress_bar_bg_light,player_bg,progress_bar,progress_bar_point,ranking_bg,ranking_en,ranking_es,ranking_pt"
 		}
 	]
 }
