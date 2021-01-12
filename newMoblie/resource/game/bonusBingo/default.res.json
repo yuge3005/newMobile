@@ -9,7 +9,7 @@
 			"name": "gameSettings"
 		},
 		{
-			"keys": "bgm_bounes_mode_mp3,bonusBingo_1_mp3,bonusBingo_10_mp3,bonusBingo_250_mp3,bonusBingo_3000_mp3,bonusBingo_40_mp3,bonusBingo_500_mp3,bonusBingo_EB_mp3,bonusBingo_ball_fall_mp3,bonusBingo_get_all_mp3,bonusBingo_get_ball_wav,bonusBingo_missone_mp3,bonusBingo_mutiplay_mp3,bonusBingo_super_miss_mp3,bonusBingo_json,bonusBingoAnimation_png,bonusBingoAnimation_json,bonusBingo_conf,forAll_tx,bonusBingo_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,Arial Black_fnt,Arial Black_png",
+			"keys": "bgm_bounes_mode_mp3,bonusBingo_1_mp3,bonusBingo_10_mp3,bonusBingo_250_mp3,bonusBingo_3000_mp3,bonusBingo_40_mp3,bonusBingo_500_mp3,bonusBingo_EB_mp3,bonusBingo_ball_fall_mp3,bonusBingo_get_all_mp3,bonusBingo_get_ball_wav,bonusBingo_missone_mp3,bonusBingo_mutiplay_mp3,bonusBingo_super_miss_mp3,bonusBingo_json,bonusBingoAnimation_png,bonusBingoAnimation_json,bonusBingo_conf,forAll_tx,bonusBingo_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,Arial Black_fnt,Arial Black_png,tounament_json",
 			"name": "bonusBingo"
 		}
 	],
@@ -153,6 +153,12 @@
 			"type": "sheet",
 			"name": "gameSettings_json",
 			"subkeys": "X_btn,avatar,bg,bg_slider_off,bg_slider_on,btn_arrow,fb_bt_settings,flag_en,flag_es,flag_pt,gl_bt_settings,icon_connect,icon_notification,language_icon,music_icon,rate_icon,scroll_bar,scroll_bar_handle,slider_switch,sound_fx_icon,support_btn,support_icon,tab_bg,visual_fx_icon"
+		},
+		{
+			"url": "assets/tounament/tounament.json",
+			"type": "sheet",
+			"name": "tounament_json",
+			"subkeys": "avatar,bar_bg,btn_arrow,btn_arrow_bg,deviding_line,head_bg,mechanism_pending_bg,mechanism_pending_timer_bg,mechanism_pending_timer_fill,own_bg,own_progress_bar,own_progress_bar_bg,own_progress_bar_bg_light,player_bg,progress_bar,progress_bar_point,ranking_bg,ranking_en,ranking_es,ranking_pt"
 		}
 	]
 }
