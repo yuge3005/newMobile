@@ -1,7 +1,5 @@
 class TounamentDataFormat {
 
-	public static isGold: boolean;
-
 	public constructor() {
 	}
 
@@ -20,16 +18,8 @@ class TounamentDataFormat {
 	}
 
 	private static initTournamentData(data): Object {
-
-		TounamentDataFormat.isGold = Boolean(data.getBool("isGold")) || false;
-
-		let tmd: ITounamentData = <ITounamentData>{};
-		tmd.totalDuration = Number(data.getInt("total_duration"));
-        tmd.duration = Number(data.getInt("duration"));
-		tmd.userCount = Number(data.getInt("userCount"));
-		tmd.prize = Number(data.getLong("prize"));
-		tmd.normalPrize = Number(data.getLong("normalPrize"));
-		tmd.goldPrize = Number(data.getLong("goldPrize"));
+		let tmd: ITounamentInitData = <ITounamentInitData>{};
+		tmd.isGold = data.getBool("isGold");
 		tmd.fromLevel = Number( data.getInt("fromLevel") );
 		tmd.toLevel = Number( data.getInt("toLevel") );
 		tmd.gameIDs = data.getIntArray("gameIDs");
@@ -37,7 +27,7 @@ class TounamentDataFormat {
 		tmd.currentTreshold = Number( data.getDouble("currentTreshold") );
 		tmd.eligible = data.getBool( "eligible" );
 
-		this.getListDatas( tmd, data );
+		this.getUpdateData( tmd, data );
 		return tmd;
 	}
 
@@ -100,6 +90,11 @@ class TounamentDataFormat {
 
 	private static updateTournamentData(data): ITounamentData {
 		let tmd: ITounamentData = <ITounamentData>{};
+		this.getUpdateData( tmd, data );
+		return tmd;
+	}
+
+	private static getUpdateData( tmd: ITounamentData, data: any ){
 		tmd.totalDuration = Number(data.getInt("total_duration"));
         tmd.duration = Number(data.getInt("duration"));
 		tmd.userCount = Number(data.getInt("userCount"));
@@ -108,7 +103,6 @@ class TounamentDataFormat {
 		tmd.goldPrize = Number(data.getLong("goldPrize"));
 
 		this.getListDatas( tmd, data );
-		return tmd;
 	}
 
 	private static tournamentOver(data: any): ITounamentWinInfo {
