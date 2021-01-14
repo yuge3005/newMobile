@@ -999,12 +999,13 @@ class BingoMachine extends GameUIItem{
 
 /**************************************************************************************************************/
 
-	private tounamentBar: TounamentLayer;
+	protected tounamentBar: TounamentLayer;
 
 	public onTounamentData( cmd: string, data: any ){
 		let tmData: Object = TounamentDataFormat.parse( cmd, data );
 
 		if( cmd == "trm.start" ) {
+			if( this.tounamentBar ) return;
 			let initData: ITounamentInitData = tmData as ITounamentInitData;
 			if( initData.isGold )this.tounamentBar = new GoldTounamentLayer( initData );
 			else this.tounamentBar = new TounamentLayer( initData );
@@ -1019,6 +1020,7 @@ class BingoMachine extends GameUIItem{
 			
 		}
 		else{
+			trace( cmd );
 			egret.error( "tounament command error!" );
 		}
 	}
