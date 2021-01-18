@@ -31,7 +31,7 @@ class Main extends egret.DisplayObjectContainer {
 
     private async runGame() {
         await RES.loadConfig("resource/game/turbo90/default.res.json", "resource/");
-		await RES.loadConfig("resource/assets/default.res.json", "resource/");
+        await RES.loadConfig("resource/assets/default.res.json", "resource/");
         this.createGameScene();
         await platform.login();
         const userInfo = await platform.getUserInfo();
