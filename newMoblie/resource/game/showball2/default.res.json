@@ -21,7 +21,7 @@
 			"name": "gameSettings"
 		},
 		{
-			"keys": "shb_win_wav,shb_w_mp3,shb_round_mp3,shb_m_mp3,shb_m_w_mp3,shb_jackpot_mp3,shb_have_extra_ball_wav,shb_free_extra_mp3,shb_extra_ball_mp3,shb_double_line_mp3,shb_card_mp3,shb_bingo_mp3,shb_bet_mp3,shb_ball_mp3,shb_2trangle_mp3,shb_1to_bingo_mp3,shb_1line_mp3,showball2_json,showballAnimation_png,showballAnimation_json,showball2_conf,forAll_tx,showball3_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,v1gameDefault_json,Arial Black_fnt,Arial Black_png",
+			"keys": "shb_win_wav,shb_w_mp3,shb_round_mp3,shb_m_mp3,shb_m_w_mp3,shb_jackpot_mp3,shb_have_extra_ball_wav,shb_free_extra_mp3,shb_extra_ball_mp3,shb_double_line_mp3,shb_card_mp3,shb_bingo_mp3,shb_bet_mp3,shb_ball_mp3,shb_2trangle_mp3,shb_1to_bingo_mp3,shb_1line_mp3,showball2_json,showballAnimation_png,showballAnimation_json,showball2_conf,forAll_tx,showball3_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,v1gameDefault_json,Arial Black_fnt,Arial Black_png,tounament_json",
 			"name": "showball2"
 		}
 	],
@@ -208,6 +208,12 @@
 			"type": "sheet",
 			"name": "gameSettings_json",
 			"subkeys": "X_btn,avatar,bg,bg_slider_off,bg_slider_on,btn_arrow,fb_bt_settings,flag_en,flag_es,flag_pt,gl_bt_settings,icon_connect,icon_notification,language_icon,music_icon,rate_icon,scroll_bar,scroll_bar_handle,slider_switch,sound_fx_icon,support_btn,support_icon,tab_bg,visual_fx_icon"
+		},
+		{
+			"url": "assets/tounament/tounament.json",
+			"type": "sheet",
+			"name": "tounament_json",
+			"subkeys": "Top3_1st_sheild,Top3_2nd_sheild,Top3_3rd_sheild,avatar,bar_bg,btn_arrow,btn_arrow_bg,deviding_line,head_bg,mechanism_pending_bg,mechanism_pending_timer_bg,mechanism_pending_timer_fill,own_bg,own_progress_bar,own_progress_bar_bg,own_progress_bar_bg_light,player_bg,progress_bar,progress_bar_point,ranking_bg,ranking_en,ranking_es,ranking_pt"
 		}
 	]
 }
