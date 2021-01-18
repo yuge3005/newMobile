@@ -39,4 +39,14 @@ class MDS{
 	public static removeSelf( item: egret.DisplayObject ){
 		if( item.parent ) item.parent.removeChild( item );
 	}
+
+	public static onUserHeadLoaded( userInfo: egret.Bitmap, size: number, event: egret.Event ){
+		let loader:egret.ImageLoader = event.currentTarget;
+        let bmd: egret.BitmapData = loader.data;
+		let tx: egret.Texture = new egret.Texture;
+		tx.bitmapData = bmd;
+		userInfo.scaleX = userInfo.scaleY = 1;
+        userInfo.texture = tx;
+		userInfo.width = userInfo.height = size;
+	}
 }
