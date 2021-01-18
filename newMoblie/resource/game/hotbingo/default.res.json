@@ -9,7 +9,7 @@
 			"name": "gameSettings"
 		},
 		{
-			"keys": "hb_1line_mp3,hb_2line_mp3,hb_4corner_mp3,hb_ball_mp3,hb_bet_mp3,hb_bingo_mp3,hb_card_mp3,hb_card1_mp3,hb_card2_mp3,hb_card3_mp3,hb_card4_mp3,hb_extra_ball_wav,hb_extra_loop_mp3,hb_have_extra_ball_mp3,hb_jackpot_mp3,hb_super_line_wav,hotbingo_json,turbo90Animation_png,turbo90Animation_json,hotbingo_conf,forAll_tx,hotbingo_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,getCoinsParticle_png,getCoinsParticle_json,superLine_json,Arial Black_fnt,Arial Black_png",
+			"keys": "hb_1line_mp3,hb_2line_mp3,hb_4corner_mp3,hb_ball_mp3,hb_bet_mp3,hb_bingo_mp3,hb_card_mp3,hb_card1_mp3,hb_card2_mp3,hb_card3_mp3,hb_card4_mp3,hb_extra_ball_wav,hb_extra_loop_mp3,hb_have_extra_ball_mp3,hb_jackpot_mp3,hb_super_line_wav,hotbingo_json,turbo90Animation_png,turbo90Animation_json,hotbingo_conf,forAll_tx,hotbingo_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,getCoinsParticle_png,getCoinsParticle_json,superLine_json,Arial Black_fnt,Arial Black_png,tounament_json",
 			"name": "hotbingo"
 		}
 	],
@@ -179,6 +179,12 @@
 			"type": "sheet",
 			"name": "gameSettings_json",
 			"subkeys": "X_btn,avatar,bg,bg_slider_off,bg_slider_on,btn_arrow,fb_bt_settings,flag_en,flag_es,flag_pt,gl_bt_settings,icon_connect,icon_notification,language_icon,music_icon,rate_icon,scroll_bar,scroll_bar_handle,slider_switch,sound_fx_icon,support_btn,support_icon,tab_bg,visual_fx_icon"
+		},
+		{
+			"url": "assets/tounament/tounament.json",
+			"type": "sheet",
+			"name": "tounament_json",
+			"subkeys": "Top3_1st_sheild,Top3_2nd_sheild,Top3_3rd_sheild,avatar,bar_bg,btn_arrow,btn_arrow_bg,deviding_line,head_bg,mechanism_pending_bg,mechanism_pending_timer_bg,mechanism_pending_timer_fill,own_bg,own_progress_bar,own_progress_bar_bg,own_progress_bar_bg_light,player_bg,progress_bar,progress_bar_point,ranking_bg,ranking_en,ranking_es,ranking_pt"
 		}
 	]
 }
