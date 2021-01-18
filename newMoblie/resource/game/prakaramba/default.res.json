@@ -9,7 +9,7 @@
 			"name": "gameSettings"
 		},
 		{
-			"keys": "prak1_mp3,prak15_mp3,prak16_mp3,prak19_mp3,prak2_mp3,prak20_mp3,prak21_mp3,prak22_mp3,prak24_mp3,prak28_mp3,prak29_mp3,prak3_wav,prak30_mp3,prak8_mp3,prak9_mp3,prakaramba_json,prakarambaAnimation_png,prakarambaAnimation_json,prakaramba_conf,forAll_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,Arial Black_fnt,Arial Black_png",
+			"keys": "prak1_mp3,prak15_mp3,prak16_mp3,prak19_mp3,prak2_mp3,prak20_mp3,prak21_mp3,prak22_mp3,prak24_mp3,prak28_mp3,prak29_mp3,prak3_wav,prak30_mp3,prak8_mp3,prak9_mp3,prakaramba_json,prakarambaAnimation_png,prakarambaAnimation_json,prakaramba_conf,forAll_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,Arial Black_fnt,Arial Black_png,tounament_json",
 			"name": "prakaramba"
 		}
 	],
@@ -153,6 +153,12 @@
 			"type": "sheet",
 			"name": "gameSettings_json",
 			"subkeys": "X_btn,avatar,bg,bg_slider_off,bg_slider_on,btn_arrow,fb_bt_settings,flag_en,flag_es,flag_pt,gl_bt_settings,icon_connect,icon_notification,language_icon,music_icon,rate_icon,scroll_bar,scroll_bar_handle,slider_switch,sound_fx_icon,support_btn,support_icon,tab_bg,visual_fx_icon"
+		},
+		{
+			"url": "assets/tounament/tounament.json",
+			"type": "sheet",
+			"name": "tounament_json",
+			"subkeys": "Top3_1st_sheild,Top3_2nd_sheild,Top3_3rd_sheild,avatar,bar_bg,btn_arrow,btn_arrow_bg,deviding_line,head_bg,mechanism_pending_bg,mechanism_pending_timer_bg,mechanism_pending_timer_fill,own_bg,own_progress_bar,own_progress_bar_bg,own_progress_bar_bg_light,player_bg,progress_bar,progress_bar_point,ranking_bg,ranking_en,ranking_es,ranking_pt"
 		}
 	]
 }

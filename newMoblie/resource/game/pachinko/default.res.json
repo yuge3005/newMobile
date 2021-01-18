@@ -21,7 +21,7 @@
 			"name": "gameSettings"
 		},
 		{
-			"keys": "pck_2line_mp3,pck_3line_mp3,pck_4corners_mp3,pck_4line_mp3,pck_a_mp3,pck_ball_mp3,pck_bet_mp3,pck_bingo_real_mp3,pck_bingo_mp3,pck_c_mp3,pck_card_mp3,pck_collect_mp3,pck_extra_ball_mp3,pck_flower_mp3,pck_free_extra_mp3,pck_h_mp3,pck_have_extra_ball_mp3,pck_i_mp3,pck_jackpot_mp3,pck_k_mp3,pck_n_mp3,pck_o_mp3,pck_p_mp3,pck_pachinko_mp3,pck_plus_mp3,pck_round_mp3,pachinko_json,pachinko_conf,forAll_tx,pachinko_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,Arial Black_fnt,Arial Black_png",
+			"keys": "pck_2line_mp3,pck_3line_mp3,pck_4corners_mp3,pck_4line_mp3,pck_a_mp3,pck_ball_mp3,pck_bet_mp3,pck_bingo_real_mp3,pck_bingo_mp3,pck_c_mp3,pck_card_mp3,pck_collect_mp3,pck_extra_ball_mp3,pck_flower_mp3,pck_free_extra_mp3,pck_h_mp3,pck_have_extra_ball_mp3,pck_i_mp3,pck_jackpot_mp3,pck_k_mp3,pck_n_mp3,pck_o_mp3,pck_p_mp3,pck_pachinko_mp3,pck_plus_mp3,pck_round_mp3,pachinko_json,pachinko_conf,forAll_tx,pachinko_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,Arial Black_fnt,Arial Black_png,tounament_json",
 			"name": "pachinko"
 		}
 	],
@@ -233,6 +233,12 @@
 			"type": "sheet",
 			"name": "gameSettings_json",
 			"subkeys": "X_btn,avatar,bg,bg_slider_off,bg_slider_on,btn_arrow,fb_bt_settings,flag_en,flag_es,flag_pt,gl_bt_settings,icon_connect,icon_notification,language_icon,music_icon,rate_icon,scroll_bar,scroll_bar_handle,slider_switch,sound_fx_icon,support_btn,support_icon,tab_bg,visual_fx_icon"
+		},
+		{
+			"url": "assets/tounament/tounament.json",
+			"type": "sheet",
+			"name": "tounament_json",
+			"subkeys": "Top3_1st_sheild,Top3_2nd_sheild,Top3_3rd_sheild,avatar,bar_bg,btn_arrow,btn_arrow_bg,deviding_line,head_bg,mechanism_pending_bg,mechanism_pending_timer_bg,mechanism_pending_timer_fill,own_bg,own_progress_bar,own_progress_bar_bg,own_progress_bar_bg_light,player_bg,progress_bar,progress_bar_point,ranking_bg,ranking_en,ranking_es,ranking_pt"
 		}
 	]
 }

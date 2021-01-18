@@ -9,7 +9,7 @@
 			"name": "gameSettings"
 		},
 		{
-			"keys": "CASH_Any_Win_End_of_Round_mp3,ball_come_out_mp3,change_cards_mp3,extra_ball_come_out_mp3,extra_mode_start_mp3,win_bingo_mp3,win_cross_mp3,win_double_line_mp3,win_double_triangle_mp3,win_double_v_mp3,win_line_mp3,win_m_mp3,win_mw_mp3,win_perimeter_mp3,win_square_mp3,win_triangle_mp3,win_v_mp3,win_w_mp3,pachinko2_json,pachinko2Animation_png,pachinko2Animation_json,pachinko2_conf,forAll_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,Arial Black_fnt,Arial Black_png",
+			"keys": "CASH_Any_Win_End_of_Round_mp3,ball_come_out_mp3,change_cards_mp3,extra_ball_come_out_mp3,extra_mode_start_mp3,win_bingo_mp3,win_cross_mp3,win_double_line_mp3,win_double_triangle_mp3,win_double_v_mp3,win_line_mp3,win_m_mp3,win_mw_mp3,win_perimeter_mp3,win_square_mp3,win_triangle_mp3,win_v_mp3,win_w_mp3,pachinko2_json,pachinko2Animation_png,pachinko2Animation_json,pachinko2_conf,forAll_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,Arial Black_fnt,Arial Black_png,tounament_json",
 			"name": "pachinko2"
 		}
 	],
@@ -168,6 +168,12 @@
 			"type": "sheet",
 			"name": "gameSettings_json",
 			"subkeys": "X_btn,avatar,bg,bg_slider_off,bg_slider_on,btn_arrow,fb_bt_settings,flag_en,flag_es,flag_pt,gl_bt_settings,icon_connect,icon_notification,language_icon,music_icon,rate_icon,scroll_bar,scroll_bar_handle,slider_switch,sound_fx_icon,support_btn,support_icon,tab_bg,visual_fx_icon"
+		},
+		{
+			"url": "assets/tounament/tounament.json",
+			"type": "sheet",
+			"name": "tounament_json",
+			"subkeys": "Top3_1st_sheild,Top3_2nd_sheild,Top3_3rd_sheild,avatar,bar_bg,btn_arrow,btn_arrow_bg,deviding_line,head_bg,mechanism_pending_bg,mechanism_pending_timer_bg,mechanism_pending_timer_fill,own_bg,own_progress_bar,own_progress_bar_bg,own_progress_bar_bg_light,player_bg,progress_bar,progress_bar_point,ranking_bg,ranking_en,ranking_es,ranking_pt"
 		}
 	]
 }

@@ -21,8 +21,9 @@ class TounamentLayer extends egret.DisplayObjectContainer{
 	}
 
 	private usersUI: Array<TounamentUserItem>;
+	private champoin: TounamentChampoin;
 
-	public constructor( data: ITounamentData ) {
+	public constructor( data: ITounamentInitData ) {
 		super();
 
 		this.buildInnerBar();
@@ -86,6 +87,9 @@ class TounamentLayer extends egret.DisplayObjectContainer{
 
 		Com.addBitmapAt( this.innerBar, "tounament_json.deviding_line", 15, 287 );
 
+		this.champoin = new TounamentChampoin();
+		Com.addObjectAt( this.innerBar, this.champoin, 0, 308 );
+
 		this.innerBar.cacheAsBitmap = true;
 
 		this.potTx = Com.addLabelAt( this, 12, 225, 208, 48, 48, false, true );
@@ -106,7 +110,7 @@ class TounamentLayer extends egret.DisplayObjectContainer{
 		avBg.height = 530;
 		let avt: egret.Bitmap = Com.addBitmapAtMiddle( this.outBar, "tounament_json.avatar", 117, 264 );
 		let fbId: string = PlayerConfig.player( "facebook_id" );
-		if( fbId ) FacebookBitmap.downloadBitmapDataByFacebookID( fbId, 100, 100, this.getHeadIcon.bind( this, avt, 166 ), this );
+		if( fbId ) FacebookBitmap.downloadBitmapDataByFacebookID( fbId, 100, 100, MDS.onUserHeadLoaded.bind( this, avt, 166 ), this );
 
 		let txUp: egret.TextField = Com.addTextAt( this.outBar, 5, 0, 215, 150, 28, true, true );
 		txUp.textColor = 0xFFFF00;
@@ -118,16 +122,6 @@ class TounamentLayer extends egret.DisplayObjectContainer{
 		let txDown: egret.TextField = Com.addTextAt( this.outBar, 0, 405, 235, 30, 28, false, true );
 		txDown.text = MuLang.getText( "win_to_enter" );
 		this.outBar.cacheAsBitmap = true;
-	}
-
-	public getHeadIcon( userInfo: egret.Bitmap, size: number, event: egret.Event ){
-		let loader:egret.ImageLoader = event.currentTarget;
-        let bmd: egret.BitmapData = loader.data;
-		let tx: egret.Texture = new egret.Texture;
-		tx.bitmapData = bmd;
-		userInfo.scaleX = userInfo.scaleY = 1;
-        userInfo.texture = tx;
-		userInfo.width = userInfo.height = size;
 	}
 
 	private updateDuration( duration: number, totalDuration: number ){
@@ -159,7 +153,8 @@ class TounamentLayer extends egret.DisplayObjectContainer{
 	private showingWinners: boolean;
 
 	private updateUserList( users: Array<ITounamentUser>, winners: Array<ITounamentUser> ){
-		if( !users.length ) return;
+		if( this.userIndexOf( users, PlayerConfig.player( "user.id" ) ) < 0 ) return;
+
 		TweenerTool.tweenTo( this.outBar, { x: -235 }, 500 );
 
 		this.showingWinners = !this.showingWinners;
@@ -170,16 +165,78 @@ class TounamentLayer extends egret.DisplayObjectContainer{
 	private hideUserUI(){
 		if( this.usersUI ){
 			for( let i: number = 0; i < this.usersUI.length; i++ ){
-				TweenerTool.tweenTo( this.usersUI[i], { scaleX: 0 }, 500, 500 * i, MDS.removeSelf.bind( this, this.usersUI[i] ) );
+				TweenerTool.tweenTo( this.usersUI[i], { scaleY: 0 }, 500, 500 * i, MDS.removeSelf.bind( this, this.usersUI[i] ) );
 			}
 		}
 	}
 
 	private showUserUI( users: Array<ITounamentUser>, winners: Array<ITounamentUser> ){
-		this.usersUI = [];
-		for( let i: number = 0; i < Math.min(this.usersUI.length, 3 ) ; i++ ){
-			this.usersUI[i] = new TounamentUserItem(  );
-			TweenerTool.tweenTo( this.usersUI[i], { scaleX: 0 }, 500, 500 * i, MDS.removeSelf.bind( this, this.usersUI[i] ) );
+		this.champoin.clearUI();
+		if( this.showingWinners ){
+			if( winners.length > 3 ) winners.length = 3;
+			this.showingWinnersUI( winners );
 		}
+		else{
+			let userList: Array<ITounamentUser> = this.getUserListOrder( users );
+			this.showingWinnersUI( userList );
+			if( userList[0].rank != 1 ) this.champoin.show( winners[0] );
+		}
+	}
+
+	private showingWinnersUI( winners: Array<ITounamentUser> ){
+		this.usersUI = [];
+		for( let i: number = 0; i < Math.min(winners.length, 3 ) ; i++ ){
+			this.usersUI[i] = new TounamentUserItem( winners[i], winners[i].rank, winners[i].uid == PlayerConfig.player( "user.id" ) );
+			this.usersUI[i].scaleY = 0;
+			this.usersUI[i].x = 0;
+			this.addChild( this.usersUI[i] );
+			this.usersUI[i].y = 460 + i * 142;
+			TweenerTool.tweenTo( this.usersUI[i], { scaleY: 1 }, 500, 500 * i + 500 );
+		}
+	}
+
+	private getUserListOrder( users: Array<ITounamentUser> ): Array<ITounamentUser>{
+		let myIndex: number = NaN;
+		let newIndex: number;
+		for( let i: number = 0; i < users.length; i++ ){
+			if( users[i].uid == PlayerConfig.player( "user.id" ) ){
+				myIndex = i;
+			}
+		}
+
+		let newArr: Array<ITounamentUser> = [];
+		newArr.push( users[myIndex] );
+		newIndex = 0;
+		if( myIndex > 0 ){
+			newArr.unshift( users[myIndex-1] );
+			newIndex += 1;
+		}
+		if( users.length > myIndex + 1 ){
+			newArr.push( users[myIndex + 1] );
+		}
+
+		if( newArr.length < 3 ){
+			if( myIndex > 1 ){
+				newArr.unshift( users[myIndex-2] );
+				newIndex += 1;
+			}
+		}
+
+		if( newArr.length < 3 ){
+			if( users.length > myIndex + 2 ){
+				newArr.push( users[myIndex + 2] );
+			}
+		}
+
+		return newArr;
+	}
+
+	private userIndexOf( users: Array<ITounamentUser>, id: string ): number{
+		if( users && users.length ){
+			for( let i: number = 0; i < users.length; i++ ){
+				if( users[i].uid == id ) return i;
+			}
+		}
+		return -1;
 	}
 }

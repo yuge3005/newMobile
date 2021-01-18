@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "lotto_eb_mp3,lotto_ball_mp3,lotto_an2_mp3,lotto_an5_mp3,lotto_an4_mp3,lotto_an3_mp3,lotto_gold_mp3,lotto_se1_mp3,lotto_se2_mp3,lotto_se3_mp3,lotto_se4_mp3,lotto_silver_mp3,lotto_se5_mp3,lotto_se6_mp3,superLotto_json,superLotto_conf,forAll_tx,superLotto_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,Arial Black_fnt,Arial Black_png",
+			"keys": "lotto_eb_mp3,lotto_ball_mp3,lotto_an2_mp3,lotto_an5_mp3,lotto_an4_mp3,lotto_an3_mp3,lotto_gold_mp3,lotto_se1_mp3,lotto_se2_mp3,lotto_se3_mp3,lotto_se4_mp3,lotto_silver_mp3,lotto_se5_mp3,lotto_se6_mp3,superLotto_json,superLotto_conf,forAll_tx,superLotto_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,Arial Black_fnt,Arial Black_png,tounament_json",
 			"name": "superLotto"
 		},
 		{
@@ -143,6 +143,12 @@
 			"type": "sheet",
 			"name": "gameSettings_json",
 			"subkeys": "X_btn,avatar,bg,bg_slider_off,bg_slider_on,btn_arrow,fb_bt_settings,flag_en,flag_es,flag_pt,gl_bt_settings,icon_connect,icon_notification,language_icon,music_icon,rate_icon,scroll_bar,scroll_bar_handle,slider_switch,sound_fx_icon,support_btn,support_icon,tab_bg,visual_fx_icon"
+		},
+		{
+			"url": "assets/tounament/tounament.json",
+			"type": "sheet",
+			"name": "tounament_json",
+			"subkeys": "Top3_1st_sheild,Top3_2nd_sheild,Top3_3rd_sheild,avatar,bar_bg,btn_arrow,btn_arrow_bg,deviding_line,head_bg,mechanism_pending_bg,mechanism_pending_timer_bg,mechanism_pending_timer_fill,own_bg,own_progress_bar,own_progress_bar_bg,own_progress_bar_bg_light,player_bg,progress_bar,progress_bar_point,ranking_bg,ranking_en,ranking_es,ranking_pt"
 		}
 	]
 }

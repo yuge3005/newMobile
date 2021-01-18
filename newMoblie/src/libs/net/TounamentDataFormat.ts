@@ -52,7 +52,7 @@ class TounamentDataFormat {
 		tmd.winners = <Array<ITounamentUser>>[];
 		if( winners ){
 			for (let i = 0; i < winners.size(); i++) {
-                tmd.userList[i] = this.getAUserData( winners.get(i) );
+                tmd.winners[i] = this.getAUserData( winners.get(i) );
             }
 		}
 	}
