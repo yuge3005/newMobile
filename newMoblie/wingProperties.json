@@ -108,6 +108,10 @@
             {
                 "configPath": "resource/game/aztec/default.res.json",
                 "relativePath": "resource/"
+            },
+            {
+                "configPath": "resource/assets/default.res.json",
+                "relativePath": "resource/"
             }
         ]
     },
