@@ -139,6 +139,13 @@ class BingoMachine extends GameUIItem{
 	
 	private loadAsset( assetName: string ){
 		RES.addEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.loaded, this );
+		try{
+			let group: Object = RES["config"].config.groups;
+			group[assetName] = ( group[assetName] as Array<string> ).concat( group["allGameAssets"] );
+		}
+		catch( e ){
+			egret.error(e);
+		}
 		RES.loadGroup( assetName, 0, this.preLoader );
 	}
 	
