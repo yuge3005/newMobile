@@ -10,11 +10,6 @@ class MultiChatBar extends egret.DisplayObjectContainer{
 	protected lineGap: number;
 	protected tipPositionY: number;
 
-	protected cardCountTxt: TextLabel;
-	protected playerCountTxt: TextLabel;
-
-	protected avatarList: AvatarContainer;
-
 	public constructor() {
 		super();
 	}
@@ -109,15 +104,6 @@ class MultiChatBar extends egret.DisplayObjectContainer{
 
 	protected buildBingoMessage( userName: string, bingoTip: string ): egret.DisplayObjectContainer{
 		return  new egret.DisplayObjectContainer;
-	}
-
-	public updateCardAndPlayerNumbers( cardCount: number, playerCount: number, playerFbIds: Array<Object> ){
-		this.cardCountTxt.setText( cardCount + " " + MuLang.getText( "cards", MuLang.CASE_UPPER ) );
-		this.playerCountTxt.setText( playerCount + " " + MuLang.getText( "players", MuLang.CASE_UPPER ) );
-
-		if( playerFbIds ){
-			this.avatarList.updataList( playerFbIds );
-		}
 	}
 
 	public showBingoPlayerName( userName: string, fbId: string ){

@@ -1,67 +1,11 @@
 {
 	"groups": [
 		{
-			"keys": "modalGeneric_json",
-			"name": "generic"
-		},
-		{
-			"keys": "gameSettings_json",
-			"name": "gameSettings"
-		},
-		{
-			"keys": "db_ball_wav,db10_mp3,db2_mp3,db4_mp3,db6_mp3,db7_mp3,db8_mp3,doubleBingo_json,doubleBingoAnimation_png,doubleBingoAnimation_json,doubleBingo_conf,forAll_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,getCoinsParticle_png,getCoinsParticle_json,Arial Black_fnt,Arial Black_png,tounament_json",
+			"keys": "db_ball_wav,db10_mp3,db2_mp3,db4_mp3,db6_mp3,db7_mp3,db8_mp3,doubleBingo_json,doubleBingoAnimation_png,doubleBingoAnimation_json,doubleBingo_conf",
 			"name": "doubleBingo"
 		}
 	],
 	"resources": [
-		{
-			"url": "game/gameToolBar/bingoGameToolbar.json",
-			"type": "sheet",
-			"name": "bingoGameToolbar_json",
-			"subkeys": "BB_EXTRA_btn_bg,BB_EXTRA_buyall,BB_EXTRA_collect_btn,BB_EXTRA_extra_btn,BB_star_open_bg,Group-22,Locked,auto_stop,back_panel,balance_chip,balance_coin,ballance,bet_down,bet_down_press,bet_screen,bet_up,bet_up_press,btn_go,btn_mega,i,i_press,max_btn,max_btn_press,middle_bar,more_games,msg_bg,play,play_bg,play_press"
-		},
-		{
-			"url": "game/topbar/topbar.json",
-			"type": "sheet",
-			"name": "topbar_json",
-			"subkeys": "buy-btn,buy_bg,hamburger,home,home_press"
-		},
-		{
-			"url": "assets/sound/open_list.mp3",
-			"type": "sound",
-			"name": "open_list_mp3"
-		},
-		{
-			"url": "game/tropCoins/getCoinsParticle.png",
-			"type": "image",
-			"name": "getCoinsParticle_png"
-		},
-		{
-			"url": "game/tropCoins/getCoinsParticle.json",
-			"type": "json",
-			"name": "getCoinsParticle_json"
-		},
-		{
-			"url": "assets/modalGeneric.json",
-			"type": "sheet",
-			"name": "modalGeneric_json",
-			"subkeys": "closePopUpBtn1,closePopUpBtn2,loader"
-		},
-		{
-			"url": "config/lan/forAll.tx",
-			"type": "json",
-			"name": "forAll_tx"
-		},
-		{
-			"url": "assets/Arial Black.fnt",
-			"type": "font",
-			"name": "Arial Black_fnt"
-		},
-		{
-			"url": "assets/Arial Black.png",
-			"type": "image",
-			"name": "Arial Black_png"
-		},
 		{
 			"url": "game/doubleBingo/doubleBingoAnimation.png",
 			"type": "image",
@@ -117,18 +61,6 @@
 			"url": "config/doubleBingo.conf",
 			"type": "json",
 			"name": "doubleBingo_conf"
-		},
-		{
-			"url": "assets/gameSettings/gameSettings.json",
-			"type": "sheet",
-			"name": "gameSettings_json",
-			"subkeys": "X_btn,avatar,bg,bg_slider_off,bg_slider_on,btn_arrow,fb_bt_settings,flag_en,flag_es,flag_pt,gl_bt_settings,icon_connect,icon_notification,language_icon,music_icon,rate_icon,scroll_bar,scroll_bar_handle,slider_switch,sound_fx_icon,support_btn,support_icon,tab_bg,visual_fx_icon"
-		},
-		{
-			"url": "assets/tounament/tounament.json",
-			"type": "sheet",
-			"name": "tounament_json",
-			"subkeys": "Top3_1st_sheild,Top3_2nd_sheild,Top3_3rd_sheild,avatar,bar_bg,btn_arrow,btn_arrow_bg,deviding_line,head_bg,mechanism_pending_bg,mechanism_pending_timer_bg,mechanism_pending_timer_fill,own_bg,own_progress_bar,own_progress_bar_bg,own_progress_bar_bg_light,player_bg,progress_bar,progress_bar_point,ranking_bg,ranking_en,ranking_es,ranking_pt"
 		}
 	]
 }

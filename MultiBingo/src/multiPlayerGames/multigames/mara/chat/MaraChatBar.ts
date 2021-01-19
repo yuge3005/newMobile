@@ -5,6 +5,8 @@ class MaraChatBar extends MultiChatBar{
 
 	private nextRoundBar: MaraChatNextRound;
 
+	public static isTopThree: boolean;
+
 	public constructor() {
 		super();
 
@@ -22,20 +24,6 @@ class MaraChatBar extends MultiChatBar{
 		tx.bold = true;
 		tx.scaleX = 0.81;
 		tx.setText( MuLang.getText( "send", MuLang.CASE_UPPER ) );
-
-		this.cardCountTxt = Com.addLabelAt( this, -1329, -410, 225, 40, 40 );
-		this.cardCountTxt.textAlign = "left";
-		this.cardCountTxt.fontFamily = "Arial";
-		this.cardCountTxt.bold = true;
-		this.cardCountTxt.scaleX = 0.75;
-		this.playerCountTxt = Com.addLabelAt( this, -1329, -453, 225, 40, 40 );
-		this.playerCountTxt.textAlign = "left";
-		this.playerCountTxt.fontFamily = "Arial";
-		this.playerCountTxt.bold = true;
-		this.playerCountTxt.scaleX = 0.75;
-
-		this.avatarList = new MaraAvatarArea;
-		Com.addObjectAt( this, this.avatarList, 45, -341 );
 
 		this.headSize = 60;
 		this.lineGap = 2;
@@ -175,8 +163,7 @@ class MaraChatBar extends MultiChatBar{
 			bingoBg = Com.addBitmapAt( userInfo, MultiPlayerMachine.getAssetStr( "bingo_city_of_light" ), 0, 0 );
 		}
 		else{
-			let isTopThree: boolean = ( this.avatarList as MaraAvatarArea ).showHead( fbId );
-			if( isTopThree ) bingoBg = Com.addBitmapAt( userInfo, MultiPlayerMachine.getAssetStr( "bingo_1st-3rd" ), 0, 0 );
+			if( MaraChatBar.isTopThree ) bingoBg = Com.addBitmapAt( userInfo, MultiPlayerMachine.getAssetStr( "bingo_1st-3rd" ), 0, 0 );
 			else bingoBg = Com.addBitmapAt( userInfo, MultiPlayerMachine.getAssetStr( "player_bingo" ), 0, 0 );
 		}
 		userInfo.addChildAt( bingoBg, 0 );
@@ -189,7 +176,6 @@ class MaraChatBar extends MultiChatBar{
 	public roundStart(){
 		let headIcon: egret.Bitmap = Com.addBitmapAt( this.scrollBar, "mara_" + MuLang.language + "_json.round_start" , this.leftMargin, this.scrollHeight );
 		this.resetScroll();
-		( this.avatarList as MaraAvatarArea ).clearHead();
 	}
 
 	public roundOver(){
@@ -200,16 +186,10 @@ class MaraChatBar extends MultiChatBar{
 	public specialUI(){
 		egret.Tween.removeTweens(this.nextRoundBar);
 		TweenerTool.tweenTo( this.nextRoundBar, { x: 520 }, 800 );
-		this.avatarList.visible = false;
 	}
 
 	public normalUI(){
 		egret.Tween.removeTweens(this.nextRoundBar);
 		TweenerTool.tweenTo( this.nextRoundBar, { x: 0 }, 800 );
-		this.avatarList.visible = true;
-	}
-
-	public setTmocb( tmocb: Array<number> ){
-		( this.avatarList as MaraAvatarArea ).setTmocb( tmocb );
 	}
 }

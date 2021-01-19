@@ -14,6 +14,9 @@ class MultiPlayerMachine extends egret.Sprite{
 	protected ballArea: MultiGameBallLayer;
 	protected cardArea: MultiCardLayer;
 
+	protected bingoCounterBar: MultiBingoCounterBar;
+	protected avatarList: AvatarContainer;
+
 	protected dinero: number;
 	protected _gameCoins: number;
 	protected get gameCoins(): number{
@@ -363,11 +366,8 @@ class MultiPlayerMachine extends egret.Sprite{
 		let cardIndex: number = this.cardArea.getIndexByUUID( uuid );
 		let onCardPt: egret.Point = MultiPlayerCard.getGridPosition( gridIndex );
 		let gridPt: egret.Point = CardGridColorAndSizeSettings.gridSize;
-		onCardPt.x += gridPt.x;
-		onCardPt.y += gridPt.y;
-		let coinSizeOffsetPt: egret.Point = new egret.Point( -20, -46 );
-		onCardPt.x += coinSizeOffsetPt.x;
-		onCardPt.y += coinSizeOffsetPt.y;
+		onCardPt.x += gridPt.x >> 1;
+		onCardPt.y += gridPt.y >> 1;
 		let card: MultiPlayerCard = this.cardArea.cards[cardIndex];
 		onCardPt.x *= card.scaleX;
 		onCardPt.y *= card.scaleY;

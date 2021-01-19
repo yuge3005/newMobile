@@ -53,7 +53,8 @@ class MultiPlayerBingoCard extends Multi75Card{
 		this.bingoMask = new egret.Sprite;
 		this.bingoMask.touchEnabled = true;
 		this.addChild( this.bingoMask );
-		Com.addBitmapAt( this.bingoMask, MultiPlayerMachine.getAssetStr( "BINGO-BG" ), 0, 0 );
+		let bingoUI: egret.Bitmap = Com.addBitmapAt( this.bingoMask, MultiPlayerMachine.getAssetStr( "BINGO-BG" ), 0, 0 );
+		bingoUI.alpha = 0.5;
 		Com.addDownButtonAt( this.bingoMask, MultiPlayerMachine.getAssetStr( "BINGO" ), MultiPlayerMachine.getAssetStr( "BINGO" ), this.bg.width - 508 >> 1, this.bg.height >> 1, this.callBingo.bind(this), true );
 		this.quitInturnMode();
 	}
@@ -61,8 +62,8 @@ class MultiPlayerBingoCard extends Multi75Card{
 	private callBingo(){
 		MultiServer.callBingo( this.uuid );
 		this.bingoMask.removeChildren();
-		Com.addBitmapAt( this.bingoMask, MultiPlayerMachine.getAssetStr( "BINGO-BG" ), 0, 0 );
-
+		let bingoUI: egret.Bitmap = Com.addBitmapAt( this.bingoMask, MultiPlayerMachine.getAssetStr( "BINGO-BG" ), 0, 0 );
+		bingoUI.alpha = 0.5;
 		let mc: egret.MovieClip = Com.addMovieClipAt( this.bingoMask, MDS.mcFactory, "multiBingo", 0, 0 );
 		mc.scaleX = mc.scaleY = 3.15;
 		mc.play();

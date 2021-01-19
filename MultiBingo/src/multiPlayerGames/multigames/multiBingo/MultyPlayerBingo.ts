@@ -76,6 +76,12 @@ class MultyPlayerBingo extends Multi75Super{
 		this.getRoundPattens( MultiServer.multiPlayerPattens );
 		this.bingoInfo.startShowPaytalbe();
 
+		this.bingoCounterBar = new MultiPlayerBingoCounterBar;
+		Com.addObjectAt( this, this.bingoCounterBar, 0, 0 );
+
+		this.avatarList = new MultiBingoAvatarArea;
+		Com.addObjectAt( this, this.avatarList, 1506, 483 );
+
 		this.dailogLayer = new egret.DisplayObjectContainer;
 		Com.addObjectAt( this, this.dailogLayer, 0, 0 );
 
@@ -340,10 +346,20 @@ class MultyPlayerBingo extends Multi75Super{
 	}
 
 	private powerUpAnimation( cardIndex: number, gridIndex: number ): void{
-		let pos: egret.Point = this.cardArea.positionOnCard( cardIndex, gridIndex );
-		let charger: egret.Bitmap = Com.addBitmapAt( this, this.assetStr( "charger-icon" ), pos.x, pos.y );
+		let onCardPt: egret.Point = MultiPlayerCard.getGridPosition( gridIndex );
+		let gridPt: egret.Point = CardGridColorAndSizeSettings.gridSize;
+		onCardPt.x += gridPt.x >> 1;
+		onCardPt.y += gridPt.y >> 1;
+		let card: MultiPlayerCard = this.cardArea.cards[cardIndex];
+		onCardPt.x *= card.scaleX;
+		onCardPt.y *= card.scaleY;
+		let cardPt: egret.Point = new egret.Point( card.x, card.y );
+		let pos: egret.Point = cardPt.add( onCardPt );
+
+		let charger: egret.Bitmap = Com.addBitmapAtMiddle( this, this.assetStr( "charger-icon" ), pos.x, pos.y );
+		charger.scaleX = charger.scaleY = 0.6;
 		let tw: egret.Tween = egret.Tween.get( charger );
-		tw.to( { x: 300, y: 537 }, 400, egret.Ease.sineIn );
+		tw.to( { x: 365, y: 606 }, 400, egret.Ease.sineIn );
 		tw.call( this.endPowerLight.bind( this ) );
 		tw.to( { alpha: 0 }, 133 );
 		tw.call( MDS.removeSelf.bind( this, charger ) );
@@ -411,5 +427,10 @@ class MultyPlayerBingo extends Multi75Super{
 			}
 		}
 		this.bingoPlayerHeadsContainer.cacheAsBitmap = true;
+	}
+
+	protected otherJoinRoom( userName: string, fbId: string, userId: string ){
+		super.otherJoinRoom( userName, fbId, userId );
+		( this.avatarList as MultiBingoAvatarArea ).userJoin( userId, fbId );
 	}
 }

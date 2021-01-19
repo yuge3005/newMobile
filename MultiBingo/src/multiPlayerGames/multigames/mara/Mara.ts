@@ -108,6 +108,9 @@ class Mara extends Multi75Super{
 		this.currentBallIndex = 0;
 		this.recordPaytalbes();
 
+		this.bingoCounterBar = new MaraBingoCounterBar;
+		Com.addObjectAt( this, this.bingoCounterBar, 0, 0 );
+
 		this.dailogLayer = new egret.DisplayObjectContainer;
 		Com.addObjectAt( this, this.dailogLayer, 0, 0 );
 
@@ -116,6 +119,9 @@ class Mara extends Multi75Super{
 		this.bingoInfo = new MaraBingoInfoBar;
 		Com.addObjectAt( this, this.bingoInfo, 1468, 131 );
 		this.startBingoInfoTick();
+
+		this.avatarList = new MaraAvatarArea;
+		Com.addObjectAt( this, this.avatarList, 1564, 252 );
 
 		this.chatAndMiniGameLayer = new egret.DisplayObjectContainer;
 		Com.addObjectAt( this, this.chatAndMiniGameLayer, 0, 0 );
@@ -436,8 +442,11 @@ class Mara extends Multi75Super{
 	}
 
 	protected callBingo( data: Object ){
-		if( !data["is_fake"] ) super.callBingo( data );
-		
+		let isFake: boolean = data["is_fake"];
+
+		MaraChatBar.isTopThree = ( this.avatarList as MaraAvatarArea ).showHead( data["fbId"] );
+		if( !isFake ) super.callBingo( data );
+
 		if( data["isMe"] ){
 			let cards: Array<MultiPlayerCard> = this.cardArea.cards;
 			for( let i: number = 0; i < cards.length; i++ ){
@@ -447,6 +456,11 @@ class Mara extends Multi75Super{
 				}
 			}
 		}
+	}
+
+	protected onTimePlan( isLocked: boolean ){
+		super.onTimePlan( isLocked );
+		( this.avatarList as MaraAvatarArea ).clearHead();
 	}
 
 /************************************************************************************************************************/
@@ -595,6 +609,7 @@ class Mara extends Multi75Super{
 	private specialUI(){
 		( this.chatBar as MaraChatBar ).specialUI();
 		( this.bingoInfo as MaraBingoInfoBar ).specialUI();
+		if( this.avatarList )this.avatarList.visible = false;
 		if( this.bingoInfo ) ( this.bingoInfo as MaraBingoInfoBar ).resetPrize( MaraWaitingBar.cardPriceConfig[0][0]["price"] * Mara.betStep * this._currentTreasureHuntPrize, false );
 		this.cardClickMode( false );
 		Mara.durringSpecial = true;
@@ -603,6 +618,7 @@ class Mara extends Multi75Super{
 	private normalUI(){
 		( this.chatBar as MaraChatBar ).normalUI();
 		( this.bingoInfo as MaraBingoInfoBar ).normalUI();
+		if( this.avatarList )this.avatarList.visible = true;
 		if( this.bingoInfo ) ( this.bingoInfo as MaraBingoInfoBar ).resetPrize( MaraWaitingBar.cardPriceConfig[0][0]["price"] * Mara.betStep * this.patternValue );
 		Mara.durringSpecial = false;
 	}
@@ -1004,7 +1020,7 @@ class Mara extends Multi75Super{
 	}
 
 	private setTmocb(){
-		if( this.chatBar ) ( this.chatBar as MaraChatBar ).setTmocb( this._tmocb );
+		if( this.avatarList ) ( this.avatarList as MaraAvatarArea ).setTmocb( this._tmocb );
 		else setTimeout( this.setTmocb.bind( this ), 300 );
 	}
 
