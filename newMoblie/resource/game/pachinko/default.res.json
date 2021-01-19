@@ -1,77 +1,11 @@
 {
 	"groups": [
 		{
-			"keys": "megaForFirst_en_json",
-			"name": "megaForFirst_en"
-		},
-		{
-			"keys": "megaForFirst_es_json",
-			"name": "megaForFirst_es"
-		},
-		{
-			"keys": "megaForFirst_pt_json",
-			"name": "megaForFirst_pt"
-		},
-		{
-			"keys": "modalGeneric_json",
-			"name": "generic"
-		},
-		{
-			"keys": "gameSettings_json",
-			"name": "gameSettings"
-		},
-		{
-			"keys": "pck_2line_mp3,pck_3line_mp3,pck_4corners_mp3,pck_4line_mp3,pck_a_mp3,pck_ball_mp3,pck_bet_mp3,pck_bingo_real_mp3,pck_bingo_mp3,pck_c_mp3,pck_card_mp3,pck_collect_mp3,pck_extra_ball_mp3,pck_flower_mp3,pck_free_extra_mp3,pck_h_mp3,pck_have_extra_ball_mp3,pck_i_mp3,pck_jackpot_mp3,pck_k_mp3,pck_n_mp3,pck_o_mp3,pck_p_mp3,pck_pachinko_mp3,pck_plus_mp3,pck_round_mp3,pachinko_json,pachinko_conf,forAll_tx,pachinko_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,Arial Black_fnt,Arial Black_png,tounament_json",
+			"keys": "pck_2line_mp3,pck_3line_mp3,pck_4corners_mp3,pck_4line_mp3,pck_a_mp3,pck_ball_mp3,pck_bet_mp3,pck_bingo_real_mp3,pck_bingo_mp3,pck_c_mp3,pck_card_mp3,pck_collect_mp3,pck_extra_ball_mp3,pck_flower_mp3,pck_free_extra_mp3,pck_h_mp3,pck_have_extra_ball_mp3,pck_i_mp3,pck_jackpot_mp3,pck_k_mp3,pck_n_mp3,pck_o_mp3,pck_p_mp3,pck_pachinko_mp3,pck_plus_mp3,pck_round_mp3,pachinko_json,pachinko_conf,pachinko_tx",
 			"name": "pachinko"
 		}
 	],
 	"resources": [
-		{
-			"url": "game/gameToolBar/bingoGameToolbar.json",
-			"type": "sheet",
-			"name": "bingoGameToolbar_json",
-			"subkeys": "BB_EXTRA_btn_bg,BB_EXTRA_buyall,BB_EXTRA_collect_btn,BB_EXTRA_extra_btn,BB_star_open_bg,Group-22,Locked,auto_stop,back_panel,balance_chip,balance_coin,ballance,bet_down,bet_down_press,bet_screen,bet_up,bet_up_press,btn_go,btn_mega,i,i_press,max_btn,max_btn_press,middle_bar,more_games,msg_bg,play,play_bg,play_press"
-		},
-		{
-			"url": "game/topbar/topbar.json",
-			"type": "sheet",
-			"name": "topbar_json",
-			"subkeys": "buy-btn,buy_bg,hamburger,home,home_press"
-		},
-		{
-			"url": "assets/sound/open_list.mp3",
-			"type": "sound",
-			"name": "open_list_mp3"
-		},
-		{
-			"url": "assets/megaForFirstTime/megaForFirst_es.json",
-			"type": "sheet",
-			"name": "megaForFirst_es_json",
-			"subkeys": "dialog_es,doctor,firstMega_bg,light,megaball_es"
-		},
-		{
-			"url": "assets/megaForFirstTime/megaForFirst_en.json",
-			"type": "sheet",
-			"name": "megaForFirst_en_json",
-			"subkeys": "dialog_en,doctor,firstMega_bg,light,megaball_en"
-		},
-		{
-			"url": "assets/megaForFirstTime/megaForFirst_pt.json",
-			"type": "sheet",
-			"name": "megaForFirst_pt_json",
-			"subkeys": "dialog_pt,doctor,firstMega_bg,light,megaball_pt"
-		},
-		{
-			"url": "assets/modalGeneric.json",
-			"type": "sheet",
-			"name": "modalGeneric_json",
-			"subkeys": "closePopUpBtn1,closePopUpBtn2,loader"
-		},
-		{
-			"url": "config/lan/forAll.tx",
-			"type": "json",
-			"name": "forAll_tx"
-		},
 		{
 			"url": "config/pachinko.conf",
 			"type": "json",
@@ -217,28 +151,6 @@
 			"type": "sheet",
 			"name": "pachinko_json",
 			"subkeys": "EB_free,EB_next_bg,ball_blue,ball_gray,ball_green,ball_mechine,ball_orange,ball_pink,ball_purple,ball_red,ball_yellow,bottom_bar,card_box,card_box_black,card_box_effect,card_box_red,eb_darken,fundo-1,fundo-cartela,jackpot_active,jackpot_lock,mega_en,mega_es,mega_pt,pachinko_card10,pachinko_card12,pachinko_card2,pachinko_card4,pachinko_card5,pachinko_card8,pachinko_card9,pachinko_card_a,pachinko_card_c,pachinko_card_h,pachinko_card_i,pachinko_card_k,pachinko_card_line1,pachinko_card_line2,pachinko_card_line3,pachinko_card_line4,pachinko_card_line5,pachinko_card_n,pachinko_card_o,pachinko_card_p,pachinko_cat,pachinko_letter_1,pachinko_letter_2,pachinko_letter_3,pachinko_letter_4,pachinko_letter_5,pachinko_letter_6,pachinko_letter_7,pachinko_letter_8,pachinko_lotto_cat,pachinko_paytable1,pachinko_paytable10,pachinko_paytable11,pachinko_paytable12,pachinko_paytable2,pachinko_paytable3,pachinko_paytable4,pachinko_paytable5,pachinko_paytable7,pachinko_paytable8,pachinko_paytable9,pachinko_paytable_a,pachinko_paytable_c,pachinko_paytable_h,pachinko_paytable_i,pachinko_paytable_k,pachinko_paytable_n,pachinko_paytable_o,pachinko_paytable_p"
-		},
-		{
-			"url": "assets/Arial Black.fnt",
-			"type": "font",
-			"name": "Arial Black_fnt"
-		},
-		{
-			"url": "assets/Arial Black.png",
-			"type": "image",
-			"name": "Arial Black_png"
-		},
-		{
-			"url": "assets/gameSettings/gameSettings.json",
-			"type": "sheet",
-			"name": "gameSettings_json",
-			"subkeys": "X_btn,avatar,bg,bg_slider_off,bg_slider_on,btn_arrow,fb_bt_settings,flag_en,flag_es,flag_pt,gl_bt_settings,icon_connect,icon_notification,language_icon,music_icon,rate_icon,scroll_bar,scroll_bar_handle,slider_switch,sound_fx_icon,support_btn,support_icon,tab_bg,visual_fx_icon"
-		},
-		{
-			"url": "assets/tounament/tounament.json",
-			"type": "sheet",
-			"name": "tounament_json",
-			"subkeys": "Top3_1st_sheild,Top3_2nd_sheild,Top3_3rd_sheild,avatar,bar_bg,btn_arrow,btn_arrow_bg,deviding_line,head_bg,mechanism_pending_bg,mechanism_pending_timer_bg,mechanism_pending_timer_fill,own_bg,own_progress_bar,own_progress_bar_bg,own_progress_bar_bg_light,player_bg,progress_bar,progress_bar_point,ranking_bg,ranking_en,ranking_es,ranking_pt"
 		}
 	]
 }
