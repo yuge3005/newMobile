@@ -23,9 +23,6 @@ class MaraChatBar extends MultiChatBar{
 		tx.scaleX = 0.81;
 		tx.setText( MuLang.getText( "send", MuLang.CASE_UPPER ) );
 
-		this.avatarList = new MaraAvatarArea;
-		Com.addObjectAt( this, this.avatarList, 45, -341 );
-
 		this.headSize = 60;
 		this.lineGap = 2;
 		this.tipPositionY = 45;

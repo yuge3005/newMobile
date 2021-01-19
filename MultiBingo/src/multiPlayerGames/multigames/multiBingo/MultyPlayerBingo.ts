@@ -79,6 +79,9 @@ class MultyPlayerBingo extends Multi75Super{
 		this.bingoCounterBar = new MultiPlayerBingoCounterBar;
 		Com.addObjectAt( this, this.bingoCounterBar, 0, 0 );
 
+		this.avatarList = new MultiBingoAvatarArea;
+		Com.addObjectAt( this, this.avatarList, 1506, 483 );
+
 		this.dailogLayer = new egret.DisplayObjectContainer;
 		Com.addObjectAt( this, this.dailogLayer, 0, 0 );
 

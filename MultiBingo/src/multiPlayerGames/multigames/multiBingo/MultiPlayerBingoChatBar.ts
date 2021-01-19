@@ -7,9 +7,6 @@ class MultiPlayerBingoChatBar extends MultiChatBar{
 		this.addScrollArea( new egret.Rectangle( 28, 17, 385, 375 ), new egret.Point( 28, 17 ) );
 		this.addTextInput( new egret.Rectangle( 50, 420, 340, 32 ), 32 );
 
-		this.avatarList = new MultiBingoAvatarArea;
-		Com.addObjectAt( this, this.avatarList, 6, -105 );
-
 		this.headSize = 78;
 		this.lineGap = 20;
 		this.tipPositionY = 48;
