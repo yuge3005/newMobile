@@ -111,6 +111,9 @@ class Mara extends Multi75Super{
 		this.dailogLayer = new egret.DisplayObjectContainer;
 		Com.addObjectAt( this, this.dailogLayer, 0, 0 );
 
+		this.bingoCounterBar = new MultiPlayerBingoCounterBar;
+		Com.addObjectAt( this, this.bingoCounterBar, 0, 0 );
+
 		this.buildWaitingBar();
 
 		this.bingoInfo = new MaraBingoInfoBar;

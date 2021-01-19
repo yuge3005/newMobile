@@ -82,6 +82,9 @@ class MultyPlayerBingo extends Multi75Super{
 		this.chatAndMiniGameLayer = new egret.DisplayObjectContainer;
 		Com.addObjectAt( this, this.chatAndMiniGameLayer, 0, 0 );
 
+		this.bingoCounterBar = new MultiPlayerBingoCounterBar;
+		Com.addObjectAt( this, this.bingoCounterBar, 0, 0 );
+
 		this.buildWaitingBar();
 
 		this.chatBar = new MultiPlayerBingoChatBar;

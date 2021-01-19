@@ -14,6 +14,8 @@ class MultiPlayerMachine extends egret.Sprite{
 	protected ballArea: MultiGameBallLayer;
 	protected cardArea: MultiCardLayer;
 
+	protected bingoCounterBar: MultiBingoCounterBar;
+
 	protected dinero: number;
 	protected _gameCoins: number;
 	protected get gameCoins(): number{
