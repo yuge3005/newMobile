@@ -340,10 +340,20 @@ class MultyPlayerBingo extends Multi75Super{
 	}
 
 	private powerUpAnimation( cardIndex: number, gridIndex: number ): void{
-		let pos: egret.Point = this.cardArea.positionOnCard( cardIndex, gridIndex );
-		let charger: egret.Bitmap = Com.addBitmapAt( this, this.assetStr( "charger-icon" ), pos.x, pos.y );
+		let onCardPt: egret.Point = MultiPlayerCard.getGridPosition( gridIndex );
+		let gridPt: egret.Point = CardGridColorAndSizeSettings.gridSize;
+		onCardPt.x += gridPt.x >> 1;
+		onCardPt.y += gridPt.y >> 1;
+		let card: MultiPlayerCard = this.cardArea.cards[cardIndex];
+		onCardPt.x *= card.scaleX;
+		onCardPt.y *= card.scaleY;
+		let cardPt: egret.Point = new egret.Point( card.x, card.y );
+		let pos: egret.Point = cardPt.add( onCardPt );
+
+		let charger: egret.Bitmap = Com.addBitmapAtMiddle( this, this.assetStr( "charger-icon" ), pos.x, pos.y );
+		charger.scaleX = charger.scaleY = 0.6;
 		let tw: egret.Tween = egret.Tween.get( charger );
-		tw.to( { x: 300, y: 537 }, 400, egret.Ease.sineIn );
+		tw.to( { x: 365, y: 606 }, 400, egret.Ease.sineIn );
 		tw.call( this.endPowerLight.bind( this ) );
 		tw.to( { alpha: 0 }, 133 );
 		tw.call( MDS.removeSelf.bind( this, charger ) );
