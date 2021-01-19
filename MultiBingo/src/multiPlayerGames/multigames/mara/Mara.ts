@@ -1012,7 +1012,7 @@ class Mara extends Multi75Super{
 	}
 
 	private setTmocb(){
-		if( this.chatBar ) ( this.chatBar as MaraChatBar ).setTmocb( this._tmocb );
+		if( this.avatarList ) ( this.avatarList as MaraAvatarArea ).setTmocb( this._tmocb );
 		else setTimeout( this.setTmocb.bind( this ), 300 );
 	}
 
