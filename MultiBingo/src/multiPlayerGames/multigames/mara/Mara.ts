@@ -601,6 +601,7 @@ class Mara extends Multi75Super{
 	private specialUI(){
 		( this.chatBar as MaraChatBar ).specialUI();
 		( this.bingoInfo as MaraBingoInfoBar ).specialUI();
+		if( this.avatarList )this.avatarList.visible = false;
 		if( this.bingoInfo ) ( this.bingoInfo as MaraBingoInfoBar ).resetPrize( MaraWaitingBar.cardPriceConfig[0][0]["price"] * Mara.betStep * this._currentTreasureHuntPrize, false );
 		this.cardClickMode( false );
 		Mara.durringSpecial = true;
@@ -609,6 +610,7 @@ class Mara extends Multi75Super{
 	private normalUI(){
 		( this.chatBar as MaraChatBar ).normalUI();
 		( this.bingoInfo as MaraBingoInfoBar ).normalUI();
+		if( this.avatarList )this.avatarList.visible = true;
 		if( this.bingoInfo ) ( this.bingoInfo as MaraBingoInfoBar ).resetPrize( MaraWaitingBar.cardPriceConfig[0][0]["price"] * Mara.betStep * this.patternValue );
 		Mara.durringSpecial = false;
 	}

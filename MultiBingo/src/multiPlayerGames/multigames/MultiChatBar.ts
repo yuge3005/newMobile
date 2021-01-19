@@ -106,12 +106,6 @@ class MultiChatBar extends egret.DisplayObjectContainer{
 		return  new egret.DisplayObjectContainer;
 	}
 
-	public updateCardAndPlayerNumbers( cardCount: number, playerCount: number, playerFbIds: Array<Object> ){
-		if( playerFbIds ){
-			this.avatarList.updataList( playerFbIds );
-		}
-	}
-
 	public showBingoPlayerName( userName: string, fbId: string ){
 		trace( userName + "bingo" );
 		this.showUserMessage( fbId, this.buildBingoMessage( userName, "BINGO" ) );

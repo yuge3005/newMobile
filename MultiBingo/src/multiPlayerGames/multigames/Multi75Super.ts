@@ -51,7 +51,8 @@ class Multi75Super extends MultiPlayerMachine{
 	
 	protected cardsAndPlayersUpdate( data: Object ){
 		if( this.bingoCounterBar ){
-			this.bingoCounterBar.updateCardAndPlayerNumbers( data["cardCount"], data["buyCardPlayersAmount"] );//, data["players"]
+			this.bingoCounterBar.updateCardAndPlayerNumbers( data["cardCount"], data["buyCardPlayersAmount"] );
+			if( this.avatarList ) this.avatarList.updataList( data["players"] );
 		}
 		else setTimeout( this.cardsAndPlayersUpdate.bind( this, data ), 100 );
 	}

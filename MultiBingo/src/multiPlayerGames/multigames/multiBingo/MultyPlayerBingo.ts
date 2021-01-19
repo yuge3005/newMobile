@@ -428,4 +428,9 @@ class MultyPlayerBingo extends Multi75Super{
 		}
 		this.bingoPlayerHeadsContainer.cacheAsBitmap = true;
 	}
+
+	protected otherJoinRoom( userName: string, fbId: string, userId: string ){
+		super.otherJoinRoom( userName, fbId, userId );
+		( this.avatarList as MultiBingoAvatarArea ).userJoin( userId, fbId );
+	}
 }

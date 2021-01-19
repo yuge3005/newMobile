@@ -186,13 +186,11 @@ class MaraChatBar extends MultiChatBar{
 	public specialUI(){
 		egret.Tween.removeTweens(this.nextRoundBar);
 		TweenerTool.tweenTo( this.nextRoundBar, { x: 520 }, 800 );
-		this.avatarList.visible = false;
 	}
 
 	public normalUI(){
 		egret.Tween.removeTweens(this.nextRoundBar);
 		TweenerTool.tweenTo( this.nextRoundBar, { x: 0 }, 800 );
-		this.avatarList.visible = true;
 	}
 
 	public setTmocb( tmocb: Array<number> ){
