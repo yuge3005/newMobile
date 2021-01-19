@@ -54,7 +54,7 @@ class MDS{
 		dropCoins.drop( 10, pos, new egret.Point(0, 0), new egret.Point( 0, -4 ), new egret.Point( 5, 4 ), 1, 0.3, 0.3 );
 		target.addChild( dropCoins );
 
-		let coinsNumTxt: egret.TextField = Com.addTextAt( target, pos.x, pos.y, 100, 30, 30, false, true );
+		let coinsNumTxt: egret.TextField = Com.addTextAt( target, pos.x - 50, pos.y, 100, 30, 30, false, true );
 		coinsNumTxt.textColor = 0xFFFF00;
 		coinsNumTxt.text = "+" + coins;
 		coinsNumTxt.filters = [ new egret.GlowFilter( 0, 1, 2, 2, 2, 2 ) ];
