@@ -109,9 +109,6 @@ class MultiChatBar extends egret.DisplayObjectContainer{
 	}
 
 	public updateCardAndPlayerNumbers( cardCount: number, playerCount: number, playerFbIds: Array<Object> ){
-		this.cardCountTxt.setText( cardCount + " " + MuLang.getText( "cards", MuLang.CASE_UPPER ) );
-		this.playerCountTxt.setText( playerCount + " " + MuLang.getText( "players", MuLang.CASE_UPPER ) );
-
 		if( playerFbIds ){
 			this.avatarList.updataList( playerFbIds );
 		}

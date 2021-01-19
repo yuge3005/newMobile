@@ -85,11 +85,4 @@ class MultiPlayerBingoChatBar extends MultiChatBar{
 
 		( this.avatarList as MultiBingoAvatarArea ).userJoin( userId, fbId );
 	}
-
-	public updateCardAndPlayerNumbers( cardCount: number, playerCount: number, playerFbIds: Array<Object> ){
-		super.updateCardAndPlayerNumbers( cardCount, playerCount, playerFbIds );
-
-		this.cardCountTxt.setText( this.cardCountTxt.text + "  " + this.playerCountTxt.text );
-		this.playerCountTxt.text = "";
-	}
 }

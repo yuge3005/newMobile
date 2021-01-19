@@ -5,6 +5,8 @@ class MultiBingoCounterBar extends egret.DisplayObjectContainer{
 	
 	public constructor() {
 		super();
+
+		this.cacheAsBitmap = true;
 	}
 
 	public updateCardAndPlayerNumbers( cardCount: number, playerCount: number ){
