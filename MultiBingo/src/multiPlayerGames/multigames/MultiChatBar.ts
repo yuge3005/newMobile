@@ -10,9 +10,6 @@ class MultiChatBar extends egret.DisplayObjectContainer{
 	protected lineGap: number;
 	protected tipPositionY: number;
 
-	protected cardCountTxt: TextLabel;
-	protected playerCountTxt: TextLabel;
-
 	protected avatarList: AvatarContainer;
 
 	public constructor() {
