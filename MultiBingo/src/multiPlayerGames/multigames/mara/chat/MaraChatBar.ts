@@ -5,6 +5,8 @@ class MaraChatBar extends MultiChatBar{
 
 	private nextRoundBar: MaraChatNextRound;
 
+	public static isTopThree: boolean;
+
 	public constructor() {
 		super();
 
@@ -161,8 +163,7 @@ class MaraChatBar extends MultiChatBar{
 			bingoBg = Com.addBitmapAt( userInfo, MultiPlayerMachine.getAssetStr( "bingo_city_of_light" ), 0, 0 );
 		}
 		else{
-			let isTopThree: boolean = ( this.avatarList as MaraAvatarArea ).showHead( fbId );
-			if( isTopThree ) bingoBg = Com.addBitmapAt( userInfo, MultiPlayerMachine.getAssetStr( "bingo_1st-3rd" ), 0, 0 );
+			if( MaraChatBar.isTopThree ) bingoBg = Com.addBitmapAt( userInfo, MultiPlayerMachine.getAssetStr( "bingo_1st-3rd" ), 0, 0 );
 			else bingoBg = Com.addBitmapAt( userInfo, MultiPlayerMachine.getAssetStr( "player_bingo" ), 0, 0 );
 		}
 		userInfo.addChildAt( bingoBg, 0 );
@@ -175,7 +176,6 @@ class MaraChatBar extends MultiChatBar{
 	public roundStart(){
 		let headIcon: egret.Bitmap = Com.addBitmapAt( this.scrollBar, "mara_" + MuLang.language + "_json.round_start" , this.leftMargin, this.scrollHeight );
 		this.resetScroll();
-		( this.avatarList as MaraAvatarArea ).clearHead();
 	}
 
 	public roundOver(){

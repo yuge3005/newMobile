@@ -108,11 +108,8 @@ class Mara extends Multi75Super{
 		this.currentBallIndex = 0;
 		this.recordPaytalbes();
 
-		this.bingoCounterBar = new MultiPlayerBingoCounterBar;
+		this.bingoCounterBar = new MaraBingoCounterBar;
 		Com.addObjectAt( this, this.bingoCounterBar, 0, 0 );
-
-		this.avatarList = new MaraAvatarArea;
-		Com.addObjectAt( this, this.avatarList, 1564, 252 );
 
 		this.dailogLayer = new egret.DisplayObjectContainer;
 		Com.addObjectAt( this, this.dailogLayer, 0, 0 );
@@ -122,6 +119,9 @@ class Mara extends Multi75Super{
 		this.bingoInfo = new MaraBingoInfoBar;
 		Com.addObjectAt( this, this.bingoInfo, 1468, 131 );
 		this.startBingoInfoTick();
+
+		this.avatarList = new MaraAvatarArea;
+		Com.addObjectAt( this, this.avatarList, 1564, 252 );
 
 		this.chatAndMiniGameLayer = new egret.DisplayObjectContainer;
 		Com.addObjectAt( this, this.chatAndMiniGameLayer, 0, 0 );
@@ -442,8 +442,11 @@ class Mara extends Multi75Super{
 	}
 
 	protected callBingo( data: Object ){
-		if( !data["is_fake"] ) super.callBingo( data );
-		
+		let isFake: boolean = data["is_fake"];
+
+		MaraChatBar.isTopThree = ( this.avatarList as MaraAvatarArea ).showHead( data["fbId"] );
+		if( !isFake ) super.callBingo( data );
+
 		if( data["isMe"] ){
 			let cards: Array<MultiPlayerCard> = this.cardArea.cards;
 			for( let i: number = 0; i < cards.length; i++ ){
@@ -453,6 +456,11 @@ class Mara extends Multi75Super{
 				}
 			}
 		}
+	}
+
+	protected onTimePlan( isLocked: boolean ){
+		super.onTimePlan( isLocked );
+		( this.avatarList as MaraAvatarArea ).clearHead();
 	}
 
 /************************************************************************************************************************/
