@@ -76,14 +76,14 @@ class MultyPlayerBingo extends Multi75Super{
 		this.getRoundPattens( MultiServer.multiPlayerPattens );
 		this.bingoInfo.startShowPaytalbe();
 
+		this.bingoCounterBar = new MultiPlayerBingoCounterBar;
+		Com.addObjectAt( this, this.bingoCounterBar, 0, 0 );
+
 		this.dailogLayer = new egret.DisplayObjectContainer;
 		Com.addObjectAt( this, this.dailogLayer, 0, 0 );
 
 		this.chatAndMiniGameLayer = new egret.DisplayObjectContainer;
 		Com.addObjectAt( this, this.chatAndMiniGameLayer, 0, 0 );
-
-		this.bingoCounterBar = new MultiPlayerBingoCounterBar;
-		Com.addObjectAt( this, this.bingoCounterBar, 0, 0 );
 
 		this.buildWaitingBar();
 
