@@ -215,7 +215,7 @@ class MultiPlayerMachine extends egret.Sprite{
 
 	protected showLastBall( ballIndex: number ): void{
 		this.currentBallIndex++;
-		if( this.ballCountText ) this.ballCountText.text = "" + this.currentBallIndex;
+		if( this.ballCountText ) this.ballCountText.text = ( this.currentBallIndex >= 10 ? "" : "0" ) + this.currentBallIndex;
 	}
 
 /******************************************************************************************/

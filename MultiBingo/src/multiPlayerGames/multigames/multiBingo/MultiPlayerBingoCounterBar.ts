@@ -9,7 +9,7 @@ class MultiPlayerBingoCounterBar extends MultiBingoCounterBar{
 	public updateCardAndPlayerNumbers( cardCount: number, playerCount: number ){
 		super.updateCardAndPlayerNumbers( cardCount, playerCount );
 		
-		this.cardCountTxt.setText( this.cardCountTxt.text + "  " + this.playerCountTxt.text );
+		this.cardCountTxt.setText( this.playerCountTxt.text + "  " + this.cardCountTxt.text );
 		this.playerCountTxt.text = "";
 	}
 }

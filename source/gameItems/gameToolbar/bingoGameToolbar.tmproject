@@ -1,5 +1,7 @@
 {
     "files": [
+        "./xp_filling.png",
+        "./xp.png",
         "./play_press.png",
         "./play_bg.png",
         "./play.png",
@@ -37,6 +39,6 @@
         "layoutMath": "3",
         "sizeMode": "2n",
         "useExtension": 0,
-        "layoutGap": 1
+        "layoutGap": 0
     }
 }
