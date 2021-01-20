@@ -22,7 +22,7 @@ class PlayerConfig {
 	}
 
 	private static _configData: Object;
-	private static configData(): Object{
+	private static get configData(): Object{
 		if( !this._configData ){
 			let configStr: string = localStorage.getItem("config");
 			if( configStr ){
