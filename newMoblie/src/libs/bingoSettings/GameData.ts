@@ -35,4 +35,27 @@ class GameData {
 
 	public constructor() {
 	}
+
+	public static waiter: Function;
+
+	public static getBetList( callback: Function, gameId: string ){
+		this.waiter = callback;
+
+		let parameters = {current_bet: GameData.currentBet,"machineId": parseInt(gameId)};
+		new DataServer().getDataFromUrl(PlayerConfig.config("http") + "://" + PlayerConfig.config("host") + "/cmd.php?action=get_machine_settings", this.getMachineSettingSuccess.bind(this), this, true, parameters);
+	}
+
+	private static getMachineSettingSuccess( data: string ){
+		let dataObj: Object = JSON.parse(data);
+
+		if( dataObj["bet_steps"] instanceof Array ){
+			let betsArr: Array<string> = dataObj["bet_steps"];
+			this.bets = [];
+			for( let i: number = 0; i < betsArr.length; i++ ){
+				this.bets[i] = parseInt( betsArr[i] );
+			}
+			this._currentBetIndex = this.bets.indexOf( dataObj["default_bet"] );
+			this.waiter( true );
+		}
+	}
 }
