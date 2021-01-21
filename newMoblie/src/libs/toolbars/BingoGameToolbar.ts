@@ -58,6 +58,8 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 		}
 	}
 
+	protected xpBar: XpBar;
+
 	public constructor() {
 		super();
 
@@ -84,6 +86,9 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 		Com.addBitmapAt( this, "bingoGameToolbar_json.balance_chip", 1217, 123 );
 
 		this.createTexts();
+
+		this.xpBar = new XpBar;
+		Com.addObjectAt( this, this.xpBar, 1365, 38 );
 
 		this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onToolbarAdd, this);
 		this.cacheAsBitmap = true;
@@ -312,7 +317,7 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 	}
 
 	public showWinResult( winPrice: number ){
-		if( winPrice ) TweenerTool.tweenTo( this, {win: winPrice}, 500 );
+		if( winPrice ) TweenerTool.tweenTo( this, {win: winPrice}, 335 );
 		else this.win = winPrice;
 		let ev: egret.Event = new egret.Event( "winChange" );
 		ev["winCoins"] = winPrice;
@@ -384,8 +389,12 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 		this.bigExtraBtn.visible = !megaOnTop;
 	}
 
-	public updateCoinsAndXp( coins: number, dinero: number ){
-		TweenerTool.tweenTo( this, { coins: coins, dinero: dinero }, 500 );
+	public updateCoinsAndDinero( coins: number, dinero: number ){
+		TweenerTool.tweenTo( this, { coins: coins, dinero: dinero }, 335 );
+	}
+
+	public updateXp( xp: number ){
+		this.xpBar.updateXp( xp );
 	}
 
 	private startAuto(){

@@ -37,7 +37,7 @@ class PlayerConfig {
 		return this._configData;
 	}
 
-	private static playerConfig: Object = { "user.id": requestStr( "id" ), "score.level": 2538 };
+	private static playerConfig: Object = { "user.id": requestStr( "id" ), "score.level": 2538, "score.this_level_xp": 2500, "score.next_level_xp": 3500, "score.xp": 3000 };
 	private static mission: Object = {};
 
 	public static player( key: string ){

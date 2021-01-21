@@ -49,12 +49,15 @@ class RoundEndBar extends MultiCoverBars{
 
 		let tw: egret.Tween = egret.Tween.get( itemBg );
 		tw.wait( delay );
-		tw.to( { scaleX: 1, scaleY: 1, alpha: 1 }, 300, egret.Ease.sineOut );
-		tw.wait( 100 );
-		tw.to( { x: itemBg.x + offsetX }, 200 );
+		tw.to( { scaleX: 1, scaleY: 1, alpha: 1 }, 200, egret.Ease.sineOut );
+		tw.wait( 10 );
+		if( offsetX ){
+			tw.wait( 90 );
+			tw.to( { x: itemBg.x + offsetX }, 300 );
+		}
 		tw.call( callback.bind( this, itemBg ) );
 
-		TweenerTool.tweenTo( whiteMask, { alpha: 0 }, 100, 300 + delay );
+		TweenerTool.tweenTo( whiteMask, { alpha: 0 }, 100, 200 + delay );
 	}
 
 	private bingoWin( itemBg: egret.DisplayObjectContainer ){
