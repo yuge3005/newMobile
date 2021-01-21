@@ -123,10 +123,6 @@ class Pachinko extends V2Game{
         }
 	}
 
-    protected updateCredit( data: Object ): void{
-        super.updateCredit( data );
-	}
-
     /*********************************************************************************************************************************************************/
 
     public static pachinkoString: string = "pachinko";
