@@ -32,6 +32,7 @@ class BingoMachine extends GameUIItem{
 	protected tokenObject: Object;
 
 	private static currentGame: BingoMachine;
+	public static currentGameId: number;
 
 	protected soundManager: GameSoundManager;
 	protected ballRunforStop: boolean;
@@ -73,6 +74,7 @@ class BingoMachine extends GameUIItem{
 		this.connetKeys = { zona: "Zona" + gameId, sala: "Sala" + gameId };
 		this.tokenObject = {};
 		this.tokenObject["value"] = { tipo:"jogar", version: PlayerConfig.serverVertion };
+		BingoMachine.currentGameId = gameId;
 
 		this.gameConfigFile = gameConfigFile;
 		this.ballArea = new BallManager;
@@ -626,7 +628,10 @@ class BingoMachine extends GameUIItem{
 	protected updateCredit( data: Object ): void{
 		this.gameCoins = Math.round( data["credito"] );
 		if( !isNaN( data["secondCurrency"] ) )this.dinero = data["secondCurrency"];
-		if( this.gameToolBar ) this.gameToolBar.updateCoinsAndXp( this.gameCoins, this.dinero );
+		if( this.gameToolBar ){
+			this.gameToolBar.updateCoinsAndDinero( this.gameCoins, this.dinero );
+			if( !isNaN(data["xp"]) ) this.gameToolBar.updateXp( data["xp"] );
+		}
 	}
 
 	public onRoundOver( data: Object ){
