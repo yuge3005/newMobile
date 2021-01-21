@@ -1136,7 +1136,7 @@ class Copacabana extends V2Game{
         if( this.boatReward ){
             this.gameCoins += this.boatReward;
             this.gameToolBar.showWinResult( this.boatReward );
-            this.gameToolBar.updateCoinsAndXp( this.gameCoins, this.dinero );
+            this.gameToolBar.updateCoinsAndDinero( this.gameCoins, this.dinero );
             this.boatReward = 0;
         }
     }
