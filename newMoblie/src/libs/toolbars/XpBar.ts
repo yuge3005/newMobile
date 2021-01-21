@@ -48,7 +48,7 @@ class XpBar extends egret.DisplayObjectContainer{
 		let xpProccessNum: number = ( this.currentXp - this.thisLevelXp ) / ( this.nextLevelXp - this.thisLevelXp );
 
 		if( xpProccessNum >= 1 ){
-			this.levelUp();
+			// this.levelUp();
 			xpProccessNum = 1;
 		}
 		else if( xpProccessNum < 0 ) xpProccessNum = 0;
