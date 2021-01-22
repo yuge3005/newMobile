@@ -158,7 +158,7 @@ class XpBar extends egret.DisplayObjectContainer{
 		let lp: egret.TextField = Com.addTextAt( bt, 135, 90, 140, 74, 52 );
 		lp.verticalAlign = "middle";
 		lp.textAlign = "left";
-		lp.text = "" + Math.round( loyalty );
+		lp.text = "+" + Math.round( loyalty );
 
 		let tip: TextLabel = Com.addLabelAt( bt, 27, 220, 240, 28, 28 );
 		tip.setText( MuLang.getText( "level_up_bonus" ) );
