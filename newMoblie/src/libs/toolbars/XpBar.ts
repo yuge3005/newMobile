@@ -1,4 +1,7 @@
 class XpBar extends egret.DisplayObjectContainer{
+
+	public static LEVEL_UP_BONUS: string = "levelUpBonus";
+
 	private xpProccessUI: egret.Bitmap;
 	private starUI: egret.Bitmap;
 	private levelTx: TextLabel;
@@ -54,6 +57,8 @@ class XpBar extends egret.DisplayObjectContainer{
 		else if( xpProccessNum < 0 ) xpProccessNum = 0;
 
 		TweenerTool.tweenTo( this, { xpProccess: xpProccessNum }, 330 );
+
+		LocalDataManager.updatePlayerData( "score.xp", xp );
 	}
 
 	private levelUp(){
@@ -86,28 +91,35 @@ class XpBar extends egret.DisplayObjectContainer{
 		this.levelTx.setText( "" + level );
 		this.updateXp( Number(data["xp"]) );
 
-		// PlayerConfig.player("score.level", level);
-		// if (data["levelMultiplier"]) PlayerConfig.player("levelMultiplier", data["levelMultiplier"]);
-		// if (data["chipsLevelMultiplier"]) PlayerConfig.player("chipsLevelMultiplier", data["chipsLevelMultiplier"]);
-		// if (data["levelMultiplierPuzzle"]) PlayerConfig.player("levelMultiplierPuzzle", data["levelMultiplierPuzzle"]);
+		let loyalty: number = data["loyalty_point"] - Number( PlayerConfig.player( "loyalty.loyalty_point" ) );
 
-		// if (Lobby.getInstance()) Lobby.getInstance().unlockMission();
+		//playerData
+		let datas: Array<IKeyValues> = <Array<IKeyValues>>[];
+		datas[0] = <IKeyValues>{key:"score.level",value:level};
+		datas[1] = <IKeyValues>{key:"score.this_level_xp",value:this.thisLevelXp};
+		datas[2] = <IKeyValues>{key:"score.next_level_xp",value:this.nextLevelXp};
+		datas[3] = <IKeyValues>{key:"levelMultiplier",value:data["levelMultiplier"]};
+		datas[4] = <IKeyValues>{key:"chipsLevelMultiplier",value:data["chipsLevelMultiplier"]};
+		datas[5] = <IKeyValues>{key:"levelMultiplierPuzzle",value:data["levelMultiplierPuzzle"]};
+		datas[6] = <IKeyValues>{key:"loyalty.loyalty_point",value:data["loyalty_point"]};
+		LocalDataManager.updatePlayerDatas( datas );
 
-		// // calculate total level up bonus
-		// let bonuses = <Array<Object>>data["bonuses"];
-		// let bonus = 0;
-		// if (typeof bonuses !== "undefined" && bonuses !== null) {
-		// 	for (let i = 0; i < bonuses.length; i++) {
-		// 		bonus += Number(bonuses[i]["level_up_bonus"]);
-		// 	}
-		// }
+		//mexBet
+		let maxBet: number = Number(data["user_max_bet"]);
+		if( GameData.maxBet < maxBet ) GameData.bets.push( maxBet );
 
-		// // show level up popup
-		// LevelUp.level = level;
-		// LevelUp.maxBet = Number(data["user_max_bet"]);
-		// LevelUp.coins = bonus === 0 ? PlayerConfig.player("bonus.level_up_bonus." + data["level"]) : bonus;
 		// LevelUp.targetCoins = data["coins"];
+		let bonuses = <Array<Object>>data["bonuses"];
+		let bonus = 0;
+		if (typeof bonuses !== "undefined" && bonuses !== null) {
+			for (let i = 0; i < bonuses.length; i++) {
+				bonus += Number(bonuses[i]["level_up_bonus"]);
+			}
+		}
+
+		this.showBonusAndLoyalty( bonus, loyalty );
 		
+		// if (Lobby.getInstance()) Lobby.getInstance().unlockMission();
 		
 		// check have someone game unlock?
 		// if (unlockedGameID.length > 0) {
@@ -116,7 +128,6 @@ class XpBar extends egret.DisplayObjectContainer{
 		// }
 
 		// data["reward_items"]
-		trace( data );
 	}
 
 	/**
@@ -124,5 +135,53 @@ class XpBar extends egret.DisplayObjectContainer{
 	 **/
 	private collectRequestFailed(data: any): void {
 		console.log("collect bonus request failed!");
+	}
+
+	private showBonusAndLoyalty( bonus: number, loyalty: number ){
+		let bt: egret.DisplayObjectContainer = new egret.DisplayObjectContainer;
+		let btContainer: egret.DisplayObjectContainer = new egret.DisplayObjectContainer;
+		this.addChildAt( btContainer, 0 );
+		Com.addObjectAt( btContainer, bt, 0, 0 );
+		bt.touchEnabled = true;
+
+		let bg: egret.Bitmap = Com.addBitmapAt( bt, "bingoGameToolbar_json.BB_star_open_bg", 0, 0 );
+		bg.width = 300;
+		bg.height = 350;
+
+		let wbg1: egret.Bitmap = Com.addBitmapAt( bt, "bingoGameToolbar_json.BB_star_benefit_bg", 17, 60 );
+		wbg1.height = 135;
+
+		let wbg2: egret.Bitmap = Com.addBitmapAt( bt, "bingoGameToolbar_json.BB_star_benefit_bg", 17, 196 );
+		wbg2.height = 135;
+
+		Com.addBitmapAt( bt, "bingoGameToolbar_json.loyalty_points_icon", 60, 90 );
+		let lp: egret.TextField = Com.addTextAt( bt, 135, 90, 140, 74, 52 );
+		lp.verticalAlign = "middle";
+		lp.textAlign = "left";
+		lp.text = "+" + Math.round( loyalty );
+
+		let tip: TextLabel = Com.addLabelAt( bt, 27, 220, 240, 28, 28 );
+		tip.setText( MuLang.getText( "level_up_bonus" ) );
+
+		let coins: TextLabel = Com.addLabelAt( bt, 17, 265, 260, 36, 36 );
+		coins.setText( "" + Math.round( bonus ) );
+
+		TweenerTool.tweenTo( bt, { y: - 350 }, 600, 0, this.btBack.bind( this, bt, btContainer, bonus ) );
+
+		btContainer.mask = new egret.Rectangle( 0, -350, 300, 350 );
+	}
+
+	private btBack( bt: egret.DisplayObjectContainer, btContainer: egret.DisplayObjectContainer, bonus: number ){
+		TweenerTool.tweenTo( bt, { y: 0 }, 600, 1000, MDS.removeSelf.bind( this, btContainer ) );
+
+		let ev: egret.Event = new egret.Event( XpBar.LEVEL_UP_BONUS );
+		ev.data = bonus;
+		this.dispatchEvent( ev );
+
+		if( this.stage ){
+			let flyCoins: FlyingCoins = new FlyingCoins();
+			flyCoins.fly( 10, new egret.Point( 730, 435 ), new egret.Point(350, 520), new egret.Point( 400, 300 ), 0.15, 0.1, 0.3 );
+			this.stage.addChild( flyCoins );
+		}
 	}
 }

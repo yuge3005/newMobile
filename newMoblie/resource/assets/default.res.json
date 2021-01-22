@@ -21,7 +21,7 @@
 			"name": "gameSettings"
 		},
 		{
-			"keys": "forAll_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,Arial Black_png,Arial Black_fnt,tounament_json,getCoinsParticle_png,getCoinsParticle_json",
+			"keys": "forAll_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,Arial Black_png,Arial Black_fnt,tounament_json,getCoinsParticle_png,getCoinsParticle_json,flyingCoins_png,flyingCoins_json,collect_coins_mp3",
 			"name": "allGameAssets"
 		}
 	],
@@ -35,7 +35,7 @@
 			"url": "game/gameToolBar/bingoGameToolbar.json",
 			"type": "sheet",
 			"name": "bingoGameToolbar_json",
-			"subkeys": "BB_EXTRA_btn_bg,BB_EXTRA_buyall,BB_EXTRA_collect_btn,BB_EXTRA_extra_btn,BB_star_open_bg,Group-22,Locked,auto_stop,back_panel,balance_chip,balance_coin,ballance,bet_down,bet_down_press,bet_screen,bet_up,bet_up_press,btn_go,btn_mega,i,i_press,max_btn,max_btn_press,middle_bar,more_games,msg_bg,play,play_bg,play_press,xp,xp_filling"
+			"subkeys": "BB_EXTRA_btn_bg,BB_EXTRA_buyall,BB_EXTRA_collect_btn,BB_EXTRA_extra_btn,BB_star_benefit_bg,BB_star_open_bg,Group-22,Locked,auto_stop,back_panel,balance_chip,balance_coin,ballance,bet_down,bet_down_press,bet_screen,bet_up,bet_up_press,btn_go,btn_mega,i,i_press,loyalty_points_icon,max_btn,max_btn_press,middle_bar,more_games,msg_bg,play,play_bg,play_press,xp,xp_filling"
 		},
 		{
 			"url": "game/topbar/topbar.json",
@@ -108,6 +108,21 @@
 			"type": "sheet",
 			"name": "tounament_json",
 			"subkeys": "Top3_1st_sheild,Top3_2nd_sheild,Top3_3rd_sheild,avatar,bar_bg,btn_arrow,btn_arrow_bg,deviding_line,head_bg,mechanism_pending_bg,mechanism_pending_timer_bg,mechanism_pending_timer_fill,own_bg,own_progress_bar,own_progress_bar_bg,own_progress_bar_bg_light,player_bg,progress_bar,progress_bar_point,ranking_bg,ranking_en,ranking_es,ranking_pt"
+		},
+		{
+			"url": "game/tropCoins/flyingCoins.png",
+			"type": "image",
+			"name": "flyingCoins_png"
+		},
+		{
+			"url": "game/tropCoins/flyingCoins.json",
+			"type": "json",
+			"name": "flyingCoins_json"
+		},
+		{
+			"url": "game/tropCoins/collect_coins.mp3",
+			"type": "sound",
+			"name": "collect_coins_mp3"
 		}
 	]
 }
