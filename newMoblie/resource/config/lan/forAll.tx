@@ -27,6 +27,7 @@
 		,"mega":{ "en": "mega", "es": "mega", "pt": "mega" }
 		,"click to stop":{ "en": "CLICK TO STOP", "es": "HAGA CLIC PARA PARAR AUTO", "pt": "CLIQUE PARA PARAR AUTO" }
 		,"auto":{ "en": "auto", "es": "auto", "pt": "auto" }
+		,"level_up_bonus":{ "en": "LEVEL UP BONUS:", "es": "BONUS DE PASE DE NIVEL:", "pt": "Seu bônus é:" }
 		,"bank":{ "en": "BANK", "es": "BANCO", "pt": "BANCO" }
 		,"buy all":{ "en": "BUY ALL", "es": "COMPRAR TODAS", "pt": "COMPRAR TODAS" }
 		,"coins":{ "en": "COINS", "es": "MONEDAS", "pt": "MOEDAS" }
