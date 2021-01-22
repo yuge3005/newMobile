@@ -1,5 +1,11 @@
 {
+    "projectName": "bingoGameToolbar",
     "files": [
+        "./balance_chip.png",
+        "./back_panel.png",
+        "./auto_stop.png",
+        "./BB_star_benefit_bg.png",
+        "./loyalty_points_icon.png",
         "./xp_filling.png",
         "./xp.png",
         "./play_press.png",
@@ -27,18 +33,14 @@
         "./BB_EXTRA_buyall.png",
         "./BB_EXTRA_btn_bg.png",
         "./ballance.png",
-        "./balance_coin.png",
-        "./balance_chip.png",
-        "./back_panel.png",
-        "./auto_stop.png"
+        "./balance_coin.png"
     ],
-    "projectName": "bingoGameToolbar",
-    "version": 5,
     "options": {
-        "extend": 0,
         "layoutMath": "3",
         "sizeMode": "2n",
         "useExtension": 0,
-        "layoutGap": 0
-    }
+        "layoutGap": 0,
+        "extend": 0
+    },
+    "version": 5
 }
