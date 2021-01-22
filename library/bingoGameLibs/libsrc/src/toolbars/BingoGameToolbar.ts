@@ -89,6 +89,7 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 
 		this.xpBar = new XpBar;
 		Com.addObjectAt( this, this.xpBar, 1365, 38 );
+		this.xpBar.addEventListener( XpBar.LEVEL_UP_BONUS, this.onLevelUpBonus, this );
 
 		this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onToolbarAdd, this);
 		this.cacheAsBitmap = true;
@@ -427,5 +428,12 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 		this._win = value;
 		if( value )	this.winText.setText( Utils.formatCoinsNumber( Math.floor(value) ) );
 		else this.winText.setText("");
+	}
+
+	private onLevelUpBonus( event: egret.Event ){
+		let bonus: number = event.data;
+		let ev: egret.Event = new egret.Event( XpBar.LEVEL_UP_BONUS );
+		ev.data = bonus;
+		this.dispatchEvent( ev );
 	}
 }

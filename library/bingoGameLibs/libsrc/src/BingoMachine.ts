@@ -265,6 +265,7 @@ class BingoMachine extends GameUIItem{
 		this.gameToolBar = new BingoGameToolbar;
 		Com.addObjectAt( this, this.gameToolBar, 0, BingoGameToolbar.toolBarY );
 		this.gameToolBar.showTip( "" );
+		this.gameToolBar.addEventListener( XpBar.LEVEL_UP_BONUS, this.onLevelUpBonus, this );
 
 		this.topbar = new Topbar;
 		this.addChild( this.topbar );
@@ -1041,6 +1042,14 @@ class BingoMachine extends GameUIItem{
 		else{
 			trace( cmd );
 			egret.error( "tounament command error!" );
+		}
+	}
+
+	protected onLevelUpBonus( event: egret.Event ){
+		let bonus: number = event.data;
+		if( !isNaN(bonus) ){
+			this.gameCoins += bonus;
+			this.gameToolBar.updateCoinsAndDinero( this.gameCoins, this.dinero );
 		}
 	}
 }
