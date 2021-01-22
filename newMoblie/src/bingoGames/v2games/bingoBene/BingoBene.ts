@@ -125,6 +125,7 @@ class BingoBene extends V2Game{
         this.gameToolBar = new MontonToolBar;
 		Com.addObjectAt( this, this.gameToolBar, 0, BingoGameToolbar.toolBarY );
         this.gameToolBar.showTip( "" );
+        this.gameToolBar.addEventListener( XpBar.LEVEL_UP_BONUS, this.onLevelUpBonus, this );
 
 		this.topbar = new Topbar;
 		this.addChild( this.topbar );
