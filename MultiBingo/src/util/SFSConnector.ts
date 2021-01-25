@@ -24,7 +24,6 @@ class SFSConnector {
     public static onCardPriceCallback: Function;
     public static onResumeCallback: Function;
     public static onEnterCallback: Function;
-    public static onZoneCallback: Function;
     public static onPreBuyCard: Function;
     public static onBlackoutBallCallback: Function;
     public static onBlackoutMatching: Function;
@@ -675,39 +674,6 @@ class SFSConnector {
                 gameData["timeLeft"] = data.getInt("time_left");
                 SFSConnector.onEnterCallback( gameData );
             }
-        } else if( event.cmd === "afterJoinZone" && SFSConnector.onZoneCallback ){
-            var data: any = event.params;
-            var gameData: Object = {};
-            gameData["freeCard"] = data.getInt("free_card");
-            gameData["lastRoomId"] = data.getUtfString("last_joined_room_id");
-            let cardPriceConfig = data.get("card_price_by_group");
-            gameData["cardPriceConfig"] = [];
-            for (let i = 0; i < cardPriceConfig.size(); i++) {
-                let config = [];
-                for (let j = 0; j < cardPriceConfig.get(i).size(); j++) {
-                    config.push({
-                        "coinsType": cardPriceConfig.get(i).get(j).get("coinsType"),
-                        "price": cardPriceConfig.get(i).get(j).get("cardPrice")
-                    });
-                }
-                gameData["cardPriceConfig"].push(config);
-            }
-            let pastJoinedRooms = data.get("past_joined_rooms");
-            gameData["pastJoinedRooms"] = [];
-            if( pastJoinedRooms ){
-                for (let i = 0; i < pastJoinedRooms.size(); i++) {
-                    let joinedRoom = {
-                            "coinsType": pastJoinedRooms.get(i).getInt("coinsType"),
-                            "award": pastJoinedRooms.get(i).getLong("award"),
-                            "collected": pastJoinedRooms.get(i).getBool("collected"),
-                            "id": pastJoinedRooms.get(i).getUtfString("id"),
-                            "createAt": pastJoinedRooms.get(i).getUtfString("createAt")
-                        };
-                    gameData["pastJoinedRooms"].push(joinedRoom);
-                }
-            }
-            gameData["championAwardBase"] = data.getDouble("champion_award_base");
-            SFSConnector.onZoneCallback(gameData);
         } else if( event.cmd == "preBuyCard" && SFSConnector.onPreBuyCard ){
             var data: any = event.params;
             var gameData: Object = {};
