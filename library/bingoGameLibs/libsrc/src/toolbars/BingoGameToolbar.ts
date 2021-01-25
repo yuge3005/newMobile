@@ -11,6 +11,7 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 
 	protected playBtn: LongPressButton;
 	protected stopBtn: TouchDownButton;
+	protected freeSpinBtn: FreeSpinButton;
 
 	protected bigExtraBtn: GameToolbarMaskButton;
 	protected stopAutoBtn: TouchDownButton;
@@ -116,6 +117,10 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 		this.addButtonText( this.stopBtn, 72, "stop", 15, 0, 0xFFFFFF, this.stopBtn.width - 30, 186, 4, 0x000093 );
 
 		this.addPlayButton();
+
+		this.freeSpinBtn = new FreeSpinButton;
+		this.freeSpinBtn.visible = false;
+		Com.addObjectAt( this.playContainer, this.freeSpinBtn, 1724, 22 );
 
 		let tb: TextLabel = this.addToolBarText( 198, 192, 192, 30, 30, 0, 0, this.playContainer );
 		tb.setText( MuLang.getText("total bet") );
@@ -438,6 +443,6 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 	}
 
 	public updateFreeSpinCount( freeSpinCount: number ){
-		
+		this.freeSpinBtn.setFreeCount( freeSpinCount );
 	}
 }
