@@ -436,4 +436,8 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 		ev.data = bonus;
 		this.dispatchEvent( ev );
 	}
+
+	public updateFreeSpinCount( freeSpinCount: number ){
+		
+	}
 }

@@ -6,6 +6,7 @@ class GameCommands {
 
 	public static changeNumber: string = "changeNumber";
 	public static maxBet: string = "maxBet";
+	public static minBet: string = "minBet";
 	public static collect: string = "collect";
 	public static play: string = "play";
 	public static stop: string = "stop";
