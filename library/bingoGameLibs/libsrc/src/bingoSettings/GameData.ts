@@ -33,6 +33,10 @@ class GameData {
 		this._currentBetIndex = this.bets.length - 1;
 	}
 
+	public static setBetToMin(): void {
+		this._currentBetIndex = 0;
+	}
+
 	public constructor() {
 	}
 

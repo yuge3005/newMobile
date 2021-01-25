@@ -964,6 +964,7 @@ class Copacabana extends V2Game{
 
         let bufEnd: boolean = this.countBuffLeft();
 
+        this.checkFreeSpin( data["freeSpin"] );
         if( !bufEnd )this.checkAuto();
         else{
             if(this.gameToolBar.autoPlaying){
