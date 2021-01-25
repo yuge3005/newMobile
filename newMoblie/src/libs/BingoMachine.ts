@@ -561,9 +561,7 @@ class BingoMachine extends GameUIItem{
 		this.dispatchEvent(new egret.Event("betChanged", false, false, { type: type }));
 		this.jackpotArea.changebet();
 
-		if( GameData.currentBet == GameData.minBet && this.freeSpin > 0 ){
-			this.gameToolBar.updateFreeSpinCount( this.freeSpin );
-		}
+		this.gameToolBar.updateFreeSpinCount( GameData.currentBet == GameData.minBet && this.freeSpin );
 	}
 
 	protected checkOOCWhenExtra(): boolean{
