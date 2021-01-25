@@ -27,6 +27,7 @@ class BingoMachine extends GameUIItem{
 		this._gameCoins = value;
 		if( this.creditText ) this.creditText.setText( Utils.formatCoinsNumber( value ) );
 	}
+	protected freeSpin: number;
 
 	protected connetKeys: Object;
 	protected tokenObject: Object;
@@ -245,6 +246,9 @@ class BingoMachine extends GameUIItem{
 		this.setLetras( data["letras"] );
 
 		if( this.needListenToolbarStatus )this.listenToGameToolbarStatus();
+		
+		this.freeSpin = data["freeSpin"];
+		if( this.freeSpin > 0 ) BingoMachine.sendCommand( GameCommands.minBet );
 
 		this.loadOtherGroup();
 	}
@@ -548,6 +552,10 @@ class BingoMachine extends GameUIItem{
 				GameData.setBetToMax();
 				this.currentGame.betChanged( 0 );
 			}
+			else if (cmd == GameCommands.minBet) {
+				GameData.setBetToMin();
+				this.currentGame.betChanged( 0 );
+			}	
 			else throw new Error( "hehe" );
 			this.currentGame.resetGameToolBarStatus();
 			this.currentGame.changeCardsBg();
@@ -559,6 +567,10 @@ class BingoMachine extends GameUIItem{
 	protected betChanged( type: number ){
 		this.dispatchEvent(new egret.Event("betChanged", false, false, { type: type }));
 		this.jackpotArea.changebet();
+
+		if( GameData.currentBet == GameData.minBet && this.freeSpin > 0 ){
+			this.gameToolBar.updateFreeSpinCount( this.freeSpin );
+		}
 	}
 
 	protected checkOOCWhenExtra(): boolean{
@@ -647,6 +659,7 @@ class BingoMachine extends GameUIItem{
 
 		this.updateCredit( data );
 
+		this.checkFreeSpin( data["freeSpin"] );
 		this.checkAuto();
 	}
 
@@ -656,6 +669,14 @@ class BingoMachine extends GameUIItem{
 		if (this.gameToolBar.autoPlaying){
 			this.gameToolBar.lockAllButtons();
 			this.autoPlayTimeoutId = setTimeout( this.aotoNextRound.bind(this), 1000 );
+		}
+	}
+
+	protected checkFreeSpin( freeSpin: number ){
+		this.freeSpin = freeSpin;
+		if( GameData.minBet == GameData.currentBet && this.freeSpin > 0 ){
+			if( this.gameToolBar.autoPlaying ) this.gameToolBar.autoPlaying = false;
+			this.gameToolBar.updateFreeSpinCount( this.freeSpin );
 		}
 	}
 
