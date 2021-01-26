@@ -213,7 +213,7 @@ class SFSConnector {
             if( betConfig ){
                 gameData["betConfig"] = this.getBetConfig( betConfig );
             }
-            gameData["freeSpin"] = data.get("free_spin");
+            gameData["freeSpin"] = data.getInt("free_spin");
             SFSConnector.gameInitCallback( gameData );
         }
         if( event.cmd == "login" && SFSConnector.gameInitCallback ){
@@ -238,7 +238,7 @@ class SFSConnector {
             if( betConfig ){
                 gameData["betConfig"] = this.getBetConfig( betConfig );
             }
-            gameData["freeSpin"] = data.get("free_spin");
+            gameData["freeSpin"] = data.getInt("free_spin");
             SFSConnector.gameInitCallback( gameData );
 
             var params:any = eval( "new SFS2X.SFSObject()" );
@@ -337,7 +337,7 @@ class SFSConnector {
             gameData["jackpot_min_bet"] = data.getInt("jackpot_min_bet");
             gameData["puzzleCurrent"] = data.getInt("puzzle_spin_amount");
             gameData["puzzleTotal"] = data.getInt("puzzle_spin_target");
-            gameData["freeSpin"] = data.get("free_spin");
+            gameData["freeSpin"] = data.getInt("free_spin");
             SFSConnector.roundOverCallback( gameData );
         }
         else if( event.cmd == "libera" && SFSConnector.roundOverCallback ){
@@ -354,7 +354,7 @@ class SFSConnector {
             gameData["jackpot_min_bet"] = data.getInt("jackpot_min_bet");
             gameData["puzzleCurrent"] = data.getInt("puzzle_spin_amount");
             gameData["puzzleTotal"] = data.getInt("puzzle_spin_target");
-            gameData["freeSpin"] = data.get("free_spin");
+            gameData["freeSpin"] = data.getInt("free_spin");
             SFSConnector.roundOverCallback( gameData );
         }
         else if( event.cmd == "jogadafinalizada" && SFSConnector.cancelExtraCallback ){
@@ -372,7 +372,7 @@ class SFSConnector {
             gameData["jackpot_min_bet"] = data.getInt("jackpot_min_bet");
             gameData["puzzleCurrent"] = data.getInt("puzzle_spin_amount");
             gameData["puzzleTotal"] = data.getInt("puzzle_spin_target");
-            gameData["freeSpin"] = data.get("free_spin");
+            gameData["freeSpin"] = data.getInt("free_spin");
             SFSConnector.cancelExtraCallback( gameData );
         }
         else if( event.cmd == "libera" && SFSConnector.cancelExtraCallback ){
@@ -389,7 +389,7 @@ class SFSConnector {
             gameData["jackpot_min_bet"] = data.getInt("jackpot_min_bet");
             gameData["puzzleCurrent"] = data.getInt("puzzle_spin_amount");
             gameData["puzzleTotal"] = data.getInt("puzzle_spin_target");
-            gameData["freeSpin"] = data.get("free_spin");
+            gameData["freeSpin"] = data.getInt("free_spin");
             SFSConnector.cancelExtraCallback( gameData );
         }
         else if( event.cmd == "jogada" && SFSConnector.extraCallback ){

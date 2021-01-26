@@ -21,7 +21,7 @@
 			"name": "gameSettings"
 		},
 		{
-			"keys": "forAll_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,Arial Black_png,Arial Black_fnt,tounament_json,getCoinsParticle_png,getCoinsParticle_json,flyingCoins_png,flyingCoins_json,collect_coins_mp3",
+			"keys": "forAll_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,Arial Black_png,Arial Black_fnt,tounament_json,getCoinsParticle_png,getCoinsParticle_json,flyingCoins_png,flyingCoins_json,collect_coins_mp3,missionBar_json",
 			"name": "allGameAssets"
 		}
 	],
@@ -123,6 +123,12 @@
 			"url": "game/tropCoins/collect_coins.mp3",
 			"type": "sound",
 			"name": "collect_coins_mp3"
+		},
+		{
+			"url": "game/missionBar/missionBar.json",
+			"type": "sheet",
+			"name": "missionBar_json",
+			"subkeys": "Locked,btn_mission,btn_mission_bg,btn_mission_bg_era,btn_shadow,mission_collect_en,mission_collect_es,mission_collect_pt,tips_bg"
 		}
 	]
 }

@@ -1,0 +1,10 @@
+{"file":"missionBar.png","frames":{
+"btn_mission":{"x":354,"y":0,"w":195,"h":195,"offX":1,"offY":0,"sourceW":197,"sourceH":213},
+"btn_mission_bg":{"x":549,"y":93,"w":335,"h":93,"offX":0,"offY":0,"sourceW":335,"sourceH":93},
+"btn_mission_bg_era":{"x":549,"y":0,"w":335,"h":93,"offX":0,"offY":0,"sourceW":335,"sourceH":93},
+"btn_shadow":{"x":0,"y":113,"w":335,"h":93,"offX":0,"offY":0,"sourceW":335,"sourceH":93},
+"Locked":{"x":884,"y":0,"w":44,"h":59,"offX":1,"offY":0,"sourceW":46,"sourceH":60},
+"mission_collect_en":{"x":742,"y":186,"w":193,"h":87,"offX":0,"offY":0,"sourceW":193,"sourceH":87},
+"mission_collect_es":{"x":549,"y":186,"w":193,"h":87,"offX":0,"offY":0,"sourceW":193,"sourceH":87},
+"mission_collect_pt":{"x":335,"y":195,"w":193,"h":87,"offX":0,"offY":0,"sourceW":193,"sourceH":87},
+"tips_bg":{"x":0,"y":0,"w":354,"h":113,"offX":0,"offY":0,"sourceW":354,"sourceH":113}}}

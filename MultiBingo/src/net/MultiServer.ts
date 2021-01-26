@@ -97,10 +97,6 @@ class MultiServer {
 		this.serverConnection["onEnterCallback"] = value;
 	}
 
-	public static set onZoneCallback(value: Function){
-		this.serverConnection["onZoneCallback"] = value;
-	}
-
 	public static set onPreBuyCard(value: Function){
 		this.serverConnection["onPreBuyCard"] = value;
 	}

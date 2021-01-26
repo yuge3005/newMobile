@@ -650,7 +650,7 @@ class BingoMachine extends GameUIItem{
 
 		this.updateCredit( data );
 
-		this.checkFreeSpin( data["freeSpin"] );
+		if( data["freeSpin"] != null )this.checkFreeSpin( data["freeSpin"] );
 		this.checkAuto();
 	}
 
@@ -663,7 +663,7 @@ class BingoMachine extends GameUIItem{
 		}
 	}
 
-	protected checkFreeSpin( freeSpin: number ){
+	protected checkFreeSpin( freeSpin: number ): void{
 		this.freeSpin = freeSpin;
 		if( GameData.minBet == GameData.currentBet && this.freeSpin > 0 ){
 			if( this.gameToolBar.autoPlaying ) this.gameToolBar.autoPlaying = false;
@@ -693,6 +693,8 @@ class BingoMachine extends GameUIItem{
 		this.roundOver();
 
 		this.updateCredit( data );
+		
+		if( data["freeSpin"] != null )this.checkFreeSpin( data["freeSpin"] );
 
 		this.resetGameToolBarStatus();
 

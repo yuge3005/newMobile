@@ -64,7 +64,7 @@ class MultiPlayerGrid extends egret.Sprite{
 		this.blinkPic = Com.addBitmapAt( this,  MultiPlayerMachine.getAssetStr( CardGridUISettings.blink1PicName ), 0, 0 );
 		this.blinkPic.visible = false;
 
-		this.numTxt = Com.addTextAt( this, 0, CardGridColorAndSizeSettings.gridSize.y - CardGridColorAndSizeSettings.defaultNumberSize >> 1, CardGridColorAndSizeSettings.gridSize.x, CardGridColorAndSizeSettings.defaultNumberSize, CardGridColorAndSizeSettings.defaultNumberSize, false, true );
+		this.numTxt = Com.addTextAt( this, 0, ( CardGridColorAndSizeSettings.gridSize.y - CardGridColorAndSizeSettings.defaultNumberSize >> 1 ) + CardGridColorAndSizeSettings.defaultNumberSize * 0.075, CardGridColorAndSizeSettings.gridSize.x, CardGridColorAndSizeSettings.defaultNumberSize, CardGridColorAndSizeSettings.defaultNumberSize, false, true );
 		this.numTxt.textAlign = "center";
 		this.numTxt.verticalAlign = "middle";
 		this.numTxt.textColor = CardGridColorAndSizeSettings.numberColor;
