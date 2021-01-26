@@ -1,4 +1,4 @@
-class MultiBIngoFreeCardUI extends FreeCardUI{
+class MultiBingoFreeCardUI extends FreeCardUI{
 	public constructor() {
 		super();
 

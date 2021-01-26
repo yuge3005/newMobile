@@ -496,7 +496,7 @@ class Mara extends Multi75Super{
 
 		this.featureLayer.getNewFeatureItems( data["availableFeatures"] );
 
-		if (this.waitingBar) this.waitingBar.updateFreeCardAfterBuycard( data["freeCard"] );
+		if ( this.waitingBar && data["freeCard"] != null ) this.waitingBar.updateFreeCardAfterBuycard( data["freeCard"] );
 	}
 
 	private buyFeatrue( event: egret.Event ){
@@ -859,6 +859,7 @@ class Mara extends Multi75Super{
 			MaraWaitingBar.cardPriceConfig = data["cardPriceConfig"];
 
 			if (this.waitingBar) this.waitingBar.updateFreeCardCountText(data["freeCard"]);
+			else setTimeout( this.onCardPriceCallback.bind( this, data ), 300 );
 		}
 	}
 

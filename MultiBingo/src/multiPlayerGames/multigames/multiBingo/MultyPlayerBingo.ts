@@ -227,7 +227,7 @@ class MultyPlayerBingo extends Multi75Super{
 	}
 
 	protected buyCardFeatureCallback( data: Object ){
-		if (this.waitingBar) this.waitingBar.updateFreeCardAfterBuycard( data["freeCard"] );
+		if ( this.waitingBar && data["freeCard"] != null ) this.waitingBar.updateFreeCardAfterBuycard( data["freeCard"] );
 	}
 
 	protected startPlay(){

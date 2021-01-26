@@ -37,20 +37,23 @@ class MaraWaitingBar extends Multi75WaitingBar{
 
 		this.leftButton = Com.addDownButtonAt( this, "mara_idle_json.-1", "mara_idle_json.-2", 310, 275, this.onBetIconStep.bind(this), true );
 		this.rightButton = Com.addDownButtonAt( this, "mara_idle_json.+1", "mara_idle_json.+2", 630, 275, this.onBetIconStep.bind(this), true );
+
+		this.freeCardUI = new MaraFreeCardUI;
+		Com.addObjectAt( this, this.freeCardUI, 385, 275 );
+
 		this.betStep = 1;
 
 		this.titleTxt = Com.addBitmapAtMiddle( this, "mara_" + MuLang.language + "_json.buy_next", 503, 85 );
 		this.betTxt = Com.addBitmapAtMiddle( this, "mara_" + MuLang.language + "_json.bet", 503, 207 );
 
 		setTimeout( this.initShowPrice.bind(this), 50 );
-
-		this.freeCardUI = new MultiBIngoFreeCardUI;
 	}
 
 	protected initShowPrice(){
 		if( MaraWaitingBar.cardPriceConfig ){
 			this.resetCardPrice();
 			this.resetCardPrize();
+			this.checkFreeCard();
 		}
 		else{
 			setTimeout( this.initShowPrice.bind(this), 50 );
@@ -119,9 +122,5 @@ class MaraWaitingBar extends Multi75WaitingBar{
 		this.waitingTxt.text = countDown + "S";
 		if( countDown == 0 ) this.countDownBar.visible = false;
 		else if( !this.countDownBar.visible ) this.countDownBar.visible = true;
-	}
-
-	public updateFreeCardCountText( freeCards: number ){
-		//sub class override
 	}
 }
