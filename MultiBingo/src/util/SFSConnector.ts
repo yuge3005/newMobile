@@ -596,6 +596,7 @@ class SFSConnector {
                     gameData["availableFeatures"][i]["price"] = availableFeatures.get(i).getInt("price");
                 }
             }
+            gameData["freeCard"] = data.get("free_card");
             SFSConnector.buyCardFeatureCallback( gameData );
         }
         else if (event.cmd == "payForBingo" && SFSConnector.buyFeatureCallback ){
@@ -614,6 +615,8 @@ class SFSConnector {
             var data: any = event.params;
             var gameData: Object = {};
 
+            gameData["freeCard"] = data.get("free_card");
+
             if (SFSConnector.existCardCallback) {
                 gameData["selected_multi"] = data.getInt("selected_multi");
                 gameData["amount"] = data.getInt("amount");
@@ -622,25 +625,27 @@ class SFSConnector {
             
             if( SFSConnector.onCardPriceCallback ){
                 let cardPriceConfig = data.get("card_price_by_group");
-                gameData["cardPriceConfig"] = [];
-                for (let i = 0; i < cardPriceConfig.size(); i++) {
-                    let config = [];
-                    for (let j = 0; j < cardPriceConfig.get(i).size(); j++) {
-                        config.push({
-                            "coinsType": cardPriceConfig.get(i).get(j).get("coinsType"),
-                            "price": cardPriceConfig.get(i).get(j).get("cardPrice")
-                        });
+                if( cardPriceConfig ){
+                    gameData["cardPriceConfig"] = [];
+                    for (let i = 0; i < cardPriceConfig.size(); i++) {
+                        let config = [];
+                        for (let j = 0; j < cardPriceConfig.get(i).size(); j++) {
+                            config.push({
+                                "coinsType": cardPriceConfig.get(i).get(j).get("coinsType"),
+                                "price": cardPriceConfig.get(i).get(j).get("cardPrice")
+                            });
+                        }
+                        gameData["cardPriceConfig"].push(config);
                     }
-                    gameData["cardPriceConfig"].push(config);
-                }
 
-                let betConfig = data.get("betConfig");
-                gameData["betConfig"] = [];
-                for (let i = 0; i < betConfig.size(); i++) {
-                    gameData["betConfig"].push({
-                        "bet": betConfig.get(i).get("bet"),
-                        "jackpotRate": betConfig.get(i).get("jackpotRate")
-                    })
+                    let betConfig = data.get("betConfig");
+                    gameData["betConfig"] = [];
+                    for (let i = 0; i < betConfig.size(); i++) {
+                        gameData["betConfig"].push({
+                            "bet": betConfig.get(i).get("bet"),
+                            "jackpotRate": betConfig.get(i).get("jackpotRate")
+                        })
+                    }
                 }
 
                 SFSConnector.onCardPriceCallback(gameData);

@@ -19,4 +19,12 @@ class WaitingBar extends MultiCoverBars{
 	public showCountDown( countDown: number ){
 		//sub class override
 	}
+
+	public updateFreeCardCountText( freeCards: number ){
+		//sub class override
+	}
+
+	public updateFreeCardAfterBuycard( freeCards: number ){
+		//sub class override
+	}
 }

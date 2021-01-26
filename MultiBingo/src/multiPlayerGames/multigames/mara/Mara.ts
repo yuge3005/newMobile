@@ -476,7 +476,7 @@ class Mara extends Multi75Super{
 
 	private nextRoundFeatures: Array<Object>;
 
-	private buyCardFeatureCallback( data: Object ){
+	protected buyCardFeatureCallback( data: Object ){
 		MultiServer.buyCardFeatureCallback = null;
 		if( !this.featureLayer ){
 			this.featureLayer = new MaraFeatureLayer;
@@ -495,6 +495,8 @@ class Mara extends Multi75Super{
 		}
 
 		this.featureLayer.getNewFeatureItems( data["availableFeatures"] );
+
+		if (this.waitingBar) this.waitingBar.updateFreeCardAfterBuycard( data["freeCard"] );
 	}
 
 	private buyFeatrue( event: egret.Event ){
@@ -852,9 +854,11 @@ class Mara extends Multi75Super{
 		}
 	}
 
-	private onCardPriceCallback(data: Object): void {
+	protected onCardPriceCallback(data: Object): void {
 		if (data) {
 			MaraWaitingBar.cardPriceConfig = data["cardPriceConfig"];
+
+			if (this.waitingBar) this.waitingBar.updateFreeCardCountText(data["freeCard"]);
 		}
 	}
 

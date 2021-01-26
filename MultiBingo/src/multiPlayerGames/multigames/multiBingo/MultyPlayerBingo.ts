@@ -35,6 +35,23 @@ class MultyPlayerBingo extends Multi75Super{
 		this.letsWait();
 	}
 
+	protected addCallbacks() {
+		super.addCallbacks();
+		MultiServer.onCardPriceCallback = this.onCardPriceCallback.bind(this);
+	}
+
+	protected removeCallbacks() {
+		super.removeCallbacks();
+		MultiServer.onCardPriceCallback = null;
+	}
+
+	protected onCardPriceCallback(data: Object): void {
+		if (data) {
+			if (this.waitingBar) this.waitingBar.updateFreeCardCountText(data["freeCard"]);
+			else setTimeout( this.onCardPriceCallback.bind( this, data ), 300 );
+		}
+	}
+
 /************************************************************************************************************************************************/
 
 	private energyBar: MultiPlayerEnergy;
@@ -109,6 +126,7 @@ class MultyPlayerBingo extends Multi75Super{
 		}
 		MultiServer.buyCard( event.data.amount, event.data.multiple );
 		MultiServer.buyCardCallback = this.buyCardCallback.bind( this );
+		MultiServer.buyCardFeatureCallback = this.buyCardFeatureCallback.bind(this);
 		this.waitingBar.hideBottomBtns();
 		MultiServer.existCardCallback = null;
 	}
@@ -206,6 +224,10 @@ class MultyPlayerBingo extends Multi75Super{
 
 		this.waitingForStart = true;
 		this.exitCardPlaying = false;
+	}
+
+	protected buyCardFeatureCallback( data: Object ){
+		if (this.waitingBar) this.waitingBar.updateFreeCardAfterBuycard( data["freeCard"] );
 	}
 
 	protected startPlay(){

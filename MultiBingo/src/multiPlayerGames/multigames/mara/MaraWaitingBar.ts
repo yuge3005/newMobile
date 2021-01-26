@@ -43,6 +43,8 @@ class MaraWaitingBar extends Multi75WaitingBar{
 		this.betTxt = Com.addBitmapAtMiddle( this, "mara_" + MuLang.language + "_json.bet", 503, 207 );
 
 		setTimeout( this.initShowPrice.bind(this), 50 );
+
+		this.freeCardUI = new MultiBIngoFreeCardUI;
 	}
 
 	protected initShowPrice(){
@@ -117,5 +119,9 @@ class MaraWaitingBar extends Multi75WaitingBar{
 		this.waitingTxt.text = countDown + "S";
 		if( countDown == 0 ) this.countDownBar.visible = false;
 		else if( !this.countDownBar.visible ) this.countDownBar.visible = true;
+	}
+
+	public updateFreeCardCountText( freeCards: number ){
+		//sub class override
 	}
 }
