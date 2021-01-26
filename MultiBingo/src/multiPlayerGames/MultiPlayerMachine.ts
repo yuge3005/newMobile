@@ -261,6 +261,14 @@ class MultiPlayerMachine extends egret.Sprite{
 		//sub class override
 	}
 
+	protected buyCardFeatureCallback( data: Object ){
+		//sub class override
+	}
+
+	protected onCardPriceCallback( data: Object ){
+		//sub class override
+	}
+
 	protected removeCallbacks(){
 		MultiServer.coinsChangeCallback = null;
 		MultiServer.selectNumberCallback = null;
@@ -272,6 +280,7 @@ class MultiPlayerMachine extends egret.Sprite{
 		MultiServer.roomMessageCallback = null;
 		MultiServer.cardsAndPlayersCallback = null;
 		MultiServer.buyCardCallback = null;
+		MultiServer.buyCardFeatureCallback = null;
 	}
 
 	protected addCallbacks(){

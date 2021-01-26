@@ -34,6 +34,10 @@ class MultiPlayerBingoWaitingBar extends Multi75WaitingBar{
 
 		this.leftButton = Com.addDownButtonAt( this.bottomBtnsContainer, "IdleTime_json.-", "IdleTime_json.-", 706, 929, this.onBetIconStep.bind(this), true );
 		this.rightButton = Com.addDownButtonAt( this.bottomBtnsContainer, "IdleTime_json.+", "IdleTime_json.+", 1206, 929, this.onBetIconStep.bind(this), true );
+
+		this.freeCardUI = new MultiBingoFreeCardUI;
+		Com.addObjectAt( this, this.freeCardUI, 812, 943 );
+
 		this.betStep = 1;
 
 		let titleSize: number = MuLang.language == "en" ? 45 : 35;
