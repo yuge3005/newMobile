@@ -1,6 +1,6 @@
 {
+    "projectName": "missionBar",
     "files": [
-        "./tips_bg.png",
         "./mission_collect_pt.png",
         "./mission_collect_es.png",
         "./mission_collect_en.png",
@@ -8,15 +8,19 @@
         "./btn_shadow.png",
         "./btn_mission_bg_era.png",
         "./btn_mission_bg.png",
-        "./btn_mission.png"
+        "./btn_mission.png",
+        "./mission_icon_outlight.png",
+        "./mission_icon.png",
+        "./mission_btn_white.png",
+        "./mission_bar.png",
+        "./tips_bg.png"
     ],
-    "projectName": "missionBar",
-    "version": 5,
     "options": {
-        "extend": 0,
         "layoutMath": "3",
         "sizeMode": "2n",
         "useExtension": 0,
-        "layoutGap": 0
-    }
+        "layoutGap": 0,
+        "extend": 0
+    },
+    "version": 5
 }

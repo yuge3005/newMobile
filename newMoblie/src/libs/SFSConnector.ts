@@ -331,7 +331,9 @@ class SFSConnector {
             gameData["luckMulti"] = data.getInt( "luckMulti" );
             gameData["letra"] = data.getByte( "letra" );
             gameData["bonusRound"] = data.getByte( "bonusRound" );
-            gameData["missionValue"] = data.get("mission_value");
+            gameData["missionValue"] = data.getLong("mission_value");
+            gameData["missionTarget"] = data.getLong("mission_target");
+            gameData["missionId"] = data.getLong("mission_id");
             gameData["secondCurrency"] = data.getLong("hard_currency");
             gameData["winSecondCurrency"] = data.getLong("total_win_hard_currency");
             gameData["jackpot_min_bet"] = data.getInt("jackpot_min_bet");
@@ -349,7 +351,9 @@ class SFSConnector {
                 gameData["credito"] = parseInt( tempData.match( /\$.+(?=CA)/ )[0].replace( "$", "" ) );
             }
             catch(e){ trace( "data error" ) }
-            gameData["missionValue"] = data.get("mission_value");
+            gameData["missionValue"] = data.getLong("mission_value");
+            gameData["missionTarget"] = data.getLong("mission_target");
+            gameData["missionId"] = data.getLong("mission_id");
             gameData["secondCurrency"] = data.getLong("hard_currency");
             gameData["jackpot_min_bet"] = data.getInt("jackpot_min_bet");
             gameData["puzzleCurrent"] = data.getInt("puzzle_spin_amount");
@@ -366,7 +370,9 @@ class SFSConnector {
             gameData["luckMulti"] = data.getInt( "luckMulti" );
             gameData["letra"] = data.getByte( "letra" );
             gameData["bonusRound"] = data.getByte( "bonusRound" );
-            gameData["missionValue"] = data.get("mission_value");
+            gameData["missionValue"] = data.getLong("mission_value");
+            gameData["missionTarget"] = data.getLong("mission_target");
+            gameData["missionId"] = data.getLong("mission_id");
             gameData["secondCurrency"] = data.getLong("hard_currency");
             gameData["winSecondCurrency"] = data.getLong("total_win_hard_currency");
             gameData["jackpot_min_bet"] = data.getInt("jackpot_min_bet");
@@ -384,7 +390,9 @@ class SFSConnector {
             }
             catch(e){ trace( "data error" ) }
             gameData["extrasnaocompradas"] = data.getByteArray( "notBoughtEBIndex" );
-            gameData["missionValue"] = data.get("mission_value");
+            gameData["missionValue"] = data.getLong("mission_value");
+            gameData["missionTarget"] = data.getLong("mission_target");
+            gameData["missionId"] = data.getLong("mission_id");
             gameData["secondCurrency"] = data.getLong("hard_currency");
             gameData["jackpot_min_bet"] = data.getInt("jackpot_min_bet");
             gameData["puzzleCurrent"] = data.getInt("puzzle_spin_amount");

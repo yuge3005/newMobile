@@ -49,4 +49,7 @@
 		,"sound_effect_on":{ "en": "SOUND EFFECTS", "es": "EFECTOS DE SONIDO", "pt": "EFEITOS DE SONS" }
 		,"music_on":{ "en": "MUSIC", "es": "MÚSICA", "pt": "MÚSICA" }
 		,"effect_on":{ "en": "VISUAL EFFECTS", "es": "EFECTOS VISUALES", "pt": "EFEITOS VISUAIS" }
+		,"coming_soon":{ "en": "COMING SOON", "es": "EN BREVE", "pt": "Em Breve" }
+		,"from_level":{ "en": "From level:", "es": "A partir del nivel:", "pt": "A partir do nível:" }
+		,"mission_updating_tip":{ "en": "Please wait. We are updating", "es": "Por favor espere. Estamos actualizando", "pt": "Por favor espere. Estamos atualizando" }
 }

@@ -652,6 +652,8 @@ class BingoMachine extends GameUIItem{
 
 		if( data["freeSpin"] != null )this.checkFreeSpin( data["freeSpin"] );
 		this.checkAuto();
+
+		this.updateNewDatas( data );
 	}
 
 	protected checkAuto(){
@@ -699,6 +701,8 @@ class BingoMachine extends GameUIItem{
 		this.resetGameToolBarStatus();
 
 		this.showMissExtraBall( data["extrasnaocompradas"] );
+
+		this.updateNewDatas( data );
 	}
 
 	public onExtra( data: Object ){
@@ -1065,5 +1069,11 @@ class BingoMachine extends GameUIItem{
 			this.gameCoins += bonus;
 			this.gameToolBar.updateCoinsAndDinero( this.gameCoins, this.dinero );
 		}
+	}
+
+/**************************************************************************************************************/
+
+	protected updateNewDatas( data: Object ){
+		this.gameToolBar.updateMissionData( data["missionValue"], data["missionTarget"], data["missionId"] );
 	}
 }
