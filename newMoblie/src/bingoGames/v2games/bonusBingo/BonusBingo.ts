@@ -241,6 +241,7 @@ class BonusBingo extends V2Game{
 
                 this.showAnimationWhenAutoPlaying = true;
                 // this.resetGameToolBarStatus();
+                this.updateNewDatas( data );
             }
             else super.onRoundOver( data );
         }

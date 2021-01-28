@@ -128,7 +128,7 @@
 			"url": "game/missionBar/missionBar.json",
 			"type": "sheet",
 			"name": "missionBar_json",
-			"subkeys": "Locked,btn_mission,btn_mission_bg,btn_mission_bg_era,btn_shadow,mission_collect_en,mission_collect_es,mission_collect_pt,tips_bg"
+			"subkeys": "Locked,btn_mission,btn_mission_bg,btn_mission_bg_era,btn_shadow,mission_bar,mission_btn_white,mission_collect_en,mission_collect_es,mission_collect_pt,mission_icon,mission_icon_outlight,tips_bg"
 		}
 	]
 }
