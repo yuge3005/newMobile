@@ -971,6 +971,8 @@ class Copacabana extends V2Game{
                 ( this.gameToolBar as CopaToolBar ).roundOverWhenAuto();
             }
         }
+
+        this.updateNewDatas( data );
     }
 
     public onCancelExtra( data: Object ){
