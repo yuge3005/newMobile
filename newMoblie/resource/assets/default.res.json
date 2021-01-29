@@ -23,6 +23,10 @@
 		{
 			"keys": "forAll_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,Arial Black_png,Arial Black_fnt,tounament_json,getCoinsParticle_png,getCoinsParticle_json,flyingCoins_png,flyingCoins_json,collect_coins_mp3,missionBar_json",
 			"name": "allGameAssets"
+		},
+		{
+			"keys": "missionPopup_json,missionBingo_json",
+			"name": "bingoMissionPopup"
 		}
 	],
 	"resources": [
@@ -129,6 +133,18 @@
 			"type": "sheet",
 			"name": "missionBar_json",
 			"subkeys": "Locked,btn_mission,btn_mission_bg,btn_mission_bg_era,btn_shadow,mission_bar,mission_btn_white,mission_collect_en,mission_collect_es,mission_collect_pt,mission_icon,mission_icon_outlight,tips_bg"
+		},
+		{
+			"url": "assets/missionPopup/missionBingo.json",
+			"type": "sheet",
+			"name": "missionBingo_json",
+			"subkeys": "bar1,bar2,bg,card,collect base,mission_en,mission_es,mission_pt,time"
+		},
+		{
+			"url": "assets/missionPopup/missionPopup.json",
+			"type": "sheet",
+			"name": "missionPopup_json",
+			"subkeys": "awesome_en,awesome_es,awesome_pt,bg_light,big_bar_bg,book,btn_close,btn_info,btn_week_collect,doctor,gift_box_big_black,gift_box_big_gray,gift_box_small,gift_box_small_body,gift_box_small_cover,icon_receive,lock,one_day_paper,one_day_reward,poins_bg"
 		}
 	]
 }
