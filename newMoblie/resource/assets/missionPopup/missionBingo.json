@@ -1,0 +1,10 @@
+{"file":"missionBingo.png","frames":{
+"collect base":{"x":1832,"y":0,"w":181,"h":183,"offX":0,"offY":0,"sourceW":181,"sourceH":183},
+"mission_en":{"x":516,"y":1274,"w":629,"h":171,"offX":0,"offY":0,"sourceW":629,"sourceH":171},
+"mission_es":{"x":1083,"y":1071,"w":548,"h":203,"offX":0,"offY":0,"sourceW":548,"sourceH":203},
+"mission_pt":{"x":516,"y":1071,"w":567,"h":203,"offX":0,"offY":0,"sourceW":567,"sourceH":203},
+"time":{"x":1590,"y":0,"w":242,"h":244,"offX":0,"offY":0,"sourceW":242,"sourceH":244},
+"bar1":{"x":1832,"y":183,"w":159,"h":159,"offX":0,"offY":0,"sourceW":159,"sourceH":159},
+"bar2":{"x":1590,"y":244,"w":240,"h":240,"offX":0,"offY":0,"sourceW":240,"sourceH":240},
+"bg":{"x":0,"y":0,"w":1590,"h":1071,"offX":0,"offY":0,"sourceW":1590,"sourceH":1071},
+"card":{"x":0,"y":1071,"w":516,"h":227,"offX":0,"offY":0,"sourceW":516,"sourceH":227}}}

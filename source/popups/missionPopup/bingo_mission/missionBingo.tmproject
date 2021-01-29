@@ -1,0 +1,22 @@
+{
+    "options": {
+        "useExtension": 0,
+        "layoutGap": 0,
+        "extend": 0,
+        "layoutMath": "3",
+        "sizeMode": "2n"
+    },
+    "files": [
+        "./card.png",
+        "./bg.png",
+        "./bar2.png",
+        "./bar1.png",
+        "./time.png",
+        "./mission_pt.png",
+        "./mission_es.png",
+        "./mission_en.png",
+        "./collect base.png"
+    ],
+    "version": 5,
+    "projectName": "missionBingo"
+}
