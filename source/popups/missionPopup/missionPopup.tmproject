@@ -1,0 +1,33 @@
+{
+    "options": {
+        "useExtension": 0,
+        "layoutGap": 0,
+        "extend": 0,
+        "layoutMath": "3",
+        "sizeMode": "2n"
+    },
+    "files": [
+        "./one_day_reward.png",
+        "./one_day_paper.png",
+        "./lock.png",
+        "./icon_receive.png",
+        "./gift_box_small_cover.png",
+        "./gift_box_small_body.png",
+        "./gift_box_small.png",
+        "./gift_box_big_gray.png",
+        "./gift_box_big_black.png",
+        "./doctor.png",
+        "./btn_week_collect.png",
+        "./btn_info.png",
+        "./btn_close.png",
+        "./book.png",
+        "./big_bar_bg.png",
+        "./bg_light.png",
+        "./awesome_pt.png",
+        "./awesome_es.png",
+        "./awesome_en.png",
+        "./poins_bg.png"
+    ],
+    "version": 5,
+    "projectName": "missionPopup"
+}
