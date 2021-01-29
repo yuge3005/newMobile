@@ -3,6 +3,25 @@ class Main extends BingoGameMain {
         super();
     }
 
+	protected onAddToStage(event: egret.Event) {
+        egret.lifecycle.addLifecycleListener((context) => {
+            context.onUpdate = () => {
+            }
+        })
+
+        egret.lifecycle.onPause = () => {
+			if( this.isMobile ) egret.ticker.pause();
+        }
+
+        egret.lifecycle.onResume = () => {
+            if( this.isMobile ) egret.ticker.resume();
+        }
+
+        this.runGame().catch(e => {
+            console.log(e);
+        })
+    }
+
     protected async runGame() {
         await RES.loadConfig("resource/game/turbo90/default.res.json", "resource/");
         await RES.loadConfig("resource/assets/default.res.json", "resource/");
