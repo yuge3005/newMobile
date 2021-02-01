@@ -43,6 +43,7 @@ class BingoGameMain extends egret.DisplayObjectContainer {
 		this.currentGame.preLoader = loadingView;
 		this.currentGame.addEventListener( BingoMachine.GENERIC_MODAL_LOADED, this.addGame, this );
 		this.currentGame.addEventListener("showGameSettings", this.showGameSettings, this);
+		this.currentGame.addEventListener("missionPopup", this.showMission, this );
 	}
 
 	private addGame(){
@@ -83,8 +84,16 @@ class BingoGameMain extends egret.DisplayObjectContainer {
 		this.showShadow();
 
 		this.currentPo = new GameSettingPopup;
-		if (this.currentPo.inited) this.addPo();
-		else this.currentPo.addEventListener( GenericModal.GENERIC_MODAL_LOADED, this.addPo, this );
+		if (this.currentPo.inited) this.addPhonePo();
+		else this.currentPo.addEventListener( GenericModal.GENERIC_MODAL_LOADED, this.addPhonePo, this );
+	}
+
+	private showMission( event: egret.Event ){
+		this.showShadow();
+
+		this.currentPo = new MissionPopup;
+		if (this.currentPo.inited) this.addPhonePo();
+		else this.currentPo.addEventListener( GenericModal.GENERIC_MODAL_LOADED, this.addPhonePo, this );
 	}
 
 	protected showShadow(){
@@ -109,16 +118,23 @@ class BingoGameMain extends egret.DisplayObjectContainer {
 	}
 	
 	protected addPo( event:egret.Event = null ){
+		this.addPoFromTo( 0.2, 1 );
+	}
+
+	protected addPhonePo( event:egret.Event = null ){
+		this.addPoFromTo( 0.1, 0.48 );
+	}
+
+	private addPoFromTo( fromScale: number, toScale: number ){
 		this.currentPo.x = BingoBackGroundSetting.gameSize.x >> 1;
 		this.currentPo.y = BingoBackGroundSetting.gameSize.y >> 1;
-		this.currentPo.scaleX = 0.2;
-		this.currentPo.scaleY = 0.2;
+		this.currentPo.scaleX = fromScale;
+		this.currentPo.scaleY = fromScale;
 		this.currentPo.addEventListener( GenericModal.CLOSE_MODAL, this.closeCurrentPo, this );
-		// this.currentPo.addEventListener( GenericModal.MODAL_COMMAND, this.onModalCommand, this );
 
 		this.addChild( this.currentPo );
 		let tw: egret.Tween = egret.Tween.get( this.currentPo );
-		tw.to( {"scaleX": 1, "scaleY" : 1}, 300 );
+		tw.to( {"scaleX": toScale, "scaleY" : toScale}, 300 );
 
 		this.modalPreloader.removeEventListener( egret.Event.ENTER_FRAME, this.onLoadingAnimation, this, false );
 		this.removeChild( this.modalPreloader );
@@ -127,7 +143,7 @@ class BingoGameMain extends egret.DisplayObjectContainer {
 	public closeCurrentPo() {
 		if (!this.currentPo) return;
 		let tw: egret.Tween = egret.Tween.get( this.currentPo );
-		tw.to( {"scaleX": 0.2, "scaleY" : 0.2}, 300 );
+		tw.to( {"scaleX": 0.1, "scaleY" : 0.1}, 300 );
 		tw.call(function() {
 			this.removeChild( this.currentPo );
 			this.removeChild( this.shadow );

@@ -31,23 +31,13 @@ class GameSettingPopup extends GenericPo {
 		this.bg.height = 990;
 		this.anchorOffsetX = this.bg.width >> 1;
 		this.anchorOffsetY = this.bg.height >> 1;
-		this.bg.visible = false;
 
 		this.closeButton.x = this.bg.width;
-		this.closeButton.visible = false;
-
-		setTimeout( this.doutorGo.bind(this), 315 );
-	}
-
-	private doutorGo(){
-		this.scaleX = this.scaleY = 0.1;
-		this.closeButton.visible = this.bg.visible = true;
 
 		this.addScrollArea( new egret.Rectangle( 62, 41, 1040, 910 ) );
 		this.addItems();
 		this.addTitleAndVertion();
 		this.addLanguageBar();
-		TweenerTool.tweenTo( this, { scaleX: 0.5, scaleY: 0.5 }, 300 );
 
 		this.scrollSlider = new SettingSlider;
 		Com.addObjectAt( this, this.scrollSlider, 1150, 70 );
