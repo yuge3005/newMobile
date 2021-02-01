@@ -13,6 +13,10 @@ class MissionProcessUI extends egret.DisplayObjectContainer{
 		this.missionProcessTx = Com.addLabelAt( this, 115, 27, 180, 40, 27, true, true );
 		this.missionProcessTx.stroke = 2;
 		this.missionProcessTx.fontFamily = "Righteous";
+
+		this.touchChildren = false;
+		this.touchEnabled = true;
+		this.addEventListener( egret.TouchEvent.TOUCH_TAP, this.onMissionBtn, this );
 	}
 
 	public setProcess( process: number ){
@@ -35,5 +39,9 @@ class MissionProcessUI extends egret.DisplayObjectContainer{
 
 	private alphaLight(){
 		TweenerTool.tweenTo( this.fullLight, { alpha: ( this.fullLight.alpha > 0.7 ? 0.5 : 1 ) }, 500, 0, this.alphaLight.bind( this ) );
+	}
+
+	private onMissionBtn( event: egret.TouchEvent ){
+		BingoMachine.missionPopup();
 	}
 }

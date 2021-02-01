@@ -1076,4 +1076,8 @@ class BingoMachine extends GameUIItem{
 	protected updateNewDatas( data: Object ){
 		this.gameToolBar.updateMissionData( data["missionValue"], data["missionTarget"], data["missionId"] );
 	}
+
+	public static missionPopup(){
+		this.currentGame.dispatchEvent( new egret.Event( "missionPopup" ) );
+	}
 }
