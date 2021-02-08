@@ -76,6 +76,9 @@ class BingoMachine extends GameUIItem{
 		this.tokenObject["value"] = { tipo:"jogar", version: PlayerConfig.serverVertion };
 		BingoMachine.currentGameId = gameId;
 
+		if( localStorage.getItem( "gotoGame" + gameId ) ) localStorage.removeItem( "gotoGame" + gameId );
+		else document.location.href = "../lobby";
+
 		this.gameConfigFile = gameConfigFile;
 		this.ballArea = new BallManager;
 

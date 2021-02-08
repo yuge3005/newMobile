@@ -25,7 +25,7 @@ class Topbar extends egret.DisplayObjectContainer{
 
 	private onButtonClick( event: egret.TouchEvent ){
 		if( event.target == this.backToLobbyBtn ){
-			document.location.href = "../?id=" + PlayerConfig.player( "user.id" );
+			document.location.href = "../lobby";
 		}
 		else if( event.target == this.menuBtn ){
 			let bingoGame: BingoMachine = this.parent as BingoMachine;
