@@ -36,6 +36,17 @@ class MissionPopup extends GenericPo {
 		this.taskListLayer.removeChildren();
 
 		let mission: Object = PlayerConfig.player( "mission" );
-		
+		let tasks: Array<IMissionTask> = MissionDataManager.getMissionTasks( "1" );
+
+		let taskUIs: Array<MissionTaskUIItem> = <Array<MissionTaskUIItem>>[];
+		let hasFoundActive: boolean;
+		let taskHeight: number;
+		for( let i: number = 0; i < tasks.length; i++ ){
+			let task: IMissionTask = tasks[i];
+			let isActive: boolean = task.is_active == "1";
+			taskUIs[i] = new MissionTaskUIItem( isActive, task.current / task.target, hasFoundActive );
+			Com.addObjectAt( this.taskListLayer, taskUIs[i], 794, this.taskListLayer.height + ( i ? 16 : 0 ) + taskUIs[i].anchorOffsetY + 176 );
+			if( !hasFoundActive && isActive ) hasFoundActive = true;
+		}
 	}
 }
