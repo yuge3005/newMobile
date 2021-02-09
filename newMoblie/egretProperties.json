@@ -27,6 +27,14 @@
     {
       "name": "particle",
       "path": "../library/particle/libsrc"
+    },
+    {
+      "name": "basicUI",
+      "path": "../library/basicUI/libsrc"
+    },
+    {
+      "name": "bingoGameLibs",
+      "path": "../library/bingoGameLibs/libsrc"
     }
   ]
 }
