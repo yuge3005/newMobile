@@ -63,6 +63,7 @@ class BingoMachine extends GameUIItem{
 
 	public connectReady: boolean = false;
 	public assetReady: boolean = false;
+	public betListReady: boolean = false;
 
 	protected ganhoCounter: GanhoCounter;
 
@@ -201,6 +202,7 @@ class BingoMachine extends GameUIItem{
     private loginToServer(){
 		if( IBingoServer.connected ){
 			IBingoServer.loginTo( this.connetKeys["zona"], this.connetKeys["sala"], this.onJoinRoomCallback.bind(this) );
+			GameData.getBetList( this.betListCallback.bind( this ), ( this.connetKeys["zona"] as string ).replace( /\D/g, "" ) );
 		}
         else setTimeout( this.loginToServer.bind(this), 200 );
     }
@@ -210,8 +212,13 @@ class BingoMachine extends GameUIItem{
 		this.testReady();
     }
 
+	private betListCallback( success: boolean ){
+		this.betListReady = true;
+		this.testReady();
+	}
+
 	private testReady(){
-		if( this.connectReady && this.assetReady ){
+		if( this.connectReady && this.assetReady && this.betListReady ){
 			this.onConfigLoadComplete();
 			this.init();
 		}
