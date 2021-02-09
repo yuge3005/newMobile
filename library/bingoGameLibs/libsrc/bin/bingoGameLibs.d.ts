@@ -333,6 +333,7 @@ declare class BingoMachine extends GameUIItem {
     protected onLevelUpBonus(event: egret.Event): void;
     /**************************************************************************************************************/
     protected updateNewDatas(data: Object): void;
+    static missionPopup(): void;
 }
 declare class PaytableLayer extends egret.DisplayObjectContainer {
     protected paytableFgs: Array<egret.DisplayObject>;
@@ -404,18 +405,16 @@ declare class TounamentLayer extends egret.DisplayObjectContainer {
     private getUserListOrder(users);
     private userIndexOf(users, id);
 }
-declare class SettingSlider extends egret.DisplayObjectContainer {
-    private slider;
-    private sliderRange;
-    private dragStarStageY;
-    private dragStarSliderY;
-    constructor();
-    setSliderPosition(topMax: number, scrollTop: number): void;
-    private onSliderStartDrag(event);
-    private onSliderStopDrag(event);
-    private dragSliderPosition(y);
-    readonly scrollTop: number;
-    private onMove(event);
+declare class GanhoCounter {
+    protected ganhoArray: Array<number>;
+    protected winCallback: Function;
+    constructor(winCallback?: Function);
+    clearGanhoData(): void;
+    countGanhoAndPlayAnimation(resultList: Array<Object>): void;
+    private showWinAnimationOnAllCards(ganhoArray);
+    protected getFitItemOnCard(resultList: Array<Object>): Array<Array<Object>>;
+    private getGanhoArray(resultList, fitItemOnCard);
+    protected countGanho(ganhoArray: Array<number>, i: number, ob: string, result: PaytableCheckResult): void;
 }
 declare class V2Game extends BingoMachine {
     constructor(gameConfigFile: string, configUrl: string, gameId: number);
@@ -626,9 +625,12 @@ declare class BingoGameMain extends egret.DisplayObjectContainer {
      */
     private keyDown(event);
     private showGameSettings(event);
+    private showMission(event);
     protected showShadow(): void;
     private onLoadingAnimation(event);
     protected addPo(event?: egret.Event): void;
+    protected addPhonePo(event?: egret.Event): void;
+    private addPoFromTo(fromScale, toScale);
     closeCurrentPo(): void;
 }
 declare class BrowserInfo {
@@ -707,7 +709,6 @@ declare class GameSettingPopup extends GenericPo {
     protected static readonly classAssetName: string;
     constructor();
     protected init(): void;
-    private doutorGo();
     private onRemove(event);
     protected addScrollArea(maskRect: egret.Rectangle): void;
     protected addItem(index: number, icon: string, text: string, entity: egret.DisplayObject, offsetY?: number): void;
@@ -752,20 +753,22 @@ declare class SettingsCheckbox extends egret.DisplayObjectContainer {
     constructor(callback: Function);
     private onTap(e);
 }
+declare class SettingSlider extends egret.DisplayObjectContainer {
+    private slider;
+    private sliderRange;
+    private dragStarStageY;
+    private dragStarSliderY;
+    constructor();
+    setSliderPosition(topMax: number, scrollTop: number): void;
+    private onSliderStartDrag(event);
+    private onSliderStopDrag(event);
+    private dragSliderPosition(y);
+    readonly scrollTop: number;
+    private onMove(event);
+}
 declare class LoadingUI extends egret.Sprite implements RES.PromiseTaskReporter {
     constructor();
     onProgress(current: number, total: number): void;
-}
-declare class GanhoCounter {
-    protected ganhoArray: Array<number>;
-    protected winCallback: Function;
-    constructor(winCallback?: Function);
-    clearGanhoData(): void;
-    countGanhoAndPlayAnimation(resultList: Array<Object>): void;
-    private showWinAnimationOnAllCards(ganhoArray);
-    protected getFitItemOnCard(resultList: Array<Object>): Array<Array<Object>>;
-    private getGanhoArray(resultList, fitItemOnCard);
-    protected countGanho(ganhoArray: Array<number>, i: number, ob: string, result: PaytableCheckResult): void;
 }
 declare class Coin extends egret.MovieClip {
     startPosition: egret.Point;
@@ -897,6 +900,7 @@ declare class MissionProcessUI extends egret.DisplayObjectContainer {
     constructor();
     setProcess(process: number): void;
     private alphaLight();
+    private onMissionBtn(event);
 }
 declare class MissLockUI extends egret.DisplayObjectContainer {
     private missLockTip;
@@ -1027,6 +1031,16 @@ declare class GameSoundManager {
     stop(soundAssetName: string): void;
     stopAll(): void;
     static stopAll(): void;
+}
+declare class MissionPopup extends GenericPo {
+    private taskListLayer;
+    protected static readonly classAssetName: string;
+    constructor();
+    protected init(): void;
+    private showListByData();
+}
+declare class MissionTaskUIItem extends egret.DisplayObjectContainer {
+    constructor(isActive: boolean, process: number, hasActive: boolean);
 }
 declare class BingoGameToolbar extends egret.DisplayObjectContainer {
     static toolBarY: number;

@@ -1066,6 +1066,10 @@ var BingoMachine = (function (_super) {
         _this.tokenObject = {};
         _this.tokenObject["value"] = { tipo: "jogar", version: PlayerConfig.serverVertion };
         BingoMachine.currentGameId = gameId;
+        if (localStorage.getItem("gotoGame" + gameId))
+            localStorage.removeItem("gotoGame" + gameId);
+        else
+            document.location.href = "../lobby";
         _this.gameConfigFile = gameConfigFile;
         _this.ballArea = new BallManager;
         _this.assetName = egret.getDefinitionByName(egret.getQualifiedClassName(_this)).classAssetName;
@@ -1976,6 +1980,9 @@ var BingoMachine = (function (_super) {
     BingoMachine.prototype.updateNewDatas = function (data) {
         this.gameToolBar.updateMissionData(data["missionValue"], data["missionTarget"], data["missionId"]);
     };
+    BingoMachine.missionPopup = function () {
+        this.currentGame.dispatchEvent(new egret.Event("missionPopup"));
+    };
     BingoMachine.GENERIC_MODAL_LOADED = "gameLoaded";
     BingoMachine.inRound = false;
     return BingoMachine;
@@ -2356,64 +2363,77 @@ var TounamentLayer = (function (_super) {
     return TounamentLayer;
 }(egret.DisplayObjectContainer));
 __reflect(TounamentLayer.prototype, "TounamentLayer");
-var SettingSlider = (function (_super) {
-    __extends(SettingSlider, _super);
-    function SettingSlider() {
-        var _this = _super.call(this) || this;
-        _this.sliderRange = 850;
-        var bg = Com.addBitmapAt(_this, "gameSettings_json.scroll_bar", 0, 0);
-        bg.height = _this.sliderRange;
-        _this.slider = Com.addBitmapAtMiddle(_this, "gameSettings_json.scroll_bar_handle", 10, 0);
-        _this.slider.addEventListener(egret.TouchEvent.TOUCH_BEGIN, _this.onSliderStartDrag, _this);
-        _this.slider.touchEnabled = true;
-        return _this;
+var GanhoCounter = (function () {
+    function GanhoCounter(winCallback) {
+        if (winCallback === void 0) { winCallback = null; }
+        this.ganhoArray = [];
+        this.winCallback = winCallback;
     }
-    SettingSlider.prototype.setSliderPosition = function (topMax, scrollTop) {
-        if (scrollTop < 0)
-            scrollTop = 0;
-        if (scrollTop > topMax)
-            scrollTop = topMax;
-        this.slider.y = scrollTop / topMax * this.sliderRange;
+    GanhoCounter.prototype.clearGanhoData = function () {
+        this.ganhoArray = [];
     };
-    SettingSlider.prototype.onSliderStartDrag = function (event) {
-        this.stage.addEventListener(egret.TouchEvent.TOUCH_END, this.onSliderStopDrag, this);
-        this.stage.addEventListener(egret.TouchEvent.TOUCH_RELEASE_OUTSIDE, this.onSliderStopDrag, this);
-        this.stage.addEventListener(egret.TouchEvent.TOUCH_MOVE, this.onMove, this);
-        this.dispatchEvent(new egret.Event("startDrag"));
-        this.dragStarStageY = event.stageY;
-        this.dragStarSliderY = this.slider.y;
-        this.dragSliderPosition(event.stageY);
+    GanhoCounter.prototype.countGanhoAndPlayAnimation = function (resultList) {
+        var fitItemOnCard = this.getFitItemOnCard(resultList);
+        var ganhoArray = this.getGanhoArray(resultList, fitItemOnCard);
+        this.showWinAnimationOnAllCards(ganhoArray);
     };
-    SettingSlider.prototype.onSliderStopDrag = function (event) {
-        this.stage.removeEventListener(egret.TouchEvent.TOUCH_END, this.onSliderStopDrag, this);
-        this.stage.removeEventListener(egret.TouchEvent.TOUCH_RELEASE_OUTSIDE, this.onSliderStopDrag, this);
-        this.stage.removeEventListener(egret.TouchEvent.TOUCH_MOVE, this.onMove, this);
-        this.dispatchEvent(new egret.Event("stopDrag"));
+    GanhoCounter.prototype.showWinAnimationOnAllCards = function (ganhoArray) {
+        for (var i = 0; i < ganhoArray.length; i++) {
+            if (ganhoArray[i]) {
+                if (!this.ganhoArray[i] || ganhoArray[i] > this.ganhoArray[i]) {
+                    this.ganhoArray[i] = ganhoArray[i];
+                    if (this.winCallback)
+                        this.winCallback(i, ganhoArray[i]);
+                }
+            }
+        }
     };
-    SettingSlider.prototype.dragSliderPosition = function (y) {
-        y -= this.dragStarStageY;
-        y /= this.parent.scaleY;
-        y += this.dragStarSliderY;
-        var p = y;
-        if (p < 0)
-            p = 0;
-        if (p > this.sliderRange)
-            p = this.sliderRange;
-        this.slider.y = p;
+    GanhoCounter.prototype.getFitItemOnCard = function (resultList) {
+        var fitItemOnCard = [];
+        for (var i = 0; i < resultList.length; i++) {
+            fitItemOnCard[i] = [];
+            for (var ob in PayTableManager.payTablesDictionary) {
+                var result = resultList[i][ob];
+                if (result.fit || result.fits) {
+                    fitItemOnCard[i].push({ paytalbe: ob, fit: result.fit, fits: result.fits });
+                }
+            }
+        }
+        if (PaytableFilter.filterObject) {
+            for (var i = 0; i < fitItemOnCard.length; i++)
+                PaytableFilter.paytableConfixFilter(fitItemOnCard[i], true);
+        }
+        return fitItemOnCard;
     };
-    Object.defineProperty(SettingSlider.prototype, "scrollTop", {
-        get: function () {
-            return this.slider.y / this.sliderRange;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    SettingSlider.prototype.onMove = function (event) {
-        this.dragSliderPosition(event.stageY);
+    GanhoCounter.prototype.getGanhoArray = function (resultList, fitItemOnCard) {
+        var ganhoArray = [];
+        for (var i = 0; i < resultList.length; i++) {
+            ganhoArray[i] = 0;
+            for (var ob in PayTableManager.payTablesDictionary) {
+                var result = resultList[i][ob];
+                if (result.fit || result.fits) {
+                    var inFitItem = false;
+                    for (var k = 0; k < fitItemOnCard[i].length; k++) {
+                        if (fitItemOnCard[i][k]["paytalbe"] == ob) {
+                            inFitItem = true;
+                            break;
+                        }
+                    }
+                    if (!inFitItem)
+                        continue;
+                    this.countGanho(ganhoArray, i, ob, result);
+                }
+            }
+        }
+        return ganhoArray;
     };
-    return SettingSlider;
-}(egret.DisplayObjectContainer));
-__reflect(SettingSlider.prototype, "SettingSlider");
+    GanhoCounter.prototype.countGanho = function (ganhoArray, i, ob, result) {
+        var winTimesTxt = PayTableManager.payTablesDictionary[ob].ui["tx"].text;
+        ganhoArray[i] += parseFloat(winTimesTxt.replace(/\D/, ""));
+    };
+    return GanhoCounter;
+}());
+__reflect(GanhoCounter.prototype, "GanhoCounter");
 var V2Game = (function (_super) {
     __extends(V2Game, _super);
     function V2Game(gameConfigFile, configUrl, gameId) {
@@ -3231,6 +3251,7 @@ var BingoGameMain = (function (_super) {
         this.currentGame.preLoader = loadingView;
         this.currentGame.addEventListener(BingoMachine.GENERIC_MODAL_LOADED, this.addGame, this);
         this.currentGame.addEventListener("showGameSettings", this.showGameSettings, this);
+        this.currentGame.addEventListener("missionPopup", this.showMission, this);
     };
     BingoGameMain.prototype.addGame = function () {
         var stageW = this.stage.stageWidth;
@@ -3270,9 +3291,17 @@ var BingoGameMain = (function (_super) {
         this.showShadow();
         this.currentPo = new GameSettingPopup;
         if (this.currentPo.inited)
-            this.addPo();
+            this.addPhonePo();
         else
-            this.currentPo.addEventListener(GenericModal.GENERIC_MODAL_LOADED, this.addPo, this);
+            this.currentPo.addEventListener(GenericModal.GENERIC_MODAL_LOADED, this.addPhonePo, this);
+    };
+    BingoGameMain.prototype.showMission = function (event) {
+        this.showShadow();
+        this.currentPo = new MissionPopup;
+        if (this.currentPo.inited)
+            this.addPhonePo();
+        else
+            this.currentPo.addEventListener(GenericModal.GENERIC_MODAL_LOADED, this.addPhonePo, this);
     };
     BingoGameMain.prototype.showShadow = function () {
         if (!this.shadow) {
@@ -3294,15 +3323,21 @@ var BingoGameMain = (function (_super) {
     };
     BingoGameMain.prototype.addPo = function (event) {
         if (event === void 0) { event = null; }
+        this.addPoFromTo(0.2, 1);
+    };
+    BingoGameMain.prototype.addPhonePo = function (event) {
+        if (event === void 0) { event = null; }
+        this.addPoFromTo(0.1, 0.48);
+    };
+    BingoGameMain.prototype.addPoFromTo = function (fromScale, toScale) {
         this.currentPo.x = BingoBackGroundSetting.gameSize.x >> 1;
         this.currentPo.y = BingoBackGroundSetting.gameSize.y >> 1;
-        this.currentPo.scaleX = 0.2;
-        this.currentPo.scaleY = 0.2;
+        this.currentPo.scaleX = fromScale;
+        this.currentPo.scaleY = fromScale;
         this.currentPo.addEventListener(GenericModal.CLOSE_MODAL, this.closeCurrentPo, this);
-        // this.currentPo.addEventListener( GenericModal.MODAL_COMMAND, this.onModalCommand, this );
         this.addChild(this.currentPo);
         var tw = egret.Tween.get(this.currentPo);
-        tw.to({ "scaleX": 1, "scaleY": 1 }, 300);
+        tw.to({ "scaleX": toScale, "scaleY": toScale }, 300);
         this.modalPreloader.removeEventListener(egret.Event.ENTER_FRAME, this.onLoadingAnimation, this, false);
         this.removeChild(this.modalPreloader);
     };
@@ -3310,7 +3345,7 @@ var BingoGameMain = (function (_super) {
         if (!this.currentPo)
             return;
         var tw = egret.Tween.get(this.currentPo);
-        tw.to({ "scaleX": 0.2, "scaleY": 0.2 }, 300);
+        tw.to({ "scaleX": 0.1, "scaleY": 0.1 }, 300);
         tw.call(function () {
             this.removeChild(this.currentPo);
             this.removeChild(this.shadow);
@@ -3507,19 +3542,11 @@ var GameSettingPopup = (function (_super) {
         this.bg.height = 990;
         this.anchorOffsetX = this.bg.width >> 1;
         this.anchorOffsetY = this.bg.height >> 1;
-        this.bg.visible = false;
         this.closeButton.x = this.bg.width;
-        this.closeButton.visible = false;
-        setTimeout(this.doutorGo.bind(this), 315);
-    };
-    GameSettingPopup.prototype.doutorGo = function () {
-        this.scaleX = this.scaleY = 0.1;
-        this.closeButton.visible = this.bg.visible = true;
         this.addScrollArea(new egret.Rectangle(62, 41, 1040, 910));
         this.addItems();
         this.addTitleAndVertion();
         this.addLanguageBar();
-        TweenerTool.tweenTo(this, { scaleX: 0.5, scaleY: 0.5 }, 300);
         this.scrollSlider = new SettingSlider;
         Com.addObjectAt(this, this.scrollSlider, 1150, 70);
         this.scrollSlider.addEventListener("startDrag", this.onStartDrag, this);
@@ -3780,6 +3807,64 @@ var SettingsCheckbox = (function (_super) {
     return SettingsCheckbox;
 }(egret.DisplayObjectContainer));
 __reflect(SettingsCheckbox.prototype, "SettingsCheckbox");
+var SettingSlider = (function (_super) {
+    __extends(SettingSlider, _super);
+    function SettingSlider() {
+        var _this = _super.call(this) || this;
+        _this.sliderRange = 850;
+        var bg = Com.addBitmapAt(_this, "gameSettings_json.scroll_bar", 0, 0);
+        bg.height = _this.sliderRange;
+        _this.slider = Com.addBitmapAtMiddle(_this, "gameSettings_json.scroll_bar_handle", 10, 0);
+        _this.slider.addEventListener(egret.TouchEvent.TOUCH_BEGIN, _this.onSliderStartDrag, _this);
+        _this.slider.touchEnabled = true;
+        return _this;
+    }
+    SettingSlider.prototype.setSliderPosition = function (topMax, scrollTop) {
+        if (scrollTop < 0)
+            scrollTop = 0;
+        if (scrollTop > topMax)
+            scrollTop = topMax;
+        this.slider.y = scrollTop / topMax * this.sliderRange;
+    };
+    SettingSlider.prototype.onSliderStartDrag = function (event) {
+        this.stage.addEventListener(egret.TouchEvent.TOUCH_END, this.onSliderStopDrag, this);
+        this.stage.addEventListener(egret.TouchEvent.TOUCH_RELEASE_OUTSIDE, this.onSliderStopDrag, this);
+        this.stage.addEventListener(egret.TouchEvent.TOUCH_MOVE, this.onMove, this);
+        this.dispatchEvent(new egret.Event("startDrag"));
+        this.dragStarStageY = event.stageY;
+        this.dragStarSliderY = this.slider.y;
+        this.dragSliderPosition(event.stageY);
+    };
+    SettingSlider.prototype.onSliderStopDrag = function (event) {
+        this.stage.removeEventListener(egret.TouchEvent.TOUCH_END, this.onSliderStopDrag, this);
+        this.stage.removeEventListener(egret.TouchEvent.TOUCH_RELEASE_OUTSIDE, this.onSliderStopDrag, this);
+        this.stage.removeEventListener(egret.TouchEvent.TOUCH_MOVE, this.onMove, this);
+        this.dispatchEvent(new egret.Event("stopDrag"));
+    };
+    SettingSlider.prototype.dragSliderPosition = function (y) {
+        y -= this.dragStarStageY;
+        y /= this.parent.scaleY;
+        y += this.dragStarSliderY;
+        var p = y;
+        if (p < 0)
+            p = 0;
+        if (p > this.sliderRange)
+            p = this.sliderRange;
+        this.slider.y = p;
+    };
+    Object.defineProperty(SettingSlider.prototype, "scrollTop", {
+        get: function () {
+            return this.slider.y / this.sliderRange;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    SettingSlider.prototype.onMove = function (event) {
+        this.dragSliderPosition(event.stageY);
+    };
+    return SettingSlider;
+}(egret.DisplayObjectContainer));
+__reflect(SettingSlider.prototype, "SettingSlider");
 var LoadingUI = (function (_super) {
     __extends(LoadingUI, _super);
     function LoadingUI() {
@@ -3791,77 +3876,6 @@ var LoadingUI = (function (_super) {
     return LoadingUI;
 }(egret.Sprite));
 __reflect(LoadingUI.prototype, "LoadingUI", ["RES.PromiseTaskReporter"]);
-var GanhoCounter = (function () {
-    function GanhoCounter(winCallback) {
-        if (winCallback === void 0) { winCallback = null; }
-        this.ganhoArray = [];
-        this.winCallback = winCallback;
-    }
-    GanhoCounter.prototype.clearGanhoData = function () {
-        this.ganhoArray = [];
-    };
-    GanhoCounter.prototype.countGanhoAndPlayAnimation = function (resultList) {
-        var fitItemOnCard = this.getFitItemOnCard(resultList);
-        var ganhoArray = this.getGanhoArray(resultList, fitItemOnCard);
-        this.showWinAnimationOnAllCards(ganhoArray);
-    };
-    GanhoCounter.prototype.showWinAnimationOnAllCards = function (ganhoArray) {
-        for (var i = 0; i < ganhoArray.length; i++) {
-            if (ganhoArray[i]) {
-                if (!this.ganhoArray[i] || ganhoArray[i] > this.ganhoArray[i]) {
-                    this.ganhoArray[i] = ganhoArray[i];
-                    if (this.winCallback)
-                        this.winCallback(i, ganhoArray[i]);
-                }
-            }
-        }
-    };
-    GanhoCounter.prototype.getFitItemOnCard = function (resultList) {
-        var fitItemOnCard = [];
-        for (var i = 0; i < resultList.length; i++) {
-            fitItemOnCard[i] = [];
-            for (var ob in PayTableManager.payTablesDictionary) {
-                var result = resultList[i][ob];
-                if (result.fit || result.fits) {
-                    fitItemOnCard[i].push({ paytalbe: ob, fit: result.fit, fits: result.fits });
-                }
-            }
-        }
-        if (PaytableFilter.filterObject) {
-            for (var i = 0; i < fitItemOnCard.length; i++)
-                PaytableFilter.paytableConfixFilter(fitItemOnCard[i], true);
-        }
-        return fitItemOnCard;
-    };
-    GanhoCounter.prototype.getGanhoArray = function (resultList, fitItemOnCard) {
-        var ganhoArray = [];
-        for (var i = 0; i < resultList.length; i++) {
-            ganhoArray[i] = 0;
-            for (var ob in PayTableManager.payTablesDictionary) {
-                var result = resultList[i][ob];
-                if (result.fit || result.fits) {
-                    var inFitItem = false;
-                    for (var k = 0; k < fitItemOnCard[i].length; k++) {
-                        if (fitItemOnCard[i][k]["paytalbe"] == ob) {
-                            inFitItem = true;
-                            break;
-                        }
-                    }
-                    if (!inFitItem)
-                        continue;
-                    this.countGanho(ganhoArray, i, ob, result);
-                }
-            }
-        }
-        return ganhoArray;
-    };
-    GanhoCounter.prototype.countGanho = function (ganhoArray, i, ob, result) {
-        var winTimesTxt = PayTableManager.payTablesDictionary[ob].ui["tx"].text;
-        ganhoArray[i] += parseFloat(winTimesTxt.replace(/\D/, ""));
-    };
-    return GanhoCounter;
-}());
-__reflect(GanhoCounter.prototype, "GanhoCounter");
 var Coin = (function (_super) {
     __extends(Coin, _super);
     function Coin() {
@@ -4334,6 +4348,9 @@ var MissionProcessUI = (function (_super) {
         _this.missionProcessTx = Com.addLabelAt(_this, 115, 27, 180, 40, 27, true, true);
         _this.missionProcessTx.stroke = 2;
         _this.missionProcessTx.fontFamily = "Righteous";
+        _this.touchChildren = false;
+        _this.touchEnabled = true;
+        _this.addEventListener(egret.TouchEvent.TOUCH_TAP, _this.onMissionBtn, _this);
         return _this;
     }
     MissionProcessUI.prototype.setProcess = function (process) {
@@ -4353,6 +4370,9 @@ var MissionProcessUI = (function (_super) {
     };
     MissionProcessUI.prototype.alphaLight = function () {
         TweenerTool.tweenTo(this.fullLight, { alpha: (this.fullLight.alpha > 0.7 ? 0.5 : 1) }, 500, 0, this.alphaLight.bind(this));
+    };
+    MissionProcessUI.prototype.onMissionBtn = function (event) {
+        BingoMachine.missionPopup();
     };
     return MissionProcessUI;
 }(egret.DisplayObjectContainer));
@@ -4888,7 +4908,8 @@ var PlayerConfig = (function () {
         configurable: true
     });
     PlayerConfig.serverVertion = 2;
-    PlayerConfig.playerConfig = { "user.id": requestStr("id"), "score.level": 2538, "score.this_level_xp": 2500, "score.next_level_xp": 3500, "score.xp": 3000 };
+    PlayerConfig.playerConfig = { "user.id": requestStr("id"), "score.level": 2538, "score.this_level_xp": 2500, "score.next_level_xp": 3500, "score.xp": 3000,
+        "mission": { "task_is_process": "0", "unlock_level": 10, "task": { "387285": { "is_active": "1", "type": "1", "current": "1", "target": "2", "id": "387285" }, "387286": { "is_active": "0", "type": "1", "current": "1", "target": "6", "id": "387286" }, "387287": { "is_active": "0", "type": "1", "current": "0", "target": "15", "id": "387287" } }, "score_info": { "score_is_process": "0" } }, "mission.unlock_level": 3000 };
     PlayerConfig.mission = {};
     return PlayerConfig;
 }());
@@ -5104,6 +5125,78 @@ var GameSoundManager = (function () {
     return GameSoundManager;
 }());
 __reflect(GameSoundManager.prototype, "GameSoundManager");
+var MissionPopup = (function (_super) {
+    __extends(MissionPopup, _super);
+    function MissionPopup() {
+        return _super.call(this) || this;
+    }
+    Object.defineProperty(MissionPopup, "classAssetName", {
+        get: function () {
+            return "bingoMissionPopup";
+        },
+        enumerable: true,
+        configurable: true
+    });
+    MissionPopup.prototype.init = function () {
+        this.bgAssetName = "missionBingo_json.bg";
+        this.closeButtonAssetName = "missionPopup_json.btn_close";
+        this.closeButtonOffset = new egret.Point(190, 18);
+        _super.prototype.init.call(this);
+        this.anchorOffsetX = 922;
+        this.anchorOffsetY = 472;
+        Com.addBitmapAtMiddle(this, "missionBingo_json.mission_" + MuLang.language, 797, 41);
+        Com.addBitmapAt(this, "missionBingo_json.card", 1080, -68);
+        this.taskListLayer = new egret.DisplayObjectContainer;
+        this.addChild(this.taskListLayer);
+        this.showListByData();
+        Com.addBitmapAt(this, "missionPopup_json.doctor", 1475, 29);
+        this.addChild(this.closeButton);
+    };
+    MissionPopup.prototype.showListByData = function () {
+        this.taskListLayer.removeChildren();
+        var mission = PlayerConfig.player("mission");
+        var tasks = MissionDataManager.getMissionTasks("1");
+        var taskUIs = [];
+        var hasFoundActive;
+        var taskHeight;
+        for (var i = 0; i < tasks.length; i++) {
+            var task = tasks[i];
+            var isActive = task.is_active == "1";
+            taskUIs[i] = new MissionTaskUIItem(isActive, task.current / task.target, hasFoundActive);
+            Com.addObjectAt(this.taskListLayer, taskUIs[i], 794, this.taskListLayer.height + (i ? 16 : 0) + taskUIs[i].anchorOffsetY + 176);
+            if (!hasFoundActive && isActive)
+                hasFoundActive = true;
+        }
+    };
+    return MissionPopup;
+}(GenericPo));
+__reflect(MissionPopup.prototype, "MissionPopup");
+var MissionTaskUIItem = (function (_super) {
+    __extends(MissionTaskUIItem, _super);
+    function MissionTaskUIItem(isActive, process, hasActive) {
+        var _this = _super.call(this) || this;
+        var bg;
+        if (isActive && process != 1) {
+            bg = Com.addBitmapAt(_this, "missionBingo_json.bar2", 0, 0);
+            bg.scale9Grid = new egret.Rectangle(60, 48, 119, 122);
+            bg.width = 1405;
+        }
+        else {
+            bg = Com.addBitmapAt(_this, "missionBingo_json.bar1", 12, 0);
+            bg.scale9Grid = new egret.Rectangle(48, 48, 63, 63);
+            bg.width = 1393;
+            if (isActive) {
+                var tx = MDS.addGameText(_this, 120, 0, 52, 0xFFFFFF, "mission_complete", false, 790, "", 1);
+            }
+            // Com.addBitmapAt( this,  )
+        }
+        _this.anchorOffsetX = 700;
+        _this.anchorOffsetY = 110;
+        return _this;
+    }
+    return MissionTaskUIItem;
+}(egret.DisplayObjectContainer));
+__reflect(MissionTaskUIItem.prototype, "MissionTaskUIItem");
 var BingoGameToolbar = (function (_super) {
     __extends(BingoGameToolbar, _super);
     function BingoGameToolbar() {
@@ -5624,7 +5717,7 @@ var Topbar = (function (_super) {
     }
     Topbar.prototype.onButtonClick = function (event) {
         if (event.target == this.backToLobbyBtn) {
-            document.location.href = "../?id=" + PlayerConfig.player("user.id");
+            document.location.href = "../lobby";
         }
         else if (event.target == this.menuBtn) {
             var bingoGame = this.parent;
