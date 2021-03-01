@@ -10,47 +10,11 @@ declare class TouchDownButton extends egret.DisplayObjectContainer {
     protected onTouchTap(event: egret.TouchEvent): void;
     setButtonText(txt: egret.TextField): void;
 }
-declare class MatrixTool {
+declare class BmpText extends egret.BitmapText {
+    private _color;
+    textColor: number;
     constructor();
-    static colorMatrix(mainChannel: number, otherChannel: number, alphaChannel: number): egret.ColorMatrixFilter;
-    static colorMatrixPure(color: number, alpha?: number): egret.ColorMatrixFilter;
-    static colorMatrixLighter(light: number): egret.ColorMatrixFilter;
-}
-declare class GenericModal extends egret.Sprite {
-    enableKeyboard: boolean;
-    protected static readonly classAssetName: string;
-    static GENERIC_MODAL_LOADED: string;
-    static CLOSE_MODAL: string;
-    static MODAL_COMMAND: string;
-    protected assetName: string;
-    protected static assetLoaded: Array<boolean>;
-    inited: boolean;
-    private configUrl;
-    constructor(configUrl?: string);
-    private analyse(result);
-    protected init(): void;
-    private static loadAsset(assetName, target);
-    private static loaded(event);
-    protected onKeyUp(keyCode: number): void;
-}
-declare class GraphicTool {
-    constructor();
-    static drawRect(target: egret.Shape | egret.Sprite, rect: egret.Rectangle, color?: number, clearFirst?: boolean, alpha?: number, roundRect?: number, lineThick?: number, lineColor?: number, lineAlpha?: number): void;
-    static drawRectangles(target: egret.Shape | egret.Sprite, rectangles: Array<egret.Rectangle>, color?: number, clearFirst?: boolean, alpha?: number): void;
-    static drawCircle(target: egret.Shape, center: egret.Point, r: number, color: number, clearFirst?: boolean, alpha?: number, lineThick?: number, lineColor?: number, lineAlpha?: number): void;
-}
-declare class LongPressButton extends TouchDownButton {
-    private longPressDuration;
-    private longPressCallback;
-    private longPressTimer;
-    private longPressJustHappened;
-    constructor(upState: string, downState: string);
-    protected onTouchBegin(event: egret.TouchEvent): void;
-    private addTimer();
-    private removeTimer();
-    private onTimerComplete(event);
-    protected onTouchTap(event: egret.TouchEvent): void;
-    longPressSetting(duration: number, callback?: Function): void;
+    setText(str: string): void;
 }
 /**
  * ChildObjectManager
@@ -71,6 +35,31 @@ declare class Com {
     static addBitmapTextAt(target: egret.DisplayObjectContainer, fontName: string, x: number, y: number, textAlign?: string, size?: number, color?: number): egret.BitmapText;
     static addDownButtonAt(target: egret.DisplayObjectContainer, assetNormal: string, assetTouched: string, x: number, y: number, onClickCallBack: Function, enableButton: boolean): TouchDownButton;
 }
+declare class GraphicTool {
+    constructor();
+    static drawRect(target: egret.Shape | egret.Sprite, rect: egret.Rectangle, color?: number, clearFirst?: boolean, alpha?: number, roundRect?: number, lineThick?: number, lineColor?: number, lineAlpha?: number): void;
+    static drawRectangles(target: egret.Shape | egret.Sprite, rectangles: Array<egret.Rectangle>, color?: number, clearFirst?: boolean, alpha?: number): void;
+    static drawCircle(target: egret.Shape, center: egret.Point, r: number, color: number, clearFirst?: boolean, alpha?: number, lineThick?: number, lineColor?: number, lineAlpha?: number): void;
+}
+declare class LongPressButton extends TouchDownButton {
+    private longPressDuration;
+    private longPressCallback;
+    private longPressTimer;
+    private longPressJustHappened;
+    constructor(upState: string, downState: string);
+    protected onTouchBegin(event: egret.TouchEvent): void;
+    private addTimer();
+    private removeTimer();
+    private onTimerComplete(event);
+    protected onTouchTap(event: egret.TouchEvent): void;
+    longPressSetting(duration: number, callback?: Function): void;
+}
+declare class MatrixTool {
+    constructor();
+    static colorMatrix(mainChannel: number, otherChannel: number, alphaChannel: number): egret.ColorMatrixFilter;
+    static colorMatrixPure(color: number, alpha?: number): egret.ColorMatrixFilter;
+    static colorMatrixLighter(light: number): egret.ColorMatrixFilter;
+}
 declare class SoundManager {
     private static currentBackgorundMusicChannel;
     private static currentBackgorundMusicSound;
@@ -87,15 +76,9 @@ declare class TextLabel extends egret.TextField {
     constructor();
     setText(str: string): void;
 }
-declare class BmpText extends egret.BitmapText {
-    private _color;
-    textColor: number;
-    constructor();
-    setText(str: string): void;
-}
 declare class TweenerTool {
     constructor();
-    static tweenTo(target: egret.DisplayObject, toObject: Object, duration: number, delay?: number, callback?: Function, fromObject?: Object, ease?: Function): void;
+    static tweenTo(target: any, toObject: Object, duration: number, delay?: number, callback?: Function, fromObject?: Object, ease?: Function): void;
 }
 declare let Utils: {
     formatCoinsNumber: (coins: any) => string;

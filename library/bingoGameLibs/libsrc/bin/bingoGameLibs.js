@@ -30,52 +30,163 @@ var GameUIItem = (function (_super) {
     return GameUIItem;
 }(egret.Sprite));
 __reflect(GameUIItem.prototype, "GameUIItem");
-var GenericPo = (function (_super) {
-    __extends(GenericPo, _super);
-    function GenericPo(configUrl) {
+var GenericModal = (function (_super) {
+    __extends(GenericModal, _super);
+    function GenericModal(configUrl) {
         if (configUrl === void 0) { configUrl = null; }
-        return _super.call(this, configUrl) || this;
+        var _this = _super.call(this) || this;
+        _this.enableKeyboard = false;
+        _this.inited = false;
+        _this.assetName = egret.getDefinitionByName(egret.getQualifiedClassName(_this)).classAssetName;
+        if (_this.assetName === null || _this.assetName === "" || GenericModal.assetLoaded[_this.assetName])
+            _this.init();
+        else {
+            if (configUrl) {
+                _this.configUrl = configUrl;
+                RES.getResByUrl(configUrl, _this.analyse, _this);
+            }
+            else
+                GenericModal.loadAsset(_this.assetName, _this);
+        }
+        return _this;
     }
-    GenericPo.prototype.init = function () {
-        if (this.bgAssetName !== "") {
-            this.bg = Com.addBitmapAt(this, this.bgAssetName, 0, 0);
-            this.anchorOffsetX = this.bg.width >> 1;
-            this.anchorOffsetY = this.bg.height >> 1;
+    Object.defineProperty(GenericModal, "classAssetName", {
+        get: function () {
+            return ""; //subclass must override
+        },
+        enumerable: true,
+        configurable: true
+    });
+    GenericModal.prototype.analyse = function (result) {
+        // RES.parseConfig( result, this.configUrl.replace( "data.res.json", "resource/" ) );
+        GenericModal.loadAsset(this.assetName, this);
+    };
+    GenericModal.prototype.init = function () {
+        //must be override
+        this.inited = true;
+        this.dispatchEvent(new egret.Event(GenericModal.GENERIC_MODAL_LOADED));
+    };
+    GenericModal.loadAsset = function (assetName, target) {
+        RES.addEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.loaded, target);
+        RES.loadGroup(assetName);
+    };
+    GenericModal.loaded = function (event) {
+        if (event.groupName != this["assetName"])
+            return;
+        GenericModal.assetLoaded[this["assetName"]] = true;
+        this["init"]();
+        RES.removeEventListener(RES.ResourceEvent.GROUP_COMPLETE, GenericModal.loaded, this);
+    };
+    GenericModal.prototype.onKeyUp = function (keyCode) { };
+    GenericModal.GENERIC_MODAL_LOADED = "modalLoaded";
+    GenericModal.CLOSE_MODAL = "closeModal";
+    GenericModal.MODAL_COMMAND = "modalCommand";
+    GenericModal.assetLoaded = new Array();
+    return GenericModal;
+}(egret.Sprite));
+__reflect(GenericModal.prototype, "GenericModal");
+var TowerGrid = (function (_super) {
+    __extends(TowerGrid, _super);
+    function TowerGrid() {
+        var _this = _super.call(this) || this;
+        _this.numTxt = MDS.addBitmapTextAt(_this, "Arial Black_fnt", 0, -CardGridColorAndSizeSettings.defaultNumberSize * 0.125, "center", CardGridColorAndSizeSettings.defaultNumberSize, CardGridColorAndSizeSettings.numberColor, CardGridColorAndSizeSettings.gridSize.x, CardGridColorAndSizeSettings.gridSize.y);
+        _this._currentBgPic = _this.defaultBgPic = Com.createBitmapByName(BingoMachine.getAssetStr(CardGridUISettings.defaultBgPicName));
+        _this.onEffBgPic = Com.createBitmapByName(BingoMachine.getAssetStr(CardGridUISettings.onEffBgPicName));
+        _this.blink1Pic = Com.createBitmapByName(BingoMachine.getAssetStr(CardGridUISettings.blink1PicName));
+        _this.blink2Pic = Com.createBitmapByName(BingoMachine.getAssetStr(CardGridUISettings.blink2PicName));
+        _this.linePic = Com.createBitmapByName(BingoMachine.getAssetStr(CardGridUISettings.linePicName));
+        _this.gridView = new egret.Bitmap;
+        _this.addChild(_this.gridView);
+        _this.gridLayer = new egret.DisplayObjectContainer;
+        return _this;
+    }
+    Object.defineProperty(TowerGrid.prototype, "currentBgPic", {
+        set: function (value) {
+            this._currentBgPic = value;
+            this.flushGrid();
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(TowerGrid.prototype, "isChecked", {
+        get: function () {
+            return this._isChecked;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(TowerGrid.prototype, "blink", {
+        get: function () {
+            return this._blink;
+        },
+        set: function (value) {
+            if (this._blink == value)
+                return;
+            this._blink = value;
+            if (!value)
+                this.currentBgPic = this.defaultBgPic;
+            else {
+                this.numTxt.textColor = CardGridColorAndSizeSettings.numberColorOnEffect;
+                this.showBlink(true);
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(TowerGrid.prototype, "gridNumber", {
+        get: function () {
+            return this.num;
+        },
+        set: function (value) {
+            this.num = value;
+            this.numTxt.text = "" + value;
+            if (value == 0 && CardGridUISettings.zeroUI) {
+                if (!this.zeroUIBitmap)
+                    this.zeroUIBitmap = Com.addBitmapAt(this, BingoMachine.getAssetStr(CardGridUISettings.zeroUI), 0, 0);
+            }
+            this.flushGrid();
+        },
+        enumerable: true,
+        configurable: true
+    });
+    TowerGrid.prototype.flushGrid = function () {
+        this.gridLayer.removeChildren();
+        this.gridLayer.addChild(this._currentBgPic);
+        this.gridLayer.addChild(this.numTxt);
+        var ren = new egret.RenderTexture;
+        ren.drawToTexture(this.gridLayer, new egret.Rectangle(0, 0, this.gridLayer.width, this.gridLayer.height));
+        this.gridView.texture = ren;
+    };
+    TowerGrid.prototype.showEffect = function (isShow) {
+        if (this.blink)
+            this.blink = false;
+        this._isChecked = isShow;
+        if (isShow) {
+            if (CardGridColorAndSizeSettings.colorNumberOnEffect)
+                this.numTxt.textColor = CardGridColorAndSizeSettings.numberColorOnEffect;
+            this.currentBgPic = this.onEffBgPic;
         }
         else {
-            this.width = document.documentElement.clientWidth;
-            this.height = document.documentElement.clientHeight;
-            this.anchorOffsetX = this.width >> 1;
-            this.anchorOffsetY = this.height >> 1;
+            if (this.blink)
+                this.blink = false;
+            if (CardGridColorAndSizeSettings.colorNumberOnEffect)
+                this.numTxt.textColor = CardGridColorAndSizeSettings.numberColor;
+            this.currentBgPic = this.defaultBgPic;
         }
-        if (!this.closeButtonOffset)
-            this.closeButtonOffset = new egret.Point(0, 0);
-        if (this.closeButtonAssetName)
-            this.closeButton = Com.addDownButtonAt(this, this.closeButtonAssetName, this.closeButtonAssetName, this.bg.width + this.closeButtonOffset.x, this.closeButtonOffset.y, this.onClose, true);
-        _super.prototype.init.call(this);
     };
-    GenericPo.prototype.onClose = function (event) {
-        this.dispatchEvent(new egret.Event(GenericModal.CLOSE_MODAL));
+    TowerGrid.prototype.showRedEffect = function () {
+        this.numTxt.textColor = CardGridColorAndSizeSettings.numberColor;
+        this.currentBgPic = this.linePic;
     };
-    /**
-     * update deal overplus text
-     */
-    GenericPo.prototype.updateDealOverplusText = function (time) { };
-    /**
-     * po overplus over
-     */
-    GenericPo.prototype.poOverplusOver = function () { };
-    /**
-     * on key up
-     */
-    GenericPo.prototype.onKeyUp = function (keyCode) { };
-    /**
-     * on mouse wheel
-     */
-    GenericPo.prototype.onMouseWheel = function (dir) { };
-    return GenericPo;
-}(GenericModal));
-__reflect(GenericPo.prototype, "GenericPo");
+    TowerGrid.prototype.showBlink = function (isShow) {
+        if (isShow)
+            this.currentBgPic = this.blink1Pic;
+        else
+            this.currentBgPic = this.blink2Pic;
+    };
+    return TowerGrid;
+}(egret.Sprite));
+__reflect(TowerGrid.prototype, "TowerGrid");
 //,"src/javascripts/sfs2x-api-1.7.5.js"
 var SFSConnector = (function () {
     function SFSConnector() {
@@ -951,108 +1062,200 @@ var GameCard = (function (_super) {
     return GameCard;
 }(GameUIItem));
 __reflect(GameCard.prototype, "GameCard");
-var TowerGrid = (function (_super) {
-    __extends(TowerGrid, _super);
-    function TowerGrid() {
+var TounamentLayer = (function (_super) {
+    __extends(TounamentLayer, _super);
+    function TounamentLayer(data) {
         var _this = _super.call(this) || this;
-        _this.numTxt = MDS.addBitmapTextAt(_this, "Arial Black_fnt", 0, -CardGridColorAndSizeSettings.defaultNumberSize * 0.125, "center", CardGridColorAndSizeSettings.defaultNumberSize, CardGridColorAndSizeSettings.numberColor, CardGridColorAndSizeSettings.gridSize.x, CardGridColorAndSizeSettings.gridSize.y);
-        _this._currentBgPic = _this.defaultBgPic = Com.createBitmapByName(BingoMachine.getAssetStr(CardGridUISettings.defaultBgPicName));
-        _this.onEffBgPic = Com.createBitmapByName(BingoMachine.getAssetStr(CardGridUISettings.onEffBgPicName));
-        _this.blink1Pic = Com.createBitmapByName(BingoMachine.getAssetStr(CardGridUISettings.blink1PicName));
-        _this.blink2Pic = Com.createBitmapByName(BingoMachine.getAssetStr(CardGridUISettings.blink2PicName));
-        _this.linePic = Com.createBitmapByName(BingoMachine.getAssetStr(CardGridUISettings.linePicName));
-        _this.gridView = new egret.Bitmap;
-        _this.addChild(_this.gridView);
-        _this.gridLayer = new egret.DisplayObjectContainer;
+        _this.buildInnerBar();
+        _this.buildOutBar();
+        _this.updateDuration(data.duration, data.totalDuration);
+        _this.updatePrize(data.prize);
+        _this.addEventListener(egret.Event.ADDED_TO_STAGE, _this.onAdd, _this);
+        _this.updateUserList(data.userList, data.winners);
         return _this;
     }
-    Object.defineProperty(TowerGrid.prototype, "currentBgPic", {
-        set: function (value) {
-            this._currentBgPic = value;
-            this.flushGrid();
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(TowerGrid.prototype, "isChecked", {
+    Object.defineProperty(TounamentLayer.prototype, "potCount", {
         get: function () {
-            return this._isChecked;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(TowerGrid.prototype, "blink", {
-        get: function () {
-            return this._blink;
+            return this._potCount;
         },
         set: function (value) {
-            if (this._blink == value)
-                return;
-            this._blink = value;
-            if (!value)
-                this.currentBgPic = this.defaultBgPic;
-            else {
-                this.numTxt.textColor = CardGridColorAndSizeSettings.numberColorOnEffect;
-                this.showBlink(true);
-            }
+            this._potCount = Math.floor(value);
+            this.potTx.setText("$" + this._potCount);
         },
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(TowerGrid.prototype, "gridNumber", {
-        get: function () {
-            return this.num;
-        },
-        set: function (value) {
-            this.num = value;
-            this.numTxt.text = "" + value;
-            if (value == 0 && CardGridUISettings.zeroUI) {
-                if (!this.zeroUIBitmap)
-                    this.zeroUIBitmap = Com.addBitmapAt(this, BingoMachine.getAssetStr(CardGridUISettings.zeroUI), 0, 0);
-            }
-            this.flushGrid();
-        },
-        enumerable: true,
-        configurable: true
-    });
-    TowerGrid.prototype.flushGrid = function () {
-        this.gridLayer.removeChildren();
-        this.gridLayer.addChild(this._currentBgPic);
-        this.gridLayer.addChild(this.numTxt);
-        var ren = new egret.RenderTexture;
-        ren.drawToTexture(this.gridLayer, new egret.Rectangle(0, 0, this.gridLayer.width, this.gridLayer.height));
-        this.gridView.texture = ren;
+    TounamentLayer.prototype.onAdd = function (event) {
+        this.removeEventListener(egret.Event.ADDED_TO_STAGE, this.onAdd, this);
+        this.addEventListener(egret.Event.REMOVED_FROM_STAGE, this.onRemove, this);
+        this.timer = new egret.Timer(1000);
+        this.timer.addEventListener(egret.TimerEvent.TIMER, this.onTimer, this);
+        this.timer.start();
     };
-    TowerGrid.prototype.showEffect = function (isShow) {
-        if (this.blink)
-            this.blink = false;
-        this._isChecked = isShow;
-        if (isShow) {
-            if (CardGridColorAndSizeSettings.colorNumberOnEffect)
-                this.numTxt.textColor = CardGridColorAndSizeSettings.numberColorOnEffect;
-            this.currentBgPic = this.onEffBgPic;
+    TounamentLayer.prototype.onRemove = function (event) {
+        this.removeEventListener(egret.Event.REMOVED_FROM_STAGE, this.onRemove, this);
+        this.timer.removeEventListener(egret.TimerEvent.TIMER, this.onTimer, this);
+        this.timer.stop();
+        this.timer = null;
+    };
+    TounamentLayer.prototype.updata = function (data) {
+        this.updateDuration(data.duration, data.totalDuration);
+        this.updatePrize(data.prize);
+        this.updateUserList(data.userList, data.winners);
+    };
+    TounamentLayer.prototype.buildInnerBar = function () {
+        this.innerBar = new egret.DisplayObjectContainer;
+        Com.addObjectAt(this, this.innerBar, 0, 0);
+        var tmBg = Com.addBitmapAt(this.innerBar, "tounament_json.ranking_bg", 0, 0);
+        tmBg.width = 235;
+        tmBg.height = 385;
+        Com.addBitmapAtMiddle(this.innerBar, "tounament_json.ranking_" + MuLang.language, 117, 36);
+        var titleTx = Com.addTextAt(this.innerBar, 10, 80, 215, 30, 30);
+        titleTx.text = MuLang.getText("play_enter");
+        var barBg = Com.addBitmapAt(this.innerBar, "tounament_json.bar_bg", 10, 117);
+        barBg.scale9Grid = new egret.Rectangle(10, 10, 182, 24);
+        barBg.width = 212;
+        var prizeBg = Com.addBitmapAt(this.innerBar, "tounament_json.bar_bg", 10, 175);
+        prizeBg.scale9Grid = new egret.Rectangle(10, 10, 182, 24);
+        prizeBg.width = 212;
+        prizeBg.height = 100;
+        var potTx = Com.addTextAt(this.innerBar, 10, 185, 215, 28, 28);
+        potTx.text = MuLang.getText("prize_pot");
+        this.pressBar = Com.addBitmapAt(this.innerBar, "tounament_json.progress_bar", 12, 121);
+        this.pressBar.scale9Grid = new egret.Rectangle(4, 4, 186, 28);
+        Com.addBitmapAt(this.innerBar, "tounament_json.deviding_line", 15, 287);
+        this.champoin = new TounamentChampoin();
+        Com.addObjectAt(this.innerBar, this.champoin, 0, 308);
+        this.innerBar.cacheAsBitmap = true;
+        this.potTx = Com.addLabelAt(this, 12, 225, 208, 48, 48, false, true);
+        this.potCount = 0;
+        this.timeTx = Com.addTextAt(this, 10, 125, 212, 36, 36, true);
+        this.timeTx.stroke = 2;
+        this.timeTx.bold = true;
+        this.timeTx.verticalAlign = "middle";
+    };
+    TounamentLayer.prototype.buildOutBar = function () {
+        this.outBar = new egret.DisplayObjectContainer;
+        Com.addObjectAt(this, this.outBar, 0, 297);
+        var avBg = Com.addBitmapAt(this.outBar, "tounament_json.mechanism_pending_bg", 0, 0);
+        avBg.width = 235;
+        avBg.height = 530;
+        var avt = Com.addBitmapAtMiddle(this.outBar, "tounament_json.avatar", 117, 264);
+        var fbId = PlayerConfig.player("facebook_id");
+        if (fbId)
+            FacebookBitmap.downloadBitmapDataByFacebookID(fbId, 100, 100, MDS.onUserHeadLoaded.bind(this, avt, 166), this);
+        var txUp = Com.addTextAt(this.outBar, 5, 0, 215, 150, 28, true, true);
+        txUp.textColor = 0xFFFF00;
+        txUp.stroke = 2;
+        txUp.strokeColor = 0;
+        txUp.verticalAlign = "middle";
+        txUp.text = MuLang.getText("play_to_enter");
+        var txDown = Com.addTextAt(this.outBar, 0, 405, 235, 30, 28, false, true);
+        txDown.text = MuLang.getText("win_to_enter");
+        this.outBar.cacheAsBitmap = true;
+    };
+    TounamentLayer.prototype.updateDuration = function (duration, totalDuration) {
+        this.duration = duration;
+        this.totalDuration = totalDuration;
+        this.pressBar.width = duration / this.totalDuration * 208;
+        this.updataDurationUI(duration);
+        if (this.timer) {
+            this.timer.reset();
+            this.timer.start();
+        }
+    };
+    TounamentLayer.prototype.onTimer = function (event) {
+        this.updataDurationUI(this.duration - event.target.currentCount);
+    };
+    TounamentLayer.prototype.updataDurationUI = function (duration) {
+        this.timeTx.text = Utils.secondToHour(duration);
+    };
+    TounamentLayer.prototype.updatePrize = function (prize) {
+        TweenerTool.tweenTo(this, { potCount: prize }, 500);
+    };
+    TounamentLayer.prototype.updateUserList = function (users, winners) {
+        if (this.userIndexOf(users, PlayerConfig.player("user.id")) < 0)
+            return;
+        TweenerTool.tweenTo(this.outBar, { x: -235 }, 500);
+        this.showingWinners = !this.showingWinners;
+        this.hideUserUI();
+        this.showUserUI(users, winners);
+    };
+    TounamentLayer.prototype.hideUserUI = function () {
+        if (this.usersUI) {
+            for (var i = 0; i < this.usersUI.length; i++) {
+                TweenerTool.tweenTo(this.usersUI[i], { scaleY: 0 }, 500, 500 * i, MDS.removeSelf.bind(this, this.usersUI[i]));
+            }
+        }
+    };
+    TounamentLayer.prototype.showUserUI = function (users, winners) {
+        this.champoin.clearUI();
+        if (this.showingWinners) {
+            if (winners.length > 3)
+                winners.length = 3;
+            this.showingWinnersUI(winners);
         }
         else {
-            if (this.blink)
-                this.blink = false;
-            if (CardGridColorAndSizeSettings.colorNumberOnEffect)
-                this.numTxt.textColor = CardGridColorAndSizeSettings.numberColor;
-            this.currentBgPic = this.defaultBgPic;
+            var userList = this.getUserListOrder(users);
+            this.showingWinnersUI(userList);
+            if (userList[0].rank != 1)
+                this.champoin.show(winners[0]);
         }
     };
-    TowerGrid.prototype.showRedEffect = function () {
-        this.numTxt.textColor = CardGridColorAndSizeSettings.numberColor;
-        this.currentBgPic = this.linePic;
+    TounamentLayer.prototype.showingWinnersUI = function (winners) {
+        this.usersUI = [];
+        for (var i = 0; i < Math.min(winners.length, 3); i++) {
+            this.usersUI[i] = new TounamentUserItem(winners[i], winners[i].rank, winners[i].uid == PlayerConfig.player("user.id"));
+            this.usersUI[i].scaleY = 0;
+            this.usersUI[i].x = 0;
+            this.addChild(this.usersUI[i]);
+            this.usersUI[i].y = 460 + i * 142;
+            TweenerTool.tweenTo(this.usersUI[i], { scaleY: 1 }, 500, 500 * i + 500);
+        }
     };
-    TowerGrid.prototype.showBlink = function (isShow) {
-        if (isShow)
-            this.currentBgPic = this.blink1Pic;
-        else
-            this.currentBgPic = this.blink2Pic;
+    TounamentLayer.prototype.getUserListOrder = function (users) {
+        var myIndex = NaN;
+        var newIndex;
+        for (var i = 0; i < users.length; i++) {
+            if (users[i].uid == PlayerConfig.player("user.id")) {
+                myIndex = i;
+            }
+        }
+        var newArr = [];
+        newArr.push(users[myIndex]);
+        newIndex = 0;
+        if (myIndex > 0) {
+            newArr.unshift(users[myIndex - 1]);
+            newIndex += 1;
+        }
+        if (users.length > myIndex + 1) {
+            newArr.push(users[myIndex + 1]);
+        }
+        if (newArr.length < 3) {
+            if (myIndex > 1) {
+                newArr.unshift(users[myIndex - 2]);
+                newIndex += 1;
+            }
+        }
+        if (newArr.length < 3) {
+            if (users.length > myIndex + 2) {
+                newArr.push(users[myIndex + 2]);
+            }
+        }
+        return newArr;
     };
-    return TowerGrid;
-}(egret.Sprite));
-__reflect(TowerGrid.prototype, "TowerGrid");
+    TounamentLayer.prototype.userIndexOf = function (users, id) {
+        if (users && users.length) {
+            for (var i = 0; i < users.length; i++) {
+                if (users[i].uid == id)
+                    return i;
+            }
+        }
+        return -1;
+    };
+    return TounamentLayer;
+}(egret.DisplayObjectContainer));
+__reflect(TounamentLayer.prototype, "TounamentLayer");
 var BingoMachine = (function (_super) {
     __extends(BingoMachine, _super);
     function BingoMachine(gameConfigFile, configUrl, gameId) {
@@ -1988,6 +2191,52 @@ var BingoMachine = (function (_super) {
     return BingoMachine;
 }(GameUIItem));
 __reflect(BingoMachine.prototype, "BingoMachine");
+var GenericPo = (function (_super) {
+    __extends(GenericPo, _super);
+    function GenericPo(configUrl) {
+        if (configUrl === void 0) { configUrl = null; }
+        return _super.call(this, configUrl) || this;
+    }
+    GenericPo.prototype.init = function () {
+        if (this.bgAssetName !== "") {
+            this.bg = Com.addBitmapAt(this, this.bgAssetName, 0, 0);
+            this.anchorOffsetX = this.bg.width >> 1;
+            this.anchorOffsetY = this.bg.height >> 1;
+        }
+        else {
+            this.width = document.documentElement.clientWidth;
+            this.height = document.documentElement.clientHeight;
+            this.anchorOffsetX = this.width >> 1;
+            this.anchorOffsetY = this.height >> 1;
+        }
+        if (!this.closeButtonOffset)
+            this.closeButtonOffset = new egret.Point(0, 0);
+        if (this.closeButtonAssetName)
+            this.closeButton = Com.addDownButtonAt(this, this.closeButtonAssetName, this.closeButtonAssetName, this.bg.width + this.closeButtonOffset.x, this.closeButtonOffset.y, this.onClose, true);
+        _super.prototype.init.call(this);
+    };
+    GenericPo.prototype.onClose = function (event) {
+        this.dispatchEvent(new egret.Event(GenericModal.CLOSE_MODAL));
+    };
+    /**
+     * update deal overplus text
+     */
+    GenericPo.prototype.updateDealOverplusText = function (time) { };
+    /**
+     * po overplus over
+     */
+    GenericPo.prototype.poOverplusOver = function () { };
+    /**
+     * on key up
+     */
+    GenericPo.prototype.onKeyUp = function (keyCode) { };
+    /**
+     * on mouse wheel
+     */
+    GenericPo.prototype.onMouseWheel = function (dir) { };
+    return GenericPo;
+}(GenericModal));
+__reflect(GenericPo.prototype, "GenericPo");
 var PaytableLayer = (function (_super) {
     __extends(PaytableLayer, _super);
     function PaytableLayer() {
@@ -2169,200 +2418,6 @@ var PaytableUI = (function (_super) {
     return PaytableUI;
 }(egret.Sprite));
 __reflect(PaytableUI.prototype, "PaytableUI");
-var TounamentLayer = (function (_super) {
-    __extends(TounamentLayer, _super);
-    function TounamentLayer(data) {
-        var _this = _super.call(this) || this;
-        _this.buildInnerBar();
-        _this.buildOutBar();
-        _this.updateDuration(data.duration, data.totalDuration);
-        _this.updatePrize(data.prize);
-        _this.addEventListener(egret.Event.ADDED_TO_STAGE, _this.onAdd, _this);
-        _this.updateUserList(data.userList, data.winners);
-        return _this;
-    }
-    Object.defineProperty(TounamentLayer.prototype, "potCount", {
-        get: function () {
-            return this._potCount;
-        },
-        set: function (value) {
-            this._potCount = Math.floor(value);
-            this.potTx.setText("$" + this._potCount);
-        },
-        enumerable: true,
-        configurable: true
-    });
-    TounamentLayer.prototype.onAdd = function (event) {
-        this.removeEventListener(egret.Event.ADDED_TO_STAGE, this.onAdd, this);
-        this.addEventListener(egret.Event.REMOVED_FROM_STAGE, this.onRemove, this);
-        this.timer = new egret.Timer(1000);
-        this.timer.addEventListener(egret.TimerEvent.TIMER, this.onTimer, this);
-        this.timer.start();
-    };
-    TounamentLayer.prototype.onRemove = function (event) {
-        this.removeEventListener(egret.Event.REMOVED_FROM_STAGE, this.onRemove, this);
-        this.timer.removeEventListener(egret.TimerEvent.TIMER, this.onTimer, this);
-        this.timer.stop();
-        this.timer = null;
-    };
-    TounamentLayer.prototype.updata = function (data) {
-        this.updateDuration(data.duration, data.totalDuration);
-        this.updatePrize(data.prize);
-        this.updateUserList(data.userList, data.winners);
-    };
-    TounamentLayer.prototype.buildInnerBar = function () {
-        this.innerBar = new egret.DisplayObjectContainer;
-        Com.addObjectAt(this, this.innerBar, 0, 0);
-        var tmBg = Com.addBitmapAt(this.innerBar, "tounament_json.ranking_bg", 0, 0);
-        tmBg.width = 235;
-        tmBg.height = 385;
-        Com.addBitmapAtMiddle(this.innerBar, "tounament_json.ranking_" + MuLang.language, 117, 36);
-        var titleTx = Com.addTextAt(this.innerBar, 10, 80, 215, 30, 30);
-        titleTx.text = MuLang.getText("play_enter");
-        var barBg = Com.addBitmapAt(this.innerBar, "tounament_json.bar_bg", 10, 117);
-        barBg.scale9Grid = new egret.Rectangle(10, 10, 182, 24);
-        barBg.width = 212;
-        var prizeBg = Com.addBitmapAt(this.innerBar, "tounament_json.bar_bg", 10, 175);
-        prizeBg.scale9Grid = new egret.Rectangle(10, 10, 182, 24);
-        prizeBg.width = 212;
-        prizeBg.height = 100;
-        var potTx = Com.addTextAt(this.innerBar, 10, 185, 215, 28, 28);
-        potTx.text = MuLang.getText("prize_pot");
-        this.pressBar = Com.addBitmapAt(this.innerBar, "tounament_json.progress_bar", 12, 121);
-        this.pressBar.scale9Grid = new egret.Rectangle(4, 4, 186, 28);
-        Com.addBitmapAt(this.innerBar, "tounament_json.deviding_line", 15, 287);
-        this.champoin = new TounamentChampoin();
-        Com.addObjectAt(this.innerBar, this.champoin, 0, 308);
-        this.innerBar.cacheAsBitmap = true;
-        this.potTx = Com.addLabelAt(this, 12, 225, 208, 48, 48, false, true);
-        this.potCount = 0;
-        this.timeTx = Com.addTextAt(this, 10, 125, 212, 36, 36, true);
-        this.timeTx.stroke = 2;
-        this.timeTx.bold = true;
-        this.timeTx.verticalAlign = "middle";
-    };
-    TounamentLayer.prototype.buildOutBar = function () {
-        this.outBar = new egret.DisplayObjectContainer;
-        Com.addObjectAt(this, this.outBar, 0, 297);
-        var avBg = Com.addBitmapAt(this.outBar, "tounament_json.mechanism_pending_bg", 0, 0);
-        avBg.width = 235;
-        avBg.height = 530;
-        var avt = Com.addBitmapAtMiddle(this.outBar, "tounament_json.avatar", 117, 264);
-        var fbId = PlayerConfig.player("facebook_id");
-        if (fbId)
-            FacebookBitmap.downloadBitmapDataByFacebookID(fbId, 100, 100, MDS.onUserHeadLoaded.bind(this, avt, 166), this);
-        var txUp = Com.addTextAt(this.outBar, 5, 0, 215, 150, 28, true, true);
-        txUp.textColor = 0xFFFF00;
-        txUp.stroke = 2;
-        txUp.strokeColor = 0;
-        txUp.verticalAlign = "middle";
-        txUp.text = MuLang.getText("play_to_enter");
-        var txDown = Com.addTextAt(this.outBar, 0, 405, 235, 30, 28, false, true);
-        txDown.text = MuLang.getText("win_to_enter");
-        this.outBar.cacheAsBitmap = true;
-    };
-    TounamentLayer.prototype.updateDuration = function (duration, totalDuration) {
-        this.duration = duration;
-        this.totalDuration = totalDuration;
-        this.pressBar.width = duration / this.totalDuration * 208;
-        this.updataDurationUI(duration);
-        if (this.timer) {
-            this.timer.reset();
-            this.timer.start();
-        }
-    };
-    TounamentLayer.prototype.onTimer = function (event) {
-        this.updataDurationUI(this.duration - event.target.currentCount);
-    };
-    TounamentLayer.prototype.updataDurationUI = function (duration) {
-        this.timeTx.text = Utils.secondToHour(duration);
-    };
-    TounamentLayer.prototype.updatePrize = function (prize) {
-        TweenerTool.tweenTo(this, { potCount: prize }, 500);
-    };
-    TounamentLayer.prototype.updateUserList = function (users, winners) {
-        if (this.userIndexOf(users, PlayerConfig.player("user.id")) < 0)
-            return;
-        TweenerTool.tweenTo(this.outBar, { x: -235 }, 500);
-        this.showingWinners = !this.showingWinners;
-        this.hideUserUI();
-        this.showUserUI(users, winners);
-    };
-    TounamentLayer.prototype.hideUserUI = function () {
-        if (this.usersUI) {
-            for (var i = 0; i < this.usersUI.length; i++) {
-                TweenerTool.tweenTo(this.usersUI[i], { scaleY: 0 }, 500, 500 * i, MDS.removeSelf.bind(this, this.usersUI[i]));
-            }
-        }
-    };
-    TounamentLayer.prototype.showUserUI = function (users, winners) {
-        this.champoin.clearUI();
-        if (this.showingWinners) {
-            if (winners.length > 3)
-                winners.length = 3;
-            this.showingWinnersUI(winners);
-        }
-        else {
-            var userList = this.getUserListOrder(users);
-            this.showingWinnersUI(userList);
-            if (userList[0].rank != 1)
-                this.champoin.show(winners[0]);
-        }
-    };
-    TounamentLayer.prototype.showingWinnersUI = function (winners) {
-        this.usersUI = [];
-        for (var i = 0; i < Math.min(winners.length, 3); i++) {
-            this.usersUI[i] = new TounamentUserItem(winners[i], winners[i].rank, winners[i].uid == PlayerConfig.player("user.id"));
-            this.usersUI[i].scaleY = 0;
-            this.usersUI[i].x = 0;
-            this.addChild(this.usersUI[i]);
-            this.usersUI[i].y = 460 + i * 142;
-            TweenerTool.tweenTo(this.usersUI[i], { scaleY: 1 }, 500, 500 * i + 500);
-        }
-    };
-    TounamentLayer.prototype.getUserListOrder = function (users) {
-        var myIndex = NaN;
-        var newIndex;
-        for (var i = 0; i < users.length; i++) {
-            if (users[i].uid == PlayerConfig.player("user.id")) {
-                myIndex = i;
-            }
-        }
-        var newArr = [];
-        newArr.push(users[myIndex]);
-        newIndex = 0;
-        if (myIndex > 0) {
-            newArr.unshift(users[myIndex - 1]);
-            newIndex += 1;
-        }
-        if (users.length > myIndex + 1) {
-            newArr.push(users[myIndex + 1]);
-        }
-        if (newArr.length < 3) {
-            if (myIndex > 1) {
-                newArr.unshift(users[myIndex - 2]);
-                newIndex += 1;
-            }
-        }
-        if (newArr.length < 3) {
-            if (users.length > myIndex + 2) {
-                newArr.push(users[myIndex + 2]);
-            }
-        }
-        return newArr;
-    };
-    TounamentLayer.prototype.userIndexOf = function (users, id) {
-        if (users && users.length) {
-            for (var i = 0; i < users.length; i++) {
-                if (users[i].uid == id)
-                    return i;
-            }
-        }
-        return -1;
-    };
-    return TounamentLayer;
-}(egret.DisplayObjectContainer));
-__reflect(TounamentLayer.prototype, "TounamentLayer");
 var GanhoCounter = (function () {
     function GanhoCounter(winCallback) {
         if (winCallback === void 0) { winCallback = null; }
@@ -2434,39 +2489,6 @@ var GanhoCounter = (function () {
     return GanhoCounter;
 }());
 __reflect(GanhoCounter.prototype, "GanhoCounter");
-var V2Game = (function (_super) {
-    __extends(V2Game, _super);
-    function V2Game(gameConfigFile, configUrl, gameId) {
-        var _this = _super.call(this, gameConfigFile, configUrl, gameId) || this;
-        _this.tokenObject["key"] = "iniciar";
-        _this.tokenObject["value"]["token"] = "undefined";
-        return _this;
-    }
-    V2Game.prototype.extraUIShowNumber = function () {
-        this.extraUIObject.visible = true;
-        this.runningBallContainer = new egret.DisplayObjectContainer;
-        this.runningBallContainer.x = this.extraUIObject.x;
-        this.runningBallContainer.y = this.extraUIObject.y;
-        this.addChildAt(this.runningBallContainer, this.getChildIndex(this.extraUIObject));
-        Com.addObjectAt(this.runningBallContainer, this.extraUIObject, 0, 0);
-        this.extraUIObject = this.runningBallContainer;
-    };
-    /*******************************************************************************************************/
-    V2Game.prototype.getNumberOnCard = function (cardIndex, gridIndex) {
-        var num = GameCardUISettings.numberAtCard(cardIndex, gridIndex);
-        CardManager.getBall(num);
-    };
-    V2Game.prototype.getBuffInfoIndex = function (buffInfo) {
-        for (var i = 0; i < buffInfo.length; i++) {
-            if (buffInfo[i]["buffBet"] == GameData.currentBet) {
-                return i;
-            }
-        }
-        return -1;
-    };
-    return V2Game;
-}(BingoMachine));
-__reflect(V2Game.prototype, "V2Game");
 var BallManager = (function (_super) {
     __extends(BallManager, _super);
     function BallManager() {
@@ -4102,6 +4124,97 @@ var FlyingCoins = (function (_super) {
     return FlyingCoins;
 }(egret.DisplayObjectContainer));
 __reflect(FlyingCoins.prototype, "FlyingCoins");
+var PlayerConfig = (function () {
+    function PlayerConfig() {
+    }
+    Object.defineProperty(PlayerConfig, "playerData", {
+        get: function () {
+            if (!this._playerData) {
+                var playerStr = localStorage.getItem("player");
+                if (playerStr) {
+                    try {
+                        this._playerData = JSON.parse(playerStr);
+                    }
+                    catch (e) {
+                        this._playerData = null;
+                    }
+                }
+            }
+            return this._playerData;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(PlayerConfig, "configData", {
+        get: function () {
+            if (!this._configData) {
+                var configStr = localStorage.getItem("config");
+                if (configStr) {
+                    try {
+                        this._configData = JSON.parse(configStr);
+                    }
+                    catch (e) {
+                        this._configData = null;
+                    }
+                }
+            }
+            return this._configData;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    PlayerConfig.player = function (key) {
+        try {
+            var item = eval("this.playerData." + key);
+            return item;
+        }
+        catch (e) {
+            var rs = this.playerConfig[key];
+            if (key == "user.id" && !rs)
+                rs = "243972732";
+            return rs;
+        }
+    };
+    PlayerConfig.config = function (key) {
+        try {
+            var item = eval("this.configData." + key);
+            return item;
+        }
+        catch (e) {
+            var rs = this.playerConfig[key];
+            if (key == "http" && !rs)
+                rs = "https";
+            if (key == "host" && !rs)
+                rs = "staging.doutorbingo.com";
+            if (key == "platform" && !rs)
+                rs = "com";
+            return rs;
+        }
+    };
+    Object.defineProperty(PlayerConfig, "properties", {
+        get: function () {
+            return localStorage.getItem("user_account_info");
+        },
+        enumerable: true,
+        configurable: true
+    });
+    PlayerConfig.serverVertion = 2;
+    PlayerConfig.playerConfig = { "user.id": requestStr("id"), "score.level": 2538, "score.this_level_xp": 2500, "score.next_level_xp": 3500, "score.xp": 3000,
+        "mission": { "task_is_process": "0", "unlock_level": 10, "task": { "387285": { "is_active": "1", "type": "1", "current": "1", "target": "2", "id": "387285" }, "387286": { "is_active": "0", "type": "1", "current": "1", "target": "6", "id": "387286" }, "387287": { "is_active": "0", "type": "1", "current": "0", "target": "15", "id": "387287" } }, "score_info": { "score_is_process": "0" } }, "mission.unlock_level": 3000 };
+    PlayerConfig.mission = {};
+    return PlayerConfig;
+}());
+__reflect(PlayerConfig.prototype, "PlayerConfig");
+function requestStr(str) {
+    var resItems = location.search.split(/[?&]/);
+    var items = Object;
+    for (var i = 0; i < resItems.length; i++) {
+        var item = resItems[i].split("=");
+        if (item.length == 2)
+            items[item[0]] = item[1];
+    }
+    return items[str];
+}
 var LocalDataManager = (function () {
     function LocalDataManager() {
     }
@@ -4833,97 +4946,72 @@ var PaytableFilter = (function () {
     return PaytableFilter;
 }());
 __reflect(PaytableFilter.prototype, "PaytableFilter");
-var PlayerConfig = (function () {
-    function PlayerConfig() {
+var GameSoundManager = (function () {
+    function GameSoundManager() {
+        this.playing = [];
+        GameSoundManager.instance = this;
     }
-    Object.defineProperty(PlayerConfig, "playerData", {
-        get: function () {
-            if (!this._playerData) {
-                var playerStr = localStorage.getItem("player");
-                if (playerStr) {
-                    try {
-                        this._playerData = JSON.parse(playerStr);
-                    }
-                    catch (e) {
-                        this._playerData = null;
-                    }
-                }
-            }
-            return this._playerData;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(PlayerConfig, "configData", {
-        get: function () {
-            if (!this._configData) {
-                var configStr = localStorage.getItem("config");
-                if (configStr) {
-                    try {
-                        this._configData = JSON.parse(configStr);
-                    }
-                    catch (e) {
-                        this._configData = null;
-                    }
-                }
-            }
-            return this._configData;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    PlayerConfig.player = function (key) {
-        try {
-            var item = eval("this.playerData." + key);
-            return item;
+    GameSoundManager.prototype.play = function (soundAssetName, repeat, callback) {
+        if (repeat === void 0) { repeat = 1; }
+        if (callback === void 0) { callback = null; }
+        var soundChannel = SoundManager.play(soundAssetName, repeat === -1);
+        if (callback !== null && repeat !== -1) {
+            soundChannel["soundCallback"] = callback;
+            soundChannel["soundAssetName"] = soundAssetName;
+            soundChannel.addEventListener(egret.Event.SOUND_COMPLETE, this.onSoundComplete, this);
         }
-        catch (e) {
-            var rs = this.playerConfig[key];
-            if (key == "user.id" && !rs)
-                rs = "243972732";
-            return rs;
+        if (soundChannel) {
+            this.playing.push(soundChannel);
+        }
+        if (!soundChannel && callback) {
+            callback();
         }
     };
-    PlayerConfig.config = function (key) {
-        try {
-            var item = eval("this.configData." + key);
-            return item;
+    GameSoundManager.prototype.onSoundComplete = function (e) {
+        var soundChannel = e.currentTarget;
+        soundChannel.removeEventListener(egret.Event.SOUND_COMPLETE, this.onSoundComplete, this);
+        if (soundChannel["soundCallback"]) {
+            soundChannel["soundCallback"]();
+            soundChannel["soundCallback"] = null;
         }
-        catch (e) {
-            var rs = this.playerConfig[key];
-            if (key == "http" && !rs)
-                rs = "https";
-            if (key == "host" && !rs)
-                rs = "staging.doutorbingo.com";
-            if (key == "platform" && !rs)
-                rs = "com";
-            return rs;
-        }
+        var index = this.playing.indexOf(soundChannel);
+        this.playing.splice(index, 1);
     };
-    Object.defineProperty(PlayerConfig, "properties", {
-        get: function () {
-            return localStorage.getItem("user_account_info");
-        },
-        enumerable: true,
-        configurable: true
-    });
-    PlayerConfig.serverVertion = 2;
-    PlayerConfig.playerConfig = { "user.id": requestStr("id"), "score.level": 2538, "score.this_level_xp": 2500, "score.next_level_xp": 3500, "score.xp": 3000,
-        "mission": { "task_is_process": "0", "unlock_level": 10, "task": { "387285": { "is_active": "1", "type": "1", "current": "1", "target": "2", "id": "387285" }, "387286": { "is_active": "0", "type": "1", "current": "1", "target": "6", "id": "387286" }, "387287": { "is_active": "0", "type": "1", "current": "0", "target": "15", "id": "387287" } }, "score_info": { "score_is_process": "0" } }, "mission.unlock_level": 3000 };
-    PlayerConfig.mission = {};
-    return PlayerConfig;
+    GameSoundManager.prototype.stop = function (soundAssetName) {
+        for (var i = 0; i < this.playing.length; i++) {
+            var soundChannel = this.playing[i];
+            if (soundChannel["soundAssetName"] == soundAssetName) {
+                soundChannel.stop();
+                if (soundChannel["soundCallback"]) {
+                    soundChannel["soundCallback"]();
+                    soundChannel["soundCallback"] = null;
+                }
+                this.playing.splice(i, 1);
+                i--;
+            }
+        }
+        SoundManager.stopMusic();
+    };
+    GameSoundManager.prototype.stopAll = function () {
+        for (var i = 0; i < this.playing.length; i++) {
+            var sound = this.playing[i];
+            if (sound["soundCallback"]) {
+                sound.removeEventListener(egret.Event.SOUND_COMPLETE, this.onSoundComplete, this);
+                sound["soundCallback"]();
+                sound["soundCallback"] = null;
+            }
+            sound.stop();
+        }
+        this.playing = [];
+    };
+    GameSoundManager.stopAll = function () {
+        if (this.instance)
+            this.instance.stopAll();
+    };
+    GameSoundManager.instance = null;
+    return GameSoundManager;
 }());
-__reflect(PlayerConfig.prototype, "PlayerConfig");
-function requestStr(str) {
-    var resItems = location.search.split(/[?&]/);
-    var items = Object;
-    for (var i = 0; i < resItems.length; i++) {
-        var item = resItems[i].split("=");
-        if (item.length == 2)
-            items[item[0]] = item[1];
-    }
-    return items[str];
-}
+__reflect(GameSoundManager.prototype, "GameSoundManager");
 var PayTableManager = (function (_super) {
     __extends(PayTableManager, _super);
     function PayTableManager(paytableObject, name) {
@@ -5059,72 +5147,98 @@ var PaytableResultListOprator = (function () {
     return PaytableResultListOprator;
 }());
 __reflect(PaytableResultListOprator.prototype, "PaytableResultListOprator");
-var GameSoundManager = (function () {
-    function GameSoundManager() {
-        this.playing = [];
-        GameSoundManager.instance = this;
+var V1Game = (function (_super) {
+    __extends(V1Game, _super);
+    function V1Game(gameConfigFile, configUrl, gameId) {
+        var _this = _super.call(this, gameConfigFile, configUrl, gameId) || this;
+        _this.tokenObject["key"] = "login";
+        _this.tokenObject["value"]["token"] = "112411241124696911692424116969";
+        return _this;
     }
-    GameSoundManager.prototype.play = function (soundAssetName, repeat, callback) {
-        if (repeat === void 0) { repeat = 1; }
-        if (callback === void 0) { callback = null; }
-        var soundChannel = SoundManager.play(soundAssetName, repeat === -1);
-        if (callback !== null && repeat !== -1) {
-            soundChannel["soundCallback"] = callback;
-            soundChannel["soundAssetName"] = soundAssetName;
-            soundChannel.addEventListener(egret.Event.SOUND_COMPLETE, this.onSoundComplete, this);
+    V1Game.prototype.getCardsGroup = function (value) {
+        if (!this.Cartoes)
+            this.createCardGroups();
+        var ar = this.Cartoes.slice(value * 4 - 3, value * 4 + 1);
+        var resultArray = [];
+        for (var i = 0; i < ar.length; i++) {
+            resultArray = resultArray.concat(this.changeCardNumberOrder(ar[i]));
         }
-        if (soundChannel) {
-            this.playing.push(soundChannel);
-        }
-        if (!soundChannel && callback) {
-            callback();
-        }
+        return resultArray;
     };
-    GameSoundManager.prototype.onSoundComplete = function (e) {
-        var soundChannel = e.currentTarget;
-        soundChannel.removeEventListener(egret.Event.SOUND_COMPLETE, this.onSoundComplete, this);
-        if (soundChannel["soundCallback"]) {
-            soundChannel["soundCallback"]();
-            soundChannel["soundCallback"] = null;
+    V1Game.prototype.changeCardNumberOrder = function (groupNumbers) {
+        var newArray = [];
+        groupNumbers = groupNumbers.concat();
+        for (var i = 0; i < groupNumbers.length; i++) {
+            var line = i % GameCardUISettings.gridNumbers.y;
+            var row = Math.floor(i / GameCardUISettings.gridNumbers.y);
+            newArray[line * 5 + row] = groupNumbers[i];
         }
-        var index = this.playing.indexOf(soundChannel);
-        this.playing.splice(index, 1);
+        return newArray;
     };
-    GameSoundManager.prototype.stop = function (soundAssetName) {
-        for (var i = 0; i < this.playing.length; i++) {
-            var soundChannel = this.playing[i];
-            if (soundChannel["soundAssetName"] == soundAssetName) {
-                soundChannel.stop();
-                if (soundChannel["soundCallback"]) {
-                    soundChannel["soundCallback"]();
-                    soundChannel["soundCallback"] = null;
-                }
-                this.playing.splice(i, 1);
-                i--;
+    V1Game.prototype.onServerData = function (data) {
+        data["numerosCartelas"] = this.getCardsGroup(data["cartela"]);
+        _super.prototype.onServerData.call(this, data);
+    };
+    V1Game.prototype.sendRoundOverRequest = function () {
+        IBingoServer.roundOverCallback = this.onRoundOver.bind(this);
+        IBingoServer.libera();
+    };
+    V1Game.prototype.sendPlayRequest = function () {
+        IBingoServer.playCallback = this.onPlay.bind(this);
+        IBingoServer.round(GameData.currentBet, CardManager.enabledCards, CardManager.groupNumber, GameData.currentBetIndex);
+        BingoMachine.inRound = true;
+    };
+    V1Game.prototype.sendExtraRequest = function (saving) {
+        if (saving === void 0) { saving = false; }
+        IBingoServer.extraCallback = this.onExtra.bind(this);
+        IBingoServer.extra(true, saving);
+    };
+    V1Game.prototype.sendCancelExtraReuqest = function () {
+        IBingoServer.cancelExtraCallback = this.onCancelExtra.bind(this);
+        IBingoServer.cancelExtra(true);
+    };
+    V1Game.prototype.createCardGroups = function () {
+        this.Cartoes = RES.getRes("v1gameDefault_json");
+    };
+    V1Game.prototype.onPlay = function (data) {
+        if (data && data["bolas"] && data["bolas"].length) {
+            var balls = data["bolas"];
+            for (var i = 0; i < balls.length; i++) {
+                balls[i] = this.changeNumberFromServer(balls[i]);
             }
+            if (this["de_duplication"])
+                this["de_duplication"](balls);
         }
-        SoundManager.stopMusic();
+        else
+            data = null;
+        _super.prototype.onPlay.call(this, data);
     };
-    GameSoundManager.prototype.stopAll = function () {
-        for (var i = 0; i < this.playing.length; i++) {
-            var sound = this.playing[i];
-            if (sound["soundCallback"]) {
-                sound.removeEventListener(egret.Event.SOUND_COMPLETE, this.onSoundComplete, this);
-                sound["soundCallback"]();
-                sound["soundCallback"] = null;
-            }
-            sound.stop();
+    V1Game.prototype.changeNumberFromServer = function (num) {
+        var card = Math.floor((num - 1) / 15);
+        var index = (num - 1) % 15;
+        return CardManager.cards[card].getNumberAt(index);
+    };
+    V1Game.prototype.onExtra = function (data) {
+        if (data && data["extra"] != null) {
+            if (this["de_duplication"])
+                data["extra"] = data["extra"] % 100;
+            data["extra"] = this.changeNumberFromServer(data["extra"]);
         }
-        this.playing = [];
+        else
+            data = null;
+        _super.prototype.onExtra.call(this, data);
     };
-    GameSoundManager.stopAll = function () {
-        if (this.instance)
-            this.instance.stopAll();
+    V1Game.prototype.showMissExtraBall = function (balls) {
+        if (!balls)
+            return;
+        for (var i = 0; i < balls.length; i++) {
+            balls[i] = this.changeNumberFromServer(balls[i]);
+        }
+        _super.prototype.showMissExtraBall.call(this, balls);
     };
-    GameSoundManager.instance = null;
-    return GameSoundManager;
-}());
-__reflect(GameSoundManager.prototype, "GameSoundManager");
+    return V1Game;
+}(BingoMachine));
+__reflect(V1Game.prototype, "V1Game");
 var MissionPopup = (function (_super) {
     __extends(MissionPopup, _super);
     function MissionPopup() {
@@ -5919,98 +6033,39 @@ var TounamentChampoin = (function (_super) {
     return TounamentChampoin;
 }(egret.DisplayObjectContainer));
 __reflect(TounamentChampoin.prototype, "TounamentChampoin");
-var V1Game = (function (_super) {
-    __extends(V1Game, _super);
-    function V1Game(gameConfigFile, configUrl, gameId) {
+var V2Game = (function (_super) {
+    __extends(V2Game, _super);
+    function V2Game(gameConfigFile, configUrl, gameId) {
         var _this = _super.call(this, gameConfigFile, configUrl, gameId) || this;
-        _this.tokenObject["key"] = "login";
-        _this.tokenObject["value"]["token"] = "112411241124696911692424116969";
+        _this.tokenObject["key"] = "iniciar";
+        _this.tokenObject["value"]["token"] = "undefined";
         return _this;
     }
-    V1Game.prototype.getCardsGroup = function (value) {
-        if (!this.Cartoes)
-            this.createCardGroups();
-        var ar = this.Cartoes.slice(value * 4 - 3, value * 4 + 1);
-        var resultArray = [];
-        for (var i = 0; i < ar.length; i++) {
-            resultArray = resultArray.concat(this.changeCardNumberOrder(ar[i]));
-        }
-        return resultArray;
+    V2Game.prototype.extraUIShowNumber = function () {
+        this.extraUIObject.visible = true;
+        this.runningBallContainer = new egret.DisplayObjectContainer;
+        this.runningBallContainer.x = this.extraUIObject.x;
+        this.runningBallContainer.y = this.extraUIObject.y;
+        this.addChildAt(this.runningBallContainer, this.getChildIndex(this.extraUIObject));
+        Com.addObjectAt(this.runningBallContainer, this.extraUIObject, 0, 0);
+        this.extraUIObject = this.runningBallContainer;
     };
-    V1Game.prototype.changeCardNumberOrder = function (groupNumbers) {
-        var newArray = [];
-        groupNumbers = groupNumbers.concat();
-        for (var i = 0; i < groupNumbers.length; i++) {
-            var line = i % GameCardUISettings.gridNumbers.y;
-            var row = Math.floor(i / GameCardUISettings.gridNumbers.y);
-            newArray[line * 5 + row] = groupNumbers[i];
-        }
-        return newArray;
+    /*******************************************************************************************************/
+    V2Game.prototype.getNumberOnCard = function (cardIndex, gridIndex) {
+        var num = GameCardUISettings.numberAtCard(cardIndex, gridIndex);
+        CardManager.getBall(num);
     };
-    V1Game.prototype.onServerData = function (data) {
-        data["numerosCartelas"] = this.getCardsGroup(data["cartela"]);
-        _super.prototype.onServerData.call(this, data);
-    };
-    V1Game.prototype.sendRoundOverRequest = function () {
-        IBingoServer.roundOverCallback = this.onRoundOver.bind(this);
-        IBingoServer.libera();
-    };
-    V1Game.prototype.sendPlayRequest = function () {
-        IBingoServer.playCallback = this.onPlay.bind(this);
-        IBingoServer.round(GameData.currentBet, CardManager.enabledCards, CardManager.groupNumber, GameData.currentBetIndex);
-        BingoMachine.inRound = true;
-    };
-    V1Game.prototype.sendExtraRequest = function (saving) {
-        if (saving === void 0) { saving = false; }
-        IBingoServer.extraCallback = this.onExtra.bind(this);
-        IBingoServer.extra(true, saving);
-    };
-    V1Game.prototype.sendCancelExtraReuqest = function () {
-        IBingoServer.cancelExtraCallback = this.onCancelExtra.bind(this);
-        IBingoServer.cancelExtra(true);
-    };
-    V1Game.prototype.createCardGroups = function () {
-        this.Cartoes = RES.getRes("v1gameDefault_json");
-    };
-    V1Game.prototype.onPlay = function (data) {
-        if (data && data["bolas"] && data["bolas"].length) {
-            var balls = data["bolas"];
-            for (var i = 0; i < balls.length; i++) {
-                balls[i] = this.changeNumberFromServer(balls[i]);
+    V2Game.prototype.getBuffInfoIndex = function (buffInfo) {
+        for (var i = 0; i < buffInfo.length; i++) {
+            if (buffInfo[i]["buffBet"] == GameData.currentBet) {
+                return i;
             }
-            if (this["de_duplication"])
-                this["de_duplication"](balls);
         }
-        else
-            data = null;
-        _super.prototype.onPlay.call(this, data);
+        return -1;
     };
-    V1Game.prototype.changeNumberFromServer = function (num) {
-        var card = Math.floor((num - 1) / 15);
-        var index = (num - 1) % 15;
-        return CardManager.cards[card].getNumberAt(index);
-    };
-    V1Game.prototype.onExtra = function (data) {
-        if (data && data["extra"] != null) {
-            if (this["de_duplication"])
-                data["extra"] = data["extra"] % 100;
-            data["extra"] = this.changeNumberFromServer(data["extra"]);
-        }
-        else
-            data = null;
-        _super.prototype.onExtra.call(this, data);
-    };
-    V1Game.prototype.showMissExtraBall = function (balls) {
-        if (!balls)
-            return;
-        for (var i = 0; i < balls.length; i++) {
-            balls[i] = this.changeNumberFromServer(balls[i]);
-        }
-        _super.prototype.showMissExtraBall.call(this, balls);
-    };
-    return V1Game;
+    return V2Game;
 }(BingoMachine));
-__reflect(V1Game.prototype, "V1Game");
+__reflect(V2Game.prototype, "V2Game");
 var TounamentUserItem = (function (_super) {
     __extends(TounamentUserItem, _super);
     function TounamentUserItem(user, rank, isMe) {

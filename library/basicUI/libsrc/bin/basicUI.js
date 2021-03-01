@@ -74,199 +74,28 @@ var TouchDownButton = (function (_super) {
     return TouchDownButton;
 }(egret.DisplayObjectContainer));
 __reflect(TouchDownButton.prototype, "TouchDownButton");
-var MatrixTool = (function () {
-    function MatrixTool() {
+var BmpText = (function (_super) {
+    __extends(BmpText, _super);
+    function BmpText() {
+        return _super.call(this) || this;
     }
-    MatrixTool.colorMatrix = function (mainChannel, otherChannel, alphaChannel) {
-        var matrix = [];
-        matrix = matrix.concat([mainChannel, otherChannel, otherChannel, 0, 0]);
-        matrix = matrix.concat([otherChannel, mainChannel, otherChannel, 0, 0]);
-        matrix = matrix.concat([otherChannel, otherChannel, mainChannel, 0, 0]);
-        matrix = matrix.concat([0, 0, 0, alphaChannel, 0]);
-        var gcmf = new egret.ColorMatrixFilter(matrix);
-        return gcmf;
-    };
-    MatrixTool.colorMatrixPure = function (color, alpha) {
-        if (alpha === void 0) { alpha = 1; }
-        var matrix = [];
-        matrix = matrix.concat([0, 0, 0, 0, color >> 16]);
-        matrix = matrix.concat([0, 0, 0, 0, (color & 0x00FF00) >> 8]);
-        matrix = matrix.concat([0, 0, 0, 0, color & 0x0000FF]);
-        matrix = matrix.concat([0, 0, 0, alpha, 0]);
-        var gcmf = new egret.ColorMatrixFilter(matrix);
-        return gcmf;
-    };
-    MatrixTool.colorMatrixLighter = function (light) {
-        var stay = 1 - light;
-        var leghter = Math.floor(255 * light);
-        var matrix = [];
-        matrix = matrix.concat([stay, 0, 0, 0, leghter]);
-        matrix = matrix.concat([0, stay, 0, 0, leghter]);
-        matrix = matrix.concat([0, 0, stay, 0, leghter]);
-        matrix = matrix.concat([0, 0, 0, 1, 0]);
-        var gcmf = new egret.ColorMatrixFilter(matrix);
-        return gcmf;
-    };
-    return MatrixTool;
-}());
-__reflect(MatrixTool.prototype, "MatrixTool");
-var GenericModal = (function (_super) {
-    __extends(GenericModal, _super);
-    function GenericModal(configUrl) {
-        if (configUrl === void 0) { configUrl = null; }
-        var _this = _super.call(this) || this;
-        _this.enableKeyboard = false;
-        _this.inited = false;
-        _this.assetName = egret.getDefinitionByName(egret.getQualifiedClassName(_this)).classAssetName;
-        if (_this.assetName === null || _this.assetName === "" || GenericModal.assetLoaded[_this.assetName])
-            _this.init();
-        else {
-            if (configUrl) {
-                _this.configUrl = configUrl;
-                RES.getResByUrl(configUrl, _this.analyse, _this);
-            }
-            else
-                GenericModal.loadAsset(_this.assetName, _this);
-        }
-        return _this;
-    }
-    Object.defineProperty(GenericModal, "classAssetName", {
+    Object.defineProperty(BmpText.prototype, "textColor", {
         get: function () {
-            return ""; //subclass must override
+            return this._color;
+        },
+        set: function (value) {
+            this._color = value;
+            this.filters = [MatrixTool.colorMatrixPure(value)];
         },
         enumerable: true,
         configurable: true
     });
-    GenericModal.prototype.analyse = function (result) {
-        // RES.parseConfig( result, this.configUrl.replace( "data.res.json", "resource/" ) );
-        GenericModal.loadAsset(this.assetName, this);
+    BmpText.prototype.setText = function (str) {
+        this.text = str;
     };
-    GenericModal.prototype.init = function () {
-        //must be override
-        this.inited = true;
-        this.dispatchEvent(new egret.Event(GenericModal.GENERIC_MODAL_LOADED));
-    };
-    GenericModal.loadAsset = function (assetName, target) {
-        RES.addEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.loaded, target);
-        RES.loadGroup(assetName);
-    };
-    GenericModal.loaded = function (event) {
-        if (event.groupName != this["assetName"])
-            return;
-        GenericModal.assetLoaded[this["assetName"]] = true;
-        this["init"]();
-        RES.removeEventListener(RES.ResourceEvent.GROUP_COMPLETE, GenericModal.loaded, this);
-    };
-    GenericModal.prototype.onKeyUp = function (keyCode) { };
-    GenericModal.GENERIC_MODAL_LOADED = "modalLoaded";
-    GenericModal.CLOSE_MODAL = "closeModal";
-    GenericModal.MODAL_COMMAND = "modalCommand";
-    GenericModal.assetLoaded = new Array();
-    return GenericModal;
-}(egret.Sprite));
-__reflect(GenericModal.prototype, "GenericModal");
-var GraphicTool = (function () {
-    function GraphicTool() {
-    }
-    GraphicTool.drawRect = function (target, rect, color, clearFirst, alpha, roundRect, lineThick, lineColor, lineAlpha) {
-        if (color === void 0) { color = 0; }
-        if (clearFirst === void 0) { clearFirst = false; }
-        if (alpha === void 0) { alpha = 1; }
-        if (roundRect === void 0) { roundRect = 0; }
-        if (lineThick === void 0) { lineThick = 0; }
-        if (lineColor === void 0) { lineColor = 0; }
-        if (lineAlpha === void 0) { lineAlpha = 1; }
-        if (clearFirst)
-            target.graphics.clear();
-        if (lineThick)
-            target.graphics.lineStyle(lineThick, lineColor, lineAlpha);
-        target.graphics.beginFill(color, alpha);
-        if (roundRect)
-            target.graphics.drawRoundRect(rect.x, rect.y, rect.width, rect.height, roundRect);
-        else
-            target.graphics.drawRect(rect.x, rect.y, rect.width, rect.height);
-        target.graphics.endFill();
-    };
-    GraphicTool.drawRectangles = function (target, rectangles, color, clearFirst, alpha) {
-        if (color === void 0) { color = 0; }
-        if (clearFirst === void 0) { clearFirst = false; }
-        if (alpha === void 0) { alpha = 1; }
-        if (clearFirst)
-            target.graphics.clear();
-        target.graphics.beginFill(color, alpha);
-        for (var i = 0; i < rectangles.length; i++) {
-            var rect = rectangles[i];
-            target.graphics.drawRect(rect.x, rect.y, rect.width, rect.height);
-        }
-        target.graphics.endFill();
-    };
-    GraphicTool.drawCircle = function (target, center, r, color, clearFirst, alpha, lineThick, lineColor, lineAlpha) {
-        if (clearFirst === void 0) { clearFirst = false; }
-        if (alpha === void 0) { alpha = 1; }
-        if (lineThick === void 0) { lineThick = 0; }
-        if (lineColor === void 0) { lineColor = 0; }
-        if (lineAlpha === void 0) { lineAlpha = 1; }
-        if (clearFirst)
-            target.graphics.clear();
-        if (lineThick)
-            target.graphics.lineStyle(lineThick, lineColor, lineAlpha);
-        target.graphics.beginFill(color, alpha);
-        target.graphics.drawCircle(center.x, center.y, r);
-        target.graphics.endFill();
-    };
-    return GraphicTool;
-}());
-__reflect(GraphicTool.prototype, "GraphicTool");
-var LongPressButton = (function (_super) {
-    __extends(LongPressButton, _super);
-    function LongPressButton(upState, downState) {
-        return _super.call(this, upState, downState) || this;
-    }
-    LongPressButton.prototype.onTouchBegin = function (event) {
-        _super.prototype.onTouchBegin.call(this, event);
-        this.longPressJustHappened = false;
-        if (this.longPressDuration)
-            this.addTimer();
-    };
-    LongPressButton.prototype.addTimer = function () {
-        if (this.longPressTimer)
-            this.removeTimer();
-        this.longPressTimer = new egret.Timer(this.longPressDuration, 1);
-        this.longPressTimer.addEventListener(egret.TimerEvent.TIMER_COMPLETE, this.onTimerComplete, this);
-        this.longPressTimer.start();
-    };
-    LongPressButton.prototype.removeTimer = function () {
-        if (!this.longPressTimer)
-            return;
-        this.longPressTimer.removeEventListener(egret.TimerEvent.TIMER_COMPLETE, this.onTimerComplete, this);
-        this.longPressTimer.stop();
-        this.longPressTimer = null;
-    };
-    LongPressButton.prototype.onTimerComplete = function (event) {
-        this.longPressJustHappened = true;
-        this.removeTimer();
-        if (this.longPressCallback)
-            this.longPressCallback();
-    };
-    LongPressButton.prototype.onTouchTap = function (event) {
-        if (this.longPressJustHappened) {
-            this.longPressJustHappened = false;
-            event.stopImmediatePropagation();
-            return;
-        }
-        if (this.longPressTimer) {
-            this.removeTimer();
-        }
-        _super.prototype.onTouchTap.call(this, event);
-    };
-    LongPressButton.prototype.longPressSetting = function (duration, callback) {
-        if (callback === void 0) { callback = null; }
-        this.longPressDuration = duration;
-        this.longPressCallback = callback;
-    };
-    return LongPressButton;
-}(TouchDownButton));
-__reflect(LongPressButton.prototype, "LongPressButton");
+    return BmpText;
+}(egret.BitmapText));
+__reflect(BmpText.prototype, "BmpText");
 /**
  * ChildObjectManager
  */
@@ -381,6 +210,144 @@ var Com = (function () {
     return Com;
 }());
 __reflect(Com.prototype, "Com");
+var GraphicTool = (function () {
+    function GraphicTool() {
+    }
+    GraphicTool.drawRect = function (target, rect, color, clearFirst, alpha, roundRect, lineThick, lineColor, lineAlpha) {
+        if (color === void 0) { color = 0; }
+        if (clearFirst === void 0) { clearFirst = false; }
+        if (alpha === void 0) { alpha = 1; }
+        if (roundRect === void 0) { roundRect = 0; }
+        if (lineThick === void 0) { lineThick = 0; }
+        if (lineColor === void 0) { lineColor = 0; }
+        if (lineAlpha === void 0) { lineAlpha = 1; }
+        if (clearFirst)
+            target.graphics.clear();
+        if (lineThick)
+            target.graphics.lineStyle(lineThick, lineColor, lineAlpha);
+        target.graphics.beginFill(color, alpha);
+        if (roundRect)
+            target.graphics.drawRoundRect(rect.x, rect.y, rect.width, rect.height, roundRect);
+        else
+            target.graphics.drawRect(rect.x, rect.y, rect.width, rect.height);
+        target.graphics.endFill();
+    };
+    GraphicTool.drawRectangles = function (target, rectangles, color, clearFirst, alpha) {
+        if (color === void 0) { color = 0; }
+        if (clearFirst === void 0) { clearFirst = false; }
+        if (alpha === void 0) { alpha = 1; }
+        if (clearFirst)
+            target.graphics.clear();
+        target.graphics.beginFill(color, alpha);
+        for (var i = 0; i < rectangles.length; i++) {
+            var rect = rectangles[i];
+            target.graphics.drawRect(rect.x, rect.y, rect.width, rect.height);
+        }
+        target.graphics.endFill();
+    };
+    GraphicTool.drawCircle = function (target, center, r, color, clearFirst, alpha, lineThick, lineColor, lineAlpha) {
+        if (clearFirst === void 0) { clearFirst = false; }
+        if (alpha === void 0) { alpha = 1; }
+        if (lineThick === void 0) { lineThick = 0; }
+        if (lineColor === void 0) { lineColor = 0; }
+        if (lineAlpha === void 0) { lineAlpha = 1; }
+        if (clearFirst)
+            target.graphics.clear();
+        if (lineThick)
+            target.graphics.lineStyle(lineThick, lineColor, lineAlpha);
+        target.graphics.beginFill(color, alpha);
+        target.graphics.drawCircle(center.x, center.y, r);
+        target.graphics.endFill();
+    };
+    return GraphicTool;
+}());
+__reflect(GraphicTool.prototype, "GraphicTool");
+var LongPressButton = (function (_super) {
+    __extends(LongPressButton, _super);
+    function LongPressButton(upState, downState) {
+        return _super.call(this, upState, downState) || this;
+    }
+    LongPressButton.prototype.onTouchBegin = function (event) {
+        _super.prototype.onTouchBegin.call(this, event);
+        this.longPressJustHappened = false;
+        if (this.longPressDuration)
+            this.addTimer();
+    };
+    LongPressButton.prototype.addTimer = function () {
+        if (this.longPressTimer)
+            this.removeTimer();
+        this.longPressTimer = new egret.Timer(this.longPressDuration, 1);
+        this.longPressTimer.addEventListener(egret.TimerEvent.TIMER_COMPLETE, this.onTimerComplete, this);
+        this.longPressTimer.start();
+    };
+    LongPressButton.prototype.removeTimer = function () {
+        if (!this.longPressTimer)
+            return;
+        this.longPressTimer.removeEventListener(egret.TimerEvent.TIMER_COMPLETE, this.onTimerComplete, this);
+        this.longPressTimer.stop();
+        this.longPressTimer = null;
+    };
+    LongPressButton.prototype.onTimerComplete = function (event) {
+        this.longPressJustHappened = true;
+        this.removeTimer();
+        if (this.longPressCallback)
+            this.longPressCallback();
+    };
+    LongPressButton.prototype.onTouchTap = function (event) {
+        if (this.longPressJustHappened) {
+            this.longPressJustHappened = false;
+            event.stopImmediatePropagation();
+            return;
+        }
+        if (this.longPressTimer) {
+            this.removeTimer();
+        }
+        _super.prototype.onTouchTap.call(this, event);
+    };
+    LongPressButton.prototype.longPressSetting = function (duration, callback) {
+        if (callback === void 0) { callback = null; }
+        this.longPressDuration = duration;
+        this.longPressCallback = callback;
+    };
+    return LongPressButton;
+}(TouchDownButton));
+__reflect(LongPressButton.prototype, "LongPressButton");
+var MatrixTool = (function () {
+    function MatrixTool() {
+    }
+    MatrixTool.colorMatrix = function (mainChannel, otherChannel, alphaChannel) {
+        var matrix = [];
+        matrix = matrix.concat([mainChannel, otherChannel, otherChannel, 0, 0]);
+        matrix = matrix.concat([otherChannel, mainChannel, otherChannel, 0, 0]);
+        matrix = matrix.concat([otherChannel, otherChannel, mainChannel, 0, 0]);
+        matrix = matrix.concat([0, 0, 0, alphaChannel, 0]);
+        var gcmf = new egret.ColorMatrixFilter(matrix);
+        return gcmf;
+    };
+    MatrixTool.colorMatrixPure = function (color, alpha) {
+        if (alpha === void 0) { alpha = 1; }
+        var matrix = [];
+        matrix = matrix.concat([0, 0, 0, 0, color >> 16]);
+        matrix = matrix.concat([0, 0, 0, 0, (color & 0x00FF00) >> 8]);
+        matrix = matrix.concat([0, 0, 0, 0, color & 0x0000FF]);
+        matrix = matrix.concat([0, 0, 0, alpha, 0]);
+        var gcmf = new egret.ColorMatrixFilter(matrix);
+        return gcmf;
+    };
+    MatrixTool.colorMatrixLighter = function (light) {
+        var stay = 1 - light;
+        var leghter = Math.floor(255 * light);
+        var matrix = [];
+        matrix = matrix.concat([stay, 0, 0, 0, leghter]);
+        matrix = matrix.concat([0, stay, 0, 0, leghter]);
+        matrix = matrix.concat([0, 0, stay, 0, leghter]);
+        matrix = matrix.concat([0, 0, 0, 1, 0]);
+        var gcmf = new egret.ColorMatrixFilter(matrix);
+        return gcmf;
+    };
+    return MatrixTool;
+}());
+__reflect(MatrixTool.prototype, "MatrixTool");
 var SoundManager = (function () {
     function SoundManager() {
     }
@@ -479,28 +446,6 @@ var TextLabel = (function (_super) {
     return TextLabel;
 }(egret.TextField));
 __reflect(TextLabel.prototype, "TextLabel");
-var BmpText = (function (_super) {
-    __extends(BmpText, _super);
-    function BmpText() {
-        return _super.call(this) || this;
-    }
-    Object.defineProperty(BmpText.prototype, "textColor", {
-        get: function () {
-            return this._color;
-        },
-        set: function (value) {
-            this._color = value;
-            this.filters = [MatrixTool.colorMatrixPure(value)];
-        },
-        enumerable: true,
-        configurable: true
-    });
-    BmpText.prototype.setText = function (str) {
-        this.text = str;
-    };
-    return BmpText;
-}(egret.BitmapText));
-__reflect(BmpText.prototype, "BmpText");
 var TweenerTool = (function () {
     function TweenerTool() {
     }
