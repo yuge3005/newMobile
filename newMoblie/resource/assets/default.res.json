@@ -17,7 +17,7 @@
 			"name": "generic"
 		},
 		{
-			"keys": "gameSettings_json",
+			"keys": "gameSettings_json,support_json,rate_us_json",
 			"name": "gameSettings"
 		},
 		{
@@ -145,6 +145,18 @@
 			"type": "sheet",
 			"name": "missionPopup_json",
 			"subkeys": "awesome_en,awesome_es,awesome_pt,bg_light,big_bar_bg,book,btn_close,btn_info,btn_week_collect,doctor,gift_box_big_black,gift_box_big_gray,gift_box_small,gift_box_small_body,gift_box_small_cover,icon_receive,lock,one_day_paper,one_day_reward,poins_bg"
+		},
+		{
+			"url": "assets/gameSettings/support.json",
+			"type": "sheet",
+			"name": "support_json",
+			"subkeys": "button,button_close,button_send,icon_zendesk,popup_bg_big,select_box"
+		},
+		{
+			"url": "assets/gameSettings/rate_us.json",
+			"type": "sheet",
+			"name": "rate_us_json",
+			"subkeys": "BUY COINS,M,Star,Star_b,doctor,roomCloseButton"
 		}
 	]
 }

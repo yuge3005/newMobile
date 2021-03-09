@@ -99,7 +99,7 @@ class GameSettingPopup extends GenericPo {
 		let button3: TouchDownButton = Com.addDownButtonAt( this, "gameSettings_json.support_btn", "gameSettings_json.support_btn", 700, 18, this.suport, true );
 		this.addButtonText( button3, "contact" );
 		this.addItem( 3, "support_icon", "support", button3, 5 );
-		let button4: TouchDownButton = Com.addDownButtonAt( this, "gameSettings_json.support_btn", "gameSettings_json.support_btn", 700, 18, this.suport, true );
+		let button4: TouchDownButton = Com.addDownButtonAt( this, "gameSettings_json.support_btn", "gameSettings_json.support_btn", 700, 18, this.rateStar, true );
 		this.addButtonText( button4, "rate_us" );
 		this.addItem( 4, "rate_icon", "rate_us", button4, 5 );
 		this.soundEffectBtn = new SettingsCheckbox( this.soundEffectChange.bind(this) );
@@ -146,7 +146,10 @@ class GameSettingPopup extends GenericPo {
 	}
 
 	private logout(){
-		alert( "can not logout now" );
+		localStorage.removeItem("player");
+        localStorage.removeItem("user_account_info");
+
+        window.location.href = "/";
 	}
 
 	private showLangugeBar(){
@@ -154,12 +157,16 @@ class GameSettingPopup extends GenericPo {
 	}
 
 	private gotoLoginPage(){
-		window.location.href="/";
+		this.logout();
 	}
 
 	private suport(){
-		window.location.href="/contact.php";
+		Com.addObjectAt( this, new SupportBar( new egret.Point( this.bg.width, this.bg.height ) ), this.bg.width >> 1, this.bg.height >> 1 );
 	}
+
+    private rateStar(): void {
+		Com.addObjectAt( this, new RateBar( new egret.Point( this.bg.width, this.bg.height ) ), this.bg.width >> 1, this.bg.height >> 1 );
+    }
 
 	private soundEffectChange(){
 		this.soundEffectBtn.RadioOn = SoundManager.soundEfOn = !SoundManager.soundEfOn;

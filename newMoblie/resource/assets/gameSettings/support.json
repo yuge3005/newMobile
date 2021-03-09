@@ -1,0 +1,7 @@
+{"file":"support.png","frames":{
+"icon_zendesk":{"x":889,"y":94,"w":77,"h":77,"offX":0,"offY":0,"sourceW":77,"sourceH":77},
+"popup_bg_big":{"x":0,"y":0,"w":649,"h":689,"offX":0,"offY":0,"sourceW":649,"sourceH":689},
+"select_box":{"x":945,"y":0,"w":49,"h":49,"offX":0,"offY":0,"sourceW":49,"sourceH":49},
+"button":{"x":659,"y":128,"w":220,"h":86,"offX":0,"offY":0,"sourceW":220,"sourceH":86},
+"button_close":{"x":852,"y":0,"w":83,"h":84,"offX":0,"offY":0,"sourceW":83,"sourceH":84},
+"button_send":{"x":659,"y":0,"w":183,"h":118,"offX":0,"offY":0,"sourceW":183,"sourceH":118}}}
