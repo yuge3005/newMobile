@@ -38,7 +38,7 @@ class PlayerConfig {
 	}
 
 	private static playerConfig: Object = { "user.id": requestStr( "id" ), "score.level": 2538, "score.this_level_xp": 2500, "score.next_level_xp": 3500, "score.xp": 3000,
-		"mission": {"task_is_process":"0","unlock_level":10,"task":{"387285":{"is_active":"1","type":"1","current":"1","target":"2","id":"387285"},"387286":{"is_active":"0","type":"1","current":"1","target":"6","id":"387286"},"387287":{"is_active":"0","type":"1","current":"0","target":"15","id":"387287"}},"score_info":{"score_is_process":"0"}},"mission.unlock_level":3000 };
+		"mission": {"task_is_process":"0","unlock_level":10,"task":{"387285":{"is_active":"1","type":"1","current":"1","target":"2","id":"387285"},"387286":{"is_active":"0","type":"1","current":"1","target":"6","id":"387286"},"387287":{"is_active":"0","type":"1","current":"0","target":"15","id":"387287"}},"score_info":{"score_is_process":"0"}},"mission.unlock_level":3000,"loyalty.loyalty_level":4 };
 	private static mission: Object = {};
 
 	public static player( key: string ){

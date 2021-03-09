@@ -17,7 +17,7 @@
 			"name": "generic"
 		},
 		{
-			"keys": "gameSettings_json",
+			"keys": "gameSettings_json,support_json",
 			"name": "gameSettings"
 		},
 		{
@@ -27,10 +27,6 @@
 		{
 			"keys": "missionPopup_json,missionBingo_json",
 			"name": "bingoMissionPopup"
-		},
-		{
-			"keys": "support_json",
-			"name": "support"
 		}
 	],
 	"resources": [
