@@ -52,4 +52,10 @@
 		,"coming_soon":{ "en": "COMING SOON", "es": "EN BREVE", "pt": "Em Breve" }
 		,"from_level":{ "en": "From level:", "es": "A partir del nivel:", "pt": "A partir do nível:" }
 		,"mission_updating_tip":{ "en": "Please wait. We are updating", "es": "Por favor espere. Estamos actualizando", "pt": "Por favor espere. Estamos atualizando" }
+		,"email":{"en":"e-mail","pt":"e-mail","es":"e-mail"}
+		,"give_us_support":{"en":"Give us support","pt":"Dar o apoio","es":"Dar soporte"}
+		,"FACEBOOK_WAIT_CONGRATULATIONS_TITLE":{"en":"CONGRATULATIONS!","pt":"parabéns!","es":"¡FELICIDADES!"}
+		,"support_success_text":{"en":"Your request has been sent and we will process it as soon as possible."
+			,"pt":"A entrega foi bem sucedida e vamos processá-la o mais rapidamente possível."
+			,"es":"La entrega es exitosa y la procesaremos lo antes posible."}
 }
