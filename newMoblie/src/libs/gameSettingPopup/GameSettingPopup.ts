@@ -146,7 +146,10 @@ class GameSettingPopup extends GenericPo {
 	}
 
 	private logout(){
-		alert( "can not logout now" );
+		localStorage.removeItem("player");
+        localStorage.removeItem("user_account_info");
+
+        window.location.href = "/";
 	}
 
 	private showLangugeBar(){
