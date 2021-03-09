@@ -161,7 +161,7 @@ class GameSettingPopup extends GenericPo {
 	}
 
 	private suport(){
-		window.location.href="/contact.php";
+		Com.addObjectAt( this, new SupportBar( new egret.Point( this.bg.width, this.bg.height ) ), this.bg.width >> 1, this.bg.height >> 1 );
 	}
 
 	private soundEffectChange(){

@@ -7,8 +7,11 @@ class SupportBar extends egret.Sprite{
 
 	private supportSuccessContainer: egret.DisplayObjectContainer;
 
-	public constructor() {
+	public constructor( size: egret.Point ) {
 		super();
+
+		GraphicTool.drawRect( this, new egret.Rectangle( - size.x >> 1, -size.y >> 1, size.x + 100, size.y ), 0, false, 0.0 );
+		this.touchEnabled = true;
 
 		this.langResource = "support_json";
 		Com.addBitmapAtMiddle( this, this.langResource + ".popup_bg_big", 0, 0 );
