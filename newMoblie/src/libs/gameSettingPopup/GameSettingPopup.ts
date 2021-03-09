@@ -157,7 +157,7 @@ class GameSettingPopup extends GenericPo {
 	}
 
 	private gotoLoginPage(){
-		window.location.href="/";
+		this.logout();
 	}
 
 	private suport(){
