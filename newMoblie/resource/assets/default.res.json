@@ -27,6 +27,10 @@
 		{
 			"keys": "missionPopup_json,missionBingo_json",
 			"name": "bingoMissionPopup"
+		},
+		{
+			"keys": "support_json",
+			"name": "support"
 		}
 	],
 	"resources": [
@@ -145,6 +149,12 @@
 			"type": "sheet",
 			"name": "missionPopup_json",
 			"subkeys": "awesome_en,awesome_es,awesome_pt,bg_light,big_bar_bg,book,btn_close,btn_info,btn_week_collect,doctor,gift_box_big_black,gift_box_big_gray,gift_box_small,gift_box_small_body,gift_box_small_cover,icon_receive,lock,one_day_paper,one_day_reward,poins_bg"
+		},
+		{
+			"url": "assets/gameSettings/support.json",
+			"type": "sheet",
+			"name": "support_json",
+			"subkeys": "button,button_close,button_send,icon_zendesk,popup_bg_big,select_box"
 		}
 	]
 }
