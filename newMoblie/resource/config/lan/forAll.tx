@@ -58,4 +58,5 @@
 		,"support_success_text":{"en":"Your request has been sent and we will process it as soon as possible."
 			,"pt":"A entrega foi bem sucedida e vamos processá-la o mais rapidamente possível."
 			,"es":"La entrega es exitosa y la procesaremos lo antes posible."}
+		,"send":{"en":"Send","pt":"Enviar","es":"Enviar"}
 }

@@ -21,6 +21,7 @@ class SupportBar extends egret.Sprite{
         this.buildBg();
         this.buildTitleText();
         this.buildSupportText();
+        this.buildSupportBtn();
         this.buildCloseBtn();
 	}
 
@@ -106,6 +107,21 @@ class SupportBar extends egret.Sprite{
         this.supportTextInput.textColor = 0xFFFFFF;
     }
 
+    private buildSupportBtn(){
+        // send btn container
+        let sendBtnContainer = Com.addDownButtonAt( this, this.langResource + ".button_send", this.langResource + ".button_send", 1011-623, 586-377, this.sendSupport.bind(this), true );
+
+        // support submit button text
+        let sendBtnText = Com.addTextAt(this, 31, 18, 133, 90, 48, true, false);
+        sendBtnText.fontFamily = "Arial";
+        sendBtnText.verticalAlign = "middle";
+        sendBtnText.stroke = 2;
+        sendBtnText.strokeColor = 0x054B05;
+        sendBtnText.text = MuLang.getText("send");
+
+        sendBtnContainer.addChild( sendBtnText );
+    }
+
     private buildCloseBtn(){
         this.closeBtn = Com.addDownButtonAt( this, this.langResource + ".button_close", this.langResource + ".button_close", this.bg.width >> 1, -this.bg.height >> 1, this.closeThisBar.bind(this), true );
         this.closeBtn.x -= this.closeBtn.width >> 1;
@@ -153,7 +169,7 @@ class SupportBar extends egret.Sprite{
 
     private buildSupportSuccessContainer(){
         this.supportSuccessContainer = new egret.DisplayObjectContainer();
-        Com.addObjectAt(this, this.supportSuccessContainer, 0, 0);
+        Com.addObjectAt(this, this.supportSuccessContainer, -623, -377 );
 
         // support success bg
         let successBg = Com.addBitmapAt(this.supportSuccessContainer, this.langResource + ".popup_bg_big", 0, 0);
