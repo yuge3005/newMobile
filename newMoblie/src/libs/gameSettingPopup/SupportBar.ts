@@ -55,7 +55,7 @@ class SupportBar extends egret.Sprite{
 
         // email text
         let emailText = Com.addTextAt(topTextContainer, 800, 0, 170, 83, 48, false, false);
-        emailText.fontFamily = "Arial";
+        emailText.fontFamily = "TCM_conden";
         emailText.textAlign = "right";
         emailText.verticalAlign = "middle";
         emailText.textColor = 0xB0881B;
@@ -68,7 +68,7 @@ class SupportBar extends egret.Sprite{
         this.topTextInput.size = 48;
         // this.topTextInput.textAlign = "left";
         this.topTextInput.verticalAlign = "middle";
-        this.topTextInput.fontFamily = "Arial"
+        this.topTextInput.fontFamily = "TCM_conden"
         this.topTextInput.bold = true;
         this.topTextInput.textColor = 0xFFFFFF;
         this.topTextInput.text = this.email;
@@ -80,7 +80,7 @@ class SupportBar extends egret.Sprite{
     private buildSupportText(){
         // support text
         let supportText = Com.addTextAt(this, 84-623, 205-377, 313, 53, 42, false, false);
-        supportText.fontFamily = "Arial";
+        supportText.fontFamily = "TCM_conden";
         supportText.textAlign = "left";
         supportText.verticalAlign = "middle";
         supportText.textColor = 0xB0881B;
@@ -98,7 +98,7 @@ class SupportBar extends egret.Sprite{
         supportTextBg.height = 445;
         // support text input
         this.supportTextInput = Com.addTextAt(supportTextContainer, 20, 20, 1044, 405, 36, false, false);
-        this.supportTextInput.fontFamily = "Arial";
+        this.supportTextInput.fontFamily = "TCM_conden";
         this.supportTextInput.textAlign = "left";
         this.supportTextInput.bold = true;
         this.supportTextInput.multiline = true;
@@ -113,7 +113,7 @@ class SupportBar extends egret.Sprite{
 
         // support submit button text
         let sendBtnText = Com.addTextAt(this, 31, 18, 133, 90, 48, true, false);
-        sendBtnText.fontFamily = "Arial";
+        sendBtnText.fontFamily = "TCM_conden";
         sendBtnText.verticalAlign = "middle";
         sendBtnText.stroke = 2;
         sendBtnText.strokeColor = 0x054B05;

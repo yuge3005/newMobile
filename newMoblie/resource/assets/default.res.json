@@ -17,7 +17,7 @@
 			"name": "generic"
 		},
 		{
-			"keys": "gameSettings_json,support_json",
+			"keys": "gameSettings_json,support_json,rate_us_json",
 			"name": "gameSettings"
 		},
 		{
@@ -151,6 +151,12 @@
 			"type": "sheet",
 			"name": "support_json",
 			"subkeys": "button,button_close,button_send,icon_zendesk,popup_bg_big,select_box"
+		},
+		{
+			"url": "assets/gameSettings/rate_us.json",
+			"type": "sheet",
+			"name": "rate_us_json",
+			"subkeys": "BUY COINS,M,Star,Star_b,doctor,roomCloseButton"
 		}
 	]
 }

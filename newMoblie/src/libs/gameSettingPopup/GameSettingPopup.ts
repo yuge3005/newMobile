@@ -165,8 +165,7 @@ class GameSettingPopup extends GenericPo {
 	}
 
     private rateStar(): void {
-        window.open("https://itunes.apple.com/app/doctor-bingo-free-bingo-slots/id1152226735");
-        // window.open("https://play.google.com/store/apps/details?id=com.gamesmartltd.doctorbingo");
+		Com.addObjectAt( this, new RateBar( new egret.Point( this.bg.width, this.bg.height ) ), this.bg.width >> 1, this.bg.height >> 1 );
     }
 
 	private soundEffectChange(){
