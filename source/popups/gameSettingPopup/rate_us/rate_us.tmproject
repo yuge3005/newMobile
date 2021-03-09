@@ -1,0 +1,19 @@
+{
+    "options": {
+        "extend": 0,
+        "layoutMath": "0",
+        "sizeMode": "free",
+        "useExtension": 0,
+        "layoutGap": 1
+    },
+    "files": [
+        "./../../../../../../C:/Users/ASUS/Desktop/素材/GameUI/PopupRateUs/Star_b.png",
+        "./../../../../../../C:/Users/ASUS/Desktop/素材/GameUI/PopupRateUs/Star.png",
+        "./../../../../../../C:/Users/ASUS/Desktop/素材/GameUI/PopupRateUs/roomCloseButton.png",
+        "./../../../../../../C:/Users/ASUS/Desktop/素材/GameUI/PopupRateUs/M.png",
+        "./../../../../../../C:/Users/ASUS/Desktop/素材/GameUI/PopupRateUs/doctor.png",
+        "./../../../../../../C:/Users/ASUS/Desktop/素材/GameUI/PopupRateUs/BUY COINS.png"
+    ],
+    "projectName": "rate_us",
+    "version": 5
+}
