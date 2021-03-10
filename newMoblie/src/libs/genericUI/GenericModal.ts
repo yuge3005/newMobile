@@ -1,5 +1,6 @@
 class GenericModal extends egret.Sprite {
 	public enableKeyboard: boolean = false;
+	public needZoomOut: boolean;
 
 	protected static get classAssetName(){
 		return "";//subclass must override

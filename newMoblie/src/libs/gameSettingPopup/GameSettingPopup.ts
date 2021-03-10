@@ -82,24 +82,24 @@ class GameSettingPopup extends GenericPo {
 	}
 
 	private addItems(){
-		let button0: TouchDownButton = Com.addDownButtonAt( this, "gameSettings_json.support_btn", "gameSettings_json.support_btn", 700, 18, this.logout, true );
+		let button0: TouchDownButton = Com.addDownButtonAt( this, "gameSettings_json.support_btn", "gameSettings_json.support_btn", 700, 18, this.logout.bind(this), true );
 		this.addButtonText( button0, "logout" );
 		let playType: string = this.getPlayerType();
 		this.addItem( 0, "avatar", MuLang.getText( playType, MuLang.CASE_UPPER ) + ":   " + PlayerConfig.player( playType == "user_id" ? "user.id" : playType ), button0 );
-		let button1: TouchDownButton = Com.addDownButtonAt( this, "gameSettings_json.support_btn", "gameSettings_json.support_btn", 700, 18, this.showLangugeBar, true );
+		let button1: TouchDownButton = Com.addDownButtonAt( this, "gameSettings_json.support_btn", "gameSettings_json.support_btn", 700, 18, this.showLangugeBar.bind(this), true );
 		Com.addBitmapAtMiddle( button1, "gameSettings_json.flag_" + MuLang.language, button1.width >> 1, button1.height >> 1 );
 		Com.addBitmapAtMiddle( button1, "gameSettings_json.btn_arrow", button1.width - 45, button1.height >> 1 );
 		this.addItem( 1, "language_icon", "language", button1, 5 );
 		let bt2Container: egret.DisplayObjectContainer = new egret.DisplayObjectContainer;
-		let button2_1: TouchDownButton = Com.addDownButtonAt( bt2Container, "gameSettings_json.gl_bt_settings", "gameSettings_json.gl_bt_settings", 380, 18, this.gotoLoginPage, true );
-		let button2_2: TouchDownButton = Com.addDownButtonAt( bt2Container, "gameSettings_json.fb_bt_settings", "gameSettings_json.fb_bt_settings", 700, 18, this.gotoLoginPage, true );
+		let button2_1: TouchDownButton = Com.addDownButtonAt( bt2Container, "gameSettings_json.gl_bt_settings", "gameSettings_json.gl_bt_settings", 380, 18, this.gotoLoginPage.bind(this), true );
+		let button2_2: TouchDownButton = Com.addDownButtonAt( bt2Container, "gameSettings_json.fb_bt_settings", "gameSettings_json.fb_bt_settings", 700, 18, this.gotoLoginPage.bind(this), true );
 		this.addLoginButtonText( button2_1, "login" );
 		this.addLoginButtonText( button2_2, "login" );
 		this.addItem( 2, "icon_connect", "link", bt2Container );
-		let button3: TouchDownButton = Com.addDownButtonAt( this, "gameSettings_json.support_btn", "gameSettings_json.support_btn", 700, 18, this.suport, true );
+		let button3: TouchDownButton = Com.addDownButtonAt( this, "gameSettings_json.support_btn", "gameSettings_json.support_btn", 700, 18, this.suport.bind(this), true );
 		this.addButtonText( button3, "contact" );
 		this.addItem( 3, "support_icon", "support", button3, 5 );
-		let button4: TouchDownButton = Com.addDownButtonAt( this, "gameSettings_json.support_btn", "gameSettings_json.support_btn", 700, 18, this.rateStar, true );
+		let button4: TouchDownButton = Com.addDownButtonAt( this, "gameSettings_json.support_btn", "gameSettings_json.support_btn", 700, 18, this.rateStar.bind(this), true );
 		this.addButtonText( button4, "rate_us" );
 		this.addItem( 4, "rate_icon", "rate_us", button4, 5 );
 		this.soundEffectBtn = new SettingsCheckbox( this.soundEffectChange.bind(this) );
