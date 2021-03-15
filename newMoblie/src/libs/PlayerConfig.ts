@@ -72,7 +72,7 @@ class PlayerConfig {
 		if( properties.indexOf( "login_type=custom" ) >= 0 || properties.indexOf( "login_type=guest" ) >= 0 ){
 			properties += "&uid=" + PlayerConfig.player( "user.id" );
 		}
-		properties.replace( "login_type", "network" );
+		properties = properties.replace( "login_type", "network" );
 		return properties;
 	}
 }
