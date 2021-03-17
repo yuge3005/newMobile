@@ -6,6 +6,8 @@ class GenericPo extends GenericModal{
 	protected closeButton: TouchDownButton;
 	protected closeButtonOffset: egret.Point;
 
+	public cannotQuick: boolean;
+
 	public constructor(configUrl: string = null ) {
 		super( configUrl );
 	}

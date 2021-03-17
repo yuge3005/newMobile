@@ -20,6 +20,7 @@ class RateBar extends egret.Sprite{
 
 		let title: TextLabel = MDS.addGameText( this, -370, -260, 48, 0x222222, "rate_us_now", false, 740, "", 1 );
 		title.textAlign = "center";
+		title.text = title.text.toUpperCase();
 
 		let tip: TextLabel = MDS.addGameText( this, -370, -180, 35, 0x555555, "how_to_rate", false, 740, "", 1 );
 		tip.textAlign = "center";
