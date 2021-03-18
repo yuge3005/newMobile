@@ -53,13 +53,6 @@ class SupportBar extends egret.Sprite{
         topTextBg.width = 980;
         topTextBg.height = 83;
 
-        // email text
-        let emailText = Com.addTextAt(topTextContainer, 800, 0, 170, 83, 48, false, false);
-        emailText.fontFamily = "TCM_conden";
-        emailText.textAlign = "right";
-        emailText.verticalAlign = "middle";
-        emailText.textColor = 0xB0881B;
-        emailText.text = MuLang.getText("email", MuLang.CASE_UPPER);
         // top text input
         this.topTextInput = new eui.EditableText();
         Com.addObjectAt( topTextContainer, this.topTextInput, 20, 0 );
@@ -72,6 +65,7 @@ class SupportBar extends egret.Sprite{
         this.topTextInput.bold = true;
         this.topTextInput.textColor = 0xFFFFFF;
         this.topTextInput.text = this.email;
+        this.topTextInput.prompt = MuLang.getText("email", MuLang.CASE_UPPER);
 
         // talk icon
         Com.addBitmapAt(this, this.langResource + ".icon_zendesk", 90-623, 118-377);
