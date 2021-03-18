@@ -48,6 +48,8 @@
 		,"support":{ "en": "SUPPORT", "es": "Atención al Cliente", "pt": "CONTATO COM O SUPORTE" }
 		,"e_support":{ "en": "Support", "es": "Soporte", "pt": "Suporte" }
 		,"message":{ "en": "Message", "es": "Mensaje", "pt": "Mensagem" }
+		,"oops":{ "en": "Oops!", "es": "¡Ups!", "pt": "Ups!" }
+		,"enter_correct_info":{ "en": "Please enter the correct informotion", "es": "Por favor ingrese la información correcta", "pt": "Por favor insira a informação correta" }
 		,"sound_effect_on":{ "en": "SOUND EFFECTS", "es": "EFECTOS DE SONIDO", "pt": "EFEITOS DE SONS" }
 		,"music_on":{ "en": "MUSIC", "es": "MÚSICA", "pt": "MÚSICA" }
 		,"effect_on":{ "en": "VISUAL EFFECTS", "es": "EFECTOS VISUALES", "pt": "EFEITOS VISUAIS" }

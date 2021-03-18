@@ -8,6 +8,7 @@ class SupportBar extends egret.Sprite{
     private closeBtn: TouchDownButton;
 
 	private supportSuccessContainer: egret.DisplayObjectContainer;
+    private alertBar: egret.DisplayObjectContainer;
 
 	public constructor( size: egret.Point ) {
 		super();
@@ -122,7 +123,40 @@ class SupportBar extends egret.Sprite{
         this.closeBtn.y -= this.closeBtn.height >> 1;
     }
 
+    private buildAlertBar(): egret.Sprite{
+        let alertBar: egret.Sprite = new egret.Sprite;
+        Com.addObjectAt( this, alertBar, 0, 0 );
+        GraphicTool.drawRect( alertBar, new egret.Rectangle( -1000, -500, 2000, 1000 ), 0, false, 0.0 );
+        alertBar.touchEnabled = true;
+        let barBg: egret.Bitmap = Com.addBitmapAt( alertBar, "gameSettings_json.bg_popup", -700, -300 );
+        barBg.scale9Grid = new egret.Rectangle( 60, 60, 911, 706 );
+        barBg.width = 1120;
+        barBg.height = 515;
+        let title: TextLabel = Com.addLabelAt( alertBar, -600, -220, 920, 76, 76 );
+        title.text = MuLang.getText( "oops" );
+        let tip: TextLabel = Com.addLabelAt( alertBar, -600, -60, 920, 48, 48 );
+        tip.setText( MuLang.getText( "enter_correct_info" ) );
+        let dr: egret.Bitmap = Com.addBitmapAt( alertBar, "gameSettings_json.dr", 300, -380 );
+        dr.scaleX = dr.scaleY = 1.1;
+        let btn: TouchDownButton = Com.addDownButtonAt( alertBar, "gameSettings_json.OK", "gameSettings_json.OK", -325, 50, this.closeAlertBar.bind(this), true );
+        let btTx: egret.TextField = Com.addTextAt( alertBar, 0, 0, 20, 72, 72 );
+        btTx.text = "OK";
+        btn.setButtonText( btTx );
+        return alertBar;
+    }
+
+    private closeAlertBar( event: egret.Event ){
+        this.alertBar.visible = false;
+    }
+
 	private sendSupport(): void {
+        let exp: RegExp = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+        if( !exp.test( this.topTextInput.text ) ){
+            if( !this.alertBar ) this.alertBar = this.buildAlertBar();
+            this.alertBar.visible = true;
+            return;
+        }
+
         this.email = this.topTextInput.text;
         let value = this.supportTextInput.text;
 
