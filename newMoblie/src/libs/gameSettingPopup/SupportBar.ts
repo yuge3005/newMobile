@@ -42,7 +42,7 @@ class SupportBar extends egret.Sprite{
         topTitle.stroke = 4;
         topTitle.textColor = 0xD0C39D;
         topTitle.strokeColor = 0xC9A947;
-        topTitle.text = MuLang.getText("support");
+        topTitle.text = MuLang.getText("e_support", MuLang.CASE_UPPER);
 
         // top text input
         let topTextContainer = new egret.DisplayObjectContainer();
@@ -84,7 +84,7 @@ class SupportBar extends egret.Sprite{
         supportText.textAlign = "left";
         supportText.verticalAlign = "middle";
         supportText.textColor = 0xB0881B;
-        supportText.text = MuLang.getText("give_us_support");
+        supportText.text = MuLang.getText("message", MuLang.CASE_UPPER);
 
         // support text input
         let supportTextContainer = new egret.DisplayObjectContainer();
