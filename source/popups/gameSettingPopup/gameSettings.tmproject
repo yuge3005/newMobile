@@ -1,23 +1,5 @@
 {
-    "options": {
-        "layoutMath": "0",
-        "sizeMode": "free",
-        "useExtension": 0,
-        "layoutGap": 1,
-        "extend": 0
-    },
-    "projectName": "gameSettings",
     "files": [
-        "./flag_pt.png",
-        "./flag_es.png",
-        "./flag_en.png",
-        "./fb_bt_settings.png",
-        "./btn_arrow.png",
-        "./bg_slider_on.png",
-        "./bg_slider_off.png",
-        "./bg_popup.png",
-        "./bg.png",
-        "./avatar.png",
         "./X_btn.png",
         "./visual_fx_icon.png",
         "./tab_bg.png",
@@ -33,7 +15,26 @@
         "./language_icon.png",
         "./icon_notification.png",
         "./icon_connect.png",
-        "./gl_bt_settings.png"
+        "./gl_bt_settings.png",
+        "./flag_pt.png",
+        "./flag_es.png",
+        "./flag_en.png",
+        "./fb_bt_settings.png",
+        "./dr.png",
+        "./btn_arrow.png",
+        "./bg_slider_on.png",
+        "./bg_slider_off.png",
+        "./bg_popup.png",
+        "./bg.png",
+        "./avatar.png"
     ],
-    "version": 5
+    "projectName": "gameSettings",
+    "version": 5,
+    "options": {
+        "extend": 0,
+        "layoutMath": "0",
+        "sizeMode": "free",
+        "useExtension": 0,
+        "layoutGap": 1
+    }
 }
