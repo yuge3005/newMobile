@@ -87,6 +87,7 @@ class GameSettingPopup extends GenericPo {
 		let playType: string = this.getPlayerType();
 		let itemIndex: number = 0;
 		this.addItem( itemIndex++, "avatar", MuLang.getText( playType, MuLang.CASE_UPPER ) + ":   " + PlayerConfig.player( playType == "user_id" ? "user.id" : playType ), button0 );
+		if( playType == "facebook_id" ) this.getFacebookAvatar();
 		let button1: TouchDownButton = Com.addDownButtonAt( this, "gameSettings_json.support_btn", "gameSettings_json.support_btn", 700, 18, this.showLangugeBar.bind(this), true );
 		Com.addBitmapAtMiddle( button1, "gameSettings_json.flag_" + MuLang.language, button1.width >> 1, button1.height >> 1 );
 		Com.addBitmapAtMiddle( button1, "gameSettings_json.btn_arrow", button1.width - 45, button1.height >> 1 );
@@ -117,6 +118,12 @@ class GameSettingPopup extends GenericPo {
 		this.notificationBtn = new SettingsCheckbox( this.notificationChange.bind(this) );
 		this.notificationBtn.RadioOn = GameSettings.notificationOn;
 		this.addItem( itemIndex++, "icon_notification", MuLang.getText( "notification" ), this.notificationBtn, 5 );
+	}
+
+	private getFacebookAvatar(){
+		let a: GameSettingItem = this.scrollBar.getChildAt(0) as GameSettingItem;
+		let bit: egret.Bitmap = a.getChildAt(1) as egret.Bitmap;
+		FacebookBitmap.downloadBitmapDataByFacebookID( PlayerConfig.player("facebook.id"), 100, 100, MDS.onUserHeadLoaded.bind( this, bit, 100 ), this);
 	}
 
 	private getPlayerType(): string{
