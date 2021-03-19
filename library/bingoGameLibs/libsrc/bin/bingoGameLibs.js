@@ -2418,77 +2418,198 @@ var PaytableUI = (function (_super) {
     return PaytableUI;
 }(egret.Sprite));
 __reflect(PaytableUI.prototype, "PaytableUI");
-var GanhoCounter = (function () {
-    function GanhoCounter(winCallback) {
-        if (winCallback === void 0) { winCallback = null; }
-        this.ganhoArray = [];
-        this.winCallback = winCallback;
+var SupportBar = (function (_super) {
+    __extends(SupportBar, _super);
+    function SupportBar(size) {
+        var _this = _super.call(this) || this;
+        GraphicTool.drawRect(_this, new egret.Rectangle(-size.x >> 1, -size.y >> 1, size.x + 100, size.y), 0, false, 0.0);
+        _this.touchEnabled = true;
+        _this.langResource = "support_json";
+        _this.email = PlayerConfig.player("facebook.email") || PlayerConfig.player("user_info.email") || "";
+        _this.buildBg();
+        _this.buildTitleText();
+        _this.buildSupportText();
+        _this.buildSupportBtn();
+        _this.buildCloseBtn();
+        return _this;
     }
-    GanhoCounter.prototype.clearGanhoData = function () {
-        this.ganhoArray = [];
+    SupportBar.prototype.buildBg = function () {
+        this.bg = Com.addBitmapAt(this, this.langResource + ".popup_bg_big", -623, -377);
+        this.bg.scale9Grid = new egret.Rectangle(40, 40, 569, 609);
+        this.bg.width = 1247;
+        this.bg.height = 755;
     };
-    GanhoCounter.prototype.countGanhoAndPlayAnimation = function (resultList) {
-        var fitItemOnCard = this.getFitItemOnCard(resultList);
-        var ganhoArray = this.getGanhoArray(resultList, fitItemOnCard);
-        this.showWinAnimationOnAllCards(ganhoArray);
+    SupportBar.prototype.buildTitleText = function () {
+        // top title
+        var topTitle = Com.addTextAt(this, 85 - 623, 28 - 377, 432, 88, 64, true, false);
+        topTitle.fontFamily = "TCM_conden";
+        topTitle.textAlign = "left";
+        topTitle.verticalAlign = "middle";
+        topTitle.bold = true;
+        topTitle.stroke = 4;
+        topTitle.textColor = 0xD0C39D;
+        topTitle.strokeColor = 0xC9A947;
+        topTitle.text = MuLang.getText("e_support", MuLang.CASE_UPPER);
+        // top text input
+        var topTextContainer = new egret.DisplayObjectContainer();
+        Com.addObjectAt(this, topTextContainer, 185 - 623, 115 - 377);
+        // top text bg
+        var topTextBg = Com.addBitmapAt(topTextContainer, this.langResource + ".select_box", 0, 0);
+        topTextBg.scale9Grid = new egret.Rectangle(11, 11, 27, 27);
+        topTextBg.width = 980;
+        topTextBg.height = 83;
+        // top text input
+        this.topTextInput = new eui.EditableText();
+        Com.addObjectAt(topTextContainer, this.topTextInput, 20, 0);
+        this.topTextInput.width = 940;
+        this.topTextInput.height = 83;
+        this.topTextInput.size = 48;
+        // this.topTextInput.textAlign = "left";
+        this.topTextInput.verticalAlign = "middle";
+        this.topTextInput.fontFamily = "TCM_conden";
+        this.topTextInput.bold = true;
+        this.topTextInput.textColor = 0xFFFFFF;
+        this.topTextInput.text = this.email;
+        this.topTextInput.prompt = MuLang.getText("email", MuLang.CASE_UPPER);
+        // talk icon
+        Com.addBitmapAt(this, this.langResource + ".icon_zendesk", 90 - 623, 118 - 377);
     };
-    GanhoCounter.prototype.showWinAnimationOnAllCards = function (ganhoArray) {
-        for (var i = 0; i < ganhoArray.length; i++) {
-            if (ganhoArray[i]) {
-                if (!this.ganhoArray[i] || ganhoArray[i] > this.ganhoArray[i]) {
-                    this.ganhoArray[i] = ganhoArray[i];
-                    if (this.winCallback)
-                        this.winCallback(i, ganhoArray[i]);
+    SupportBar.prototype.buildSupportText = function () {
+        // support text
+        var supportText = Com.addTextAt(this, 84 - 623, 205 - 377, 313, 53, 42, false, false);
+        supportText.fontFamily = "TCM_conden";
+        supportText.textAlign = "left";
+        supportText.verticalAlign = "middle";
+        supportText.textColor = 0xB0881B;
+        supportText.text = MuLang.getText("message", MuLang.CASE_UPPER);
+        // support text input
+        var supportTextContainer = new egret.DisplayObjectContainer();
+        supportTextContainer.width = 1084;
+        supportTextContainer.height = 445;
+        Com.addObjectAt(this, supportTextContainer, 83 - 623, 258 - 377);
+        // support text bg
+        var supportTextBg = Com.addBitmapAt(supportTextContainer, this.langResource + ".select_box", 0, 0);
+        supportTextBg.scale9Grid = new egret.Rectangle(11, 11, 27, 27);
+        supportTextBg.width = 1084;
+        supportTextBg.height = 445;
+        // support text input
+        this.supportTextInput = Com.addTextAt(supportTextContainer, 20, 20, 1044, 405, 36, false, false);
+        this.supportTextInput.fontFamily = "TCM_conden";
+        this.supportTextInput.textAlign = "left";
+        this.supportTextInput.bold = true;
+        this.supportTextInput.multiline = true;
+        this.supportTextInput.wordWrap = true;
+        this.supportTextInput.type = egret.TextFieldType.INPUT;
+        this.supportTextInput.textColor = 0xFFFFFF;
+    };
+    SupportBar.prototype.buildSupportBtn = function () {
+        // send btn container
+        var sendBtnContainer = Com.addDownButtonAt(this, this.langResource + ".button_send", this.langResource + ".button_send", 1011 - 623, 586 - 377, this.sendSupport.bind(this), true);
+        // support submit button text
+        var sendBtnText = Com.addTextAt(this, 31, 18, 133, 90, 48, true, false);
+        sendBtnText.fontFamily = "TCM_conden";
+        sendBtnText.verticalAlign = "middle";
+        sendBtnText.stroke = 2;
+        sendBtnText.strokeColor = 0x054B05;
+        sendBtnText.text = MuLang.getText("send");
+        sendBtnContainer.addChild(sendBtnText);
+    };
+    SupportBar.prototype.buildCloseBtn = function () {
+        this.closeBtn = Com.addDownButtonAt(this, this.langResource + ".button_close", this.langResource + ".button_close", this.bg.width >> 1, -this.bg.height >> 1, this.closeThisBar.bind(this), true);
+        this.closeBtn.x -= this.closeBtn.width >> 1;
+        this.closeBtn.y -= this.closeBtn.height >> 1;
+    };
+    SupportBar.prototype.buildAlertBar = function () {
+        var alertBar = new egret.Sprite;
+        Com.addObjectAt(this, alertBar, 0, 0);
+        GraphicTool.drawRect(alertBar, new egret.Rectangle(-1000, -500, 2000, 1000), 0, false, 0.0);
+        alertBar.touchEnabled = true;
+        var barBg = Com.addBitmapAt(alertBar, "gameSettings_json.bg_popup", -700, -300);
+        barBg.scale9Grid = new egret.Rectangle(60, 60, 911, 706);
+        barBg.width = 1120;
+        barBg.height = 515;
+        var title = Com.addLabelAt(alertBar, -600, -220, 920, 76, 76);
+        title.text = MuLang.getText("oops");
+        var tip = Com.addLabelAt(alertBar, -600, -60, 920, 48, 48);
+        tip.setText(MuLang.getText("enter_correct_info"));
+        var dr = Com.addBitmapAt(alertBar, "gameSettings_json.dr", 300, -380);
+        dr.scaleX = dr.scaleY = 1.1;
+        var btn = Com.addDownButtonAt(alertBar, "gameSettings_json.OK", "gameSettings_json.OK", -325, 50, this.closeAlertBar.bind(this), true);
+        var btTx = Com.addTextAt(alertBar, 0, 0, 20, 72, 72);
+        btTx.text = "OK";
+        btn.setButtonText(btTx);
+        return alertBar;
+    };
+    SupportBar.prototype.closeAlertBar = function (event) {
+        this.alertBar.visible = false;
+    };
+    SupportBar.prototype.sendSupport = function () {
+        var exp = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+        if (!exp.test(this.topTextInput.text)) {
+            if (!this.alertBar)
+                this.alertBar = this.buildAlertBar();
+            this.alertBar.visible = true;
+            return;
+        }
+        this.email = this.topTextInput.text;
+        var value = this.supportTextInput.text;
+        if (value !== "" && this.email !== "") {
+            var XHR = eval("window.XMLHttpRequest") ? new XMLHttpRequest() : eval("new ActiveXObject('Microsoft.XMLHTTP')");
+            XHR.open("post", "https://gamesmartltd.zendesk.com/api/v2/tickets.json", true);
+            XHR.setRequestHeader("Accept", "application/json");
+            XHR.setRequestHeader("Content-Type", "application/json");
+            XHR.setRequestHeader("Authorization", "Basic YW55QGRvdXRvcmJpbmdvLmNvbTpCaW5nbzQ1NiE=");
+            XHR.send(JSON.stringify({
+                "ticket": {
+                    "subject": value.length > 40 ? value.substring(0, 40) : value,
+                    "comment": {
+                        "body": value
+                    },
+                    "requester": {
+                        "name": PlayerConfig.player("facebook.name"),
+                        "email": this.email
+                    },
+                    tags: [
+                        "canvas",
+                        "userid_" + PlayerConfig.player("user.id"),
+                        "level_" + PlayerConfig.player("score.level"),
+                        "loyalty_level_" + PlayerConfig.player("loyalty.loyalty_level")
+                    ]
                 }
-            }
+            }));
+            egret.setTimeout(function () {
+                this.buildSupportSuccessContainer();
+            }, this, 2000);
         }
     };
-    GanhoCounter.prototype.getFitItemOnCard = function (resultList) {
-        var fitItemOnCard = [];
-        for (var i = 0; i < resultList.length; i++) {
-            fitItemOnCard[i] = [];
-            for (var ob in PayTableManager.payTablesDictionary) {
-                var result = resultList[i][ob];
-                if (result.fit || result.fits) {
-                    fitItemOnCard[i].push({ paytalbe: ob, fit: result.fit, fits: result.fits });
-                }
-            }
-        }
-        if (PaytableFilter.filterObject) {
-            for (var i = 0; i < fitItemOnCard.length; i++)
-                PaytableFilter.paytableConfixFilter(fitItemOnCard[i], true);
-        }
-        return fitItemOnCard;
+    SupportBar.prototype.closeThisBar = function () {
+        if (this.parent)
+            this.parent.removeChild(this);
     };
-    GanhoCounter.prototype.getGanhoArray = function (resultList, fitItemOnCard) {
-        var ganhoArray = [];
-        for (var i = 0; i < resultList.length; i++) {
-            ganhoArray[i] = 0;
-            for (var ob in PayTableManager.payTablesDictionary) {
-                var result = resultList[i][ob];
-                if (result.fit || result.fits) {
-                    var inFitItem = false;
-                    for (var k = 0; k < fitItemOnCard[i].length; k++) {
-                        if (fitItemOnCard[i][k]["paytalbe"] == ob) {
-                            inFitItem = true;
-                            break;
-                        }
-                    }
-                    if (!inFitItem)
-                        continue;
-                    this.countGanho(ganhoArray, i, ob, result);
-                }
-            }
-        }
-        return ganhoArray;
+    SupportBar.prototype.buildSupportSuccessContainer = function () {
+        this.supportSuccessContainer = new egret.DisplayObjectContainer();
+        Com.addObjectAt(this, this.supportSuccessContainer, -623, -377);
+        // support success bg
+        var successBg = Com.addBitmapAt(this.supportSuccessContainer, this.langResource + ".popup_bg_big", 0, 0);
+        successBg.scale9Grid = new egret.Rectangle(40, 40, 569, 609);
+        successBg.width = 1247;
+        successBg.height = 755;
+        // support success title
+        var supportSuccessTitle = Com.addTextAt(this.supportSuccessContainer, 208, 124, 830, 127, 64, false, false);
+        supportSuccessTitle.fontFamily = "TCM_conden";
+        supportSuccessTitle.textColor = 0xFFFFFF;
+        supportSuccessTitle.verticalAlign = "middle";
+        supportSuccessTitle.text = Utils.toFirstUpperCase(MuLang.getText("FACEBOOK_WAIT_CONGRATULATIONS_TITLE"));
+        // support success text
+        var supportSuccessText = Com.addTextAt(this.supportSuccessContainer, 84, 294, 1079, 262, 48, false, false);
+        supportSuccessText.fontFamily = "TCM_conden";
+        supportSuccessText.textColor = 0xFFFFFF;
+        supportSuccessText.text = MuLang.getText("support_success_text");
+        this.addChild(this.closeBtn);
     };
-    GanhoCounter.prototype.countGanho = function (ganhoArray, i, ob, result) {
-        var winTimesTxt = PayTableManager.payTablesDictionary[ob].ui["tx"].text;
-        ganhoArray[i] += parseFloat(winTimesTxt.replace(/\D/, ""));
-    };
-    return GanhoCounter;
-}());
-__reflect(GanhoCounter.prototype, "GanhoCounter");
+    return SupportBar;
+}(egret.Sprite));
+__reflect(SupportBar.prototype, "SupportBar");
 var BallManager = (function (_super) {
     __extends(BallManager, _super);
     function BallManager() {
@@ -3520,6 +3641,40 @@ var GameCardUISettings = (function () {
     return GameCardUISettings;
 }());
 __reflect(GameCardUISettings.prototype, "GameCardUISettings");
+var ConFirmBar = (function (_super) {
+    __extends(ConFirmBar, _super);
+    function ConFirmBar(size) {
+        var _this = _super.call(this) || this;
+        GraphicTool.drawRect(_this, new egret.Rectangle(-size.x >> 1, -size.y >> 1, size.x + 100, size.y), 0, false, 0.0);
+        _this.touchEnabled = true;
+        var barBg = Com.addBitmapAt(_this, "gameSettings_json.bg_popup", -610, -320);
+        barBg.scale9Grid = new egret.Rectangle(60, 60, 911, 706);
+        barBg.width = 1110;
+        barBg.height = 535;
+        var title = Com.addLabelAt(_this, 100 - 610, 75 - 320, 910, 76, 76);
+        title.text = MuLang.getText("change_language");
+        var tip = Com.addLabelAt(_this, 100 - 610, 200 - 320, 910, 100, 48);
+        tip.setText(MuLang.getText("change_language_tip"));
+        var btn1 = Com.addDownButtonAt(_this, "gameSettings_json.OK", "gameSettings_json.OK", 125 - 610, 370 - 320, _this.closeThisBar.bind(_this), true);
+        var btTx1 = Com.addTextAt(_this, 0, 0, 20, 72, 72);
+        btTx1.text = MuLang.getText("cancel");
+        btn1.setButtonText(btTx1);
+        var btn2 = Com.addDownButtonAt(_this, "gameSettings_json.OK", "gameSettings_json.OK", 5, 370 - 320, _this.confirmChange.bind(_this), true);
+        var btTx2 = Com.addTextAt(_this, 0, 0, 20, 72, 72);
+        btTx2.text = MuLang.getText("confirm");
+        btn2.setButtonText(btTx2);
+        return _this;
+    }
+    ConFirmBar.prototype.closeThisBar = function () {
+        if (this.parent)
+            this.parent.removeChild(this);
+    };
+    ConFirmBar.prototype.confirmChange = function (event) {
+        LanguageBar.confirmChange();
+    };
+    return ConFirmBar;
+}(egret.Sprite));
+__reflect(ConFirmBar.prototype, "ConFirmBar");
 var GameSettingItem = (function (_super) {
     __extends(GameSettingItem, _super);
     function GameSettingItem(icon, text, entity, offsetY) {
@@ -3610,38 +3765,48 @@ var GameSettingPopup = (function (_super) {
             tx.setText(MuLang.getText(buttonText, MuLang.CASE_UPPER));
     };
     GameSettingPopup.prototype.addItems = function () {
-        var button0 = Com.addDownButtonAt(this, "gameSettings_json.support_btn", "gameSettings_json.support_btn", 700, 18, this.logout, true);
+        var button0 = Com.addDownButtonAt(this, "gameSettings_json.support_btn", "gameSettings_json.support_btn", 700, 18, this.logout.bind(this), true);
         this.addButtonText(button0, "logout");
         var playType = this.getPlayerType();
-        this.addItem(0, "avatar", MuLang.getText(playType, MuLang.CASE_UPPER) + ":   " + PlayerConfig.player(playType == "user_id" ? "user.id" : playType), button0);
-        var button1 = Com.addDownButtonAt(this, "gameSettings_json.support_btn", "gameSettings_json.support_btn", 700, 18, this.showLangugeBar, true);
+        var itemIndex = 0;
+        this.addItem(itemIndex++, "avatar", MuLang.getText(playType, MuLang.CASE_UPPER) + ":   " + PlayerConfig.player(playType == "user_id" ? "user.id" : playType), button0);
+        if (playType == "facebook_id")
+            this.getFacebookAvatar();
+        var button1 = Com.addDownButtonAt(this, "gameSettings_json.support_btn", "gameSettings_json.support_btn", 700, 18, this.showLangugeBar.bind(this), true);
         Com.addBitmapAtMiddle(button1, "gameSettings_json.flag_" + MuLang.language, button1.width >> 1, button1.height >> 1);
         Com.addBitmapAtMiddle(button1, "gameSettings_json.btn_arrow", button1.width - 45, button1.height >> 1);
-        this.addItem(1, "language_icon", "language", button1, 5);
-        var bt2Container = new egret.DisplayObjectContainer;
-        var button2_1 = Com.addDownButtonAt(bt2Container, "gameSettings_json.gl_bt_settings", "gameSettings_json.gl_bt_settings", 380, 18, this.gotoLoginPage, true);
-        var button2_2 = Com.addDownButtonAt(bt2Container, "gameSettings_json.fb_bt_settings", "gameSettings_json.fb_bt_settings", 700, 18, this.gotoLoginPage, true);
-        this.addLoginButtonText(button2_1, "login");
-        this.addLoginButtonText(button2_2, "login");
-        this.addItem(2, "icon_connect", "link", bt2Container);
-        var button3 = Com.addDownButtonAt(this, "gameSettings_json.support_btn", "gameSettings_json.support_btn", 700, 18, this.suport, true);
+        this.addItem(itemIndex++, "language_icon", "language", button1, 5);
+        if (PlayerConfig.properties.indexOf("network=facebook") < 0) {
+            var bt2Container = new egret.DisplayObjectContainer;
+            var button2_1 = Com.addDownButtonAt(bt2Container, "gameSettings_json.gl_bt_settings", "gameSettings_json.gl_bt_settings", 380, 18, this.gotoLoginPage.bind(this), true);
+            var button2_2 = Com.addDownButtonAt(bt2Container, "gameSettings_json.fb_bt_settings", "gameSettings_json.fb_bt_settings", 700, 18, this.gotoLoginPage.bind(this), true);
+            this.addLoginButtonText(button2_1, "login");
+            this.addLoginButtonText(button2_2, "login");
+            this.addItem(itemIndex++, "icon_connect", "link", bt2Container);
+        }
+        var button3 = Com.addDownButtonAt(this, "gameSettings_json.support_btn", "gameSettings_json.support_btn", 700, 18, this.suport.bind(this), true);
         this.addButtonText(button3, "contact");
-        this.addItem(3, "support_icon", "support", button3, 5);
-        var button4 = Com.addDownButtonAt(this, "gameSettings_json.support_btn", "gameSettings_json.support_btn", 700, 18, this.suport, true);
+        this.addItem(itemIndex++, "support_icon", "support", button3, 5);
+        var button4 = Com.addDownButtonAt(this, "gameSettings_json.support_btn", "gameSettings_json.support_btn", 700, 18, this.rateStar.bind(this), true);
         this.addButtonText(button4, "rate_us");
-        this.addItem(4, "rate_icon", "rate_us", button4, 5);
+        this.addItem(itemIndex++, "rate_icon", "rate_us", button4, 5);
         this.soundEffectBtn = new SettingsCheckbox(this.soundEffectChange.bind(this));
         this.soundEffectBtn.RadioOn = SoundManager.soundEfOn;
-        this.addItem(5, "sound_fx_icon", "sound_effect_on", this.soundEffectBtn, 5);
+        this.addItem(itemIndex++, "sound_fx_icon", "sound_effect_on", this.soundEffectBtn, 5);
         this.musicBtn = new SettingsCheckbox(this.musicChange.bind(this));
         this.musicBtn.RadioOn = SoundManager.soundOn;
-        this.addItem(6, "music_icon", "music_on", this.musicBtn, 5);
+        this.addItem(itemIndex++, "music_icon", "music_on", this.musicBtn, 5);
         this.visualEffectBtn = new SettingsCheckbox(this.visualEffectChange.bind(this));
         this.visualEffectBtn.RadioOn = GameSettings.visualEffectOn;
-        this.addItem(7, "visual_fx_icon", "effect_on", this.visualEffectBtn, 5);
+        this.addItem(itemIndex++, "visual_fx_icon", "effect_on", this.visualEffectBtn, 5);
         this.notificationBtn = new SettingsCheckbox(this.notificationChange.bind(this));
         this.notificationBtn.RadioOn = GameSettings.notificationOn;
-        this.addItem(8, "icon_notification", MuLang.getText("notification"), this.notificationBtn, 5);
+        this.addItem(itemIndex++, "icon_notification", MuLang.getText("notification"), this.notificationBtn, 5);
+    };
+    GameSettingPopup.prototype.getFacebookAvatar = function () {
+        var a = this.scrollBar.getChildAt(0);
+        var bit = a.getChildAt(1);
+        FacebookBitmap.downloadBitmapDataByFacebookID(PlayerConfig.player("facebook.id"), 100, 100, MDS.onUserHeadLoaded.bind(this, bit, 100), this);
     };
     GameSettingPopup.prototype.getPlayerType = function () {
         var typeStr;
@@ -3672,19 +3837,25 @@ var GameSettingPopup = (function (_super) {
     GameSettingPopup.prototype.addLanguageBar = function () {
         this.languageBar = new LanguageBar;
         this.languageBar.visible = false;
+        this.languageBar.addEventListener("showConfirm", this.showConfirm, this);
         Com.addObjectAt(this.scrollBar, this.languageBar, 708, 280);
     };
     GameSettingPopup.prototype.logout = function () {
-        alert("can not logout now");
+        localStorage.removeItem("player");
+        localStorage.removeItem("user_account_info");
+        window.location.href = "/";
     };
     GameSettingPopup.prototype.showLangugeBar = function () {
         this.languageBar.visible = !this.languageBar.visible;
     };
     GameSettingPopup.prototype.gotoLoginPage = function () {
-        window.location.href = "/";
+        this.logout();
     };
     GameSettingPopup.prototype.suport = function () {
-        window.location.href = "/contact.php";
+        Com.addObjectAt(this, new SupportBar(new egret.Point(this.bg.width, this.bg.height)), this.bg.width >> 1, this.bg.height >> 1);
+    };
+    GameSettingPopup.prototype.rateStar = function () {
+        Com.addObjectAt(this, new RateBar(new egret.Point(this.bg.width, this.bg.height)), this.bg.width >> 1, this.bg.height >> 1);
     };
     GameSettingPopup.prototype.soundEffectChange = function () {
         this.soundEffectBtn.RadioOn = SoundManager.soundEfOn = !SoundManager.soundEfOn;
@@ -3709,6 +3880,9 @@ var GameSettingPopup = (function (_super) {
     };
     GameSettingPopup.prototype.onStopDrag = function (event) {
         this.sliderDraging = false;
+    };
+    GameSettingPopup.prototype.showConfirm = function () {
+        Com.addObjectAt(this, new ConFirmBar(new egret.Point(this.bg.width, this.bg.height)), this.bg.width >> 1, this.bg.height >> 1);
     };
     return GameSettingPopup;
 }(GenericPo));
@@ -3770,6 +3944,7 @@ var LanguageBar = (function (_super) {
             GraphicTool.drawRect(_this, _this.rects[i], 0x968503, false, 1, 20, 2, 0xfffd75);
             Com.addBitmapAtMiddle(_this, "gameSettings_json.flag_" + _this.languageArr[i], _this.rects[i].width * 0.5 + _this.rects[i].x, _this.rects[i].height * 0.5 + _this.rects[i].y);
         }
+        LanguageBar.instance = _this;
         return _this;
     }
     LanguageBar.prototype.onTouch = function (event) {
@@ -3781,16 +3956,86 @@ var LanguageBar = (function (_super) {
             if (this.rects[i].containsPoint(testPt)) {
                 this.visible = false;
                 if (MuLang.language != this.languageArr[i]) {
-                    MuLang.language = this.languageArr[i];
-                    window.location.reload();
+                    LanguageBar.changeIndex = i;
+                    this.showConfirm();
                 }
                 break;
             }
         }
     };
+    LanguageBar.prototype.showConfirm = function () {
+        this.dispatchEvent(new egret.Event("showConfirm"));
+    };
+    LanguageBar.confirmChange = function () {
+        MuLang.language = this.instance.languageArr[this.changeIndex];
+        window.location.reload();
+    };
     return LanguageBar;
 }(egret.Sprite));
 __reflect(LanguageBar.prototype, "LanguageBar");
+var RateBar = (function (_super) {
+    __extends(RateBar, _super);
+    function RateBar(size) {
+        var _this = _super.call(this) || this;
+        GraphicTool.drawRect(_this, new egret.Rectangle(-size.x >> 1, -size.y >> 1, size.x + 100, size.y), 0, false, 0.0);
+        _this.touchEnabled = true;
+        _this.langResource = "rate_us_json";
+        _this.bg = Com.addBitmapAtMiddle(_this, _this.langResource + ".M", 0, 0);
+        var title = MDS.addGameText(_this, -370, -260, 48, 0x222222, "rate_us_now", false, 740, "", 1);
+        title.textAlign = "center";
+        title.text = title.text.toUpperCase();
+        var tip = MDS.addGameText(_this, -370, -180, 35, 0x555555, "how_to_rate", false, 740, "", 1);
+        tip.textAlign = "center";
+        Com.addBitmapAt(_this, _this.langResource + ".doctor", 100, -130);
+        _this.stars = [];
+        _this.goldStars = [];
+        for (var i = 0; i < 5; i++) {
+            _this.stars[i] = Com.addDownButtonAt(_this, _this.langResource + ".Star_b", _this.langResource + ".Star_b", -290 + i * 115, -120, _this.rate.bind(_this), true);
+            _this.stars[i].name = "" + i;
+            _this.goldStars[i] = Com.addBitmapAt(_this, _this.langResource + ".Star", -290 + i * 115, -120);
+            _this.goldStars[i].visible = false;
+        }
+        _this.closeBtn = Com.addDownButtonAt(_this, _this.langResource + ".roomCloseButton", _this.langResource + ".roomCloseButton", _this.bg.width >> 1, -_this.bg.height >> 1, _this.closeThisBar.bind(_this), true);
+        _this.closeBtn.x -= _this.closeBtn.width;
+        return _this;
+    }
+    RateBar.prototype.rate = function (event) {
+        var currentBtn = event.target;
+        var index = Number(currentBtn.name);
+        for (var i = 0; i < 5; i++) {
+            this.stars[i].enabled = false;
+            if (i <= index)
+                this.goldStars[i].visible = true;
+        }
+        this.dealWithIndex(index);
+    };
+    RateBar.prototype.closeThisBar = function () {
+        if (this.parent)
+            this.parent.removeChild(this);
+    };
+    RateBar.prototype.dealWithIndex = function (index) {
+        if (index < 3)
+            this.showOkButton();
+        else
+            setTimeout(this.delayOpenWindow.bind(this), 300);
+    };
+    RateBar.prototype.delayOpenWindow = function () {
+        this.closeThisBar();
+        if (Math.random() > 0.5)
+            window.open("https://itunes.apple.com/app/doctor-bingo-free-bingo-slots/id1152226735");
+        else
+            window.open("https://play.google.com/store/apps/details?id=com.gamesmartltd.doctorbingo");
+    };
+    RateBar.prototype.showOkButton = function () {
+        var btn = Com.addDownButtonAt(this, this.langResource + ".BUY COINS", this.langResource + ".BUY COINS", -132, 150, this.closeThisBar.bind(this), true);
+        var btnTx = Com.addTextAt(this, 0, 0, 40, 40, 50, false, true);
+        btn.setButtonText(btnTx);
+        btnTx.textColor = 0;
+        btnTx.text = "OK";
+    };
+    return RateBar;
+}(egret.Sprite));
+__reflect(RateBar.prototype, "RateBar");
 var SettingsCheckbox = (function (_super) {
     __extends(SettingsCheckbox, _super);
     function SettingsCheckbox(callback) {
@@ -3898,6 +4143,77 @@ var LoadingUI = (function (_super) {
     return LoadingUI;
 }(egret.Sprite));
 __reflect(LoadingUI.prototype, "LoadingUI", ["RES.PromiseTaskReporter"]);
+var GanhoCounter = (function () {
+    function GanhoCounter(winCallback) {
+        if (winCallback === void 0) { winCallback = null; }
+        this.ganhoArray = [];
+        this.winCallback = winCallback;
+    }
+    GanhoCounter.prototype.clearGanhoData = function () {
+        this.ganhoArray = [];
+    };
+    GanhoCounter.prototype.countGanhoAndPlayAnimation = function (resultList) {
+        var fitItemOnCard = this.getFitItemOnCard(resultList);
+        var ganhoArray = this.getGanhoArray(resultList, fitItemOnCard);
+        this.showWinAnimationOnAllCards(ganhoArray);
+    };
+    GanhoCounter.prototype.showWinAnimationOnAllCards = function (ganhoArray) {
+        for (var i = 0; i < ganhoArray.length; i++) {
+            if (ganhoArray[i]) {
+                if (!this.ganhoArray[i] || ganhoArray[i] > this.ganhoArray[i]) {
+                    this.ganhoArray[i] = ganhoArray[i];
+                    if (this.winCallback)
+                        this.winCallback(i, ganhoArray[i]);
+                }
+            }
+        }
+    };
+    GanhoCounter.prototype.getFitItemOnCard = function (resultList) {
+        var fitItemOnCard = [];
+        for (var i = 0; i < resultList.length; i++) {
+            fitItemOnCard[i] = [];
+            for (var ob in PayTableManager.payTablesDictionary) {
+                var result = resultList[i][ob];
+                if (result.fit || result.fits) {
+                    fitItemOnCard[i].push({ paytalbe: ob, fit: result.fit, fits: result.fits });
+                }
+            }
+        }
+        if (PaytableFilter.filterObject) {
+            for (var i = 0; i < fitItemOnCard.length; i++)
+                PaytableFilter.paytableConfixFilter(fitItemOnCard[i], true);
+        }
+        return fitItemOnCard;
+    };
+    GanhoCounter.prototype.getGanhoArray = function (resultList, fitItemOnCard) {
+        var ganhoArray = [];
+        for (var i = 0; i < resultList.length; i++) {
+            ganhoArray[i] = 0;
+            for (var ob in PayTableManager.payTablesDictionary) {
+                var result = resultList[i][ob];
+                if (result.fit || result.fits) {
+                    var inFitItem = false;
+                    for (var k = 0; k < fitItemOnCard[i].length; k++) {
+                        if (fitItemOnCard[i][k]["paytalbe"] == ob) {
+                            inFitItem = true;
+                            break;
+                        }
+                    }
+                    if (!inFitItem)
+                        continue;
+                    this.countGanho(ganhoArray, i, ob, result);
+                }
+            }
+        }
+        return ganhoArray;
+    };
+    GanhoCounter.prototype.countGanho = function (ganhoArray, i, ob, result) {
+        var winTimesTxt = PayTableManager.payTablesDictionary[ob].ui["tx"].text;
+        ganhoArray[i] += parseFloat(winTimesTxt.replace(/\D/, ""));
+    };
+    return GanhoCounter;
+}());
+__reflect(GanhoCounter.prototype, "GanhoCounter");
 var Coin = (function (_super) {
     __extends(Coin, _super);
     function Coin() {
@@ -4193,14 +4509,19 @@ var PlayerConfig = (function () {
     };
     Object.defineProperty(PlayerConfig, "properties", {
         get: function () {
-            return localStorage.getItem("user_account_info");
+            var properties = localStorage.getItem("user_account_info");
+            if (properties.indexOf("login_type=custom") >= 0 || properties.indexOf("login_type=guest") >= 0) {
+                properties += "&uid=" + PlayerConfig.player("user.id");
+            }
+            properties = properties.replace("login_type", "network");
+            return properties;
         },
         enumerable: true,
         configurable: true
     });
     PlayerConfig.serverVertion = 2;
     PlayerConfig.playerConfig = { "user.id": requestStr("id"), "score.level": 2538, "score.this_level_xp": 2500, "score.next_level_xp": 3500, "score.xp": 3000,
-        "mission": { "task_is_process": "0", "unlock_level": 10, "task": { "387285": { "is_active": "1", "type": "1", "current": "1", "target": "2", "id": "387285" }, "387286": { "is_active": "0", "type": "1", "current": "1", "target": "6", "id": "387286" }, "387287": { "is_active": "0", "type": "1", "current": "0", "target": "15", "id": "387287" } }, "score_info": { "score_is_process": "0" } }, "mission.unlock_level": 3000 };
+        "mission": { "task_is_process": "0", "unlock_level": 10, "task": { "387285": { "is_active": "1", "type": "1", "current": "1", "target": "2", "id": "387285" }, "387286": { "is_active": "0", "type": "1", "current": "1", "target": "6", "id": "387286" }, "387287": { "is_active": "0", "type": "1", "current": "0", "target": "15", "id": "387287" } }, "score_info": { "score_is_process": "0" } }, "mission.unlock_level": 3000, "loyalty.loyalty_level": 4, "facebook.email": "a@b.com" };
     PlayerConfig.mission = {};
     return PlayerConfig;
 }());

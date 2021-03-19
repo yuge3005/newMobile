@@ -11,6 +11,7 @@ declare class GameUIItem extends egret.Sprite {
 }
 declare class GenericModal extends egret.Sprite {
     enableKeyboard: boolean;
+    needZoomOut: boolean;
     protected static readonly classAssetName: string;
     static GENERIC_MODAL_LOADED: string;
     static CLOSE_MODAL: string;
@@ -363,6 +364,7 @@ declare class GenericPo extends GenericModal {
     protected closeButtonAssetName: string;
     protected closeButton: TouchDownButton;
     protected closeButtonOffset: egret.Point;
+    cannotQuick: boolean;
     constructor(configUrl?: string);
     protected init(): void;
     protected onClose(event: egret.TouchEvent): void;
@@ -422,16 +424,26 @@ declare class PaytableUI extends egret.Sprite {
     focus(): void;
     showBlinkAt(grids: Array<number>): void;
 }
-declare class GanhoCounter {
-    protected ganhoArray: Array<number>;
-    protected winCallback: Function;
-    constructor(winCallback?: Function);
-    clearGanhoData(): void;
-    countGanhoAndPlayAnimation(resultList: Array<Object>): void;
-    private showWinAnimationOnAllCards(ganhoArray);
-    protected getFitItemOnCard(resultList: Array<Object>): Array<Array<Object>>;
-    private getGanhoArray(resultList, fitItemOnCard);
-    protected countGanho(ganhoArray: Array<number>, i: number, ob: string, result: PaytableCheckResult): void;
+declare class SupportBar extends egret.Sprite {
+    private langResource;
+    private email;
+    private topTextInput;
+    private supportTextInput;
+    private bg;
+    private closeBtn;
+    private supportSuccessContainer;
+    private alertBar;
+    constructor(size: egret.Point);
+    private buildBg();
+    private buildTitleText();
+    private buildSupportText();
+    private buildSupportBtn();
+    private buildCloseBtn();
+    private buildAlertBar();
+    private closeAlertBar(event);
+    private sendSupport();
+    private closeThisBar();
+    private buildSupportSuccessContainer();
 }
 declare class BallManager extends egret.DisplayObjectContainer {
     private static balls;
@@ -702,6 +714,11 @@ declare class GameCardUISettings {
     static setTargetToPositionOnCard(target: egret.DisplayObject, cardIndex: number, gridIndex: number): void;
     static numberAtCard(cardIndex: number, gridIndex: number): number;
 }
+declare class ConFirmBar extends egret.Sprite {
+    constructor(size: egret.Point);
+    private closeThisBar();
+    private confirmChange(event);
+}
 declare class GameSettingItem extends egret.DisplayObjectContainer {
     constructor(icon: string, text: string, entity: egret.DisplayObject, offsetY: number);
     static settingTextFormat(tx: TextLabel): void;
@@ -725,6 +742,7 @@ declare class GameSettingPopup extends GenericPo {
     protected addButtonText(button: TouchDownButton, buttonText?: string): void;
     protected addLoginButtonText(button: TouchDownButton, buttonText?: string): void;
     private addItems();
+    private getFacebookAvatar();
     private getPlayerType();
     private addTitleAndVertion();
     private addLanguageBar();
@@ -732,6 +750,7 @@ declare class GameSettingPopup extends GenericPo {
     private showLangugeBar();
     private gotoLoginPage();
     private suport();
+    private rateStar();
     private soundEffectChange();
     private musicChange();
     private visualEffectChange();
@@ -739,6 +758,7 @@ declare class GameSettingPopup extends GenericPo {
     private onFrame(event);
     private onStartDrag(event);
     private onStopDrag(event);
+    private showConfirm();
 }
 declare class GameSettings {
     static vertion: string;
@@ -750,9 +770,27 @@ declare var trace: (a: any) => void;
 declare class LanguageBar extends egret.Sprite {
     private rects;
     private languageArr;
+    private static changeIndex;
+    static instance: LanguageBar;
     constructor();
     private onTouch(event);
     private onTap(event);
+    private showConfirm();
+    static confirmChange(): void;
+}
+declare class RateBar extends egret.Sprite {
+    private langResource;
+    private bg;
+    private closeBtn;
+    private stars;
+    private goldStars;
+    static aa: egret.DisplayObject;
+    constructor(size: egret.Point);
+    private rate(event);
+    private closeThisBar();
+    private dealWithIndex(index);
+    private delayOpenWindow();
+    private showOkButton();
 }
 declare class SettingsCheckbox extends egret.DisplayObjectContainer {
     private bg;
@@ -779,6 +817,17 @@ declare class SettingSlider extends egret.DisplayObjectContainer {
 declare class LoadingUI extends egret.Sprite implements RES.PromiseTaskReporter {
     constructor();
     onProgress(current: number, total: number): void;
+}
+declare class GanhoCounter {
+    protected ganhoArray: Array<number>;
+    protected winCallback: Function;
+    constructor(winCallback?: Function);
+    clearGanhoData(): void;
+    countGanhoAndPlayAnimation(resultList: Array<Object>): void;
+    private showWinAnimationOnAllCards(ganhoArray);
+    protected getFitItemOnCard(resultList: Array<Object>): Array<Array<Object>>;
+    private getGanhoArray(resultList, fitItemOnCard);
+    protected countGanho(ganhoArray: Array<number>, i: number, ob: string, result: PaytableCheckResult): void;
 }
 declare class Coin extends egret.MovieClip {
     startPosition: egret.Point;
