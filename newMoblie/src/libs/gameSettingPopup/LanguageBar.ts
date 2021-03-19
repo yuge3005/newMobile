@@ -3,6 +3,8 @@ class LanguageBar extends egret.Sprite{
 	private rects: Array<egret.Rectangle>;
 	private languageArr: Array<string>;
 
+	private changeIndex: number;
+
 	public constructor() {
 		super();
 
@@ -35,11 +37,20 @@ class LanguageBar extends egret.Sprite{
 			if( this.rects[i].containsPoint( testPt ) ){
 				this.visible = false;
 				if( MuLang.language != this.languageArr[i] ){
-					MuLang.language = this.languageArr[i];
-					window.location.reload();
+					this.changeIndex = i;
+					this.showConfirm();
 				}
 				break;
 			}
 		}
+	}
+
+	private showConfirm(){
+		this.dispatchEvent( new egret.Event( "showConfirm" ) );
+	}
+
+	public confirmChange(){
+		MuLang.language = this.languageArr[this.changeIndex];
+		window.location.reload();
 	}
 }
