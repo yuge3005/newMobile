@@ -3,6 +3,10 @@ class LanguageBar extends egret.Sprite{
 	private rects: Array<egret.Rectangle>;
 	private languageArr: Array<string>;
 
+	private static changeIndex: number;
+
+	public static instance: LanguageBar;
+
 	public constructor() {
 		super();
 
@@ -23,6 +27,8 @@ class LanguageBar extends egret.Sprite{
 			GraphicTool.drawRect( this, this.rects[i], 0x968503, false, 1, 20, 2, 0xfffd75 );
 			Com.addBitmapAtMiddle( this, "gameSettings_json.flag_" + this.languageArr[i], this.rects[i].width * 0.5 + this.rects[i].x, this.rects[i].height * 0.5 + this.rects[i].y );
 		}
+
+		LanguageBar.instance = this;
 	}
 
 	private onTouch( event: egret.TouchEvent ){
@@ -35,11 +41,20 @@ class LanguageBar extends egret.Sprite{
 			if( this.rects[i].containsPoint( testPt ) ){
 				this.visible = false;
 				if( MuLang.language != this.languageArr[i] ){
-					MuLang.language = this.languageArr[i];
-					window.location.reload();
+					LanguageBar.changeIndex = i;
+					this.showConfirm();
 				}
 				break;
 			}
 		}
+	}
+
+	private showConfirm(){
+		this.dispatchEvent( new egret.Event( "showConfirm" ) );
+	}
+
+	public static confirmChange(){
+		MuLang.language = this.instance.languageArr[this.changeIndex];
+		window.location.reload();
 	}
 }
