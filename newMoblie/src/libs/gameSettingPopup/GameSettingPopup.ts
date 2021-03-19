@@ -12,7 +12,6 @@ class GameSettingPopup extends GenericPo {
 	private notificationBtn: SettingsCheckbox;
 
 	private languageBar: LanguageBar;
-	private confirmBar: egret.DisplayObjectContainer;
 
 	protected static get classAssetName() {
         return "gameSettings";
@@ -210,41 +209,6 @@ class GameSettingPopup extends GenericPo {
 	}
 
 	private showConfirm(){
-		if( !this.confirmBar ) this.confirmBar = this.buildConfirmBar();
-		this.confirmBar.visible = true;
-	}
-
-	private buildConfirmBar(): egret.Sprite{
-        let alertBar: egret.Sprite = new egret.Sprite;
-        Com.addObjectAt( this, alertBar, 50, 150 );
-		let sp: egret.Shape = new egret.Shape;
-		Com.addObjectAt( alertBar, sp, 0, 0 );
-        GraphicTool.drawRect( sp, new egret.Rectangle( -200, -200, 1500, 1200 ), 0, false, 0.4 );
-		sp.touchEnabled = true;
-        let barBg: egret.Bitmap = Com.addBitmapAt( alertBar, "gameSettings_json.bg_popup", 0, 0 );
-        barBg.scale9Grid = new egret.Rectangle( 60, 60, 911, 706 );
-        barBg.width = 1110;
-        barBg.height = 535;
-        let title: TextLabel = Com.addLabelAt( alertBar, 100, 75, 910, 76, 76 );
-        title.text = MuLang.getText( "change_language" );
-        let tip: TextLabel = Com.addLabelAt( alertBar, 100, 200, 910, 100, 48 );
-        tip.setText( MuLang.getText( "change_language_tip" ) );
-        let btn1: TouchDownButton = Com.addDownButtonAt( alertBar, "gameSettings_json.OK", "gameSettings_json.OK", 125, 370, this.closeAlertBar.bind(this), true );
-        let btTx1: egret.TextField = Com.addTextAt( alertBar, 0, 0, 20, 72, 72 );
-        btTx1.text = MuLang.getText( "cancel" );
-        btn1.setButtonText( btTx1 );
-		let btn2: TouchDownButton = Com.addDownButtonAt( alertBar, "gameSettings_json.OK", "gameSettings_json.OK", 615, 370, this.confirmChange.bind(this), true );
-        let btTx2: egret.TextField = Com.addTextAt( alertBar, 0, 0, 20, 72, 72 );
-		btTx2.text = MuLang.getText( "confirm" );
-        btn2.setButtonText( btTx2 );
-        return alertBar;
-    }
-
-	private closeAlertBar( event: egret.Event ){
-        this.confirmBar.visible = false;
-    }
-
-	private confirmChange( event: egret.Event ){
-		this.languageBar.confirmChange();
+		Com.addObjectAt( this, new ConFirmBar( new egret.Point( this.bg.width, this.bg.height ) ), this.bg.width >> 1, this.bg.height >> 1 );
 	}
 }
