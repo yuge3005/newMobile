@@ -15,6 +15,7 @@ class BingoMachine extends GameUIItem{
 	protected payTableArea: PaytableLayer;
 	protected gameToolBar: BingoGameToolbar;
 	protected topbar: Topbar;
+	protected betBar: Betbar;
 
 	protected betText: TextLabel;
 	protected creditText: TextLabel;
@@ -230,6 +231,7 @@ class BingoMachine extends GameUIItem{
 		IBingoServer.jackpotWinCallbak = this.jackpotArea.jackpotWinCallback.bind( this.jackpotArea );
 
 		this.initToolbar();
+		this.initBetbar();
 		this.updateCredit( data );
 
 		this.resetGameToolBarStatus();
@@ -269,6 +271,11 @@ class BingoMachine extends GameUIItem{
 		
 		this.topbar.scaleX = this.gameToolBar.scaleX = BingoBackGroundSetting.gameMask.width / 2000;
 		this.topbar.scaleY = this.gameToolBar.scaleY = BingoBackGroundSetting.gameMask.height / 1125;
+	}
+
+	protected initBetbar(){
+		this.betBar = new Betbar;
+		Com.addObjectAt( this, this.betBar, 0, BingoGameToolbar.toolBarY - 5 );
 	}
 
 	protected listenToGameToolbarStatus(): void{
@@ -562,6 +569,7 @@ class BingoMachine extends GameUIItem{
 		this.jackpotArea.changebet();
 
 		this.gameToolBar.updateFreeSpinCount( GameData.currentBet == GameData.minBet && this.freeSpin );
+		this.betBar.setBet( GameData.currentBet );
 	}
 
 	protected checkOOCWhenExtra(): boolean{
