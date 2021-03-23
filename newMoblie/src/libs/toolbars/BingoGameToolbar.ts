@@ -60,7 +60,7 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 	}
 
 	protected xpBar: XpBar;
-	protected missionBar: MissionBar;
+	// protected missionBar: MissionBar;
 
 	public constructor() {
 		super();
@@ -93,8 +93,8 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 		Com.addObjectAt( this, this.xpBar, 1365, 38 );
 		this.xpBar.addEventListener( XpBar.LEVEL_UP_BONUS, this.onLevelUpBonus, this );
 
-		this.missionBar = new MissionBar;
-		Com.addObjectAt( this, this.missionBar, 1357, 117 );
+		// this.missionBar = new MissionBar;
+		// Com.addObjectAt( this, this.missionBar, 1357, 117 );
 
 		this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onToolbarAdd, this);
 		this.cacheAsBitmap = true;
@@ -451,6 +451,6 @@ class BingoGameToolbar extends egret.DisplayObjectContainer{
 	}
 
 	public updateMissionData( value: number, target: number, id: number ){
-		this.missionBar.updateMissionData( value, target, id );
+		// this.missionBar.updateMissionData( value, target, id );
 	}
 }

@@ -216,7 +216,7 @@ class BingoMachine extends GameUIItem{
     
 	protected sendInitDataRequest(): void {
 		IBingoServer.gameInitCallback = this.onServerData.bind( this );
-		IBingoServer.tounamentCallback = this.onTounamentData.bind( this );
+		// IBingoServer.tounamentCallback = this.onTounamentData.bind( this );
 		IBingoServer.sendMessage( this.tokenObject["key"], this.tokenObject["value"] );
 	}
 
@@ -1037,7 +1037,7 @@ class BingoMachine extends GameUIItem{
 
 /**************************************************************************************************************/
 
-	protected tounamentBar: TounamentLayer;
+	/* protected tounamentBar: TounamentLayer;
 
 	public onTounamentData( cmd: string, data: any ){
 		let tmData: Object = TounamentDataFormat.parse( cmd, data );
@@ -1061,7 +1061,7 @@ class BingoMachine extends GameUIItem{
 			trace( cmd );
 			egret.error( "tounament command error!" );
 		}
-	}
+	}*/
 
 	protected onLevelUpBonus( event: egret.Event ){
 		let bonus: number = event.data;
