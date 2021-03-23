@@ -231,7 +231,7 @@ class BingoMachine extends GameUIItem{
 		IBingoServer.jackpotWinCallbak = this.jackpotArea.jackpotWinCallback.bind( this.jackpotArea );
 
 		this.initToolbar();
-		this.initBetbar();
+		this.initBetbar(data["jackpot_min_bet"]);
 		this.updateCredit( data );
 
 		this.resetGameToolBarStatus();
@@ -273,9 +273,10 @@ class BingoMachine extends GameUIItem{
 		this.topbar.scaleY = this.gameToolBar.scaleY = BingoBackGroundSetting.gameMask.height / 1125;
 	}
 
-	protected initBetbar(){
-		this.betBar = new Betbar;
+	protected initBetbar(jackpotMinBet:number){
+		this.betBar = new Betbar(jackpotMinBet);
 		Com.addObjectAt( this, this.betBar, 0, BingoGameToolbar.toolBarY - 5 );
+		this.betBar.setBet( GameData.currentBet );
 	}
 
 	protected listenToGameToolbarStatus(): void{
