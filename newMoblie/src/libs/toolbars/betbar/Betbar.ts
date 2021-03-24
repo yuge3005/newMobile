@@ -23,8 +23,8 @@ class Betbar extends egret.DisplayObjectContainer{
 		this.visible = false;
 		this.jackpotMinBet = jackpotMinBet;
 
-		this.betPointJsckpot = new BetbarPoint( this.jackpotMinBet );
-		this.betPointMaxBet = new BetbarPoint( GameData.maxBet );
+		this.betPointJsckpot = new BetbarPoint( this.jackpotMinBet, "jackpot_bright_" + MuLang.language );
+		this.betPointMaxBet = new BetbarPoint( GameData.maxBet, "max_bright_" + MuLang.language );
 		Com.addObjectAt( this, this.betPointJsckpot, 0, 20 );
 		Com.addObjectAt( this, this.betPointMaxBet, this.processStartX + this.processMax, 20 );
 	}

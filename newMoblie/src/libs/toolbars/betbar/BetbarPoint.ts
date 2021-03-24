@@ -12,11 +12,16 @@ class BetbarPoint extends egret.DisplayObjectContainer {
 	private activeBetTx: egret.TextField;
 	private activeBetBg: egret.Bitmap;
 
-	public constructor( bet: number ) {
+	private betIcon: BetbarIcon;
+
+	public constructor( bet: number, str: string ) {
 		super();
 
 		this.pointUI = Com.addBitmapAtMiddle( this, "betBar_json.point_bright", 0, 0 );
 		this.resetActiveBet( bet );
+
+		this.betIcon = new BetbarIcon( str );
+		Com.addObjectAt( this, this.betIcon, 0, -68 );
 	}
 
 	public resetBet( bet: number ){
@@ -52,6 +57,7 @@ class BetbarPoint extends egret.DisplayObjectContainer {
 			Com.addObjectAt( this, this.activeBetUI, 0, 0 );
 			this.activeBetBg = Com.addBitmapAt( this.activeBetUI, "betBar_json.number_bg", 0, 30 );
 			this.activeBetBg.scale9Grid = new egret.Rectangle( 15, 15, 111, 19 );
+			Com.addBitmapAtMiddle( this.activeBetUI, "betBar_json.number_bg_arrow", 0, 26 );
 			this.activeBetTx = Com.addTextAt( this.activeBetUI, -200, 45, 400, 28, 28 );
 			this.activeBetTx.bold = true;
 		}
