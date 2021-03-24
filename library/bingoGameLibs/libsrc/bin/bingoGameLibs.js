@@ -1411,7 +1411,7 @@ var BingoMachine = (function (_super) {
     };
     BingoMachine.prototype.sendInitDataRequest = function () {
         IBingoServer.gameInitCallback = this.onServerData.bind(this);
-        IBingoServer.tounamentCallback = this.onTounamentData.bind(this);
+        // IBingoServer.tounamentCallback = this.onTounamentData.bind( this );
         IBingoServer.sendMessage(this.tokenObject["key"], this.tokenObject["value"]);
     };
     BingoMachine.prototype.onServerData = function (data) {
@@ -1421,6 +1421,7 @@ var BingoMachine = (function (_super) {
         IBingoServer.jackpotCallbak = this.jackpotArea.setJackpotNumber.bind(this.jackpotArea);
         IBingoServer.jackpotWinCallbak = this.jackpotArea.jackpotWinCallback.bind(this.jackpotArea);
         this.initToolbar();
+        this.initBetbar(data["jackpot_min_bet"]);
         this.updateCredit(data);
         this.resetGameToolBarStatus();
         this.dispatchEvent(new egret.Event("connected_to_server"));
@@ -1453,6 +1454,11 @@ var BingoMachine = (function (_super) {
         this.addChild(this.topbar);
         this.topbar.scaleX = this.gameToolBar.scaleX = BingoBackGroundSetting.gameMask.width / 2000;
         this.topbar.scaleY = this.gameToolBar.scaleY = BingoBackGroundSetting.gameMask.height / 1125;
+    };
+    BingoMachine.prototype.initBetbar = function (jackpotMinBet) {
+        this.betBar = new Betbar(jackpotMinBet);
+        Com.addObjectAt(this, this.betBar, 0, BingoGameToolbar.toolBarY - 5);
+        this.betBar.setBet(GameData.currentBet);
     };
     BingoMachine.prototype.listenToGameToolbarStatus = function () {
         this.gameToolBar.addEventListener("winChange", this.winChange, this);
@@ -1719,6 +1725,7 @@ var BingoMachine = (function (_super) {
         this.dispatchEvent(new egret.Event("betChanged", false, false, { type: type }));
         this.jackpotArea.changebet();
         this.gameToolBar.updateFreeSpinCount(GameData.currentBet == GameData.minBet && this.freeSpin);
+        this.betBar.setBet(GameData.currentBet);
     };
     BingoMachine.prototype.checkOOCWhenExtra = function () {
         var isOOC;
@@ -2147,31 +2154,32 @@ var BingoMachine = (function (_super) {
         else if (this.gameToolBar.buyAllExtra)
             this.gameToolBar.buyAllExtra = false;
     };
-    BingoMachine.prototype.onTounamentData = function (cmd, data) {
-        var tmData = TounamentDataFormat.parse(cmd, data);
-        if (cmd == "trm.start") {
-            if (this.tounamentBar)
-                return;
-            var initData = tmData;
-            if (initData.isGold)
-                this.tounamentBar = new GoldTounamentLayer(initData);
-            else
-                this.tounamentBar = new TounamentLayer(initData);
-            Com.addObjectAt(this, this.tounamentBar, -235, 117);
-            TweenerTool.tweenTo(this.tounamentBar, { x: 0 }, 600, 1000);
+    /**************************************************************************************************************/
+    /* protected tounamentBar: TounamentLayer;
+
+    public onTounamentData( cmd: string, data: any ){
+        let tmData: Object = TounamentDataFormat.parse( cmd, data );
+
+        if( cmd == "trm.start" ) {
+            if( this.tounamentBar ) return;
+            let initData: ITounamentInitData = tmData as ITounamentInitData;
+            if( initData.isGold )this.tounamentBar = new GoldTounamentLayer( initData );
+            else this.tounamentBar = new TounamentLayer( initData );
+            Com.addObjectAt( this, this.tounamentBar, -235, 117 );
+            TweenerTool.tweenTo( this.tounamentBar, {x: 0}, 600, 1000 );
         }
-        else if (cmd == "trm.update") {
-            var updateData = tmData;
-            if (this.tounamentBar)
-                this.tounamentBar.updata(updateData);
+        else if( cmd == "trm.update" ){
+            let updateData: ITounamentData = tmData as ITounamentData;
+            if( this.tounamentBar ) this.tounamentBar.updata( updateData );
         }
-        else if (cmd == "trm.end") {
+        else if( cmd == "trm.end" ){
+            
         }
-        else {
-            trace(cmd);
-            egret.error("tounament command error!");
+        else{
+            trace( cmd );
+            egret.error( "tounament command error!" );
         }
-    };
+    }*/
     BingoMachine.prototype.onLevelUpBonus = function (event) {
         var bonus = event.data;
         if (!isNaN(bonus)) {
@@ -2418,198 +2426,77 @@ var PaytableUI = (function (_super) {
     return PaytableUI;
 }(egret.Sprite));
 __reflect(PaytableUI.prototype, "PaytableUI");
-var SupportBar = (function (_super) {
-    __extends(SupportBar, _super);
-    function SupportBar(size) {
-        var _this = _super.call(this) || this;
-        GraphicTool.drawRect(_this, new egret.Rectangle(-size.x >> 1, -size.y >> 1, size.x + 100, size.y), 0, false, 0.0);
-        _this.touchEnabled = true;
-        _this.langResource = "support_json";
-        _this.email = PlayerConfig.player("facebook.email") || PlayerConfig.player("user_info.email") || "";
-        _this.buildBg();
-        _this.buildTitleText();
-        _this.buildSupportText();
-        _this.buildSupportBtn();
-        _this.buildCloseBtn();
-        return _this;
+var GanhoCounter = (function () {
+    function GanhoCounter(winCallback) {
+        if (winCallback === void 0) { winCallback = null; }
+        this.ganhoArray = [];
+        this.winCallback = winCallback;
     }
-    SupportBar.prototype.buildBg = function () {
-        this.bg = Com.addBitmapAt(this, this.langResource + ".popup_bg_big", -623, -377);
-        this.bg.scale9Grid = new egret.Rectangle(40, 40, 569, 609);
-        this.bg.width = 1247;
-        this.bg.height = 755;
+    GanhoCounter.prototype.clearGanhoData = function () {
+        this.ganhoArray = [];
     };
-    SupportBar.prototype.buildTitleText = function () {
-        // top title
-        var topTitle = Com.addTextAt(this, 85 - 623, 28 - 377, 432, 88, 64, true, false);
-        topTitle.fontFamily = "TCM_conden";
-        topTitle.textAlign = "left";
-        topTitle.verticalAlign = "middle";
-        topTitle.bold = true;
-        topTitle.stroke = 4;
-        topTitle.textColor = 0xD0C39D;
-        topTitle.strokeColor = 0xC9A947;
-        topTitle.text = MuLang.getText("e_support", MuLang.CASE_UPPER);
-        // top text input
-        var topTextContainer = new egret.DisplayObjectContainer();
-        Com.addObjectAt(this, topTextContainer, 185 - 623, 115 - 377);
-        // top text bg
-        var topTextBg = Com.addBitmapAt(topTextContainer, this.langResource + ".select_box", 0, 0);
-        topTextBg.scale9Grid = new egret.Rectangle(11, 11, 27, 27);
-        topTextBg.width = 980;
-        topTextBg.height = 83;
-        // top text input
-        this.topTextInput = new eui.EditableText();
-        Com.addObjectAt(topTextContainer, this.topTextInput, 20, 0);
-        this.topTextInput.width = 940;
-        this.topTextInput.height = 83;
-        this.topTextInput.size = 48;
-        // this.topTextInput.textAlign = "left";
-        this.topTextInput.verticalAlign = "middle";
-        this.topTextInput.fontFamily = "TCM_conden";
-        this.topTextInput.bold = true;
-        this.topTextInput.textColor = 0xFFFFFF;
-        this.topTextInput.text = this.email;
-        this.topTextInput.prompt = MuLang.getText("email", MuLang.CASE_UPPER);
-        // talk icon
-        Com.addBitmapAt(this, this.langResource + ".icon_zendesk", 90 - 623, 118 - 377);
+    GanhoCounter.prototype.countGanhoAndPlayAnimation = function (resultList) {
+        var fitItemOnCard = this.getFitItemOnCard(resultList);
+        var ganhoArray = this.getGanhoArray(resultList, fitItemOnCard);
+        this.showWinAnimationOnAllCards(ganhoArray);
     };
-    SupportBar.prototype.buildSupportText = function () {
-        // support text
-        var supportText = Com.addTextAt(this, 84 - 623, 205 - 377, 313, 53, 42, false, false);
-        supportText.fontFamily = "TCM_conden";
-        supportText.textAlign = "left";
-        supportText.verticalAlign = "middle";
-        supportText.textColor = 0xB0881B;
-        supportText.text = MuLang.getText("message", MuLang.CASE_UPPER);
-        // support text input
-        var supportTextContainer = new egret.DisplayObjectContainer();
-        supportTextContainer.width = 1084;
-        supportTextContainer.height = 445;
-        Com.addObjectAt(this, supportTextContainer, 83 - 623, 258 - 377);
-        // support text bg
-        var supportTextBg = Com.addBitmapAt(supportTextContainer, this.langResource + ".select_box", 0, 0);
-        supportTextBg.scale9Grid = new egret.Rectangle(11, 11, 27, 27);
-        supportTextBg.width = 1084;
-        supportTextBg.height = 445;
-        // support text input
-        this.supportTextInput = Com.addTextAt(supportTextContainer, 20, 20, 1044, 405, 36, false, false);
-        this.supportTextInput.fontFamily = "TCM_conden";
-        this.supportTextInput.textAlign = "left";
-        this.supportTextInput.bold = true;
-        this.supportTextInput.multiline = true;
-        this.supportTextInput.wordWrap = true;
-        this.supportTextInput.type = egret.TextFieldType.INPUT;
-        this.supportTextInput.textColor = 0xFFFFFF;
-    };
-    SupportBar.prototype.buildSupportBtn = function () {
-        // send btn container
-        var sendBtnContainer = Com.addDownButtonAt(this, this.langResource + ".button_send", this.langResource + ".button_send", 1011 - 623, 586 - 377, this.sendSupport.bind(this), true);
-        // support submit button text
-        var sendBtnText = Com.addTextAt(this, 31, 18, 133, 90, 48, true, false);
-        sendBtnText.fontFamily = "TCM_conden";
-        sendBtnText.verticalAlign = "middle";
-        sendBtnText.stroke = 2;
-        sendBtnText.strokeColor = 0x054B05;
-        sendBtnText.text = MuLang.getText("send");
-        sendBtnContainer.addChild(sendBtnText);
-    };
-    SupportBar.prototype.buildCloseBtn = function () {
-        this.closeBtn = Com.addDownButtonAt(this, this.langResource + ".button_close", this.langResource + ".button_close", this.bg.width >> 1, -this.bg.height >> 1, this.closeThisBar.bind(this), true);
-        this.closeBtn.x -= this.closeBtn.width >> 1;
-        this.closeBtn.y -= this.closeBtn.height >> 1;
-    };
-    SupportBar.prototype.buildAlertBar = function () {
-        var alertBar = new egret.Sprite;
-        Com.addObjectAt(this, alertBar, 0, 0);
-        GraphicTool.drawRect(alertBar, new egret.Rectangle(-1000, -500, 2000, 1000), 0, false, 0.0);
-        alertBar.touchEnabled = true;
-        var barBg = Com.addBitmapAt(alertBar, "gameSettings_json.bg_popup", -700, -300);
-        barBg.scale9Grid = new egret.Rectangle(60, 60, 911, 706);
-        barBg.width = 1120;
-        barBg.height = 515;
-        var title = Com.addLabelAt(alertBar, -600, -220, 920, 76, 76);
-        title.text = MuLang.getText("oops");
-        var tip = Com.addLabelAt(alertBar, -600, -60, 920, 48, 48);
-        tip.setText(MuLang.getText("enter_correct_info"));
-        var dr = Com.addBitmapAt(alertBar, "gameSettings_json.dr", 300, -380);
-        dr.scaleX = dr.scaleY = 1.1;
-        var btn = Com.addDownButtonAt(alertBar, "gameSettings_json.OK", "gameSettings_json.OK", -325, 50, this.closeAlertBar.bind(this), true);
-        var btTx = Com.addTextAt(alertBar, 0, 0, 20, 72, 72);
-        btTx.text = "OK";
-        btn.setButtonText(btTx);
-        return alertBar;
-    };
-    SupportBar.prototype.closeAlertBar = function (event) {
-        this.alertBar.visible = false;
-    };
-    SupportBar.prototype.sendSupport = function () {
-        var exp = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
-        if (!exp.test(this.topTextInput.text)) {
-            if (!this.alertBar)
-                this.alertBar = this.buildAlertBar();
-            this.alertBar.visible = true;
-            return;
-        }
-        this.email = this.topTextInput.text;
-        var value = this.supportTextInput.text;
-        if (value !== "" && this.email !== "") {
-            var XHR = eval("window.XMLHttpRequest") ? new XMLHttpRequest() : eval("new ActiveXObject('Microsoft.XMLHTTP')");
-            XHR.open("post", "https://gamesmartltd.zendesk.com/api/v2/tickets.json", true);
-            XHR.setRequestHeader("Accept", "application/json");
-            XHR.setRequestHeader("Content-Type", "application/json");
-            XHR.setRequestHeader("Authorization", "Basic YW55QGRvdXRvcmJpbmdvLmNvbTpCaW5nbzQ1NiE=");
-            XHR.send(JSON.stringify({
-                "ticket": {
-                    "subject": value.length > 40 ? value.substring(0, 40) : value,
-                    "comment": {
-                        "body": value
-                    },
-                    "requester": {
-                        "name": PlayerConfig.player("facebook.name"),
-                        "email": this.email
-                    },
-                    tags: [
-                        "canvas",
-                        "userid_" + PlayerConfig.player("user.id"),
-                        "level_" + PlayerConfig.player("score.level"),
-                        "loyalty_level_" + PlayerConfig.player("loyalty.loyalty_level")
-                    ]
+    GanhoCounter.prototype.showWinAnimationOnAllCards = function (ganhoArray) {
+        for (var i = 0; i < ganhoArray.length; i++) {
+            if (ganhoArray[i]) {
+                if (!this.ganhoArray[i] || ganhoArray[i] > this.ganhoArray[i]) {
+                    this.ganhoArray[i] = ganhoArray[i];
+                    if (this.winCallback)
+                        this.winCallback(i, ganhoArray[i]);
                 }
-            }));
-            egret.setTimeout(function () {
-                this.buildSupportSuccessContainer();
-            }, this, 2000);
+            }
         }
     };
-    SupportBar.prototype.closeThisBar = function () {
-        if (this.parent)
-            this.parent.removeChild(this);
+    GanhoCounter.prototype.getFitItemOnCard = function (resultList) {
+        var fitItemOnCard = [];
+        for (var i = 0; i < resultList.length; i++) {
+            fitItemOnCard[i] = [];
+            for (var ob in PayTableManager.payTablesDictionary) {
+                var result = resultList[i][ob];
+                if (result.fit || result.fits) {
+                    fitItemOnCard[i].push({ paytalbe: ob, fit: result.fit, fits: result.fits });
+                }
+            }
+        }
+        if (PaytableFilter.filterObject) {
+            for (var i = 0; i < fitItemOnCard.length; i++)
+                PaytableFilter.paytableConfixFilter(fitItemOnCard[i], true);
+        }
+        return fitItemOnCard;
     };
-    SupportBar.prototype.buildSupportSuccessContainer = function () {
-        this.supportSuccessContainer = new egret.DisplayObjectContainer();
-        Com.addObjectAt(this, this.supportSuccessContainer, -623, -377);
-        // support success bg
-        var successBg = Com.addBitmapAt(this.supportSuccessContainer, this.langResource + ".popup_bg_big", 0, 0);
-        successBg.scale9Grid = new egret.Rectangle(40, 40, 569, 609);
-        successBg.width = 1247;
-        successBg.height = 755;
-        // support success title
-        var supportSuccessTitle = Com.addTextAt(this.supportSuccessContainer, 208, 124, 830, 127, 64, false, false);
-        supportSuccessTitle.fontFamily = "TCM_conden";
-        supportSuccessTitle.textColor = 0xFFFFFF;
-        supportSuccessTitle.verticalAlign = "middle";
-        supportSuccessTitle.text = Utils.toFirstUpperCase(MuLang.getText("FACEBOOK_WAIT_CONGRATULATIONS_TITLE"));
-        // support success text
-        var supportSuccessText = Com.addTextAt(this.supportSuccessContainer, 84, 294, 1079, 262, 48, false, false);
-        supportSuccessText.fontFamily = "TCM_conden";
-        supportSuccessText.textColor = 0xFFFFFF;
-        supportSuccessText.text = MuLang.getText("support_success_text");
-        this.addChild(this.closeBtn);
+    GanhoCounter.prototype.getGanhoArray = function (resultList, fitItemOnCard) {
+        var ganhoArray = [];
+        for (var i = 0; i < resultList.length; i++) {
+            ganhoArray[i] = 0;
+            for (var ob in PayTableManager.payTablesDictionary) {
+                var result = resultList[i][ob];
+                if (result.fit || result.fits) {
+                    var inFitItem = false;
+                    for (var k = 0; k < fitItemOnCard[i].length; k++) {
+                        if (fitItemOnCard[i][k]["paytalbe"] == ob) {
+                            inFitItem = true;
+                            break;
+                        }
+                    }
+                    if (!inFitItem)
+                        continue;
+                    this.countGanho(ganhoArray, i, ob, result);
+                }
+            }
+        }
+        return ganhoArray;
     };
-    return SupportBar;
-}(egret.Sprite));
-__reflect(SupportBar.prototype, "SupportBar");
+    GanhoCounter.prototype.countGanho = function (ganhoArray, i, ob, result) {
+        var winTimesTxt = PayTableManager.payTablesDictionary[ob].ui["tx"].text;
+        ganhoArray[i] += parseFloat(winTimesTxt.replace(/\D/, ""));
+    };
+    return GanhoCounter;
+}());
+__reflect(GanhoCounter.prototype, "GanhoCounter");
 var BallManager = (function (_super) {
     __extends(BallManager, _super);
     function BallManager() {
@@ -3012,7 +2899,7 @@ var MuLang = (function () {
         get: function () {
             if (localStorage && ["pt", "en", "es"].indexOf(localStorage["language"]) >= 0)
                 return localStorage["language"];
-            var resLan = requestStr("lan");
+            var resLan = PlayerConfig.player("settings.lang") || eval("getPlayer().settings.lang");
             if (["pt", "en", "es"].indexOf(resLan) >= 0)
                 return resLan;
             return "pt";
@@ -4132,6 +4019,198 @@ var SettingSlider = (function (_super) {
     return SettingSlider;
 }(egret.DisplayObjectContainer));
 __reflect(SettingSlider.prototype, "SettingSlider");
+var SupportBar = (function (_super) {
+    __extends(SupportBar, _super);
+    function SupportBar(size) {
+        var _this = _super.call(this) || this;
+        GraphicTool.drawRect(_this, new egret.Rectangle(-size.x >> 1, -size.y >> 1, size.x + 100, size.y), 0, false, 0.0);
+        _this.touchEnabled = true;
+        _this.langResource = "support_json";
+        _this.email = PlayerConfig.player("facebook.email") || PlayerConfig.player("user_info.email") || "";
+        _this.buildBg();
+        _this.buildTitleText();
+        _this.buildSupportText();
+        _this.buildSupportBtn();
+        _this.buildCloseBtn();
+        return _this;
+    }
+    SupportBar.prototype.buildBg = function () {
+        this.bg = Com.addBitmapAt(this, this.langResource + ".popup_bg_big", -623, -377);
+        this.bg.scale9Grid = new egret.Rectangle(40, 40, 569, 609);
+        this.bg.width = 1247;
+        this.bg.height = 755;
+    };
+    SupportBar.prototype.buildTitleText = function () {
+        // top title
+        var topTitle = Com.addTextAt(this, 85 - 623, 28 - 377, 432, 88, 64, true, false);
+        topTitle.fontFamily = "TCM_conden";
+        topTitle.textAlign = "left";
+        topTitle.verticalAlign = "middle";
+        topTitle.bold = true;
+        topTitle.stroke = 4;
+        topTitle.textColor = 0xD0C39D;
+        topTitle.strokeColor = 0xC9A947;
+        topTitle.text = MuLang.getText("e_support", MuLang.CASE_UPPER);
+        // top text input
+        var topTextContainer = new egret.DisplayObjectContainer();
+        Com.addObjectAt(this, topTextContainer, 185 - 623, 115 - 377);
+        // top text bg
+        var topTextBg = Com.addBitmapAt(topTextContainer, this.langResource + ".select_box", 0, 0);
+        topTextBg.scale9Grid = new egret.Rectangle(11, 11, 27, 27);
+        topTextBg.width = 980;
+        topTextBg.height = 83;
+        // top text input
+        this.topTextInput = new eui.EditableText();
+        Com.addObjectAt(topTextContainer, this.topTextInput, 20, 0);
+        this.topTextInput.width = 940;
+        this.topTextInput.height = 83;
+        this.topTextInput.size = 48;
+        // this.topTextInput.textAlign = "left";
+        this.topTextInput.verticalAlign = "middle";
+        this.topTextInput.fontFamily = "TCM_conden";
+        this.topTextInput.bold = true;
+        this.topTextInput.textColor = 0xFFFFFF;
+        this.topTextInput.text = this.email;
+        this.topTextInput.prompt = MuLang.getText("email", MuLang.CASE_UPPER);
+        // talk icon
+        Com.addBitmapAt(this, this.langResource + ".icon_zendesk", 90 - 623, 118 - 377);
+    };
+    SupportBar.prototype.buildSupportText = function () {
+        // support text
+        var supportText = Com.addTextAt(this, 84 - 623, 205 - 377, 313, 53, 42, false, false);
+        supportText.fontFamily = "TCM_conden";
+        supportText.textAlign = "left";
+        supportText.verticalAlign = "middle";
+        supportText.textColor = 0xB0881B;
+        supportText.text = MuLang.getText("message", MuLang.CASE_UPPER);
+        // support text input
+        var supportTextContainer = new egret.DisplayObjectContainer();
+        supportTextContainer.width = 1084;
+        supportTextContainer.height = 445;
+        Com.addObjectAt(this, supportTextContainer, 83 - 623, 258 - 377);
+        // support text bg
+        var supportTextBg = Com.addBitmapAt(supportTextContainer, this.langResource + ".select_box", 0, 0);
+        supportTextBg.scale9Grid = new egret.Rectangle(11, 11, 27, 27);
+        supportTextBg.width = 1084;
+        supportTextBg.height = 445;
+        // support text input
+        this.supportTextInput = Com.addTextAt(supportTextContainer, 20, 20, 1044, 405, 36, false, false);
+        this.supportTextInput.fontFamily = "TCM_conden";
+        this.supportTextInput.textAlign = "left";
+        this.supportTextInput.bold = true;
+        this.supportTextInput.multiline = true;
+        this.supportTextInput.wordWrap = true;
+        this.supportTextInput.type = egret.TextFieldType.INPUT;
+        this.supportTextInput.textColor = 0xFFFFFF;
+    };
+    SupportBar.prototype.buildSupportBtn = function () {
+        // send btn container
+        var sendBtnContainer = Com.addDownButtonAt(this, this.langResource + ".button_send", this.langResource + ".button_send", 1011 - 623, 586 - 377, this.sendSupport.bind(this), true);
+        // support submit button text
+        var sendBtnText = Com.addTextAt(this, 31, 18, 133, 90, 48, true, false);
+        sendBtnText.fontFamily = "TCM_conden";
+        sendBtnText.verticalAlign = "middle";
+        sendBtnText.stroke = 2;
+        sendBtnText.strokeColor = 0x054B05;
+        sendBtnText.text = MuLang.getText("send");
+        sendBtnContainer.addChild(sendBtnText);
+    };
+    SupportBar.prototype.buildCloseBtn = function () {
+        this.closeBtn = Com.addDownButtonAt(this, this.langResource + ".button_close", this.langResource + ".button_close", this.bg.width >> 1, -this.bg.height >> 1, this.closeThisBar.bind(this), true);
+        this.closeBtn.x -= this.closeBtn.width >> 1;
+        this.closeBtn.y -= this.closeBtn.height >> 1;
+    };
+    SupportBar.prototype.buildAlertBar = function () {
+        var alertBar = new egret.Sprite;
+        Com.addObjectAt(this, alertBar, 0, 0);
+        GraphicTool.drawRect(alertBar, new egret.Rectangle(-1000, -500, 2000, 1000), 0, false, 0.0);
+        alertBar.touchEnabled = true;
+        var barBg = Com.addBitmapAt(alertBar, "gameSettings_json.bg_popup", -700, -300);
+        barBg.scale9Grid = new egret.Rectangle(60, 60, 911, 706);
+        barBg.width = 1120;
+        barBg.height = 515;
+        var title = Com.addLabelAt(alertBar, -600, -220, 920, 76, 76);
+        title.text = MuLang.getText("oops");
+        var tip = Com.addLabelAt(alertBar, -600, -60, 920, 48, 48);
+        tip.setText(MuLang.getText("enter_correct_info"));
+        var dr = Com.addBitmapAt(alertBar, "gameSettings_json.dr", 300, -380);
+        dr.scaleX = dr.scaleY = 1.1;
+        var btn = Com.addDownButtonAt(alertBar, "gameSettings_json.OK", "gameSettings_json.OK", -325, 50, this.closeAlertBar.bind(this), true);
+        var btTx = Com.addTextAt(alertBar, 0, 0, 20, 72, 72);
+        btTx.text = "OK";
+        btn.setButtonText(btTx);
+        return alertBar;
+    };
+    SupportBar.prototype.closeAlertBar = function (event) {
+        this.alertBar.visible = false;
+    };
+    SupportBar.prototype.sendSupport = function () {
+        var exp = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+        if (!exp.test(this.topTextInput.text)) {
+            if (!this.alertBar)
+                this.alertBar = this.buildAlertBar();
+            this.alertBar.visible = true;
+            return;
+        }
+        this.email = this.topTextInput.text;
+        var value = this.supportTextInput.text;
+        if (value !== "" && this.email !== "") {
+            var XHR = eval("window.XMLHttpRequest") ? new XMLHttpRequest() : eval("new ActiveXObject('Microsoft.XMLHTTP')");
+            XHR.open("post", "https://gamesmartltd.zendesk.com/api/v2/tickets.json", true);
+            XHR.setRequestHeader("Accept", "application/json");
+            XHR.setRequestHeader("Content-Type", "application/json");
+            XHR.setRequestHeader("Authorization", "Basic YW55QGRvdXRvcmJpbmdvLmNvbTpCaW5nbzQ1NiE=");
+            XHR.send(JSON.stringify({
+                "ticket": {
+                    "subject": value.length > 40 ? value.substring(0, 40) : value,
+                    "comment": {
+                        "body": value
+                    },
+                    "requester": {
+                        "name": PlayerConfig.player("facebook.name"),
+                        "email": this.email
+                    },
+                    tags: [
+                        "canvas",
+                        "userid_" + PlayerConfig.player("user.id"),
+                        "level_" + PlayerConfig.player("score.level"),
+                        "loyalty_level_" + PlayerConfig.player("loyalty.loyalty_level")
+                    ]
+                }
+            }));
+            egret.setTimeout(function () {
+                this.buildSupportSuccessContainer();
+            }, this, 2000);
+        }
+    };
+    SupportBar.prototype.closeThisBar = function () {
+        if (this.parent)
+            this.parent.removeChild(this);
+    };
+    SupportBar.prototype.buildSupportSuccessContainer = function () {
+        this.supportSuccessContainer = new egret.DisplayObjectContainer();
+        Com.addObjectAt(this, this.supportSuccessContainer, -623, -377);
+        // support success bg
+        var successBg = Com.addBitmapAt(this.supportSuccessContainer, this.langResource + ".popup_bg_big", 0, 0);
+        successBg.scale9Grid = new egret.Rectangle(40, 40, 569, 609);
+        successBg.width = 1247;
+        successBg.height = 755;
+        // support success title
+        var supportSuccessTitle = Com.addTextAt(this.supportSuccessContainer, 208, 124, 830, 127, 64, false, false);
+        supportSuccessTitle.fontFamily = "TCM_conden";
+        supportSuccessTitle.textColor = 0xFFFFFF;
+        supportSuccessTitle.verticalAlign = "middle";
+        supportSuccessTitle.text = Utils.toFirstUpperCase(MuLang.getText("FACEBOOK_WAIT_CONGRATULATIONS_TITLE"));
+        // support success text
+        var supportSuccessText = Com.addTextAt(this.supportSuccessContainer, 84, 294, 1079, 262, 48, false, false);
+        supportSuccessText.fontFamily = "TCM_conden";
+        supportSuccessText.textColor = 0xFFFFFF;
+        supportSuccessText.text = MuLang.getText("support_success_text");
+        this.addChild(this.closeBtn);
+    };
+    return SupportBar;
+}(egret.Sprite));
+__reflect(SupportBar.prototype, "SupportBar");
 var LoadingUI = (function (_super) {
     __extends(LoadingUI, _super);
     function LoadingUI() {
@@ -4143,77 +4222,6 @@ var LoadingUI = (function (_super) {
     return LoadingUI;
 }(egret.Sprite));
 __reflect(LoadingUI.prototype, "LoadingUI", ["RES.PromiseTaskReporter"]);
-var GanhoCounter = (function () {
-    function GanhoCounter(winCallback) {
-        if (winCallback === void 0) { winCallback = null; }
-        this.ganhoArray = [];
-        this.winCallback = winCallback;
-    }
-    GanhoCounter.prototype.clearGanhoData = function () {
-        this.ganhoArray = [];
-    };
-    GanhoCounter.prototype.countGanhoAndPlayAnimation = function (resultList) {
-        var fitItemOnCard = this.getFitItemOnCard(resultList);
-        var ganhoArray = this.getGanhoArray(resultList, fitItemOnCard);
-        this.showWinAnimationOnAllCards(ganhoArray);
-    };
-    GanhoCounter.prototype.showWinAnimationOnAllCards = function (ganhoArray) {
-        for (var i = 0; i < ganhoArray.length; i++) {
-            if (ganhoArray[i]) {
-                if (!this.ganhoArray[i] || ganhoArray[i] > this.ganhoArray[i]) {
-                    this.ganhoArray[i] = ganhoArray[i];
-                    if (this.winCallback)
-                        this.winCallback(i, ganhoArray[i]);
-                }
-            }
-        }
-    };
-    GanhoCounter.prototype.getFitItemOnCard = function (resultList) {
-        var fitItemOnCard = [];
-        for (var i = 0; i < resultList.length; i++) {
-            fitItemOnCard[i] = [];
-            for (var ob in PayTableManager.payTablesDictionary) {
-                var result = resultList[i][ob];
-                if (result.fit || result.fits) {
-                    fitItemOnCard[i].push({ paytalbe: ob, fit: result.fit, fits: result.fits });
-                }
-            }
-        }
-        if (PaytableFilter.filterObject) {
-            for (var i = 0; i < fitItemOnCard.length; i++)
-                PaytableFilter.paytableConfixFilter(fitItemOnCard[i], true);
-        }
-        return fitItemOnCard;
-    };
-    GanhoCounter.prototype.getGanhoArray = function (resultList, fitItemOnCard) {
-        var ganhoArray = [];
-        for (var i = 0; i < resultList.length; i++) {
-            ganhoArray[i] = 0;
-            for (var ob in PayTableManager.payTablesDictionary) {
-                var result = resultList[i][ob];
-                if (result.fit || result.fits) {
-                    var inFitItem = false;
-                    for (var k = 0; k < fitItemOnCard[i].length; k++) {
-                        if (fitItemOnCard[i][k]["paytalbe"] == ob) {
-                            inFitItem = true;
-                            break;
-                        }
-                    }
-                    if (!inFitItem)
-                        continue;
-                    this.countGanho(ganhoArray, i, ob, result);
-                }
-            }
-        }
-        return ganhoArray;
-    };
-    GanhoCounter.prototype.countGanho = function (ganhoArray, i, ob, result) {
-        var winTimesTxt = PayTableManager.payTablesDictionary[ob].ui["tx"].text;
-        ganhoArray[i] += parseFloat(winTimesTxt.replace(/\D/, ""));
-    };
-    return GanhoCounter;
-}());
-__reflect(GanhoCounter.prototype, "GanhoCounter");
 var Coin = (function (_super) {
     __extends(Coin, _super);
     function Coin() {
@@ -4521,7 +4529,7 @@ var PlayerConfig = (function () {
     });
     PlayerConfig.serverVertion = 2;
     PlayerConfig.playerConfig = { "user.id": requestStr("id"), "score.level": 2538, "score.this_level_xp": 2500, "score.next_level_xp": 3500, "score.xp": 3000,
-        "mission": { "task_is_process": "0", "unlock_level": 10, "task": { "387285": { "is_active": "1", "type": "1", "current": "1", "target": "2", "id": "387285" }, "387286": { "is_active": "0", "type": "1", "current": "1", "target": "6", "id": "387286" }, "387287": { "is_active": "0", "type": "1", "current": "0", "target": "15", "id": "387287" } }, "score_info": { "score_is_process": "0" } }, "mission.unlock_level": 3000, "loyalty.loyalty_level": 4, "facebook.email": "a@b.com" };
+        "mission": { "task_is_process": "0", "unlock_level": 10, "task": { "387285": { "is_active": "1", "type": "1", "current": "1", "target": "2", "id": "387285", "bet_limit": -1 }, "387286": { "is_active": "0", "type": "1", "current": "1", "target": "6", "id": "387286" }, "387287": { "is_active": "0", "type": "1", "current": "0", "target": "15", "id": "387287" } }, "score_info": { "score_is_process": "0" } }, "mission.unlock_level": 3000, "loyalty.loyalty_level": 4, "facebook.email": "a@b.com" };
     PlayerConfig.mission = {};
     return PlayerConfig;
 }());
@@ -5634,6 +5642,7 @@ var MissionTaskUIItem = (function (_super) {
 __reflect(MissionTaskUIItem.prototype, "MissionTaskUIItem");
 var BingoGameToolbar = (function (_super) {
     __extends(BingoGameToolbar, _super);
+    // protected missionBar: MissionBar;
     function BingoGameToolbar() {
         var _this = _super.call(this) || this;
         _this._autoPlaying = false;
@@ -5666,8 +5675,8 @@ var BingoGameToolbar = (function (_super) {
         _this.xpBar = new XpBar;
         Com.addObjectAt(_this, _this.xpBar, 1365, 38);
         _this.xpBar.addEventListener(XpBar.LEVEL_UP_BONUS, _this.onLevelUpBonus, _this);
-        _this.missionBar = new MissionBar;
-        Com.addObjectAt(_this, _this.missionBar, 1357, 117);
+        // this.missionBar = new MissionBar;
+        // Com.addObjectAt( this, this.missionBar, 1357, 117 );
         _this.addEventListener(egret.Event.ADDED_TO_STAGE, _this.onToolbarAdd, _this);
         _this.cacheAsBitmap = true;
         return _this;
@@ -6050,7 +6059,7 @@ var BingoGameToolbar = (function (_super) {
         this.freeSpinBtn.setFreeCount(freeSpinCount);
     };
     BingoGameToolbar.prototype.updateMissionData = function (value, target, id) {
-        this.missionBar.updateMissionData(value, target, id);
+        // this.missionBar.updateMissionData( value, target, id );
     };
     BingoGameToolbar.toolBarY = 900;
     return BingoGameToolbar;
@@ -6312,6 +6321,163 @@ var XpBar = (function (_super) {
     return XpBar;
 }(egret.DisplayObjectContainer));
 __reflect(XpBar.prototype, "XpBar");
+var Betbar = (function (_super) {
+    __extends(Betbar, _super);
+    function Betbar(jackpotMinBet) {
+        var _this = _super.call(this) || this;
+        _this.processStartX = 32;
+        _this.processMax = 780;
+        var bg = Com.addBitmapAt(_this, "betBar_json.bar_bg", 0, 0);
+        bg.scale9Grid = new egret.Rectangle(18, 10, 60, 29);
+        bg.width = 820;
+        _this.processBar = Com.addBitmapAt(_this, "betBar_json.bar_progress", 4, 4);
+        _this.processBar.scale9Grid = new egret.Rectangle(16, 8, 56, 15);
+        _this.processBar.width = _this.processStartX;
+        _this.visible = false;
+        _this.jackpotMinBet = jackpotMinBet;
+        _this.betPointJsckpot = new BetbarPoint(_this.jackpotMinBet, "jackpot_bright_" + MuLang.language);
+        _this.betPointMaxBet = new BetbarPoint(GameData.maxBet, "max_bright_" + MuLang.language);
+        Com.addObjectAt(_this, _this.betPointJsckpot, 0, 20);
+        Com.addObjectAt(_this, _this.betPointMaxBet, _this.processStartX + _this.processMax, 20);
+        return _this;
+    }
+    Betbar.prototype.setBet = function (bet) {
+        egret.Tween.removeTweens(this);
+        this.visible = true;
+        TweenerTool.tweenTo(this, { alpha: 1 }, 500, 0, this.waitThis.bind(this));
+        this.checkLock(bet);
+    };
+    Betbar.prototype.waitThis = function () {
+        TweenerTool.tweenTo(this, { alpha: 0 }, 500, 1500, this.waitThis.bind(this));
+    };
+    Betbar.prototype.hideThis = function () {
+        this.visible = false;
+    };
+    Betbar.prototype.checkLock = function (bet) {
+        TweenerTool.tweenTo(this.processBar, { width: this.getBetPosition(bet) }, 400, 0);
+        this.betPointMaxBet.resetActiveBet(GameData.maxBet);
+        this.betPointJsckpot.x = this.getBetPosition(this.betPointJsckpot.currentActiveBet);
+        this.betPointJsckpot.resetBet(bet);
+        this.betPointMaxBet.resetBet(bet);
+    };
+    Betbar.prototype.getBetPosition = function (bet) {
+        return GameData.bets.indexOf(bet) / (GameData.bets.length - 1) * this.processMax + this.processStartX;
+    };
+    return Betbar;
+}(egret.DisplayObjectContainer));
+__reflect(Betbar.prototype, "Betbar");
+var BetbarIcon = (function (_super) {
+    __extends(BetbarIcon, _super);
+    function BetbarIcon(iconStr) {
+        var _this = _super.call(this) || this;
+        _this.iconLayer = new egret.DisplayObjectContainer;
+        Com.addObjectAt(_this, _this.iconLayer, 0, 0);
+        _this.icon = Com.addBitmapAtMiddle(_this.iconLayer, "betBar_json." + iconStr, 0, 0);
+        _this.isMaxIcon = _this.icon.width < 200;
+        if (!_this.isMaxIcon) {
+            var side = Com.addBitmapAtMiddle(_this, "betBar_json.icon_side_long", 0, 0);
+            _this.maskBitmap = Com.addBitmapAtMiddle(_this, "betBar_json.bright", 0, 0);
+        }
+        else {
+            _this.maskBitmap = Com.addBitmapAtMiddle(_this, "betBar_json." + iconStr, 0, 0);
+        }
+        _this.iconLayer.mask = _this.maskBitmap;
+        _this.lockUI = Com.addBitmapAtMiddle(_this, "betBar_json.Lock", 0, 0);
+        _this.lockUI.visible = false;
+        _this.blackMask = Com.addBitmapAtMiddle(_this.iconLayer, "betBar_json.icon_shadow", 0, 0);
+        _this.blackMask.visible = false;
+        _this.whiteMask = Com.addBitmapAtMiddle(_this.iconLayer, "betBar_json.bright", 0, 0);
+        _this.whiteMask.visible = false;
+        return _this;
+    }
+    BetbarIcon.prototype.unlock = function () {
+        this.blackMask.visible = false;
+        this.whiteMask.visible = true;
+        this.whiteMask.alpha = 0;
+        var tw = egret.Tween.get(this.whiteMask);
+        tw.to({ alpha: 1 }, 300);
+        tw.to({ alpha: 0 }, 300);
+        var light = Com.addBitmapAt(this.iconLayer, "betBar_json.light", -250, -45);
+        light.rotation = -45;
+        TweenerTool.tweenTo(light, { x: 250 }, 500, 600, MDS.removeSelf.bind(this, light));
+    };
+    BetbarIcon.prototype.lock = function () {
+        this.blackMask.visible = true;
+        this.blackMask.alpha = 1;
+        TweenerTool.tweenTo(this.blackMask, { alpha: 0.5 }, 500, 500);
+        this.lockUI.visible = true;
+        this.addChild(this.lockUI);
+        this.lockUI.scaleX = this.lockUI.scaleY = 1;
+        TweenerTool.tweenTo(this.lockUI, { scaleX: 0.3, scaleY: 0.3 }, 500, 0, MDS.removeSelf.bind(this, this.lockUI), null, egret.Ease.bounceOut);
+    };
+    return BetbarIcon;
+}(egret.DisplayObjectContainer));
+__reflect(BetbarIcon.prototype, "BetbarIcon");
+var BetbarPoint = (function (_super) {
+    __extends(BetbarPoint, _super);
+    function BetbarPoint(bet, str) {
+        var _this = _super.call(this) || this;
+        _this.pointUI = Com.addBitmapAtMiddle(_this, "betBar_json.point_bright", 0, 0);
+        _this.resetActiveBet(bet);
+        _this.betIcon = new BetbarIcon(str);
+        Com.addObjectAt(_this, _this.betIcon, 0, -68);
+        return _this;
+    }
+    Object.defineProperty(BetbarPoint.prototype, "currentActiveBet", {
+        get: function () {
+            return this.activeBet;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    BetbarPoint.prototype.resetBet = function (bet) {
+        var active;
+        if (bet >= this.activeBet)
+            active = true;
+        else
+            active = false;
+        if (active === this.active)
+            return;
+        this.active = active;
+        if (active) {
+            this.pointUI.texture = RES.getRes("betBar_json.point_bright");
+            this.betIcon.unlock();
+            this.betIcon.scaleX = this.betIcon.scaleY = 1.2;
+            TweenerTool.tweenTo(this.betIcon, { scaleX: 1, scaleY: 1 }, 500);
+        }
+        else {
+            this.pointUI.texture = RES.getRes("betBar_json.point_gray");
+            this.betIcon.lock();
+        }
+    };
+    BetbarPoint.prototype.resetActiveBet = function (bet) {
+        this.activeBet = bet;
+        if (this.activeBet != GameData.maxBet)
+            this.showActiveBetUI();
+        else
+            this.hideActiveBetUI();
+    };
+    BetbarPoint.prototype.hideActiveBetUI = function () {
+        if (this.activeBetUI)
+            this.activeBetUI.visible = false;
+    };
+    BetbarPoint.prototype.showActiveBetUI = function () {
+        if (!this.activeBetUI) {
+            this.activeBetUI = new egret.DisplayObjectContainer;
+            Com.addObjectAt(this, this.activeBetUI, 0, 0);
+            this.activeBetBg = Com.addBitmapAt(this.activeBetUI, "betBar_json.number_bg", 0, 30);
+            this.activeBetBg.scale9Grid = new egret.Rectangle(15, 15, 111, 19);
+            Com.addBitmapAtMiddle(this.activeBetUI, "betBar_json.number_bg_arrow", 0, 26);
+            this.activeBetTx = Com.addTextAt(this.activeBetUI, -200, 45, 400, 28, 28);
+            this.activeBetTx.bold = true;
+        }
+        this.activeBetTx.text = this.activeBet + "";
+        this.activeBetBg.x = -this.activeBetTx.textWidth - 20 >> 1;
+        this.activeBetBg.width = this.activeBetTx.textWidth + 22;
+    };
+    return BetbarPoint;
+}(egret.DisplayObjectContainer));
+__reflect(BetbarPoint.prototype, "BetbarPoint");
 var GoldTounamentLayer = (function (_super) {
     __extends(GoldTounamentLayer, _super);
     function GoldTounamentLayer(data) {

@@ -208,6 +208,7 @@ declare class BingoMachine extends GameUIItem {
     protected payTableArea: PaytableLayer;
     protected gameToolBar: BingoGameToolbar;
     protected topbar: Topbar;
+    protected betBar: Betbar;
     protected betText: TextLabel;
     protected creditText: TextLabel;
     protected dinero: number;
@@ -256,6 +257,7 @@ declare class BingoMachine extends GameUIItem {
     protected onServerData(data: Object): void;
     private loadOtherGroup();
     protected initToolbar(): void;
+    protected initBetbar(jackpotMinBet: number): void;
     protected listenToGameToolbarStatus(): void;
     protected tipStatus(e: egret.Event, textDoubleLine?: boolean): void;
     private lockWinTip;
@@ -351,8 +353,6 @@ declare class BingoMachine extends GameUIItem {
     protected tryFirstMega(rect: egret.Rectangle): void;
     stopAutoPlay(): void;
     /**************************************************************************************************************/
-    protected tounamentBar: TounamentLayer;
-    onTounamentData(cmd: string, data: any): void;
     protected onLevelUpBonus(event: egret.Event): void;
     /**************************************************************************************************************/
     protected updateNewDatas(data: Object): void;
@@ -424,26 +424,16 @@ declare class PaytableUI extends egret.Sprite {
     focus(): void;
     showBlinkAt(grids: Array<number>): void;
 }
-declare class SupportBar extends egret.Sprite {
-    private langResource;
-    private email;
-    private topTextInput;
-    private supportTextInput;
-    private bg;
-    private closeBtn;
-    private supportSuccessContainer;
-    private alertBar;
-    constructor(size: egret.Point);
-    private buildBg();
-    private buildTitleText();
-    private buildSupportText();
-    private buildSupportBtn();
-    private buildCloseBtn();
-    private buildAlertBar();
-    private closeAlertBar(event);
-    private sendSupport();
-    private closeThisBar();
-    private buildSupportSuccessContainer();
+declare class GanhoCounter {
+    protected ganhoArray: Array<number>;
+    protected winCallback: Function;
+    constructor(winCallback?: Function);
+    clearGanhoData(): void;
+    countGanhoAndPlayAnimation(resultList: Array<Object>): void;
+    private showWinAnimationOnAllCards(ganhoArray);
+    protected getFitItemOnCard(resultList: Array<Object>): Array<Array<Object>>;
+    private getGanhoArray(resultList, fitItemOnCard);
+    protected countGanho(ganhoArray: Array<number>, i: number, ob: string, result: PaytableCheckResult): void;
 }
 declare class BallManager extends egret.DisplayObjectContainer {
     private static balls;
@@ -814,20 +804,30 @@ declare class SettingSlider extends egret.DisplayObjectContainer {
     readonly scrollTop: number;
     private onMove(event);
 }
+declare class SupportBar extends egret.Sprite {
+    private langResource;
+    private email;
+    private topTextInput;
+    private supportTextInput;
+    private bg;
+    private closeBtn;
+    private supportSuccessContainer;
+    private alertBar;
+    constructor(size: egret.Point);
+    private buildBg();
+    private buildTitleText();
+    private buildSupportText();
+    private buildSupportBtn();
+    private buildCloseBtn();
+    private buildAlertBar();
+    private closeAlertBar(event);
+    private sendSupport();
+    private closeThisBar();
+    private buildSupportSuccessContainer();
+}
 declare class LoadingUI extends egret.Sprite implements RES.PromiseTaskReporter {
     constructor();
     onProgress(current: number, total: number): void;
-}
-declare class GanhoCounter {
-    protected ganhoArray: Array<number>;
-    protected winCallback: Function;
-    constructor(winCallback?: Function);
-    clearGanhoData(): void;
-    countGanhoAndPlayAnimation(resultList: Array<Object>): void;
-    private showWinAnimationOnAllCards(ganhoArray);
-    protected getFitItemOnCard(resultList: Array<Object>): Array<Array<Object>>;
-    private getGanhoArray(resultList, fitItemOnCard);
-    protected countGanho(ganhoArray: Array<number>, i: number, ob: string, result: PaytableCheckResult): void;
 }
 declare class Coin extends egret.MovieClip {
     startPosition: egret.Point;
@@ -1144,7 +1144,6 @@ declare class BingoGameToolbar extends egret.DisplayObjectContainer {
     private _buyAllExtra;
     buyAllExtra: boolean;
     protected xpBar: XpBar;
-    protected missionBar: MissionBar;
     constructor();
     protected onToolbarAdd(event: egret.Event): void;
     private buildPlayContainer();
@@ -1249,6 +1248,47 @@ declare class XpBar extends egret.DisplayObjectContainer {
     private collectRequestFailed(data);
     private showBonusAndLoyalty(bonus, loyalty);
     private btBack(bt, btContainer, bonus);
+}
+declare class Betbar extends egret.DisplayObjectContainer {
+    private processBar;
+    private jackpotMinBet;
+    private processStartX;
+    private processMax;
+    private betPointJsckpot;
+    private betPointMaxBet;
+    constructor(jackpotMinBet: number);
+    setBet(bet: number): void;
+    private waitThis();
+    private hideThis();
+    private checkLock(bet);
+    private getBetPosition(bet);
+}
+declare class BetbarIcon extends egret.DisplayObjectContainer {
+    private icon;
+    private iconLayer;
+    private maskBitmap;
+    private isMaxIcon;
+    private lockUI;
+    private blackMask;
+    private whiteMask;
+    constructor(iconStr: string);
+    unlock(): void;
+    lock(): void;
+}
+declare class BetbarPoint extends egret.DisplayObjectContainer {
+    private pointUI;
+    private activeBet;
+    readonly currentActiveBet: number;
+    private active;
+    private activeBetUI;
+    private activeBetTx;
+    private activeBetBg;
+    private betIcon;
+    constructor(bet: number, str: string);
+    resetBet(bet: number): void;
+    resetActiveBet(bet: number): void;
+    private hideActiveBetUI();
+    private showActiveBetUI();
 }
 declare class GoldTounamentLayer extends TounamentLayer {
     constructor(data: ITounamentInitData);
