@@ -1,0 +1,63 @@
+class BetbarPoint extends egret.DisplayObjectContainer {
+
+	private pointUI: egret.Bitmap;
+	private activeBet: number;
+	public get currentActiveBet(): number{
+		return this.activeBet;
+	}
+
+	private active: boolean;
+
+	private activeBetUI: egret.DisplayObjectContainer;
+	private activeBetTx: egret.TextField;
+	private activeBetBg: egret.Bitmap;
+
+	public constructor( bet: number ) {
+		super();
+
+		this.pointUI = Com.addBitmapAtMiddle( this, "betBar_json.point_bright", 0, 0 );
+		this.resetActiveBet( bet );
+	}
+
+	public resetBet( bet: number ){
+		let active: boolean;
+		if( bet >= this.activeBet ) active = true;
+		else active = false;
+
+		if( active === this.active ) return;
+
+		this.active = active;
+		if( active ){
+			this.pointUI.texture = RES.getRes( "betBar_json.point_bright" );
+		}
+		else{
+			this.pointUI.texture = RES.getRes( "betBar_json.point_gray" );
+		}
+	}
+
+	public resetActiveBet( bet: number ){
+		this.activeBet = bet;
+
+		if( this.activeBet != GameData.maxBet ) this.showActiveBetUI();
+		else this.hideActiveBetUI();
+	}
+
+	private hideActiveBetUI(){
+		if( this.activeBetUI ) this.activeBetUI.visible = false;
+	}
+
+	private showActiveBetUI(){
+		if( !this.activeBetUI ){
+			this.activeBetUI = new egret.DisplayObjectContainer;
+			Com.addObjectAt( this, this.activeBetUI, 0, 0 );
+			this.activeBetBg = Com.addBitmapAt( this.activeBetUI, "betBar_json.number_bg", 0, 30 );
+			this.activeBetBg.scale9Grid = new egret.Rectangle( 15, 15, 111, 19 );
+			this.activeBetTx = Com.addTextAt( this.activeBetUI, -200, 45, 400, 28, 28 );
+			this.activeBetTx.bold = true;
+		}
+
+		this.activeBetTx.text = this.activeBet + "";
+		this.activeBetBg.x = - this.activeBetTx.textWidth - 20 >> 1;
+		this.activeBetBg.width = this.activeBetTx.textWidth + 22;
+	}
+}

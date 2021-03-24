@@ -6,6 +6,9 @@ class Betbar extends egret.DisplayObjectContainer{
 	private processStartX: number = 32;
 	private processMax: number = 780;
 
+	private betPointJsckpot: BetbarPoint;
+	private betPointMaxBet: BetbarPoint;
+
 	public constructor(jackpotMinBet:number) {
 		super();
 
@@ -19,6 +22,11 @@ class Betbar extends egret.DisplayObjectContainer{
 
 		this.visible = false;
 		this.jackpotMinBet = jackpotMinBet;
+
+		this.betPointJsckpot = new BetbarPoint( this.jackpotMinBet );
+		this.betPointMaxBet = new BetbarPoint( GameData.maxBet );
+		Com.addObjectAt( this, this.betPointJsckpot, 0, 20 );
+		Com.addObjectAt( this, this.betPointMaxBet, this.processStartX + this.processMax, 20 );
 	}
 
 	public setBet( bet: number ){
@@ -38,6 +46,16 @@ class Betbar extends egret.DisplayObjectContainer{
 	}
 
 	private checkLock( bet: number ){
-		this.processBar.width =  GameData.bets.indexOf( bet ) / ( GameData.bets.length - 1 ) * this.processMax + this.processStartX;
+		TweenerTool.tweenTo( this.processBar, { width: this.getBetPosition( bet ) }, 400, 0 );
+
+		this.betPointMaxBet.resetActiveBet( GameData.maxBet );
+		this.betPointJsckpot.x = this.getBetPosition( this.betPointJsckpot.currentActiveBet );
+
+		this.betPointJsckpot.resetBet( bet );
+		this.betPointMaxBet.resetBet( bet );
+	}
+
+	private getBetPosition( bet: number ): number{
+		return GameData.bets.indexOf( bet ) / ( GameData.bets.length - 1 ) * this.processMax + this.processStartX;
 	}
 }
