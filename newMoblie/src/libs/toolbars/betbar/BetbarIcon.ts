@@ -5,6 +5,8 @@ class BetbarIcon extends egret.DisplayObjectContainer{
 
 	private maskBitmap: egret.Bitmap;
 
+	private isMaxIcon: boolean;
+
 	public constructor( iconStr: string ) {
 		super();
 
@@ -13,9 +15,11 @@ class BetbarIcon extends egret.DisplayObjectContainer{
 		this.icon = Com.addBitmapAtMiddle( this.iconLayer, "betBar_json." + iconStr, 0, 0 );
 
 		this.maskBitmap = Com.addBitmapAtMiddle( this, "betBar_json.bright", 0, 0 );
-		this.maskBitmap.anchorOffsetX = 103;
 		this.iconLayer.mask = this.maskBitmap;
 
-		if( this.icon.width > 200 ) this.iconLayer.anchorOffsetX = -4;
+		this.isMaxIcon = this.icon.width < 200;
+		if( !this.isMaxIcon ){
+			let side: egret.Bitmap = Com.addBitmapAtMiddle( this, "betBar_json.icon_side_long", 0, 0 );
+		}
 	}
 }
