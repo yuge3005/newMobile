@@ -34,9 +34,11 @@ class BetbarPoint extends egret.DisplayObjectContainer {
 		this.active = active;
 		if( active ){
 			this.pointUI.texture = RES.getRes( "betBar_json.point_bright" );
+			this.betIcon.unlock();
 		}
 		else{
 			this.pointUI.texture = RES.getRes( "betBar_json.point_gray" );
+			this.betIcon.lock();
 		}
 	}
 
