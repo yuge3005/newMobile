@@ -21,7 +21,7 @@
 			"name": "gameSettings"
 		},
 		{
-			"keys": "forAll_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,Arial Black_png,Arial Black_fnt,tounament_json,getCoinsParticle_png,getCoinsParticle_json,flyingCoins_png,flyingCoins_json,collect_coins_mp3,missionBar_json",
+			"keys": "forAll_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,Arial Black_png,Arial Black_fnt,tounament_json,getCoinsParticle_png,getCoinsParticle_json,flyingCoins_png,flyingCoins_json,collect_coins_mp3,missionBar_json,betBar_json",
 			"name": "allGameAssets"
 		},
 		{
@@ -157,6 +157,12 @@
 			"type": "sheet",
 			"name": "rate_us_json",
 			"subkeys": "BUY COINS,M,Star,Star_b,doctor,roomCloseButton"
+		},
+		{
+			"url": "game/betBar/betBar.json",
+			"type": "sheet",
+			"name": "betBar_json",
+			"subkeys": "Lock,bar_bg,bar_progress,bright,crazy_party_bright_en,crazy_party_bright_es,crazy_party_bright_pt,icon_shadow,icon_side,icon_side_long,icon_side_mask,jackpot_bright_en,jackpot_bright_es,jackpot_bright_pt,light,max_bright_en,max_bright_es,max_bright_pt,max_shadow,mission_bright_en,mission_bright_es,mission_bright_pt,number_bg,number_bg_arrow,point_bright,point_gray,puzzle_bright,star_effect"
 		}
 	]
 }

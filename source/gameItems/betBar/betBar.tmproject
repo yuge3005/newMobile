@@ -1,0 +1,41 @@
+{
+    "files": [
+        "./icon_shadow.png",
+        "./crazy_party_bright_pt.png",
+        "./crazy_party_bright_es.png",
+        "./crazy_party_bright_en.png",
+        "./bright.png",
+        "./bar_progress.png",
+        "./bar_bg.png",
+        "./star_effect.png",
+        "./puzzle_bright.png",
+        "./point_gray.png",
+        "./point_bright.png",
+        "./number_bg_arrow.png",
+        "./number_bg.png",
+        "./mission_bright_pt.png",
+        "./mission_bright_es.png",
+        "./mission_bright_en.png",
+        "./max_shadow.png",
+        "./max_bright_pt.png",
+        "./max_bright_es.png",
+        "./max_bright_en.png",
+        "./Lock.png",
+        "./light.png",
+        "./jackpot_bright_pt.png",
+        "./jackpot_bright_es.png",
+        "./jackpot_bright_en.png",
+        "./icon_side_mask.png",
+        "./icon_side_long.png",
+        "./icon_side.png"
+    ],
+    "projectName": "betBar",
+    "version": 5,
+    "options": {
+        "extend": 0,
+        "layoutMath": "0",
+        "sizeMode": "free",
+        "useExtension": 0,
+        "layoutGap": 1
+    }
+}

@@ -15,6 +15,7 @@ class BingoMachine extends GameUIItem{
 	protected payTableArea: PaytableLayer;
 	protected gameToolBar: BingoGameToolbar;
 	protected topbar: Topbar;
+	protected betBar: Betbar;
 
 	protected betText: TextLabel;
 	protected creditText: TextLabel;
@@ -226,7 +227,7 @@ class BingoMachine extends GameUIItem{
     
 	protected sendInitDataRequest(): void {
 		IBingoServer.gameInitCallback = this.onServerData.bind( this );
-		IBingoServer.tounamentCallback = this.onTounamentData.bind( this );
+		// IBingoServer.tounamentCallback = this.onTounamentData.bind( this );
 		IBingoServer.sendMessage( this.tokenObject["key"], this.tokenObject["value"] );
 	}
 
@@ -240,6 +241,7 @@ class BingoMachine extends GameUIItem{
 		IBingoServer.jackpotWinCallbak = this.jackpotArea.jackpotWinCallback.bind( this.jackpotArea );
 
 		this.initToolbar();
+		this.initBetbar(data["jackpot_min_bet"]);
 		this.updateCredit( data );
 
 		this.resetGameToolBarStatus();
@@ -279,6 +281,12 @@ class BingoMachine extends GameUIItem{
 		
 		this.topbar.scaleX = this.gameToolBar.scaleX = BingoBackGroundSetting.gameMask.width / 2000;
 		this.topbar.scaleY = this.gameToolBar.scaleY = BingoBackGroundSetting.gameMask.height / 1125;
+	}
+
+	protected initBetbar(jackpotMinBet:number){
+		this.betBar = new Betbar(jackpotMinBet);
+		Com.addObjectAt( this, this.betBar, 0, BingoGameToolbar.toolBarY - 5 );
+		this.betBar.setBet( GameData.currentBet );
 	}
 
 	protected listenToGameToolbarStatus(): void{
@@ -572,6 +580,7 @@ class BingoMachine extends GameUIItem{
 		this.jackpotArea.changebet();
 
 		this.gameToolBar.updateFreeSpinCount( GameData.currentBet == GameData.minBet && this.freeSpin );
+		this.betBar.setBet( GameData.currentBet );
 	}
 
 	protected checkOOCWhenExtra(): boolean{
@@ -1047,7 +1056,7 @@ class BingoMachine extends GameUIItem{
 
 /**************************************************************************************************************/
 
-	protected tounamentBar: TounamentLayer;
+	/* protected tounamentBar: TounamentLayer;
 
 	public onTounamentData( cmd: string, data: any ){
 		let tmData: Object = TounamentDataFormat.parse( cmd, data );
@@ -1071,7 +1080,7 @@ class BingoMachine extends GameUIItem{
 			trace( cmd );
 			egret.error( "tounament command error!" );
 		}
-	}
+	}*/
 
 	protected onLevelUpBonus( event: egret.Event ){
 		let bonus: number = event.data;

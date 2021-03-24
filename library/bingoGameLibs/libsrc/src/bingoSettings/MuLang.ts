@@ -31,7 +31,7 @@ class MuLang {
 	}
 	public static get language(): string{
 		if( localStorage && ["pt","en","es"].indexOf( localStorage["language"] ) >= 0 )return localStorage["language"];
-		var resLan: string = requestStr( "lan" );
+		var resLan: string = PlayerConfig.player("settings.lang") || eval("getPlayer().settings.lang");
 		if( ["pt","en","es"].indexOf(resLan ) >= 0 ) return resLan;
 		return "pt";
 	}
