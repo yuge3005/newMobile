@@ -35,6 +35,8 @@ class BetbarPoint extends egret.DisplayObjectContainer {
 		if( active ){
 			this.pointUI.texture = RES.getRes( "betBar_json.point_bright" );
 			this.betIcon.unlock();
+			this.betIcon.scaleX = this.betIcon.scaleY = 1.2;
+			TweenerTool.tweenTo( this.betIcon, { scaleX: 1, scaleY: 1 }, 500 );
 		}
 		else{
 			this.pointUI.texture = RES.getRes( "betBar_json.point_gray" );

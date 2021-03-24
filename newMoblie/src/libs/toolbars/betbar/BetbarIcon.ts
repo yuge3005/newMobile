@@ -9,6 +9,7 @@ class BetbarIcon extends egret.DisplayObjectContainer{
 
 	private lockUI: egret.Bitmap;
 	private blackMask: egret.Bitmap;
+	private whiteMask: egret.Bitmap;
 
 	public constructor( iconStr: string ) {
 		super();
@@ -32,9 +33,24 @@ class BetbarIcon extends egret.DisplayObjectContainer{
 
 		this.blackMask = Com.addBitmapAtMiddle( this.iconLayer, "betBar_json.icon_shadow", 0, 0 );
 		this.blackMask.visible = false;
+
+		this.whiteMask = Com.addBitmapAtMiddle( this.iconLayer, "betBar_json.bright", 0, 0 );
+		this.whiteMask.visible = false;
 	}
 
 	public unlock(){
+		this.blackMask.visible = false;
+		
+		this.whiteMask.visible = true;
+		this.whiteMask.alpha = 0;
+		let tw: egret.Tween = egret.Tween.get( this.whiteMask );
+		tw.to( { alpha: 1 }, 300 );
+		tw.to( { alpha: 0 }, 300 );
+
+		let light: egret.Bitmap = Com.addBitmapAt( this.iconLayer, "betBar_json.light", -250, -45 );
+		light.rotation = -45;
+
+		TweenerTool.tweenTo( light, { x: 250 }, 500, 600, MDS.removeSelf.bind( this, light ) );
 	}
 
 	public lock(){
