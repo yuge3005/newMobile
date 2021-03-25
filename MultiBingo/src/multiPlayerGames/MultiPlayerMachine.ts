@@ -28,7 +28,7 @@ class MultiPlayerMachine extends egret.Sprite{
 
 	protected connetKeys: Object;
 
-	protected static currentGame: MultiPlayerMachine;
+	public static currentGame: MultiPlayerMachine;
 
 	protected assetStr( str: string ): string{
 		return this.assetName + "_json." + str;

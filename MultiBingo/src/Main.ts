@@ -47,11 +47,12 @@ class Main extends egret.DisplayObjectContainer {
     }
 
 	private showGame(){
-		this.currentGame = new Mara("resource/default.res.json");
+		this.currentGame = new MultyPlayerBingo("resource/default.res.json");
 
 		const loadingView = new LoadingUI();
 		this.currentGame.preLoader = loadingView;
 		this.currentGame.addEventListener( MultiPlayerMachine.GENERIC_MODAL_LOADED, this.addGame, this );
+		this.currentGame.addEventListener( "showBank", this.showBank, this );
 	}
 
 	private addGame(){
@@ -125,6 +126,10 @@ class Main extends egret.DisplayObjectContainer {
 			this.currentPo = null;
 			// this.showFirstWaitingModal();
 		}, this);
+	}
+
+	public showBank(){
+
 	}
 }
 
