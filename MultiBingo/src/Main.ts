@@ -53,6 +53,7 @@ class Main extends egret.DisplayObjectContainer {
 		this.currentGame.preLoader = loadingView;
 		this.currentGame.addEventListener( MultiPlayerMachine.GENERIC_MODAL_LOADED, this.addGame, this );
 		this.currentGame.addEventListener( "showBank", this.showBank, this );
+		this.currentGame.addEventListener( "showGameSettings", this.showGameSettings, this );
 	}
 
 	private addGame(){
@@ -98,19 +99,11 @@ class Main extends egret.DisplayObjectContainer {
 	}
 
 	private addPo( event:egret.Event = null ){
-		this.currentPo.x = BingoBackGroundSetting.gameSize.x >> 1;
-		this.currentPo.y = BingoBackGroundSetting.gameSize.y >> 1;
-		this.currentPo.scaleX = 0.2;
-		this.currentPo.scaleY = 0.2;
-		this.currentPo.addEventListener( GenericModal.CLOSE_MODAL, this.closeCurrentPo, this );
-		// this.currentPo.addEventListener( GenericModal.MODAL_COMMAND, this.onModalCommand, this );
+		this.addPoFromTo( 0.2, 1 );
+	}
 
-		this.addChild( this.currentPo );
-		let tw: egret.Tween = egret.Tween.get( this.currentPo );
-		tw.to( {"scaleX": 1, "scaleY" : 1}, 300 );
-
-		this.modalPreloader.removeEventListener( egret.Event.ENTER_FRAME, this.onLoadingAnimation, this, false );
-		this.removeChild( this.modalPreloader );
+	protected addPhonePo( event:egret.Event = null ){
+		this.addPoFromTo( 0.1, 0.48 );
 	}
 
 	public closeCurrentPo() {
@@ -130,6 +123,29 @@ class Main extends egret.DisplayObjectContainer {
 
 	public showBank(){
 
+	}
+
+	private showGameSettings( event: egret.Event ){
+		this.showShadow();
+
+		this.currentPo = new GameSettingPopup;
+		if (this.currentPo.inited) this.addPhonePo();
+		else this.currentPo.addEventListener( GenericModal.GENERIC_MODAL_LOADED, this.addPhonePo, this );
+	}
+
+	private addPoFromTo( fromScale: number, toScale: number ){
+		this.currentPo.x = BingoBackGroundSetting.gameSize.x >> 1;
+		this.currentPo.y = BingoBackGroundSetting.gameSize.y >> 1;
+		this.currentPo.scaleX = fromScale;
+		this.currentPo.scaleY = fromScale;
+		this.currentPo.addEventListener( GenericModal.CLOSE_MODAL, this.closeCurrentPo, this );
+
+		this.addChild( this.currentPo );
+		let tw: egret.Tween = egret.Tween.get( this.currentPo );
+		tw.to( {"scaleX": toScale, "scaleY" : toScale}, 300 );
+
+		this.modalPreloader.removeEventListener( egret.Event.ENTER_FRAME, this.onLoadingAnimation, this, false );
+		this.removeChild( this.modalPreloader );
 	}
 }
 

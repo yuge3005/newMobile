@@ -13,6 +13,7 @@ class MultiPlayerMachine extends egret.Sprite{
 
 	protected ballArea: MultiGameBallLayer;
 	protected cardArea: MultiCardLayer;
+	protected topbar: MultiGameTopBar;
 
 	protected bingoCounterBar: MultiBingoCounterBar;
 	protected avatarList: AvatarContainer;
@@ -123,6 +124,7 @@ class MultiPlayerMachine extends egret.Sprite{
 
 		this.addChild( this.ballArea );
 		this.addChild( this.cardArea );
+		this.addChild( this.topbar = new MultiGameTopBar );
 	}
 
     private loginToServer(){

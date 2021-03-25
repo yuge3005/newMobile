@@ -1,11 +1,9 @@
 class MultiGameTopBar extends egret.DisplayObjectContainer {
 
+    private backToLobbyBtn: TouchDownButton;
+	private bankBtn: TouchDownButton;
+	private menuBtn: TouchDownButton;
     private piggyBank: TouchDownButton;
-
-    private dealBtn: egret.DisplayObjectContainer;
-    private timeBg: egret.Bitmap;
-    private dealBtnText: egret.TextField;
-    private dealTimeOverplus: egret.TextField;
 
     private blockPurchase: boolean;
 
@@ -13,11 +11,12 @@ class MultiGameTopBar extends egret.DisplayObjectContainer {
         super();
 
         this.blockPurchase = Boolean(PlayerConfig.player("is_block_purchase"));
-		let haveDealOverplus = Trigger.instance.haveDealOverplus;
-        let havePoTimer = Trigger.instance.havePoTimer;
 
         let bar_up: egret.Bitmap = Com.addBitmapAt(this, "lobby_json.bar_up", 0, 0);
         bar_up.scaleX = bar_up.scaleY = 2;
+
+        this.backToLobbyBtn = Com.addDownButtonAt( this, "multiTopbar_json.home", "multiTopbar_json.home", 0, 14, this.onButtonClick, true );
+		this.menuBtn = Com.addDownButtonAt( this, "multiTopbar_json.btn_setting", "multiTopbar_json.btn_setting", 1908, 14, this.onButtonClick, true );
 
         // user level area
         let userLevelArea = new LevelBar();
@@ -27,47 +26,13 @@ class MultiGameTopBar extends egret.DisplayObjectContainer {
         let userCoinsArea = new CoinsBar();
         Com.addObjectAt(this, userCoinsArea, 525, 22);
 
-        // bank btn
-        let bankBtn = new egret.DisplayObjectContainer();
-        bankBtn.touchEnabled = true;
-        bankBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.showBank, this);
-        Com.addObjectAt(this, bankBtn, 948, 16);
-        // bank btn bg
-        Com.addBitmapAt(bankBtn, "lobby_json.btn_bank", 0, 0);
-        // bank btn text
-        let bankBtnText = Com.addTextAt(bankBtn, 15, 3, 249, 90, 48, false, false);
-        bankBtnText.fontFamily = "Righteous";
-        bankBtnText.verticalAlign = "middle";
-        bankBtnText.stroke = 2;
-        bankBtnText.strokeColor = 0x004913;
-        bankBtnText.text = MuLang.getText("buy", MuLang.CASE_UPPER);
-
-        let haveDealTimer = havePoTimer && haveDealOverplus && !this.blockPurchase;
-        // deal btn
-        this.dealBtn = new egret.DisplayObjectContainer();
-        this.dealBtn.touchEnabled = true;
-        this.dealBtn.filters = (havePoTimer && !haveDealOverplus) || this.blockPurchase ? [MatrixTool.colorMatrix(0.33, 0.33, 1)] : [];
-        this.dealBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.showPo, this);
-        Com.addObjectAt(this, this.dealBtn, 1212, 16);
-        // deal btn bg
-        Com.addBitmapAt(this.dealBtn, "lobby_json.btn_deal", 0, 0);
-        // deal btn text
-        this.dealBtnText = Com.addTextAt(this.dealBtn, 0, 3, 249, haveDealTimer ? 64: 90, haveDealTimer ? 42: 48, false, false);
-        this.dealBtnText.fontFamily = "Righteous";
-        this.dealBtnText.verticalAlign = "middle";
-        this.dealBtnText.stroke = 2;
-        this.dealBtnText.strokeColor = 0x800C68;
-        this.dealBtnText.text = MuLang.getText("deal", MuLang.CASE_UPPER);
-        // timer
-        this.timeBg = Com.addBitmapAt(this.dealBtn, "lobby_json.time_base_lobby", 4, 64);
-        this.timeBg.scale9Grid = new egret.Rectangle(16, 0, 12, 30);
-        this.timeBg.width = 214;
-        // overplus text
-        this.dealTimeOverplus = Com.addTextAt(this.dealBtn, 4, 64, 214, 30, 28, false, false);
-        this.dealTimeOverplus.fontFamily = "Righteous";
-        this.dealTimeOverplus.verticalAlign = "middle";
-        this.dealTimeOverplus.text = "00:00:00";
-        this.timeBg.visible = this.dealTimeOverplus.visible = haveDealTimer;
+        this.bankBtn = Com.addDownButtonAt( this, "multiTopbar_json.btn_bank", "multiTopbar_json.btn_bank", 793, 5, this.onButtonClick, false );
+        let txt: TextLabel = Com.addLabelAt( this, 10, 10, 390, 80, 48 );
+		this.bankBtn.addChild(txt);
+		txt.fontFamily = "Righteous";
+		txt.stroke = 2;
+		txt.strokeColor = 0;
+		txt.setText( MuLang.getText("bank", MuLang.CASE_UPPER) );
 
         // user dinero area
         let dineroArea = new DineroBar();
@@ -82,9 +47,18 @@ class MultiGameTopBar extends egret.DisplayObjectContainer {
 
         this.cacheAsBitmap = true;
     }
+    
+	private onButtonClick( event: egret.TouchEvent ){
+		if( event.target == this.backToLobbyBtn ){
+			document.location.href = "../lobby";
+		}
+		else if( event.target == this.menuBtn ){
+			MultiPlayerMachine.currentGame.dispatchEvent( new egret.Event("showGameSettings" ) );
+		}
+	}
 
     private showBank( event: egret.TouchEvent ): void {
-        Trigger.instance.showBank();
+        MultiPlayerMachine.currentGame.dispatchEvent( new egret.Event( "showBank" ) );
     }
 
     /**
