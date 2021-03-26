@@ -21,7 +21,7 @@ class PlayerConfig {
 		return this._playerData;
 	} 
 
-	private static playerConfig: Object = { "user.id": requestStr( "id" ), "score.level": 2538 };
+	private static playerConfig: Object = { "user.id": requestStr( "id" ), "score.level": 2538, "user_info.preferences": [], "user_info.preferences_answer": [] };
 	private static mission: Object = {};
 
 	public static player( key: string ){
@@ -34,6 +34,15 @@ class PlayerConfig {
 			if( key=="user.id" && !rs ) rs = "243972732";
 			return rs;
 		}
+	}
+
+	public static get properties(): string {
+		let properties: string = localStorage.getItem("user_account_info");
+		if( properties.indexOf( "login_type=custom" ) >= 0 || properties.indexOf( "login_type=guest" ) >= 0 ){
+			properties += "&uid=" + PlayerConfig.player( "user.id" );
+		}
+		properties = properties.replace( "login_type", "network" );
+		return properties;
 	}
 }
 

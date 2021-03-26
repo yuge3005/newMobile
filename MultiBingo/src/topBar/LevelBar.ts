@@ -13,11 +13,11 @@ class LevelBar extends egret.DisplayObjectContainer{
 		this.addHead();
 		this.addRedPoint();
 
-        this.onXpChanged(UserVo.get("xpProgress"));
-        this.onLevelChanged(UserVo.get("level"));
+        // this.onXpChanged(UserVo.get("xpProgress"));
+        // this.onLevelChanged(UserVo.get("level"));
 
-        UserVo.onLevelChanged = this.onLevelChanged.bind(this);
-        UserVo.onXpChanged = this.onXpChanged.bind(this);
+        // UserVo.onLevelChanged = this.onLevelChanged.bind(this);
+        // UserVo.onXpChanged = this.onXpChanged.bind(this);
 	}
 
 	private addHead(){
@@ -25,7 +25,7 @@ class LevelBar extends egret.DisplayObjectContainer{
         this.userHead = Com.addBitmapAt(this, "multiTopbar_json.avatar", 0, 17);
         this.userHead.touchEnabled = true;
         this.userHead.addEventListener(egret.TouchEvent.TOUCH_TAP, this.showUserProfile, this);
-		if (UserVo.get("fbId") !== "") FacebookBitmap.downloadBitmapDataByFacebookID(UserVo.get("fbId"), 100, 100, MDS.onUserHeadLoaded.bind( this, this.userHead, 95 ), this);
+		if (PlayerConfig.player("facebook.id") !== "") FacebookBitmap.downloadBitmapDataByFacebookID(PlayerConfig.player("facebook.id"), 100, 100, MDS.onUserHeadLoaded.bind( this, this.userHead, 95 ), this);
 
 		// head mask
         let headMask: egret.Shape = new egret.Shape;
@@ -71,7 +71,7 @@ class LevelBar extends egret.DisplayObjectContainer{
     }
 
     private showUserProfile(): void {
-        this.parent.dispatchEvent(new egret.Event(Lobby.SHOW_USER_PROFILES));
+        // this.parent.dispatchEvent(new egret.Event(Lobby.SHOW_USER_PROFILES));
     }
 
     private onXpChanged(progress: number): void {

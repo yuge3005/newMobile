@@ -40,7 +40,7 @@ class MultiGameTopBar extends egret.DisplayObjectContainer {
 
         // piggy bank
         this.piggyBank = Com.addDownButtonAt(this, "multiTopbar_json.icon_piggybank", "multiTopbar_json.icon_piggybank", 1940, 23, this.openPiggyBank.bind(this), true );
-        this.piggyBank.visible = PiggyBankVo.enable;
+        this.piggyBank.visible = false;
 
         // setting btn
         let settingBtn = Com.addDownButtonAt(this, "multiTopbar_json.btn_setting", "multiTopbar_json.btn_setting", 2100, 17, this.showSetting.bind(this), true );
@@ -62,40 +62,6 @@ class MultiGameTopBar extends egret.DisplayObjectContainer {
     }
 
     /**
-     * update overplus text
-     * @param time 
-     */
-    public updateOverplusText(time: number): void {
-        if (this.blockPurchase) return;
-        if (this.timeBg.visible === false) {
-			this.dealBtnText.height = 32;
-			this.dealBtnText.size = 16;
-			this.timeBg.visible = this.dealTimeOverplus.visible = true;
-		}
-		this.dealBtn.filters = [];
-		this.dealTimeOverplus.text = Utils.secondToHour(time);
-    }
-
-    /**
-	 * po overplus over
-	 */
-	public poOverplusOver(): void {
-		if (this.blockPurchase) return;
-		this.dealBtnText.height = 40;
-		this.dealBtnText.size = 20;
-		this.timeBg.visible = this.dealTimeOverplus.visible = false;
-		this.dealBtn.filters = [MatrixTool.colorMatrix(0.33, 0.33, 1)];
-	}
-
-    /**
-     * show po
-     */
-    private showPo(): void {
-        if (this.blockPurchase) return;
-		Trigger.showPo();
-    }
-
-    /**
      * unlock piggy bank
      */
     public unlockPiggyBank(): void {
@@ -113,6 +79,6 @@ class MultiGameTopBar extends egret.DisplayObjectContainer {
      * show setting
      */
     private showSetting(): void {
-        Trigger.insertInstance( new GameSettingPopup );
+        MultiPlayerMachine.currentGame.dispatchEvent( new egret.Event( "showGameSettings" ) );
     }
 }

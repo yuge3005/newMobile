@@ -1,24 +1,27 @@
 {
-    "projectName": "multiTopbar",
+    "options": {
+        "useExtension": 0,
+        "layoutGap": 1,
+        "extend": 0,
+        "layoutMath": "0",
+        "sizeMode": "free"
+    },
     "files": [
+        "./icon_piggybank.png",
+        "./icon_experience.png",
+        "./icon_dinero.png",
+        "./icon_coin.png",
         "./home.png",
         "./experience_progress_bar.png",
         "./experience_bg.png",
         "./btn_setting.png",
+        "./btn_player_outline.png",
         "./btn_bank.png",
         "./bar_up.png",
         "./avatar.png",
-        "./icon_piggybank.png",
-        "./icon_experience.png",
-        "./icon_dinero.png",
-        "./icon_coin.png"
+        "./red_point.png",
+        "./number_bg.png"
     ],
-    "options": {
-        "extend": 0,
-        "layoutMath": "0",
-        "sizeMode": "free",
-        "useExtension": 0,
-        "layoutGap": 1
-    },
-    "version": 5
+    "version": 5,
+    "projectName": "multiTopbar"
 }
