@@ -19,9 +19,9 @@ class PlayerConfig {
 			}
 		}
 		return this._playerData;
-	} 
+	}
 
-	private static playerConfig: Object = { "user.id": requestStr( "id" ), "score.level": 2538, "user_info.preferences": [], "user_info.preferences_answer": [] };
+	private static playerConfig: Object = { "user.id": requestStr( "id" ), "score.level": 2538, "user_info.preferences": [], "user_info.preferences_answer": [], "settings.lang": "en" };
 	private static mission: Object = {};
 
 	public static player( key: string ){

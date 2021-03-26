@@ -124,7 +124,7 @@ class MultiPlayerMachine extends egret.Sprite{
 
 		this.addChild( this.ballArea );
 		this.addChild( this.cardArea );
-		this.addChild( this.topbar = new MultiGameTopBar );
+		this.topbar = new MultiGameTopBar;
 
 		this.addEventListener( "updateCoinsAndXp", this.updateCoinsAndXp, this );
 	}

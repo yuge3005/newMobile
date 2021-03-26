@@ -15,6 +15,10 @@
 		{
 			"keys": "mara_conf,mara_json,multiPlayerBingoAnimation_json,multiPlayerBingoAnimation_png,mpb_round_end_mp3,mpb_round_start_mp3,mpb_right_number_clicked_mp3,mpb_wrong_number_clicked_mp3,mara_idle_json,mara_lucky_ball_json,mara_chat_box_json,maraAnimation_png,maraLafayette_png,maraRedWine_png,maraAnimation_json,maraRedWine_json,maraLafayette_json,maraBingo_png,maraBingo_json,macaroon_mp3,lafayette_mp3,mara_bingo_mp3,macaroon_card_mp3,red_wine_mp3,bread_mp3,mara_paining_mp3,mara_croissant_mp3,mara_cheese_mp3,mara_perfume_mp3,mara_sandwich_mp3,mara_BGM_mp3,cheese_card_mp3,perfume_card_mp3,city of light_mp3,mara_pt_json,mara_sound_pt_9_mp3,mara_sound_pt_8_mp3,mara_sound_pt_75_mp3,mara_sound_pt_74_mp3,mara_sound_pt_73_mp3,mara_sound_pt_72_mp3,mara_sound_pt_71_mp3,mara_sound_pt_70_mp3,mara_sound_pt_7_mp3,mara_sound_pt_69_mp3,mara_sound_pt_68_mp3,mara_sound_pt_67_mp3,mara_sound_pt_66_mp3,mara_sound_pt_65_mp3,mara_sound_pt_64_mp3,mara_sound_pt_63_mp3,mara_sound_pt_62_mp3,mara_sound_pt_61_mp3,mara_sound_pt_60_mp3,mara_sound_pt_6_mp3,mara_sound_pt_59_mp3,mara_sound_pt_58_mp3,mara_sound_pt_57_mp3,mara_sound_pt_56_mp3,mara_sound_pt_55_mp3,mara_sound_pt_54_mp3,mara_sound_pt_53_mp3,mara_sound_pt_52_mp3,mara_sound_pt_51_mp3,mara_sound_pt_50_mp3,mara_sound_pt_5_mp3,mara_sound_pt_49_mp3,mara_sound_pt_48_mp3,mara_sound_pt_47_mp3,mara_sound_pt_46_mp3,mara_sound_pt_45_mp3,mara_sound_pt_44_mp3,mara_sound_pt_43_mp3,mara_sound_pt_42_mp3,mara_sound_pt_41_mp3,mara_sound_pt_40_mp3,mara_sound_pt_4_mp3,mara_sound_pt_39_mp3,mara_sound_pt_38_mp3,mara_sound_pt_37_mp3,mara_sound_pt_36_mp3,mara_sound_pt_35_mp3,mara_sound_pt_34_mp3,mara_sound_pt_33_mp3,mara_sound_pt_32_mp3,mara_sound_pt_31_mp3,mara_sound_pt_30_mp3,mara_sound_pt_3_mp3,mara_sound_pt_29_mp3,mara_sound_pt_28_mp3,mara_sound_pt_27_mp3,mara_sound_pt_26_mp3,mara_sound_pt_25_mp3,mara_sound_pt_24_mp3,mara_sound_pt_23_mp3,mara_sound_pt_22_mp3,mara_sound_pt_21_mp3,mara_sound_pt_20_mp3,mara_sound_pt_2_mp3,mara_sound_pt_19_mp3,mara_sound_pt_18_mp3,mara_sound_pt_17_mp3,mara_sound_pt_16_mp3,mara_sound_pt_15_mp3,mara_sound_pt_14_mp3,mara_sound_pt_13_mp3,mara_sound_pt_12_mp3,mara_sound_pt_11_mp3,mara_sound_pt_10_mp3,mara_sound_pt_1_mp3,mara_change_mode_png,mara_change_mode_json,macaroon_exp_png,macaroon_exp_json,mara_fireworks_png,mara_tower_png,mara_fireworks_json,mara_tower_json,mara_text_tx,flyingCoins_png,flyingCoins_json,coinsDrop_mp3,open_list_mp3,collect_coins_mp3,blank_sound_mp3,mara_bg_png,freeCardUI_json",
 			"name": "mara_pt"
+		},
+		{
+			"keys": "gameSettings_json,rate_us_json,support_json",
+			"name": "gameSettings"
 		}
 	],
 	"resources": [
@@ -1859,6 +1863,24 @@
 			"type": "sheet",
 			"name": "multiTopbar_json",
 			"subkeys": "avatar,bar_up,btn_bank,btn_player_outline,btn_setting,experience_bg,experience_progress_bar,home,icon_coin,icon_dinero,icon_experience,icon_piggybank,number_bg,red_point"
+		},
+		{
+			"url": "assets/gameSettings/support.json",
+			"type": "sheet",
+			"name": "support_json",
+			"subkeys": "button,button_close,button_send,icon_zendesk,popup_bg_big,select_box"
+		},
+		{
+			"url": "assets/gameSettings/gameSettings.json",
+			"type": "sheet",
+			"name": "gameSettings_json",
+			"subkeys": "OK,X_btn,avatar,bg,bg_popup,bg_slider_off,bg_slider_on,btn_arrow,dr,fb_bt_settings,flag_en,flag_es,flag_pt,gl_bt_settings,icon_connect,icon_notification,language_icon,music_icon,rate_icon,scroll_bar,scroll_bar_handle,slider_switch,sound_fx_icon,support_btn,support_icon,tab_bg,visual_fx_icon"
+		},
+		{
+			"url": "assets/gameSettings/rate_us.json",
+			"type": "sheet",
+			"name": "rate_us_json",
+			"subkeys": "BUY COINS,M,Star,Star_b,doctor,roomCloseButton"
 		}
 	]
 }

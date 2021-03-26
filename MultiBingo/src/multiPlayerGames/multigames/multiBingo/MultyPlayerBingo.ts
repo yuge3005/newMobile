@@ -110,6 +110,8 @@ class MultyPlayerBingo extends Multi75Super{
 		this.chatBar = new MultiPlayerBingoChatBar;
 		Com.addObjectAt( this.chatAndMiniGameLayer, this.chatBar, 1500, 588 );
 
+		this.addChild( this.topbar );
+
 		Com.addDownButtonAt( this, this.assetStr( "power_up_info" ), this.assetStr( "power_up_info" ), 1565, 123, this.showHelp, true );
 	}
 

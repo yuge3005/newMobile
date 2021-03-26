@@ -13,20 +13,21 @@ class MultiGameTopBar extends egret.DisplayObjectContainer {
         this.blockPurchase = Boolean(PlayerConfig.player("is_block_purchase"));
 
         let bar_up: egret.Bitmap = Com.addBitmapAt(this, "multiTopbar_json.bar_up", 0, 0);
-        bar_up.scaleX = bar_up.scaleY = 2;
+        bar_up.width = 2000;
+        bar_up.height = 117;
 
         this.backToLobbyBtn = Com.addDownButtonAt( this, "multiTopbar_json.home", "multiTopbar_json.home", 0, 14, this.onButtonClick, true );
-		this.menuBtn = Com.addDownButtonAt( this, "multiTopbar_json.btn_setting", "multiTopbar_json.btn_setting", 1908, 14, this.onButtonClick, true );
+		this.menuBtn = Com.addDownButtonAt( this, "multiTopbar_json.btn_setting", "multiTopbar_json.btn_setting", 1900, 14, this.onButtonClick, true );
 
         // user level area
         let userLevelArea = new LevelBar();
-        Com.addObjectAt(this, userLevelArea, 65, 2);
+        Com.addObjectAt(this, userLevelArea, 115, -5);
 
         // user coins area
         let userCoinsArea = new CoinsBar();
-        Com.addObjectAt(this, userCoinsArea, 525, 22);
+        Com.addObjectAt(this, userCoinsArea, 580, 15);
 
-        this.bankBtn = Com.addDownButtonAt( this, "multiTopbar_json.btn_bank", "multiTopbar_json.btn_bank", 793, 5, this.onButtonClick, false );
+        this.bankBtn = Com.addDownButtonAt( this, "multiTopbar_json.btn_bank", "multiTopbar_json.btn_bank", 1000, 5, this.onButtonClick, false );
         let txt: TextLabel = Com.addLabelAt( this, 10, 10, 390, 80, 48 );
 		this.bankBtn.addChild(txt);
 		txt.fontFamily = "Righteous";
@@ -36,14 +37,11 @@ class MultiGameTopBar extends egret.DisplayObjectContainer {
 
         // user dinero area
         let dineroArea = new DineroBar();
-        Com.addObjectAt(this, dineroArea, 1530, 31);
+        Com.addObjectAt(this, dineroArea, 1530, 25);
 
         // piggy bank
         this.piggyBank = Com.addDownButtonAt(this, "multiTopbar_json.icon_piggybank", "multiTopbar_json.icon_piggybank", 1940, 23, this.openPiggyBank.bind(this), true );
         this.piggyBank.visible = false;
-
-        // setting btn
-        let settingBtn = Com.addDownButtonAt(this, "multiTopbar_json.btn_setting", "multiTopbar_json.btn_setting", 2100, 17, this.showSetting.bind(this), true );
 
         this.cacheAsBitmap = true;
     }
@@ -73,12 +71,5 @@ class MultiGameTopBar extends egret.DisplayObjectContainer {
      */
     private openPiggyBank(): void {
         // Trigger.showPigBank();
-    }
-
-    /**
-     * show setting
-     */
-    private showSetting(): void {
-        MultiPlayerMachine.currentGame.dispatchEvent( new egret.Event( "showGameSettings" ) );
     }
 }
