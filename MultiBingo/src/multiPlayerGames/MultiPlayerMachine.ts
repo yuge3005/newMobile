@@ -125,6 +125,8 @@ class MultiPlayerMachine extends egret.Sprite{
 		this.addChild( this.ballArea );
 		this.addChild( this.cardArea );
 		this.addChild( this.topbar = new MultiGameTopBar );
+
+		this.addEventListener( "updateCoinsAndXp", this.updateCoinsAndXp, this );
 	}
 
     private loginToServer(){
@@ -177,6 +179,10 @@ class MultiPlayerMachine extends egret.Sprite{
 			}
 		}
 		this.afterCheck( resultList );
+	}
+
+	protected updateCoinsAndXp( event: egret.Event ){
+		egret.log( event.data );
 	}
 
 /******************************************************************************************/

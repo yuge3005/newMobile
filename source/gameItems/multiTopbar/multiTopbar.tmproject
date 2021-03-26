@@ -1,0 +1,24 @@
+{
+    "projectName": "multiTopbar",
+    "files": [
+        "./home.png",
+        "./experience_progress_bar.png",
+        "./experience_bg.png",
+        "./btn_setting.png",
+        "./btn_bank.png",
+        "./bar_up.png",
+        "./avatar.png",
+        "./icon_piggybank.png",
+        "./icon_experience.png",
+        "./icon_dinero.png",
+        "./icon_coin.png"
+    ],
+    "options": {
+        "extend": 0,
+        "layoutMath": "0",
+        "sizeMode": "free",
+        "useExtension": 0,
+        "layoutGap": 1
+    },
+    "version": 5
+}

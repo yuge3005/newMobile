@@ -4,7 +4,7 @@ class RedPoint extends egret.DisplayObjectContainer {
     constructor() {
         super();
 
-        Com.addBitmapAt(this, "lobby_json.red_point", 0, 0);
+        Com.addBitmapAt(this, "multiTopbar_json.red_point", 0, 0);
 
         this.text = Com.addLabelAt(this, 0, 0, 50, 50, 28, false, false);
         this.text.fontFamily = "Righteous";

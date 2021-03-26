@@ -1,0 +1,12 @@
+{"file":"multiTopbar.png","frames":{
+"icon_coin":{"x":1575,"y":100,"w":95,"h":95,"offX":0,"offY":0,"sourceW":95,"sourceH":95},
+"icon_dinero":{"x":1835,"y":100,"w":136,"h":84,"offX":0,"offY":0,"sourceW":136,"sourceH":84},
+"icon_experience":{"x":1714,"y":0,"w":119,"h":116,"offX":0,"offY":0,"sourceW":119,"sourceH":116},
+"icon_piggybank":{"x":1835,"y":0,"w":111,"h":89,"offX":0,"offY":0,"sourceW":111,"sourceH":89},
+"avatar":{"x":1672,"y":118,"w":92,"h":92,"offX":1,"offY":1,"sourceW":95,"sourceH":95},
+"bar_up":{"x":0,"y":0,"w":1125,"h":68,"offX":0,"offY":0,"sourceW":1125,"sourceH":68},
+"btn_bank":{"x":1483,"y":0,"w":229,"h":98,"offX":0,"offY":0,"sourceW":229,"sourceH":98},
+"btn_setting":{"x":1948,"y":0,"w":95,"h":95,"offX":0,"offY":0,"sourceW":95,"sourceH":95},
+"experience_bg":{"x":1127,"y":0,"w":354,"h":67,"offX":0,"offY":0,"sourceW":354,"sourceH":67},
+"experience_progress_bar":{"x":1127,"y":69,"w":349,"h":62,"offX":2,"offY":2,"sourceW":354,"sourceH":67},
+"home":{"x":1478,"y":100,"w":95,"h":95,"offX":0,"offY":0,"sourceW":95,"sourceH":95}}}

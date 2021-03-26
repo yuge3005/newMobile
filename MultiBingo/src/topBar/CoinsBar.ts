@@ -5,17 +5,17 @@ class CoinsBar extends egret.DisplayObjectContainer{
 	public constructor() {
 		super();
 
-        Com.addBitmapAt(this, "lobby_json.number_bg", 5, 9);
+        Com.addBitmapAt(this, "multiTopbar_json.number_bg", 5, 9);
         this.coinsText = Com.addLabelAt(this, 90, 14, 260, 72, 52, false, false);
         this.coinsText.fontFamily = "Righteous";
         this.coinsText.stroke = 2;
         this.coinsText.strokeColor = 0x9D7806;
 
-        Com.addDownButtonAt(this, "lobby_json.icon_coin", "lobby_json.icon_coin", 0, 0, this.showBank.bind(this), true );
+        Com.addDownButtonAt(this, "multiTopbar_json.icon_coin", "multiTopbar_json.icon_coin", 0, 0, this.showBank.bind(this), true );
 
-        this.onCoinsChanged(Number(UserVo.get("coins")));
+        // this.onCoinsChanged(Number(UserVo.get("coins")));
 
-        UserVo.onCoinsChanged = this.onCoinsChanged.bind(this);
+        // UserVo.onCoinsChanged = this.onCoinsChanged.bind(this);
 	}
 
     private onCoinsChanged(coins: number): void {

@@ -22,7 +22,7 @@ class LevelBar extends egret.DisplayObjectContainer{
 
 	private addHead(){
 		// user head icon
-        this.userHead = Com.addBitmapAt(this, "lobby_json.avatar", 0, 17);
+        this.userHead = Com.addBitmapAt(this, "multiTopbar_json.avatar", 0, 17);
         this.userHead.touchEnabled = true;
         this.userHead.addEventListener(egret.TouchEvent.TOUCH_TAP, this.showUserProfile, this);
 		if (UserVo.get("fbId") !== "") FacebookBitmap.downloadBitmapDataByFacebookID(UserVo.get("fbId"), 100, 100, MDS.onUserHeadLoaded.bind( this, this.userHead, 95 ), this);
@@ -32,15 +32,15 @@ class LevelBar extends egret.DisplayObjectContainer{
         GraphicTool.drawCircle( headMask, new egret.Point( 47, 47 ), 47, 0 );
         Com.addObjectAt(this, headMask, 0, 17);
         this.userHead.mask = headMask;
-        Com.addBitmapAt(this, "lobby_json.btn_player_outline", 0, 17);
+        Com.addBitmapAt(this, "multiTopbar_json.btn_player_outline", 0, 17);
 	}
 
 	private addXp(){
-		Com.addBitmapAt(this, "lobby_json.experience_bg", 39, 33);
-		this.xpProgress = Com.addBitmapAt(this, "lobby_json.experience_progress_bar", 41, 33);
+		Com.addBitmapAt(this, "multiTopbar_json.experience_bg", 39, 33);
+		this.xpProgress = Com.addBitmapAt(this, "multiTopbar_json.experience_progress_bar", 41, 33);
         this.xpProgress.mask = new egret.Rectangle(0, 0, 0, 67);
 		// level star
-        Com.addBitmapAt(this, "lobby_json.icon_experience", 321, 0);
+        Com.addBitmapAt(this, "multiTopbar_json.icon_experience", 321, 0);
         // xp progress text
         this.xpProgressText = Com.addTextAt(this, 108, 46, 212, 46, 32, false, false);
         this.xpProgressText.fontFamily = "Righteous";

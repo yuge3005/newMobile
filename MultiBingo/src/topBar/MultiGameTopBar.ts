@@ -12,7 +12,7 @@ class MultiGameTopBar extends egret.DisplayObjectContainer {
 
         this.blockPurchase = Boolean(PlayerConfig.player("is_block_purchase"));
 
-        let bar_up: egret.Bitmap = Com.addBitmapAt(this, "lobby_json.bar_up", 0, 0);
+        let bar_up: egret.Bitmap = Com.addBitmapAt(this, "multiTopbar_json.bar_up", 0, 0);
         bar_up.scaleX = bar_up.scaleY = 2;
 
         this.backToLobbyBtn = Com.addDownButtonAt( this, "multiTopbar_json.home", "multiTopbar_json.home", 0, 14, this.onButtonClick, true );
@@ -39,11 +39,11 @@ class MultiGameTopBar extends egret.DisplayObjectContainer {
         Com.addObjectAt(this, dineroArea, 1530, 31);
 
         // piggy bank
-        this.piggyBank = Com.addDownButtonAt(this, "lobby_json.icon_piggybank", "lobby_json.icon_piggybank", 1940, 23, this.openPiggyBank.bind(this), true );
+        this.piggyBank = Com.addDownButtonAt(this, "multiTopbar_json.icon_piggybank", "multiTopbar_json.icon_piggybank", 1940, 23, this.openPiggyBank.bind(this), true );
         this.piggyBank.visible = PiggyBankVo.enable;
 
         // setting btn
-        let settingBtn = Com.addDownButtonAt(this, "lobby_json.btn_setting", "lobby_json.btn_setting", 2100, 17, this.showSetting.bind(this), true );
+        let settingBtn = Com.addDownButtonAt(this, "multiTopbar_json.btn_setting", "multiTopbar_json.btn_setting", 2100, 17, this.showSetting.bind(this), true );
 
         this.cacheAsBitmap = true;
     }

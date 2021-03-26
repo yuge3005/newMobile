@@ -5,21 +5,23 @@ class DineroBar extends egret.DisplayObjectContainer{
 	public constructor() {
 		super();
 
-        Com.addBitmapAt(this, "lobby_json.number_bg", 0, 0);
+        Com.addBitmapAt(this, "multiTopbar_json.number_bg", 0, 0);
 
         this.dineroText = Com.addLabelAt(this, 10, 2, 210, 72, 52, false, false);
         this.dineroText.fontFamily = "Righteous";
         this.dineroText.stroke = 2;
         this.dineroText.strokeColor = 0x41A948;
-        this.onDineroChanged(Number(UserVo.get("dineros")));
+        // this.onDineroChanged(Number(UserVo.get("dineros")));
 
-        Com.addDownButtonAt(this, "lobby_json.icon_dinero", "lobby_json.icon_dinero", 224, 0, this.showBank.bind(this), true );
+        Com.addDownButtonAt(this, "multiTopbar_json.icon_dinero", "multiTopbar_json.icon_dinero", 224, 0, this.showBank.bind(this), true );
 
-		UserVo.onDineroChanged = this.onDineroChanged.bind(this);
+		// UserVo.onDineroChanged = this.onDineroChanged.bind(this);
 	}
 
 	private showBank( event: egret.TouchEvent ): void {
-        Trigger.instance.showBank( 1 );
+        let ev: egret.Event = new egret.Event( "showBank" );
+        ev.data = 1;
+        MultiPlayerMachine.currentGame.dispatchEvent( ev );
     }
 
     private onDineroChanged(dinero: number): void {
