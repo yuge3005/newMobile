@@ -12,7 +12,7 @@ class Topbar extends egret.DisplayObjectContainer{
 		this.backToLobbyBtn = Com.addDownButtonAt( this, "topbar_json.home", "topbar_json.home_press", 0, 14, this.onButtonClick, true );
 		this.menuBtn = Com.addDownButtonAt( this, "topbar_json.hamburger", "topbar_json.hamburger", 1908, 14, this.onButtonClick, true );
 
-		this.bankBtn = Com.addDownButtonAt( this, "topbar_json.buy-btn", "topbar_json.buy-btn", 793, 5, this.onButtonClick, false );
+		this.bankBtn = Com.addDownButtonAt( this, "topbar_json.buy-btn", "topbar_json.buy-btn", 793, 5, this.onButtonClick, true );
 		let txt: TextLabel = Com.addLabelAt( this, 10, 10, 390, 80, 48 );
 		this.bankBtn.addChild(txt);
 		txt.fontFamily = "Righteous";
@@ -31,6 +31,11 @@ class Topbar extends egret.DisplayObjectContainer{
 			let bingoGame: BingoMachine = this.parent as BingoMachine;
 			bingoGame.stopAutoPlay();
 			bingoGame.dispatchEvent( new egret.Event("showGameSettings" ) );
+		}
+		else if( event.target == this.bankBtn ){
+			let bingoGame: BingoMachine = this.parent as BingoMachine;
+			bingoGame.stopAutoPlay();
+			bingoGame.dispatchEvent( new egret.Event("showBank" ) );
 		}
 	}
 }
