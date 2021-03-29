@@ -44,6 +44,7 @@ class BingoGameMain extends egret.DisplayObjectContainer {
 		this.currentGame.addEventListener( BingoMachine.GENERIC_MODAL_LOADED, this.addGame, this );
 		this.currentGame.addEventListener("showGameSettings", this.showGameSettings, this);
 		this.currentGame.addEventListener("missionPopup", this.showMission, this );
+		this.currentGame.addEventListener("showBank", this.showBank, this );
 	}
 
 	private addGame(){
@@ -153,5 +154,9 @@ class BingoGameMain extends egret.DisplayObjectContainer {
 			this.currentPo = null;
 			// this.showFirstWaitingModal();
 		}, this);
+	}
+
+	public showBank( event:egret.Event = null ){
+		
 	}
 }
