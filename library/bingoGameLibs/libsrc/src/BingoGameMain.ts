@@ -169,7 +169,9 @@ class BingoGameMain extends egret.DisplayObjectContainer {
 				className = poPath.replace(/.*\/(.*)\//, "$1");
 				classUrl = poPath + "load.js";
 				configUrl = poPath + "data.res.json";
+				GlobelSettings.bank = list[i].products;
 			}
+			if( list[i].type == "chipBank" ) GlobelSettings.chipBank = list[i].products;
 		}
 		
 		this.loadDynamicClass( className, configUrl, classUrl );
