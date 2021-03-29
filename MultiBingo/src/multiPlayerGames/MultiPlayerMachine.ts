@@ -183,6 +183,8 @@ class MultiPlayerMachine extends egret.Sprite{
 
 	protected updateCoinsAndXp( event: egret.Event ){
 		egret.log( event.data );
+
+		this.topbar.updateCoinsDineroXp( event.data["credito"], event.data["secondCurrency"], event.data["xp"] )
 	}
 
 /******************************************************************************************/

@@ -24,7 +24,7 @@ class DineroBar extends egret.DisplayObjectContainer{
         MultiPlayerMachine.currentGame.dispatchEvent( ev );
     }
 
-    private onDineroChanged(dinero: number): void {
+    public onDineroChanged(dinero: number): void {
 		this.dineroText.setText( Utils.formatCoinsNumber(dinero) );
     }
 }

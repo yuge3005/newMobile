@@ -7,6 +7,10 @@ class MultiGameTopBar extends egret.DisplayObjectContainer {
 
     private blockPurchase: boolean;
 
+    private coinsArea: CoinsBar;
+    private levelArea: LevelBar;
+    private dineroBar: DineroBar;
+
     constructor() {
         super();
 
@@ -20,14 +24,14 @@ class MultiGameTopBar extends egret.DisplayObjectContainer {
 		this.menuBtn = Com.addDownButtonAt( this, "multiTopbar_json.btn_setting", "multiTopbar_json.btn_setting", 1900, 14, this.onButtonClick, true );
 
         // user level area
-        let userLevelArea = new LevelBar();
-        Com.addObjectAt(this, userLevelArea, 115, -5);
+        this.levelArea = new LevelBar();
+        Com.addObjectAt(this, this.levelArea, 115, -5);
 
         // user coins area
-        let userCoinsArea = new CoinsBar();
-        Com.addObjectAt(this, userCoinsArea, 580, 15);
+        this.coinsArea = new CoinsBar();
+        Com.addObjectAt(this, this.coinsArea, 580, 15);
 
-        this.bankBtn = Com.addDownButtonAt( this, "multiTopbar_json.btn_bank", "multiTopbar_json.btn_bank", 1000, 5, this.onButtonClick, false );
+        this.bankBtn = Com.addDownButtonAt( this, "multiTopbar_json.btn_bank", "multiTopbar_json.btn_bank", 1000, 5, this.onButtonClick, true );
         let txt: TextLabel = Com.addLabelAt( this, 10, 10, 390, 80, 48 );
 		this.bankBtn.addChild(txt);
 		txt.fontFamily = "Righteous";
@@ -36,8 +40,8 @@ class MultiGameTopBar extends egret.DisplayObjectContainer {
 		txt.setText( MuLang.getText("bank", MuLang.CASE_UPPER) );
 
         // user dinero area
-        let dineroArea = new DineroBar();
-        Com.addObjectAt(this, dineroArea, 1530, 25);
+        this.dineroBar = new DineroBar();
+        Com.addObjectAt(this, this.dineroBar, 1530, 25);
 
         // piggy bank
         this.piggyBank = Com.addDownButtonAt(this, "multiTopbar_json.icon_piggybank", "multiTopbar_json.icon_piggybank", 1940, 23, this.openPiggyBank.bind(this), true );
@@ -71,5 +75,11 @@ class MultiGameTopBar extends egret.DisplayObjectContainer {
      */
     private openPiggyBank(): void {
         // Trigger.showPigBank();
+    }
+
+    public updateCoinsDineroXp( coins: number, dinero: number, xp: number ){
+        if( coins != null )this.coinsArea.onCoinsChanged( coins );
+        if( dinero != null )this.dineroBar.onDineroChanged( dinero );
+        if( xp != null )this.levelArea.onXpChanged( xp );
     }
 }

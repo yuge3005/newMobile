@@ -18,7 +18,7 @@ class CoinsBar extends egret.DisplayObjectContainer{
         // UserVo.onCoinsChanged = this.onCoinsChanged.bind(this);
 	}
 
-    private onCoinsChanged(coins: number): void {
+    public onCoinsChanged(coins: number): void {
 		this.coinsText.setText( Utils.formatCoinsNumber(coins) );
     }
 
