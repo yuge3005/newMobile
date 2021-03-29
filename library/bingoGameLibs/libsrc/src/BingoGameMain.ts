@@ -157,6 +157,52 @@ class BingoGameMain extends egret.DisplayObjectContainer {
 	}
 
 	public showBank( event:egret.Event = null ){
+		this.showShadow();
+
+		let list = PlayerConfig.player( "external_contents" ).list;
+		let className: string;
+		let classUrl: string;
+		let configUrl: string;
+		for( let i: number = 0; i < list.length; i++ ){
+			if( list[i].type == "bank" ){
+				let poPath = list[i]["art"][0]["file"]["file_id_html5"];
+				className = poPath.replace(/.*\/(.*)\//, "$1");
+				classUrl = poPath + "load.js";
+				configUrl = poPath + "data.res.json";
+			}
+		}
 		
+		this.loadDynamicClass( className, configUrl, classUrl );
+	}
+
+	private loadDynamicClass( className: string, assetConfigUrl: string, classUrl: string ){
+		let cls: Function = egret.getDefinitionByName( className );
+		if( cls ){
+			this.showPoWithClassName( className, assetConfigUrl );
+			return;
+		}
+        var s = document.createElement('script');
+        s.async = false;
+        s.src = classUrl;
+		trace( "I am loading " + classUrl );
+        s.addEventListener('load', function () {
+            s.parentNode.removeChild(s);
+			s.removeEventListener('load', eval("arguments.callee"), false);
+			egret.getDefinitionByName( className )["needZoomOut"] = egret.getDefinitionByName( className )["needZoomOut"] == null ? true : false;
+            this.showPoWithClassName( className, assetConfigUrl );
+		}.bind(this), false);
+        document.head.appendChild(s);
+	}
+
+	private showPoWithClassName( className: string, assetConfigUrl: string ){
+		let cls: Function = egret.getDefinitionByName( className );
+		this.showPoWithClass( cls, assetConfigUrl );
+	}
+
+	private showPoWithClass(myClass: Function, assetConfigUrl: string) {
+		this.currentPo = eval("new myClass(assetConfigUrl)");
+		this.currentPo.needZoomOut = eval( "myClass" )["needZoomOut"];
+		if( this.currentPo.inited )this.addPo();
+		else this.currentPo.addEventListener( GenericModal.GENERIC_MODAL_LOADED, this.addPo, this );
 	}
 }
