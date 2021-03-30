@@ -73,7 +73,7 @@
     </div>
     <div style="margin: auto;width: 100%;height: 100%;position: fixed" class="egret-player"
          data-entry-class="Main"
-         data-orientation="auto"
+         data-orientation="landspace"
          data-scale-mode="showAll"
          data-frame-rate="30"
          data-content-width="960"
@@ -140,53 +140,12 @@
                     context.backingStorePixelRatio || 1;
                 return (window.devicePixelRatio || 1) / backingStore;
             }});
-
-            if( isMobile() ){
-                window.addEventListener('orientationchange', onOrientation, false );
-                setTimeout( zeroOrientationUI, 500 );
-            }
         });
     });
     xhr.send(null);
 
     document.onmousedown = function( ev ){ if( ev.button == 2 ) document.isRightClick = true; }
 	document.onmouseup = function( ev ){ document.isRightClick = false;	}
-    
-    function onOrientation(){
-        setTimeout( zeroOrientationUI, 350 );
-    }
-
-    function zeroOrientationUI(){
-        var orientation = window.orientation;
-        switch(orientation){
-            case 90:
-            case -90:
-                break;
-            default:
-                var egretCanvas = document.getElementsByTagName( "canvas" )[0];
-                var str = String(egretCanvas.style.transform);
-                str = str.substr( str.indexOf( "(" ) + 1 )
-                str = str.substr( 0, str.indexOf( "," ) );
-                var scale = Number( str );
-
-                var w = Math.round( egretCanvas.height * scale + Number( egretCanvas.style.top.replace( "px", "" ) ) * 2 );
-                var h = Math.round( egretCanvas.width * scale );
-
-                egretCanvas.style.inset = "0px 0px 0px 100%";
-
-                var widthBase = w / 16 < h / 9;
-                if( widthBase ){
-                    var s = w / egretCanvas.width;
-                    var g = Math.round( ( h - w / 16 * 9 ) * 0.5 );
-                    egretCanvas.style.transform = "matrix(0, " + s + ", -" + s + ", 0, " + g + ", 0)";
-                }
-                else{
-                    var s = h / egretCanvas.height
-                    var g = Math.round( ( w - h / 9 * 16 ) * 0.5 );
-                    egretCanvas.style.transform = "matrix(0, " + s + ", -" + s + ", 0, 0, " + g + ")";
-                }
-        }
-    }
 </script>
 </body>
 
