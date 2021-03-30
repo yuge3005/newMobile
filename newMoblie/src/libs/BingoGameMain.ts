@@ -56,10 +56,6 @@ class BingoGameMain extends egret.DisplayObjectContainer {
 		}catch(e){}
 		this.isMobile = isMobile;
 
-		if( isMobile ){
-			this.x = stageW;
-			this.rotation = 90;
-		}
 		this.addChild( this.currentGame );
 		document.addEventListener("keydown", this.keyDown.bind(this) );
 		var loadingBar = document.getElementById( "loading_bar" );

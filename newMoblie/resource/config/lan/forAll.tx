@@ -37,7 +37,7 @@
 		,"facebook_id":{ "en": "Facebook ID", "es": "ID de Facebook", "pt": "ID de Facebook" }
 		,"custom_id":{ "en": "Custom ID", "es": "ID de Personalizado", "pt": "ID de Personalizado" }
 		,"google_id":{ "en": "Google ID", "es": "ID de Google", "pt": "ID de Google" }
-		,"guest_id":{ "en": "Guest ID", "es": "ID de Convidado", "pt": "ID de Convidado" }
+		,"guest_id":{ "en": "GUEST ID", "es": "ID INVITADO", "pt": "VISITANTE ID" }
 		,"notification":{ "en": "NOTIFICATIONS", "es": "NOTIFICACIONES", "pt": "NOTIFICAÇÕES" }
 		,"login":{ "en": "Login", "es": "Identificándose", "pt": "Conecte-se" }
 		,"logout":{ "en": "LOGOUT", "es": "SALIR", "pt": "LOGOUT" }

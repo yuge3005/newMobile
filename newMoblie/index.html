@@ -46,6 +46,13 @@
             margin: 0;
             height: 100%;
         }
+        @media screen and (orientation: portrait){
+            #loading_bar {
+                left: 50%;
+                top: 50%;
+                transform: rotate(90deg);
+            }
+        }
     </style>
     <script src="src/javascripts/sfs2x-api-1.7.5.js"></script>
 </head>
@@ -81,15 +88,6 @@
         return mobile!= null
     }
     let egretDiv = document.getElementsByClassName( "egret-player" )[0];
-    if( isMobile() ){
-        egretDiv.setAttribute( "data-content-width", "540" );
-        egretDiv.setAttribute( "data-content-height", "960" );
-
-        let loading = document.querySelector("#loading_bar");
-        loading.style.left = "50%";
-        loading.style.top = "50%";
-        loading.style.transform = "rotate(90deg)";
-    }
     var loadScript = function (list, callback) {
         var loaded = 0;
         var loadNext = function () {
