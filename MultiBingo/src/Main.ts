@@ -65,10 +65,6 @@ class Main extends egret.DisplayObjectContainer {
 		}catch(e){}
 		this.isMobile = isMobile;
 
-        if( isMobile ){
-            this.x = stageW;
-            this.rotation = 90;
-        }
 		this.addChild( this.currentGame );
         var loadingBar = document.getElementById( "loading_bar" );
         if( loadingBar ) loadingBar.parentNode.removeChild( loadingBar );
