@@ -1655,7 +1655,6 @@ var BingoMachine = (function (_super) {
                     this.currentGame.resetGameToolBarStatus();
                 }
                 this.currentGame.dispatchEvent(new egret.Event("out_of_coins_game_id"));
-                alert("out of coins");
                 return;
             }
             this.currentGame.startPlay();
@@ -3426,6 +3425,8 @@ var BingoGameMain = (function (_super) {
         this.currentGame.addEventListener("showGameSettings", this.showGameSettings, this);
         this.currentGame.addEventListener("missionPopup", this.showMission, this);
         this.currentGame.addEventListener("showBank", this.showBank, this);
+        this.currentGame.addEventListener("out_of_coins_game_id", this.showBank, this);
+        this.currentGame.addEventListener("out_of_dinero", this.showBank, this);
     };
     BingoGameMain.prototype.addGame = function () {
         var stageW = this.stage.stageWidth;
@@ -3573,9 +3574,9 @@ var BingoGameMain = (function (_super) {
         this.currentPo = eval("new myClass(assetConfigUrl)");
         this.currentPo.needZoomOut = eval("myClass")["needZoomOut"];
         if (this.currentPo.inited)
-            this.addPo();
+            this.addPhonePo();
         else
-            this.currentPo.addEventListener(GenericModal.GENERIC_MODAL_LOADED, this.addPo, this);
+            this.currentPo.addEventListener(GenericModal.GENERIC_MODAL_LOADED, this.addPhonePo, this);
     };
     return BingoGameMain;
 }(egret.DisplayObjectContainer));
@@ -3729,16 +3730,18 @@ var ConFirmBar = (function (_super) {
         barBg.scale9Grid = new egret.Rectangle(60, 60, 911, 706);
         barBg.width = 1110;
         barBg.height = 535;
-        var title = Com.addLabelAt(_this, 100 - 610, 75 - 320, 910, 76, 76);
+        var title = Com.addLabelAt(_this, 100 - 610, 75 - 320, 910, 72, 72, false, true);
         title.text = MuLang.getText("change_language");
         var tip = Com.addLabelAt(_this, 100 - 610, 200 - 320, 910, 100, 48);
         tip.setText(MuLang.getText("change_language_tip"));
         var btn1 = Com.addDownButtonAt(_this, "gameSettings_json.OK", "gameSettings_json.OK", 125 - 610, 370 - 320, _this.closeThisBar.bind(_this), true);
-        var btTx1 = Com.addTextAt(_this, 0, 0, 20, 72, 72);
+        var btTx1 = Com.addTextAt(_this, 0, 0, 20, 55, 55);
+        btTx1.fontFamily = "Righteous";
         btTx1.text = MuLang.getText("cancel");
         btn1.setButtonText(btTx1);
         var btn2 = Com.addDownButtonAt(_this, "gameSettings_json.OK", "gameSettings_json.OK", 5, 370 - 320, _this.confirmChange.bind(_this), true);
-        var btTx2 = Com.addTextAt(_this, 0, 0, 20, 72, 72);
+        var btTx2 = Com.addTextAt(_this, 0, 0, 20, 55, 55);
+        btTx2.fontFamily = "Righteous";
         btTx2.text = MuLang.getText("confirm");
         btn2.setButtonText(btTx2);
         return _this;
