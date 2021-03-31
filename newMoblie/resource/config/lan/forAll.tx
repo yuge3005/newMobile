@@ -18,6 +18,7 @@
 		,"collect":{"en": "COLLECT", "es": "RECOGER", "pt": "COLETAR" }
 		,"total bet":{"en": "TOTAL BET", "es": "APUETA TOTAL", "pt": "APOSTA TOTAL" }
 		,"free":{"en": "FREE", "es": "GRATIS", "pt": "GRATIS" }
+		,"free_bonus":{"en":"FREE BONUS","pt":"Bônus Grátis","es":"Bono Gratis"}
 		,"hold for auto":{"en": "HOLD FOR\nAUTOPLAY", "es": "PRESSIONE\nPARA AUTO", "pt": "PRESSIONE\nPARA AUTO" }
 		,"bingo":{ "en": "Bingo", "es": "Bingo", "pt": "Bingo" }
 		,"double":{ "en": "Double", "es": "Doble", "pt": "Dupla" }
