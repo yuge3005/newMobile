@@ -60,20 +60,29 @@ class Main extends egret.DisplayObjectContainer {
 	}
 
 	private addGame(){
-        let stageW = this.stage.stageWidth;
-        let stageH = this.stage.stageHeight;
-        let isMobile: boolean = stageW < stageH;
+		let stageW = this.stage.stageWidth;
+		let stageH = this.stage.stageHeight;
+		let isMobile: boolean = stageW < stageH;
 		try{
 			isMobile = eval( "isMobile()" );
 		}catch(e){}
 		this.isMobile = isMobile;
 
 		this.addChild( this.currentGame );
-        var loadingBar = document.getElementById( "loading_bar" );
-        if( loadingBar ) loadingBar.parentNode.removeChild( loadingBar );
+		var loadingBar = document.getElementById( "loading_bar" );
+		if( loadingBar ) loadingBar.parentNode.removeChild( loadingBar );
 	}
 
-    private showShadow(){
+	private showGameSettings( event: egret.Event ){
+		this.showShadow();
+
+		this.currentPo = new GameSettingPopup;
+		if (this.currentPo.inited) this.addPhonePo();
+		else this.currentPo.addEventListener( GenericModal.GENERIC_MODAL_LOADED, this.addPhonePo, this );
+
+	}
+
+	protected showShadow(){
 		if( !this.shadow ){
 			this.shadow = new egret.Shape;
 			GraphicTool.drawRect( this.shadow, new egret.Rectangle( 0, 0, BingoBackGroundSetting.gameSize.x, BingoBackGroundSetting.gameSize.y ), 0, false, 0.5 );
@@ -93,40 +102,13 @@ class Main extends egret.DisplayObjectContainer {
 	private onLoadingAnimation(event: egret.Event) {
 		( event.currentTarget as egret.Bitmap ).rotation += 5;
 	}
-
-	private addPo( event:egret.Event = null ){
+	
+	protected addPo( event:egret.Event = null ){
 		this.addPoFromTo( 0.2, 1 );
 	}
 
 	protected addPhonePo( event:egret.Event = null ){
 		this.addPoFromTo( 0.1, 0.48 );
-	}
-
-	public closeCurrentPo() {
-		if (!this.currentPo) return;
-		let tw: egret.Tween = egret.Tween.get( this.currentPo );
-		tw.to( {"scaleX": 0.2, "scaleY" : 0.2}, 300 );
-		tw.call(function() {
-			this.removeChild( this.currentPo );
-			this.removeChild( this.shadow );
-		}, this);
-		tw.wait(100);
-		tw.call(function() {
-			this.currentPo = null;
-			// this.showFirstWaitingModal();
-		}, this);
-	}
-
-	public showBank(){
-
-	}
-
-	private showGameSettings( event: egret.Event ){
-		this.showShadow();
-
-		this.currentPo = new GameSettingPopup;
-		if (this.currentPo.inited) this.addPhonePo();
-		else this.currentPo.addEventListener( GenericModal.GENERIC_MODAL_LOADED, this.addPhonePo, this );
 	}
 
 	private addPoFromTo( fromScale: number, toScale: number ){
@@ -143,8 +125,72 @@ class Main extends egret.DisplayObjectContainer {
 		this.modalPreloader.removeEventListener( egret.Event.ENTER_FRAME, this.onLoadingAnimation, this, false );
 		this.removeChild( this.modalPreloader );
 	}
-}
 
-var trace = function( a ){
-	egret.log(a);
-};
+	public closeCurrentPo() {
+		if (!this.currentPo) return;
+		let tw: egret.Tween = egret.Tween.get( this.currentPo );
+		tw.to( {"scaleX": 0.1, "scaleY" : 0.1}, 300 );
+		tw.call(function() {
+			this.removeChild( this.currentPo );
+			this.removeChild( this.shadow );
+		}, this);
+		tw.wait(100);
+		tw.call(function() {
+			this.currentPo = null;
+			// this.showFirstWaitingModal();
+		}, this);
+	}
+
+	public showBank( event:egret.Event = null ){
+		this.showShadow();
+
+		let list = PlayerConfig.player( "external_contents" ).list;
+		let className: string;
+		let classUrl: string;
+		let configUrl: string;
+		for( let i: number = 0; i < list.length; i++ ){
+			if( list[i].type == "bank" ){
+				let poPath = list[i]["art"][0]["file"]["file_id_html5"];
+				className = poPath.replace(/.*\/(.*)\//, "$1");
+				classUrl = poPath + "load.js";
+				configUrl = poPath + "data.res.json";
+				GlobelSettings.bank = list[i].products;
+			}
+			if( list[i].type == "chipbank" ) GlobelSettings.chipBank = list[i].products;
+		}
+		
+		this.loadDynamicClass( className, configUrl, classUrl );
+	}
+
+	private loadDynamicClass( className: string, assetConfigUrl: string, classUrl: string ){
+		let cls: Function = egret.getDefinitionByName( className );
+		if( cls ){
+			this.showPoWithClassName( className, assetConfigUrl );
+			return;
+		}
+        var s = document.createElement('script');
+        s.async = false;
+        s.src = classUrl;
+		trace( "I am loading " + classUrl );
+		LoyaltyVo.init(PlayerConfig.player("loyalty"));
+        s.addEventListener('load', function () {
+            s.parentNode.removeChild(s);
+			s.removeEventListener('load', eval("arguments.callee"), false);
+			egret.getDefinitionByName( className )["needZoomOut"] = egret.getDefinitionByName( className )["needZoomOut"] == null ? true : false;
+            this.showPoWithClassName( className, assetConfigUrl );
+		}.bind(this), false);
+        document.head.appendChild(s);
+	}
+
+	private showPoWithClassName( className: string, assetConfigUrl: string ){
+		let cls: Function = egret.getDefinitionByName( className );
+		this.showPoWithClass( cls, assetConfigUrl );
+	}
+
+	private showPoWithClass(myClass: Function, assetConfigUrl: string) {
+		this.currentPo = eval("new myClass(assetConfigUrl)");
+		this.currentPo.needZoomOut = eval( "myClass" )["needZoomOut"];
+		if( this.currentPo.inited )this.addPhonePo();
+		else this.currentPo.addEventListener( GenericModal.GENERIC_MODAL_LOADED, this.addPhonePo, this );
+	}
+}
