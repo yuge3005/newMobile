@@ -21,7 +21,7 @@
 			"name": "gameSettings"
 		},
 		{
-			"keys": "forAll_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,Arial Black_png,Arial Black_fnt,tounament_json,getCoinsParticle_png,getCoinsParticle_json,flyingCoins_png,flyingCoins_json,collect_coins_mp3,missionBar_json,betBar_json",
+			"keys": "forAll_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,Arial Black_png,Arial Black_fnt,tounament_json,getCoinsParticle_png,getCoinsParticle_json,flyingCoins_png,flyingCoins_json,collect_coins_mp3,missionBar_json,betBar_json,modalGeneric_json",
 			"name": "allGameAssets"
 		},
 		{
