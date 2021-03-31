@@ -203,7 +203,7 @@ class BingoGameMain extends egret.DisplayObjectContainer {
 	private showPoWithClass(myClass: Function, assetConfigUrl: string) {
 		this.currentPo = eval("new myClass(assetConfigUrl)");
 		this.currentPo.needZoomOut = eval( "myClass" )["needZoomOut"];
-		if( this.currentPo.inited )this.addPo();
-		else this.currentPo.addEventListener( GenericModal.GENERIC_MODAL_LOADED, this.addPo, this );
+		if( this.currentPo.inited )this.addPhonePo();
+		else this.currentPo.addEventListener( GenericModal.GENERIC_MODAL_LOADED, this.addPhonePo, this );
 	}
 }
