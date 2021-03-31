@@ -167,7 +167,7 @@ class BingoGameMain extends egret.DisplayObjectContainer {
 				configUrl = poPath + "data.res.json";
 				GlobelSettings.bank = list[i].products;
 			}
-			if( list[i].type == "chipBank" ) GlobelSettings.chipBank = list[i].products;
+			if( list[i].type == "chipbank" ) GlobelSettings.chipBank = list[i].products;
 		}
 		
 		this.loadDynamicClass( className, configUrl, classUrl );
@@ -183,6 +183,7 @@ class BingoGameMain extends egret.DisplayObjectContainer {
         s.async = false;
         s.src = classUrl;
 		trace( "I am loading " + classUrl );
+		LoyaltyVo.init(PlayerConfig.player("loyalty"));
         s.addEventListener('load', function () {
             s.parentNode.removeChild(s);
 			s.removeEventListener('load', eval("arguments.callee"), false);
