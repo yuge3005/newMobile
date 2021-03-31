@@ -26,14 +26,16 @@ class GenericModal extends egret.Sprite {
 		else{
 			if( configUrl ){
 				this.configUrl = configUrl;
-				RES.getResByUrl( configUrl, this.analyse, this );
+				// RES.getResByUrl( configUrl, this.analyse, this );
+				RES.addEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.analyse, this);
+				RES.loadConfig( "../data.res.json", configUrl.replace("data.res.json", "resource/"));
 			}
 			else GenericModal.loadAsset( this.assetName, this );
 		}
 	}
 
-	private analyse( result: string ){
-		// RES.parseConfig( result, this.configUrl.replace( "data.res.json", "resource/" ) );
+	private analyse( event: egret.Event ){
+		RES.removeEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.analyse, this);
 		GenericModal.loadAsset( this.assetName, this );
 	}
 
@@ -57,4 +59,13 @@ class GenericModal extends egret.Sprite {
 	}
 
 	protected onKeyUp(keyCode: number): void {}
+}
+
+class mouse{
+	public constructor() {
+	}
+	
+	public static setButtonMode( a: any ){
+
+	}
 }
