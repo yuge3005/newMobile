@@ -490,7 +490,6 @@ class BingoMachine extends GameUIItem{
 					this.currentGame.resetGameToolBarStatus();
 				}
 				this.currentGame.dispatchEvent(new egret.Event("out_of_coins_game_id"));
-				alert( "out of coins" );
 				return;
 			}
 			this.currentGame.startPlay();

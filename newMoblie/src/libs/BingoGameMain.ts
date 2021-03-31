@@ -45,6 +45,8 @@ class BingoGameMain extends egret.DisplayObjectContainer {
 		this.currentGame.addEventListener("showGameSettings", this.showGameSettings, this);
 		this.currentGame.addEventListener("missionPopup", this.showMission, this );
 		this.currentGame.addEventListener("showBank", this.showBank, this );
+		this.currentGame.addEventListener("out_of_coins_game_id", this.showBank, this );
+		this.currentGame.addEventListener("out_of_dinero", this.showBank, this );
 	}
 
 	private addGame(){
