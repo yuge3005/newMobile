@@ -5,10 +5,13 @@ class Main extends egret.DisplayObjectContainer {
 
 	private isMobile: boolean;
 
-    public constructor() {
-        super();
-        this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
-    }
+	private shadow: egret.Shape;
+	private modalPreloader: egret.Bitmap;
+
+	public constructor() {
+		super();
+		this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
+	}
 
     private onAddToStage(event: egret.Event) {
         egret.lifecycle.addLifecycleListener((context) => {
@@ -37,23 +40,23 @@ class Main extends egret.DisplayObjectContainer {
         console.log(userInfo);
     }
 
-    /**
-     * 创建游戏场景
-     * Create a game scene
-     */
-    private createGameScene() {
-        this.showGame();
+	/**
+	 * 创建游戏场景
+	 * Create a game scene
+	 */
+	private createGameScene() {
+		this.buildGame();
 		MultiServer.serverInit();
-    }
+	}
 
-	private showGame(){
+	private buildGame(){
 		this.currentGame = new MultyPlayerBingo("resource/default.res.json");
 
 		const loadingView = new LoadingUI();
 		this.currentGame.preLoader = loadingView;
 		this.currentGame.addEventListener( MultiPlayerMachine.GENERIC_MODAL_LOADED, this.addGame, this );
-		this.currentGame.addEventListener( "showBank", this.showBank, this );
 		this.currentGame.addEventListener( "showGameSettings", this.showGameSettings, this );
+		this.currentGame.addEventListener( "showBank", this.showBank, this );
 	}
 
 	private addGame(){
@@ -69,9 +72,6 @@ class Main extends egret.DisplayObjectContainer {
         var loadingBar = document.getElementById( "loading_bar" );
         if( loadingBar ) loadingBar.parentNode.removeChild( loadingBar );
 	}
-
-    private shadow: egret.Shape;
-    private modalPreloader: egret.Bitmap;
 
     private showShadow(){
 		if( !this.shadow ){
