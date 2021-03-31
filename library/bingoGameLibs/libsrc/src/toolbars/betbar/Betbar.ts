@@ -51,6 +51,8 @@ class Betbar extends egret.DisplayObjectContainer{
 		this.betPointMaxBet.resetActiveBet( GameData.maxBet );
 		this.betPointJsckpot.x = this.getBetPosition( this.betPointJsckpot.currentActiveBet );
 
+		this.betPointMaxBet.visible = this.betPointJsckpot.currentActiveBet != GameData.maxBet;
+
 		this.betPointJsckpot.resetBet( bet );
 		this.betPointMaxBet.resetBet( bet );
 	}
