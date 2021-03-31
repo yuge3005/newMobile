@@ -2426,77 +2426,231 @@ var PaytableUI = (function (_super) {
     return PaytableUI;
 }(egret.Sprite));
 __reflect(PaytableUI.prototype, "PaytableUI");
-var GanhoCounter = (function () {
-    function GanhoCounter(winCallback) {
-        if (winCallback === void 0) { winCallback = null; }
-        this.ganhoArray = [];
-        this.winCallback = winCallback;
+var SupportBar = (function (_super) {
+    __extends(SupportBar, _super);
+    function SupportBar(size) {
+        var _this = _super.call(this) || this;
+        GraphicTool.drawRect(_this, new egret.Rectangle(-size.x >> 1, -size.y >> 1, size.x + 100, size.y), 0, false, 0.0);
+        _this.touchEnabled = true;
+        _this.langResource = "support_json";
+        _this.email = PlayerConfig.player("facebook.email") || PlayerConfig.player("user_info.email") || "";
+        _this.buildBg();
+        _this.buildTitleText();
+        _this.buildSupportText();
+        _this.buildSupportBtn();
+        _this.buildCloseBtn();
+        return _this;
     }
-    GanhoCounter.prototype.clearGanhoData = function () {
-        this.ganhoArray = [];
+    SupportBar.prototype.buildBg = function () {
+        this.bg = Com.addBitmapAt(this, this.langResource + ".popup_bg_big", -623, -377);
+        this.bg.scale9Grid = new egret.Rectangle(40, 40, 569, 609);
+        this.bg.width = 1247;
+        this.bg.height = 755;
     };
-    GanhoCounter.prototype.countGanhoAndPlayAnimation = function (resultList) {
-        var fitItemOnCard = this.getFitItemOnCard(resultList);
-        var ganhoArray = this.getGanhoArray(resultList, fitItemOnCard);
-        this.showWinAnimationOnAllCards(ganhoArray);
+    SupportBar.prototype.buildTitleText = function () {
+        // top title
+        var topTitle = Com.addTextAt(this, 85 - 623, 28 - 377, 432, 88, 64, true, false);
+        topTitle.fontFamily = "TCM_conden";
+        topTitle.textAlign = "left";
+        topTitle.verticalAlign = "middle";
+        topTitle.bold = true;
+        topTitle.stroke = 4;
+        topTitle.textColor = 0xD0C39D;
+        topTitle.strokeColor = 0xC9A947;
+        topTitle.text = MuLang.getText("e_support", MuLang.CASE_UPPER);
+        // top text input
+        var topTextContainer = new egret.DisplayObjectContainer();
+        Com.addObjectAt(this, topTextContainer, 185 - 623, 115 - 377);
+        // top text bg
+        var topTextBg = Com.addBitmapAt(topTextContainer, this.langResource + ".select_box", 0, 0);
+        topTextBg.scale9Grid = new egret.Rectangle(11, 11, 27, 27);
+        topTextBg.width = 980;
+        topTextBg.height = 83;
+        // top text input
+        this.topTextInput = new eui.EditableText();
+        Com.addObjectAt(topTextContainer, this.topTextInput, 20, 0);
+        this.topTextInput.width = 940;
+        this.topTextInput.height = 83;
+        this.topTextInput.size = 48;
+        // this.topTextInput.textAlign = "left";
+        this.topTextInput.verticalAlign = "middle";
+        this.topTextInput.fontFamily = "TCM_conden";
+        this.topTextInput.bold = true;
+        this.topTextInput.textColor = 0xFFFFFF;
+        this.topTextInput.text = this.email;
+        this.topTextInput.prompt = MuLang.getText("email", MuLang.CASE_UPPER);
+        // talk icon
+        Com.addBitmapAt(this, this.langResource + ".icon_zendesk", 90 - 623, 118 - 377);
     };
-    GanhoCounter.prototype.showWinAnimationOnAllCards = function (ganhoArray) {
-        for (var i = 0; i < ganhoArray.length; i++) {
-            if (ganhoArray[i]) {
-                if (!this.ganhoArray[i] || ganhoArray[i] > this.ganhoArray[i]) {
-                    this.ganhoArray[i] = ganhoArray[i];
-                    if (this.winCallback)
-                        this.winCallback(i, ganhoArray[i]);
+    SupportBar.prototype.buildSupportText = function () {
+        // support text
+        var supportText = Com.addTextAt(this, 84 - 623, 205 - 377, 313, 53, 42, false, false);
+        supportText.fontFamily = "TCM_conden";
+        supportText.textAlign = "left";
+        supportText.verticalAlign = "middle";
+        supportText.textColor = 0xB0881B;
+        supportText.text = MuLang.getText("message", MuLang.CASE_UPPER);
+        // support text input
+        var supportTextContainer = new egret.DisplayObjectContainer();
+        supportTextContainer.width = 1084;
+        supportTextContainer.height = 445;
+        Com.addObjectAt(this, supportTextContainer, 83 - 623, 258 - 377);
+        // support text bg
+        var supportTextBg = Com.addBitmapAt(supportTextContainer, this.langResource + ".select_box", 0, 0);
+        supportTextBg.scale9Grid = new egret.Rectangle(11, 11, 27, 27);
+        supportTextBg.width = 1084;
+        supportTextBg.height = 445;
+        // support text input
+        this.supportTextInput = Com.addTextAt(supportTextContainer, 20, 20, 1044, 405, 36, false, false);
+        this.supportTextInput.fontFamily = "TCM_conden";
+        this.supportTextInput.textAlign = "left";
+        this.supportTextInput.bold = true;
+        this.supportTextInput.multiline = true;
+        this.supportTextInput.wordWrap = true;
+        this.supportTextInput.type = egret.TextFieldType.INPUT;
+        this.supportTextInput.textColor = 0xFFFFFF;
+    };
+    SupportBar.prototype.buildSupportBtn = function () {
+        // send btn container
+        var sendBtnContainer = Com.addDownButtonAt(this, this.langResource + ".button_send", this.langResource + ".button_send", 1011 - 623, 586 - 377, this.sendSupport.bind(this), true);
+        // support submit button text
+        var sendBtnText = Com.addTextAt(this, 31, 18, 133, 90, 48, true, false);
+        sendBtnText.fontFamily = "TCM_conden";
+        sendBtnText.verticalAlign = "middle";
+        sendBtnText.stroke = 2;
+        sendBtnText.strokeColor = 0x054B05;
+        sendBtnText.text = MuLang.getText("send");
+        sendBtnContainer.addChild(sendBtnText);
+    };
+    SupportBar.prototype.buildCloseBtn = function () {
+        this.closeBtn = Com.addDownButtonAt(this, this.langResource + ".button_close", this.langResource + ".button_close", this.bg.width >> 1, -this.bg.height >> 1, this.closeThisBar.bind(this), true);
+        this.closeBtn.x -= this.closeBtn.width >> 1;
+        this.closeBtn.y -= this.closeBtn.height >> 1;
+    };
+    SupportBar.prototype.buildAlertBar = function () {
+        var alertBar = new egret.Sprite;
+        Com.addObjectAt(this, alertBar, 0, 0);
+        GraphicTool.drawRect(alertBar, new egret.Rectangle(-1000, -500, 2000, 1000), 0, false, 0.0);
+        alertBar.touchEnabled = true;
+        var barBg = Com.addBitmapAt(alertBar, "gameSettings_json.bg_popup", -700, -300);
+        barBg.scale9Grid = new egret.Rectangle(60, 60, 911, 706);
+        barBg.width = 1120;
+        barBg.height = 515;
+        var title = Com.addLabelAt(alertBar, -600, -220, 920, 76, 76);
+        title.text = MuLang.getText("oops");
+        var tip = Com.addLabelAt(alertBar, -600, -60, 920, 48, 48);
+        tip.setText(MuLang.getText("enter_correct_info"));
+        var dr = Com.addBitmapAt(alertBar, "gameSettings_json.dr", 300, -380);
+        dr.scaleX = dr.scaleY = 1.1;
+        var btn = Com.addDownButtonAt(alertBar, "gameSettings_json.OK", "gameSettings_json.OK", -325, 50, this.closeAlertBar.bind(this), true);
+        var btTx = Com.addTextAt(alertBar, 0, 0, 20, 72, 72);
+        btTx.text = "OK";
+        btn.setButtonText(btTx);
+        return alertBar;
+    };
+    SupportBar.prototype.closeAlertBar = function (event) {
+        this.alertBar.visible = false;
+    };
+    SupportBar.prototype.sendSupport = function () {
+        var exp = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+        if (!exp.test(this.topTextInput.text)) {
+            if (!this.alertBar)
+                this.alertBar = this.buildAlertBar();
+            this.alertBar.visible = true;
+            return;
+        }
+        this.email = this.topTextInput.text;
+        var value = this.supportTextInput.text;
+        if (value !== "" && this.email !== "") {
+            var XHR = eval("window.XMLHttpRequest") ? new XMLHttpRequest() : eval("new ActiveXObject('Microsoft.XMLHTTP')");
+            XHR.open("post", "https://gamesmartltd.zendesk.com/api/v2/tickets.json", true);
+            XHR.setRequestHeader("Accept", "application/json");
+            XHR.setRequestHeader("Content-Type", "application/json");
+            XHR.setRequestHeader("Authorization", "Basic YW55QGRvdXRvcmJpbmdvLmNvbTpCaW5nbzQ1NiE=");
+            XHR.send(JSON.stringify({
+                "ticket": {
+                    "subject": value.length > 40 ? value.substring(0, 40) : value,
+                    "comment": {
+                        "body": value
+                    },
+                    "requester": {
+                        "name": PlayerConfig.player("facebook.name"),
+                        "email": this.email
+                    },
+                    tags: [
+                        "canvas",
+                        "userid_" + PlayerConfig.player("user.id"),
+                        "level_" + PlayerConfig.player("score.level"),
+                        "loyalty_level_" + PlayerConfig.player("loyalty.loyalty_level")
+                    ]
                 }
+            }));
+            egret.setTimeout(function () {
+                this.buildSupportSuccessContainer();
+            }, this, 2000);
+        }
+    };
+    SupportBar.prototype.closeThisBar = function () {
+        if (this.parent)
+            this.parent.removeChild(this);
+    };
+    SupportBar.prototype.buildSupportSuccessContainer = function () {
+        this.supportSuccessContainer = new egret.DisplayObjectContainer();
+        Com.addObjectAt(this, this.supportSuccessContainer, -623, -377);
+        // support success bg
+        var successBg = Com.addBitmapAt(this.supportSuccessContainer, this.langResource + ".popup_bg_big", 0, 0);
+        successBg.scale9Grid = new egret.Rectangle(40, 40, 569, 609);
+        successBg.width = 1247;
+        successBg.height = 755;
+        // support success title
+        var supportSuccessTitle = Com.addTextAt(this.supportSuccessContainer, 208, 124, 830, 127, 64, false, false);
+        supportSuccessTitle.fontFamily = "TCM_conden";
+        supportSuccessTitle.textColor = 0xFFFFFF;
+        supportSuccessTitle.verticalAlign = "middle";
+        supportSuccessTitle.text = Utils.toFirstUpperCase(MuLang.getText("FACEBOOK_WAIT_CONGRATULATIONS_TITLE"));
+        // support success text
+        var supportSuccessText = Com.addTextAt(this.supportSuccessContainer, 84, 294, 1079, 262, 48, false, false);
+        supportSuccessText.fontFamily = "TCM_conden";
+        supportSuccessText.textColor = 0xFFFFFF;
+        supportSuccessText.text = MuLang.getText("support_success_text");
+        this.addChild(this.closeBtn);
+    };
+    return SupportBar;
+}(egret.Sprite));
+__reflect(SupportBar.prototype, "SupportBar");
+var V2Game = (function (_super) {
+    __extends(V2Game, _super);
+    function V2Game(gameConfigFile, configUrl, gameId) {
+        var _this = _super.call(this, gameConfigFile, configUrl, gameId) || this;
+        _this.tokenObject["key"] = "iniciar";
+        _this.tokenObject["value"]["token"] = "undefined";
+        return _this;
+    }
+    V2Game.prototype.extraUIShowNumber = function () {
+        this.extraUIObject.visible = true;
+        this.runningBallContainer = new egret.DisplayObjectContainer;
+        this.runningBallContainer.x = this.extraUIObject.x;
+        this.runningBallContainer.y = this.extraUIObject.y;
+        this.addChildAt(this.runningBallContainer, this.getChildIndex(this.extraUIObject));
+        Com.addObjectAt(this.runningBallContainer, this.extraUIObject, 0, 0);
+        this.extraUIObject = this.runningBallContainer;
+    };
+    /*******************************************************************************************************/
+    V2Game.prototype.getNumberOnCard = function (cardIndex, gridIndex) {
+        var num = GameCardUISettings.numberAtCard(cardIndex, gridIndex);
+        CardManager.getBall(num);
+    };
+    V2Game.prototype.getBuffInfoIndex = function (buffInfo) {
+        for (var i = 0; i < buffInfo.length; i++) {
+            if (buffInfo[i]["buffBet"] == GameData.currentBet) {
+                return i;
             }
         }
+        return -1;
     };
-    GanhoCounter.prototype.getFitItemOnCard = function (resultList) {
-        var fitItemOnCard = [];
-        for (var i = 0; i < resultList.length; i++) {
-            fitItemOnCard[i] = [];
-            for (var ob in PayTableManager.payTablesDictionary) {
-                var result = resultList[i][ob];
-                if (result.fit || result.fits) {
-                    fitItemOnCard[i].push({ paytalbe: ob, fit: result.fit, fits: result.fits });
-                }
-            }
-        }
-        if (PaytableFilter.filterObject) {
-            for (var i = 0; i < fitItemOnCard.length; i++)
-                PaytableFilter.paytableConfixFilter(fitItemOnCard[i], true);
-        }
-        return fitItemOnCard;
-    };
-    GanhoCounter.prototype.getGanhoArray = function (resultList, fitItemOnCard) {
-        var ganhoArray = [];
-        for (var i = 0; i < resultList.length; i++) {
-            ganhoArray[i] = 0;
-            for (var ob in PayTableManager.payTablesDictionary) {
-                var result = resultList[i][ob];
-                if (result.fit || result.fits) {
-                    var inFitItem = false;
-                    for (var k = 0; k < fitItemOnCard[i].length; k++) {
-                        if (fitItemOnCard[i][k]["paytalbe"] == ob) {
-                            inFitItem = true;
-                            break;
-                        }
-                    }
-                    if (!inFitItem)
-                        continue;
-                    this.countGanho(ganhoArray, i, ob, result);
-                }
-            }
-        }
-        return ganhoArray;
-    };
-    GanhoCounter.prototype.countGanho = function (ganhoArray, i, ob, result) {
-        var winTimesTxt = PayTableManager.payTablesDictionary[ob].ui["tx"].text;
-        ganhoArray[i] += parseFloat(winTimesTxt.replace(/\D/, ""));
-    };
-    return GanhoCounter;
-}());
-__reflect(GanhoCounter.prototype, "GanhoCounter");
+    return V2Game;
+}(BingoMachine));
+__reflect(V2Game.prototype, "V2Game");
 var BallManager = (function (_super) {
     __extends(BallManager, _super);
     function BallManager() {
@@ -2738,6 +2892,27 @@ var BingoBall = (function (_super) {
     return BingoBall;
 }(egret.Sprite));
 __reflect(BingoBall.prototype, "BingoBall");
+var BankProductItem = (function (_super) {
+    __extends(BankProductItem, _super);
+    function BankProductItem() {
+        var _this = _super.call(this) || this;
+        _this.touchChildren = false;
+        _this.touchEnabled = true;
+        return _this;
+    }
+    return BankProductItem;
+}(egret.DisplayObjectContainer));
+__reflect(BankProductItem.prototype, "BankProductItem");
+var CollectHourlyBonusBar = (function (_super) {
+    __extends(CollectHourlyBonusBar, _super);
+    function CollectHourlyBonusBar() {
+        return _super.call(this) || this;
+    }
+    CollectHourlyBonusBar.prototype.timerStaus = function (time, status) {
+    };
+    return CollectHourlyBonusBar;
+}(egret.DisplayObjectContainer));
+__reflect(CollectHourlyBonusBar.prototype, "CollectHourlyBonusBar");
 var BingoBackGroundSetting = (function () {
     function BingoBackGroundSetting() {
     }
@@ -3282,6 +3457,7 @@ var BingoGameMain = (function (_super) {
         this.currentGame.addEventListener(BingoMachine.GENERIC_MODAL_LOADED, this.addGame, this);
         this.currentGame.addEventListener("showGameSettings", this.showGameSettings, this);
         this.currentGame.addEventListener("missionPopup", this.showMission, this);
+        this.currentGame.addEventListener("showBank", this.showBank, this);
     };
     BingoGameMain.prototype.addGame = function () {
         var stageW = this.stage.stageWidth;
@@ -3292,10 +3468,6 @@ var BingoGameMain = (function (_super) {
         }
         catch (e) { }
         this.isMobile = isMobile;
-        if (isMobile) {
-            this.x = stageW;
-            this.rotation = 90;
-        }
         this.addChild(this.currentGame);
         document.addEventListener("keydown", this.keyDown.bind(this));
         var loadingBar = document.getElementById("loading_bar");
@@ -3385,6 +3557,56 @@ var BingoGameMain = (function (_super) {
             this.currentPo = null;
             // this.showFirstWaitingModal();
         }, this);
+    };
+    BingoGameMain.prototype.showBank = function (event) {
+        if (event === void 0) { event = null; }
+        this.showShadow();
+        var list = PlayerConfig.player("external_contents").list;
+        var className;
+        var classUrl;
+        var configUrl;
+        for (var i = 0; i < list.length; i++) {
+            if (list[i].type == "bank") {
+                var poPath = list[i]["art"][0]["file"]["file_id_html5"];
+                className = poPath.replace(/.*\/(.*)\//, "$1");
+                classUrl = poPath + "load.js";
+                configUrl = poPath + "data.res.json";
+                GlobelSettings.bank = list[i].products;
+            }
+            if (list[i].type == "chipBank")
+                GlobelSettings.chipBank = list[i].products;
+        }
+        this.loadDynamicClass(className, configUrl, classUrl);
+    };
+    BingoGameMain.prototype.loadDynamicClass = function (className, assetConfigUrl, classUrl) {
+        var cls = egret.getDefinitionByName(className);
+        if (cls) {
+            this.showPoWithClassName(className, assetConfigUrl);
+            return;
+        }
+        var s = document.createElement('script');
+        s.async = false;
+        s.src = classUrl;
+        trace("I am loading " + classUrl);
+        s.addEventListener('load', function () {
+            s.parentNode.removeChild(s);
+            s.removeEventListener('load', eval("arguments.callee"), false);
+            egret.getDefinitionByName(className)["needZoomOut"] = egret.getDefinitionByName(className)["needZoomOut"] == null ? true : false;
+            this.showPoWithClassName(className, assetConfigUrl);
+        }.bind(this), false);
+        document.head.appendChild(s);
+    };
+    BingoGameMain.prototype.showPoWithClassName = function (className, assetConfigUrl) {
+        var cls = egret.getDefinitionByName(className);
+        this.showPoWithClass(cls, assetConfigUrl);
+    };
+    BingoGameMain.prototype.showPoWithClass = function (myClass, assetConfigUrl) {
+        this.currentPo = eval("new myClass(assetConfigUrl)");
+        this.currentPo.needZoomOut = eval("myClass")["needZoomOut"];
+        if (this.currentPo.inited)
+            this.addPo();
+        else
+            this.currentPo.addEventListener(GenericModal.GENERIC_MODAL_LOADED, this.addPo, this);
     };
     return BingoGameMain;
 }(egret.DisplayObjectContainer));
@@ -4019,209 +4241,90 @@ var SettingSlider = (function (_super) {
     return SettingSlider;
 }(egret.DisplayObjectContainer));
 __reflect(SettingSlider.prototype, "SettingSlider");
-var SupportBar = (function (_super) {
-    __extends(SupportBar, _super);
-    function SupportBar(size) {
-        var _this = _super.call(this) || this;
-        GraphicTool.drawRect(_this, new egret.Rectangle(-size.x >> 1, -size.y >> 1, size.x + 100, size.y), 0, false, 0.0);
-        _this.touchEnabled = true;
-        _this.langResource = "support_json";
-        _this.email = PlayerConfig.player("facebook.email") || PlayerConfig.player("user_info.email") || "";
-        _this.buildBg();
-        _this.buildTitleText();
-        _this.buildSupportText();
-        _this.buildSupportBtn();
-        _this.buildCloseBtn();
-        return _this;
+var GlobelSettings = (function () {
+    function GlobelSettings() {
     }
-    SupportBar.prototype.buildBg = function () {
-        this.bg = Com.addBitmapAt(this, this.langResource + ".popup_bg_big", -623, -377);
-        this.bg.scale9Grid = new egret.Rectangle(40, 40, 569, 609);
-        this.bg.width = 1247;
-        this.bg.height = 755;
+    Object.defineProperty(GlobelSettings, "language", {
+        get: function () {
+            return MuLang.language;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    return GlobelSettings;
+}());
+__reflect(GlobelSettings.prototype, "GlobelSettings");
+var GanhoCounter = (function () {
+    function GanhoCounter(winCallback) {
+        if (winCallback === void 0) { winCallback = null; }
+        this.ganhoArray = [];
+        this.winCallback = winCallback;
+    }
+    GanhoCounter.prototype.clearGanhoData = function () {
+        this.ganhoArray = [];
     };
-    SupportBar.prototype.buildTitleText = function () {
-        // top title
-        var topTitle = Com.addTextAt(this, 85 - 623, 28 - 377, 432, 88, 64, true, false);
-        topTitle.fontFamily = "TCM_conden";
-        topTitle.textAlign = "left";
-        topTitle.verticalAlign = "middle";
-        topTitle.bold = true;
-        topTitle.stroke = 4;
-        topTitle.textColor = 0xD0C39D;
-        topTitle.strokeColor = 0xC9A947;
-        topTitle.text = MuLang.getText("e_support", MuLang.CASE_UPPER);
-        // top text input
-        var topTextContainer = new egret.DisplayObjectContainer();
-        Com.addObjectAt(this, topTextContainer, 185 - 623, 115 - 377);
-        // top text bg
-        var topTextBg = Com.addBitmapAt(topTextContainer, this.langResource + ".select_box", 0, 0);
-        topTextBg.scale9Grid = new egret.Rectangle(11, 11, 27, 27);
-        topTextBg.width = 980;
-        topTextBg.height = 83;
-        // top text input
-        this.topTextInput = new eui.EditableText();
-        Com.addObjectAt(topTextContainer, this.topTextInput, 20, 0);
-        this.topTextInput.width = 940;
-        this.topTextInput.height = 83;
-        this.topTextInput.size = 48;
-        // this.topTextInput.textAlign = "left";
-        this.topTextInput.verticalAlign = "middle";
-        this.topTextInput.fontFamily = "TCM_conden";
-        this.topTextInput.bold = true;
-        this.topTextInput.textColor = 0xFFFFFF;
-        this.topTextInput.text = this.email;
-        this.topTextInput.prompt = MuLang.getText("email", MuLang.CASE_UPPER);
-        // talk icon
-        Com.addBitmapAt(this, this.langResource + ".icon_zendesk", 90 - 623, 118 - 377);
+    GanhoCounter.prototype.countGanhoAndPlayAnimation = function (resultList) {
+        var fitItemOnCard = this.getFitItemOnCard(resultList);
+        var ganhoArray = this.getGanhoArray(resultList, fitItemOnCard);
+        this.showWinAnimationOnAllCards(ganhoArray);
     };
-    SupportBar.prototype.buildSupportText = function () {
-        // support text
-        var supportText = Com.addTextAt(this, 84 - 623, 205 - 377, 313, 53, 42, false, false);
-        supportText.fontFamily = "TCM_conden";
-        supportText.textAlign = "left";
-        supportText.verticalAlign = "middle";
-        supportText.textColor = 0xB0881B;
-        supportText.text = MuLang.getText("message", MuLang.CASE_UPPER);
-        // support text input
-        var supportTextContainer = new egret.DisplayObjectContainer();
-        supportTextContainer.width = 1084;
-        supportTextContainer.height = 445;
-        Com.addObjectAt(this, supportTextContainer, 83 - 623, 258 - 377);
-        // support text bg
-        var supportTextBg = Com.addBitmapAt(supportTextContainer, this.langResource + ".select_box", 0, 0);
-        supportTextBg.scale9Grid = new egret.Rectangle(11, 11, 27, 27);
-        supportTextBg.width = 1084;
-        supportTextBg.height = 445;
-        // support text input
-        this.supportTextInput = Com.addTextAt(supportTextContainer, 20, 20, 1044, 405, 36, false, false);
-        this.supportTextInput.fontFamily = "TCM_conden";
-        this.supportTextInput.textAlign = "left";
-        this.supportTextInput.bold = true;
-        this.supportTextInput.multiline = true;
-        this.supportTextInput.wordWrap = true;
-        this.supportTextInput.type = egret.TextFieldType.INPUT;
-        this.supportTextInput.textColor = 0xFFFFFF;
-    };
-    SupportBar.prototype.buildSupportBtn = function () {
-        // send btn container
-        var sendBtnContainer = Com.addDownButtonAt(this, this.langResource + ".button_send", this.langResource + ".button_send", 1011 - 623, 586 - 377, this.sendSupport.bind(this), true);
-        // support submit button text
-        var sendBtnText = Com.addTextAt(this, 31, 18, 133, 90, 48, true, false);
-        sendBtnText.fontFamily = "TCM_conden";
-        sendBtnText.verticalAlign = "middle";
-        sendBtnText.stroke = 2;
-        sendBtnText.strokeColor = 0x054B05;
-        sendBtnText.text = MuLang.getText("send");
-        sendBtnContainer.addChild(sendBtnText);
-    };
-    SupportBar.prototype.buildCloseBtn = function () {
-        this.closeBtn = Com.addDownButtonAt(this, this.langResource + ".button_close", this.langResource + ".button_close", this.bg.width >> 1, -this.bg.height >> 1, this.closeThisBar.bind(this), true);
-        this.closeBtn.x -= this.closeBtn.width >> 1;
-        this.closeBtn.y -= this.closeBtn.height >> 1;
-    };
-    SupportBar.prototype.buildAlertBar = function () {
-        var alertBar = new egret.Sprite;
-        Com.addObjectAt(this, alertBar, 0, 0);
-        GraphicTool.drawRect(alertBar, new egret.Rectangle(-1000, -500, 2000, 1000), 0, false, 0.0);
-        alertBar.touchEnabled = true;
-        var barBg = Com.addBitmapAt(alertBar, "gameSettings_json.bg_popup", -700, -300);
-        barBg.scale9Grid = new egret.Rectangle(60, 60, 911, 706);
-        barBg.width = 1120;
-        barBg.height = 515;
-        var title = Com.addLabelAt(alertBar, -600, -220, 920, 76, 76);
-        title.text = MuLang.getText("oops");
-        var tip = Com.addLabelAt(alertBar, -600, -60, 920, 48, 48);
-        tip.setText(MuLang.getText("enter_correct_info"));
-        var dr = Com.addBitmapAt(alertBar, "gameSettings_json.dr", 300, -380);
-        dr.scaleX = dr.scaleY = 1.1;
-        var btn = Com.addDownButtonAt(alertBar, "gameSettings_json.OK", "gameSettings_json.OK", -325, 50, this.closeAlertBar.bind(this), true);
-        var btTx = Com.addTextAt(alertBar, 0, 0, 20, 72, 72);
-        btTx.text = "OK";
-        btn.setButtonText(btTx);
-        return alertBar;
-    };
-    SupportBar.prototype.closeAlertBar = function (event) {
-        this.alertBar.visible = false;
-    };
-    SupportBar.prototype.sendSupport = function () {
-        var exp = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
-        if (!exp.test(this.topTextInput.text)) {
-            if (!this.alertBar)
-                this.alertBar = this.buildAlertBar();
-            this.alertBar.visible = true;
-            return;
-        }
-        this.email = this.topTextInput.text;
-        var value = this.supportTextInput.text;
-        if (value !== "" && this.email !== "") {
-            var XHR = eval("window.XMLHttpRequest") ? new XMLHttpRequest() : eval("new ActiveXObject('Microsoft.XMLHTTP')");
-            XHR.open("post", "https://gamesmartltd.zendesk.com/api/v2/tickets.json", true);
-            XHR.setRequestHeader("Accept", "application/json");
-            XHR.setRequestHeader("Content-Type", "application/json");
-            XHR.setRequestHeader("Authorization", "Basic YW55QGRvdXRvcmJpbmdvLmNvbTpCaW5nbzQ1NiE=");
-            XHR.send(JSON.stringify({
-                "ticket": {
-                    "subject": value.length > 40 ? value.substring(0, 40) : value,
-                    "comment": {
-                        "body": value
-                    },
-                    "requester": {
-                        "name": PlayerConfig.player("facebook.name"),
-                        "email": this.email
-                    },
-                    tags: [
-                        "canvas",
-                        "userid_" + PlayerConfig.player("user.id"),
-                        "level_" + PlayerConfig.player("score.level"),
-                        "loyalty_level_" + PlayerConfig.player("loyalty.loyalty_level")
-                    ]
+    GanhoCounter.prototype.showWinAnimationOnAllCards = function (ganhoArray) {
+        for (var i = 0; i < ganhoArray.length; i++) {
+            if (ganhoArray[i]) {
+                if (!this.ganhoArray[i] || ganhoArray[i] > this.ganhoArray[i]) {
+                    this.ganhoArray[i] = ganhoArray[i];
+                    if (this.winCallback)
+                        this.winCallback(i, ganhoArray[i]);
                 }
-            }));
-            egret.setTimeout(function () {
-                this.buildSupportSuccessContainer();
-            }, this, 2000);
+            }
         }
     };
-    SupportBar.prototype.closeThisBar = function () {
-        if (this.parent)
-            this.parent.removeChild(this);
+    GanhoCounter.prototype.getFitItemOnCard = function (resultList) {
+        var fitItemOnCard = [];
+        for (var i = 0; i < resultList.length; i++) {
+            fitItemOnCard[i] = [];
+            for (var ob in PayTableManager.payTablesDictionary) {
+                var result = resultList[i][ob];
+                if (result.fit || result.fits) {
+                    fitItemOnCard[i].push({ paytalbe: ob, fit: result.fit, fits: result.fits });
+                }
+            }
+        }
+        if (PaytableFilter.filterObject) {
+            for (var i = 0; i < fitItemOnCard.length; i++)
+                PaytableFilter.paytableConfixFilter(fitItemOnCard[i], true);
+        }
+        return fitItemOnCard;
     };
-    SupportBar.prototype.buildSupportSuccessContainer = function () {
-        this.supportSuccessContainer = new egret.DisplayObjectContainer();
-        Com.addObjectAt(this, this.supportSuccessContainer, -623, -377);
-        // support success bg
-        var successBg = Com.addBitmapAt(this.supportSuccessContainer, this.langResource + ".popup_bg_big", 0, 0);
-        successBg.scale9Grid = new egret.Rectangle(40, 40, 569, 609);
-        successBg.width = 1247;
-        successBg.height = 755;
-        // support success title
-        var supportSuccessTitle = Com.addTextAt(this.supportSuccessContainer, 208, 124, 830, 127, 64, false, false);
-        supportSuccessTitle.fontFamily = "TCM_conden";
-        supportSuccessTitle.textColor = 0xFFFFFF;
-        supportSuccessTitle.verticalAlign = "middle";
-        supportSuccessTitle.text = Utils.toFirstUpperCase(MuLang.getText("FACEBOOK_WAIT_CONGRATULATIONS_TITLE"));
-        // support success text
-        var supportSuccessText = Com.addTextAt(this.supportSuccessContainer, 84, 294, 1079, 262, 48, false, false);
-        supportSuccessText.fontFamily = "TCM_conden";
-        supportSuccessText.textColor = 0xFFFFFF;
-        supportSuccessText.text = MuLang.getText("support_success_text");
-        this.addChild(this.closeBtn);
+    GanhoCounter.prototype.getGanhoArray = function (resultList, fitItemOnCard) {
+        var ganhoArray = [];
+        for (var i = 0; i < resultList.length; i++) {
+            ganhoArray[i] = 0;
+            for (var ob in PayTableManager.payTablesDictionary) {
+                var result = resultList[i][ob];
+                if (result.fit || result.fits) {
+                    var inFitItem = false;
+                    for (var k = 0; k < fitItemOnCard[i].length; k++) {
+                        if (fitItemOnCard[i][k]["paytalbe"] == ob) {
+                            inFitItem = true;
+                            break;
+                        }
+                    }
+                    if (!inFitItem)
+                        continue;
+                    this.countGanho(ganhoArray, i, ob, result);
+                }
+            }
+        }
+        return ganhoArray;
     };
-    return SupportBar;
-}(egret.Sprite));
-__reflect(SupportBar.prototype, "SupportBar");
-var LoadingUI = (function (_super) {
-    __extends(LoadingUI, _super);
-    function LoadingUI() {
-        return _super.call(this) || this;
-    }
-    LoadingUI.prototype.onProgress = function (current, total) {
-        document.getElementById("loading_progress_div").style.width = Math.floor(320 * (0.18 + current / total * 0.72 + 0)) + "px";
+    GanhoCounter.prototype.countGanho = function (ganhoArray, i, ob, result) {
+        var winTimesTxt = PayTableManager.payTablesDictionary[ob].ui["tx"].text;
+        ganhoArray[i] += parseFloat(winTimesTxt.replace(/\D/, ""));
     };
-    return LoadingUI;
-}(egret.Sprite));
-__reflect(LoadingUI.prototype, "LoadingUI", ["RES.PromiseTaskReporter"]);
+    return GanhoCounter;
+}());
+__reflect(GanhoCounter.prototype, "GanhoCounter");
 var Coin = (function (_super) {
     __extends(Coin, _super);
     function Coin() {
@@ -4448,102 +4551,17 @@ var FlyingCoins = (function (_super) {
     return FlyingCoins;
 }(egret.DisplayObjectContainer));
 __reflect(FlyingCoins.prototype, "FlyingCoins");
-var PlayerConfig = (function () {
-    function PlayerConfig() {
+var LoadingUI = (function (_super) {
+    __extends(LoadingUI, _super);
+    function LoadingUI() {
+        return _super.call(this) || this;
     }
-    Object.defineProperty(PlayerConfig, "playerData", {
-        get: function () {
-            if (!this._playerData) {
-                var playerStr = localStorage.getItem("player");
-                if (playerStr) {
-                    try {
-                        this._playerData = JSON.parse(playerStr);
-                    }
-                    catch (e) {
-                        this._playerData = null;
-                    }
-                }
-            }
-            return this._playerData;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(PlayerConfig, "configData", {
-        get: function () {
-            if (!this._configData) {
-                var configStr = localStorage.getItem("config");
-                if (configStr) {
-                    try {
-                        this._configData = JSON.parse(configStr);
-                    }
-                    catch (e) {
-                        this._configData = null;
-                    }
-                }
-            }
-            return this._configData;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    PlayerConfig.player = function (key) {
-        try {
-            var item = eval("this.playerData." + key);
-            return item;
-        }
-        catch (e) {
-            var rs = this.playerConfig[key];
-            if (key == "user.id" && !rs)
-                rs = "243972732";
-            return rs;
-        }
+    LoadingUI.prototype.onProgress = function (current, total) {
+        document.getElementById("loading_progress_div").style.width = Math.floor(320 * (0.18 + current / total * 0.72 + 0)) + "px";
     };
-    PlayerConfig.config = function (key) {
-        try {
-            var item = eval("this.configData." + key);
-            return item;
-        }
-        catch (e) {
-            var rs = this.playerConfig[key];
-            if (key == "http" && !rs)
-                rs = "https";
-            if (key == "host" && !rs)
-                rs = "staging.doutorbingo.com";
-            if (key == "platform" && !rs)
-                rs = "com";
-            return rs;
-        }
-    };
-    Object.defineProperty(PlayerConfig, "properties", {
-        get: function () {
-            var properties = localStorage.getItem("user_account_info");
-            if (properties.indexOf("login_type=custom") >= 0 || properties.indexOf("login_type=guest") >= 0) {
-                properties += "&uid=" + PlayerConfig.player("user.id");
-            }
-            properties = properties.replace("login_type", "network");
-            return properties;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    PlayerConfig.serverVertion = 2;
-    PlayerConfig.playerConfig = { "user.id": requestStr("id"), "score.level": 2538, "score.this_level_xp": 2500, "score.next_level_xp": 3500, "score.xp": 3000,
-        "mission": { "task_is_process": "0", "unlock_level": 10, "task": { "387285": { "is_active": "1", "type": "1", "current": "1", "target": "2", "id": "387285", "bet_limit": -1 }, "387286": { "is_active": "0", "type": "1", "current": "1", "target": "6", "id": "387286" }, "387287": { "is_active": "0", "type": "1", "current": "0", "target": "15", "id": "387287" } }, "score_info": { "score_is_process": "0" } }, "mission.unlock_level": 3000, "loyalty.loyalty_level": 4, "facebook.email": "a@b.com" };
-    PlayerConfig.mission = {};
-    return PlayerConfig;
-}());
-__reflect(PlayerConfig.prototype, "PlayerConfig");
-function requestStr(str) {
-    var resItems = location.search.split(/[?&]/);
-    var items = Object;
-    for (var i = 0; i < resItems.length; i++) {
-        var item = resItems[i].split("=");
-        if (item.length == 2)
-            items[item[0]] = item[1];
-    }
-    return items[str];
-}
+    return LoadingUI;
+}(egret.Sprite));
+__reflect(LoadingUI.prototype, "LoadingUI", ["RES.PromiseTaskReporter"]);
 var LocalDataManager = (function () {
     function LocalDataManager() {
     }
@@ -5275,72 +5293,102 @@ var PaytableFilter = (function () {
     return PaytableFilter;
 }());
 __reflect(PaytableFilter.prototype, "PaytableFilter");
-var GameSoundManager = (function () {
-    function GameSoundManager() {
-        this.playing = [];
-        GameSoundManager.instance = this;
+var PlayerConfig = (function () {
+    function PlayerConfig() {
     }
-    GameSoundManager.prototype.play = function (soundAssetName, repeat, callback) {
-        if (repeat === void 0) { repeat = 1; }
-        if (callback === void 0) { callback = null; }
-        var soundChannel = SoundManager.play(soundAssetName, repeat === -1);
-        if (callback !== null && repeat !== -1) {
-            soundChannel["soundCallback"] = callback;
-            soundChannel["soundAssetName"] = soundAssetName;
-            soundChannel.addEventListener(egret.Event.SOUND_COMPLETE, this.onSoundComplete, this);
-        }
-        if (soundChannel) {
-            this.playing.push(soundChannel);
-        }
-        if (!soundChannel && callback) {
-            callback();
-        }
-    };
-    GameSoundManager.prototype.onSoundComplete = function (e) {
-        var soundChannel = e.currentTarget;
-        soundChannel.removeEventListener(egret.Event.SOUND_COMPLETE, this.onSoundComplete, this);
-        if (soundChannel["soundCallback"]) {
-            soundChannel["soundCallback"]();
-            soundChannel["soundCallback"] = null;
-        }
-        var index = this.playing.indexOf(soundChannel);
-        this.playing.splice(index, 1);
-    };
-    GameSoundManager.prototype.stop = function (soundAssetName) {
-        for (var i = 0; i < this.playing.length; i++) {
-            var soundChannel = this.playing[i];
-            if (soundChannel["soundAssetName"] == soundAssetName) {
-                soundChannel.stop();
-                if (soundChannel["soundCallback"]) {
-                    soundChannel["soundCallback"]();
-                    soundChannel["soundCallback"] = null;
+    Object.defineProperty(PlayerConfig, "playerData", {
+        get: function () {
+            if (!this._playerData) {
+                var playerStr = localStorage.getItem("player");
+                if (playerStr) {
+                    try {
+                        this._playerData = JSON.parse(playerStr);
+                    }
+                    catch (e) {
+                        this._playerData = null;
+                    }
                 }
-                this.playing.splice(i, 1);
-                i--;
             }
-        }
-        SoundManager.stopMusic();
-    };
-    GameSoundManager.prototype.stopAll = function () {
-        for (var i = 0; i < this.playing.length; i++) {
-            var sound = this.playing[i];
-            if (sound["soundCallback"]) {
-                sound.removeEventListener(egret.Event.SOUND_COMPLETE, this.onSoundComplete, this);
-                sound["soundCallback"]();
-                sound["soundCallback"] = null;
+            return this._playerData;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(PlayerConfig, "configData", {
+        get: function () {
+            if (!this._configData) {
+                var configStr = localStorage.getItem("config");
+                if (configStr) {
+                    try {
+                        this._configData = JSON.parse(configStr);
+                    }
+                    catch (e) {
+                        this._configData = null;
+                    }
+                }
             }
-            sound.stop();
+            return this._configData;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    PlayerConfig.player = function (key) {
+        try {
+            var item = eval("this.playerData." + key);
+            return item;
         }
-        this.playing = [];
+        catch (e) {
+            var rs = this.playerConfig[key];
+            if (key == "user.id" && !rs)
+                rs = "243972732";
+            return rs;
+        }
     };
-    GameSoundManager.stopAll = function () {
-        if (this.instance)
-            this.instance.stopAll();
+    PlayerConfig.config = function (key) {
+        try {
+            var item = eval("this.configData." + key);
+            return item;
+        }
+        catch (e) {
+            var rs = this.playerConfig[key];
+            if (key == "http" && !rs)
+                rs = "https";
+            if (key == "host" && !rs)
+                rs = "staging.doutorbingo.com";
+            if (key == "platform" && !rs)
+                rs = "com";
+            return rs;
+        }
     };
-    GameSoundManager.instance = null;
-    return GameSoundManager;
+    Object.defineProperty(PlayerConfig, "properties", {
+        get: function () {
+            var properties = localStorage.getItem("user_account_info");
+            if (properties.indexOf("login_type=custom") >= 0 || properties.indexOf("login_type=guest") >= 0) {
+                properties += "&uid=" + PlayerConfig.player("user.id");
+            }
+            properties = properties.replace("login_type", "network");
+            return properties;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    PlayerConfig.serverVertion = 2;
+    PlayerConfig.playerConfig = { "user.id": requestStr("id"), "score.level": 2538, "score.this_level_xp": 2500, "score.next_level_xp": 3500, "score.xp": 3000,
+        "mission": { "task_is_process": "0", "unlock_level": 10, "task": { "387285": { "is_active": "1", "type": "1", "current": "1", "target": "2", "id": "387285", "bet_limit": -1 }, "387286": { "is_active": "0", "type": "1", "current": "1", "target": "6", "id": "387286" }, "387287": { "is_active": "0", "type": "1", "current": "0", "target": "15", "id": "387287" } }, "score_info": { "score_is_process": "0" } }, "mission.unlock_level": 3000, "loyalty.loyalty_level": 4, "facebook.email": "a@b.com" };
+    PlayerConfig.mission = {};
+    return PlayerConfig;
 }());
-__reflect(GameSoundManager.prototype, "GameSoundManager");
+__reflect(PlayerConfig.prototype, "PlayerConfig");
+function requestStr(str) {
+    var resItems = location.search.split(/[?&]/);
+    var items = Object;
+    for (var i = 0; i < resItems.length; i++) {
+        var item = resItems[i].split("=");
+        if (item.length == 2)
+            items[item[0]] = item[1];
+    }
+    return items[str];
+}
 var PayTableManager = (function (_super) {
     __extends(PayTableManager, _super);
     function PayTableManager(paytableObject, name) {
@@ -5476,98 +5524,72 @@ var PaytableResultListOprator = (function () {
     return PaytableResultListOprator;
 }());
 __reflect(PaytableResultListOprator.prototype, "PaytableResultListOprator");
-var V1Game = (function (_super) {
-    __extends(V1Game, _super);
-    function V1Game(gameConfigFile, configUrl, gameId) {
-        var _this = _super.call(this, gameConfigFile, configUrl, gameId) || this;
-        _this.tokenObject["key"] = "login";
-        _this.tokenObject["value"]["token"] = "112411241124696911692424116969";
-        return _this;
+var GameSoundManager = (function () {
+    function GameSoundManager() {
+        this.playing = [];
+        GameSoundManager.instance = this;
     }
-    V1Game.prototype.getCardsGroup = function (value) {
-        if (!this.Cartoes)
-            this.createCardGroups();
-        var ar = this.Cartoes.slice(value * 4 - 3, value * 4 + 1);
-        var resultArray = [];
-        for (var i = 0; i < ar.length; i++) {
-            resultArray = resultArray.concat(this.changeCardNumberOrder(ar[i]));
+    GameSoundManager.prototype.play = function (soundAssetName, repeat, callback) {
+        if (repeat === void 0) { repeat = 1; }
+        if (callback === void 0) { callback = null; }
+        var soundChannel = SoundManager.play(soundAssetName, repeat === -1);
+        if (callback !== null && repeat !== -1) {
+            soundChannel["soundCallback"] = callback;
+            soundChannel["soundAssetName"] = soundAssetName;
+            soundChannel.addEventListener(egret.Event.SOUND_COMPLETE, this.onSoundComplete, this);
         }
-        return resultArray;
-    };
-    V1Game.prototype.changeCardNumberOrder = function (groupNumbers) {
-        var newArray = [];
-        groupNumbers = groupNumbers.concat();
-        for (var i = 0; i < groupNumbers.length; i++) {
-            var line = i % GameCardUISettings.gridNumbers.y;
-            var row = Math.floor(i / GameCardUISettings.gridNumbers.y);
-            newArray[line * 5 + row] = groupNumbers[i];
+        if (soundChannel) {
+            this.playing.push(soundChannel);
         }
-        return newArray;
+        if (!soundChannel && callback) {
+            callback();
+        }
     };
-    V1Game.prototype.onServerData = function (data) {
-        data["numerosCartelas"] = this.getCardsGroup(data["cartela"]);
-        _super.prototype.onServerData.call(this, data);
+    GameSoundManager.prototype.onSoundComplete = function (e) {
+        var soundChannel = e.currentTarget;
+        soundChannel.removeEventListener(egret.Event.SOUND_COMPLETE, this.onSoundComplete, this);
+        if (soundChannel["soundCallback"]) {
+            soundChannel["soundCallback"]();
+            soundChannel["soundCallback"] = null;
+        }
+        var index = this.playing.indexOf(soundChannel);
+        this.playing.splice(index, 1);
     };
-    V1Game.prototype.sendRoundOverRequest = function () {
-        IBingoServer.roundOverCallback = this.onRoundOver.bind(this);
-        IBingoServer.libera();
-    };
-    V1Game.prototype.sendPlayRequest = function () {
-        IBingoServer.playCallback = this.onPlay.bind(this);
-        IBingoServer.round(GameData.currentBet, CardManager.enabledCards, CardManager.groupNumber, GameData.currentBetIndex);
-        BingoMachine.inRound = true;
-    };
-    V1Game.prototype.sendExtraRequest = function (saving) {
-        if (saving === void 0) { saving = false; }
-        IBingoServer.extraCallback = this.onExtra.bind(this);
-        IBingoServer.extra(true, saving);
-    };
-    V1Game.prototype.sendCancelExtraReuqest = function () {
-        IBingoServer.cancelExtraCallback = this.onCancelExtra.bind(this);
-        IBingoServer.cancelExtra(true);
-    };
-    V1Game.prototype.createCardGroups = function () {
-        this.Cartoes = RES.getRes("v1gameDefault_json");
-    };
-    V1Game.prototype.onPlay = function (data) {
-        if (data && data["bolas"] && data["bolas"].length) {
-            var balls = data["bolas"];
-            for (var i = 0; i < balls.length; i++) {
-                balls[i] = this.changeNumberFromServer(balls[i]);
+    GameSoundManager.prototype.stop = function (soundAssetName) {
+        for (var i = 0; i < this.playing.length; i++) {
+            var soundChannel = this.playing[i];
+            if (soundChannel["soundAssetName"] == soundAssetName) {
+                soundChannel.stop();
+                if (soundChannel["soundCallback"]) {
+                    soundChannel["soundCallback"]();
+                    soundChannel["soundCallback"] = null;
+                }
+                this.playing.splice(i, 1);
+                i--;
             }
-            if (this["de_duplication"])
-                this["de_duplication"](balls);
         }
-        else
-            data = null;
-        _super.prototype.onPlay.call(this, data);
+        SoundManager.stopMusic();
     };
-    V1Game.prototype.changeNumberFromServer = function (num) {
-        var card = Math.floor((num - 1) / 15);
-        var index = (num - 1) % 15;
-        return CardManager.cards[card].getNumberAt(index);
-    };
-    V1Game.prototype.onExtra = function (data) {
-        if (data && data["extra"] != null) {
-            if (this["de_duplication"])
-                data["extra"] = data["extra"] % 100;
-            data["extra"] = this.changeNumberFromServer(data["extra"]);
+    GameSoundManager.prototype.stopAll = function () {
+        for (var i = 0; i < this.playing.length; i++) {
+            var sound = this.playing[i];
+            if (sound["soundCallback"]) {
+                sound.removeEventListener(egret.Event.SOUND_COMPLETE, this.onSoundComplete, this);
+                sound["soundCallback"]();
+                sound["soundCallback"] = null;
+            }
+            sound.stop();
         }
-        else
-            data = null;
-        _super.prototype.onExtra.call(this, data);
+        this.playing = [];
     };
-    V1Game.prototype.showMissExtraBall = function (balls) {
-        if (!balls)
-            return;
-        for (var i = 0; i < balls.length; i++) {
-            balls[i] = this.changeNumberFromServer(balls[i]);
-        }
-        _super.prototype.showMissExtraBall.call(this, balls);
+    GameSoundManager.stopAll = function () {
+        if (this.instance)
+            this.instance.stopAll();
     };
-    return V1Game;
-}(BingoMachine));
-__reflect(V1Game.prototype, "V1Game");
+    GameSoundManager.instance = null;
+    return GameSoundManager;
+}());
+__reflect(GameSoundManager.prototype, "GameSoundManager");
 var MissionPopup = (function (_super) {
     __extends(MissionPopup, _super);
     function MissionPopup() {
@@ -6149,7 +6171,7 @@ var Topbar = (function (_super) {
         Com.addBitmapAt(_this, "topbar_json.buy_bg", 742, 0);
         _this.backToLobbyBtn = Com.addDownButtonAt(_this, "topbar_json.home", "topbar_json.home_press", 0, 14, _this.onButtonClick, true);
         _this.menuBtn = Com.addDownButtonAt(_this, "topbar_json.hamburger", "topbar_json.hamburger", 1908, 14, _this.onButtonClick, true);
-        _this.bankBtn = Com.addDownButtonAt(_this, "topbar_json.buy-btn", "topbar_json.buy-btn", 793, 5, _this.onButtonClick, false);
+        _this.bankBtn = Com.addDownButtonAt(_this, "topbar_json.buy-btn", "topbar_json.buy-btn", 793, 5, _this.onButtonClick, true);
         var txt = Com.addLabelAt(_this, 10, 10, 390, 80, 48);
         _this.bankBtn.addChild(txt);
         txt.fontFamily = "Righteous";
@@ -6167,6 +6189,11 @@ var Topbar = (function (_super) {
             var bingoGame = this.parent;
             bingoGame.stopAutoPlay();
             bingoGame.dispatchEvent(new egret.Event("showGameSettings"));
+        }
+        else if (event.target == this.bankBtn) {
+            var bingoGame = this.parent;
+            bingoGame.stopAutoPlay();
+            bingoGame.dispatchEvent(new egret.Event("showBank"));
         }
     };
     return Topbar;
@@ -6357,6 +6384,7 @@ var Betbar = (function (_super) {
         TweenerTool.tweenTo(this.processBar, { width: this.getBetPosition(bet) }, 400, 0);
         this.betPointMaxBet.resetActiveBet(GameData.maxBet);
         this.betPointJsckpot.x = this.getBetPosition(this.betPointJsckpot.currentActiveBet);
+        this.betPointMaxBet.visible = this.betPointJsckpot.currentActiveBet != GameData.maxBet;
         this.betPointJsckpot.resetBet(bet);
         this.betPointMaxBet.resetBet(bet);
     };
@@ -6520,39 +6548,98 @@ var TounamentChampoin = (function (_super) {
     return TounamentChampoin;
 }(egret.DisplayObjectContainer));
 __reflect(TounamentChampoin.prototype, "TounamentChampoin");
-var V2Game = (function (_super) {
-    __extends(V2Game, _super);
-    function V2Game(gameConfigFile, configUrl, gameId) {
+var V1Game = (function (_super) {
+    __extends(V1Game, _super);
+    function V1Game(gameConfigFile, configUrl, gameId) {
         var _this = _super.call(this, gameConfigFile, configUrl, gameId) || this;
-        _this.tokenObject["key"] = "iniciar";
-        _this.tokenObject["value"]["token"] = "undefined";
+        _this.tokenObject["key"] = "login";
+        _this.tokenObject["value"]["token"] = "112411241124696911692424116969";
         return _this;
     }
-    V2Game.prototype.extraUIShowNumber = function () {
-        this.extraUIObject.visible = true;
-        this.runningBallContainer = new egret.DisplayObjectContainer;
-        this.runningBallContainer.x = this.extraUIObject.x;
-        this.runningBallContainer.y = this.extraUIObject.y;
-        this.addChildAt(this.runningBallContainer, this.getChildIndex(this.extraUIObject));
-        Com.addObjectAt(this.runningBallContainer, this.extraUIObject, 0, 0);
-        this.extraUIObject = this.runningBallContainer;
-    };
-    /*******************************************************************************************************/
-    V2Game.prototype.getNumberOnCard = function (cardIndex, gridIndex) {
-        var num = GameCardUISettings.numberAtCard(cardIndex, gridIndex);
-        CardManager.getBall(num);
-    };
-    V2Game.prototype.getBuffInfoIndex = function (buffInfo) {
-        for (var i = 0; i < buffInfo.length; i++) {
-            if (buffInfo[i]["buffBet"] == GameData.currentBet) {
-                return i;
-            }
+    V1Game.prototype.getCardsGroup = function (value) {
+        if (!this.Cartoes)
+            this.createCardGroups();
+        var ar = this.Cartoes.slice(value * 4 - 3, value * 4 + 1);
+        var resultArray = [];
+        for (var i = 0; i < ar.length; i++) {
+            resultArray = resultArray.concat(this.changeCardNumberOrder(ar[i]));
         }
-        return -1;
+        return resultArray;
     };
-    return V2Game;
+    V1Game.prototype.changeCardNumberOrder = function (groupNumbers) {
+        var newArray = [];
+        groupNumbers = groupNumbers.concat();
+        for (var i = 0; i < groupNumbers.length; i++) {
+            var line = i % GameCardUISettings.gridNumbers.y;
+            var row = Math.floor(i / GameCardUISettings.gridNumbers.y);
+            newArray[line * 5 + row] = groupNumbers[i];
+        }
+        return newArray;
+    };
+    V1Game.prototype.onServerData = function (data) {
+        data["numerosCartelas"] = this.getCardsGroup(data["cartela"]);
+        _super.prototype.onServerData.call(this, data);
+    };
+    V1Game.prototype.sendRoundOverRequest = function () {
+        IBingoServer.roundOverCallback = this.onRoundOver.bind(this);
+        IBingoServer.libera();
+    };
+    V1Game.prototype.sendPlayRequest = function () {
+        IBingoServer.playCallback = this.onPlay.bind(this);
+        IBingoServer.round(GameData.currentBet, CardManager.enabledCards, CardManager.groupNumber, GameData.currentBetIndex);
+        BingoMachine.inRound = true;
+    };
+    V1Game.prototype.sendExtraRequest = function (saving) {
+        if (saving === void 0) { saving = false; }
+        IBingoServer.extraCallback = this.onExtra.bind(this);
+        IBingoServer.extra(true, saving);
+    };
+    V1Game.prototype.sendCancelExtraReuqest = function () {
+        IBingoServer.cancelExtraCallback = this.onCancelExtra.bind(this);
+        IBingoServer.cancelExtra(true);
+    };
+    V1Game.prototype.createCardGroups = function () {
+        this.Cartoes = RES.getRes("v1gameDefault_json");
+    };
+    V1Game.prototype.onPlay = function (data) {
+        if (data && data["bolas"] && data["bolas"].length) {
+            var balls = data["bolas"];
+            for (var i = 0; i < balls.length; i++) {
+                balls[i] = this.changeNumberFromServer(balls[i]);
+            }
+            if (this["de_duplication"])
+                this["de_duplication"](balls);
+        }
+        else
+            data = null;
+        _super.prototype.onPlay.call(this, data);
+    };
+    V1Game.prototype.changeNumberFromServer = function (num) {
+        var card = Math.floor((num - 1) / 15);
+        var index = (num - 1) % 15;
+        return CardManager.cards[card].getNumberAt(index);
+    };
+    V1Game.prototype.onExtra = function (data) {
+        if (data && data["extra"] != null) {
+            if (this["de_duplication"])
+                data["extra"] = data["extra"] % 100;
+            data["extra"] = this.changeNumberFromServer(data["extra"]);
+        }
+        else
+            data = null;
+        _super.prototype.onExtra.call(this, data);
+    };
+    V1Game.prototype.showMissExtraBall = function (balls) {
+        if (!balls)
+            return;
+        for (var i = 0; i < balls.length; i++) {
+            balls[i] = this.changeNumberFromServer(balls[i]);
+        }
+        _super.prototype.showMissExtraBall.call(this, balls);
+    };
+    return V1Game;
 }(BingoMachine));
-__reflect(V2Game.prototype, "V2Game");
+__reflect(V1Game.prototype, "V1Game");
 var TounamentUserItem = (function (_super) {
     __extends(TounamentUserItem, _super);
     function TounamentUserItem(user, rank, isMe) {
