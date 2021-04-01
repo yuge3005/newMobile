@@ -161,7 +161,7 @@ class LevelBar extends egret.DisplayObjectContainer{
 		let bt: egret.DisplayObjectContainer = new egret.DisplayObjectContainer;
 		let btContainer: egret.DisplayObjectContainer = new egret.DisplayObjectContainer;
 		this.addChildAt( btContainer, 0 );
-		Com.addObjectAt( btContainer, bt, 0, 0 );
+		Com.addObjectAt( btContainer, bt, 60, -150 );
 		bt.touchEnabled = true;
 
 		let bg: egret.Bitmap = Com.addBitmapAt( bt, "multiTopbar_json.BB_star_open_bg", 0, 0 );
@@ -186,13 +186,13 @@ class LevelBar extends egret.DisplayObjectContainer{
 		let coins: TextLabel = Com.addLabelAt( bt, 17, 265, 260, 36, 36 );
 		coins.setText( "" + Math.round( bonus ) );
 
-		TweenerTool.tweenTo( bt, { y: - 350 }, 600, 0, this.btBack.bind( this, bt, btContainer, bonus ) );
+		TweenerTool.tweenTo( bt, { y: 100 }, 600, 0, this.btBack.bind( this, bt, btContainer, bonus ) );
 
-		btContainer.mask = new egret.Rectangle( 0, -350, 300, 350 );
+		btContainer.mask = new egret.Rectangle( 60, 100, 300, 350 );
 	}
 
 	private btBack( bt: egret.DisplayObjectContainer, btContainer: egret.DisplayObjectContainer, bonus: number ){
-		TweenerTool.tweenTo( bt, { y: 0 }, 600, 1000, MDS.removeSelf.bind( this, btContainer ) );
+		TweenerTool.tweenTo( bt, { y: -150 }, 600, 1000, MDS.removeSelf.bind( this, btContainer ) );
 
 		let ev: egret.Event = new egret.Event( LevelBar.LEVEL_UP_BONUS );
 		ev.data = bonus;
