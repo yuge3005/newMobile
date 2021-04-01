@@ -57,6 +57,7 @@ class Main extends egret.DisplayObjectContainer {
 		this.currentGame.addEventListener( MultiPlayerMachine.GENERIC_MODAL_LOADED, this.addGame, this );
 		this.currentGame.addEventListener( "showGameSettings", this.showGameSettings, this );
 		this.currentGame.addEventListener( "showBank", this.showBank, this );
+		this.currentGame.addEventListener( "out_of_coins_game_id", this.showBank, this );
 	}
 
 	private addGame(){
