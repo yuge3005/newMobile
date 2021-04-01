@@ -71,7 +71,6 @@ class LevelBar extends egret.DisplayObjectContainer{
     }
 
     public onXpChanged(progress: number): void {
-        egret.error( progress )
         if (progress >= 1) progress = 1;
         this.xpProgressText.text = (progress * 100).toFixed(1) + "%";
         this.xpProgress.mask = new egret.Rectangle(0, 0, this.xpProgress.width * progress, 67);
