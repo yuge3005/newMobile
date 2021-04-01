@@ -125,6 +125,7 @@ class MultiPlayerMachine extends egret.Sprite{
 		this.addChild( this.ballArea );
 		this.addChild( this.cardArea );
 		this.topbar = new MultiGameTopBar;
+		this.topbar.addEventListener( LevelBar.LEVEL_UP_BONUS, this.onLevelUpBonus, this );
 
 		this.addEventListener( "updateCoinsAndXp", this.updateCoinsAndXp, this );
 	}
@@ -393,5 +394,13 @@ class MultiPlayerMachine extends egret.Sprite{
 		let cardPt: egret.Point = new egret.Point( card.x, card.y );
 		let pos: egret.Point = cardPt.add( onCardPt );
 		MDS.dropCoinsAt( this, pos, coins );
+	}
+
+	protected onLevelUpBonus( event: egret.Event ){
+		let bonus: number = event.data;
+		if( !isNaN(bonus) ){
+			this.gameCoins += bonus;
+			this.topbar.updateCoinsDineroXp( this.gameCoins, this.dinero, null );
+		}
 	}
 }

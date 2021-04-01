@@ -26,6 +26,7 @@ class MultiGameTopBar extends egret.DisplayObjectContainer {
         // user level area
         this.levelArea = new LevelBar();
         Com.addObjectAt(this, this.levelArea, 115, -5);
+        this.levelArea.addEventListener( LevelBar.LEVEL_UP_BONUS, this.onLevelUpBonus, this );
 
         // user coins area
         this.coinsArea = new CoinsBar();
@@ -85,5 +86,12 @@ class MultiGameTopBar extends egret.DisplayObjectContainer {
             let score: Object = PlayerConfig.player( "score" );
             this.levelArea.onXpChanged( ( xp - score["this_level_xp"] ) / ( score["next_level_xp"] - score["this_level_xp"] ) );
         }
+    }
+
+    public onLevelUpBonus( event: egret.Event ){
+        let bonus: number = event.data;
+		let ev: egret.Event = new egret.Event( LevelBar.LEVEL_UP_BONUS );
+		ev.data = bonus;
+		this.dispatchEvent( ev );
     }
 }

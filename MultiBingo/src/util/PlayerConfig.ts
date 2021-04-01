@@ -21,6 +21,22 @@ class PlayerConfig {
 		return this._playerData;
 	}
 
+	private static _configData: Object;
+	private static get configData(): Object{
+		if( !this._configData ){
+			let configStr: string = localStorage.getItem("config");
+			if( configStr ){
+				try{
+					this._configData = JSON.parse( configStr );
+				}
+				catch(e){
+					this._configData = null;
+				}
+			}
+		}
+		return this._configData;
+	}
+
 	private static playerConfig: Object = { "user.id": requestStr( "id" ), "score.level": 2538, "user_info.preferences": [], "user_info.preferences_answer": [], "settings.lang": "en"
 		, "score.coins": 10, "score.chips": 10, "score.xp": 10, "score": { "next_level_xp": 15, "this_level_xp": 5 } };
 	private static mission: Object = {};
@@ -33,6 +49,20 @@ class PlayerConfig {
 		catch(e){
 			let rs = this.playerConfig[key];
 			if( key=="user.id" && !rs ) rs = "243972732";
+			return rs;
+		}
+	}
+
+	public static config( key: string ){
+		try{
+			let item: any = eval( "this.configData." + key );
+			return item;
+		}
+		catch(e){
+			let rs = this.playerConfig[key];
+			if( key=="http" && !rs ) rs = "https";
+			if( key=="host" && !rs ) rs = "staging.doutorbingo.com";
+			if( key=="platform" && !rs ) rs = "com";
 			return rs;
 		}
 	}

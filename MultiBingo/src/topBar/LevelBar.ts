@@ -1,10 +1,14 @@
 class LevelBar extends egret.DisplayObjectContainer{
 
+	public static LEVEL_UP_BONUS: string = "levelUpBonus";
+
     private xpProgress: egret.Bitmap;
 	private userHead: egret.Bitmap;
 	private redPoint: RedPoint;
     private xpProgressText: egret.TextField;
 	private levelText: TextLabel;
+	private level: number;
+	private levelUpRecord: Object = {};
 
 	public constructor() {
 		super();
@@ -71,12 +75,133 @@ class LevelBar extends egret.DisplayObjectContainer{
     }
 
     public onXpChanged(progress: number): void {
-        if (progress >= 1) progress = 1;
+        if (progress > 1) progress = 1;
+        else this.levelUp();
         this.xpProgressText.text = (progress * 100).toFixed(1) + "%";
         this.xpProgress.mask = new egret.Rectangle(0, 0, this.xpProgress.width * progress, 67);
     }
 
     private onLevelChanged(level: number): void {
+		this.level = level;
 		this.levelText.setText( "" + level );
     }
+
+    private levelUp(){
+		if (!this.levelUpRecord[this.level + ""]) {
+			this.levelUpRecord[this.level + ""] = true;
+			// send level up request
+			this.sendCollectBonusRequest( Number( MultiPlayerMachine.currentGame["connetKeys"]["sala"].replace( /\D/g, "" ) ), 50 );
+			return true;
+		}
+	}
+
+	private sendCollectBonusRequest(gameID: number, currentBet: number): void {
+		egret.log( "gameID:" + gameID )
+		let requestData = { json: JSON.stringify({ "bonus_type": "level_up", "seed": new Date().valueOf(), "debug": {}, "fb": PlayerConfig.player("facebook.id"), "current_bet": currentBet, "machineId": gameID, "level": this.level, "game_id": gameID }) };
+		new DataServer().getDataFromUrl(PlayerConfig.config("http") + "://" + PlayerConfig.config("host") + "/cmd.php?action=update_user_bonus", this.collectRequestSuccess.bind(this), this, true, requestData, this.collectRequestFailed);
+	}
+
+	/**
+	 * collect bonus request success
+	 **/
+	private collectRequestSuccess(data: any): void {
+		if (typeof data === "undefined" || data === null) return;
+		data = typeof (data) === "string" ? JSON.parse(data) : data;
+		
+		let level = Number(data["level"]);
+
+		// refresh toolbar level and xp progress
+		this.level = level;
+		this.levelText.setText( "" + level );
+
+		let loyalty: number = data["loyalty_point"] - Number( PlayerConfig.player( "loyalty.loyalty_point" ) );
+
+		//playerData
+		let datas: Array<IKeyValues> = <Array<IKeyValues>>[];
+		datas[0] = <IKeyValues>{key:"score.level",value:level};
+		datas[1] = <IKeyValues>{key:"score.this_level_xp",value:Number(data["this_level_xp"])};
+		datas[2] = <IKeyValues>{key:"score.next_level_xp",value:Number(data["next_level_xp"])};
+		datas[3] = <IKeyValues>{key:"levelMultiplier",value:data["levelMultiplier"]};
+		datas[4] = <IKeyValues>{key:"chipsLevelMultiplier",value:data["chipsLevelMultiplier"]};
+		datas[5] = <IKeyValues>{key:"levelMultiplierPuzzle",value:data["levelMultiplierPuzzle"]};
+		datas[6] = <IKeyValues>{key:"loyalty.loyalty_point",value:data["loyalty_point"]};
+		LocalDataManager.updatePlayerDatas( datas );
+
+		let score: Object = PlayerConfig.player( "score" );
+		this.onXpChanged( ( Number(data["xp"]) - score["this_level_xp"] ) / ( score["next_level_xp"] - score["this_level_xp"] ) );
+
+		// LevelUp.targetCoins = data["coins"];
+		let bonuses = <Array<Object>>data["bonuses"];
+		let bonus = 0;
+		if (typeof bonuses !== "undefined" && bonuses !== null) {
+			for (let i = 0; i < bonuses.length; i++) {
+				bonus += Number(bonuses[i]["level_up_bonus"]);
+			}
+		}
+
+		this.showBonusAndLoyalty( bonus, loyalty );
+
+		// check have someone game unlock?
+		// if (unlockedGameID.length > 0) {
+		// 	UnlockGame.gameID = unlockedGameID[0];
+		// 	Trigger.insertInstance(new UnlockGame());
+		// }
+
+		// data["reward_items"]
+	}
+
+	/**
+	 * collect bonus request failed
+	 **/
+	private collectRequestFailed(data: any): void {
+		console.log("collect bonus request failed!");
+	}
+
+	private showBonusAndLoyalty( bonus: number, loyalty: number ){
+		let bt: egret.DisplayObjectContainer = new egret.DisplayObjectContainer;
+		let btContainer: egret.DisplayObjectContainer = new egret.DisplayObjectContainer;
+		this.addChildAt( btContainer, 0 );
+		Com.addObjectAt( btContainer, bt, 0, 0 );
+		bt.touchEnabled = true;
+
+		let bg: egret.Bitmap = Com.addBitmapAt( bt, "bingoGameToolbar_json.BB_star_open_bg", 0, 0 );
+		bg.width = 300;
+		bg.height = 350;
+
+		let wbg1: egret.Bitmap = Com.addBitmapAt( bt, "bingoGameToolbar_json.BB_star_benefit_bg", 17, 60 );
+		wbg1.height = 135;
+
+		let wbg2: egret.Bitmap = Com.addBitmapAt( bt, "bingoGameToolbar_json.BB_star_benefit_bg", 17, 196 );
+		wbg2.height = 135;
+
+		Com.addBitmapAt( bt, "bingoGameToolbar_json.loyalty_points_icon", 60, 90 );
+		let lp: egret.TextField = Com.addTextAt( bt, 135, 90, 140, 74, 52 );
+		lp.verticalAlign = "middle";
+		lp.textAlign = "left";
+		lp.text = "+" + Math.round( loyalty );
+
+		let tip: TextLabel = Com.addLabelAt( bt, 27, 220, 240, 28, 28 );
+		tip.setText( MuLang.getText( "level_up_bonus" ) );
+
+		let coins: TextLabel = Com.addLabelAt( bt, 17, 265, 260, 36, 36 );
+		coins.setText( "" + Math.round( bonus ) );
+
+		TweenerTool.tweenTo( bt, { y: - 350 }, 600, 0, this.btBack.bind( this, bt, btContainer, bonus ) );
+
+		btContainer.mask = new egret.Rectangle( 0, -350, 300, 350 );
+	}
+
+	private btBack( bt: egret.DisplayObjectContainer, btContainer: egret.DisplayObjectContainer, bonus: number ){
+		TweenerTool.tweenTo( bt, { y: 0 }, 600, 1000, MDS.removeSelf.bind( this, btContainer ) );
+
+		let ev: egret.Event = new egret.Event( LevelBar.LEVEL_UP_BONUS );
+		ev.data = bonus;
+		this.dispatchEvent( ev );
+
+		if( this.stage ){
+			let flyCoins: FlyingCoins = new FlyingCoins();
+			flyCoins.fly( 10, new egret.Point( 730, 435 ), new egret.Point(350, 520), new egret.Point( 400, 300 ), 0.15, 0.1, 0.3 );
+			this.stage.addChild( flyCoins );
+		}
+	}
 }
