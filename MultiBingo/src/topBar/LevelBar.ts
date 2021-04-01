@@ -13,7 +13,8 @@ class LevelBar extends egret.DisplayObjectContainer{
 		this.addHead();
 		this.addRedPoint();
 
-        // this.onXpChanged(UserVo.get("xpProgress"));
+        let score: Object = PlayerConfig.player( "score" );
+        this.onXpChanged( ( score["xp"] - score["this_level_xp"] ) / ( score["next_level_xp"] - score["this_level_xp"] ) ););
         // this.onLevelChanged(UserVo.get("level"));
 
         // UserVo.onLevelChanged = this.onLevelChanged.bind(this);

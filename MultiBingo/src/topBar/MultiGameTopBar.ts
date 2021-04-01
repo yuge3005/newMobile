@@ -81,6 +81,9 @@ class MultiGameTopBar extends egret.DisplayObjectContainer {
     public updateCoinsDineroXp( coins: number, dinero: number, xp: number ){
         if( coins != null )this.coinsArea.onCoinsChanged( coins );
         if( dinero != null )this.dineroBar.onDineroChanged( dinero );
-        if( xp != null )this.levelArea.onXpChanged( xp );
+        if( xp != null ){
+            let score: Object = PlayerConfig.player( "score" );
+            this.levelArea.onXpChanged( ( xp - score["this_level_xp"] ) / ( score["next_level_xp"] - score["this_level_xp"] ) );
+        }
     }
 }
