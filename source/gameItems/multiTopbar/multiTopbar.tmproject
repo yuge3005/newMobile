@@ -7,6 +7,7 @@
         "sizeMode": "free"
     },
     "files": [
+        "./loyalty_points_icon.png",
         "./icon_piggybank.png",
         "./icon_experience.png",
         "./icon_dinero.png",
@@ -17,6 +18,8 @@
         "./btn_setting.png",
         "./btn_player_outline.png",
         "./btn_bank.png",
+        "./BB_star_open_bg.png",
+        "./BB_star_benefit_bg.png",
         "./bar_up.png",
         "./avatar.png",
         "./red_point.png",

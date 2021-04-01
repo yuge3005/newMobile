@@ -1862,7 +1862,7 @@
 			"url": "game/multiTopbar/multiTopbar.json",
 			"type": "sheet",
 			"name": "multiTopbar_json",
-			"subkeys": "avatar,bar_up,btn_bank,btn_player_outline,btn_setting,experience_bg,experience_progress_bar,home,icon_coin,icon_dinero,icon_experience,icon_piggybank,number_bg,red_point"
+			"subkeys": "BB_star_benefit_bg,BB_star_open_bg,avatar,bar_up,btn_bank,btn_player_outline,btn_setting,experience_bg,experience_progress_bar,home,icon_coin,icon_dinero,icon_experience,icon_piggybank,loyalty_points_icon,number_bg,red_point"
 		},
 		{
 			"url": "assets/gameSettings/support.json",

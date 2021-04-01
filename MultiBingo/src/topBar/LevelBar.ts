@@ -164,17 +164,17 @@ class LevelBar extends egret.DisplayObjectContainer{
 		Com.addObjectAt( btContainer, bt, 0, 0 );
 		bt.touchEnabled = true;
 
-		let bg: egret.Bitmap = Com.addBitmapAt( bt, "bingoGameToolbar_json.BB_star_open_bg", 0, 0 );
+		let bg: egret.Bitmap = Com.addBitmapAt( bt, "multiTopbar_json.BB_star_open_bg", 0, 0 );
 		bg.width = 300;
 		bg.height = 350;
 
-		let wbg1: egret.Bitmap = Com.addBitmapAt( bt, "bingoGameToolbar_json.BB_star_benefit_bg", 17, 60 );
+		let wbg1: egret.Bitmap = Com.addBitmapAt( bt, "multiTopbar_json.BB_star_benefit_bg", 17, 60 );
 		wbg1.height = 135;
 
-		let wbg2: egret.Bitmap = Com.addBitmapAt( bt, "bingoGameToolbar_json.BB_star_benefit_bg", 17, 196 );
+		let wbg2: egret.Bitmap = Com.addBitmapAt( bt, "multiTopbar_json.BB_star_benefit_bg", 17, 196 );
 		wbg2.height = 135;
 
-		Com.addBitmapAt( bt, "bingoGameToolbar_json.loyalty_points_icon", 60, 90 );
+		Com.addBitmapAt( bt, "multiTopbar_json.loyalty_points_icon", 60, 90 );
 		let lp: egret.TextField = Com.addTextAt( bt, 135, 90, 140, 74, 52 );
 		lp.verticalAlign = "middle";
 		lp.textAlign = "left";
@@ -200,7 +200,7 @@ class LevelBar extends egret.DisplayObjectContainer{
 
 		if( this.stage ){
 			let flyCoins: FlyingCoins = new FlyingCoins();
-			flyCoins.fly( 10, new egret.Point( 730, 435 ), new egret.Point(350, 520), new egret.Point( 400, 300 ), 0.15, 0.1, 0.3 );
+			flyCoins.fly( 15, new egret.Point( 100, 85 ), new egret.Point(350, 40), new egret.Point( 250, 500 ), 0.15, 0.1, 0.3 );
 			this.stage.addChild( flyCoins );
 		}
 	}
