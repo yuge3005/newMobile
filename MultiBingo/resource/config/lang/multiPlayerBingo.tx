@@ -18,4 +18,29 @@
     ,"free": {"en": "FREE","es": "GRATIS","pt": "GRÁTIS"}
     ,"free_bonus": {"en": "FREE BONUS","pt": "Bônus Grátis","es": "Bono Gratis"}
     ,"bank": {"en": "BANK","es": "BANCO","pt": "BANCO"}
+	,"settings":{ "en": "SETTINGS", "es": "AJUSTES", "pt": "CONFIGURAÇÕES" }
+	,"user_id":{ "en": "User ID", "es": "ID de Usuario", "pt": "ID" }
+	,"facebook_id":{ "en": "Facebook ID", "es": "ID de Facebook", "pt": "ID de Facebook" }
+	,"custom_id":{ "en": "Custom ID", "es": "ID de Personalizado", "pt": "ID de Personalizado" }
+	,"google_id":{ "en": "Google ID", "es": "ID de Google", "pt": "ID de Google" }
+	,"guest_id":{ "en": "GUEST ID", "es": "ID INVITADO", "pt": "VISITANTE ID" }
+	,"notification":{ "en": "NOTIFICATIONS", "es": "NOTIFICACIONES", "pt": "NOTIFICAÇÕES" }
+	,"login":{ "en": "Login", "es": "Identificándose", "pt": "Conecte-se" }
+	,"logout":{ "en": "LOGOUT", "es": "SALIR", "pt": "LOGOUT" }
+	,"contact":{ "en": "CONTACT", "es": "CONTACTO", "pt": "CONTATO" }
+	,"rate_us":{ "en": "Rate Us", "es": "¡Denos una", "pt": "Avalie-nos" }
+	,"language":{ "en": "LANGUAGE", "es": "IDIOMA", "pt": "LÍNGUA" }
+	,"link":{ "en": "LINK", "es": "ENLACE", "pt": "LINK" }
+	,"support":{ "en": "SUPPORT", "es": "Atención al Cliente", "pt": "CONTATO COM O SUPORTE" }
+	,"e_support":{ "en": "Support", "es": "Soporte", "pt": "Suporte" }
+	,"message":{ "en": "Message", "es": "Mensaje", "pt": "Mensagem" }
+	,"oops":{ "en": "Oops!", "es": "¡Ups!", "pt": "Ups!" }
+	,"enter_correct_info":{ "en": "Please enter the correct informotion", "es": "Por favor ingrese la información correcta", "pt": "Por favor insira a informação correta" }
+	,"change_language":{ "en": "CHANGE LANGUAGE", "es": "CAMBIAR IDIOMA", "pt": "ALTERAR O IDIOMA" }
+	,"change_language_tip":{ "en": "Are you sure you want to change\nthe language settings?", "es": "¿Seguro que quieres cambiar los\najustes de idioma?", "pt": "Tem certeza que quer trocar\no idioma padrão?" }
+	,"cancel":{"en":"Cancel","pt":"Cancelar","es":"Cancela"}
+	,"confirm":{"en":"CONFIRM","pt":"CONFIRMAR","es":"CONFIRMAR"}
+	,"sound_effect_on":{ "en": "SOUND EFFECTS", "es": "EFECTOS DE SONIDO", "pt": "EFEITOS DE SONS" }
+	,"music_on":{ "en": "MUSIC", "es": "MÚSICA", "pt": "MÚSICA" }
+	,"effect_on":{ "en": "VISUAL EFFECTS", "es": "EFECTOS VISUALES", "pt": "EFEITOS VISUAIS" }
 }
