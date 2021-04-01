@@ -59,11 +59,10 @@ class MultiGameTopBar extends egret.DisplayObjectContainer {
 		else if( event.target == this.menuBtn ){
 			MultiPlayerMachine.currentGame.dispatchEvent( new egret.Event("showGameSettings" ) );
 		}
+        else if( event.target == this.bankBtn ){
+            MultiPlayerMachine.currentGame.dispatchEvent( new egret.Event( "showBank" ) );
+        }
 	}
-
-    private showBank( event: egret.TouchEvent ): void {
-        MultiPlayerMachine.currentGame.dispatchEvent( new egret.Event( "showBank" ) );
-    }
 
     /**
      * unlock piggy bank
