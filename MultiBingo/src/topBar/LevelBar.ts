@@ -21,7 +21,7 @@ class LevelBar extends egret.DisplayObjectContainer{
         this.userHead = Com.addBitmapAt(this, "multiTopbar_json.avatar", 0, 17);
         this.userHead.touchEnabled = true;
         this.userHead.addEventListener(egret.TouchEvent.TOUCH_TAP, this.showUserProfile, this);
-		if (PlayerConfig.player("facebook.id") !== "") FacebookBitmap.downloadBitmapDataByFacebookID(PlayerConfig.player("facebook.id"), 100, 100, MDS.onUserHeadLoaded.bind( this, this.userHead, 95 ), this);
+		if (PlayerConfig.player("facebook_id") !== "") FacebookBitmap.downloadBitmapDataByFacebookID(PlayerConfig.player("facebook.id"), 100, 100, MDS.onUserHeadLoaded.bind( this, this.userHead, 95 ), this);
 
 		// head mask
         let headMask: egret.Shape = new egret.Shape;
