@@ -688,6 +688,8 @@ declare class BingoGameMain extends egret.DisplayObjectContainer {
     private loadDynamicClass(className, assetConfigUrl, classUrl);
     private showPoWithClassName(className, assetConfigUrl);
     private showPoWithClass(myClass, assetConfigUrl);
+    showChipBank(event?: egret.Event): void;
+    showCoinBank(event?: egret.Event): void;
 }
 declare class BrowserInfo {
     constructor();
