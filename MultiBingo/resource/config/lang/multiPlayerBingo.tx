@@ -43,4 +43,5 @@
 	,"sound_effect_on":{ "en": "SOUND EFFECTS", "es": "EFECTOS DE SONIDO", "pt": "EFEITOS DE SONS" }
 	,"music_on":{ "en": "MUSIC", "es": "MÚSICA", "pt": "MÚSICA" }
 	,"effect_on":{ "en": "VISUAL EFFECTS", "es": "EFECTOS VISUALES", "pt": "EFEITOS VISUAIS" }
+	,"level_up_bonus":{ "en": "LEVEL UP BONUS:", "es": "BONUS DE PASE DE NIVEL:", "pt": "Seu bônus é:" }
 }
