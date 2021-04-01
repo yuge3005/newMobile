@@ -56,8 +56,8 @@ class Main extends egret.DisplayObjectContainer {
 		this.currentGame.preLoader = loadingView;
 		this.currentGame.addEventListener( MultiPlayerMachine.GENERIC_MODAL_LOADED, this.addGame, this );
 		this.currentGame.addEventListener( "showGameSettings", this.showGameSettings, this );
-		this.currentGame.addEventListener( "showBank", this.showBank, this );
-		this.currentGame.addEventListener( "out_of_coins_game_id", this.showBank, this );
+		this.currentGame.addEventListener( "showBank", this.showCoinBank, this );
+		this.currentGame.addEventListener( "out_of_coins_game_id", this.showCoinBank, this );
 	}
 
 	private addGame(){
@@ -193,5 +193,10 @@ class Main extends egret.DisplayObjectContainer {
 		this.currentPo.needZoomOut = eval( "myClass" )["needZoomOut"];
 		if( this.currentPo.inited )this.addPhonePo();
 		else this.currentPo.addEventListener( GenericModal.GENERIC_MODAL_LOADED, this.addPhonePo, this );
+	}
+
+	private showCoinBank( event:egret.Event = null ){
+		GlobelSettings.bankOpenType = 0;
+		this.showBank( event );
 	}
 }

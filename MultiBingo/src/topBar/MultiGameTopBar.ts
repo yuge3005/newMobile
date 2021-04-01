@@ -49,7 +49,7 @@ class MultiGameTopBar extends egret.DisplayObjectContainer {
 
         this.cacheAsBitmap = true;
 
-        this.updateCoinsDineroXp( PlayerConfig.player( "score.coins" ), PlayerConfig.player( "score.chips" ), PlayerConfig.player( "score.level" ) );
+        this.updateCoinsDineroXp( PlayerConfig.player( "score.coins" ), PlayerConfig.player( "score.chips" ), PlayerConfig.player( "score.xp" ) );
     }
     
 	private onButtonClick( event: egret.TouchEvent ){
