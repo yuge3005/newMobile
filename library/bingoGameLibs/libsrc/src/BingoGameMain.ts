@@ -44,9 +44,9 @@ class BingoGameMain extends egret.DisplayObjectContainer {
 		this.currentGame.addEventListener( BingoMachine.GENERIC_MODAL_LOADED, this.addGame, this );
 		this.currentGame.addEventListener("showGameSettings", this.showGameSettings, this);
 		this.currentGame.addEventListener("missionPopup", this.showMission, this );
-		this.currentGame.addEventListener("showBank", this.showBank, this );
-		this.currentGame.addEventListener("out_of_coins_game_id", this.showBank, this );
-		this.currentGame.addEventListener("out_of_dinero", this.showBank, this );
+		this.currentGame.addEventListener("showBank", this.showCoinBank, this );
+		this.currentGame.addEventListener("out_of_coins_game_id", this.showCoinBank, this );
+		this.currentGame.addEventListener("out_of_dinero", this.showChipBank, this );
 	}
 
 	private addGame(){
@@ -205,5 +205,15 @@ class BingoGameMain extends egret.DisplayObjectContainer {
 		this.currentPo.needZoomOut = eval( "myClass" )["needZoomOut"];
 		if( this.currentPo.inited )this.addPhonePo();
 		else this.currentPo.addEventListener( GenericModal.GENERIC_MODAL_LOADED, this.addPhonePo, this );
+	}
+
+	public showChipBank( event:egret.Event = null ){
+		GlobelSettings.bankOpenType = 1;
+		this.showBank( event );
+	}
+
+	public showCoinBank( event:egret.Event = null ){
+		GlobelSettings.bankOpenType = 0;
+		this.showBank( event );
 	}
 }
