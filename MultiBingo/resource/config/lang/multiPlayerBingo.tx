@@ -1,1 +1,21 @@
-{"enter_text":{"pt":"Enviar texto","en":"Enter text","es":"Introducir texto"},"round_over":{"pt":"FIM DA RODADA","en":"ROUND OVER","es":"FIN DE PARTIDA"},"cards":{"pt":"Cartelas","en":"cards","es":"Tarjetas"},"Boost your cards for better rewards!":{"pt":"Aumente suas cartelas para\nmelhores recompensas!","en":"Boost your cards for better rewards!","es":"¡Mejora tus cartas para obtener\nmejores recompensas!"},"Up to":{"pt":"até","en":"Up to","es":"hasta"},"bingo":{"pt":"BINGO","en":"BINGO","es":"BINGO"},"rewardsFrom":{"pt":"RECOMPENSAS DE","en":"REWARDS FROM","es":"RECOMPENSAS DE"},"for_level":{"pt":"Para O Nível:","en":"For Level:","es":"Para el nivel"},"players":{"pt":"Jogadores","en":"players","es":"jugadores"},"wait_round_start":{"pt":"ESPERE O COMEÇO\nDA RODADA","en":"WAITING FOR THE\nBEGINNING OF ROUND","es":"ESPERANDO AL INICIO\nDE PARTIDA"},"treasure":{"pt":"Tesouro","en":"treasure","es":"tesoro"},"continue":{"pt":"continue","en":"continue","es":"continuar"},"join_game":{"pt":"DIVIRTA-SE","en":"JOIN THE GAME","es":"ÚNSE AL JUEGO"},"ball":{"pt":"BOLA","en":"BALL","es":"BOLA"},"round_start":{"pt":"INICIAR DA RODADA","en":"ROUND START","es":"INICIAR DE PARTIDA"},"powerUp":{"pt":"Vantagens","en":"Powerup","es":"Mejora"},"free":{"en":"FREE","es":"GRATIS","pt":"GRÁTIS"},"free_bonus":{"en":"FREE BONUS","pt":"Bônus Grátis","es":"Bono Gratis"},"bank":{ "en": "BANK", "es": "BANCO", "pt": "BANCO" }}
+{
+    "enter_text": {"pt": "Enviar texto","en": "Enter text","es": "Introducir texto"}
+    ,"round_over": {"pt": "FIM DA RODADA","en": "ROUND OVER","es": "FIN DE PARTIDA"}
+    ,"cards": {"pt": "Cartelas","en": "cards","es": "Tarjetas"}
+    ,"Boost your cards for better rewards!": {"pt": "Aumente suas cartelas para\nmelhores recompensas!","en": "Boost your cards for better rewards!","es": "¡Mejora tus cartas para obtener\nmejores recompensas!"}
+    ,"Up to": {"pt": "até","en": "Up to","es": "hasta"}
+    ,"bingo": {"pt": "BINGO","en": "BINGO","es": "BINGO"}
+    ,"rewardsFrom": {"pt": "RECOMPENSAS DE","en": "REWARDS FROM","es": "RECOMPENSAS DE"}
+    ,"for_level": {"pt": "Para O Nível:","en": "For Level:","es": "Para el nivel"}
+    ,"players": {"pt": "Jogadores","en": "players","es": "jugadores"}
+    ,"wait_round_start": {"pt": "ESPERE O COMEÇO\nDA RODADA","en": "WAITING FOR THE\nBEGINNING OF ROUND","es": "ESPERANDO AL INICIO\nDE PARTIDA"}
+    ,"treasure": {"pt": "Tesouro","en": "treasure","es": "tesoro"}
+    ,"continue": {"pt": "continue","en": "continue","es": "continuar"}
+    ,"join_game": {"pt": "DIVIRTA-SE","en": "JOIN THE GAME","es": "ÚNSE AL JUEGO"}
+    ,"ball": {"pt": "BOLA","en": "BALL","es": "BOLA"}
+    ,"round_start": {"pt": "INICIAR DA RODADA","en": "ROUND START","es": "INICIAR DE PARTIDA"}
+    ,"powerUp": {"pt": "Vantagens","en": "Powerup","es": "Mejora"}
+    ,"free": {"en": "FREE","es": "GRATIS","pt": "GRÁTIS"}
+    ,"free_bonus": {"en": "FREE BONUS","pt": "Bônus Grátis","es": "Bono Gratis"}
+    ,"bank": {"en": "BANK","es": "BANCO","pt": "BANCO"}
+}
