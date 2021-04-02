@@ -8,6 +8,8 @@ class LevelBar extends egret.DisplayObjectContainer{
     private xpProgressText: egret.TextField;
 	private levelText: TextLabel;
 	private level: number;
+	private thisLevelXp: number;
+	private nextLevelXp: number;
 	private levelUpRecord: Object = {};
 
 	public constructor() {
@@ -16,6 +18,10 @@ class LevelBar extends egret.DisplayObjectContainer{
 		this.addXp();
 		this.addHead();
 		this.addRedPoint();
+
+		this.level = PlayerConfig.player( "score.level" );
+		this.thisLevelXp = PlayerConfig.player( "score.this_level_xp" );
+		this.nextLevelXp = PlayerConfig.player( "score.next_level_xp" );
 
         this.onLevelChanged(PlayerConfig.player( "score.level" ));
 	}
@@ -74,9 +80,12 @@ class LevelBar extends egret.DisplayObjectContainer{
         // this.parent.dispatchEvent(new egret.Event(Lobby.SHOW_USER_PROFILES));
     }
 
-    public onXpChanged(progress: number): void {
-        if (progress > 1) progress = 1;
-        else this.levelUp();
+    public onXpChanged(xp: number): void {
+		let progress: number = ( xp - this.thisLevelXp ) / ( this.nextLevelXp - this.thisLevelXp );
+        if (progress > 1){
+			progress = 1;
+			this.levelUp();
+		}
         this.xpProgressText.text = (progress * 100).toFixed(1) + "%";
         this.xpProgress.mask = new egret.Rectangle(0, 0, this.xpProgress.width * progress, 67);
     }
@@ -112,6 +121,8 @@ class LevelBar extends egret.DisplayObjectContainer{
 
 		// refresh toolbar level and xp progress
 		this.level = level;
+		this.thisLevelXp = Number(data["this_level_xp"]);
+		this.nextLevelXp = Number(data["next_level_xp"]);
 		this.levelText.setText( "" + level );
 
 		let loyalty: number = data["loyalty_point"] - Number( PlayerConfig.player( "loyalty.loyalty_point" ) );
@@ -119,16 +130,15 @@ class LevelBar extends egret.DisplayObjectContainer{
 		//playerData
 		let datas: Array<IKeyValues> = <Array<IKeyValues>>[];
 		datas[0] = <IKeyValues>{key:"score.level",value:level};
-		datas[1] = <IKeyValues>{key:"score.this_level_xp",value:Number(data["this_level_xp"])};
-		datas[2] = <IKeyValues>{key:"score.next_level_xp",value:Number(data["next_level_xp"])};
+		datas[1] = <IKeyValues>{key:"score.this_level_xp",value:this.thisLevelXp};
+		datas[2] = <IKeyValues>{key:"score.next_level_xp",value:this.nextLevelXp};
 		datas[3] = <IKeyValues>{key:"levelMultiplier",value:data["levelMultiplier"]};
 		datas[4] = <IKeyValues>{key:"chipsLevelMultiplier",value:data["chipsLevelMultiplier"]};
 		datas[5] = <IKeyValues>{key:"levelMultiplierPuzzle",value:data["levelMultiplierPuzzle"]};
 		datas[6] = <IKeyValues>{key:"loyalty.loyalty_point",value:data["loyalty_point"]};
 		LocalDataManager.updatePlayerDatas( datas );
 
-		let score: Object = PlayerConfig.player( "score" );
-		this.onXpChanged( ( Number(data["xp"]) - score["this_level_xp"] ) / ( score["next_level_xp"] - score["this_level_xp"] ) );
+		this.onXpChanged( Number(data["xp"]) );
 
 		// LevelUp.targetCoins = data["coins"];
 		let bonuses = <Array<Object>>data["bonuses"];

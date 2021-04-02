@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "multiPlayerBingo_json,multiPlayerBingo_conf,IdleTime_json,roundOverTime_json,mpb_bingo_reduced_mp3,mpb_right_number_clicked_mp3,mpb_round_start_mp3,mpb_wrong_number_clicked_mp3,multiPlayerBingoAnimation_png,multiPlayerBingoAnimation_json,multiPlayerParticle_png,multiPlayerParticle_json,67_mp3,70_mp3,69_mp3,68_mp3,71_mp3,72_mp3,74_mp3,73_mp3,75_mp3,mpb_Bingo_mp3,mpb_powerup_activate_mp3,1_mp3,2_mp3,3_mp3,5_mp3,4_mp3,6_mp3,7_mp3,10_mp3,9_mp3,8_mp3,11_mp3,12_mp3,14_mp3,15_mp3,13_mp3,16_mp3,17_mp3,19_mp3,18_mp3,20_mp3,21_mp3,22_mp3,23_mp3,24_mp3,25_mp3,28_mp3,29_mp3,27_mp3,26_mp3,30_mp3,31_mp3,32_mp3,33_mp3,34_mp3,35_mp3,37_mp3,36_mp3,39_mp3,38_mp3,41_mp3,40_mp3,42_mp3,43_mp3,46_mp3,47_mp3,45_mp3,44_mp3,48_mp3,49_mp3,50_mp3,51_mp3,52_mp3,53_mp3,54_mp3,55_mp3,56_mp3,57_mp3,60_mp3,58_mp3,59_mp3,61_mp3,62_mp3,65_mp3,63_mp3,64_mp3,66_mp3,mpb_round_end_mp3,multiPlayerBingo_tx,multiBingo_bg_png,freeCardUI_json,flyingCoins_png,flyingCoins_json,coinsDrop_mp3,open_list_mp3,collect_coins_mp3,multiTopbar_json",
+			"keys": "multiPlayerBingo_json,multiPlayerBingo_conf,IdleTime_json,roundOverTime_json,mpb_bingo_reduced_mp3,mpb_right_number_clicked_mp3,mpb_round_start_mp3,mpb_wrong_number_clicked_mp3,multiPlayerBingoAnimation_png,multiPlayerBingoAnimation_json,multiPlayerParticle_png,multiPlayerParticle_json,67_mp3,70_mp3,69_mp3,68_mp3,71_mp3,72_mp3,74_mp3,73_mp3,75_mp3,mpb_Bingo_mp3,mpb_powerup_activate_mp3,1_mp3,2_mp3,3_mp3,5_mp3,4_mp3,6_mp3,7_mp3,10_mp3,9_mp3,8_mp3,11_mp3,12_mp3,14_mp3,15_mp3,13_mp3,16_mp3,17_mp3,19_mp3,18_mp3,20_mp3,21_mp3,22_mp3,23_mp3,24_mp3,25_mp3,28_mp3,29_mp3,27_mp3,26_mp3,30_mp3,31_mp3,32_mp3,33_mp3,34_mp3,35_mp3,37_mp3,36_mp3,39_mp3,38_mp3,41_mp3,40_mp3,42_mp3,43_mp3,46_mp3,47_mp3,45_mp3,44_mp3,48_mp3,49_mp3,50_mp3,51_mp3,52_mp3,53_mp3,54_mp3,55_mp3,56_mp3,57_mp3,60_mp3,58_mp3,59_mp3,61_mp3,62_mp3,65_mp3,63_mp3,64_mp3,66_mp3,mpb_round_end_mp3,multiPlayerBingo_tx,multiBingo_bg_png,freeCardUI_json,flyingCoins_png,flyingCoins_json,coinsDrop_mp3,open_list_mp3,collect_coins_mp3,multiTopbar_json,modalGeneric_json",
 			"name": "multiPlayerBingo"
 		},
 		{
@@ -1881,6 +1881,12 @@
 			"type": "sheet",
 			"name": "rate_us_json",
 			"subkeys": "BUY COINS,M,Star,Star_b,doctor,roomCloseButton"
+		},
+		{
+			"url": "assets/modalGeneric.json",
+			"type": "sheet",
+			"name": "modalGeneric_json",
+			"subkeys": "closePopUpBtn1,closePopUpBtn2,loader"
 		}
 	]
 }
