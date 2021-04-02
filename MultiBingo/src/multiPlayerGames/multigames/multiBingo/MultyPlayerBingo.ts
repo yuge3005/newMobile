@@ -14,6 +14,9 @@ class MultyPlayerBingo extends Multi75Super{
 
 		this.connetKeys = { zona: "MultiplayerZone", sala: "Multi67" };
 
+		if( localStorage.getItem( "gotoGame" + 67 ) ) localStorage.removeItem( "gotoGame" + 67 );
+		else document.location.href = "../lobby";
+
 		this.ballArea = new MultiBingoBallLayer;
 
 		MultiCardLayer.cardType = MultiPlayerBingoCard;

@@ -18,6 +18,9 @@ class Mara extends Multi75Super{
 
 		this.connetKeys = { zona: "MultiplayerZone", sala: "Multi72" };
 
+		if( localStorage.getItem( "gotoGame" + 67 ) ) localStorage.removeItem( "gotoGame" + 67 );
+		else document.location.href = "../lobby";
+
 		this.ballArea = new MaraBallLayer;
 		this.ballArea.mask = new egret.Rectangle( 480, 130, 850, 126 );
 
