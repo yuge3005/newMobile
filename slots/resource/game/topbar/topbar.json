@@ -1,0 +1,6 @@
+{"file":"topbar.png","frames":{
+"buy_bg":{"x":1,"y":1,"w":517,"h":121,"offX":0,"offY":0,"sourceW":517,"sourceH":121},
+"buy-btn":{"x":520,"y":1,"w":409,"h":101,"offX":0,"offY":0,"sourceW":409,"sourceH":101},
+"hamburger":{"x":931,"y":1,"w":92,"h":104,"offX":0,"offY":0,"sourceW":92,"sourceH":104},
+"home":{"x":520,"y":104,"w":94,"h":105,"offX":0,"offY":0,"sourceW":94,"sourceH":105},
+"home_press":{"x":616,"y":104,"w":92,"h":102,"offX":0,"offY":0,"sourceW":92,"sourceH":102}}}

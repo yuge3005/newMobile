@@ -1,0 +1,120 @@
+{
+	"groups": [
+		{
+			"keys": "modalGeneric_json",
+			"name": "generic"
+		},
+		{
+			"keys": "gameSettings_json,support_json,rate_us_json",
+			"name": "gameSettings"
+		},
+		{
+			"keys": "forSlot_tx,bingoGameToolbar_json,topbar_json,open_list_mp3,getCoinsParticle_png,getCoinsParticle_json,flyingCoins_png,flyingCoins_json,collect_coins_mp3,betBar_json,modalGeneric_json",
+			"name": "allGameAssets"
+		}
+	],
+	"resources": [
+		{
+			"url": "game/gameToolBar/bingoGameToolbar.json",
+			"type": "sheet",
+			"name": "bingoGameToolbar_json",
+			"subkeys": "BB_EXTRA_btn_bg,BB_EXTRA_buyall,BB_EXTRA_collect_btn,BB_EXTRA_extra_btn,BB_star_benefit_bg,BB_star_open_bg,FREE_en,FREE_pt,FREE_sp,FreeSpin,Group-22,Locked,auto_stop,back_panel,balance_chip,balance_coin,ballance,bet_down,bet_down_press,bet_screen,bet_up,bet_up_press,btn_go,btn_mega,free spin icon,i,i_press,loyalty_points_icon,max_btn,max_btn_press,middle_bar,more_games,msg_bg,play,play_bg,play_press,xp,xp_filling"
+		},
+		{
+			"url": "game/topbar/topbar.json",
+			"type": "sheet",
+			"name": "topbar_json",
+			"subkeys": "buy-btn,buy_bg,hamburger,home,home_press"
+		},
+		{
+			"url": "assets/sound/open_list.mp3",
+			"type": "sound",
+			"name": "open_list_mp3"
+		},
+		{
+			"url": "game/tropCoins/getCoinsParticle.png",
+			"type": "image",
+			"name": "getCoinsParticle_png"
+		},
+		{
+			"url": "game/tropCoins/getCoinsParticle.json",
+			"type": "json",
+			"name": "getCoinsParticle_json"
+		},
+		{
+			"url": "assets/megaForFirstTime/megaForFirst_es.json",
+			"type": "sheet",
+			"name": "megaForFirst_es_json"
+		},
+		{
+			"url": "assets/megaForFirstTime/megaForFirst_en.json",
+			"type": "sheet",
+			"name": "megaForFirst_en_json"
+		},
+		{
+			"url": "assets/megaForFirstTime/megaForFirst_pt.json",
+			"type": "sheet",
+			"name": "megaForFirst_pt_json"
+		},
+		{
+			"url": "assets/modalGeneric.json",
+			"type": "sheet",
+			"name": "modalGeneric_json",
+			"subkeys": "closePopUpBtn1,closePopUpBtn2,loader"
+		},
+		{
+			"url": "config/lan/forSlot.tx",
+			"type": "json",
+			"name": "forSlot_tx"
+		},
+		{
+			"url": "assets/gameSettings/gameSettings.json",
+			"type": "sheet",
+			"name": "gameSettings_json",
+			"subkeys": "OK,X_btn,avatar,bg,bg_popup,bg_slider_off,bg_slider_on,btn_arrow,dr,fb_bt_settings,flag_en,flag_es,flag_pt,gl_bt_settings,icon_connect,icon_notification,language_icon,music_icon,rate_icon,scroll_bar,scroll_bar_handle,slider_switch,sound_fx_icon,support_btn,support_icon,tab_bg,visual_fx_icon"
+		},
+		{
+			"url": "game/tropCoins/flyingCoins.png",
+			"type": "image",
+			"name": "flyingCoins_png"
+		},
+		{
+			"url": "game/tropCoins/flyingCoins.json",
+			"type": "json",
+			"name": "flyingCoins_json"
+		},
+		{
+			"url": "game/tropCoins/collect_coins.mp3",
+			"type": "sound",
+			"name": "collect_coins_mp3"
+		},
+		{
+			"url": "assets/missionPopup/missionBingo.json",
+			"type": "sheet",
+			"name": "missionBingo_json"
+		},
+		{
+			"url": "assets/missionPopup/missionPopup.json",
+			"type": "sheet",
+			"name": "missionPopup_json"
+		},
+		{
+			"url": "assets/gameSettings/support.json",
+			"type": "sheet",
+			"name": "support_json",
+			"subkeys": "button,button_close,button_send,icon_zendesk,popup_bg_big,select_box"
+		},
+		{
+			"url": "assets/gameSettings/rate_us.json",
+			"type": "sheet",
+			"name": "rate_us_json",
+			"subkeys": "BUY COINS,M,Star,Star_b,doctor,roomCloseButton"
+		},
+		{
+			"url": "game/betBar/betBar.json",
+			"type": "sheet",
+			"name": "betBar_json",
+			"subkeys": "Lock,bar_bg,bar_progress,bright,crazy_party_bright_en,crazy_party_bright_es,crazy_party_bright_pt,icon_shadow,icon_side,icon_side_long,icon_side_mask,jackpot_bright_en,jackpot_bright_es,jackpot_bright_pt,light,max_bright_en,max_bright_es,max_bright_pt,max_shadow,mission_bright_en,mission_bright_es,mission_bright_pt,number_bg,number_bg_arrow,point_bright,point_gray,puzzle_bright,star_effect"
+		}
+	]
+}

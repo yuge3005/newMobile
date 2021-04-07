@@ -1,0 +1,73 @@
+{"bet":{"en":"BET","pt":"APOSTA","es":"APUESTA"}
+,"credit":{"en":"CREDIT", "es":"CRÉDITO","pt":"CRÉDITO"}
+		,"card":{"en":"CARD","es": "TARJETA", "pt":"CARTELA"}
+		,"select cards":{"en":"Select Cards.", "es":"Seleccione Tarjeta.","pt":"Selecione Cartões."}
+		,"pulse game":{"en":"Pulse Game.", "es":"Juego de pulso.","pt": "Pulse Jogue."}
+		,"good luck":{"en": "GOOD LUCK","es": "BUENA SUERTE","pt": "BOA SORTE"}
+		,"extra ball":{"en": "EXTRA BALL ?", "es":"BOLA EXTRA ?","pt": "BOLA EXTRA ?"}
+		,"play extra":{"en": "Play Extra Ball", "es":"Bola del juego extra", "pt":"Aperte Bola Extra"}
+		,"win":{ "en":"WIN","es": "GANÕ","pt": "GANHO"}
+		,"jackpot":{"en":"JACKPOT", "es":"JACKPOT", "pt":"ACUMULADO"}
+		,"prize":{"en":"PRIZE","es": "PRÉMIO", "pt":"PRÉMIO"}
+		,"jackpot_tooltip":{"en":"Your current bet does not qualify\nPlease increase your bet to {1}\nand play {2} cards",
+			"es":"Su apuesta actual no cualifica.\nPor favor,aumente su apuesta\npara {1} y juega con {2} tarjetas.", 
+			"pt":"Sua aposta atual não se qualifica.\nPor favor,aumente sua aporta\npara {1} e jogue com {2} cartas."}
+		,"max":{"en": "MAX", "es": "MAX", "pt": "MAX" }
+        ,"play":{"en": "PLAY", "es": "JUGAR", "pt": "JOGAR" }
+		,"stop":{"en": "STOP", "es": "PARAR", "pt": "PARAR" }
+		,"collect":{"en": "COLLECT", "es": "RECOGER", "pt": "COLETAR" }
+		,"total bet":{"en": "TOTAL BET", "es": "APUETA TOTAL", "pt": "APOSTA TOTAL" }
+		,"free":{"en": "FREE", "es": "GRATIS", "pt": "GRATIS" }
+		,"free_bonus":{"en":"FREE BONUS","pt":"Bônus Grátis","es":"Bono Gratis"}
+		,"hold for auto":{"en": "HOLD FOR\nAUTOPLAY", "es": "PRESSIONE\nPARA AUTO", "pt": "PRESSIONE\nPARA AUTO" }
+		,"bingo":{ "en": "Bingo", "es": "Bingo", "pt": "Bingo" }
+		,"double":{ "en": "Double", "es": "Doble", "pt": "Dupla" }
+		,"line":{ "en": "Line", "es": "Línea", "pt": "Linha" }
+		,"extraball":{ "en": "Extra Ball", "es": "Pelota Extra", "pt": "Bola Extra" }
+		,"extra":{ "en": "Extra", "es": "Extra", "pt": "Extra" }
+		,"mega":{ "en": "mega", "es": "mega", "pt": "mega" }
+		,"click to stop":{ "en": "CLICK TO STOP", "es": "HAGA CLIC PARA PARAR AUTO", "pt": "CLIQUE PARA PARAR AUTO" }
+		,"auto":{ "en": "auto", "es": "auto", "pt": "auto" }
+		,"level_up_bonus":{ "en": "LEVEL UP BONUS:", "es": "BONUS DE PASE DE NIVEL:", "pt": "Seu bônus é:" }
+		,"bank":{ "en": "BANK", "es": "BANCO", "pt": "BANCO" }
+		,"buy all":{ "en": "BUY ALL", "es": "COMPRAR TODAS", "pt": "COMPRAR TODAS" }
+		,"coins":{ "en": "COINS", "es": "MONEDAS", "pt": "MOEDAS" }
+		,"dinero":{ "en": "DINERO", "es": "PLATAS", "pt": "DOLETAS" }
+		,"settings":{ "en": "SETTINGS", "es": "AJUSTES", "pt": "CONFIGURAÇÕES" }
+		,"user_id":{ "en": "User ID", "es": "ID de Usuario", "pt": "ID" }
+		,"facebook_id":{ "en": "Facebook ID", "es": "ID de Facebook", "pt": "ID de Facebook" }
+		,"custom_id":{ "en": "Custom ID", "es": "ID de Personalizado", "pt": "ID de Personalizado" }
+		,"google_id":{ "en": "Google ID", "es": "ID de Google", "pt": "ID de Google" }
+		,"guest_id":{ "en": "GUEST ID", "es": "ID INVITADO", "pt": "VISITANTE ID" }
+		,"notification":{ "en": "NOTIFICATIONS", "es": "NOTIFICACIONES", "pt": "NOTIFICAÇÕES" }
+		,"login":{ "en": "Login", "es": "Identificándose", "pt": "Conecte-se" }
+		,"logout":{ "en": "LOGOUT", "es": "SALIR", "pt": "LOGOUT" }
+		,"contact":{ "en": "CONTACT", "es": "CONTACTO", "pt": "CONTATO" }
+		,"rate_us":{ "en": "Rate Us", "es": "¡Denos una", "pt": "Avalie-nos" }
+		,"language":{ "en": "LANGUAGE", "es": "IDIOMA", "pt": "LÍNGUA" }
+		,"link":{ "en": "LINK", "es": "ENLACE", "pt": "LINK" }
+		,"support":{ "en": "SUPPORT", "es": "Atención al Cliente", "pt": "CONTATO COM O SUPORTE" }
+		,"e_support":{ "en": "Support", "es": "Soporte", "pt": "Suporte" }
+		,"message":{ "en": "Message", "es": "Mensaje", "pt": "Mensagem" }
+		,"oops":{ "en": "Oops!", "es": "¡Ups!", "pt": "Ups!" }
+		,"enter_correct_info":{ "en": "Please enter the correct informotion", "es": "Por favor ingrese la información correcta", "pt": "Por favor insira a informação correta" }
+		,"change_language":{ "en": "CHANGE LANGUAGE", "es": "CAMBIAR IDIOMA", "pt": "ALTERAR O IDIOMA" }
+		,"change_language_tip":{ "en": "Are you sure you want to change\nthe language settings?", "es": "¿Seguro que quieres cambiar los\najustes de idioma?", "pt": "Tem certeza que quer trocar\no idioma padrão?" }
+		,"cancel":{"en":"Cancel","pt":"Cancelar","es":"Cancela"}
+		,"confirm":{"en":"CONFIRM","pt":"CONFIRMAR","es":"CONFIRMAR"}
+		,"sound_effect_on":{ "en": "SOUND EFFECTS", "es": "EFECTOS DE SONIDO", "pt": "EFEITOS DE SONS" }
+		,"music_on":{ "en": "MUSIC", "es": "MÚSICA", "pt": "MÚSICA" }
+		,"effect_on":{ "en": "VISUAL EFFECTS", "es": "EFECTOS VISUALES", "pt": "EFEITOS VISUAIS" }
+		,"coming_soon":{ "en": "COMING SOON", "es": "EN BREVE", "pt": "Em Breve" }
+		,"from_level":{ "en": "From level:", "es": "A partir del nivel:", "pt": "A partir do nível:" }
+		,"mission_updating_tip":{ "en": "Please wait. We are updating", "es": "Por favor espere. Estamos actualizando", "pt": "Por favor espere. Estamos atualizando" }
+		,"email":{"en":"e-mail","pt":"e-mail","es":"e-mail"}
+		,"give_us_support":{"en":"Give us support","pt":"Dar o apoio","es":"Dar soporte"}
+		,"FACEBOOK_WAIT_CONGRATULATIONS_TITLE":{"en":"CONGRATULATIONS!","pt":"parabéns!","es":"¡FELICIDADES!"}
+		,"support_success_text":{"en":"Your request has been sent and we will process it as soon as possible."
+			,"pt":"A entrega foi bem sucedida e vamos processá-la o mais rapidamente possível."
+			,"es":"La entrega es exitosa y la procesaremos lo antes posible."}
+		,"send":{"en":"Send","pt":"Enviar","es":"Enviar"}
+		,"rate_us_now":{"en":"Rate Us Now!","pt":"Avalie-nos agora!","es":"¡Denos una valoración!"}
+		,"how_to_rate":{"en":"How would you rate doctor bingo?","pt":"Como você classificaria o Doctor Bingo?","es":"¿Cómo valoraría Doctor Bingo?"}
+}
