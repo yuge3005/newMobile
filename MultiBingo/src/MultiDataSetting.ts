@@ -12,7 +12,7 @@ class MDS{
 	}
 
 	public static addGameText( target: egret.DisplayObjectContainer, x: number, y: number, size: number, color: number, textItem: string,stroke: boolean = false, width: number = 200, additionString: string = "", scaleX: number = 0.8 ): TextLabel{
-        let tx: TextLabel = Com.addLabelAt( target, x, y, width, size, size, stroke, true );
+        let tx: TextLabel = Com.addLabelAt( target, x, y + BrowserInfo.textUp, width, size, size, stroke, true );
         tx.textColor = color;
         tx.textAlign = "left";
 		tx.setText( MuLang.getText( textItem ) + additionString );
