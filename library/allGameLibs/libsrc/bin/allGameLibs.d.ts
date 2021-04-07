@@ -47,16 +47,77 @@ declare class GenericPo extends GenericModal {
      */
     protected onMouseWheel(dir: number): void;
 }
-declare class LanguageBar extends egret.Sprite {
-    private rects;
-    private languageArr;
-    private static changeIndex;
-    static instance: LanguageBar;
+declare class GameSettings {
+    static vertion: string;
+    static visualEffectOn: boolean;
+    static notificationOn: boolean;
     constructor();
-    private onTouch(event);
-    private onTap(event);
-    private showConfirm();
-    static confirmChange(): void;
+}
+declare var trace: (a: any) => void;
+declare class LoadingUI extends egret.Sprite implements RES.PromiseTaskReporter {
+    constructor();
+    onProgress(current: number, total: number): void;
+}
+declare class LoyaltyVo {
+    private static loyaltyLevel;
+    private static loyaltyPoint;
+    private static loyaltyThisLevelBegin;
+    private static loyaltyNextLevelBegin;
+    private static loyaltyLevelBuffEndTime;
+    private static loyaltyCalcF;
+    private static loyaltyCalcPurchaseLt;
+    private static isMissionRefresh;
+    private static thisMonthPurchaseCount;
+    private static missionScoreEasy;
+    private static privileges;
+    private static dataAfterUpdate;
+    private static loyaltyName;
+    private static overplus;
+    private static overplusTimer;
+    /**
+     * init loyalty data
+     */
+    static init(data: any): void;
+    /**
+     * update loyalty data
+     */
+    static update(data: any): void;
+    /**
+     * update data
+     */
+    static updateData(data: any): void;
+    /**
+     * check buff time
+     */
+    private static checkBuffTime();
+    /**
+     * loyalty buff over
+     */
+    private static loyaltyBuffOver();
+    /**
+     * get data
+     */
+    static readonly data: any;
+    /**
+     * get name
+     */
+    static readonly getLoyaltyName: Array<string>;
+    /**
+     * get data
+     */
+    static get(key: string): any;
+}
+declare class MuLang {
+    static txt: Object;
+    static CASE_NORMAL: number;
+    static CASE_UPPER: number;
+    static CASE_LOWER: number;
+    static CASE_TYPE_CAPITALIZE: number;
+    constructor();
+    static getText(key: string, caseType?: number): string;
+    static language: string;
+    static lanuageNames: Object;
+    static readonly languageName: any;
 }
 declare class MDS {
     static mcFactory: egret.MovieClipDataFactory;
@@ -138,19 +199,23 @@ declare class GameSettingPopup extends GenericPo {
     private onStopDrag(event);
     private showConfirm();
 }
-declare class GameSettings {
-    static vertion: string;
-    static visualEffectOn: boolean;
-    static notificationOn: boolean;
-    constructor();
-}
-declare var trace: (a: any) => void;
 declare class BrowserInfo {
     constructor();
     static getBrowserInfo(): Object;
     static textNeedUpInThisBrowser: number;
     static textNeedUpHasTested: boolean;
     static readonly textUp: number;
+}
+declare class LanguageBar extends egret.Sprite {
+    private rects;
+    private languageArr;
+    private static changeIndex;
+    static instance: LanguageBar;
+    constructor();
+    private onTouch(event);
+    private onTap(event);
+    private showConfirm();
+    static confirmChange(): void;
 }
 declare class RateBar extends egret.Sprite {
     private langResource;
@@ -269,17 +334,13 @@ declare class FlyingCoins extends egret.DisplayObjectContainer {
     private startFly();
     private endFly(coin);
 }
-declare class MuLang {
-    static txt: Object;
-    static CASE_NORMAL: number;
-    static CASE_UPPER: number;
-    static CASE_LOWER: number;
-    static CASE_TYPE_CAPITALIZE: number;
+declare class GlobelSettings {
+    static bankOpenType: number;
+    static bank: any;
+    static chipBank: any;
+    static bonusUI: any;
     constructor();
-    static getText(key: string, caseType?: number): string;
-    static language: string;
-    static lanuageNames: Object;
-    static readonly languageName: any;
+    static readonly language: string;
 }
 declare class LocalDataManager {
     constructor();

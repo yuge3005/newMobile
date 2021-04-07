@@ -379,65 +379,16 @@ declare class TounamentLayer extends egret.DisplayObjectContainer {
     private getUserListOrder(users);
     private userIndexOf(users, id);
 }
-interface IMissionTask {
-    target: number;
-    current: number;
-    is_active: string;
-    mission_id: string;
-}
-declare class V2Game extends BingoMachine {
-    constructor(gameConfigFile: string, configUrl: string, gameId: number);
-    protected extraUIShowNumber(): void;
-    /*******************************************************************************************************/
-    protected getNumberOnCard(cardIndex: number, gridIndex: number): void;
-    protected getBuffInfoIndex(buffInfo: Array<Object>): number;
-}
-declare class BallManager extends egret.DisplayObjectContainer {
-    private static balls;
-    private ballSize;
-    private ballTextSize;
-    static textBold: boolean;
-    private ballIndexs;
-    private extraBalls;
-    private ballOrder;
-    needLightCheck: boolean;
-    static normalBallInterval: number;
-    static ballOffsetY: number;
-    static rotateBall: boolean;
-    private lightResult;
-    private moveingBallLayer;
-    private staticBallLayer;
+declare class MissionBar extends egret.DisplayObjectContainer {
+    private missionBg;
+    private missionBook;
+    private missLock;
+    private missionProcessUI;
+    private missionData;
     constructor();
-    getBallSettings(balls: Array<Object>, ballSize: number, ballTextSize: number): void;
-    clearBalls(): void;
-    onRemove(): void;
-    runBalls(balls: Array<number>): void;
-    runCutBalls(balls: Array<number>): void;
-    runExtra(extraBall: number): void;
-    runMissExtra(missExtra: Array<number>): void;
-    private beginRun();
-    stopBallRunning(): void;
-    private runNextBall();
-    private onBallMoveEnd(event);
-    private runMissExtraBall();
-    private nextDelayId;
-    private delayRunNextBall();
-    private recordlightResult(lightResult);
-    protected setBallBg(ball: egret.Sprite, assetName: string): void;
-    protected buildBallWithIndex(num?: number, scaleToGame?: Boolean): BingoBall;
-    protected buildBallUIWithIndex(index: number, num?: number): egret.Sprite;
-    getABall(index: number): BingoBall;
-    getABigBall(index: number): BingoBall;
-    static getBallLastPosition(index: number): egret.Point;
-}
-declare class BingoBall extends egret.Sprite {
-    static BALL_MOVE_END: string;
-    static ballUIs: Array<egret.Sprite>;
-    private ballSize;
-    private pts;
-    constructor(index: number, ballSize?: number);
-    startRun(pts: Array<egret.Point>): void;
-    private moveToNextPoint();
+    private showMissionProcess();
+    private showTaskUI(currentBingoTask);
+    updateMissionData(value: number, target: number, id: number): void;
 }
 declare class BingoBackGroundSetting {
     private static bgColor;
@@ -587,13 +538,15 @@ declare class BingoGameMain extends egret.DisplayObjectContainer {
     showChipBank(event?: egret.Event): void;
     showCoinBank(event?: egret.Event): void;
 }
-declare class GlobelSettings {
-    static bankOpenType: number;
-    static bank: any;
-    static chipBank: any;
-    static bonusUI: any;
+declare class GameSoundManager {
+    private playing;
+    private static instance;
     constructor();
-    static readonly language: string;
+    play(soundAssetName: string, repeat?: number, callback?: Function): void;
+    private onSoundComplete(e);
+    stop(soundAssetName: string): void;
+    stopAll(): void;
+    static stopAll(): void;
 }
 declare class CardGridColorAndSizeSettings {
     static numberColor: number;
@@ -682,20 +635,27 @@ declare class JackpotLayer extends egret.DisplayObjectContainer {
     textBold: boolean;
     jackpotWinCallback(data: Object): void;
 }
-declare class LoadingUI extends egret.Sprite implements RES.PromiseTaskReporter {
-    constructor();
-    onProgress(current: number, total: number): void;
+interface IMissionTask {
+    target: number;
+    current: number;
+    is_active: string;
+    mission_id: string;
 }
-declare class MissionBar extends egret.DisplayObjectContainer {
-    private missionBg;
-    private missionBook;
-    private missLock;
-    private missionProcessUI;
-    private missionData;
-    constructor();
-    private showMissionProcess();
-    private showTaskUI(currentBingoTask);
-    updateMissionData(value: number, target: number, id: number): void;
+declare class V1Game extends BingoMachine {
+    Cartoes: Array<Array<number>>;
+    getCardsGroup(value: number): Array<number>;
+    protected changeCardNumberOrder(groupNumbers: Array<number>): Array<number>;
+    constructor(gameConfigFile: string, configUrl: string, gameId: number);
+    protected onServerData(data: Object): void;
+    protected sendRoundOverRequest(): void;
+    protected sendPlayRequest(): void;
+    protected sendExtraRequest(saving?: boolean): void;
+    protected sendCancelExtraReuqest(): void;
+    createCardGroups(): void;
+    onPlay(data: Object): void;
+    protected changeNumberFromServer(num: number): number;
+    onExtra(data: Object): void;
+    protected showMissExtraBall(balls: Array<number>): void;
 }
 declare class MissionDataManager {
     static MISSION_TYPE_BINGO: string;
@@ -794,54 +754,12 @@ declare class PaytableFilter {
     static paytableConfixFilter(fitPaytableItem: Array<any>, byObject?: boolean): void;
     private static testContain(ruleParent, ruleChild);
 }
-declare class LoyaltyVo {
-    private static loyaltyLevel;
-    private static loyaltyPoint;
-    private static loyaltyThisLevelBegin;
-    private static loyaltyNextLevelBegin;
-    private static loyaltyLevelBuffEndTime;
-    private static loyaltyCalcF;
-    private static loyaltyCalcPurchaseLt;
-    private static isMissionRefresh;
-    private static thisMonthPurchaseCount;
-    private static missionScoreEasy;
-    private static privileges;
-    private static dataAfterUpdate;
-    private static loyaltyName;
-    private static overplus;
-    private static overplusTimer;
-    /**
-     * init loyalty data
-     */
-    static init(data: any): void;
-    /**
-     * update loyalty data
-     */
-    static update(data: any): void;
-    /**
-     * update data
-     */
-    static updateData(data: any): void;
-    /**
-     * check buff time
-     */
-    private static checkBuffTime();
-    /**
-     * loyalty buff over
-     */
-    private static loyaltyBuffOver();
-    /**
-     * get data
-     */
-    static readonly data: any;
-    /**
-     * get name
-     */
-    static readonly getLoyaltyName: Array<string>;
-    /**
-     * get data
-     */
-    static get(key: string): any;
+declare class V2Game extends BingoMachine {
+    constructor(gameConfigFile: string, configUrl: string, gameId: number);
+    protected extraUIShowNumber(): void;
+    /*******************************************************************************************************/
+    protected getNumberOnCard(cardIndex: number, gridIndex: number): void;
+    protected getBuffInfoIndex(buffInfo: Array<Object>): number;
 }
 declare class PayTableManager extends egret.Sprite {
     static payTablesDictionary: Object;
@@ -874,15 +792,43 @@ declare class PaytableResultListOprator {
     constructor();
     static missOneCounter(resultList: Array<Object>, paytableName: string, needCount?: boolean): number;
 }
-declare class GameSoundManager {
-    private playing;
-    private static instance;
+declare class BallManager extends egret.DisplayObjectContainer {
+    private static balls;
+    private ballSize;
+    private ballTextSize;
+    static textBold: boolean;
+    private ballIndexs;
+    private extraBalls;
+    private ballOrder;
+    needLightCheck: boolean;
+    static normalBallInterval: number;
+    static ballOffsetY: number;
+    static rotateBall: boolean;
+    private lightResult;
+    private moveingBallLayer;
+    private staticBallLayer;
     constructor();
-    play(soundAssetName: string, repeat?: number, callback?: Function): void;
-    private onSoundComplete(e);
-    stop(soundAssetName: string): void;
-    stopAll(): void;
-    static stopAll(): void;
+    getBallSettings(balls: Array<Object>, ballSize: number, ballTextSize: number): void;
+    clearBalls(): void;
+    onRemove(): void;
+    runBalls(balls: Array<number>): void;
+    runCutBalls(balls: Array<number>): void;
+    runExtra(extraBall: number): void;
+    runMissExtra(missExtra: Array<number>): void;
+    private beginRun();
+    stopBallRunning(): void;
+    private runNextBall();
+    private onBallMoveEnd(event);
+    private runMissExtraBall();
+    private nextDelayId;
+    private delayRunNextBall();
+    private recordlightResult(lightResult);
+    protected setBallBg(ball: egret.Sprite, assetName: string): void;
+    protected buildBallWithIndex(num?: number, scaleToGame?: Boolean): BingoBall;
+    protected buildBallUIWithIndex(index: number, num?: number): egret.Sprite;
+    getABall(index: number): BingoBall;
+    getABigBall(index: number): BingoBall;
+    static getBallLastPosition(index: number): egret.Point;
 }
 declare class MissionPopup extends GenericPo {
     private taskListLayer;
@@ -1123,21 +1069,14 @@ declare class TounamentChampoin extends egret.DisplayObjectContainer {
     clearUI(): void;
     show(user: ITounamentUser): void;
 }
-declare class V1Game extends BingoMachine {
-    Cartoes: Array<Array<number>>;
-    getCardsGroup(value: number): Array<number>;
-    protected changeCardNumberOrder(groupNumbers: Array<number>): Array<number>;
-    constructor(gameConfigFile: string, configUrl: string, gameId: number);
-    protected onServerData(data: Object): void;
-    protected sendRoundOverRequest(): void;
-    protected sendPlayRequest(): void;
-    protected sendExtraRequest(saving?: boolean): void;
-    protected sendCancelExtraReuqest(): void;
-    createCardGroups(): void;
-    onPlay(data: Object): void;
-    protected changeNumberFromServer(num: number): number;
-    onExtra(data: Object): void;
-    protected showMissExtraBall(balls: Array<number>): void;
+declare class BingoBall extends egret.Sprite {
+    static BALL_MOVE_END: string;
+    static ballUIs: Array<egret.Sprite>;
+    private ballSize;
+    private pts;
+    constructor(index: number, ballSize?: number);
+    startRun(pts: Array<egret.Point>): void;
+    private moveToNextPoint();
 }
 declare class TounamentUserItem extends egret.DisplayObjectContainer {
     constructor(user: ITounamentUser, rank: number, isMe: boolean);

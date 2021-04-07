@@ -2324,280 +2324,49 @@ var TounamentLayer = (function (_super) {
     return TounamentLayer;
 }(egret.DisplayObjectContainer));
 __reflect(TounamentLayer.prototype, "TounamentLayer");
-var V2Game = (function (_super) {
-    __extends(V2Game, _super);
-    function V2Game(gameConfigFile, configUrl, gameId) {
-        var _this = _super.call(this, gameConfigFile, configUrl, gameId) || this;
-        _this.tokenObject["key"] = "iniciar";
-        _this.tokenObject["value"]["token"] = "undefined";
-        return _this;
-    }
-    V2Game.prototype.extraUIShowNumber = function () {
-        this.extraUIObject.visible = true;
-        this.runningBallContainer = new egret.DisplayObjectContainer;
-        this.runningBallContainer.x = this.extraUIObject.x;
-        this.runningBallContainer.y = this.extraUIObject.y;
-        this.addChildAt(this.runningBallContainer, this.getChildIndex(this.extraUIObject));
-        Com.addObjectAt(this.runningBallContainer, this.extraUIObject, 0, 0);
-        this.extraUIObject = this.runningBallContainer;
-    };
-    /*******************************************************************************************************/
-    V2Game.prototype.getNumberOnCard = function (cardIndex, gridIndex) {
-        var num = GameCardUISettings.numberAtCard(cardIndex, gridIndex);
-        CardManager.getBall(num);
-    };
-    V2Game.prototype.getBuffInfoIndex = function (buffInfo) {
-        for (var i = 0; i < buffInfo.length; i++) {
-            if (buffInfo[i]["buffBet"] == GameData.currentBet) {
-                return i;
-            }
-        }
-        return -1;
-    };
-    return V2Game;
-}(BingoMachine));
-__reflect(V2Game.prototype, "V2Game");
-var BallManager = (function (_super) {
-    __extends(BallManager, _super);
-    function BallManager() {
+var MissionBar = (function (_super) {
+    __extends(MissionBar, _super);
+    function MissionBar() {
         var _this = _super.call(this) || this;
-        _this.moveingBallLayer = new egret.DisplayObjectContainer;
-        _this.staticBallLayer = new egret.DisplayObjectContainer;
-        _this.addChild(_this.staticBallLayer);
-        _this.addChild(_this.moveingBallLayer);
-        _this.staticBallLayer.cacheAsBitmap = true;
-        return _this;
-    }
-    BallManager.prototype.getBallSettings = function (balls, ballSize, ballTextSize) {
-        var newballs = [];
-        for (var i = 0; i < balls.length; i++) {
-            newballs[i] = {};
-            for (var ob in balls[i])
-                newballs[i][ob] = balls[i][ob];
-        }
-        BallManager.balls = newballs;
-        BingoBall.ballUIs = [];
-        this.ballSize = ballSize;
-        this.ballTextSize = ballTextSize;
-    };
-    BallManager.prototype.clearBalls = function () {
-        for (var i = 0; i < this.moveingBallLayer.numChildren; i++) {
-            var ball = this.moveingBallLayer.getChildAt(i);
-            ball.removeEventListener(BingoBall.BALL_MOVE_END, this.onBallMoveEnd, this);
-        }
-        this.moveingBallLayer.removeChildren();
-        this.staticBallLayer.removeChildren();
-    };
-    BallManager.prototype.onRemove = function () {
-        clearTimeout(this.nextDelayId);
-    };
-    BallManager.prototype.runBalls = function (balls) {
-        this.clearBalls();
-        this.lightResult = null;
-        this.ballIndexs = balls;
-        this.extraBalls = [];
-        this.ballOrder = 0;
-        this.beginRun();
-    };
-    BallManager.prototype.runCutBalls = function (balls) {
-        this.ballIndexs = this.ballIndexs.concat(balls);
-        this.beginRun();
-    };
-    BallManager.prototype.runExtra = function (extraBall) {
-        this.ballIndexs.push(extraBall);
-        this.beginRun();
-    };
-    BallManager.prototype.runMissExtra = function (missExtra) {
-        if (!missExtra)
-            return;
-        while (missExtra.length)
-            this.ballIndexs.push(missExtra.shift());
-        while (this.ballIndexs.length) {
-            this.runMissExtraBall();
-        }
-    };
-    BallManager.prototype.beginRun = function () {
-        if (!this.ballIndexs.length) {
-            BingoMachine.endBallRunning();
-            return;
-        }
-        this.runNextBall();
-        var lightResult;
-        var newFit;
-        var isLastBall = this.ballIndexs.length == 0;
-        if (this.needLightCheck || isLastBall)
-            lightResult = BingoMachine.betweenBallRunning();
-        if (lightResult) {
-            newFit = this.recordlightResult(lightResult);
-        }
-        if (newFit) {
-            BingoMachine.runningAnimation(this.delayRunNextBall.bind(this), lightResult, isLastBall);
-        }
-        else
-            this.delayRunNextBall();
-    };
-    BallManager.prototype.stopBallRunning = function () {
-        while (this.ballIndexs.length > 1) {
-            this.runNextBall();
-        }
-    };
-    BallManager.prototype.runNextBall = function () {
-        var index = this.ballIndexs.shift();
-        var ballInfo = BallManager.balls[this.ballOrder++];
-        var path = ballInfo["path"];
-        var pts = [];
-        for (var i = 0; i < path.length; i++) {
-            pts[i] = new egret.Point(path[i]["x"], path[i]["y"]);
-        }
-        var sp = this.buildBallWithIndex(index);
-        this.moveingBallLayer.addChild(sp);
-        sp.addEventListener(BingoBall.BALL_MOVE_END, this.onBallMoveEnd, this);
-        sp.startRun(pts);
-        CardManager.getBall(index);
-        BingoMachine.runningBall(index);
-    };
-    BallManager.prototype.onBallMoveEnd = function (event) {
-        var ball = event.target;
-        this.staticBallLayer.addChild(ball);
-    };
-    BallManager.prototype.runMissExtraBall = function () {
-        var index = this.ballIndexs.shift();
-        var ballInfo = BallManager.balls[this.ballOrder++];
-        var path = ballInfo["path"];
-        var lstPtObj = path[path.length - 1];
-        var ptLast = new egret.Point(lstPtObj["x"], lstPtObj["y"]);
-        var sp = this.buildBallWithIndex(index);
-        Com.addObjectAt(this.staticBallLayer, sp, ptLast.x, ptLast.y);
-        var cross = new egret.Shape;
-        var a = this.ballSize / sp.scaleX;
-        cross.graphics.lineStyle(Math.floor(a * 0.07), 0xFF0000);
-        var startOffset = (2 - Math.SQRT2) * 0.25 * a;
-        cross.graphics.moveTo(startOffset, startOffset);
-        cross.graphics.lineTo(sp.width - startOffset, sp.height - startOffset);
-        cross.graphics.moveTo(sp.width - startOffset, startOffset);
-        cross.graphics.lineTo(startOffset, sp.height - startOffset);
-        sp.filters = [MatrixTool.colorMatrixLighter(0.5)];
-        sp.addChild(cross);
-    };
-    BallManager.prototype.delayRunNextBall = function () {
-        this.nextDelayId = setTimeout(this.beginRun.bind(this), BallManager.normalBallInterval);
-    };
-    BallManager.prototype.recordlightResult = function (lightResult) {
-        if (!this.lightResult || this.lightResult.length == 0) {
-            this.lightResult = lightResult;
-            return true;
-        }
-        for (var i = 0; i < lightResult.length; i++) {
-            for (var ob in lightResult[i]) {
-                if (!this.lightResult[i][ob] || lightResult[i][ob].length != this.lightResult[i][ob].length) {
-                    this.lightResult = lightResult;
-                    return true;
-                }
-            }
-        }
-        return false;
-    };
-    BallManager.prototype.setBallBg = function (ball, assetName) {
-        Com.addBitmapAt(ball, BingoMachine.getAssetStr(assetName), 0, 0);
-    };
-    BallManager.prototype.buildBallWithIndex = function (num, scaleToGame) {
-        if (num === void 0) { num = 0; }
-        if (scaleToGame === void 0) { scaleToGame = true; }
-        var index = num - 1;
-        if (!BingoBall.ballUIs[index]) {
-            BingoBall.ballUIs[index] = this.buildBallUIWithIndex(index, num);
-        }
-        return new BingoBall(index, scaleToGame ? this.ballSize : 0);
-    };
-    BallManager.prototype.buildBallUIWithIndex = function (index, num) {
-        if (num === void 0) { num = 0; }
-        var ballObj = BallManager.balls[index];
-        var ball = new egret.Sprite();
-        this.setBallBg(ball, ballObj["ui"]);
-        var tx = new egret.TextField;
-        tx.width = ball.width;
-        tx.size = this.ballTextSize;
-        tx.bold = true;
-        tx.textAlign = "center";
-        tx.textColor = Number(ballObj["color"]);
-        tx.text = "" + (num ? num : index + 1);
-        tx.y = ball.height - tx.textHeight >> 1;
-        if (BallManager.textBold) {
-            tx.fontFamily = "Arial Black";
-        }
-        if (ballObj["offsetX"])
-            tx.x = ballObj["offsetX"];
-        if (BallManager.ballOffsetY)
-            tx.y += BallManager.ballOffsetY;
-        ball.addChild(tx);
-        return ball;
-    };
-    BallManager.prototype.getABall = function (index) {
-        return this.buildBallWithIndex(index);
-    };
-    BallManager.prototype.getABigBall = function (index) {
-        return this.buildBallWithIndex(index, false);
-    };
-    BallManager.getBallLastPosition = function (index) {
-        var ballObject = this.balls[index];
-        var ballPath = ballObject["path"];
-        var ballPositionObject = ballPath[ballPath.length - 1];
-        return new egret.Point(ballPositionObject["x"], ballPositionObject["y"]);
-    };
-    BallManager.normalBallInterval = 100;
-    BallManager.ballOffsetY = 0;
-    return BallManager;
-}(egret.DisplayObjectContainer));
-__reflect(BallManager.prototype, "BallManager");
-var BingoBall = (function (_super) {
-    __extends(BingoBall, _super);
-    function BingoBall(index, ballSize) {
-        if (ballSize === void 0) { ballSize = 0; }
-        var _this = _super.call(this) || this;
-        _this.ballSize = ballSize;
-        var ren = new egret.RenderTexture;
-        var newBall = BingoBall.ballUIs[index];
-        ren.drawToTexture(newBall, new egret.Rectangle(0, 0, newBall.width, newBall.height), ballSize ? ballSize / newBall.height : 1);
-        var bmp = new egret.Bitmap(ren);
-        _this.addChild(bmp);
-        return _this;
-    }
-    BingoBall.prototype.startRun = function (pts) {
-        if (BallManager.rotateBall) {
-            var half = this.ballSize >> 1;
-            this.anchorOffsetX = half;
-            this.anchorOffsetY = half;
-            this.x = pts[0]["x"] + half;
-            this.y = pts[0]["y"] + half;
+        _this.missionBg = Com.addBitmapAt(_this, "missionBar_json.btn_mission_bg", 0, 0);
+        _this.missionBook = Com.addBitmapAt(_this, "missionBar_json.mission_icon", 18, 4);
+        var lockType = MissionDataManager.checkMissionLocked();
+        if (lockType >= 0) {
+            _this.missLock = new MissLockUI(lockType);
+            _this.addChild(_this.missLock);
         }
         else {
-            this.x = pts[0]["x"];
-            this.y = pts[0]["y"];
+            _this.showMissionProcess();
         }
-        this.pts = pts;
-        this.moveToNextPoint();
+        return _this;
+    }
+    MissionBar.prototype.showMissionProcess = function () {
+        var currentBingoTask = MissionDataManager.getActiveMissionTask(MissionDataManager.MISSION_TYPE_BINGO);
+        this.showTaskUI(currentBingoTask);
     };
-    BingoBall.prototype.moveToNextPoint = function () {
-        var curruntPoint = this.pts.shift();
-        if (!this.pts.length) {
-            this.dispatchEvent(new egret.Event(BingoBall.BALL_MOVE_END));
+    MissionBar.prototype.showTaskUI = function (currentBingoTask) {
+        this.missionData = currentBingoTask;
+        this.missionProcessUI = new MissionProcessUI;
+        Com.addObjectAt(this, this.missionProcessUI, 0, 0);
+        this.missionProcessUI.setProcess(currentBingoTask.current / currentBingoTask.target);
+        this.addChild(this.missionBook);
+    };
+    MissionBar.prototype.updateMissionData = function (value, target, id) {
+        if (id.toString() != this.missionData.mission_id) {
+            egret.error("mission id error");
             return;
         }
-        var targetPoint = this.pts[0];
-        var distance = egret.Point.distance(curruntPoint, targetPoint);
-        var tw = egret.Tween.get(this);
-        if (BallManager.rotateBall) {
-            var half = this.ballSize >> 1;
-            tw.to({ x: targetPoint.x + half, y: targetPoint.y + half, rotation: this.rotation + 360 }, distance * 0.5);
+        if (this.missionData.target != target) {
+            egret.error("mission target error");
+            return;
         }
-        else
-            tw.to({ x: targetPoint.x, y: targetPoint.y }, distance * 0.5);
-        tw.call(this.moveToNextPoint, this);
+        this.missionProcessUI.setProcess(value / target);
+        this.missionData.current = value;
+        LocalDataManager.updatePlayerData("mission.task." + id + ".current", value.toString());
     };
-    BingoBall.BALL_MOVE_END = "ballMoveEnd";
-    return BingoBall;
-}(egret.Sprite));
-__reflect(BingoBall.prototype, "BingoBall");
+    return MissionBar;
+}(egret.DisplayObjectContainer));
+__reflect(MissionBar.prototype, "MissionBar");
 var BingoBackGroundSetting = (function () {
     function BingoBackGroundSetting() {
     }
@@ -3197,19 +2966,72 @@ var BingoGameMain = (function (_super) {
     return BingoGameMain;
 }(egret.DisplayObjectContainer));
 __reflect(BingoGameMain.prototype, "BingoGameMain");
-var GlobelSettings = (function () {
-    function GlobelSettings() {
+var GameSoundManager = (function () {
+    function GameSoundManager() {
+        this.playing = [];
+        GameSoundManager.instance = this;
     }
-    Object.defineProperty(GlobelSettings, "language", {
-        get: function () {
-            return MuLang.language;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    return GlobelSettings;
+    GameSoundManager.prototype.play = function (soundAssetName, repeat, callback) {
+        if (repeat === void 0) { repeat = 1; }
+        if (callback === void 0) { callback = null; }
+        var soundChannel = SoundManager.play(soundAssetName, repeat === -1);
+        if (callback !== null && repeat !== -1) {
+            soundChannel["soundCallback"] = callback;
+            soundChannel["soundAssetName"] = soundAssetName;
+            soundChannel.addEventListener(egret.Event.SOUND_COMPLETE, this.onSoundComplete, this);
+        }
+        if (soundChannel) {
+            this.playing.push(soundChannel);
+        }
+        if (!soundChannel && callback) {
+            callback();
+        }
+    };
+    GameSoundManager.prototype.onSoundComplete = function (e) {
+        var soundChannel = e.currentTarget;
+        soundChannel.removeEventListener(egret.Event.SOUND_COMPLETE, this.onSoundComplete, this);
+        if (soundChannel["soundCallback"]) {
+            soundChannel["soundCallback"]();
+            soundChannel["soundCallback"] = null;
+        }
+        var index = this.playing.indexOf(soundChannel);
+        this.playing.splice(index, 1);
+    };
+    GameSoundManager.prototype.stop = function (soundAssetName) {
+        for (var i = 0; i < this.playing.length; i++) {
+            var soundChannel = this.playing[i];
+            if (soundChannel["soundAssetName"] == soundAssetName) {
+                soundChannel.stop();
+                if (soundChannel["soundCallback"]) {
+                    soundChannel["soundCallback"]();
+                    soundChannel["soundCallback"] = null;
+                }
+                this.playing.splice(i, 1);
+                i--;
+            }
+        }
+        SoundManager.stopMusic();
+    };
+    GameSoundManager.prototype.stopAll = function () {
+        for (var i = 0; i < this.playing.length; i++) {
+            var sound = this.playing[i];
+            if (sound["soundCallback"]) {
+                sound.removeEventListener(egret.Event.SOUND_COMPLETE, this.onSoundComplete, this);
+                sound["soundCallback"]();
+                sound["soundCallback"] = null;
+            }
+            sound.stop();
+        }
+        this.playing = [];
+    };
+    GameSoundManager.stopAll = function () {
+        if (this.instance)
+            this.instance.stopAll();
+    };
+    GameSoundManager.instance = null;
+    return GameSoundManager;
 }());
-__reflect(GlobelSettings.prototype, "GlobelSettings");
+__reflect(GameSoundManager.prototype, "GameSoundManager");
 var CardGridColorAndSizeSettings = (function () {
     function CardGridColorAndSizeSettings() {
     }
@@ -3493,60 +3315,98 @@ var JackpotLayer = (function (_super) {
     return JackpotLayer;
 }(egret.DisplayObjectContainer));
 __reflect(JackpotLayer.prototype, "JackpotLayer");
-var LoadingUI = (function (_super) {
-    __extends(LoadingUI, _super);
-    function LoadingUI() {
-        return _super.call(this) || this;
-    }
-    LoadingUI.prototype.onProgress = function (current, total) {
-        document.getElementById("loading_progress_div").style.width = Math.floor(320 * (0.18 + current / total * 0.72 + 0)) + "px";
-    };
-    return LoadingUI;
-}(egret.Sprite));
-__reflect(LoadingUI.prototype, "LoadingUI", ["RES.PromiseTaskReporter"]);
-var MissionBar = (function (_super) {
-    __extends(MissionBar, _super);
-    function MissionBar() {
-        var _this = _super.call(this) || this;
-        _this.missionBg = Com.addBitmapAt(_this, "missionBar_json.btn_mission_bg", 0, 0);
-        _this.missionBook = Com.addBitmapAt(_this, "missionBar_json.mission_icon", 18, 4);
-        var lockType = MissionDataManager.checkMissionLocked();
-        if (lockType >= 0) {
-            _this.missLock = new MissLockUI(lockType);
-            _this.addChild(_this.missLock);
-        }
-        else {
-            _this.showMissionProcess();
-        }
+var V1Game = (function (_super) {
+    __extends(V1Game, _super);
+    function V1Game(gameConfigFile, configUrl, gameId) {
+        var _this = _super.call(this, gameConfigFile, configUrl, gameId) || this;
+        _this.tokenObject["key"] = "login";
+        _this.tokenObject["value"]["token"] = "112411241124696911692424116969";
         return _this;
     }
-    MissionBar.prototype.showMissionProcess = function () {
-        var currentBingoTask = MissionDataManager.getActiveMissionTask(MissionDataManager.MISSION_TYPE_BINGO);
-        this.showTaskUI(currentBingoTask);
-    };
-    MissionBar.prototype.showTaskUI = function (currentBingoTask) {
-        this.missionData = currentBingoTask;
-        this.missionProcessUI = new MissionProcessUI;
-        Com.addObjectAt(this, this.missionProcessUI, 0, 0);
-        this.missionProcessUI.setProcess(currentBingoTask.current / currentBingoTask.target);
-        this.addChild(this.missionBook);
-    };
-    MissionBar.prototype.updateMissionData = function (value, target, id) {
-        if (id.toString() != this.missionData.mission_id) {
-            egret.error("mission id error");
-            return;
+    V1Game.prototype.getCardsGroup = function (value) {
+        if (!this.Cartoes)
+            this.createCardGroups();
+        var ar = this.Cartoes.slice(value * 4 - 3, value * 4 + 1);
+        var resultArray = [];
+        for (var i = 0; i < ar.length; i++) {
+            resultArray = resultArray.concat(this.changeCardNumberOrder(ar[i]));
         }
-        if (this.missionData.target != target) {
-            egret.error("mission target error");
-            return;
-        }
-        this.missionProcessUI.setProcess(value / target);
-        this.missionData.current = value;
-        LocalDataManager.updatePlayerData("mission.task." + id + ".current", value.toString());
+        return resultArray;
     };
-    return MissionBar;
-}(egret.DisplayObjectContainer));
-__reflect(MissionBar.prototype, "MissionBar");
+    V1Game.prototype.changeCardNumberOrder = function (groupNumbers) {
+        var newArray = [];
+        groupNumbers = groupNumbers.concat();
+        for (var i = 0; i < groupNumbers.length; i++) {
+            var line = i % GameCardUISettings.gridNumbers.y;
+            var row = Math.floor(i / GameCardUISettings.gridNumbers.y);
+            newArray[line * 5 + row] = groupNumbers[i];
+        }
+        return newArray;
+    };
+    V1Game.prototype.onServerData = function (data) {
+        data["numerosCartelas"] = this.getCardsGroup(data["cartela"]);
+        _super.prototype.onServerData.call(this, data);
+    };
+    V1Game.prototype.sendRoundOverRequest = function () {
+        IBingoServer.roundOverCallback = this.onRoundOver.bind(this);
+        IBingoServer.libera();
+    };
+    V1Game.prototype.sendPlayRequest = function () {
+        IBingoServer.playCallback = this.onPlay.bind(this);
+        IBingoServer.round(GameData.currentBet, CardManager.enabledCards, CardManager.groupNumber, GameData.currentBetIndex);
+        BingoMachine.inRound = true;
+    };
+    V1Game.prototype.sendExtraRequest = function (saving) {
+        if (saving === void 0) { saving = false; }
+        IBingoServer.extraCallback = this.onExtra.bind(this);
+        IBingoServer.extra(true, saving);
+    };
+    V1Game.prototype.sendCancelExtraReuqest = function () {
+        IBingoServer.cancelExtraCallback = this.onCancelExtra.bind(this);
+        IBingoServer.cancelExtra(true);
+    };
+    V1Game.prototype.createCardGroups = function () {
+        this.Cartoes = RES.getRes("v1gameDefault_json");
+    };
+    V1Game.prototype.onPlay = function (data) {
+        if (data && data["bolas"] && data["bolas"].length) {
+            var balls = data["bolas"];
+            for (var i = 0; i < balls.length; i++) {
+                balls[i] = this.changeNumberFromServer(balls[i]);
+            }
+            if (this["de_duplication"])
+                this["de_duplication"](balls);
+        }
+        else
+            data = null;
+        _super.prototype.onPlay.call(this, data);
+    };
+    V1Game.prototype.changeNumberFromServer = function (num) {
+        var card = Math.floor((num - 1) / 15);
+        var index = (num - 1) % 15;
+        return CardManager.cards[card].getNumberAt(index);
+    };
+    V1Game.prototype.onExtra = function (data) {
+        if (data && data["extra"] != null) {
+            if (this["de_duplication"])
+                data["extra"] = data["extra"] % 100;
+            data["extra"] = this.changeNumberFromServer(data["extra"]);
+        }
+        else
+            data = null;
+        _super.prototype.onExtra.call(this, data);
+    };
+    V1Game.prototype.showMissExtraBall = function (balls) {
+        if (!balls)
+            return;
+        for (var i = 0; i < balls.length; i++) {
+            balls[i] = this.changeNumberFromServer(balls[i]);
+        }
+        _super.prototype.showMissExtraBall.call(this, balls);
+    };
+    return V1Game;
+}(BingoMachine));
+__reflect(V1Game.prototype, "V1Game");
 var MissionDataManager = (function () {
     function MissionDataManager() {
     }
@@ -4099,151 +3959,39 @@ var PaytableFilter = (function () {
     return PaytableFilter;
 }());
 __reflect(PaytableFilter.prototype, "PaytableFilter");
-var LoyaltyVo = (function () {
-    function LoyaltyVo() {
+var V2Game = (function (_super) {
+    __extends(V2Game, _super);
+    function V2Game(gameConfigFile, configUrl, gameId) {
+        var _this = _super.call(this, gameConfigFile, configUrl, gameId) || this;
+        _this.tokenObject["key"] = "iniciar";
+        _this.tokenObject["value"]["token"] = "undefined";
+        return _this;
     }
-    /**
-     * init loyalty data
-     */
-    LoyaltyVo.init = function (data) {
-        this.loyaltyLevel = Number(data["loyalty_level"]);
-        this.loyaltyPoint = Number(data["loyalty_point"]);
-        this.loyaltyThisLevelBegin = Number(data["loyalty_this_level_begin"]);
-        this.loyaltyNextLevelBegin = Number(data["loyalty_next_level_begin"]);
-        this.loyaltyLevelBuffEndTime = Number(data["loyalty_level_buff_end_time"]) || 0;
-        this.loyaltyCalcF = Number(data["loyalty_calc_f"]) || 0;
-        this.loyaltyCalcPurchaseLt = Number(data["loyalty_calc_purchase_lt"]) || 0;
-        this.thisMonthPurchaseCount = Number(data["this_month_purchase_count"]) || 0;
-        this.privileges = data["privileges"];
-        this.isMissionRefresh = this.privileges[this.loyaltyLevel]["is_mission_refresh"];
-        this.missionScoreEasy = this.privileges[this.loyaltyLevel]["mission_score_easy"] || "no";
-        this.loyaltyName = ["pupils", "students", "bachelor", "teacher", "master", "doctor", "doctor_bingo"];
-        this.dataAfterUpdate = data;
-        this.checkBuffTime();
+    V2Game.prototype.extraUIShowNumber = function () {
+        this.extraUIObject.visible = true;
+        this.runningBallContainer = new egret.DisplayObjectContainer;
+        this.runningBallContainer.x = this.extraUIObject.x;
+        this.runningBallContainer.y = this.extraUIObject.y;
+        this.addChildAt(this.runningBallContainer, this.getChildIndex(this.extraUIObject));
+        Com.addObjectAt(this.runningBallContainer, this.extraUIObject, 0, 0);
+        this.extraUIObject = this.runningBallContainer;
     };
-    /**
-     * update loyalty data
-     */
-    LoyaltyVo.update = function (data) {
-        for (var key in data) {
-            switch (key) {
-                case "loyalty_level":
-                    if (Number(data[key]) > this.loyaltyLevel) {
-                        this.loyaltyLevel = data[key];
-                        // Lobby.getInstance().updateGameListLoyaltyLevel(Number(data[key]));
-                    }
-                    // Lobby.getInstance().redPointCheck();
-                    break;
-                case "loyalty_point":
-                    this.loyaltyPoint = data[key];
-                    break;
-                case "loyalty_this_level_begin":
-                    this.loyaltyThisLevelBegin = data[key];
-                    break;
-                case "loyalty_next_level_begin":
-                    this.loyaltyNextLevelBegin = data[key];
-                    break;
-                case "loyalty_level_buff_end_time":
-                    this.loyaltyLevelBuffEndTime = data[key];
-                    break;
-                case "loyalty_calc_f":
-                    this.loyaltyCalcF = data[key];
-                    break;
-                case "loyalty_calc_purchase_lt":
-                    this.loyaltyCalcPurchaseLt = data[key];
-                    break;
-                case "is_mission_refresh":
-                    this.isMissionRefresh = data[key];
-                    break;
-                case "mission_score_easy":
-                    this.missionScoreEasy = data["key"];
-                    break;
-                case "this_month_purchase_count":
-                    this.thisMonthPurchaseCount = data[key];
-                    break;
-                case "privileges":
-                    this.privileges = data[key];
-                    break;
-                case "time": break; //PlayerConfig.player("time", Number(data[key]));
+    /*******************************************************************************************************/
+    V2Game.prototype.getNumberOnCard = function (cardIndex, gridIndex) {
+        var num = GameCardUISettings.numberAtCard(cardIndex, gridIndex);
+        CardManager.getBall(num);
+    };
+    V2Game.prototype.getBuffInfoIndex = function (buffInfo) {
+        for (var i = 0; i < buffInfo.length; i++) {
+            if (buffInfo[i]["buffBet"] == GameData.currentBet) {
+                return i;
             }
         }
-        this.checkBuffTime();
+        return -1;
     };
-    /**
-     * update data
-     */
-    LoyaltyVo.updateData = function (data) {
-        this.dataAfterUpdate = data;
-        if (data["loyalty_level"] && Number(data["loyalty_level"]) > this.loyaltyLevel) {
-            // Trigger.insertModel(LoyaltyUpPopup);
-        }
-        else {
-            this.update(data);
-        }
-    };
-    /**
-     * check buff time
-     */
-    LoyaltyVo.checkBuffTime = function () {
-        if (this.loyaltyLevelBuffEndTime > Math.floor(new Date().valueOf() / 1000)) {
-            if (this.overplusTimer) {
-                this.overplusTimer.stop();
-                this.overplusTimer = null;
-            }
-            this.overplus = Math.floor((this.loyaltyLevelBuffEndTime - Math.floor(new Date().valueOf() / 1000)));
-            this.overplusTimer = new egret.Timer(1000, this.overplus);
-            this.overplusTimer.addEventListener(egret.TimerEvent.TIMER_COMPLETE, this.loyaltyBuffOver, this);
-            this.overplusTimer.start();
-        }
-    };
-    /**
-     * loyalty buff over
-     */
-    LoyaltyVo.loyaltyBuffOver = function () {
-        this.loyaltyLevel -= 1;
-        // Lobby.getInstance().updateGameListLoyaltyLevel(this.loyaltyLevel);
-    };
-    Object.defineProperty(LoyaltyVo, "data", {
-        /**
-         * get data
-         */
-        get: function () {
-            return {
-                "loyalty_level": this.loyaltyLevel,
-                "loyalty_point": this.loyaltyPoint,
-                "loyalty_this_level_begin": this.loyaltyThisLevelBegin,
-                "loyalty_next_level_begin": this.loyaltyNextLevelBegin,
-                "loyalty_level_buff_end_time": this.loyaltyLevelBuffEndTime,
-                "loyalty_calc_f": this.loyaltyCalcF,
-                "loyalty_calc_purchase_lt": this.loyaltyCalcPurchaseLt,
-                "is_mission_refresh": this.isMissionRefresh,
-                "mission_score_easy": this.missionScoreEasy,
-                "this_month_purchase_count": this.thisMonthPurchaseCount,
-                "privileges": this.privileges
-            };
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(LoyaltyVo, "getLoyaltyName", {
-        /**
-         * get name
-         */
-        get: function () {
-            return this.loyaltyName;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    /**
-     * get data
-     */
-    LoyaltyVo.get = function (key) {
-        return this[key] || null;
-    };
-    return LoyaltyVo;
-}());
-__reflect(LoyaltyVo.prototype, "LoyaltyVo");
+    return V2Game;
+}(BingoMachine));
+__reflect(V2Game.prototype, "V2Game");
 var PayTableManager = (function (_super) {
     __extends(PayTableManager, _super);
     function PayTableManager(paytableObject, name) {
@@ -4379,72 +4127,198 @@ var PaytableResultListOprator = (function () {
     return PaytableResultListOprator;
 }());
 __reflect(PaytableResultListOprator.prototype, "PaytableResultListOprator");
-var GameSoundManager = (function () {
-    function GameSoundManager() {
-        this.playing = [];
-        GameSoundManager.instance = this;
+var BallManager = (function (_super) {
+    __extends(BallManager, _super);
+    function BallManager() {
+        var _this = _super.call(this) || this;
+        _this.moveingBallLayer = new egret.DisplayObjectContainer;
+        _this.staticBallLayer = new egret.DisplayObjectContainer;
+        _this.addChild(_this.staticBallLayer);
+        _this.addChild(_this.moveingBallLayer);
+        _this.staticBallLayer.cacheAsBitmap = true;
+        return _this;
     }
-    GameSoundManager.prototype.play = function (soundAssetName, repeat, callback) {
-        if (repeat === void 0) { repeat = 1; }
-        if (callback === void 0) { callback = null; }
-        var soundChannel = SoundManager.play(soundAssetName, repeat === -1);
-        if (callback !== null && repeat !== -1) {
-            soundChannel["soundCallback"] = callback;
-            soundChannel["soundAssetName"] = soundAssetName;
-            soundChannel.addEventListener(egret.Event.SOUND_COMPLETE, this.onSoundComplete, this);
+    BallManager.prototype.getBallSettings = function (balls, ballSize, ballTextSize) {
+        var newballs = [];
+        for (var i = 0; i < balls.length; i++) {
+            newballs[i] = {};
+            for (var ob in balls[i])
+                newballs[i][ob] = balls[i][ob];
         }
-        if (soundChannel) {
-            this.playing.push(soundChannel);
+        BallManager.balls = newballs;
+        BingoBall.ballUIs = [];
+        this.ballSize = ballSize;
+        this.ballTextSize = ballTextSize;
+    };
+    BallManager.prototype.clearBalls = function () {
+        for (var i = 0; i < this.moveingBallLayer.numChildren; i++) {
+            var ball = this.moveingBallLayer.getChildAt(i);
+            ball.removeEventListener(BingoBall.BALL_MOVE_END, this.onBallMoveEnd, this);
         }
-        if (!soundChannel && callback) {
-            callback();
+        this.moveingBallLayer.removeChildren();
+        this.staticBallLayer.removeChildren();
+    };
+    BallManager.prototype.onRemove = function () {
+        clearTimeout(this.nextDelayId);
+    };
+    BallManager.prototype.runBalls = function (balls) {
+        this.clearBalls();
+        this.lightResult = null;
+        this.ballIndexs = balls;
+        this.extraBalls = [];
+        this.ballOrder = 0;
+        this.beginRun();
+    };
+    BallManager.prototype.runCutBalls = function (balls) {
+        this.ballIndexs = this.ballIndexs.concat(balls);
+        this.beginRun();
+    };
+    BallManager.prototype.runExtra = function (extraBall) {
+        this.ballIndexs.push(extraBall);
+        this.beginRun();
+    };
+    BallManager.prototype.runMissExtra = function (missExtra) {
+        if (!missExtra)
+            return;
+        while (missExtra.length)
+            this.ballIndexs.push(missExtra.shift());
+        while (this.ballIndexs.length) {
+            this.runMissExtraBall();
         }
     };
-    GameSoundManager.prototype.onSoundComplete = function (e) {
-        var soundChannel = e.currentTarget;
-        soundChannel.removeEventListener(egret.Event.SOUND_COMPLETE, this.onSoundComplete, this);
-        if (soundChannel["soundCallback"]) {
-            soundChannel["soundCallback"]();
-            soundChannel["soundCallback"] = null;
+    BallManager.prototype.beginRun = function () {
+        if (!this.ballIndexs.length) {
+            BingoMachine.endBallRunning();
+            return;
         }
-        var index = this.playing.indexOf(soundChannel);
-        this.playing.splice(index, 1);
+        this.runNextBall();
+        var lightResult;
+        var newFit;
+        var isLastBall = this.ballIndexs.length == 0;
+        if (this.needLightCheck || isLastBall)
+            lightResult = BingoMachine.betweenBallRunning();
+        if (lightResult) {
+            newFit = this.recordlightResult(lightResult);
+        }
+        if (newFit) {
+            BingoMachine.runningAnimation(this.delayRunNextBall.bind(this), lightResult, isLastBall);
+        }
+        else
+            this.delayRunNextBall();
     };
-    GameSoundManager.prototype.stop = function (soundAssetName) {
-        for (var i = 0; i < this.playing.length; i++) {
-            var soundChannel = this.playing[i];
-            if (soundChannel["soundAssetName"] == soundAssetName) {
-                soundChannel.stop();
-                if (soundChannel["soundCallback"]) {
-                    soundChannel["soundCallback"]();
-                    soundChannel["soundCallback"] = null;
+    BallManager.prototype.stopBallRunning = function () {
+        while (this.ballIndexs.length > 1) {
+            this.runNextBall();
+        }
+    };
+    BallManager.prototype.runNextBall = function () {
+        var index = this.ballIndexs.shift();
+        var ballInfo = BallManager.balls[this.ballOrder++];
+        var path = ballInfo["path"];
+        var pts = [];
+        for (var i = 0; i < path.length; i++) {
+            pts[i] = new egret.Point(path[i]["x"], path[i]["y"]);
+        }
+        var sp = this.buildBallWithIndex(index);
+        this.moveingBallLayer.addChild(sp);
+        sp.addEventListener(BingoBall.BALL_MOVE_END, this.onBallMoveEnd, this);
+        sp.startRun(pts);
+        CardManager.getBall(index);
+        BingoMachine.runningBall(index);
+    };
+    BallManager.prototype.onBallMoveEnd = function (event) {
+        var ball = event.target;
+        this.staticBallLayer.addChild(ball);
+    };
+    BallManager.prototype.runMissExtraBall = function () {
+        var index = this.ballIndexs.shift();
+        var ballInfo = BallManager.balls[this.ballOrder++];
+        var path = ballInfo["path"];
+        var lstPtObj = path[path.length - 1];
+        var ptLast = new egret.Point(lstPtObj["x"], lstPtObj["y"]);
+        var sp = this.buildBallWithIndex(index);
+        Com.addObjectAt(this.staticBallLayer, sp, ptLast.x, ptLast.y);
+        var cross = new egret.Shape;
+        var a = this.ballSize / sp.scaleX;
+        cross.graphics.lineStyle(Math.floor(a * 0.07), 0xFF0000);
+        var startOffset = (2 - Math.SQRT2) * 0.25 * a;
+        cross.graphics.moveTo(startOffset, startOffset);
+        cross.graphics.lineTo(sp.width - startOffset, sp.height - startOffset);
+        cross.graphics.moveTo(sp.width - startOffset, startOffset);
+        cross.graphics.lineTo(startOffset, sp.height - startOffset);
+        sp.filters = [MatrixTool.colorMatrixLighter(0.5)];
+        sp.addChild(cross);
+    };
+    BallManager.prototype.delayRunNextBall = function () {
+        this.nextDelayId = setTimeout(this.beginRun.bind(this), BallManager.normalBallInterval);
+    };
+    BallManager.prototype.recordlightResult = function (lightResult) {
+        if (!this.lightResult || this.lightResult.length == 0) {
+            this.lightResult = lightResult;
+            return true;
+        }
+        for (var i = 0; i < lightResult.length; i++) {
+            for (var ob in lightResult[i]) {
+                if (!this.lightResult[i][ob] || lightResult[i][ob].length != this.lightResult[i][ob].length) {
+                    this.lightResult = lightResult;
+                    return true;
                 }
-                this.playing.splice(i, 1);
-                i--;
             }
         }
-        SoundManager.stopMusic();
+        return false;
     };
-    GameSoundManager.prototype.stopAll = function () {
-        for (var i = 0; i < this.playing.length; i++) {
-            var sound = this.playing[i];
-            if (sound["soundCallback"]) {
-                sound.removeEventListener(egret.Event.SOUND_COMPLETE, this.onSoundComplete, this);
-                sound["soundCallback"]();
-                sound["soundCallback"] = null;
-            }
-            sound.stop();
+    BallManager.prototype.setBallBg = function (ball, assetName) {
+        Com.addBitmapAt(ball, BingoMachine.getAssetStr(assetName), 0, 0);
+    };
+    BallManager.prototype.buildBallWithIndex = function (num, scaleToGame) {
+        if (num === void 0) { num = 0; }
+        if (scaleToGame === void 0) { scaleToGame = true; }
+        var index = num - 1;
+        if (!BingoBall.ballUIs[index]) {
+            BingoBall.ballUIs[index] = this.buildBallUIWithIndex(index, num);
         }
-        this.playing = [];
+        return new BingoBall(index, scaleToGame ? this.ballSize : 0);
     };
-    GameSoundManager.stopAll = function () {
-        if (this.instance)
-            this.instance.stopAll();
+    BallManager.prototype.buildBallUIWithIndex = function (index, num) {
+        if (num === void 0) { num = 0; }
+        var ballObj = BallManager.balls[index];
+        var ball = new egret.Sprite();
+        this.setBallBg(ball, ballObj["ui"]);
+        var tx = new egret.TextField;
+        tx.width = ball.width;
+        tx.size = this.ballTextSize;
+        tx.bold = true;
+        tx.textAlign = "center";
+        tx.textColor = Number(ballObj["color"]);
+        tx.text = "" + (num ? num : index + 1);
+        tx.y = ball.height - tx.textHeight >> 1;
+        if (BallManager.textBold) {
+            tx.fontFamily = "Arial Black";
+        }
+        if (ballObj["offsetX"])
+            tx.x = ballObj["offsetX"];
+        if (BallManager.ballOffsetY)
+            tx.y += BallManager.ballOffsetY;
+        ball.addChild(tx);
+        return ball;
     };
-    GameSoundManager.instance = null;
-    return GameSoundManager;
-}());
-__reflect(GameSoundManager.prototype, "GameSoundManager");
+    BallManager.prototype.getABall = function (index) {
+        return this.buildBallWithIndex(index);
+    };
+    BallManager.prototype.getABigBall = function (index) {
+        return this.buildBallWithIndex(index, false);
+    };
+    BallManager.getBallLastPosition = function (index) {
+        var ballObject = this.balls[index];
+        var ballPath = ballObject["path"];
+        var ballPositionObject = ballPath[ballPath.length - 1];
+        return new egret.Point(ballPositionObject["x"], ballPositionObject["y"]);
+    };
+    BallManager.normalBallInterval = 100;
+    BallManager.ballOffsetY = 0;
+    return BallManager;
+}(egret.DisplayObjectContainer));
+__reflect(BallManager.prototype, "BallManager");
 var MissionPopup = (function (_super) {
     __extends(MissionPopup, _super);
     function MissionPopup() {
@@ -5403,98 +5277,55 @@ var TounamentChampoin = (function (_super) {
     return TounamentChampoin;
 }(egret.DisplayObjectContainer));
 __reflect(TounamentChampoin.prototype, "TounamentChampoin");
-var V1Game = (function (_super) {
-    __extends(V1Game, _super);
-    function V1Game(gameConfigFile, configUrl, gameId) {
-        var _this = _super.call(this, gameConfigFile, configUrl, gameId) || this;
-        _this.tokenObject["key"] = "login";
-        _this.tokenObject["value"]["token"] = "112411241124696911692424116969";
+var BingoBall = (function (_super) {
+    __extends(BingoBall, _super);
+    function BingoBall(index, ballSize) {
+        if (ballSize === void 0) { ballSize = 0; }
+        var _this = _super.call(this) || this;
+        _this.ballSize = ballSize;
+        var ren = new egret.RenderTexture;
+        var newBall = BingoBall.ballUIs[index];
+        ren.drawToTexture(newBall, new egret.Rectangle(0, 0, newBall.width, newBall.height), ballSize ? ballSize / newBall.height : 1);
+        var bmp = new egret.Bitmap(ren);
+        _this.addChild(bmp);
         return _this;
     }
-    V1Game.prototype.getCardsGroup = function (value) {
-        if (!this.Cartoes)
-            this.createCardGroups();
-        var ar = this.Cartoes.slice(value * 4 - 3, value * 4 + 1);
-        var resultArray = [];
-        for (var i = 0; i < ar.length; i++) {
-            resultArray = resultArray.concat(this.changeCardNumberOrder(ar[i]));
+    BingoBall.prototype.startRun = function (pts) {
+        if (BallManager.rotateBall) {
+            var half = this.ballSize >> 1;
+            this.anchorOffsetX = half;
+            this.anchorOffsetY = half;
+            this.x = pts[0]["x"] + half;
+            this.y = pts[0]["y"] + half;
         }
-        return resultArray;
-    };
-    V1Game.prototype.changeCardNumberOrder = function (groupNumbers) {
-        var newArray = [];
-        groupNumbers = groupNumbers.concat();
-        for (var i = 0; i < groupNumbers.length; i++) {
-            var line = i % GameCardUISettings.gridNumbers.y;
-            var row = Math.floor(i / GameCardUISettings.gridNumbers.y);
-            newArray[line * 5 + row] = groupNumbers[i];
+        else {
+            this.x = pts[0]["x"];
+            this.y = pts[0]["y"];
         }
-        return newArray;
+        this.pts = pts;
+        this.moveToNextPoint();
     };
-    V1Game.prototype.onServerData = function (data) {
-        data["numerosCartelas"] = this.getCardsGroup(data["cartela"]);
-        _super.prototype.onServerData.call(this, data);
-    };
-    V1Game.prototype.sendRoundOverRequest = function () {
-        IBingoServer.roundOverCallback = this.onRoundOver.bind(this);
-        IBingoServer.libera();
-    };
-    V1Game.prototype.sendPlayRequest = function () {
-        IBingoServer.playCallback = this.onPlay.bind(this);
-        IBingoServer.round(GameData.currentBet, CardManager.enabledCards, CardManager.groupNumber, GameData.currentBetIndex);
-        BingoMachine.inRound = true;
-    };
-    V1Game.prototype.sendExtraRequest = function (saving) {
-        if (saving === void 0) { saving = false; }
-        IBingoServer.extraCallback = this.onExtra.bind(this);
-        IBingoServer.extra(true, saving);
-    };
-    V1Game.prototype.sendCancelExtraReuqest = function () {
-        IBingoServer.cancelExtraCallback = this.onCancelExtra.bind(this);
-        IBingoServer.cancelExtra(true);
-    };
-    V1Game.prototype.createCardGroups = function () {
-        this.Cartoes = RES.getRes("v1gameDefault_json");
-    };
-    V1Game.prototype.onPlay = function (data) {
-        if (data && data["bolas"] && data["bolas"].length) {
-            var balls = data["bolas"];
-            for (var i = 0; i < balls.length; i++) {
-                balls[i] = this.changeNumberFromServer(balls[i]);
-            }
-            if (this["de_duplication"])
-                this["de_duplication"](balls);
-        }
-        else
-            data = null;
-        _super.prototype.onPlay.call(this, data);
-    };
-    V1Game.prototype.changeNumberFromServer = function (num) {
-        var card = Math.floor((num - 1) / 15);
-        var index = (num - 1) % 15;
-        return CardManager.cards[card].getNumberAt(index);
-    };
-    V1Game.prototype.onExtra = function (data) {
-        if (data && data["extra"] != null) {
-            if (this["de_duplication"])
-                data["extra"] = data["extra"] % 100;
-            data["extra"] = this.changeNumberFromServer(data["extra"]);
-        }
-        else
-            data = null;
-        _super.prototype.onExtra.call(this, data);
-    };
-    V1Game.prototype.showMissExtraBall = function (balls) {
-        if (!balls)
+    BingoBall.prototype.moveToNextPoint = function () {
+        var curruntPoint = this.pts.shift();
+        if (!this.pts.length) {
+            this.dispatchEvent(new egret.Event(BingoBall.BALL_MOVE_END));
             return;
-        for (var i = 0; i < balls.length; i++) {
-            balls[i] = this.changeNumberFromServer(balls[i]);
         }
-        _super.prototype.showMissExtraBall.call(this, balls);
+        var targetPoint = this.pts[0];
+        var distance = egret.Point.distance(curruntPoint, targetPoint);
+        var tw = egret.Tween.get(this);
+        if (BallManager.rotateBall) {
+            var half = this.ballSize >> 1;
+            tw.to({ x: targetPoint.x + half, y: targetPoint.y + half, rotation: this.rotation + 360 }, distance * 0.5);
+        }
+        else
+            tw.to({ x: targetPoint.x, y: targetPoint.y }, distance * 0.5);
+        tw.call(this.moveToNextPoint, this);
     };
-    return V1Game;
-}(BingoMachine));
-__reflect(V1Game.prototype, "V1Game");
+    BingoBall.BALL_MOVE_END = "ballMoveEnd";
+    return BingoBall;
+}(egret.Sprite));
+__reflect(BingoBall.prototype, "BingoBall");
 var TounamentUserItem = (function (_super) {
     __extends(TounamentUserItem, _super);
     function TounamentUserItem(user, rank, isMe) {

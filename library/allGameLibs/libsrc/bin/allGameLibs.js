@@ -119,54 +119,253 @@ var GenericPo = (function (_super) {
     return GenericPo;
 }(GenericModal));
 __reflect(GenericPo.prototype, "GenericPo");
-var LanguageBar = (function (_super) {
-    __extends(LanguageBar, _super);
-    function LanguageBar() {
-        var _this = _super.call(this) || this;
-        GraphicTool.drawRect(_this, new egret.Rectangle(0, 0, 308, 268), 0x968503, false, 1, 50, 2, 0xfffd75);
-        _this.touchEnabled = true;
-        _this.touchChildren = false;
-        _this.addEventListener(egret.TouchEvent.TOUCH_BEGIN, _this.onTouch, _this);
-        _this.addEventListener(egret.TouchEvent.TOUCH_CANCEL, _this.onTouch, _this);
-        _this.addEventListener(egret.TouchEvent.TOUCH_END, _this.onTouch, _this);
-        _this.addEventListener(egret.TouchEvent.TOUCH_MOVE, _this.onTouch, _this);
-        _this.addEventListener(egret.TouchEvent.TOUCH_TAP, _this.onTap, _this);
-        _this.rects = [];
-        _this.languageArr = ["pt", "en", "es"];
-        for (var i = 0; i < 3; i++) {
-            _this.rects[i] = new egret.Rectangle(10, 8 + i * 90, 285, 70);
-            GraphicTool.drawRect(_this, _this.rects[i], 0x968503, false, 1, 20, 2, 0xfffd75);
-            Com.addBitmapAtMiddle(_this, "gameSettings_json.flag_" + _this.languageArr[i], _this.rects[i].width * 0.5 + _this.rects[i].x, _this.rects[i].height * 0.5 + _this.rects[i].y);
-        }
-        LanguageBar.instance = _this;
-        return _this;
+var GameSettings = (function () {
+    function GameSettings() {
     }
-    LanguageBar.prototype.onTouch = function (event) {
-        event.stopImmediatePropagation();
+    Object.defineProperty(GameSettings, "visualEffectOn", {
+        get: function () {
+            if (egret.localStorage.getItem("visualEffect") == "false")
+                return false;
+            return true;
+        },
+        set: function (value) {
+            if (this.visualEffectOn == value)
+                return;
+            egret.localStorage.setItem("visualEffect", value ? "" : "false");
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(GameSettings, "notificationOn", {
+        get: function () {
+            if (egret.localStorage.getItem("notification") == "false")
+                return false;
+            return true;
+        },
+        set: function (value) {
+            if (this.notificationOn == value)
+                return;
+            egret.localStorage.setItem("notification", value ? "" : "false");
+        },
+        enumerable: true,
+        configurable: true
+    });
+    GameSettings.vertion = "2.6.2";
+    return GameSettings;
+}());
+__reflect(GameSettings.prototype, "GameSettings");
+var trace = function (a) {
+    egret.log(a);
+};
+var LoadingUI = (function (_super) {
+    __extends(LoadingUI, _super);
+    function LoadingUI() {
+        return _super.call(this) || this;
+    }
+    LoadingUI.prototype.onProgress = function (current, total) {
+        document.getElementById("loading_progress_div").style.width = Math.floor(320 * (0.18 + current / total * 0.72 + 0)) + "px";
     };
-    LanguageBar.prototype.onTap = function (event) {
-        var testPt = new egret.Point(event.localX, event.localY);
-        for (var i = 0; i < 3; i++) {
-            if (this.rects[i].containsPoint(testPt)) {
-                this.visible = false;
-                if (MuLang.language != this.languageArr[i]) {
-                    LanguageBar.changeIndex = i;
-                    this.showConfirm();
-                }
-                break;
+    return LoadingUI;
+}(egret.Sprite));
+__reflect(LoadingUI.prototype, "LoadingUI", ["RES.PromiseTaskReporter"]);
+var LoyaltyVo = (function () {
+    function LoyaltyVo() {
+    }
+    /**
+     * init loyalty data
+     */
+    LoyaltyVo.init = function (data) {
+        this.loyaltyLevel = Number(data["loyalty_level"]);
+        this.loyaltyPoint = Number(data["loyalty_point"]);
+        this.loyaltyThisLevelBegin = Number(data["loyalty_this_level_begin"]);
+        this.loyaltyNextLevelBegin = Number(data["loyalty_next_level_begin"]);
+        this.loyaltyLevelBuffEndTime = Number(data["loyalty_level_buff_end_time"]) || 0;
+        this.loyaltyCalcF = Number(data["loyalty_calc_f"]) || 0;
+        this.loyaltyCalcPurchaseLt = Number(data["loyalty_calc_purchase_lt"]) || 0;
+        this.thisMonthPurchaseCount = Number(data["this_month_purchase_count"]) || 0;
+        this.privileges = data["privileges"];
+        this.isMissionRefresh = this.privileges[this.loyaltyLevel]["is_mission_refresh"];
+        this.missionScoreEasy = this.privileges[this.loyaltyLevel]["mission_score_easy"] || "no";
+        this.loyaltyName = ["pupils", "students", "bachelor", "teacher", "master", "doctor", "doctor_bingo"];
+        this.dataAfterUpdate = data;
+        this.checkBuffTime();
+    };
+    /**
+     * update loyalty data
+     */
+    LoyaltyVo.update = function (data) {
+        for (var key in data) {
+            switch (key) {
+                case "loyalty_level":
+                    if (Number(data[key]) > this.loyaltyLevel) {
+                        this.loyaltyLevel = data[key];
+                        // Lobby.getInstance().updateGameListLoyaltyLevel(Number(data[key]));
+                    }
+                    // Lobby.getInstance().redPointCheck();
+                    break;
+                case "loyalty_point":
+                    this.loyaltyPoint = data[key];
+                    break;
+                case "loyalty_this_level_begin":
+                    this.loyaltyThisLevelBegin = data[key];
+                    break;
+                case "loyalty_next_level_begin":
+                    this.loyaltyNextLevelBegin = data[key];
+                    break;
+                case "loyalty_level_buff_end_time":
+                    this.loyaltyLevelBuffEndTime = data[key];
+                    break;
+                case "loyalty_calc_f":
+                    this.loyaltyCalcF = data[key];
+                    break;
+                case "loyalty_calc_purchase_lt":
+                    this.loyaltyCalcPurchaseLt = data[key];
+                    break;
+                case "is_mission_refresh":
+                    this.isMissionRefresh = data[key];
+                    break;
+                case "mission_score_easy":
+                    this.missionScoreEasy = data["key"];
+                    break;
+                case "this_month_purchase_count":
+                    this.thisMonthPurchaseCount = data[key];
+                    break;
+                case "privileges":
+                    this.privileges = data[key];
+                    break;
+                case "time": break; //PlayerConfig.player("time", Number(data[key]));
             }
         }
+        this.checkBuffTime();
     };
-    LanguageBar.prototype.showConfirm = function () {
-        this.dispatchEvent(new egret.Event("showConfirm"));
+    /**
+     * update data
+     */
+    LoyaltyVo.updateData = function (data) {
+        this.dataAfterUpdate = data;
+        if (data["loyalty_level"] && Number(data["loyalty_level"]) > this.loyaltyLevel) {
+            // Trigger.insertModel(LoyaltyUpPopup);
+        }
+        else {
+            this.update(data);
+        }
     };
-    LanguageBar.confirmChange = function () {
-        MuLang.language = this.instance.languageArr[this.changeIndex];
-        window.location.reload();
+    /**
+     * check buff time
+     */
+    LoyaltyVo.checkBuffTime = function () {
+        if (this.loyaltyLevelBuffEndTime > Math.floor(new Date().valueOf() / 1000)) {
+            if (this.overplusTimer) {
+                this.overplusTimer.stop();
+                this.overplusTimer = null;
+            }
+            this.overplus = Math.floor((this.loyaltyLevelBuffEndTime - Math.floor(new Date().valueOf() / 1000)));
+            this.overplusTimer = new egret.Timer(1000, this.overplus);
+            this.overplusTimer.addEventListener(egret.TimerEvent.TIMER_COMPLETE, this.loyaltyBuffOver, this);
+            this.overplusTimer.start();
+        }
     };
-    return LanguageBar;
-}(egret.Sprite));
-__reflect(LanguageBar.prototype, "LanguageBar");
+    /**
+     * loyalty buff over
+     */
+    LoyaltyVo.loyaltyBuffOver = function () {
+        this.loyaltyLevel -= 1;
+        // Lobby.getInstance().updateGameListLoyaltyLevel(this.loyaltyLevel);
+    };
+    Object.defineProperty(LoyaltyVo, "data", {
+        /**
+         * get data
+         */
+        get: function () {
+            return {
+                "loyalty_level": this.loyaltyLevel,
+                "loyalty_point": this.loyaltyPoint,
+                "loyalty_this_level_begin": this.loyaltyThisLevelBegin,
+                "loyalty_next_level_begin": this.loyaltyNextLevelBegin,
+                "loyalty_level_buff_end_time": this.loyaltyLevelBuffEndTime,
+                "loyalty_calc_f": this.loyaltyCalcF,
+                "loyalty_calc_purchase_lt": this.loyaltyCalcPurchaseLt,
+                "is_mission_refresh": this.isMissionRefresh,
+                "mission_score_easy": this.missionScoreEasy,
+                "this_month_purchase_count": this.thisMonthPurchaseCount,
+                "privileges": this.privileges
+            };
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(LoyaltyVo, "getLoyaltyName", {
+        /**
+         * get name
+         */
+        get: function () {
+            return this.loyaltyName;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    /**
+     * get data
+     */
+    LoyaltyVo.get = function (key) {
+        return this[key] || null;
+    };
+    return LoyaltyVo;
+}());
+__reflect(LoyaltyVo.prototype, "LoyaltyVo");
+var MuLang = (function () {
+    function MuLang() {
+    }
+    MuLang.getText = function (key, caseType) {
+        if (caseType === void 0) { caseType = 0; }
+        if (!MuLang.txt)
+            return null;
+        var lanObject = MuLang.txt[key];
+        if (!lanObject)
+            return key;
+        var str = lanObject[MuLang.language];
+        if (str) {
+            switch (caseType) {
+                default: return str;
+                case 1: return str.toUpperCase();
+                case 2: return str.toLowerCase();
+                case 3: return str.substring(0, 1).toUpperCase() + str.substring(1, str.length).toLowerCase();
+            }
+        }
+        else
+            return key;
+    };
+    Object.defineProperty(MuLang, "language", {
+        get: function () {
+            if (localStorage && ["pt", "en", "es"].indexOf(localStorage["language"]) >= 0)
+                return localStorage["language"];
+            var resLan = PlayerConfig.player("settings.lang") || eval("getPlayer().settings.lang");
+            if (["pt", "en", "es"].indexOf(resLan) >= 0)
+                return resLan;
+            return "pt";
+        },
+        set: function (value) {
+            localStorage.setItem("language", value);
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(MuLang, "languageName", {
+        get: function () {
+            return this.lanuageNames[this.language];
+        },
+        enumerable: true,
+        configurable: true
+    });
+    MuLang.txt = {};
+    MuLang.CASE_NORMAL = 0;
+    MuLang.CASE_UPPER = 1;
+    MuLang.CASE_LOWER = 2;
+    MuLang.CASE_TYPE_CAPITALIZE = 3;
+    MuLang.lanuageNames = { en: "english", es: "spanish", pt: "portuguese" };
+    return MuLang;
+}());
+__reflect(MuLang.prototype, "MuLang");
 var MDS = (function () {
     function MDS() {
     }
@@ -594,44 +793,6 @@ var GameSettingPopup = (function (_super) {
     return GameSettingPopup;
 }(GenericPo));
 __reflect(GameSettingPopup.prototype, "GameSettingPopup");
-var GameSettings = (function () {
-    function GameSettings() {
-    }
-    Object.defineProperty(GameSettings, "visualEffectOn", {
-        get: function () {
-            if (egret.localStorage.getItem("visualEffect") == "false")
-                return false;
-            return true;
-        },
-        set: function (value) {
-            if (this.visualEffectOn == value)
-                return;
-            egret.localStorage.setItem("visualEffect", value ? "" : "false");
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(GameSettings, "notificationOn", {
-        get: function () {
-            if (egret.localStorage.getItem("notification") == "false")
-                return false;
-            return true;
-        },
-        set: function (value) {
-            if (this.notificationOn == value)
-                return;
-            egret.localStorage.setItem("notification", value ? "" : "false");
-        },
-        enumerable: true,
-        configurable: true
-    });
-    GameSettings.vertion = "2.6.2";
-    return GameSettings;
-}());
-__reflect(GameSettings.prototype, "GameSettings");
-var trace = function (a) {
-    egret.log(a);
-};
 var BrowserInfo = (function () {
     function BrowserInfo() {
     }
@@ -672,6 +833,54 @@ var BrowserInfo = (function () {
     return BrowserInfo;
 }());
 __reflect(BrowserInfo.prototype, "BrowserInfo");
+var LanguageBar = (function (_super) {
+    __extends(LanguageBar, _super);
+    function LanguageBar() {
+        var _this = _super.call(this) || this;
+        GraphicTool.drawRect(_this, new egret.Rectangle(0, 0, 308, 268), 0x968503, false, 1, 50, 2, 0xfffd75);
+        _this.touchEnabled = true;
+        _this.touchChildren = false;
+        _this.addEventListener(egret.TouchEvent.TOUCH_BEGIN, _this.onTouch, _this);
+        _this.addEventListener(egret.TouchEvent.TOUCH_CANCEL, _this.onTouch, _this);
+        _this.addEventListener(egret.TouchEvent.TOUCH_END, _this.onTouch, _this);
+        _this.addEventListener(egret.TouchEvent.TOUCH_MOVE, _this.onTouch, _this);
+        _this.addEventListener(egret.TouchEvent.TOUCH_TAP, _this.onTap, _this);
+        _this.rects = [];
+        _this.languageArr = ["pt", "en", "es"];
+        for (var i = 0; i < 3; i++) {
+            _this.rects[i] = new egret.Rectangle(10, 8 + i * 90, 285, 70);
+            GraphicTool.drawRect(_this, _this.rects[i], 0x968503, false, 1, 20, 2, 0xfffd75);
+            Com.addBitmapAtMiddle(_this, "gameSettings_json.flag_" + _this.languageArr[i], _this.rects[i].width * 0.5 + _this.rects[i].x, _this.rects[i].height * 0.5 + _this.rects[i].y);
+        }
+        LanguageBar.instance = _this;
+        return _this;
+    }
+    LanguageBar.prototype.onTouch = function (event) {
+        event.stopImmediatePropagation();
+    };
+    LanguageBar.prototype.onTap = function (event) {
+        var testPt = new egret.Point(event.localX, event.localY);
+        for (var i = 0; i < 3; i++) {
+            if (this.rects[i].containsPoint(testPt)) {
+                this.visible = false;
+                if (MuLang.language != this.languageArr[i]) {
+                    LanguageBar.changeIndex = i;
+                    this.showConfirm();
+                }
+                break;
+            }
+        }
+    };
+    LanguageBar.prototype.showConfirm = function () {
+        this.dispatchEvent(new egret.Event("showConfirm"));
+    };
+    LanguageBar.confirmChange = function () {
+        MuLang.language = this.instance.languageArr[this.changeIndex];
+        window.location.reload();
+    };
+    return LanguageBar;
+}(egret.Sprite));
+__reflect(LanguageBar.prototype, "LanguageBar");
 var RateBar = (function (_super) {
     __extends(RateBar, _super);
     function RateBar(size) {
@@ -1238,59 +1447,19 @@ var FlyingCoins = (function (_super) {
     return FlyingCoins;
 }(egret.DisplayObjectContainer));
 __reflect(FlyingCoins.prototype, "FlyingCoins");
-var MuLang = (function () {
-    function MuLang() {
+var GlobelSettings = (function () {
+    function GlobelSettings() {
     }
-    MuLang.getText = function (key, caseType) {
-        if (caseType === void 0) { caseType = 0; }
-        if (!MuLang.txt)
-            return null;
-        var lanObject = MuLang.txt[key];
-        if (!lanObject)
-            return key;
-        var str = lanObject[MuLang.language];
-        if (str) {
-            switch (caseType) {
-                default: return str;
-                case 1: return str.toUpperCase();
-                case 2: return str.toLowerCase();
-                case 3: return str.substring(0, 1).toUpperCase() + str.substring(1, str.length).toLowerCase();
-            }
-        }
-        else
-            return key;
-    };
-    Object.defineProperty(MuLang, "language", {
+    Object.defineProperty(GlobelSettings, "language", {
         get: function () {
-            if (localStorage && ["pt", "en", "es"].indexOf(localStorage["language"]) >= 0)
-                return localStorage["language"];
-            var resLan = PlayerConfig.player("settings.lang") || eval("getPlayer().settings.lang");
-            if (["pt", "en", "es"].indexOf(resLan) >= 0)
-                return resLan;
-            return "pt";
-        },
-        set: function (value) {
-            localStorage.setItem("language", value);
+            return MuLang.language;
         },
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(MuLang, "languageName", {
-        get: function () {
-            return this.lanuageNames[this.language];
-        },
-        enumerable: true,
-        configurable: true
-    });
-    MuLang.txt = {};
-    MuLang.CASE_NORMAL = 0;
-    MuLang.CASE_UPPER = 1;
-    MuLang.CASE_LOWER = 2;
-    MuLang.CASE_TYPE_CAPITALIZE = 3;
-    MuLang.lanuageNames = { en: "english", es: "spanish", pt: "portuguese" };
-    return MuLang;
+    return GlobelSettings;
 }());
-__reflect(MuLang.prototype, "MuLang");
+__reflect(GlobelSettings.prototype, "GlobelSettings");
 var LocalDataManager = (function () {
     function LocalDataManager() {
     }
