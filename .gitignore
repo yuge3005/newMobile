@@ -10,3 +10,8 @@ MultiBingo/bin-release/
 MultiBingo/template/
 MultiBingo/libs/
 MultiBingo/manifest.json
+slots/bin-debug/
+slots/bin-release/
+slots/template/
+slots/libs/
+slots/manifest.json
