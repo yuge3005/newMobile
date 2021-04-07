@@ -10,16 +10,24 @@
       "name": "egret"
     },
     {
+      "name": "assetsmanager"
+    },
+    {
       "name": "game"
     },
     {
       "name": "tween"
     },
     {
-      "name": "assetsmanager"
+      "name": "promise"
     },
     {
-      "name": "promise"
+      "name": "particle",
+      "path": "../library/particle/libsrc"
+    },
+    {
+      "name": "basicUI",
+      "path": "../library/basicUI/libsrc"
     }
   ]
 }
