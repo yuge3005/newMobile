@@ -9,52 +9,6 @@ declare class GameUIItem extends egret.Sprite {
     protected showFreeExtraPosition(): void;
     protected getGratisUI(): egret.DisplayObject;
 }
-declare class GenericModal extends egret.Sprite {
-    enableKeyboard: boolean;
-    needZoomOut: boolean;
-    protected static readonly classAssetName: string;
-    static GENERIC_MODAL_LOADED: string;
-    static CLOSE_MODAL: string;
-    static MODAL_COMMAND: string;
-    protected assetName: string;
-    protected static assetLoaded: Array<boolean>;
-    inited: boolean;
-    private configUrl;
-    constructor(configUrl?: string);
-    private analyse(event);
-    protected init(): void;
-    private static loadAsset(assetName, target);
-    private static loaded(event);
-    protected onKeyUp(keyCode: number): void;
-}
-declare class mouse {
-    constructor();
-    static setButtonMode(a: any): void;
-}
-declare class TowerGrid extends egret.Sprite {
-    protected defaultBgPic: egret.Bitmap;
-    protected onEffBgPic: egret.Bitmap;
-    private blink1Pic;
-    private blink2Pic;
-    protected linePic: egret.Bitmap;
-    private gridLayer;
-    protected _currentBgPic: egret.Bitmap;
-    currentBgPic: any;
-    protected _isChecked: boolean;
-    readonly isChecked: boolean;
-    protected _blink: boolean;
-    blink: boolean;
-    private gridView;
-    private zeroUIBitmap;
-    protected numTxt: BmpText;
-    private num;
-    gridNumber: number;
-    constructor();
-    protected flushGrid(): void;
-    showEffect(isShow: boolean): void;
-    showRedEffect(): void;
-    showBlink(isShow: boolean): void;
-}
 declare class SFSConnector {
     private static _config;
     private static _sfs;
@@ -168,36 +122,29 @@ declare class GameCard extends GameUIItem {
     protected setGridsToRed(str: string): void;
     showfitEffect(assetName: string, fitIndex: Array<boolean>): void;
 }
-declare class TounamentLayer extends egret.DisplayObjectContainer {
-    private innerBar;
-    private outBar;
-    private pressBar;
-    private timeTx;
-    private potTx;
-    private duration;
-    private totalDuration;
-    private timer;
-    private _potCount;
-    private potCount;
-    private usersUI;
-    private champoin;
-    constructor(data: ITounamentInitData);
-    private onAdd(event);
-    private onRemove(event);
-    updata(data: ITounamentData): void;
-    buildInnerBar(): void;
-    buildOutBar(): void;
-    private updateDuration(duration, totalDuration);
-    private onTimer(event);
-    private updataDurationUI(duration);
-    private updatePrize(prize);
-    private showingWinners;
-    private updateUserList(users, winners);
-    private hideUserUI();
-    private showUserUI(users, winners);
-    private showingWinnersUI(winners);
-    private getUserListOrder(users);
-    private userIndexOf(users, id);
+declare class TowerGrid extends egret.Sprite {
+    protected defaultBgPic: egret.Bitmap;
+    protected onEffBgPic: egret.Bitmap;
+    private blink1Pic;
+    private blink2Pic;
+    protected linePic: egret.Bitmap;
+    private gridLayer;
+    protected _currentBgPic: egret.Bitmap;
+    currentBgPic: any;
+    protected _isChecked: boolean;
+    readonly isChecked: boolean;
+    protected _blink: boolean;
+    blink: boolean;
+    private gridView;
+    private zeroUIBitmap;
+    protected numTxt: BmpText;
+    private num;
+    gridNumber: number;
+    constructor();
+    protected flushGrid(): void;
+    showEffect(isShow: boolean): void;
+    showRedEffect(): void;
+    showBlink(isShow: boolean): void;
 }
 declare class BingoMachine extends GameUIItem {
     static GENERIC_MODAL_LOADED: string;
@@ -362,33 +309,6 @@ declare class BingoMachine extends GameUIItem {
     protected updateNewDatas(data: Object): void;
     static missionPopup(): void;
 }
-declare class GenericPo extends GenericModal {
-    protected bgAssetName: string;
-    protected bg: egret.Bitmap;
-    protected closeButtonAssetName: string;
-    protected closeButton: TouchDownButton;
-    protected closeButtonOffset: egret.Point;
-    cannotQuick: boolean;
-    constructor(configUrl?: string);
-    protected init(): void;
-    protected onClose(event: egret.TouchEvent): void;
-    /**
-     * update deal overplus text
-     */
-    protected updateDealOverplusText(time: number): void;
-    /**
-     * po overplus over
-     */
-    protected poOverplusOver(): void;
-    /**
-     * on key up
-     */
-    protected onKeyUp(keyCode: number): void;
-    /**
-     * on mouse wheel
-     */
-    protected onMouseWheel(dir: number): void;
-}
 declare class PaytableLayer extends egret.DisplayObjectContainer {
     protected paytableFgs: Array<egret.DisplayObject>;
     constructor();
@@ -428,34 +348,42 @@ declare class PaytableUI extends egret.Sprite {
     focus(): void;
     showBlinkAt(grids: Array<number>): void;
 }
-declare class SettingSlider extends egret.DisplayObjectContainer {
-    private slider;
-    private sliderRange;
-    private dragStarStageY;
-    private dragStarSliderY;
-    constructor();
-    setSliderPosition(topMax: number, scrollTop: number): void;
-    private onSliderStartDrag(event);
-    private onSliderStopDrag(event);
-    private dragSliderPosition(y);
-    readonly scrollTop: number;
-    private onMove(event);
+declare class TounamentLayer extends egret.DisplayObjectContainer {
+    private innerBar;
+    private outBar;
+    private pressBar;
+    private timeTx;
+    private potTx;
+    private duration;
+    private totalDuration;
+    private timer;
+    private _potCount;
+    private potCount;
+    private usersUI;
+    private champoin;
+    constructor(data: ITounamentInitData);
+    private onAdd(event);
+    private onRemove(event);
+    updata(data: ITounamentData): void;
+    buildInnerBar(): void;
+    buildOutBar(): void;
+    private updateDuration(duration, totalDuration);
+    private onTimer(event);
+    private updataDurationUI(duration);
+    private updatePrize(prize);
+    private showingWinners;
+    private updateUserList(users, winners);
+    private hideUserUI();
+    private showUserUI(users, winners);
+    private showingWinnersUI(winners);
+    private getUserListOrder(users);
+    private userIndexOf(users, id);
 }
-declare class V1Game extends BingoMachine {
-    Cartoes: Array<Array<number>>;
-    getCardsGroup(value: number): Array<number>;
-    protected changeCardNumberOrder(groupNumbers: Array<number>): Array<number>;
-    constructor(gameConfigFile: string, configUrl: string, gameId: number);
-    protected onServerData(data: Object): void;
-    protected sendRoundOverRequest(): void;
-    protected sendPlayRequest(): void;
-    protected sendExtraRequest(saving?: boolean): void;
-    protected sendCancelExtraReuqest(): void;
-    createCardGroups(): void;
-    onPlay(data: Object): void;
-    protected changeNumberFromServer(num: number): number;
-    onExtra(data: Object): void;
-    protected showMissExtraBall(balls: Array<number>): void;
+interface IMissionTask {
+    target: number;
+    current: number;
+    is_active: string;
+    mission_id: string;
 }
 declare class V2Game extends BingoMachine {
     constructor(gameConfigFile: string, configUrl: string, gameId: number);
@@ -511,17 +439,6 @@ declare class BingoBall extends egret.Sprite {
     startRun(pts: Array<egret.Point>): void;
     private moveToNextPoint();
 }
-declare class BankProductItem extends egret.DisplayObjectContainer {
-    hash: string;
-    constructor();
-}
-declare class CollectHourlyBonusBar extends egret.DisplayObjectContainer {
-    protected coin: Coin;
-    protected titleTx: egret.TextField;
-    protected coinsTx: egret.TextField;
-    constructor();
-    timerStaus(time: number, status: number): void;
-}
 declare class BingoBackGroundSetting {
     private static bgColor;
     private static bgItems;
@@ -567,27 +484,6 @@ declare class GameData {
     static waiter: Function;
     static getBetList(callback: Function, gameId: string): void;
     private static getMachineSettingSuccess(data);
-}
-declare class MuLang {
-    static txt: Object;
-    static CASE_NORMAL: number;
-    static CASE_UPPER: number;
-    static CASE_LOWER: number;
-    static CASE_TYPE_CAPITALIZE: number;
-    constructor();
-    static getText(key: string, caseType?: number): string;
-    static language: string;
-    static lanuageNames: Object;
-    static readonly languageName: any;
-}
-declare class MDS {
-    static mcFactory: egret.MovieClipDataFactory;
-    static addGameText(target: egret.DisplayObjectContainer, x: number, y: number, size: number, color: number, textItem: string, stroke?: boolean, width?: number, additionString?: string, scaleX?: number): TextLabel;
-    static addGameTextCenterShadow(target: egret.DisplayObjectContainer, x: number, y: number, size: number, color: number, textItem: string, stroke?: boolean, width?: number, center?: boolean, dropShadow?: boolean): TextLabel;
-    static addBitmapTextAt(target: egret.DisplayObjectContainer, fontName: string, x: number, y: number, textAlign: string, size: number, color: number, width: number, height: number): BmpText;
-    constructor();
-    static removeSelf(item: egret.DisplayObject): void;
-    static onUserHeadLoaded(userInfo: egret.Bitmap, size: number, event: egret.Event): void;
 }
 declare class CardArrowLayer extends egret.DisplayObjectContainer {
     protected arrowMcs: Array<Array<egret.MovieClip>>;
@@ -691,12 +587,13 @@ declare class BingoGameMain extends egret.DisplayObjectContainer {
     showChipBank(event?: egret.Event): void;
     showCoinBank(event?: egret.Event): void;
 }
-declare class BrowserInfo {
+declare class GlobelSettings {
+    static bankOpenType: number;
+    static bank: any;
+    static chipBank: any;
+    static bonusUI: any;
     constructor();
-    static getBrowserInfo(): Object;
-    static textNeedUpInThisBrowser: number;
-    static textNeedUpHasTested: boolean;
-    static readonly textUp: number;
+    static readonly language: string;
 }
 declare class CardGridColorAndSizeSettings {
     static numberColor: number;
@@ -750,122 +647,6 @@ declare class GameCardUISettings {
     static setTargetToPositionOnCard(target: egret.DisplayObject, cardIndex: number, gridIndex: number): void;
     static numberAtCard(cardIndex: number, gridIndex: number): number;
 }
-declare class ConFirmBar extends egret.Sprite {
-    constructor(size: egret.Point);
-    private closeThisBar();
-    private confirmChange(event);
-}
-declare class GameSettingItem extends egret.DisplayObjectContainer {
-    constructor(icon: string, text: string, entity: egret.DisplayObject, offsetY: number);
-    static settingTextFormat(tx: TextLabel): void;
-}
-declare class GameSettingPopup extends GenericPo {
-    protected scrollArea: egret.ScrollView;
-    protected scrollBar: egret.DisplayObjectContainer;
-    protected scrollSlider: SettingSlider;
-    private sliderDraging;
-    private soundEffectBtn;
-    private musicBtn;
-    private visualEffectBtn;
-    private notificationBtn;
-    private languageBar;
-    protected static readonly classAssetName: string;
-    constructor();
-    protected init(): void;
-    private onRemove(event);
-    protected addScrollArea(maskRect: egret.Rectangle): void;
-    protected addItem(index: number, icon: string, text: string, entity: egret.DisplayObject, offsetY?: number): void;
-    protected addButtonText(button: TouchDownButton, buttonText?: string): void;
-    protected addLoginButtonText(button: TouchDownButton, buttonText?: string): void;
-    private addItems();
-    private getFacebookAvatar();
-    private getPlayerType();
-    private addTitleAndVertion();
-    private addLanguageBar();
-    private logout();
-    private showLangugeBar();
-    private gotoLoginPage();
-    private suport();
-    private rateStar();
-    private soundEffectChange();
-    private musicChange();
-    private visualEffectChange();
-    private notificationChange();
-    private onFrame(event);
-    private onStartDrag(event);
-    private onStopDrag(event);
-    private showConfirm();
-}
-declare class GameSettings {
-    static vertion: string;
-    static visualEffectOn: boolean;
-    static notificationOn: boolean;
-    constructor();
-}
-declare var trace: (a: any) => void;
-declare class LanguageBar extends egret.Sprite {
-    private rects;
-    private languageArr;
-    private static changeIndex;
-    static instance: LanguageBar;
-    constructor();
-    private onTouch(event);
-    private onTap(event);
-    private showConfirm();
-    static confirmChange(): void;
-}
-declare class RateBar extends egret.Sprite {
-    private langResource;
-    private bg;
-    private closeBtn;
-    private stars;
-    private goldStars;
-    static aa: egret.DisplayObject;
-    constructor(size: egret.Point);
-    private rate(event);
-    private closeThisBar();
-    private dealWithIndex(index);
-    private delayOpenWindow();
-    private showOkButton();
-}
-declare class SettingsCheckbox extends egret.DisplayObjectContainer {
-    private bg;
-    private bar;
-    private callback;
-    private _radioOn;
-    RadioOn: boolean;
-    constructor(callback: Function);
-    private onTap(e);
-}
-declare class GlobelSettings {
-    static bankOpenType: number;
-    static bank: any;
-    static chipBank: any;
-    static bonusUI: any;
-    constructor();
-    static readonly language: string;
-}
-declare class SupportBar extends egret.Sprite {
-    private langResource;
-    private email;
-    private topTextInput;
-    private supportTextInput;
-    private bg;
-    private closeBtn;
-    private supportSuccessContainer;
-    private alertBar;
-    constructor(size: egret.Point);
-    private buildBg();
-    private buildTitleText();
-    private buildSupportText();
-    private buildSupportBtn();
-    private buildCloseBtn();
-    private buildAlertBar();
-    private closeAlertBar(event);
-    private sendSupport();
-    private closeThisBar();
-    private buildSupportSuccessContainer();
-}
 declare class GanhoCounter {
     protected ganhoArray: Array<number>;
     protected winCallback: Function;
@@ -877,81 +658,8 @@ declare class GanhoCounter {
     private getGanhoArray(resultList, fitItemOnCard);
     protected countGanho(ganhoArray: Array<number>, i: number, ob: string, result: PaytableCheckResult): void;
 }
-declare class Coin extends egret.MovieClip {
-    startPosition: egret.Point;
-    endPosition: egret.Point;
-    middlePosition: egret.Point;
-    startScale: number;
-    endScale: number;
-    middleScale: number;
-    private static _mcf;
-    private static readonly mcf;
-    constructor();
-    factor: number;
-    vY: number;
-    _vy: number;
-}
-declare class DataServer {
-    private callback;
-    private thisObject;
-    private failedCallback;
-    constructor();
-    getDataFromUrl(url: string, successCallback: Function, thisObject: any, postMethod: boolean, dataObejct: Object, failedCallbBack?: Function): void;
-    private loadComplete(event);
-    private loadFaild(event);
-}
-declare class Dinero extends egret.MovieClip {
-    startPosition: egret.Point;
-    endPosition: egret.Point;
-    middlePosition: egret.Point;
-    startScale: number;
-    endScale: number;
-    middleScale: number;
-    private static _mcf;
-    private static readonly mcf;
-    constructor();
-    factor: number;
-    vY: number;
-    _vy: number;
-}
 declare class DropCoins extends particle.GravityParticleSystem {
     constructor(coinsLevel: number);
-}
-declare class FacebookBitmap {
-    constructor();
-    static downloadBitmapDataByFacebookID(facebookId: string, width: number, height: number, callback: Function, thisObject: any): void;
-    static downloadBitmapDataByURL(url: string, callback: Function, thisObject: any): void;
-}
-declare class FlyingCoins extends egret.DisplayObjectContainer {
-    private coinsMcs;
-    private coinsFly;
-    private dineroMcs;
-    private startPosition;
-    private endPosition;
-    private middlePosition;
-    private startScale;
-    private endScale;
-    private middleScale;
-    private gapDuration;
-    constructor();
-    fly(coinsCount: number, startPosition: egret.Point, endPosition: egret.Point, middlePosition: egret.Point, startScale: number, endScale: number, middleScale: number): void;
-    flyDenero(coinsCount: number, startPosition: egret.Point, endPosition: egret.Point, middlePosition: egret.Point, startScale: number, endScale: number, middleScale: number): void;
-    private savePositions(startPosition, endPosition, middlePosition, startScale, endScale, middleScale);
-    private startFly();
-    private endFly(coin);
-}
-declare class LoadingUI extends egret.Sprite implements RES.PromiseTaskReporter {
-    constructor();
-    onProgress(current: number, total: number): void;
-}
-declare class LocalDataManager {
-    constructor();
-    static updatePlayerData(key: string, value: any): void;
-    static updatePlayerDatas(items: Array<IKeyValues>): void;
-}
-interface IKeyValues {
-    key: string;
-    value: any;
 }
 declare class JackpotLayer extends egret.DisplayObjectContainer {
     tip: TextLabel;
@@ -974,11 +682,9 @@ declare class JackpotLayer extends egret.DisplayObjectContainer {
     textBold: boolean;
     jackpotWinCallback(data: Object): void;
 }
-interface IMissionTask {
-    target: number;
-    current: number;
-    is_active: string;
-    mission_id: string;
+declare class LoadingUI extends egret.Sprite implements RES.PromiseTaskReporter {
+    constructor();
+    onProgress(current: number, total: number): void;
 }
 declare class MissionBar extends egret.DisplayObjectContainer {
     private missionBg;
@@ -1168,20 +874,16 @@ declare class PaytableResultListOprator {
     constructor();
     static missOneCounter(resultList: Array<Object>, paytableName: string, needCount?: boolean): number;
 }
-declare class PlayerConfig {
-    static serverVertion: number;
+declare class GameSoundManager {
+    private playing;
+    private static instance;
     constructor();
-    private static _playerData;
-    private static readonly playerData;
-    private static _configData;
-    private static readonly configData;
-    private static playerConfig;
-    private static mission;
-    static player(key: string): any;
-    static config(key: string): any;
-    static readonly properties: string;
+    play(soundAssetName: string, repeat?: number, callback?: Function): void;
+    private onSoundComplete(e);
+    stop(soundAssetName: string): void;
+    stopAll(): void;
+    static stopAll(): void;
 }
-declare function requestStr(str: any): any;
 declare class MissionPopup extends GenericPo {
     private taskListLayer;
     protected static readonly classAssetName: string;
@@ -1421,15 +1123,21 @@ declare class TounamentChampoin extends egret.DisplayObjectContainer {
     clearUI(): void;
     show(user: ITounamentUser): void;
 }
-declare class GameSoundManager {
-    private playing;
-    private static instance;
-    constructor();
-    play(soundAssetName: string, repeat?: number, callback?: Function): void;
-    private onSoundComplete(e);
-    stop(soundAssetName: string): void;
-    stopAll(): void;
-    static stopAll(): void;
+declare class V1Game extends BingoMachine {
+    Cartoes: Array<Array<number>>;
+    getCardsGroup(value: number): Array<number>;
+    protected changeCardNumberOrder(groupNumbers: Array<number>): Array<number>;
+    constructor(gameConfigFile: string, configUrl: string, gameId: number);
+    protected onServerData(data: Object): void;
+    protected sendRoundOverRequest(): void;
+    protected sendPlayRequest(): void;
+    protected sendExtraRequest(saving?: boolean): void;
+    protected sendCancelExtraReuqest(): void;
+    createCardGroups(): void;
+    onPlay(data: Object): void;
+    protected changeNumberFromServer(num: number): number;
+    onExtra(data: Object): void;
+    protected showMissExtraBall(balls: Array<number>): void;
 }
 declare class TounamentUserItem extends egret.DisplayObjectContainer {
     constructor(user: ITounamentUser, rank: number, isMe: boolean);
