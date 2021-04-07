@@ -33,6 +33,10 @@
       "path": "../library/basicUI/libsrc"
     },
     {
+      "name": "allGameLibs",
+      "path": "../library/allGameLibs/libsrc"
+    },
+    {
       "name": "bingoGameLibs",
       "path": "../library/bingoGameLibs/libsrc"
     }
