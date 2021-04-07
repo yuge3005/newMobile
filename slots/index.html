@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Egret</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="full-screen" content="true" />
+    <meta name="screen-orientation" content="portrait" />
+    <meta name="x5-fullscreen" content="true" />
+    <meta name="360-fullscreen" content="true" />
+    <style>
+        html, body {
+            -ms-touch-action: none;
+            background: #888888;
+            padding: 0;
+            border: 0;
+            margin: 0;
+            height: 100%;
+        }
+        @media screen and (orientation: portrait){
+            #loading_bar {
+                left: 50%;
+                top: 50%;
+                transform: rotate(-90deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div style="position:fixed;" id="loading_bar">
+        <div style="font-family: 'Righteous';position: fixed;top:50%;left:50%;margin-left:-93px;margin-top:-86px;text-align:center"><img src="resource/Icons/halloween.png" style="width:183px;height:173"></div>
+        <div style="font-family: 'Arial Black';position: fixed;top:50%;left:50%;margin-left:-176px;margin-top:86px;text-align:center"><img src="resource/assets/proload/loader_bg.png" style="width:353px;height:38"></div>
+        <div style="font-family: 'Arial';position: fixed;top:50%;left:50%;margin-left:-160px;margin-top:93px;text-align:center"><img src="resource/assets/proload/loader_glass.png" style="width:322px;height:24"></div>
+        <div style="font-family: 'LuckiestGuy';position: fixed;top:50%;left:50%;margin-left:-159px;margin-top:94px;text-align:center;width:5px;overflow-x:hidden" id="loading_progress_div"><img src="resource/assets/proload/loader_balls_fill.png" style="width:320px;height:22"></div>
+    </div>
+    <div style="margin: auto;width: 100%;height: 100%;position: fixed" class="egret-player"
+         data-entry-class="Main"
+         data-orientation="landspace"
+         data-scale-mode="showAll"
+         data-frame-rate="30"
+         data-content-width="960"
+         data-content-height="540"
+         data-multi-fingered="2"
+         data-show-fps="true" data-show-log="false"
+         data-show-fps-style="x:0,y:0,size:12,textColor:0xffffff,bgAlpha:0.9">
+    </div>
+<script>
+    function isMobile() {
+        let mobile = navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)
+        return mobile!= null
+    }
+    let egretDiv = document.getElementsByClassName( "egret-player" )[0];
+    var loadScript = function (list, callback) {
+        var loaded = 0;
+        var loadNext = function () {
+            loadSingleScript(list[loaded], function () {
+                loaded++;
+                document.getElementById( "loading_progress_div" ).style.width = Math.floor( 320 * Math.min( loaded, 9 ) * 2 / 100 ) + "px";
+                if (loaded >= list.length) {
+                    callback();
+                }
+                else {
+                    loadNext();
+                }
+            })
+        };
+        loadNext();
+    };
+
+    var loadSingleScript = function (src, callback) {
+        var s = document.createElement('script');
+        s.async = false;
+        s.src = src;
+        s.addEventListener('load', function () {
+            s.parentNode.removeChild(s);
+            s.removeEventListener('load', arguments.callee, false);
+            callback();
+        }, false);
+        document.body.appendChild(s);
+    };
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', './manifest.json?v=' + Math.random(), true);
+    xhr.addEventListener("load", function () {
+        var manifest = JSON.parse(xhr.response);
+        var list = manifest.initial.concat(manifest.game);
+        loadScript(list, function () {
+            /**
+             * {
+             * "renderMode":, //Engine rendering mode, "canvas" or "webgl"
+             * "audioType": 0 //Use the audio type, 0: default, 2: web audio, 3: audio
+             * "antialias": //Whether the anti-aliasing is enabled in WebGL mode, true: on, false: off, defaults to false
+             * "calculateCanvasScaleFactor": //a function return canvas scale factor
+             * }
+             **/
+            egret.runEgret({ renderMode: "webgl", audioType: 2, calculateCanvasScaleFactor:function(context) {
+                var backingStore = context.backingStorePixelRatio ||
+                    context.webkitBackingStorePixelRatio ||
+                    context.mozBackingStorePixelRatio ||
+                    context.msBackingStorePixelRatio ||
+                    context.oBackingStorePixelRatio ||
+                    context.backingStorePixelRatio || 1;
+                return (window.devicePixelRatio || 1) / backingStore;
+            }});
+        });
+    });
+    xhr.send(null);
+
+    document.onmousedown = function( ev ){ if( ev.button == 2 ) document.isRightClick = true; }
+	document.onmouseup = function( ev ){ document.isRightClick = false;	}
+</script>
+</body>
+
+</html>
