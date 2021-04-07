@@ -82,7 +82,7 @@ class Mara extends Multi75Super{
 	private chooseBit: egret.Bitmap;
 
 	protected letsWait(): void{
-		this.setCardDatasWithNumeros(MDS.fakeArr(100));
+		this.setCardDatasWithNumeros(MultiSetting.fakeArr(100));
 
 		let bg: egret.Bitmap = this.getChildByName( this.assetStr( "bg" ) ) as egret.Bitmap;
 		bg.texture = RES.getRes( "mara_bg_png" );

@@ -393,7 +393,7 @@ class MultiPlayerMachine extends egret.Sprite{
 		onCardPt.y *= card.scaleY;
 		let cardPt: egret.Point = new egret.Point( card.x, card.y );
 		let pos: egret.Point = cardPt.add( onCardPt );
-		MDS.dropCoinsAt( this, pos, coins );
+		MultiSetting.dropCoinsAt( this, pos, coins );
 	}
 
 	protected onLevelUpBonus( event: egret.Event ){

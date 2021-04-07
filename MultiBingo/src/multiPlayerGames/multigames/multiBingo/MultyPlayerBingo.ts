@@ -69,7 +69,7 @@ class MultyPlayerBingo extends Multi75Super{
 	private exitCardPlaying: boolean;
 
 	protected letsWait(): void{
-		this.setCardDatasWithNumeros(MDS.fakeArr(100));
+		this.setCardDatasWithNumeros(MultiSetting.fakeArr(100));
 
 		let bg: egret.Bitmap = this.getChildByName( this.assetStr( "BG2" ) ) as egret.Bitmap;
 		bg.texture = RES.getRes( "multiBingo_bg_png" );
@@ -322,7 +322,7 @@ class MultyPlayerBingo extends Multi75Super{
 				this.showGetCoinsOnCard( uuid, gridIndex, Math.floor( coins * MultiPlayerMachine.oneCardPrize / MultiPlayerMachine.cardPrize ) );
 			}
 			else if( type == "coinsBall" ){
-				MDS.dropCoinsAt( this, new egret.Point( 366, 468 ), Math.floor( coins * MultiPlayerMachine.oneCardPrize / MultiPlayerMachine.cardPrize ) );
+				MultiSetting.dropCoinsAt( this, new egret.Point( 366, 468 ), Math.floor( coins * MultiPlayerMachine.oneCardPrize / MultiPlayerMachine.cardPrize ) );
 			}
 		}
 	}
