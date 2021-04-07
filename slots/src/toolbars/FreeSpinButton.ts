@@ -15,7 +15,7 @@ class FreeSpinButton extends TouchDownButton{
 	}
 
 	private freeSpinClick( event: egret.TouchEvent ){
-		BingoMachine.sendCommand( GameCommands.play );
+		SlotMachine.sendCommand( GameCommands.play );
 		this.visible = false;
 	}
 

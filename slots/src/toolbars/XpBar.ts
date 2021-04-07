@@ -65,7 +65,7 @@ class XpBar extends egret.DisplayObjectContainer{
 		if (!this.levelUpRecord[this.level + ""]) {
 			this.levelUpRecord[this.level + ""] = true;
 			// send level up request
-			this.sendCollectBonusRequest( BingoMachine.currentGameId, GameData.currentBet );
+			this.sendCollectBonusRequest( SlotMachine.currentGameId, GameData.currentBet );
 			return true;
 		}
 	}

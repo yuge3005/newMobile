@@ -1,13 +1,15 @@
 class Halloween extends SlotMachine{
 		protected static get classAssetName(){
-				return "turbo90";
+				return "halloween";
 		}
 
 		protected static get animationAssetName(){
-				return "turbo90Animation";
+				return "halloweenAnimation";
 		}
 
 		public constructor( assetsPath: string ) {
-				super();
+				super( "halloween.conf", assetsPath, 46 );
+
+				LineManager.enabledCards = 20;
 		}
 }

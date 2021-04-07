@@ -28,12 +28,12 @@ class Topbar extends egret.DisplayObjectContainer{
 			document.location.href = "../lobby";
 		}
 		else if( event.target == this.menuBtn ){
-			let bingoGame: BingoMachine = this.parent as BingoMachine;
+			let bingoGame: SlotMachine = this.parent as SlotMachine;
 			bingoGame.stopAutoPlay();
 			bingoGame.dispatchEvent( new egret.Event("showGameSettings" ) );
 		}
 		else if( event.target == this.bankBtn ){
-			let bingoGame: BingoMachine = this.parent as BingoMachine;
+			let bingoGame: SlotMachine = this.parent as SlotMachine;
 			bingoGame.stopAutoPlay();
 			bingoGame.dispatchEvent( new egret.Event("showBank" ) );
 		}

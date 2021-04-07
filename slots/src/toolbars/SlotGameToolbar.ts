@@ -6,7 +6,6 @@ class SlotGameToolbar extends egret.DisplayObjectContainer{
 	protected increaseBetBtn: TouchDownButton;
 
 	protected maxBetBtn: TouchDownButton;
-	private collectBtn: TouchDownButton;
 	protected buyAllBtn: TouchDownButton;
 
 	protected playBtn: LongPressButton;
@@ -25,7 +24,6 @@ class SlotGameToolbar extends egret.DisplayObjectContainer{
 	private enabledButtons: Array<TouchDownButton>;
 
 	protected playContainer: egret.DisplayObjectContainer;
-	protected extraContainer: egret.DisplayObjectContainer;
 
 	private _autoPlaying: boolean = false;
 	public get autoPlaying(): boolean{
@@ -36,26 +34,11 @@ class SlotGameToolbar extends egret.DisplayObjectContainer{
 		if( value ){
 			this.enableAllButtons( false );
 			this.stopAutoBtn.visible = true;
-			BingoMachine.sendCommand( GameCommands.play );
+			SlotMachine.sendCommand( GameCommands.play );
 		}
 		else{
 			this.stopAutoBtn.visible = false;
 			this.playBtn.enabled = true;
-		}
-	}
-
-	private _buyAllExtra: boolean = false;
-	public get buyAllExtra(): boolean{
-		return this._buyAllExtra;
-	}
-	public set buyAllExtra( value: boolean ){
-		this._buyAllExtra = value;
-		if( value ){
-			this.enabledExtraButtons( false );
-			BingoMachine.sendCommand( GameCommands.extra );
-		}
-		else{
-			this.enabledExtraButtons();
 		}
 	}
 
@@ -68,7 +51,6 @@ class SlotGameToolbar extends egret.DisplayObjectContainer{
 		this.allButtons = [];
 		Com.addBitmapAt( this, "bingoGameToolbar_json.back_panel", 0, 96 );
 		this.buildPlayContainer();
-		this.buildExtraContainer();
 
 		this.stopAutoBtn = this.addBtn( "auto_stop", 1724, 22, GameCommands.stopAuto, this, true );
 		this.addButtonText( this.stopAutoBtn, 72, "auto", 15, 0, 0xFFFFFF, this.stopAutoBtn.width - 30, 125, 4, 0x000093 );
@@ -133,29 +115,6 @@ class SlotGameToolbar extends egret.DisplayObjectContainer{
 		this.betText = this.addToolBarText( 185, 124, 220, 68, 45, 1, 0, this.playContainer );
 	}
 
-	private buildExtraContainer(){
-		this.extraContainer = new egret.DisplayObjectContainer;
-		this.addChild( this.extraContainer );
-		this.extraContainer.visible = false;
-
-		Com.addBitmapAt( this.extraContainer, "BB_EXTRA_btn_bg", 1360, 0 );		
-
-		this.collectBtn = this.addBtn( "BB_EXTRA_collect_btn", 17, 120, GameCommands.collect, this.extraContainer, true );
-		this.addButtonText( this.collectBtn, 50, "credit", 10, 0, 0, this.collectBtn.width - 20 );
-		this.buyAllBtn = this.addBtn( "BB_EXTRA_buyall", 290, 118, GameCommands.buyAll, this.extraContainer, true );
-		this.addButtonText( this.buyAllBtn, 50, "buy all", 10, 0, 0, this.buyAllBtn.width - 20 );
-
-		this.superExtraBtn = this.addMaskBtn( "btn_mega", 1724, 22, GameCommands.extra, this.extraContainer, 0xFFFFFF );
-		this.superExtraBtn.addButtonBigText( 72, "mega" );
-		this.superExtraBtn.addButtonSmallText( 60 );
-		this.superExtraBtn.setIcon( "balance_chip" );
-
-		this.bigExtraBtn = this.addMaskBtn( "BB_EXTRA_extra_btn", 1724, 22, GameCommands.extra, this.extraContainer );
-		this.bigExtraBtn.addButtonBigText( 72, "extra" );
-		this.bigExtraBtn.addButtonSmallText( 60 );
-		this.bigExtraBtn.setIcon( "balance_coin" );
-	}
-
 	private addPlayButton(){
 		this.playBtn = new LongPressButton( "bingoGameToolbar_json.play", "bingoGameToolbar_json.play_press" );
 		Com.addObjectAt( this.playContainer, this.playBtn, 1724, 22 );
@@ -205,7 +164,7 @@ class SlotGameToolbar extends egret.DisplayObjectContainer{
 	}
 
 	protected sendCommand( event: egret.TouchEvent ): void{
-		BingoMachine.sendCommand( event.target.name );
+		SlotMachine.sendCommand( event.target.name );
 	}
 
 	protected addButtonText( terget: TouchDownButton, size: number, text: string, offsetX: number = 0, offsetY: number = 0, color: number = 0xFFFFFF, width: number = 0, height: number = 0, stroke: number = 0, strokeColor: number = 0 ): TextLabel{
@@ -262,42 +221,10 @@ class SlotGameToolbar extends egret.DisplayObjectContainer{
 		this.enabledButtons = [];
 	}
 
-	public showExtra( isShow: boolean, extraPrice: number = 0 ): void{
-		if( isShow ){
-			if( this.autoPlaying ){
-				this.playBtn.visible = false;
-			}
-			else{
-				this.enableAllButtons( false );
-				if( !this.buyAllExtra ) this.enabledExtraButtons();
-			}
-			this.showExtraButton( true );
-			this.showTip( GameCommands.extra, extraPrice );
-		}
-		else{
-			if( this.autoPlaying ){
-			}
-			else{
-				this.enableAllButtons( true );
-				this.playBtn.visible = true;
-			}
-			this.showExtraButton( false );
-		}
-	}
-
 	private enableAllButtons( enabled: boolean ):void{
 		for( let i: number = 0; i < this.allButtons.length; i++ ){
 			this.allButtons[i].enabled = enabled;
 		}
-	}
-
-	private showExtraButton( isShow: boolean ){
-		this.playContainer.visible = !isShow;
-		this.extraContainer.visible = isShow;
-	}
-
-	private enabledExtraButtons( isAble: boolean = true ){
-		this.buyAllBtn.enabled = this.collectBtn.enabled = this.superExtraBtn.enabled = this.bigExtraBtn.enabled = isAble;
 	}
 
 	public showTip( cmd: string, price: number = 0 ){
@@ -307,12 +234,6 @@ class SlotGameToolbar extends egret.DisplayObjectContainer{
 			case GameCommands.play:
 				ev["status"] = "play";
 				this.dispatchEvent( ev );
-			break;
-			case GameCommands.extra:
-				ev["status"] = "extra";
-				ev["extraPrice"] = price;
-				this.dispatchEvent( ev );
-				this.showCoinsIconAt( price );
 			break;
 			default:
 				ev["status"] = "ready";
@@ -342,7 +263,6 @@ class SlotGameToolbar extends egret.DisplayObjectContainer{
 
 	public showCollectButtonAfterOOC(): void{
 		this.enabledExtraButtons();
-		this.showExtraButton( true );
 	}
 
 	public unlockAllButtonsAfterOOC(): void{
@@ -353,13 +273,6 @@ class SlotGameToolbar extends egret.DisplayObjectContainer{
 	public unlockAllButtonsAfterOOCExtra(): void{
 		this.enableAllButtons( false );
 		this.enabledExtraButtons();
-		this.showExtraButton( true );
-	}
-
-	public collect():void{
-		if( this.collectBtn.enabled && this.collectBtn.visible ){
-			BingoMachine.sendCommand( GameCommands.collect );
-		}
 	}
 
 	private delayKeyboard: number = 500;

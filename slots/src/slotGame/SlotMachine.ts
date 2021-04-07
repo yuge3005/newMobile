@@ -33,10 +33,79 @@ class SlotMachine extends egret.DisplayObjectContainer {
 		super();
 	}
 
+	public static sendCommand(cmd: string) {
+		trace( "ToolBarCommand:" + cmd );
+		if( cmd == GameCommands.help ){
+			this.currentGame.dispatchEvent( new egret.Event( "showHelp" ) );
+		}
+		else if (cmd == GameCommands.play) {
+			if( Number( this.currentGame.gameCoins ) < GameData.currentBet * LineManager.enabledCards ){
+				if( this.currentGame.gameToolBar.autoPlaying ){
+					this.currentGame.gameToolBar.autoPlaying = false;
+					this.currentGame.gameToolBar.unlockAllButtonsAfterOOC();
+					this.currentGame.resetGameToolBarStatus();
+				}
+				this.currentGame.dispatchEvent(new egret.Event("out_of_coins_game_id"));
+				return;
+			}
+			this.currentGame.startPlay();
+			this.currentGame.gameToolBar.lockAllButtons();
+			this.currentGame.sendPlayRequest();
+			CardManager.clearCardsStatus();
+			PayTableManager.clearPaytablesStatus();
+			this.currentGame.gameToolBar.showTip( cmd );
+			this.currentGame.dispatchEvent( new egret.Event( "onGamePlay" ) );
+		}
+		else if( cmd == GameCommands.stop ){
+			this.currentGame.ballRunforStop = true;
+			this.currentGame.gameToolBar.enabledStopButton();
+		}
+		else if( cmd == GameCommands.showMini ){
+			this.currentGame.showMiniGame();
+		}
+		else if( cmd == GameCommands.startAuto ){
+			this.currentGame.gameToolBar.autoPlaying = true;
+		}
+		else if( cmd == GameCommands.stopAuto ){
+			this.currentGame.gameToolBar.autoPlaying = false;
+			clearTimeout( this.currentGame.autoPlayTimeoutId );
+		}
+		else if( cmd == GameCommands.buyAll ){
+			this.currentGame.gameToolBar.buyAllExtra = true;
+		}
+		else{//the rest commands are relatied to bet and card enabled
+			if( cmd == GameCommands.decreseBet ){
+				GameData.betDown();
+				this.currentGame.betChanged( -1 );
+			}
+			else if( cmd == GameCommands.increaseBet ){
+				GameData.betUp();
+				this.currentGame.betChanged( 1 );
+			}
+			else if( cmd == GameCommands.maxBet ){
+				GameData.setBetToMax();
+				this.currentGame.betChanged( 0 );
+			}
+			else if (cmd == GameCommands.minBet) {
+				GameData.setBetToMin();
+				this.currentGame.betChanged( 0 );
+			}	
+			else throw new Error( "hehe" );
+			this.currentGame.resetGameToolBarStatus();
+			this.currentGame.changeCardsBg();
+			this.currentGame.jackpotArea.tryJackpotMinBet();
+			this.currentGame.tellTounamentCurrentBet();
+		}
+	}
+
 	/**
 	 * quick play
 	 */
 	public quickPlay(): void {
 		this.gameToolBar.quickPlay();
+	}
+
+	public stopAutoPlay(){
+		if( this.gameToolBar.autoPlaying ) this.gameToolBar.autoPlaying = false;
 	}
 }
