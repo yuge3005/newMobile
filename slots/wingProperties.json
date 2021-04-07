@@ -2,11 +2,11 @@
     "resourcePlugin": {
         "configs": [
             {
-                "configPath": "resource/default.res.json",
+                "configPath": "resource/assets/default.res.json",
                 "relativePath": "resource/"
             },
             {
-                "configPath": "resource/assets/default.res.json",
+                "configPath": "resource/game/halloween/default.res.json",
                 "relativePath": "resource/"
             }
         ]

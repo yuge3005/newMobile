@@ -1,0 +1,31 @@
+{
+	"groups": [
+		{
+			"keys": "halloween_bg_jpg,halloweenAnimation_png,halloweenAnimation_json,halloween_json",
+			"name": "halloween"
+		}
+	],
+	"resources": [
+		{
+			"url": "game/halloween/halloween_bg.jpg",
+			"type": "image",
+			"name": "halloween_bg_jpg"
+		},
+		{
+			"url": "game/halloween/halloweenAnimation.png",
+			"type": "image",
+			"name": "halloweenAnimation_png"
+		},
+		{
+			"url": "game/halloween/halloweenAnimation.json",
+			"type": "json",
+			"name": "halloweenAnimation_json"
+		},
+		{
+			"url": "game/halloween/halloween.json",
+			"type": "sheet",
+			"name": "halloween_json",
+			"subkeys": "0,1,2,20 Lines,3,4,5,6,7,8,9,Group-1,Group-10,Group-11,Group-12,Group-13,Group-14,Group-15,Group-16,Group-17,Group-18,Group-19,Group-2,Group-20,Group-3,Group-4,Group-5,Group-6,Group-7,Group-8,Group-9,Line Count,spin_btn"
+		}
+	]
+}
