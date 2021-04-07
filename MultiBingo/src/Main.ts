@@ -86,13 +86,13 @@ class Main extends egret.DisplayObjectContainer {
 	protected showShadow(){
 		if( !this.shadow ){
 			this.shadow = new egret.Shape;
-			GraphicTool.drawRect( this.shadow, new egret.Rectangle( 0, 0, BingoBackGroundSetting.gameSize.x, BingoBackGroundSetting.gameSize.y ), 0, false, 0.5 );
+			GraphicTool.drawRect( this.shadow, new egret.Rectangle( 0, 0, MultiBackGroundSetting.gameSize.x, MultiBackGroundSetting.gameSize.y ), 0, false, 0.5 );
 			this.shadow.touchEnabled = true;
 		}
 		this.addChild( this.shadow );
 
 		if( !this.modalPreloader ){
-			this.modalPreloader = Com.addBitmapAt( this, "modalGeneric_json.loader", BingoBackGroundSetting.gameSize.x >> 1, BingoBackGroundSetting.gameSize.y >> 1 );
+			this.modalPreloader = Com.addBitmapAt( this, "modalGeneric_json.loader", MultiBackGroundSetting.gameSize.x >> 1, MultiBackGroundSetting.gameSize.y >> 1 );
 			this.modalPreloader.anchorOffsetX = this.modalPreloader.width >> 1;
 			this.modalPreloader.anchorOffsetY = this.modalPreloader.height >> 1;
 		}
@@ -113,8 +113,8 @@ class Main extends egret.DisplayObjectContainer {
 	}
 
 	private addPoFromTo( fromScale: number, toScale: number ){
-		this.currentPo.x = BingoBackGroundSetting.gameSize.x >> 1;
-		this.currentPo.y = BingoBackGroundSetting.gameSize.y >> 1;
+		this.currentPo.x = MultiBackGroundSetting.gameSize.x >> 1;
+		this.currentPo.y = MultiBackGroundSetting.gameSize.y >> 1;
 		this.currentPo.scaleX = fromScale;
 		this.currentPo.scaleY = fromScale;
 		this.currentPo.addEventListener( GenericModal.CLOSE_MODAL, this.closeCurrentPo, this );

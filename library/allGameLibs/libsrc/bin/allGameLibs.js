@@ -306,8 +306,11 @@ var PlayerConfig = (function () {
         configurable: true
     });
     PlayerConfig.serverVertion = 2;
-    PlayerConfig.playerConfig = { "user.id": requestStr("id"), "score.level": 2538, "score.this_level_xp": 2500, "score.next_level_xp": 3500, "score.xp": 3000,
-        "mission": { "task_is_process": "0", "unlock_level": 10, "task": { "387285": { "is_active": "1", "type": "1", "current": "1", "target": "2", "id": "387285", "bet_limit": -1 }, "387286": { "is_active": "0", "type": "1", "current": "1", "target": "6", "id": "387286" }, "387287": { "is_active": "0", "type": "1", "current": "0", "target": "15", "id": "387287" } }, "score_info": { "score_is_process": "0" } }, "mission.unlock_level": 3000, "loyalty.loyalty_level": 4, "facebook.email": "a@b.com" };
+    PlayerConfig.playerConfig = { "user.id": requestStr("id"), "score.level": 2538,
+        "score.this_level_xp": 2500, "score.next_level_xp": 3500,
+        "user_info.preferences": [], "user_info.preferences_answer": [], "settings.lang": "en",
+        "mission": { "task_is_process": "0", "unlock_level": 10, "task": { "387285": { "is_active": "1", "type": "1", "current": "1", "target": "2", "id": "387285", "bet_limit": -1 }, "387286": { "is_active": "0", "type": "1", "current": "1", "target": "6", "id": "387286" }, "387287": { "is_active": "0", "type": "1", "current": "0", "target": "15", "id": "387287" } }, "score_info": { "score_is_process": "0" } }, "mission.unlock_level": 3000, "loyalty.loyalty_level": 4, "facebook.email": "a@b.com",
+        "score.coins": 10, "score.chips": 10, "score.xp": 10, "score": { "next_level_xp": 15, "this_level_xp": 5 } };
     PlayerConfig.mission = {};
     return PlayerConfig;
 }());

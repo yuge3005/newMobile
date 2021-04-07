@@ -177,12 +177,12 @@ class MaraAnimationManager extends egret.DisplayObjectContainer{
 		let rs: egret.DisplayObjectContainer = new egret.DisplayObjectContainer;
 		Com.addBitmapAt( rs, MultiPlayerMachine.getAssetStr("round"), 0, 0 );
 		Com.addBitmapAtMiddle( rs, "mara_" + MuLang.language + "_json.round_over_tip", 448, 457 );
-		Com.addObjectAt( this, rs, BingoBackGroundSetting.gameMask.width - rs.width >> 1, - rs.height );
-		TweenerTool.tweenTo( rs, { y: BingoBackGroundSetting.gameMask.height - rs.height >> 1 }, 500, 0, this.roundStartHide.bind( this, rs ), null, egret.Ease.circOut );
+		Com.addObjectAt( this, rs, MultiBackGroundSetting.gameMask.width - rs.width >> 1, - rs.height );
+		TweenerTool.tweenTo( rs, { y: MultiBackGroundSetting.gameMask.height - rs.height >> 1 }, 500, 0, this.roundStartHide.bind( this, rs ), null, egret.Ease.circOut );
 	}
 
 	private roundStartHide( rs: egret.DisplayObjectContainer ){
-		TweenerTool.tweenTo( rs, { y: BingoBackGroundSetting.gameMask.width }, 500, 1500, MDS.removeSelf.bind( this, rs ), null, egret.Ease.circIn );
+		TweenerTool.tweenTo( rs, { y: MultiBackGroundSetting.gameMask.width }, 500, 1500, MDS.removeSelf.bind( this, rs ), null, egret.Ease.circIn );
 	}
 
 	public changeModeAnimation(){
@@ -192,8 +192,8 @@ class MaraAnimationManager extends egret.DisplayObjectContainer{
 			this.changeModeFactory = new egret.MovieClipDataFactory( data, tex );
 		}
 		let mc: egret.MovieClip = Com.addMovieClipAt( this, this.changeModeFactory, "mara_change_mode", 0, 0 );
-		mc.scaleX = BingoBackGroundSetting.gameMask.width / 378;
-		mc.scaleY = BingoBackGroundSetting.gameMask.height / 300;
+		mc.scaleX = MultiBackGroundSetting.gameMask.width / 378;
+		mc.scaleY = MultiBackGroundSetting.gameMask.height / 300;
 		mc.play(1);
 		TweenerTool.tweenTo( mc, { alpha: 0 }, 200, 1100, MDS.removeSelf.bind( this, mc ) );
 	}
@@ -254,7 +254,7 @@ class MaraAnimationManager extends egret.DisplayObjectContainer{
 		}
 		let fireworkBg: egret.Shape = new egret.Shape;
 		Com.addObjectAt( this, fireworkBg, 0, 0 );
-		GraphicTool.drawRect( fireworkBg, BingoBackGroundSetting.gameMask, 0x000F41, false, 0.4 );
+		GraphicTool.drawRect( fireworkBg, MultiBackGroundSetting.gameMask, 0x000F41, false, 0.4 );
 		TweenerTool.tweenTo( fireworkBg, { alpha: 0 }, 200, 3300, MDS.removeSelf.bind( this, fireworkBg ) );
 		let mc0: egret.MovieClip = Com.addMovieClipAt( this, this.towerFactory, "mara_fireworks1", 226, 0 );
 		mc0.play( 1 );
@@ -270,13 +270,13 @@ class MaraAnimationManager extends egret.DisplayObjectContainer{
 		TweenerTool.tweenTo( mc2, { alpha: 0 }, 200, 1500, MDS.removeSelf.bind( this, mc2 ) );
 		let mc3: egret.MovieClip = Com.addMovieClipAt( this, this.fireworksFactory, "mara_fireworks3", 0, 0 );
 		mc3.play( 1 );
-		mc3.scaleX = BingoBackGroundSetting.gameMask.width / 755;
-		mc3.scaleY = BingoBackGroundSetting.gameMask.height / 600;
+		mc3.scaleX = MultiBackGroundSetting.gameMask.width / 755;
+		mc3.scaleY = MultiBackGroundSetting.gameMask.height / 600;
 		TweenerTool.tweenTo( mc3, { alpha: 0 }, 200, 3300, MDS.removeSelf.bind( this, mc3 ) );
 		let mc4: egret.MovieClip = Com.addMovieClipAt( this, this.fireworksFactory, "mara_fireworks4", 0, 0 );
 		mc4.play( 1 );
-		mc4.scaleX = BingoBackGroundSetting.gameMask.width / 755;
-		mc4.scaleY = BingoBackGroundSetting.gameMask.height / 600;
+		mc4.scaleX = MultiBackGroundSetting.gameMask.width / 755;
+		mc4.scaleY = MultiBackGroundSetting.gameMask.height / 600;
 		TweenerTool.tweenTo( mc4, { alpha: 0 }, 200, 3300, MDS.removeSelf.bind( this, mc4 ) );
 	}
 }

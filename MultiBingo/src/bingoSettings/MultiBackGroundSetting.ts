@@ -1,4 +1,4 @@
-class BingoBackGroundSetting{
+class MultiBackGroundSetting{
 
 	private static bgColor: number;
 	private static bgItems: Array<string>;
@@ -29,7 +29,7 @@ class BingoBackGroundSetting{
 	}
 
 	private static drawBackgroundOn( target: egret.Sprite ):void{
-		GraphicTool.drawRect( target, new egret.Rectangle( 0, 0, BingoBackGroundSetting.gameMask.width, BingoBackGroundSetting.gameMask.height ), this.bgColor );
+		GraphicTool.drawRect( target, new egret.Rectangle( 0, 0, MultiBackGroundSetting.gameMask.width, MultiBackGroundSetting.gameMask.height ), this.bgColor );
 	}
 
 	private static buildBGItemsByArray( target: egret.Sprite, mcf: egret.MovieClipDataFactory ): Array<egret.DisplayObject>{

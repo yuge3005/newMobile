@@ -64,7 +64,7 @@ class MultiPlayerMachine extends egret.Sprite{
 
 	protected onConfigLoadComplete():void{
 		var obj: Object = RES.getRes( this.gameConfigFile.replace( ".", "_" ) );
-		BingoBackGroundSetting.getBackgroundData( obj["backgroundColor"], obj["backgroundItems"] );
+		MultiBackGroundSetting.getBackgroundData( obj["backgroundColor"], obj["backgroundItems"] );
 
 		this.ballArea.getBallSettings( obj["balls"], obj["ballSize"], obj["ballTextSize"] );
 
@@ -116,11 +116,11 @@ class MultiPlayerMachine extends egret.Sprite{
 		this.inited = true;
 		this.dispatchEvent( new egret.Event( MultiPlayerMachine.GENERIC_MODAL_LOADED ) );
 
-		this.scaleX = BingoBackGroundSetting.gameSize.x / BingoBackGroundSetting.gameMask.width;
-		this.scaleY = BingoBackGroundSetting.gameSize.y / BingoBackGroundSetting.gameMask.height;
-		this.mask = BingoBackGroundSetting.gameMask;
+		this.scaleX = MultiBackGroundSetting.gameSize.x / MultiBackGroundSetting.gameMask.width;
+		this.scaleY = MultiBackGroundSetting.gameSize.y / MultiBackGroundSetting.gameMask.height;
+		this.mask = MultiBackGroundSetting.gameMask;
 
-		MDS.mcFactory = BingoBackGroundSetting.initBackground( this );
+		MDS.mcFactory = MultiBackGroundSetting.initBackground( this );
 
 		this.addChild( this.ballArea );
 		this.addChild( this.cardArea );
