@@ -5,6 +5,8 @@ class SlotMachine extends egret.DisplayObjectContainer {
 	public preLoader: RES.PromiseTaskReporter;
 
 	protected assetName: string;
+	private gameConfigFile: string;
+	protected languageObjectName: string = "forSlot_tx";
 	protected gameToolBar: SlotGameToolbar;
 	protected topbar: Topbar;
 	protected betBar: Betbar;
@@ -39,7 +41,7 @@ class SlotMachine extends egret.DisplayObjectContainer {
 			this.currentGame.dispatchEvent( new egret.Event( "showHelp" ) );
 		}
 		else if (cmd == GameCommands.play) {
-			if( Number( this.currentGame.gameCoins ) < GameData.currentBet * LineManager.enabledCards ){
+			if( Number( this.currentGame.gameCoins ) < GameData.currentBet * LineManager.maxLines ){
 				if( this.currentGame.gameToolBar.autoPlaying ){
 					this.currentGame.gameToolBar.autoPlaying = false;
 					this.currentGame.gameToolBar.unlockAllButtonsAfterOOC();
@@ -88,9 +90,7 @@ class SlotMachine extends egret.DisplayObjectContainer {
 			}	
 			else throw new Error( "hehe" );
 			this.currentGame.resetGameToolBarStatus();
-			this.currentGame.changeCardsBg();
 			this.currentGame.jackpotArea.tryJackpotMinBet();
-			this.currentGame.tellTounamentCurrentBet();
 		}
 	}
 
@@ -100,6 +100,21 @@ class SlotMachine extends egret.DisplayObjectContainer {
 	public quickPlay(): void {
 		this.gameToolBar.quickPlay();
 	}
+
+/******************************************************************************************/
+
+	protected jackpotArea: JackpotLayer;
+
+	protected showJackpot( jackpot: number, jackpotMinBet: number, betConfig: Array<Object> ){
+		// override
+	}
+
+	public static get jackpotMin(): number{
+		if( this.currentGame && this.currentGame.jackpotArea ) return this.currentGame.jackpotArea.jackpotMinBet;
+		else return 0;
+	}
+
+/***********************************************************************************************************************************/
 
 	public stopAutoPlay(){
 		if( this.gameToolBar.autoPlaying ) this.gameToolBar.autoPlaying = false;
