@@ -124,7 +124,7 @@ class SlotMachine extends egret.DisplayObjectContainer {
 
 	protected sendPlayRequest() {
 		ISlotServer.playCallback = this.onPlay.bind( this );
-		ISlotServer.play( GameData.currentBet, LineManager.maxLines, CardManager.groupNumber, GameData.currentBetIndex );
+		ISlotServer.play( GameData.currentBet, GameData.currentBetIndex, LineManager.lineFormat() );
 		SlotMachine.inRound = true;
 	}
 

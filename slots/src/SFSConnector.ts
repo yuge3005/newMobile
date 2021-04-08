@@ -611,12 +611,11 @@ class SFSConnector {
         SFSConnector._sfs.send(eval("new SFS2X.ExtensionRequest( key, params )"));
     }
 
-    public static sendPlay( key: string, bet: number, cards: number, cardGroupNumber: number, betIndex: number ): void{
+    public static sendPlay( key: string, bet: number, betIndex: number, gameLineFormat: string ): void{
         var params:any = eval( "new SFS2X.SFSObject()" );
         params.putInt( "aposta", bet );
-        params.putByte( "qtd", cards );
-		params.putInt( "cartela", cardGroupNumber );
         params.putInt( "bet_index", betIndex );
+        params.putUtfString("linhas", gameLineFormat);
         trace( params.getDump() );
         SFSConnector._sfs.send(eval("new SFS2X.ExtensionRequest( key, params )"));
     }
@@ -667,23 +666,6 @@ class SFSConnector {
         SFSConnector._sfs.send(eval("new SFS2X.ExtensionRequest( 'finaliza', params )"));
     }
 
-    public static cancelExtra( extraString: boolean ){
-        var params:any = eval( "new SFS2X.SFSObject()" );
-        trace( params.getDump() )
-        if( extraString ) SFSConnector._sfs.send(eval("new SFS2X.ExtensionRequest( 'finaliza', params )"));
-        else SFSConnector._sfs.send(eval("new SFS2X.ExtensionRequest( 'creditar', params )"));
-    }
-
-    public static extra( extraString: boolean, saving: boolean ){
-        var params:any = eval( "new SFS2X.SFSObject()" );
-        trace( params.getDump() );
-        if( extraString ) {
-            if( saving ) SFSConnector._sfs.send(eval("new SFS2X.ExtensionRequest( 'poupanca', params )"));
-            else SFSConnector._sfs.send(eval("new SFS2X.ExtensionRequest( 'extra', params )"));
-        }
-        else SFSConnector._sfs.send(eval("new SFS2X.ExtensionRequest( 'solicitajogada', params )"));
-    }
-
     public static bonusGameSpin( bet: number ){
         var params:any = eval( "new SFS2X.SFSObject()" );
         params.putInt( "bet", bet );
@@ -704,23 +686,5 @@ class SFSConnector {
         params.putInt( "selectedBallNum", num );
         trace( params.getDump() );
         SFSConnector._sfs.send(eval("new SFS2X.ExtensionRequest( 'select_num_handler', params )"));
-    }
-
-    public static goKartHandler(action: string, rewardType: number) {
-        var params: any = eval("new SFS2X.SFSObject()");
-        params.putUtfString("action", action);
-        if (rewardType !== -1) params.putInt("rewardType", rewardType);
-        trace(params.getDump());
-        SFSConnector._sfs.send(eval("new SFS2X.ExtensionRequest('goKartHandler', params)"));
-    }
-
-    public static lemonGame( action: string, bet: number, type: number, boxIndex: number ){
-        var params:any = eval( "new SFS2X.SFSObject()" );
-        params.putUtfString( "action", action );
-        params.putInt( "currentBet", bet );
-        params.putInt( "clubs_type", type );
-        params.putInt( "box_index", boxIndex );
-        trace( params.getDump() );
-        SFSConnector._sfs.send(eval("new SFS2X.ExtensionRequest( 'lemon_game_handler', params )"));
     }
 }
