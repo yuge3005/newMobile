@@ -41,6 +41,14 @@ class SlotMachine extends egret.DisplayObjectContainer {
 		this.gameToolBar.setBet( GameData.currentBet, LineManager.maxLines, GameData.currentBet == GameData.maxBet );
 	}
 
+	protected stopAllSound(): void {
+		this.soundManager.stopAll();
+	}
+
+/******************************************************************************************/
+
+	protected ganho: number;
+
 	public static sendCommand(cmd: string) {
 		trace( "ToolBarCommand:" + cmd );
 		if( cmd == GameCommands.help ){
@@ -108,6 +116,32 @@ class SlotMachine extends egret.DisplayObjectContainer {
 		this.betBar.setBet( GameData.currentBet );
 	}
 
+	public onPlay( data: Object, hotData: any = null ){
+		ISlotServer.playCallback = null;
+
+		if (!data) {//out of coins
+			this.stopAutoPlay();
+			this.dispatchEvent(new egret.Event("out_of_coins_game_id"));
+			return;
+		}
+
+		this.updateCredit( data );
+
+		this.gameToolBar.showStop( true );
+		this.gameToolBar.showWinResult( 0 );
+
+		this.ganho = data["ganho"];
+	}
+
+	protected updateCredit( data: Object ): void{
+		this.gameCoins = Math.round( data["credito"] );
+		if( !isNaN( data["secondCurrency"] ) )this.dinero = data["secondCurrency"];
+		if( this.gameToolBar ){
+			this.gameToolBar.updateCoinsAndDinero( this.gameCoins, this.dinero );
+			if( !isNaN(data["xp"]) ) this.gameToolBar.updateXp( data["xp"] );
+		}
+	}
+
 	private autoPlayTimeoutId: number;
 
 	private aotoNextRound(){
@@ -137,7 +171,6 @@ class SlotMachine extends egret.DisplayObjectContainer {
 
 	protected startPlay(): void {
 		this.stopAllSound();
-		CardManager.stopAllBlink();
 	}
 
 /******************************************************************************************/

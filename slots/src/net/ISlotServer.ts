@@ -81,7 +81,7 @@ class ISlotServer {
 		this.serverConnection["sendMessage"]( "solicitanumeros", {} );
 	}
 
-	public static play( bet: number, betIndex: number, gameLineFormat: number ):void{
+	public static play( bet: number, betIndex: number, gameLineFormat: string ):void{
 		this.serverConnection["sendPlay"]( "solicitajogada", bet, betIndex, gameLineFormat );
 	}
 
