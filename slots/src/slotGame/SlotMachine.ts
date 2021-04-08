@@ -57,11 +57,10 @@ class SlotMachine extends egret.DisplayObjectContainer {
 			this.currentGame.dispatchEvent( new egret.Event( "onGamePlay" ) );
 		}
 		else if( cmd == GameCommands.stop ){
-			this.currentGame.ballRunforStop = true;
 			this.currentGame.gameToolBar.enabledStopButton();
 		}
 		else if( cmd == GameCommands.showMini ){
-			this.currentGame.showMiniGame();
+			// this.currentGame.showMiniGame();
 		}
 		else if( cmd == GameCommands.startAuto ){
 			this.currentGame.gameToolBar.autoPlaying = true;
@@ -69,9 +68,6 @@ class SlotMachine extends egret.DisplayObjectContainer {
 		else if( cmd == GameCommands.stopAuto ){
 			this.currentGame.gameToolBar.autoPlaying = false;
 			clearTimeout( this.currentGame.autoPlayTimeoutId );
-		}
-		else if( cmd == GameCommands.buyAll ){
-			this.currentGame.gameToolBar.buyAllExtra = true;
 		}
 		else{//the rest commands are relatied to bet and card enabled
 			if( cmd == GameCommands.decreseBet ){

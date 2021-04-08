@@ -10,7 +10,6 @@ class GameCommands {
 	public static startAuto: string = "startAuto";
 	public static stopAuto: string = "stopAuto";
 	public static showMini: string = "showMini";
-	public static buyAll: string = "buyAll";
 
 	public constructor() {
 	}

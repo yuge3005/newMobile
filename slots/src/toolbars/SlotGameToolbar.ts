@@ -6,15 +6,12 @@ class SlotGameToolbar extends egret.DisplayObjectContainer{
 	protected increaseBetBtn: TouchDownButton;
 
 	protected maxBetBtn: TouchDownButton;
-	protected buyAllBtn: TouchDownButton;
 
 	protected playBtn: LongPressButton;
 	protected stopBtn: TouchDownButton;
 	protected freeSpinBtn: FreeSpinButton;
 
-	protected bigExtraBtn: GameToolbarMaskButton;
 	protected stopAutoBtn: TouchDownButton;
-	protected superExtraBtn: GameToolbarMaskButton;
 	private coinsText: TextLabel;
 	private dineroText: TextLabel;
 	private betText: TextLabel;
@@ -116,7 +113,7 @@ class SlotGameToolbar extends egret.DisplayObjectContainer{
 	}
 
 	private addPlayButton(){
-		this.playBtn = new LongPressButton( "bingoGameToolbar_json.play", "bingoGameToolbar_json.play_press" );
+		this.playBtn = new LongPressButton( "halloween_json.spin_btn", "halloween_json.spin_btn_LYD" );
 		Com.addObjectAt( this.playContainer, this.playBtn, 1724, 22 );
 		this.playBtn.addEventListener( egret.TouchEvent.TOUCH_TAP, this.sendCommand, this );
 		this.playBtn.name = GameCommands.play;
@@ -242,11 +239,6 @@ class SlotGameToolbar extends egret.DisplayObjectContainer{
 		}
 	}
 
-	protected showCoinsIconAt( price: number ): void{
-		this.superExtraBtn.setPrice( price );
-		this.bigExtraBtn.setPrice( price );
-	}
-
 	public showWinResult( winPrice: number ){
 		if( winPrice ) TweenerTool.tweenTo( this, {win: winPrice}, 335 );
 		else this.win = winPrice;
@@ -259,10 +251,6 @@ class SlotGameToolbar extends egret.DisplayObjectContainer{
 		this.playBtn.visible = !isStop;
 		this.stopBtn.visible = isStop;
 		this.stopBtn.enabled = isStop;
-	}
-
-	public showCollectButtonAfterOOC(): void{
-		this.enabledExtraButtons();
 	}
 
 	public unlockAllButtonsAfterOOC(): void{
@@ -290,15 +278,15 @@ class SlotGameToolbar extends egret.DisplayObjectContainer{
 	public quickPlay():void{
 		if( !this.enableKeyboard || this.autoPlaying )return;
 		if( this.playBtn.enabled && this.playBtn.visible ){
-			BingoMachine.sendCommand( GameCommands.play );
+			SlotMachine.sendCommand( GameCommands.play );
 			this.enableKeyboard = false;
 		}
 		else if( this.playContainer.visible && this.stopBtn.enabled && this.stopBtn.visible ){
-			BingoMachine.sendCommand( GameCommands.stop );
+			SlotMachine.sendCommand( GameCommands.stop );
 			this.enableKeyboard = false;
 		}
 		else if( this.extraContainer.visible && this.bigExtraBtn.enabled && this.bigExtraBtn.visible ){
-			BingoMachine.sendCommand( GameCommands.extra );
+			SlotMachine.sendCommand( GameCommands.extra );
 			this.enableKeyboard = false;
 		}
 	}
@@ -321,7 +309,7 @@ class SlotGameToolbar extends egret.DisplayObjectContainer{
 	}
 
 	private startAuto(){
-		BingoMachine.sendCommand( GameCommands.startAuto );
+		SlotMachine.sendCommand( GameCommands.startAuto );
 	}
 
 	private _coins: number = 0;

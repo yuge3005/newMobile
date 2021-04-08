@@ -1,6 +1,13 @@
 {
     "projectName": "halloween",
     "files": [
+        "./G19.png",
+        "./G18.png",
+        "./G17.png",
+        "./G16.png",
+        "./G15.png",
+        "./G14.png",
+        "./G13.png",
         "./G12.png",
         "./G11.png",
         "./G10.png",
@@ -24,25 +31,19 @@
         "./2.png",
         "./1.png",
         "./0.png",
+        "./spin_btn_LYD.png",
         "./spin_btn.png",
         "./reels_right.png",
         "./reels_left.png",
         "./Line Count.png",
-        "./G20.png",
-        "./G19.png",
-        "./G18.png",
-        "./G17.png",
-        "./G16.png",
-        "./G15.png",
-        "./G14.png",
-        "./G13.png"
+        "./G20.png"
     ],
     "options": {
+        "layoutMath": "0",
         "sizeMode": "free",
         "useExtension": 0,
         "layoutGap": 1,
-        "extend": 0,
-        "layoutMath": "0"
+        "extend": 0
     },
     "version": 5
 }
