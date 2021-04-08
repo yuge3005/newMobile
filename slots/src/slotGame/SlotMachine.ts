@@ -41,7 +41,8 @@ class SlotMachine extends egret.Sprite {
 
 		this.connetKeys = { zona: "Zona" + gameId, sala: "Sala" + gameId };
 		this.tokenObject = {};
-		this.tokenObject["value"] = { tipo:"jogar", version: PlayerConfig.serverVertion };
+		this.tokenObject["value"] = { tipo:"jogar", version: PlayerConfig.serverVertion, token: "" };
+		this.tokenObject["key"] = "login";
 		SlotMachine.currentGameId = gameId;
 
 		this.gameConfigFile = gameConfigFile;
@@ -199,6 +200,12 @@ class SlotMachine extends egret.Sprite {
 		
 		this.topbar.scaleX = this.gameToolBar.scaleX = SlotBackGroundSetting.gameMask.width / 2000;
 		this.topbar.scaleY = this.gameToolBar.scaleY = SlotBackGroundSetting.gameMask.height / 1125;
+	}
+
+	protected initBetbar(jackpotMinBet:number){
+		this.betBar = new Betbar(jackpotMinBet);
+		Com.addObjectAt( this, this.betBar, 0, SlotGameToolbar.toolBarY - 5 );
+		this.betBar.setBet( GameData.currentBet );
 	}
 
 	protected resetGameToolBarStatus(){

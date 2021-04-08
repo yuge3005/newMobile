@@ -29,7 +29,7 @@
 		},
 		{
 			"url": "config/halloween.conf",
-			"type": "bin",
+			"type": "json",
 			"name": "halloween_conf"
 		}
 	]
