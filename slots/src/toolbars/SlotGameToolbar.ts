@@ -258,11 +258,6 @@ class SlotGameToolbar extends egret.DisplayObjectContainer{
 		this.showStop( false );
 	}
 
-	public unlockAllButtonsAfterOOCExtra(): void{
-		this.enableAllButtons( false );
-		this.enabledExtraButtons();
-	}
-
 	private delayKeyboard: number = 500;
 	private _enableKeyboard: boolean = true;
 	private set enableKeyboard( value: boolean ){
@@ -285,19 +280,10 @@ class SlotGameToolbar extends egret.DisplayObjectContainer{
 			SlotMachine.sendCommand( GameCommands.stop );
 			this.enableKeyboard = false;
 		}
-		else if( this.extraContainer.visible && this.bigExtraBtn.enabled && this.bigExtraBtn.visible ){
-			SlotMachine.sendCommand( GameCommands.extra );
-			this.enableKeyboard = false;
-		}
 	}
 
 	public enabledStopButton(): void{
 		this.stopBtn.enabled = false;
-	}
-
-	public megeExtraOnTop( megaOnTop: boolean ): void{
-		this.superExtraBtn.visible = megaOnTop;
-		this.bigExtraBtn.visible = !megaOnTop;
 	}
 
 	public updateCoinsAndDinero( coins: number, dinero: number ){

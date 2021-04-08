@@ -30,7 +30,7 @@ class SlotGameMain extends egret.DisplayObjectContainer {
 	protected createGameScene() {
 		this.buildGame();
 		this.addGameLoaderAndEvents();
-		IBingoServer.serverInit();
+		ISlotServer.serverInit();
 	}
 
 	/**
