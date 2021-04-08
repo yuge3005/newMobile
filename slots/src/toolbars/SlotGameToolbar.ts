@@ -177,8 +177,8 @@ class SlotGameToolbar extends egret.DisplayObjectContainer{
 		return txt;
 	}
 
-	public setBet( bet: number, cardNumber: number, isMaxBet: boolean ){
-		this.betNumber = bet * cardNumber;
+	public setBet( bet: number, lineNumber: number, isMaxBet: boolean ){
+		this.betNumber = bet * lineNumber;
 
 		if( isMaxBet ){
 			this.maxBetBtn.enabled = false;

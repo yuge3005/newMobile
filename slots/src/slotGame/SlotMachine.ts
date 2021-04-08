@@ -31,8 +31,14 @@ class SlotMachine extends egret.DisplayObjectContainer {
 	public assetReady: boolean = false;
 	public betListReady: boolean = false;
 
+	public static inRound: boolean = false;
+
 	public constructor( gameConfigFile: string, configUrl: string, gameId: number ) {
 		super();
+	}
+
+	protected resetGameToolBarStatus(){
+		this.gameToolBar.setBet( GameData.currentBet, LineManager.maxLines, GameData.currentBet == GameData.maxBet );
 	}
 
 	public static sendCommand(cmd: string) {
@@ -53,8 +59,8 @@ class SlotMachine extends egret.DisplayObjectContainer {
 			this.currentGame.startPlay();
 			this.currentGame.gameToolBar.lockAllButtons();
 			this.currentGame.sendPlayRequest();
-			CardManager.clearCardsStatus();
-			PayTableManager.clearPaytablesStatus();
+			// CardManager.clearCardsStatus();
+			// PayTableManager.clearPaytablesStatus();
 			this.currentGame.gameToolBar.showTip( cmd );
 			this.currentGame.dispatchEvent( new egret.Event( "onGamePlay" ) );
 		}
@@ -94,11 +100,44 @@ class SlotMachine extends egret.DisplayObjectContainer {
 		}
 	}
 
+	protected betChanged( type: number ){
+		this.dispatchEvent(new egret.Event("betChanged", false, false, { type: type }));
+		this.jackpotArea.changebet();
+
+		this.gameToolBar.updateFreeSpinCount( GameData.currentBet == GameData.minBet && this.freeSpin );
+		this.betBar.setBet( GameData.currentBet );
+	}
+
+	private autoPlayTimeoutId: number;
+
+	private aotoNextRound(){
+		if( this.waitingForEffect ) this.autoPlayTimeoutId = setTimeout( this.aotoNextRound.bind(this), 500 );
+		else this.gameToolBar.autoPlaying = true;
+	}
+
+	protected waitingForEffect: boolean;
+
+	protected waitForEffect( callback: Function ){
+		this.waitingForEffect = false;
+		if( callback )callback();
+	}
+
+	protected sendPlayRequest() {
+		ISlotServer.playCallback = this.onPlay.bind( this );
+		ISlotServer.play( GameData.currentBet, LineManager.maxLines, CardManager.groupNumber, GameData.currentBetIndex );
+		SlotMachine.inRound = true;
+	}
+
 	/**
 	 * quick play
 	 */
 	public quickPlay(): void {
 		this.gameToolBar.quickPlay();
+	}
+
+	protected startPlay(): void {
+		this.stopAllSound();
+		CardManager.stopAllBlink();
 	}
 
 /******************************************************************************************/
