@@ -113,7 +113,7 @@ class SlotGameToolbar extends egret.DisplayObjectContainer{
 	}
 
 	private addPlayButton(){
-		this.playBtn = new LongPressButton( "halloween_json.spin_btn", "halloween_json.spin_btn_LYD" );
+		this.playBtn = new LongPressButton( SlotMachine.getAssetStr( "spin_btn" ), SlotMachine.getAssetStr( "spin_btn_LYD" ) );
 		Com.addObjectAt( this.playContainer, this.playBtn, 1724, 22 );
 		this.playBtn.addEventListener( egret.TouchEvent.TOUCH_TAP, this.sendCommand, this );
 		this.playBtn.name = GameCommands.play;

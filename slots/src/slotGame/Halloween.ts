@@ -20,4 +20,9 @@ class Halloween extends SlotMachine{
 
 		this.addChildAt( Com.createBitmapByName( "halloween_bg_jpg" ), 0 );
 	}
+/******************************************************************************************************************************************************************/    
+
+    protected showJackpot( jackpot: number, jackpotMinBet: number, betConfig: Array<Object> ){
+        this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 192, 30 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 0, 0 ), new egret.Rectangle( 86, 92, 437, 40 ), 40, 0xFFFFFF ) );
+    }
 }
