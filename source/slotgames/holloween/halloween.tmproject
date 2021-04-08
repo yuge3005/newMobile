@@ -1,6 +1,13 @@
 {
-    "projectName": "halloween",
+    "options": {
+        "useExtension": 0,
+        "layoutGap": 1,
+        "extend": 0,
+        "layoutMath": "0",
+        "sizeMode": "free"
+    },
     "files": [
+        "./G20.png",
         "./G19.png",
         "./G18.png",
         "./G17.png",
@@ -36,14 +43,9 @@
         "./reels_right.png",
         "./reels_left.png",
         "./Line Count.png",
-        "./G20.png"
+        "./jackpot_lock.png",
+        "./JackPot.png"
     ],
-    "options": {
-        "layoutMath": "0",
-        "sizeMode": "free",
-        "useExtension": 0,
-        "layoutGap": 1,
-        "extend": 0
-    },
-    "version": 5
+    "version": 5,
+    "projectName": "halloween"
 }
