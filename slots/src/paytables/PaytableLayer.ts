@@ -13,9 +13,9 @@ class PaytableLayer extends egret.DisplayObjectContainer{
 		let pts: Object = LineManager.linesDictionary;
 		for( let ob in pts ){
 			let pos: Object = pts[ob].position;
-			pts[ob].UI.x = pos["x"] - this.x;
-			pts[ob].UI.y = pos["y"] - this.y;
-			this.addChild( pts[ob].UI );
+			pts[ob].x = pos["x"] - this.x;
+			pts[ob].y = pos["y"] - this.y;
+			this.addChild( pts[ob] );
 		}
 	}
 

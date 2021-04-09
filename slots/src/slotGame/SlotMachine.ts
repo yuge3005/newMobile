@@ -68,8 +68,8 @@ class SlotMachine extends egret.Sprite {
 		// CardManager.startBlinkTimer();
 		this.addEventListener(egret.Event.REMOVED_FROM_STAGE, this.onRemove, this);
 
-		// GameCard.fitEffectNameList = obj["payTablesFitEffect"];
-		// PaytableFilter.soundObject = obj["payTablesSound"];
+		LineManager.fitEffectNameList = obj["payTablesFitEffect"];
+		LineManager.soundObject = obj["payTablesSound"];
 		MuLang.txt = this.getLanguageObject();
 	}
 
@@ -82,6 +82,14 @@ class SlotMachine extends egret.Sprite {
 			}
 		}
 		return txtObj;
+	}
+
+	protected getSoundName( paytalbeName: string ): string{
+		if( LineManager.soundObject ){
+			let name: string = LineManager.soundObject[paytalbeName];
+			if( name ) return name.replace( ".", "_" );
+		}
+		return "";
 	}
 
 	protected onRemove( event: egret.Event ): void{
@@ -125,13 +133,19 @@ class SlotMachine extends egret.Sprite {
 
 		MDS.mcFactory = SlotBackGroundSetting.initBackground( this );
 
-		// this.addPayTables();
+		this.addPayTables();
 
 		this.sendInitDataRequest();
 
 		// this.addEventListener("bingo", this.winBingo, this);
 		this.addEventListener( "betChanged", this.onBetChanged, this );
 		// this.tellTounamentCurrentBet();
+	}
+
+	protected addPayTables(){
+		this.payTableArea = eval( "new LineManager.layerType()" );
+		this.addChild( this.payTableArea );
+		this.payTableArea.addPaytableUI();
 	}
 
     private loginToServer(){

@@ -1,7 +1,10 @@
 class LineManager {
 
 	public static linesDictionary: Object;
-	
+
+	public static soundObject: Object;
+	public static fitEffectNameList: Object;
+
 	public static paytableUIType: Function = LineUI;
 	public static layerType: Function = PaytableLayer;
 
