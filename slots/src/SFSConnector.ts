@@ -156,15 +156,16 @@ class SFSConnector {
      */
     private onSfsExtensionResponse(event): void {
         trace( "onSfsExtensionResponse" );
-        trace( event.cmd );
-        trace( event.params.getDump() );
+        if( event.cmd.indexOf( "trm." ) != 0 ){ // filter for tounament message
+            trace( event.cmd );
+            trace( event.params.getDump() );
+        }
         if( event.cmd == "respostalogin" && SFSConnector.gameInitCallback ){
             var data : any = event.params;
             var gameData: Object = {};
             gameData["credito"] = data.getDouble("creditos");
             gameData["acumulado"] = Number( data.getUtfString("acumulado1") );
             gameData["jackpot_min_bet"] = data.getInt("jackpot_min_bet");
-            gameData["cartela"] = data.getInt("cartela");
             // if( !numCards )createNumberCards();
             // setNumberCards( numerosCartelas );
             gameData["pendente"] = data.getBool("pendente");
@@ -172,8 +173,6 @@ class SFSConnector {
             gameData["btcreditar"] = data.getBool("btcreditar");
             gameData["btpainelpendente"] = data.getBool("btpainelpendente");
             gameData["letras"] = data.getUtfString("letras");
-            gameData["bonusBalls"] = data.getUtfString("bonusBalls");
-            gameData["bonusRounds"] = data.getUtfString("bonusRounds");
             gameData["luckmultis"] = data.getUtfString("luckmultis");
             gameData["puzzleCurrent"] = data.getInt("puzzle_spin_amount");
             gameData["puzzleTotal"] = data.getInt("puzzle_spin_target");
@@ -186,86 +185,21 @@ class SFSConnector {
             gameData["freeSpin"] = data.getInt("free_spin");
             SFSConnector.gameInitCallback( gameData );
         }
-        else if( event.cmd == "respostasolicitanumeros" && SFSConnector.changeNumberCallback ){
-            var data : any = event.params;
-            var gameData: Object = {};
-            gameData["cartela"] = data.getInt( "cartela" );
-            gameData["numerosCartelas"] = data.getByteArray("numeros");
-            gameData["mark_column"] = data.getIntArray( "mark_column_nums_buff" );
-            gameData["mark_on_card"] = data.getIntArray( "mark_num_per_card_buff" );
-            gameData["rewardNumIndex"] = data.getInt( "rewardNumIndex" );
-            gameData["bellIndexs"] = data.getIntArray("bell_indexs");
-            SFSConnector.changeNumberCallback( gameData );
-        }
-        else if( event.cmd == "jogada" && SFSConnector.playCallback ){
+        else if( event.cmd == "respostajogada" && SFSConnector.playCallback ){
             var data : any = event.params;
             var gameData: Object = {};
             gameData["credito"] = data.getDouble("creditos");
             gameData["ganho"] = data.getDouble("ganho");
-            gameData["btextra"] = data.getBool("btextra");
-            gameData["bolas"] = data.getByteArray("bolas");
-            gameData["valorextra"] = data.getInt("valorextra");
-            gameData["ebPrice"] = data.getLong("ebPrice");
             gameData["xp"] = data.getDouble("xp");
-            gameData["gratis"] = data.getByte("gratis");
-            gameData["eb_colors"] = data.getIntArray("eb_colors_buff");
-            gameData["free_eb"] = data.getIntArray("free_eb_buff");
-            if( !gameData["free_eb"] ) gameData["free_eb"] = data.getIntArray("freeEbs");
-            gameData["cut_ball_position"] = data.getInt("random_select_ball_position_buff");
-
             gameData["secondCurrency"] = data.getLong("hard_currency");
-            gameData["winSecondCurrency"] = data.getLong("total_win_hard_currency");
-            gameData["buffRewardSecondCurrency"] = data.getLong("buff_reward_hard_currency");
-
-            gameData["wonAllBells"] = data.getBool("won_all_bells");
-            if( gameData["wonAllBells"] ){
-                gameData["buffID"] = data.getInt( "buffID" );
-                gameData["bombIndexs"] = data.getIntArray("bomb_indexs");
-            }
-
-            gameData["bonusGame"] = data.getBool("bonusGame");
-
-            gameData["isMegaBall"] = data.getBool("isMegaBall");
-            gameData["ebPosition"] = data.getInt("ebPosition");
-            let prizeBalls = data.getSFSArray("multi_prize_balls");
-            if( prizeBalls ){
-            gameData["prizeBalls"] = [];
-                for( let i: number = 0; i < prizeBalls.size(); i++ ){
-                    gameData["prizeBalls"][i] = {};
-                    gameData["prizeBalls"][i].index = prizeBalls.get(i).getInt("ball_index");
-                    gameData["prizeBalls"][i].multi = prizeBalls.get(i).getInt("multi");
-                }
-            }
+            gameData["tipoBonus"] = data.getInt("tipoBonus");
+            gameData["posicoesArrayBonus"] = data.getIntArray("posicoesArrayBonus");
+            gameData["figuras"] = data.getIntArray("figuras");
+            gameData["linhasPremiadas"] = data.getIntArray("linhasPremiadas");
+            gameData["figurasPremiadas"] = data.getIntArray("figurasPremiadas");
             SFSConnector.playCallback( gameData, data );
         }
-        else if( event.cmd == "round" && SFSConnector.playCallback ){
-            var data : any = event.params;
-            var gameData: Object = {};
-            let tempData: string = data.getUtfString("balls");
-            
-            let balls: Array<number> = [];
-            try{
-                let ballString: string = tempData.match( /R\d+(?=G)/ )[0].replace( "R", "" );
-                for( let i: number = 0; i < ballString.length; i+=2 ){
-                    balls.push( parseInt( ballString[i] + ballString[i+1] ) );
-                }
-            }
-            catch(e){ trace( "data error" ) }
-            
-            try{
-                gameData["ganho"] = parseInt( tempData.match( /G\d+/ )[0].replace( "G", "" ) );
-                gameData["credito"] = parseInt(tempData.match( /\$.+(?=CA)/ )[0].replace( "$", "" ) );
-            }
-            catch(e){ trace( "data error" ) }
-            gameData["btextra"] = tempData.indexOf( "E" ) > 0;
-            if( gameData["btextra"] )gameData["valorextra"] = parseInt( tempData.substr( tempData.indexOf( "E" ) + 1 ) );
-            gameData["bolas"] = balls;
-            gameData["xp"] = data.getDouble("xp");
-            gameData["secondCurrency"] = data.getLong("hard_currency");
-
-            SFSConnector.playCallback( gameData );
-        }
-        else if( event.cmd == "jogadafinalizada" && SFSConnector.roundOverCallback ){
+        else if( event.cmd == "respostafinaliza" && SFSConnector.roundOverCallback ){
             var data : any = event.params;
             var gameData: Object = {};
             gameData["ganho"] = data.getDouble( "ganho" );
@@ -303,101 +237,6 @@ class SFSConnector {
             gameData["freeSpin"] = data.getInt("free_spin");
             SFSConnector.roundOverCallback( gameData );
         }
-        else if( event.cmd == "jogadafinalizada" && SFSConnector.cancelExtraCallback ){
-            var data : any = event.params;
-            var gameData: Object = {};
-            gameData["ganho"] = data.getDouble( "ganho" );
-            gameData["credito"] = data.getDouble( "creditos" );
-            gameData["extrasnaocompradas"] = data.getByteArray( "extrasnaocompradas" );
-            gameData["luckMulti"] = data.getInt( "luckMulti" );
-            gameData["letra"] = data.getByte( "letra" );
-            gameData["bonusRound"] = data.getByte( "bonusRound" );
-            gameData["missionValue"] = data.getLong("mission_value");
-            gameData["missionTarget"] = data.getLong("mission_target");
-            gameData["missionId"] = data.getLong("mission_id");
-            gameData["secondCurrency"] = data.getLong("hard_currency");
-            gameData["winSecondCurrency"] = data.getLong("total_win_hard_currency");
-            gameData["jackpot_min_bet"] = data.getInt("jackpot_min_bet");
-            gameData["puzzleCurrent"] = data.getInt("puzzle_spin_amount");
-            gameData["puzzleTotal"] = data.getInt("puzzle_spin_target");
-            gameData["freeSpin"] = data.getInt("free_spin");
-            SFSConnector.cancelExtraCallback( gameData );
-        }
-        else if( event.cmd == "libera" && SFSConnector.cancelExtraCallback ){
-            var data : any = event.params;
-            var gameData: Object = {};
-            let tempData: string = data.getUtfString("resposta");
-            try{
-                gameData["credito"] = parseInt( tempData.match( /\$.+(?=CA)/ )[0].replace( "$", "" ) );
-            }
-            catch(e){ trace( "data error" ) }
-            gameData["extrasnaocompradas"] = data.getByteArray( "notBoughtEBIndex" );
-            gameData["missionValue"] = data.getLong("mission_value");
-            gameData["missionTarget"] = data.getLong("mission_target");
-            gameData["missionId"] = data.getLong("mission_id");
-            gameData["secondCurrency"] = data.getLong("hard_currency");
-            gameData["jackpot_min_bet"] = data.getInt("jackpot_min_bet");
-            gameData["puzzleCurrent"] = data.getInt("puzzle_spin_amount");
-            gameData["puzzleTotal"] = data.getInt("puzzle_spin_target");
-            gameData["freeSpin"] = data.getInt("free_spin");
-            SFSConnector.cancelExtraCallback( gameData );
-        }
-        else if( event.cmd == "jogada" && SFSConnector.extraCallback ){
-            var data : any = event.params;
-            var gameData: Object = {};
-            gameData["credito"] = data.getDouble("creditos");
-            gameData["ganho"] = data.getDouble("ganho");
-            gameData["btextra"] = data.getBool("btextra");
-            gameData["extra"] = data.getByte("extra");
-            gameData["valorextra"] = data.getInt("valorextra");
-            gameData["ebPrice"] = data.getLong("ebPrice");
-            gameData["xp"] = data.getDouble("xp");
-            gameData["bonusBall"] = data.getByte("bonusBall");
-            gameData["eb_colors"] = data.getIntArray("eb_colors_buff");
-            gameData["isMegaBall"] = data.getBool("isMegaBall");
-
-            gameData["secondCurrency"] = data.getLong("hard_currency");
-            gameData["winSecondCurrency"] = data.getLong("total_win_hard_currency");
-            gameData["buffRewardSecondCurrency"] = data.getLong("buff_reward_hard_currency");
-
-            gameData["bonusGame"] = data.getBool("bonusGame");
-
-            gameData["wonAllBells"] = data.getBool("won_all_bells");
-            if( gameData["wonAllBells"] ){
-                gameData["buffID"] = data.getInt( "buffID" );
-                gameData["bombIndexs"] = data.getIntArray("bomb_indexs");
-            }
-            
-            gameData["ebPosition"] = data.getInt("ebPosition");
-            
-            SFSConnector.extraCallback( gameData );
-        }
-        else if( event.cmd == "extra" && SFSConnector.extraCallback ){
-            var data : any = event.params;
-            var gameData: Object = {};
-            let tempData: string = data.getUtfString("ball");
-
-            try{
-                gameData["ganho"] = parseInt( tempData.match( /G\d+/ )[0].replace( "G", "" ) );
-                gameData["credito"] = parseInt( tempData.match( /\$.+(?=CA)/ )[0].replace( "$", "" ) );
-                gameData["extra"] = parseInt( tempData.match( /X\d+/ )[0].replace( "X", "" ) );
-
-                let save = tempData.match( /P\d+[EF]/g );
-                if( save && save.length ){
-                    gameData["save"] = parseInt( save[0].replace( "P", "" ).replace( "E", "" ).replace( "F", "" ) );
-                }
-            }
-            catch(e){}
-            gameData["btextra"] = tempData.indexOf( "E" ) > 0;
-            if( gameData["btextra"] )gameData["valorextra"] = parseInt( tempData.substr( tempData.indexOf( "E" ) + 1 ) );
-
-            gameData["xp"] = data.getDouble("xp");
-            gameData["secondCurrency"] = data.getLong("hard_currency");
-            gameData["isMegaBall"] = data.getBool("isMegaBall");
-            if( gameData["isMegaBall"] )gameData["valorextra"] = data.getLong("ebPrice");
-
-            SFSConnector.extraCallback( gameData );
-        }
         else if( event.cmd == "atualizaacumulado" && SFSConnector.jackpotCallbak ){
             var data : any = event.params;
             var gameData: Object = {};
@@ -423,73 +262,6 @@ class SFSConnector {
             gameData["iconIdx"] = data.getUtfStringArray( "iconIdx" );
             SFSConnector.bonusGameSpinCallback( gameData );
             return;
-        }
-        else if( event.cmd == "buffHandler" && SFSConnector.buffHandlerCallback ){
-            var data : any = event.params;
-            var gameData: Object = {};
-            gameData["buffValue"] = data.getInt("buffValue");
-            gameData["buff_dices"] = data.getIntArray("buff_dices");
-            gameData["add_buff_state"] = data.getBool( "add_buff_state" );
-            gameData["buff_pos"] = data.getInt( "buff_pos" );
-            gameData["buffMaxValue"] = data.getInt( "buff_max_value" );
-
-            gameData["mark_column"] = data.getIntArray( "mark_column_nums_buff" );
-            gameData["mark_on_card"] = data.getIntArray( "mark_num_per_card_buff" );
-            gameData["rewardNumIndex"] = data.getInt( "rewardNumIndex" );
-            gameData["roll_again_price"] = data.getInt( "roll_again_price" );
-            gameData["double_buff_rounds_price"] = data.getInt( "double_buff_rounds_price" );
-            gameData["secondCurrency"] = data.getLong( "hard_currency" );
-            gameData["xp"] = data.getDouble( "xp" );
-            SFSConnector.buffHandlerCallback( gameData );
-            return;
-        }
-        else if( event.cmd == "select_num_handler" && SFSConnector.selectNumberCallback ){
-            var data : any = event.params;
-            var gameData: Object = {};
-            gameData["credito"] = data.getDouble("creditos");
-            gameData["ganho"] = data.getDouble("ganho");
-            gameData["btextra"] = data.getBool("tembolaextra");
-            gameData["bolas"] = data.getByteArray("bolas");
-            gameData["valorextra"] = data.getInt("valorextra");
-            gameData["ebPrice"] = data.getLong("ebPrice");
-            gameData["xp"] = data.getDouble("xp");
-
-            SFSConnector.selectNumberCallback( gameData );
-            return;
-        }
-        else if (event.cmd === "goKartHandler" && SFSConnector.goKartHandlerCallback) {
-            var data: any = event.params;
-            var gameData: Object = {};
-            gameData["isGetTurbo"] = data.getBool("isGetTurbo");
-            gameData["select_gokart_state"] = data.getBool("select_gokart_state");
-            gameData["buffReward"] = data.getLong("buffReward");
-            gameData["buff_pos"] = data.getInt("buff_pos");
-            gameData["buffValue"] = data.getInt("buffValue");
-            gameData["secondCurrency"] = data.getLong("hard_currency");
-            gameData["buffRewardSecondCurrency"] = data.getLong("buff_reward_hard_currency");
-            SFSConnector.goKartHandlerCallback(gameData);
-        }
-        else if (event.cmd === "lemon_game_handler" && SFSConnector.lemonGameCallback ){
-            var data: any = event.params;
-            var gameData: Object = {};
-            gameData["lemonCard"] = data.get( "lemon_games_card" );
-            if( gameData["lemonCard"] ){
-                gameData["lemonCard"] = { type: gameData["lemonCard"].getInt("type"), value: gameData["lemonCard"].getInt("value") };
-            }
-            gameData["lemonBuffsReward"] = data.getLong( "lemon_games_buffs_reward" );
-            gameData["lemonPizzaMaterials"] = data.getIntArray( "lemon_games_pizza_materials" );
-
-            var lemonBoxs = data.getSFSArray("lemon_games_boxes");
-            if( lemonBoxs ){
-            gameData["lemonBoxs"] = [];
-                for( let i: number = 0; i < lemonBoxs.size(); i++ ){
-                    gameData["lemonBoxs"][i] = {};
-                    gameData["lemonBoxs"][i].type = lemonBoxs.get(i).getInt("type");
-                    gameData["lemonBoxs"][i].value = lemonBoxs.get(i).getInt("value");
-                }
-            }
-
-            SFSConnector.lemonGameCallback(gameData);
         }
         else if (event.cmd === "erro") {
             let info = event.params.get("mensagem");

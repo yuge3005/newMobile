@@ -1,4 +1,7 @@
 class HalloweenSlotIconLayer extends SlotIconLayer{
+
+	protected runningAnimations: Array<egret.MovieClip>;
+
 	public constructor() {
 		super();
 
@@ -15,7 +18,10 @@ class HalloweenSlotIconLayer extends SlotIconLayer{
 	}
 
 	public showIcons( iconArray: Array<number> = null ){
-		if( !this.icons ) this.buildIcons();
+		if( !this.icons ){
+			this.buildIcons();
+			this.buildRunningAn();
+		}
 
 		if( !iconArray ){
 			for( let i: number = 0; i < 15; i++ ){
@@ -26,6 +32,16 @@ class HalloweenSlotIconLayer extends SlotIconLayer{
 			for( let i: number = 0; i < 15; i++ ){
 				this.icons[i].changeTexture( SlotMachine.getAssetStr( "" + iconArray[i] ) );
 			}
+		}
+	}
+
+	private buildRunningAn(){
+		this.runningAnimations = [];
+		for( let i: number = 0; i < 5; i++ ){
+			this.runningAnimations[i] = Com.addMovieClipAt( this, MDS.mcFactory, "turning", 7 + 289 * i, 7 );
+			this.runningAnimations[i].scaleX = this.runningAnimations[i].scaleY = 2;
+			this.runningAnimations[i].stop();
+			this.runningAnimations[i].visible = false;
 		}
 	}
 }
