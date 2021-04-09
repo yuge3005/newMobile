@@ -7,6 +7,8 @@ class SlotMachine extends egret.Sprite {
 	protected assetName: string;
 	private gameConfigFile: string;
 	protected languageObjectName: string = "forSlot_tx";
+	protected slotIconArea: egret.DisplayObjectContainer;
+	protected payTableArea: PaytableLayer;
 	protected gameToolBar: SlotGameToolbar;
 	protected topbar: Topbar;
 	protected betBar: Betbar;
