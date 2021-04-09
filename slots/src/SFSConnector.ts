@@ -218,25 +218,6 @@ class SFSConnector {
             gameData["freeSpin"] = data.getInt("free_spin");
             SFSConnector.roundOverCallback( gameData );
         }
-        else if( event.cmd == "libera" && SFSConnector.roundOverCallback ){
-            var data : any = event.params;
-            var gameData: Object = {};
-            let tempData: string = data.getUtfString("resposta");
-            try{
-                gameData["ganho"] = "unexpress";
-                gameData["credito"] = parseInt( tempData.match( /\$.+(?=CA)/ )[0].replace( "$", "" ) );
-            }
-            catch(e){ trace( "data error" ) }
-            gameData["missionValue"] = data.getLong("mission_value");
-            gameData["missionTarget"] = data.getLong("mission_target");
-            gameData["missionId"] = data.getLong("mission_id");
-            gameData["secondCurrency"] = data.getLong("hard_currency");
-            gameData["jackpot_min_bet"] = data.getInt("jackpot_min_bet");
-            gameData["puzzleCurrent"] = data.getInt("puzzle_spin_amount");
-            gameData["puzzleTotal"] = data.getInt("puzzle_spin_target");
-            gameData["freeSpin"] = data.getInt("free_spin");
-            SFSConnector.roundOverCallback( gameData );
-        }
         else if( event.cmd == "atualizaacumulado" && SFSConnector.jackpotCallbak ){
             var data : any = event.params;
             var gameData: Object = {};
@@ -368,37 +349,7 @@ class SFSConnector {
 
     public static roundOver(){
         var params:any = eval( "new SFS2X.SFSObject()" );
-        params.putBool("stauto", false );
-        params.putBool("finalizar", true);
         trace( params.getDump() )
-        SFSConnector._sfs.send(eval("new SFS2X.ExtensionRequest( 'executado', params )"));
-    }
-
-    public static libera(){
-        var params:any = eval( "new SFS2X.SFSObject()" );
-        trace( params.getDump() )
-        SFSConnector._sfs.send(eval("new SFS2X.ExtensionRequest( 'finaliza', params )"));
-    }
-
-    public static bonusGameSpin( bet: number ){
-        var params:any = eval( "new SFS2X.SFSObject()" );
-        params.putInt( "bet", bet );
-        trace( params.getDump() );
-        SFSConnector._sfs.send(eval("new SFS2X.ExtensionRequest( 'bonusGame', params )"));
-    }
-
-    public static buffHandler( action: string, bet: number ){
-        var params:any = eval( "new SFS2X.SFSObject()" );
-        params.putUtfString( "action", action );
-        params.putInt( "currentBet", bet );
-        trace( params.getDump() );
-        SFSConnector._sfs.send(eval("new SFS2X.ExtensionRequest( 'buffHandler', params )"));
-    }
-
-    public static selectNumber( num: number ){
-        var params:any = eval( "new SFS2X.SFSObject()" );
-        params.putInt( "selectedBallNum", num );
-        trace( params.getDump() );
-        SFSConnector._sfs.send(eval("new SFS2X.ExtensionRequest( 'select_num_handler', params )"));
+        SFSConnector._sfs.send(eval("new SFS2X.ExtensionRequest( 'finalizajogada', params )"));
     }
 }

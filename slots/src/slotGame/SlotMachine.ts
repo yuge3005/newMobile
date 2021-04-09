@@ -327,6 +327,8 @@ class SlotMachine extends egret.Sprite {
 		this.gameToolBar.showWinResult( 0 );
 
 		this.ganho = data["ganho"];
+
+		this.startRunning();
 	}
 
 	protected updateCredit( data: Object ): void{
@@ -371,6 +373,10 @@ class SlotMachine extends egret.Sprite {
 
 	protected startPlay(): void {
 		this.stopAllSound();
+	}
+
+	protected startRunning(){
+		// override
 	}
 
 /******************************************************************************************/
