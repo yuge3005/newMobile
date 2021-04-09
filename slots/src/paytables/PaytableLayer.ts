@@ -9,8 +9,8 @@ class PaytableLayer extends egret.DisplayObjectContainer{
 	}
 
 	public addPaytableUI(){
-		// PayTableManager.getPayTableUI();
-		// let pts: Object = PayTableManager.payTablesDictionary;
+		LineManager.getPayTableUI();
+		let pts: Object = LineManager.linesDictionary;
 		for( let ob in pts ){
 			let pos: Object = pts[ob].position;
 			pts[ob].UI.x = pos["x"] - this.x;

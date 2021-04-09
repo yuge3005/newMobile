@@ -63,7 +63,7 @@ class SlotMachine extends egret.Sprite {
 		SlotBackGroundSetting.getBackgroundData( obj["backgroundColor"], obj["backgroundItems"] );
 
 		
-		// PayTableManager.getPayTableData( obj["payTables"] );
+		LineManager.getPayTableData( obj["payTables"] );
 
 		// CardManager.startBlinkTimer();
 		this.addEventListener(egret.Event.REMOVED_FROM_STAGE, this.onRemove, this);
