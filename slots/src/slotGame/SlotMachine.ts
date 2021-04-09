@@ -7,7 +7,7 @@ class SlotMachine extends egret.Sprite {
 	protected assetName: string;
 	private gameConfigFile: string;
 	protected languageObjectName: string = "forSlot_tx";
-	protected slotIconArea: egret.DisplayObjectContainer;
+	protected slotIconArea: SlotIconLayer;
 	protected payTableArea: PaytableLayer;
 	protected gameToolBar: SlotGameToolbar;
 	protected topbar: Topbar;
@@ -134,7 +134,8 @@ class SlotMachine extends egret.Sprite {
 		MDS.mcFactory = SlotBackGroundSetting.initBackground( this );
 
 		this.addPayTables();
-
+		this.addIcons();
+		
 		this.sendInitDataRequest();
 
 		// this.addEventListener("bingo", this.winBingo, this);
@@ -146,6 +147,10 @@ class SlotMachine extends egret.Sprite {
 		this.payTableArea = eval( "new LineManager.layerType()" );
 		this.addChild( this.payTableArea );
 		this.payTableArea.addPaytableUI();
+	}
+
+	protected addIcons(){
+		// sub class override
 	}
 
     private loginToServer(){

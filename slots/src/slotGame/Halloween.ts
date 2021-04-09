@@ -23,6 +23,13 @@ class Halloween extends SlotMachine{
 
 		this.addChildAt( Com.createBitmapByName( "halloween_bg_jpg" ), 0 );
 	}
+
+	protected addIcons(){
+		this.slotIconArea = new HalloweenSlotIconLayer();
+		this.addChild( this.slotIconArea );
+		this.slotIconArea.showIcons( null );
+	}
+
 /******************************************************************************************************************************************************************/    
 
     protected showJackpot( jackpot: number, jackpotMinBet: number, betConfig: Array<Object> ){
