@@ -333,7 +333,7 @@ class SlotMachine extends egret.Sprite {
 		this.gameCoins = Math.round( data["credito"] );
 		if( !isNaN( data["secondCurrency"] ) )this.dinero = data["secondCurrency"];
 		if( this.gameToolBar ){
-			this.gameToolBar.updateCoinsAndDinero( this.gameCoins, this.dinero );
+			this.gameToolBar.updateCoinsAndDinero( this.gameCoins, this.dinero == null ? PlayerConfig.player( "score.chips" ) : this.dinero );
 			if( !isNaN(data["xp"]) ) this.gameToolBar.updateXp( data["xp"] );
 		}
 	}
