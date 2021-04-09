@@ -110,7 +110,7 @@ package controler{
 		
 		private function addRuleTextInputAt( x: int, y: int, lebalString: String ): TextInput{
 			var textInput: TextInput = addTextInputWithLabel( x, y, 130, lebalString, 95 );
-			textInput.restrict = "01";
+			textInput.restrict = "0123456789ABCDEF";
 			return textInput;
 		}
 		
