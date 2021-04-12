@@ -289,7 +289,7 @@ class SlotMachine extends egret.Sprite {
 			this.currentGame.slotIconArea.stopRunning();
 		}
 		else if( cmd == GameCommands.showMini ){
-			// this.currentGame.showMiniGame();
+			this.currentGame.showMiniGame();
 		}
 		else if( cmd == GameCommands.startAuto ){
 			this.currentGame.gameToolBar.autoPlaying = true;
@@ -419,6 +419,18 @@ class SlotMachine extends egret.Sprite {
 
 	protected startPlay(): void {
 		this.stopAllSound();
+	}
+
+	protected showMiniGame(): void{
+		alert( "paly mini game" );
+		this.sendRoundOverRequest();
+		if( 1 > 0 ) return;
+		switch( this.tipoBonus ){
+			case 1: break;
+			case 2: break;
+			default: throw new Error( "Server data error: mini game id" );
+		}
+		this.tipoBonus = 0;
 	}
 
 	protected startRunning( figuras: Array<number>, figlinhasPremiadas: Array<number>, figurasPremiadas: Array<number> ){
