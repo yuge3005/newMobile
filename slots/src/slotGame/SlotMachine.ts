@@ -234,7 +234,8 @@ class SlotMachine extends egret.Sprite {
 	}
 
 	public static endSlotRunning (){
-		this.currentGame.sendRoundOverRequest();
+		if( !this.currentGame.tipoBonus ) this.currentGame.sendRoundOverRequest();
+		else SlotMachine.sendCommand( GameCommands.showMini );
 		this.currentGame.gameToolBar.lockAllButtons();
 	}
 
@@ -253,6 +254,7 @@ class SlotMachine extends egret.Sprite {
 
 /******************************************************************************************/
 
+	protected tipoBonus: number;
 	protected ganho: number;
 
 	public static sendCommand(cmd: string) {

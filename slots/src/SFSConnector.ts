@@ -202,19 +202,8 @@ class SFSConnector {
         else if( event.cmd == "respostafinaliza" && SFSConnector.roundOverCallback ){
             var data : any = event.params;
             var gameData: Object = {};
-            gameData["ganho"] = data.getDouble( "ganho" );
             gameData["credito"] = data.getDouble( "creditos" );
-            gameData["luckMulti"] = data.getInt( "luckMulti" );
-            gameData["letra"] = data.getByte( "letra" );
-            gameData["bonusRound"] = data.getByte( "bonusRound" );
-            gameData["missionValue"] = data.getLong("mission_value");
-            gameData["missionTarget"] = data.getLong("mission_target");
-            gameData["missionId"] = data.getLong("mission_id");
-            gameData["secondCurrency"] = data.getLong("hard_currency");
-            gameData["winSecondCurrency"] = data.getLong("total_win_hard_currency");
             gameData["jackpot_min_bet"] = data.getInt("jackpot_min_bet");
-            gameData["puzzleCurrent"] = data.getInt("puzzle_spin_amount");
-            gameData["puzzleTotal"] = data.getInt("puzzle_spin_target");
             gameData["freeSpin"] = data.getInt("free_spin");
             SFSConnector.roundOverCallback( gameData );
         }
