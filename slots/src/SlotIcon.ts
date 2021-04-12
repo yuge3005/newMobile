@@ -1,4 +1,7 @@
 class SlotIcon extends egret.Bitmap{
+
+	public iconIndex: number;
+
 	public constructor( textureName: string ) {
 		if( textureName && textureName != "" ) super( RES.getRes( textureName ) );
 		else super( null );
@@ -6,8 +9,9 @@ class SlotIcon extends egret.Bitmap{
 		this.setToMiddle();
 	}
 
-	public changeTexture( textureName: string ){
+	public changeTexture( textureName: string, iconIndex: number ){
 		this.texture = RES.getRes( textureName );
+		this.iconIndex = iconIndex;
 
 		this.setToMiddle();
 	}

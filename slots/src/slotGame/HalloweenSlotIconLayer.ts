@@ -25,12 +25,12 @@ class HalloweenSlotIconLayer extends SlotIconLayer{
 
 		if( !iconArray ){
 			for( let i: number = 0; i < 15; i++ ){
-				this.icons[i].changeTexture( SlotMachine.getAssetStr( "" + Math.floor( Math.random() * 10 ) ) );
+				this.icons[i].changeTexture( SlotMachine.getAssetStr( "" + Math.floor( Math.random() * 10 ) ), 0 );
 			}
 		}
 		else{
 			for( let i: number = 0; i < 15; i++ ){
-				this.icons[i].changeTexture( SlotMachine.getAssetStr( "" + iconArray[i] ) );
+				this.icons[i].changeTexture( SlotMachine.getAssetStr( "" + iconArray[i] ), iconArray[i] );
 			}
 		}
 	}
@@ -46,20 +46,21 @@ class HalloweenSlotIconLayer extends SlotIconLayer{
 	}
 
 	public startRunning( figuras: Array<number>, figlinhasPremiadas: Array<number>, figurasPremiadas: Array<number> ){
-		for( let i: number = 0; i < 5; i++ ){
-			this.runningAnimations[i].gotoAndPlay( Math.floor( Math.random() * 5 + 1 ) );
+		super.startRunning( figuras, figlinhasPremiadas, figurasPremiadas );
+
+		let maxIndex: number = this.runningAnimations.length;
+		for( let i: number = 0; i < maxIndex; i++ ){
+			this.runningAnimations[i].gotoAndPlay( Math.floor( Math.random() * maxIndex + 1 ) );
 			this.runningAnimations[i].visible = true;
 
-			TweenerTool.tweenTo( this.runningAnimations[i], { alpha: 1 }, 100, 500 * i + 1000, this.hideRunningAn.bind( this, this.runningAnimations[i], i == 4 ) );
+			TweenerTool.tweenTo( this.runningAnimations[i], { alpha: 1 }, 100, 500 * i + 1000, this.hideRunningAn.bind( this, this.runningAnimations[i], i == maxIndex - 1 ) );
 		}
-
-		this.showIcons( figuras );
 	}
 
 	private hideRunningAn( mc: egret.MovieClip, isLast: boolean ){
 		mc.stop();
 		mc.visible = false;
 
-		if( isLast ) SlotMachine.endSlotRunning();
+		if( isLast ) this.showResult();
 	}
 }

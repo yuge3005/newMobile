@@ -5,6 +5,9 @@ class LineUI extends egret.Sprite{
 	public static needBlink: boolean = true;
 
 	private rule: string;
+	public get lineRule(): string{
+		return this.rule;
+	}
 
 	private _payTableName: string;
 	public get payTableName(): string{

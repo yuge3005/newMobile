@@ -275,7 +275,7 @@ class SlotMachine extends egret.Sprite {
 			this.currentGame.startPlay();
 			this.currentGame.gameToolBar.lockAllButtons();
 			this.currentGame.sendPlayRequest();
-			// CardManager.clearCardsStatus();
+			this.currentGame.slotIconArea.clearIconStatus();
 			// PayTableManager.clearPaytablesStatus();
 			this.currentGame.gameToolBar.showTip( cmd );
 			this.currentGame.dispatchEvent( new egret.Event( "onGamePlay" ) );
