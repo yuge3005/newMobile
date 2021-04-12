@@ -336,7 +336,7 @@ class SlotMachine extends egret.Sprite {
 		if( !isNaN( data["secondCurrency"] ) )this.dinero = data["secondCurrency"];
 		if( this.gameToolBar ){
 			this.gameToolBar.updateCoinsAndDinero( this.gameCoins, this.dinero == null ? PlayerConfig.player( "score.chips" ) : this.dinero );
-			if( !isNaN(data["xp"]) ) this.gameToolBar.updateXp( data["xp"] );
+			// if( !isNaN(data["xp"]) ) this.gameToolBar.updateXp( data["xp"] );
 		}
 	}
 
