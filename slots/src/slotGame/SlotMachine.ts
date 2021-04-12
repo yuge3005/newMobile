@@ -236,6 +236,8 @@ class SlotMachine extends egret.Sprite {
 	public static endSlotRunning (){
 		if( !this.currentGame.tipoBonus ) this.currentGame.sendRoundOverRequest();
 		else SlotMachine.sendCommand( GameCommands.showMini );
+		this.currentGame.gameToolBar.showWinResult( this.currentGame.ganho );
+		this.currentGame.gameToolBar.buttonsStatusAfterRunning();
 		this.currentGame.gameToolBar.lockAllButtons();
 	}
 
@@ -360,12 +362,11 @@ class SlotMachine extends egret.Sprite {
 
 		this.gameToolBar.showStop( false );
 		this.gameToolBar.unlockAllButtons();
-		if( data["ganho"] != "unexpress" )this.gameToolBar.showWinResult( data["ganho"] );
-		else this.gameToolBar.showWinResult( this.ganho );
 
 		this.updateCredit( data );
 
 		if( data["freeSpin"] != null )this.checkFreeSpin( data["freeSpin"] );
+		this.resetGameToolBarStatus();
 
 		// this.updateNewDatas( data );
 	}

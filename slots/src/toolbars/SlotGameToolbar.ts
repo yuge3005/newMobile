@@ -218,6 +218,13 @@ class SlotGameToolbar extends egret.DisplayObjectContainer{
 		this.enabledButtons = [];
 	}
 
+	public buttonsStatusAfterRunning(): void{
+		if( !this.autoPlaying ){
+			this.enableAllButtons( true );
+			this.playBtn.visible = true;
+		}
+	}
+
 	private enableAllButtons( enabled: boolean ):void{
 		for( let i: number = 0; i < this.allButtons.length; i++ ){
 			this.allButtons[i].enabled = enabled;
