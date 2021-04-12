@@ -37,7 +37,7 @@ class HalloweenLineLayer extends PaytableLayer{
 
 		let pts: Object = LineManager.linesDictionary;
 		for( let i: number = 0; i < lines.length; i++ ){
-			let pic: egret.Bitmap = Com.addBitmapAt( this, "halloween_line_json.line" + lines[i], 0, LineManager.linePicPositions[ lines[i] ] );
+			let pic: egret.Bitmap = Com.addBitmapAt( this, "halloween_line_json.line" + lines[i], 0, LineManager.linePicPositions[ lines[i] - 1 ] );
 			pic.scaleX = pic.scaleY = 3;
 			this.blinkingLines.push( pic );
 			this.blinkingItems.push( this.paytableFgs[lines[i]-1] );
