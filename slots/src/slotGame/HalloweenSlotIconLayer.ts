@@ -70,4 +70,12 @@ class HalloweenSlotIconLayer extends SlotIconLayer{
 		mc.scaleY = 2;
 		return mc;
 	}
+
+	public stopRunning(){
+		let maxIndex: number = this.runningAnimations.length;
+		for( let i: number = 0; i < maxIndex; i++ ){
+			egret.Tween.removeTweens( this.runningAnimations[i] );
+			this.hideRunningAn( this.runningAnimations[i], i == maxIndex - 1 );
+		}
+	}
 }

@@ -26,7 +26,7 @@ class SlotIconLayer extends egret.DisplayObjectContainer{
 
 	public showResult(){
 		this.showBlinkIcons();
-		SlotMachine.endSlotRunning();
+		SlotMachine.endSlotRunning( this.figlinhas );
 	}
 
 	protected showBlinkIcons(){
@@ -68,5 +68,9 @@ class SlotIconLayer extends egret.DisplayObjectContainer{
 			}
 		}
 		this.blinkIcons = null;
+	}
+
+	public stopRunning(){
+		// sub class
 	}
 }

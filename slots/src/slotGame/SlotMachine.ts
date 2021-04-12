@@ -233,12 +233,14 @@ class SlotMachine extends egret.Sprite {
 		this.gameToolBar.setBet( GameData.currentBet, LineManager.maxLines, GameData.currentBet == GameData.maxBet );
 	}
 
-	public static endSlotRunning (){
+	public static endSlotRunning ( lines: Array<number> ){
 		if( !this.currentGame.tipoBonus ) this.currentGame.sendRoundOverRequest();
 		else SlotMachine.sendCommand( GameCommands.showMini );
 		this.currentGame.gameToolBar.showWinResult( this.currentGame.ganho );
 		this.currentGame.gameToolBar.buttonsStatusAfterRunning();
 		this.currentGame.gameToolBar.lockAllButtons();
+
+		this.currentGame.payTableArea.lineBlink( lines );
 	}
 
 	protected sendRoundOverRequest(){
@@ -278,12 +280,13 @@ class SlotMachine extends egret.Sprite {
 			this.currentGame.gameToolBar.lockAllButtons();
 			this.currentGame.sendPlayRequest();
 			this.currentGame.slotIconArea.clearIconStatus();
-			// PayTableManager.clearPaytablesStatus();
+			this.currentGame.payTableArea.clearPaytablesStatus();
 			this.currentGame.gameToolBar.showTip( cmd );
 			this.currentGame.dispatchEvent( new egret.Event( "onGamePlay" ) );
 		}
 		else if( cmd == GameCommands.stop ){
 			this.currentGame.gameToolBar.enabledStopButton();
+			this.currentGame.slotIconArea.stopRunning();
 		}
 		else if( cmd == GameCommands.showMini ){
 			// this.currentGame.showMiniGame();

@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "halloween_bg_jpg,halloweenAnimation_png,halloweenAnimation_json,halloween_json,halloween_conf",
+			"keys": "halloween_bg_jpg,halloweenAnimation_png,halloweenAnimation_json,halloween_json,halloween_conf,halloween_line_json",
 			"name": "halloween"
 		}
 	],
@@ -31,6 +31,12 @@
 			"url": "config/halloween.conf",
 			"type": "json",
 			"name": "halloween_conf"
+		},
+		{
+			"url": "game/halloween/halloween_line.json",
+			"type": "sheet",
+			"name": "halloween_line_json",
+			"subkeys": "line1,line10,line11,line12,line13,line14,line15,line16,line17,line18,line19,line2,line20,line3,line4,line5,line6,line7,line8,line9"
 		}
 	]
 }
