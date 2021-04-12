@@ -340,7 +340,8 @@ class SlotMachine extends egret.Sprite {
 
 		this.ganho = data["ganho"];
 
-		this.startRunning( data["figuras"] );
+		this.tipoBonus = data["tipoBonus"];
+		this.startRunning( data["figuras"], data["linhasPremiadas"], data["figurasPremiadas"] );
 	}
 
 	protected updateCredit( data: Object ): void{
@@ -416,7 +417,7 @@ class SlotMachine extends egret.Sprite {
 		this.stopAllSound();
 	}
 
-	protected startRunning( figuras: Array<number> ){
+	protected startRunning( figuras: Array<number>, figlinhasPremiadas: Array<number>, figurasPremiadas: Array<number> ){
 		// override
 	}
 
