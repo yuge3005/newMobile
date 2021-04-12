@@ -5,6 +5,7 @@ class SlotIconLayer extends egret.DisplayObjectContainer{
 	protected figuras: Array<number>;
 
 	protected blinkIcons: Array<egret.MovieClip>;
+	protected blinkIconsLayer: egret.DisplayObjectContainer;
 
 	public constructor() {
 		super();
@@ -33,16 +34,26 @@ class SlotIconLayer extends egret.DisplayObjectContainer{
 
 		if( this.blinkIcons ) this.clearBlinkIcons();
 		this.blinkIcons = [];
+		if( !this.blinkIconsLayer ) this.blinkIconsLayer = new egret.DisplayObjectContainer;
+		this.addChild( this.blinkIconsLayer );
+
 		let pts: Object = LineManager.linesDictionary;
 		for( let i: number = 0; i < this.figlinhas.length; i++ ){
 			let ptIndex: number = this.figlinhas[i];
 			let iconIdex: number = this.figuras[i];
 			let line: LineUI = pts["p"+ptIndex];
 			for( let j: number = 0; j < line.lineRule.length; j++ ){
-				egret.log( line.lineRule[j] );
-				// this.icons[]
+				let slotIconNumberIndex: number = parseInt( line.lineRule.charAt(j), 16 );
+				let slotIcon: SlotIcon = this.icons[ slotIconNumberIndex ];
+				if( slotIcon.iconIndex == iconIdex ) {
+					if( !this.blinkIcons[slotIconNumberIndex] ) this.blinkIcons[slotIconNumberIndex] = this.buildBlinkIcon( iconIdex, slotIcon.x, slotIcon.y );
+				}
 			}
 		}
+	}
+
+	protected buildBlinkIcon( iconIndex: number, positionX: number, positionY: number ): egret.MovieClip{
+		return null;
 	}
 
 	public clearIconStatus(){

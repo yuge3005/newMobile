@@ -63,4 +63,11 @@ class HalloweenSlotIconLayer extends SlotIconLayer{
 
 		if( isLast ) this.showResult();
 	}
+
+	protected buildBlinkIcon( iconIndex: number, positionX: number, positionY: number ): egret.MovieClip{
+		let mc: egret.MovieClip = Com.addMovieClipAt( this.blinkIconsLayer, MDS.mcFactory, "" + iconIndex, positionX - 128, positionY - 128 );
+		mc.scaleX = 2;
+		mc.scaleY = 2;
+		return mc;
+	}
 }
