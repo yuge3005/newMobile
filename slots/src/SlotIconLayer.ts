@@ -11,4 +11,7 @@ class SlotIconLayer extends egret.DisplayObjectContainer{
 
 	public showIcons( iconArray: Array<number> = null ){
 	}
+
+	public startRunning(){
+	}
 }

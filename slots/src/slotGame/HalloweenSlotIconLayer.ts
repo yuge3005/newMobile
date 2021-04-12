@@ -44,4 +44,11 @@ class HalloweenSlotIconLayer extends SlotIconLayer{
 			this.runningAnimations[i].visible = false;
 		}
 	}
+
+	public startRunning(){
+		for( let i: number = 0; i < 5; i++ ){
+			this.runningAnimations[i].gotoAndPlay( Math.floor( Math.random() * 5 + 1 ) );
+			this.runningAnimations[i].visible = true;
+		}
+	}
 }
