@@ -233,6 +233,16 @@ class SlotMachine extends egret.Sprite {
 		this.gameToolBar.setBet( GameData.currentBet, LineManager.maxLines, GameData.currentBet == GameData.maxBet );
 	}
 
+	public static endSlotRunning (){
+		this.currentGame.sendRoundOverRequest();
+		this.currentGame.gameToolBar.lockAllButtons();
+	}
+
+	protected sendRoundOverRequest(){
+		ISlotServer.roundOverCallback = this.onRoundOver.bind( this );
+		ISlotServer.roundOver();
+	}
+
 	protected stopAllSound(): void {
 		this.soundManager.stopAll();
 	}
@@ -328,7 +338,7 @@ class SlotMachine extends egret.Sprite {
 
 		this.ganho = data["ganho"];
 
-		this.startRunning();
+		this.startRunning( data["figuras"] );
 	}
 
 	protected updateCredit( data: Object ): void{
@@ -337,6 +347,31 @@ class SlotMachine extends egret.Sprite {
 		if( this.gameToolBar ){
 			this.gameToolBar.updateCoinsAndDinero( this.gameCoins, this.dinero == null ? PlayerConfig.player( "score.chips" ) : this.dinero );
 			// if( !isNaN(data["xp"]) ) this.gameToolBar.updateXp( data["xp"] );
+		}
+	}
+
+	public onRoundOver( data: Object ){
+		ISlotServer.roundOverCallback = null;
+		
+		this.roundOver();
+
+		this.gameToolBar.showStop( false );
+		this.gameToolBar.unlockAllButtons();
+		if( data["ganho"] != "unexpress" )this.gameToolBar.showWinResult( data["ganho"] );
+		else this.gameToolBar.showWinResult( this.ganho );
+
+		this.updateCredit( data );
+
+		if( data["freeSpin"] != null )this.checkFreeSpin( data["freeSpin"] );
+
+		// this.updateNewDatas( data );
+	}
+
+	protected checkFreeSpin( freeSpin: number ): void{
+		this.freeSpin = freeSpin;
+		if( GameData.minBet == GameData.currentBet && this.freeSpin > 0 ){
+			if( this.gameToolBar.autoPlaying ) this.gameToolBar.autoPlaying = false;
+			this.gameToolBar.updateFreeSpinCount( this.freeSpin );
 		}
 	}
 
@@ -371,11 +406,15 @@ class SlotMachine extends egret.Sprite {
         // override
 	}
 
+	protected roundOver(): void {
+		SlotMachine.inRound = false;
+    }
+
 	protected startPlay(): void {
 		this.stopAllSound();
 	}
 
-	protected startRunning(){
+	protected startRunning( figuras: Array<number> ){
 		// override
 	}
 

@@ -30,8 +30,8 @@ class Halloween extends SlotMachine{
 		this.slotIconArea.showIcons( null );
 	}
 
-	protected startRunning(){
-		this.slotIconArea.startRunning();
+	protected startRunning( figuras: Array<number> ){
+		this.slotIconArea.startRunning( figuras );
 	}
 
 /******************************************************************************************************************************************************************/    

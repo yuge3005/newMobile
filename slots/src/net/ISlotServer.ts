@@ -57,10 +57,6 @@ class ISlotServer {
 		this.serverConnection["sendPlay"]( "solicitajogada", bet, betIndex, gameLineFormat );
 	}
 
-	public static round( bet: number, cards: number, cardGroupNumber: number, betIndex: number ):void{
-		this.serverConnection["sedRound"]( "round", bet, cards, cardGroupNumber, betIndex )
-	}
-
 	public static roundOver(){
 		this.serverConnection["roundOver"]();
 	}

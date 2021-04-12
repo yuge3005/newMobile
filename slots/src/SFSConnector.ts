@@ -315,38 +315,6 @@ class SFSConnector {
         SFSConnector._sfs.send(eval("new SFS2X.ExtensionRequest( key, params )"));
     }
 
-    public static sendPlayWithCardId( key: string, bet: number, cards: number, cardGroupNumber: number, betIndex: number, cardId: number ): void{
-        var params:any = eval( "new SFS2X.SFSObject()" );
-        params.putInt( "aposta", bet );
-        params.putByte( "qtd", cards );
-		params.putInt( "cartela", cardGroupNumber );
-        params.putInt( "bet_index", betIndex );
-        params.putInt( "cardID", cardId );
-        trace( params.getDump() );
-        SFSConnector._sfs.send(eval("new SFS2X.ExtensionRequest( key, params )"));
-    }
-
-    public static sendPlayWithNumbers( key: string, bet: number, cards: number, cardGroupNumber: number, betIndex: number, cardNumbers: Array<number> ): void{
-        var params:any = eval( "new SFS2X.SFSObject()" );
-        params.putInt( "aposta", bet );
-        params.putByte( "qtd", cards );
-		params.putInt( "cartela", cardGroupNumber );
-        params.putInt( "bet_index", betIndex );
-        params.putByteArray( "selected_card_nums", cardNumbers );
-        trace( params.getDump() );
-        SFSConnector._sfs.send(eval("new SFS2X.ExtensionRequest( key, params )"));
-    }
-
-    public static sedRound( key: string, bet: number, cards: number, cardGroupNumber: number, betIndex: number ): void{
-        var params:any = eval( "new SFS2X.SFSObject()" );
-        params.putInt( "aposta", bet );
-        params.putByte( "qtdCartelasAbertas", cards );
-		params.putInt( "numCartela", cardGroupNumber );
-        params.putInt( "bet_index", betIndex );
-        trace( params.getDump() );
-        SFSConnector._sfs.send(eval("new SFS2X.ExtensionRequest( key, params )"));
-    }
-
     public static roundOver(){
         var params:any = eval( "new SFS2X.SFSObject()" );
         trace( params.getDump() )

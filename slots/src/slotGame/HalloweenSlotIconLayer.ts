@@ -45,10 +45,21 @@ class HalloweenSlotIconLayer extends SlotIconLayer{
 		}
 	}
 
-	public startRunning(){
+	public startRunning( figuras: Array<number> ){
 		for( let i: number = 0; i < 5; i++ ){
 			this.runningAnimations[i].gotoAndPlay( Math.floor( Math.random() * 5 + 1 ) );
 			this.runningAnimations[i].visible = true;
+
+			TweenerTool.tweenTo( this.runningAnimations[i], { alpha: 1 }, 100, 500 * i + 1000, this.hideRunningAn.bind( this, this.runningAnimations[i], i == 4 ) );
 		}
+
+		this.showIcons( figuras );
+	}
+
+	private hideRunningAn( mc: egret.MovieClip, isLast: boolean ){
+		mc.stop();
+		mc.visible = false;
+
+		if( isLast ) SlotMachine.endSlotRunning();
 	}
 }
