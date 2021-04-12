@@ -34,4 +34,12 @@ class PaytableLayer extends egret.DisplayObjectContainer{
 	protected payTableFit( event: egret.Event ){
 		//sub class override
 	}
+
+	public lineBlink( lines: Array<number> ){
+		//sub class override
+	}
+
+	public clearPaytablesStatus(){
+		//sub class override
+	}
 }

@@ -133,8 +133,8 @@ class SlotMachine extends egret.Sprite {
 
 		MDS.mcFactory = SlotBackGroundSetting.initBackground( this );
 
-		this.addPayTables();
 		this.addIcons();
+		this.addPayTables();
 		
 		this.sendInitDataRequest();
 
