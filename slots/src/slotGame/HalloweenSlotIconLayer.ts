@@ -13,7 +13,7 @@ class HalloweenSlotIconLayer extends SlotIconLayer{
 		this.icons = [];
 		for( let i: number = 0; i < 15; i++ ){
 			this.icons[i] = new HalloweenIcon( null );
-			Com.addObjectAt( this, this.icons[i], 135 + i % 5 * 289, 256 * Math.floor( i / 5 ) + 135 );
+			Com.addObjectAt( this, this.icons[i], 136 + i % 5 * 289, 256 * Math.floor( i / 5 ) + 135 );
 		}
 	}
 

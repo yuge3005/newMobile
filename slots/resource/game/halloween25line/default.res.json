@@ -31,7 +31,7 @@
 			"url": "game/halloween25line/halloween25line.json",
 			"type": "sheet",
 			"name": "halloween25line_json",
-			"subkeys": "0,1,2,22_line,23_line,24_line,25_Lines,25_line,3,4,5,6,7,8,9,G1,G10,G11,G12,G13,G14,G15,G16,G17,G18,G19,G2,G20,G21,G22,G23,G24,G25,G3,G4,G5,G6,G7,G8,G9,JackPot,Line Count,jackpot_lock,reels_left,reels_right,spin_btn,spin_btn_LYD,yellow_line"
+			"subkeys": "0,1,2,21_line,22_line,23_line,24_line,25_Lines,25_line,3,4,5,6,7,8,9,G1,G10,G11,G12,G13,G14,G15,G16,G17,G18,G19,G2,G20,G21,G22,G23,G24,G25,G3,G4,G5,G6,G7,G8,G9,JackPot,Line Count,jackpot_lock,reels_left,reels_right,spin_btn,spin_btn_LYD"
 		},
 		{
 			"url": "config/halloween25line.conf",

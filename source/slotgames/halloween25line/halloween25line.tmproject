@@ -1,8 +1,6 @@
 {
+    "projectName": "halloween25line",
     "files": [
-        "./G24.png",
-        "./G23.png",
-        "./G22.png",
         "./G21.png",
         "./G20.png",
         "./G19.png",
@@ -29,6 +27,7 @@
         "./24_line.png",
         "./23_line.png",
         "./22_line.png",
+        "./21_line.png",
         "./9.png",
         "./8.png",
         "./7.png",
@@ -39,7 +38,6 @@
         "./2.png",
         "./1.png",
         "./0.png",
-        "./yellow_line.png",
         "./spin_btn_LYD.png",
         "./spin_btn.png",
         "./reels_right.png",
@@ -47,15 +45,17 @@
         "./Line Count.png",
         "./jackpot_lock.png",
         "./JackPot.png",
-        "./G25.png"
+        "./G25.png",
+        "./G24.png",
+        "./G23.png",
+        "./G22.png"
     ],
-    "projectName": "halloween25line",
-    "version": 5,
     "options": {
-        "extend": 0,
         "layoutMath": "0",
         "sizeMode": "free",
         "useExtension": 0,
-        "layoutGap": 1
-    }
+        "layoutGap": 1,
+        "extend": 0
+    },
+    "version": 5
 }
