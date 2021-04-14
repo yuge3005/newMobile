@@ -34,12 +34,15 @@ class SlotMachine extends egret.Sprite {
 
 	public connectReady: boolean = false;
 	public assetReady: boolean = false;
-	// public betListReady: boolean = false;
+	public betListReady: boolean = false;
 
 	public static inRound: boolean = false;
 
 	public constructor( gameConfigFile: string, configUrl: string, gameId: number ) {
 		super();
+
+		if( localStorage.getItem( "gotoGame" + gameId ) ) localStorage.removeItem( "gotoGame" + gameId );
+		else document.location.href = "../lobby";
 
 		this.connetKeys = { zona: "Zona" + gameId, sala: "Sala" + gameId };
 		this.tokenObject = {};
@@ -156,7 +159,7 @@ class SlotMachine extends egret.Sprite {
     private loginToServer(){
 		if( ISlotServer.connected ){
 			ISlotServer.loginTo( this.connetKeys["zona"], this.connetKeys["sala"], this.onJoinRoomCallback.bind(this) );
-			// GameData.getBetList( this.betListCallback.bind( this ), ( this.connetKeys["zona"] as string ).replace( /\D/g, "" ) );
+			GameData.getBetList( this.betListCallback.bind( this ), ( this.connetKeys["zona"] as string ).replace( /\D/g, "" ) );
 		}
         else setTimeout( this.loginToServer.bind(this), 200 );
     }
@@ -166,14 +169,13 @@ class SlotMachine extends egret.Sprite {
 		this.testReady();
     }
 
-	// private betListCallback( success: boolean ){
-	// 	this.betListReady = true;
-	// 	this.testReady();
-	// }
+	private betListCallback( success: boolean ){
+		this.betListReady = true;
+		this.testReady();
+	}
 
 	private testReady(){
-		// if( this.connectReady && this.assetReady && this.betListReady ){
-		if( this.connectReady && this.assetReady ){
+		if( this.connectReady && this.assetReady && this.betListReady ){
 			this.onConfigLoadComplete();
 			this.init();
 		}
@@ -354,7 +356,7 @@ class SlotMachine extends egret.Sprite {
 		if( !isNaN( data["secondCurrency"] ) )this.dinero = data["secondCurrency"];
 		if( this.gameToolBar ){
 			this.gameToolBar.updateCoinsAndDinero( this.gameCoins, this.dinero == null ? PlayerConfig.player( "score.chips" ) : this.dinero );
-			// if( !isNaN(data["xp"]) ) this.gameToolBar.updateXp( data["xp"] );
+			if( !isNaN(data["xp"]) ) this.gameToolBar.updateXp( data["xp"] );
 		}
 	}
 
