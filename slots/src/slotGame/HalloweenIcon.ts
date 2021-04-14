@@ -4,9 +4,8 @@ class HalloweenIcon extends SlotIcon{
 	}
 
 	protected setToMiddle(){
-		this.width = 256;
-		this.height = 256;
-
 		super.setToMiddle();
+
+		this.scaleX = this.scaleY = 2;
 	}
 }

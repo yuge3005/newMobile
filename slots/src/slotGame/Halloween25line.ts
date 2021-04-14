@@ -26,6 +26,7 @@ class Halloween25line extends SlotMachine{
 
 	protected addIcons(){
 		this.slotIconArea = new HalloweenSlotIconLayer();
+		this.slotIconArea.scaleX = this.slotIconArea.scaleY = 0.9;
 		this.addChild( this.slotIconArea );
 		this.slotIconArea.showIcons( null );
 	}
