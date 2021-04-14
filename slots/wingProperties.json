@@ -8,6 +8,10 @@
             {
                 "configPath": "resource/game/halloween/default.res.json",
                 "relativePath": "resource/"
+            },
+            {
+                "configPath": "resource/game/halloween25line/default.res.json",
+                "relativePath": "resource/"
             }
         ]
     },

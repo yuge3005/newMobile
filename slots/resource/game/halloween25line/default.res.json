@@ -1,0 +1,42 @@
+{
+	"groups": [
+		{
+			"keys": "halloween_bg_jpg,halloweenAnimation_png,halloweenAnimation_json,halloween25line_json,halloween25line_conf,halloween_line_json",
+			"name": "halloween25line"
+		}
+	],
+	"resources": [
+		{
+			"url": "game/halloween/halloween_bg.jpg",
+			"type": "image",
+			"name": "halloween_bg_jpg"
+		},
+		{
+			"url": "game/halloween/halloweenAnimation.png",
+			"type": "image",
+			"name": "halloweenAnimation_png"
+		},
+		{
+			"url": "game/halloween/halloweenAnimation.json",
+			"type": "json",
+			"name": "halloweenAnimation_json"
+		},
+		{
+			"url": "game/halloween/halloween_line.json",
+			"type": "sheet",
+			"name": "halloween_line_json",
+			"subkeys": "line1,line10,line11,line12,line13,line14,line15,line16,line17,line18,line19,line2,line20,line3,line4,line5,line6,line7,line8,line9"
+		},
+		{
+			"url": "game/halloween25line/halloween25line.json",
+			"type": "sheet",
+			"name": "halloween25line_json",
+			"subkeys": "0,1,2,22_line,23_line,24_line,25_Lines,25_line,3,4,5,6,7,8,9,G1,G10,G11,G12,G13,G14,G15,G16,G17,G18,G19,G2,G20,G21,G22,G23,G24,G25,G3,G4,G5,G6,G7,G8,G9,JackPot,Line Count,jackpot_lock,reels_left,reels_right,spin_btn,spin_btn_LYD,yellow_line"
+		},
+		{
+			"url": "config/halloween25line.conf",
+			"type": "json",
+			"name": "halloween25line_conf"
+		}
+	]
+}
