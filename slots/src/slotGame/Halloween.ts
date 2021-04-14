@@ -31,7 +31,15 @@ class Halloween extends SlotMachine{
 	}
 
 	protected showMiniGame(): void{
-		// override
+		alert( "paly mini game" );
+		this.sendRoundOverRequest();
+		if( 1 > 0 ) return;
+		switch( this.tipoBonus ){
+			case 1: break;
+			case 2: break;
+			default: throw new Error( "Server data error: mini game id" );
+		}
+		this.tipoBonus = 0;
 	}
 
 	protected startRunning( figuras: Array<number>, figlinhasPremiadas: Array<number>, figurasPremiadas: Array<number> ){
