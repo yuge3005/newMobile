@@ -39,12 +39,14 @@ class Halloween25LineLayer extends HalloweenLineLayer{
 	protected buildLineUI( lineNumber: number ): egret.Bitmap{
 		let pic: egret.Bitmap;
 		if( lineNumber <= 20 ){
-			pic = Com.addBitmapAt( this, "halloween_line_json.line" + lineNumber, 0, LineManager.linePicPositions[ lineNumber - 1 ] - 4 - 60 * LineManager.linePicPositions[ lineNumber - 1 ] / 720 );
+			pic = Com.addBitmapAt( this, "halloween_line_json.line" + lineNumber, 0, LineManager.linePicPositions[ lineNumber - 1 ] - 2 - 72 * LineManager.linePicPositions[ lineNumber - 1 ] / 720 );
 			pic.scaleX = pic.scaleY = 2.7;
 		}
 		else{
-			pic = Com.addBitmapAt( this, SlotMachine.getAssetStr( lineNumber + "_line" ), LineManager.linePicPositions[ lineNumber - 1 ], 0 );
-			pic.height = 760;
+			let tempX: number = LineManager.linePicPositions[ lineNumber - 1 ] - 333;
+			tempX *= 0.9;
+			pic = Com.addBitmapAt( this, SlotMachine.getAssetStr( lineNumber + "_line" ), tempX, 0 );
+			pic.height = 720;
 		}
 		return pic;
 	}
