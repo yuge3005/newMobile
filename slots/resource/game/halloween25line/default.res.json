@@ -1,15 +1,15 @@
 {
 	"groups": [
 		{
-			"keys": "halloween_bg_jpg,halloweenAnimation_png,halloweenAnimation_json,halloween25line_json,halloween25line_conf,halloween_line_json",
+			"keys": "halloween25_bg_jpg,halloweenAnimation_png,halloweenAnimation_json,halloween25line_json,halloween25line_conf,halloween_line_json",
 			"name": "halloween25line"
 		}
 	],
 	"resources": [
 		{
-			"url": "game/halloween/halloween_bg.jpg",
+			"url": "game/halloween25line/halloween25_bg.jpg",
 			"type": "image",
-			"name": "halloween_bg_jpg"
+			"name": "halloween25_bg_jpg"
 		},
 		{
 			"url": "game/halloween/halloweenAnimation.png",

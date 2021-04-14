@@ -11,7 +11,7 @@ class Halloween25line extends SlotMachine{
 			super( "halloween25line.conf", assetsPath, 66 );
 
 			LineManager.currentLines = LineManager.maxLines = 25;
-			LineManager.lineStartPoint = new egret.Point( 333, 124 );
+			LineManager.lineStartPoint = new egret.Point( 403, 144 );
 			LineManager.linePicPositions = [395,181,618,0,145,101,98,281,76,55,124,55,64,7,96,112,335,33,242,159,460,750,1040,1330,1620];
 
 			LineManager.layerType = Halloween25LineLayer;
@@ -21,7 +21,7 @@ class Halloween25line extends SlotMachine{
 	protected init(){
 		super.init();
 
-		this.addChildAt( Com.createBitmapByName( "halloween_bg_jpg" ), 0 );
+		this.addChildAt( Com.createBitmapByName( "halloween25_bg_jpg" ), 0 );
 	}
 
 	protected addIcons(){
