@@ -1,19 +1,5 @@
 {
-    "options": {
-        "useExtension": 0,
-        "layoutGap": 1,
-        "extend": 0,
-        "layoutMath": "0",
-        "sizeMode": "free"
-    },
     "files": [
-        "./spin_btn.png",
-        "./reels_right.png",
-        "./reels_left.png",
-        "./Line Count.png",
-        "./jackpot_lock.png",
-        "./JackPot.png",
-        "./20 Lines.png",
         "./9.png",
         "./8.png",
         "./7.png",
@@ -24,8 +10,23 @@
         "./2.png",
         "./1.png",
         "./0.png",
-        "./spin_btn_LYD.png"
+        "./spin_btn_LYD.png",
+        "./spin_btn.png",
+        "./reels_right.png",
+        "./reels_left.png",
+        "./Line Count.png",
+        "./jetpot 4X.png",
+        "./jackpot_lock.png",
+        "./JackPot.png",
+        "./20 Lines.png"
     ],
+    "projectName": "halloweenX",
     "version": 5,
-    "projectName": "halloweenX"
+    "options": {
+        "extend": 0,
+        "layoutMath": "0",
+        "sizeMode": "free",
+        "useExtension": 0,
+        "layoutGap": 1
+    }
 }
