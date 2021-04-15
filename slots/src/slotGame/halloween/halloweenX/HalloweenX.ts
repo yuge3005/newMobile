@@ -49,7 +49,7 @@ class HalloweenX extends SlotMachine{
 /******************************************************************************************************************************************************************/    
 
     protected showJackpot( jackpot: number, jackpotMinBet: number, betConfig: Array<Object> ){
-        this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 1246, 34 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 0, 0 ), new egret.Rectangle( 270, 12, 260, 50 ), 40, 0xFFFFFF ) );
+        this.addChild( this.jackpotArea = new HalloweenXJackpotLayer( new egret.Point( 1728, 400 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 20, -56 ), new egret.Rectangle( 0, 0, 225, 74 ), 48, 0xFFFFFF ) );
 		this.jackpotArea.jackpotText.stroke = 2;
 		this.jackpotArea.jackpotText.strokeColor = 0;
 	}
