@@ -35,6 +35,9 @@ class HalloweenLineLayer extends PaytableLayer{
 		this.blinkingLines = [];
 		this.blinkingItems = [];
 
+		if( lines.length == 0 ) return;
+		SoundManager.play( "win_mp3" );
+
 		let pts: Object = LineManager.linesDictionary;
 		for( let i: number = 0; i < lines.length; i++ ){
 			let pic: egret.Bitmap = this.buildLineUI( lines[i] );

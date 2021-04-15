@@ -23,7 +23,7 @@ class Main extends SlotGameMain {
     }
 
     protected async runGame() {
-        await RES.loadConfig("resource/game/halloween25line/default.res.json", "resource/");
+        await RES.loadConfig("resource/game/halloweenX/default.res.json", "resource/");
         await RES.loadConfig("resource/assets/default.res.json", "resource/");
         this.createGameScene();
         await platform.login();
@@ -32,6 +32,6 @@ class Main extends SlotGameMain {
     }
 
 	protected buildGame(){
-		this.currentGame = new Halloween25line("resource/game/halloween25line/default.res.json");
+		this.currentGame = new HalloweenX("resource/game/halloweenX/default.res.json");
 	}
 }

@@ -211,6 +211,7 @@ class SFSConnector {
             var data : any = event.params;
             var gameData: Object = {};
             gameData["acumulado"] = data.getDouble("acumulado");
+            gameData["smallerJackpot"] = data.getDouble("smallerJackpot");
             SFSConnector.jackpotCallbak( gameData );
             return;
         }
