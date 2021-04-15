@@ -14,7 +14,7 @@ class HalloweenX extends SlotMachine{
 			LineManager.lineStartPoint = new egret.Point( 244, 118 );
 			LineManager.linePicPositions = [395,181,618,0,145,101,98,281,76,55,124,55,64,7,96,112,335,33,242,159];
 
-			LineManager.layerType = HalloweenLineLayer;
+			LineManager.layerType = HalloweenXLineLayer;
 			LineUI.textBold = true;
 	}
 
