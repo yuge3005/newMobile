@@ -38,8 +38,8 @@ class HalloweenSlotIconLayer extends SlotIconLayer{
 	private buildRunningAn(){
 		this.runningAnimations = [];
 		for( let i: number = 0; i < 5; i++ ){
-			this.runningAnimations[i] = Com.addMovieClipAt( this, MDS.mcFactory, "turning", 7 + 289 * i, 7 );
-			this.runningAnimations[i].scaleX = this.runningAnimations[i].scaleY = 2;
+			this.runningAnimations[i] = Com.addMovieClipAt( this, MDS.mcFactory, "turning", 4 + 289 * i, 3 );
+			this.runningAnimations[i].scaleX = this.runningAnimations[i].scaleY = 2.0625;
 			this.runningAnimations[i].stop();
 			this.runningAnimations[i].visible = false;
 		}
