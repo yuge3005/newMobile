@@ -25,7 +25,7 @@ class EraDoGelo extends SlotMachine{
 	}
 
 	protected addIcons(){
-		this.slotIconArea = new HalloweenSlotIconLayer();
+		this.slotIconArea = new EraDoGeloSlotIconLayer();
 		this.addChild( this.slotIconArea );
 		this.slotIconArea.showIcons( null );
 	}

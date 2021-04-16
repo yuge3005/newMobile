@@ -13,7 +13,7 @@ class EraDoGeloSlotIconLayer extends SlotIconLayer{
 		this.icons = [];
 		for( let i: number = 0; i < 15; i++ ){
 			this.icons[i] = new EraDoGeloIcon( null );
-			Com.addObjectAt( this, this.icons[i], 168 + i % 5 * 303, 273 * Math.floor( i / 5 ) + 130 );
+			Com.addObjectAt( this, this.icons[i], 158 + i % 5 * 304, 272 * Math.floor( i / 5 ) + 131 );
 		}
 	}
 
