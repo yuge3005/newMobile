@@ -1,0 +1,57 @@
+{
+	"groups": [
+		{
+			"keys": "eraDoGelo_bg_jpg,halloweenAnimation_png,halloweenAnimation_json,halloween_json,halloween_conf,halloween_line_json,play_mp3,run_mp3,win_mp3",
+			"name": "halloween"
+		}
+	],
+	"resources": [
+		{
+			"url": "game/eraDoGelo/eraDoGelo_bg.jpg",
+			"type": "image",
+			"name": "eraDoGelo_bg_jpg"
+		},
+		{
+			"url": "game/halloween/halloweenAnimation.png",
+			"type": "image",
+			"name": "halloweenAnimation_png"
+		},
+		{
+			"url": "game/halloween/halloweenAnimation.json",
+			"type": "json",
+			"name": "halloweenAnimation_json"
+		},
+		{
+			"url": "game/halloween/halloween.json",
+			"type": "sheet",
+			"name": "halloween_json",
+			"subkeys": "0,1,2,20 Lines,3,4,5,6,7,8,9,G1,G10,G11,G12,G13,G14,G15,G16,G17,G18,G19,G2,G20,G3,G4,G5,G6,G7,G8,G9,JackPot,Line Count,jackpot_lock,reels_left,reels_right,spin_btn,spin_btn_LYD"
+		},
+		{
+			"url": "config/halloween.conf",
+			"type": "json",
+			"name": "halloween_conf"
+		},
+		{
+			"url": "game/halloween/halloween_line.json",
+			"type": "sheet",
+			"name": "halloween_line_json",
+			"subkeys": "line1,line10,line11,line12,line13,line14,line15,line16,line17,line18,line19,line2,line20,line3,line4,line5,line6,line7,line8,line9"
+		},
+		{
+			"url": "game/halloween/sound/play.mp3",
+			"type": "sound",
+			"name": "play_mp3"
+		},
+		{
+			"url": "game/halloween/sound/run.mp3",
+			"type": "sound",
+			"name": "run_mp3"
+		},
+		{
+			"url": "game/halloween/sound/win.mp3",
+			"type": "sound",
+			"name": "win_mp3"
+		}
+	]
+}
