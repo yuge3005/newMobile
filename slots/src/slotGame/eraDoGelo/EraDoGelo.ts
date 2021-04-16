@@ -21,6 +21,10 @@ class EraDoGelo extends SlotMachine{
 	protected init(){
 		super.init();
 
+		let frameBg: egret.DisplayObject = this.getChildByName( SlotMachine.getAssetStr( "bg_frame" ) );
+		let childIndex: number = this.getChildIndex( frameBg );
+		this.setChildIndex( this.slotIconArea, childIndex );
+
 		this.addChildAt( Com.createBitmapByName( "eraDoGelo_bg_jpg" ), 0 );
 	}
 

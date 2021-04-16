@@ -15,6 +15,7 @@ class EraDoGeloLineLayer extends PaytableLayer{
 		this.paytableFgs = [];
 		for( let i: number = 0; i < 20; i++ ){
 			this.paytableFgs[i] = this.parent.getChildByName( SlotMachine.getAssetStr( "num_" + ( i + 1 ) ) );
+			( this.paytableFgs[i] as egret.MovieClip ).gotoAndStop( 1 );
         }
     }
 
