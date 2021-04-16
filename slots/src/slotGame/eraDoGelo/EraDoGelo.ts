@@ -53,8 +53,8 @@ class EraDoGelo extends SlotMachine{
 /******************************************************************************************************************************************************************/    
 
     protected showJackpot( jackpot: number, jackpotMinBet: number, betConfig: Array<Object> ){
-        this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 1246, 34 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 0, 0 ), new egret.Rectangle( 270, 12, 260, 50 ), 40, 0xFFFFFF ) );
-		this.jackpotArea.jackpotText.stroke = 2;
-		this.jackpotArea.jackpotText.strokeColor = 0;
+        this.addChild( this.jackpotArea = new JackpotLayer( new egret.Point( 218, 14 ), jackpot, jackpotMinBet, betConfig, new egret.Point( 0, 0 ), new egret.Rectangle( 34, 10, 295, 65 ), 40, 0x112233 ) );
+		this.jackpotArea.jackpotText.fontFamily = "Arial";
+		this.jackpotArea.jackpotText.bold = true;
 	}
 }
