@@ -85,7 +85,7 @@ class EraDoGeloSlotIconLayer extends SlotIconLayer{
 	}
 
 	protected buildBlinkIcon( iconIndex: number, positionX: number, positionY: number ): egret.MovieClip{
-		let mc: egret.MovieClip = Com.addMovieClipAt( this.blinkIconsLayer, this.eraMcFactory, "" + iconIndex, positionX - 135, positionY - 126 );
+		let mc: egret.MovieClip = Com.addMovieClipAt( this.blinkIconsLayer, iconIndex < 10 ? this.eraMcFactory : MDS.mcFactory, "" + iconIndex, positionX - 135, positionY - 126 );
 		mc.scaleX = 1.5;
 		mc.scaleY = 1.5;
 		return mc;
