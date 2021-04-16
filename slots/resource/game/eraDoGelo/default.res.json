@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "eraDoGelo_bg_jpg,eraDoGeloAnimation_png,eraDoGeloAnimation_json,eraDoGelo_json,halloween_conf,halloween_line_json,play_mp3,run_mp3,win_mp3",
+			"keys": "eraDoGelo_bg_jpg,eraDoGeloAnimation_png,eraDoGeloAnimation_json,eraDoGelo_json,eraDoGelo_conf,halloween_line_json,play_mp3,run_mp3,win_mp3",
 			"name": "eraDoGelo"
 		}
 	],
@@ -28,9 +28,9 @@
 			"subkeys": "0,1,2,3,4,5,6,7,8,9,bg_frame,jackpot_bg,jackpot_lock"
 		},
 		{
-			"url": "config/halloween.conf",
+			"url": "config/eraDoGelo.conf",
 			"type": "json",
-			"name": "halloween_conf"
+			"name": "eraDoGelo_conf"
 		},
 		{
 			"url": "game/halloween/halloween_line.json",

@@ -8,13 +8,13 @@ class EraDoGelo extends SlotMachine{
 	}
 
 	public constructor( assetsPath: string ) {
-			super( "EraDoGelo.conf", assetsPath, 47 );
+			super( "eraDoGelo.conf", assetsPath, 47 );
 
 			LineManager.currentLines = LineManager.maxLines = 20;
 			LineManager.lineStartPoint = new egret.Point( 218, 108 );
 			LineManager.linePicPositions = [395,181,618,0,145,101,98,281,76,55,124,55,64,7,96,112,335,33,242,159];
 
-			LineManager.layerType = HalloweenLineLayer;
+			LineManager.layerType = EraDoGeloLineLayer;
 			LineUI.textBold = true;
 	}
 
