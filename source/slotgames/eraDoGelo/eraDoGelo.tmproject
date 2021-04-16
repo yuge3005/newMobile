@@ -1,0 +1,26 @@
+{
+    "options": {
+        "layoutMath": "0",
+        "sizeMode": "free",
+        "useExtension": 0,
+        "layoutGap": 1,
+        "extend": 0
+    },
+    "projectName": "eraDoGelo",
+    "files": [
+        "./jackpot_lock.png",
+        "./jackpot_bg.png",
+        "./bg_frame.png",
+        "./9.png",
+        "./8.png",
+        "./7.png",
+        "./6.png",
+        "./5.png",
+        "./4.png",
+        "./3.png",
+        "./2.png",
+        "./1.png",
+        "./0.png"
+    ],
+    "version": 5
+}
