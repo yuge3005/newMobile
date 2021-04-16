@@ -12,7 +12,7 @@ class EraDoGelo extends SlotMachine{
 
 			LineManager.currentLines = LineManager.maxLines = 20;
 			LineManager.lineStartPoint = new egret.Point( 218, 108 );
-			LineManager.linePicPositions = [395,181,618,0,145,101,98,281,76,55,124,55,64,7,96,112,335,33,242,159];
+			LineManager.linePicPositions = [445,200,768,120,218,280,518,360,240,202,248,117,630,192,525,204,515,185,530,205];
 
 			LineManager.layerType = EraDoGeloLineLayer;
 			LineUI.textBold = true;
