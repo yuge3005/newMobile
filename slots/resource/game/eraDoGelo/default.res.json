@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "eraDoGelo_bg_jpg,eraDoGeloAnimation_png,eraDoGeloAnimation_json,eraDoGelo_json,eraDoGelo_conf,halloween_line_json,play_mp3,run_mp3,win_mp3",
+			"keys": "eraDoGelo_bg_jpg,eraDoGeloAnimation_png,eraDoGeloAnimation_json,eraDoGelo_json,eraDoGelo_conf,halloween_line_json,play_mp3,run_mp3,win_mp3,eraDoGelo_icon_animation_png,eraDoGelo_icon_animation_json",
 			"name": "eraDoGelo"
 		}
 	],
@@ -52,6 +52,16 @@
 			"url": "game/halloween/sound/win.mp3",
 			"type": "sound",
 			"name": "win_mp3"
+		},
+		{
+			"url": "game/eraDoGelo/eraDoGelo_icon_animation.png",
+			"type": "image",
+			"name": "eraDoGelo_icon_animation_png"
+		},
+		{
+			"url": "game/eraDoGelo/eraDoGelo_icon_animation.json",
+			"type": "json",
+			"name": "eraDoGelo_icon_animation_json"
 		}
 	]
 }

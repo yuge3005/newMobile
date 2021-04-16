@@ -1,12 +1,18 @@
 class EraDoGeloSlotIconLayer extends SlotIconLayer{
 
 	protected runningAnimations: Array<egret.MovieClip>;
+	
+	private eraMcFactory: egret.MovieClipDataFactory;
 
 	public constructor() {
 		super();
 
 		this.x = LineManager.lineStartPoint.x;
 		this.y = LineManager.lineStartPoint.y;
+
+		let data = RES.getRes( "eraDoGelo_icon_animation_json" );
+		let tex = RES.getRes( "eraDoGelo_icon_animation_png" );
+		this.eraMcFactory = new egret.MovieClipDataFactory( data, tex );
 	}
 
 	protected buildIcons(){
@@ -63,11 +69,34 @@ class EraDoGeloSlotIconLayer extends SlotIconLayer{
 		if( isLast ) this.showResult();
 	}
 
+	protected showBlinkIcons(){
+		if( this.blinkIcons ) this.clearBlinkIcons();
+		this.blinkIcons = [];
+		if( !this.blinkIconsLayer ) this.blinkIconsLayer = new egret.DisplayObjectContainer;
+		this.addChild( this.blinkIconsLayer );
+
+		for( let i: number = 0; i < this.figuras.length; i++ ){
+			let slotIconNumberIndex: number = this.figuras[i];
+			let slotIcon: SlotIcon = this.icons[ slotIconNumberIndex ];
+			let iconIdex: number = slotIcon.iconIndex;
+			this.blinkIcons[i] = this.buildBlinkIcon( iconIdex, slotIcon.x, slotIcon.y );
+			slotIcon.visible = false;
+		}
+	}
+
 	protected buildBlinkIcon( iconIndex: number, positionX: number, positionY: number ): egret.MovieClip{
-		let mc: egret.MovieClip = Com.addMovieClipAt( this.blinkIconsLayer, MDS.mcFactory, "" + iconIndex, positionX - 128, positionY - 128 );
-		mc.scaleX = 2;
-		mc.scaleY = 2;
+		let mc: egret.MovieClip = Com.addMovieClipAt( this.blinkIconsLayer, this.eraMcFactory, "" + iconIndex, positionX - 135, positionY - 126 );
+		mc.scaleX = 1.5;
+		mc.scaleY = 1.5;
 		return mc;
+	}
+
+	protected clearBlinkIcons(){
+		super.clearBlinkIcons();
+
+		for( let i: number = 0; i < this.icons.length; i++ ){
+			if( !this.icons[i].visible ) this.icons[i].visible = true;
+		}
 	}
 
 	public stopRunning(){
