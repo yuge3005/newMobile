@@ -1,0 +1,6 @@
+{"file":"mini_game.png","frames":{
+"strawberries_bg":{"x":0,"y":0,"w":2000,"h":1125,"offX":0,"offY":0,"sourceW":2000,"sourceH":1125},
+"bonus_multiple":{"x":2002,"y":1125,"w":1403,"h":63,"offX":0,"offY":0,"sourceW":1403,"sourceH":63},
+"bonus_multiple_big":{"x":0,"y":1127,"w":1403,"h":63,"offX":0,"offY":0,"sourceW":1403,"sourceH":63},
+"caldron_game_bg_new":{"x":2002,"y":0,"w":2000,"h":1123,"offX":0,"offY":0,"sourceW":2000,"sourceH":1125},
+"pumpkin":{"x":1405,"y":1127,"w":149,"h":204,"offX":0,"offY":0,"sourceW":149,"sourceH":204}}}

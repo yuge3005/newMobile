@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "halloween_bg_jpg,halloweenAnimation_png,halloweenAnimation_json,halloween_json,halloween_conf,halloween_line_json,play_mp3,run_mp3,win_mp3",
+			"keys": "halloween_bg_jpg,halloweenAnimation_png,halloweenAnimation_json,halloween_json,halloween_conf,halloween_line_json,play_mp3,run_mp3,win_mp3,mini_game_mcf_png,mini_game_mcf_json,mini_game_json",
 			"name": "halloween"
 		}
 	],
@@ -52,6 +52,22 @@
 			"url": "game/halloween/sound/win.mp3",
 			"type": "sound",
 			"name": "win_mp3"
+		},
+		{
+			"url": "game/halloween/mini_game_mcf.png",
+			"type": "image",
+			"name": "mini_game_mcf_png"
+		},
+		{
+			"url": "game/halloween/mini_game_mcf.json",
+			"type": "json",
+			"name": "mini_game_mcf_json"
+		},
+		{
+			"url": "game/halloween/mini_game.json",
+			"type": "sheet",
+			"name": "mini_game_json",
+			"subkeys": "bonus_multiple,bonus_multiple_big,caldron_game_bg_new,pumpkin,strawberries_bg"
 		}
 	]
 }
