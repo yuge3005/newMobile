@@ -1,0 +1,28 @@
+{
+    "files": [
+        "./4.png",
+        "./3.png",
+        "./2.png",
+        "./1.png",
+        "./0.png",
+        "./spin_btn_LYD.png",
+        "./spin_btn.png",
+        "./jackpot_lock.png",
+        "./jackpot_bg.png",
+        "./bg_frame.png",
+        "./9.png",
+        "./8.png",
+        "./7.png",
+        "./6.png",
+        "./5.png"
+    ],
+    "projectName": "eraDoGelo",
+    "version": 5,
+    "options": {
+        "extend": 0,
+        "layoutMath": "0",
+        "sizeMode": "free",
+        "useExtension": 0,
+        "layoutGap": 1
+    }
+}

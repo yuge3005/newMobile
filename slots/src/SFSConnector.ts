@@ -197,6 +197,7 @@ class SFSConnector {
             gameData["figuras"] = data.getIntArray("figuras");
             gameData["linhasPremiadas"] = data.getIntArray("linhasPremiadas");
             gameData["figurasPremiadas"] = data.getIntArray("figurasPremiadas");
+            gameData["premiosPagos"] = data.getDoubleArray("premiosPagos");
             SFSConnector.playCallback( gameData, data );
         }
         else if( event.cmd == "respostafinaliza" && SFSConnector.roundOverCallback ){

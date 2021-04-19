@@ -1,0 +1,67 @@
+{
+	"groups": [
+		{
+			"keys": "eraDoGelo_bg_jpg,eraDoGeloAnimation_png,eraDoGeloAnimation_json,eraDoGelo_json,eraDoGelo_conf,eraDoGelo_line_json,play_mp3,run_mp3,win_mp3,eraDoGelo_icon_animation_png,eraDoGelo_icon_animation_json",
+			"name": "eraDoGelo"
+		}
+	],
+	"resources": [
+		{
+			"url": "game/eraDoGelo/eraDoGelo_bg.jpg",
+			"type": "image",
+			"name": "eraDoGelo_bg_jpg"
+		},
+		{
+			"url": "game/eraDoGelo/eraDoGeloAnimation.png",
+			"type": "image",
+			"name": "eraDoGeloAnimation_png"
+		},
+		{
+			"url": "game/eraDoGelo/eraDoGeloAnimation.json",
+			"type": "json",
+			"name": "eraDoGeloAnimation_json"
+		},
+		{
+			"url": "game/eraDoGelo/eraDoGelo.json",
+			"type": "sheet",
+			"name": "eraDoGelo_json",
+			"subkeys": "0,1,2,3,4,5,6,7,8,9,bg_frame,jackpot_bg,jackpot_lock,spin_btn,spin_btn_LYD"
+		},
+		{
+			"url": "config/eraDoGelo.conf",
+			"type": "json",
+			"name": "eraDoGelo_conf"
+		},
+		{
+			"url": "game/eraDoGelo/eraDoGelo_line.json",
+			"type": "sheet",
+			"name": "eraDoGelo_line_json",
+			"subkeys": "line1,line10,line11,line12,line13,line14,line15,line16,line17,line18,line19,line2,line20,line3,line4,line5,line6,line7,line8,line9"
+		},
+		{
+			"url": "game/halloween/sound/play.mp3",
+			"type": "sound",
+			"name": "play_mp3"
+		},
+		{
+			"url": "game/halloween/sound/run.mp3",
+			"type": "sound",
+			"name": "run_mp3"
+		},
+		{
+			"url": "game/halloween/sound/win.mp3",
+			"type": "sound",
+			"name": "win_mp3"
+		},
+		{
+			"url": "game/eraDoGelo/eraDoGelo_icon_animation.png",
+			"type": "image",
+			"name": "eraDoGelo_icon_animation_png"
+		},
+		{
+			"url": "game/eraDoGelo/eraDoGelo_icon_animation.json",
+			"type": "json",
+			"name": "eraDoGelo_icon_animation_json"
+		}
+	]
+}

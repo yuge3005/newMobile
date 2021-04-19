@@ -16,6 +16,10 @@
             {
                 "configPath": "resource/game/halloweenX/default.res.json",
                 "relativePath": "resource/"
+            },
+            {
+                "configPath": "resource/game/eraDoGelo/default.res.json",
+                "relativePath": "resource/"
             }
         ]
     },

@@ -1,0 +1,16 @@
+{"file":"eraDoGelo.png","frames":{
+"5":{"x":0,"y":1524,"w":270,"h":252,"offX":0,"offY":0,"sourceW":270,"sourceH":252},
+"6":{"x":0,"y":1270,"w":270,"h":252,"offX":0,"offY":0,"sourceW":270,"sourceH":252},
+"7":{"x":265,"y":1778,"w":267,"h":234,"offX":0,"offY":0,"sourceW":270,"sourceH":252},
+"8":{"x":534,"y":1778,"w":209,"h":252,"offX":28,"offY":0,"sourceW":270,"sourceH":252},
+"9":{"x":0,"y":1016,"w":270,"h":252,"offX":0,"offY":0,"sourceW":270,"sourceH":252},
+"bg_frame":{"x":0,"y":0,"w":1644,"h":1000,"offX":0,"offY":0,"sourceW":1644,"sourceH":1000},
+"jackpot_bg":{"x":1267,"y":1002,"w":364,"h":90,"offX":0,"offY":0,"sourceW":364,"sourceH":90},
+"jackpot_lock":{"x":745,"y":1967,"w":353,"h":78,"offX":0,"offY":0,"sourceW":353,"sourceH":78},
+"spin_btn":{"x":1006,"y":1778,"w":259,"h":187,"offX":0,"offY":0,"sourceW":259,"sourceH":187},
+"spin_btn_LYD":{"x":745,"y":1778,"w":259,"h":187,"offX":0,"offY":0,"sourceW":259,"sourceH":187},
+"0":{"x":1646,"y":508,"w":270,"h":252,"offX":0,"offY":0,"sourceW":270,"sourceH":252},
+"1":{"x":1646,"y":254,"w":270,"h":252,"offX":0,"offY":0,"sourceW":270,"sourceH":252},
+"2":{"x":0,"y":1778,"w":263,"h":242,"offX":3,"offY":0,"sourceW":270,"sourceH":252},
+"3":{"x":1646,"y":0,"w":270,"h":252,"offX":0,"offY":0,"sourceW":270,"sourceH":252},
+"4":{"x":1646,"y":762,"w":270,"h":252,"offX":0,"offY":0,"sourceW":270,"sourceH":252}}}
