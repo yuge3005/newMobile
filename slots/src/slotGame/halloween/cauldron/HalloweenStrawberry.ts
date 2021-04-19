@@ -11,15 +11,15 @@ class HalloweenStrawberry extends egret.DisplayObjectContainer {
     private totalBonus: number = 0;
     private maxSize: number = 0;
 
-    private soundManager: SlotSoundManager;
+    // private soundManager: SlotSoundManager;
 
-    constructor(credito: number, premio: number, bonus: number, bonusArray: Array<number>, soundManager: SlotSoundManager, mcf: egret.MovieClipDataFactory) {
+    constructor(credito: number, premio: number, bonusArray: Array<number>, mcf: egret.MovieClipDataFactory) {
         super();
 
-        this.bonus = bonus;        
+        this.bonus = 0;        
         this.ganho = premio;
         this.strawberryBonusArray = bonusArray;
-        this.soundManager = soundManager;
+        // this.soundManager = soundManager;
         this.mcf = mcf;
         
         // bg
@@ -56,7 +56,7 @@ class HalloweenStrawberry extends egret.DisplayObjectContainer {
             Com.addObjectAt(this.strawberriesContainer, this.createStrawberry(i), (i % 4) * 280, Math.floor(i / 4) * 250);
         }
 
-        this.soundManager.play("strawberry_mp3", -1);
+        // this.soundManager.play("strawberry_mp3", -1);
     }
 
     /**
@@ -83,14 +83,14 @@ class HalloweenStrawberry extends egret.DisplayObjectContainer {
 
         // strawberry settings
         strawberry.touchEnabled = true;
-        mouse.setButtonMode(strawberry, true);
-        strawberry.addEventListener(mouse.MouseEvent.MOUSE_OVER, function () {
-            this.visible = true;
-        }.bind(background), background);
+        // mouse.setButtonMode(strawberry, true);
+        // strawberry.addEventListener(mouse.MouseEvent.MOUSE_OVER, function () {
+        //     this.visible = true;
+        // }.bind(background), background);
 
-        strawberry.addEventListener(mouse.MouseEvent.MOUSE_OUT, function () {
-            this.visible = false;
-        }.bind(background), background);
+        // strawberry.addEventListener(mouse.MouseEvent.MOUSE_OUT, function () {
+        //     this.visible = false;
+        // }.bind(background), background);
 
         strawberry.once(egret.TouchEvent.TOUCH_TAP, function (strawberry: egret.DisplayObjectContainer, defaultAnimation: egret.MovieClip) {
             if (this.currentIndex >= this.strawberryBonusArray.length) return;
@@ -104,7 +104,7 @@ class HalloweenStrawberry extends egret.DisplayObjectContainer {
             let animatinCompleteCallback = null;
             if (bonus !== 0) {
                 // play sound
-                if (SlotSoundManager.soundOn && this.soundManager) this.soundManager.play("sound10_wav", 1);
+                // if (SlotSoundManager.soundOn && this.soundManager) this.soundManager.play("sound10_wav", 1);
 
                 animatinCompleteCallback = function (strawberry: egret.DisplayObjectContainer, bonus: number) {
                     // bonus text
@@ -124,7 +124,7 @@ class HalloweenStrawberry extends egret.DisplayObjectContainer {
                 }.bind(this, strawberry, bonus);
             } else {
                 // play sound
-                if (SlotSoundManager.soundOn && this.soundManager) this.soundManager.play("sound2_wav", 1);
+                // if (SlotSoundManager.soundOn && this.soundManager) this.soundManager.play("sound2_wav", 1);
 
                 animatinCompleteCallback = function () {
                     egret.setTimeout(function () {

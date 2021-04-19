@@ -1,6 +1,9 @@
 class SlotMachine extends egret.Sprite {
 
 	public static GENERIC_MODAL_LOADED: string = "gameLoaded";
+	public static BONUS_GAME_WIN: string = "BONUS_GAME_WIN";
+    public static BONUS_GAME_OVER: string = "BONUS_GAME_OVER";
+    public static TOOLBAR_CMD: string = "TOOLBAR_CMD";
 	
 	public preLoader: RES.PromiseTaskReporter;
 
@@ -15,6 +18,8 @@ class SlotMachine extends egret.Sprite {
 	protected dinero: number;
 	protected gameCoins: number;
 	protected freeSpin: number;
+
+	protected premiosPagosBonus: Array<number>;
 
 	protected connetKeys: Object;
 	protected tokenObject: Object;
@@ -344,6 +349,7 @@ class SlotMachine extends egret.Sprite {
 		this.gameToolBar.showWinResult( 0 );
 
 		this.ganho = data["ganho"];
+		this.premiosPagosBonus = data["premiosPagosBonus"];
 
 		this.tipoBonus = data["tipoBonus"];
 		this.startRunning( data["figuras"], data["linhasPremiadas"], data["figurasPremiadas"] );

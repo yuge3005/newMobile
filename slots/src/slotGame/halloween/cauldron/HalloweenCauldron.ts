@@ -17,9 +17,9 @@ class HalloweenCauldron extends egret.DisplayObjectContainer {
     private halloweenBonusArray: Array<egret.DisplayObjectContainer>;
     private halloweenBonusDefaultAnimations: Array<egret.MovieClip>;
 
-    private soundManager: SlotSoundManager;
+    // private soundManager: SlotSoundManager;
     
-    constructor(credito: number, ganho: number, bonus: Array<number>, aposta: number, maxIconNumber: number, soundManager: SlotSoundManager, mcf: egret.MovieClipDataFactory) {
+    constructor(credito: number, ganho: number, bonus: Array<number>, aposta: number, maxIconNumber: number, mcf: egret.MovieClipDataFactory) {
         super();
 
         this.width = 2000;
@@ -29,7 +29,7 @@ class HalloweenCauldron extends egret.DisplayObjectContainer {
         this.aposta = aposta;
         this.multiple = maxIconNumber - 2;
         this.lights = [];
-        this.soundManager = soundManager;
+        // this.soundManager = soundManager;
         this.mcf = mcf;
 
         // bg
@@ -40,28 +40,22 @@ class HalloweenCauldron extends egret.DisplayObjectContainer {
         this.cauldronBottomBg.scaleX = this.cauldronBottomBg.scaleY = .8;
 
         // credito text
-        let creditoText = Com.addTextAt(this, 372, 961, 280, 67, 42, false, false);
+        let creditoText = Com.addLabelAt(this, 372, 961, 280, 67, 42, false, false);
         creditoText.fontFamily = "Righteous";
-        creditoText.verticalAlign = "middle";
         creditoText.textColor = 0xFFFF00;
-        creditoText.text = Utils.formatCoinsNumber(credito);
-        creditoText.size = 42 - Math.max((creditoText.text.length - 6), 0) * 2;
+        creditoText.setText( Utils.formatCoinsNumber(credito) );
 
         // premio text
-        let premioText = Com.addTextAt(this, 372, 1047, 280, 67, 42, false, false);
+        let premioText = Com.addLabelAt(this, 372, 1047, 280, 67, 42, false, false);
         premioText.fontFamily = "Righteous";
-        premioText.verticalAlign = "middle";
         premioText.textColor = 0xFFFF00;
-        premioText.text = Utils.formatCoinsNumber(ganho);
-        premioText.size = 42 - Math.max((premioText.text.length - 6), 0) * 2;
+        premioText.setText( Utils.formatCoinsNumber(ganho) );
 
         // bonus text
-        this.bonusText = Com.addTextAt(this, 372, 875, 280, 67, 42, false, false);
+        this.bonusText = Com.addLabelAt(this, 372, 875, 280, 67, 42, false, false);
         this.bonusText.fontFamily = "Righteous";
-        this.bonusText.verticalAlign = "middle";
         this.bonusText.textColor = 0xFFFF00;
         this.bonusText.text = "0";
-        this.bonusText.size = 42 - Math.max((this.bonusText.text.length - 6), 0) * 2;
 
         // begin cauldron game
         this.beginCauldronGame();
@@ -100,7 +94,7 @@ class HalloweenCauldron extends egret.DisplayObjectContainer {
 
         cauldron.once(egret.TouchEvent.TOUCH_TAP, function (defaultAnimation: egret.MovieClip, index: number) {
             // play sound
-            if (SlotSoundManager.soundOn && this.soundManager) this.soundManager.play("win_bonus_wav", 1);
+            // if (SlotSoundManager.soundOn && this.soundManager) this.soundManager.play("win_bonus_wav", 1);
 
             // disable mouse events
             for (let i = 0; i < this.cauldronObjectsArray.length; i++) {
@@ -225,7 +219,7 @@ class HalloweenCauldron extends egret.DisplayObjectContainer {
             Com.addObjectAt(this.halloweenBonusContainer, this.halloweenBonusArray[i], 2 + i * 399, 0);
         }
 
-        this.soundManager.play("jumping_wav", -1);
+        // this.soundManager.play("jumping_wav", -1);
     }
 
     /**
@@ -244,10 +238,10 @@ class HalloweenCauldron extends egret.DisplayObjectContainer {
 
         // settings
         halloweenBonus.touchEnabled = true;
-        mouse.setButtonMode(halloweenBonus, true);
+        // mouse.setButtonMode(halloweenBonus, true);
         halloweenBonus.once(egret.TouchEvent.TOUCH_TAP, function (defaultAnimation: egret.MovieClip, index: number) {
             // play sound
-            if (SlotSoundManager.soundOn && this.soundManager) this.soundManager.play("bonus3_wav", 1);
+            // if (SlotSoundManager.soundOn && this.soundManager) this.soundManager.play("bonus3_wav", 1);
 
             // disable mouse events
             for (let i = 0; i < this.halloweenBonusArray.length; i++) {

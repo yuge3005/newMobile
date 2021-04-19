@@ -7,6 +7,10 @@ class Halloween extends SlotMachine{
 			return "halloweenAnimation";
 	}
 
+	private miniGameMCF: egret.MovieClipDataFactory;
+    private cauldronContainer: HalloweenCauldron;
+    private strawberryContainer: HalloweenStrawberry;
+
 	public constructor( assetsPath: string ) {
 			super( "halloween.conf", assetsPath, 46 );
 
@@ -22,6 +26,10 @@ class Halloween extends SlotMachine{
 		super.init();
 
 		this.addChildAt( Com.createBitmapByName( "halloween_bg_jpg" ), 0 );
+
+		let data = RES.getRes( "mini_game_mcf_json" );
+		let tex = RES.getRes( "mini_game_mcf_png" );
+		this.miniGameMCF = new egret.MovieClipDataFactory( data, tex );
 	}
 
 	protected addIcons(){
@@ -32,11 +40,19 @@ class Halloween extends SlotMachine{
 
 	protected showMiniGame(): void{
 		alert( "paly mini game" );
-		this.sendRoundOverRequest();
-		if( 1 > 0 ) return;
 		switch( this.tipoBonus ){
-			case 1: break;
-			case 2: break;
+			case 1:
+				this.cauldronContainer = new HalloweenCauldron(this.gameCoins, this.ganho, this.premiosPagosBonus, GameData.currentBet, 50, this.miniGameMCF);
+				// this.cauldronContainer.addEventListener(SlotMachine.BONUS_GAME_WIN, this.showBonusGameWin, this);
+				// this.cauldronContainer.once(SlotMachine.BONUS_GAME_OVER, this.bonusGameOver.bind(this, this.cauldronContainer), this);
+				Com.addObjectAt(this, this.cauldronContainer, 0, 0);
+				break;
+			case 2:
+				this.strawberryContainer = new HalloweenStrawberry(this.gameCoins, this.ganho, this.premiosPagosBonus, this.miniGameMCF);
+				// this.strawberryContainer.addEventListener(SlotMachine.BONUS_GAME_WIN, this.showBonusGameWin, this);
+				// this.strawberryContainer.once(SlotMachine.BONUS_GAME_OVER, this.bonusGameOver.bind(this, this.strawberryContainer), this);
+				Com.addObjectAt(this, this.strawberryContainer, 0, 0); 
+				break;
 			default: throw new Error( "Server data error: mini game id" );
 		}
 		this.tipoBonus = 0;
