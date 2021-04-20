@@ -64,6 +64,29 @@ class HalloweenSlotIconLayer extends SlotIconLayer{
 		if( isLast ) this.showResult();
 	}
 
+	protected showBlinkIcons(){
+		if( this.figlinhas.length != this.figuras.length ) throw new Error( "Server data Error: figlinhas" );
+
+		if( this.blinkIcons ) this.clearBlinkIcons();
+		this.blinkIcons = [];
+		if( !this.blinkIconsLayer ) this.blinkIconsLayer = new egret.DisplayObjectContainer;
+		this.addChild( this.blinkIconsLayer );
+
+		let pts: Object = LineManager.linesDictionary;
+		for( let i: number = 0; i < this.figlinhas.length; i++ ){
+			let ptIndex: number = this.figlinhas[i];
+			let iconIdex: number = this.figuras[i];
+			let line: LineUI = pts["p"+ptIndex];
+			for( let j: number = 0; j < line.lineRule.length; j++ ){
+				let slotIconNumberIndex: number = parseInt( line.lineRule.charAt(j), 16 );
+				let slotIcon: SlotIcon = this.icons[ slotIconNumberIndex ];
+				if( slotIcon.iconIndex == iconIdex ) {
+					if( !this.blinkIcons[slotIconNumberIndex] ) this.blinkIcons[slotIconNumberIndex] = this.buildBlinkIcon( iconIdex, slotIcon.x, slotIcon.y );
+				}
+			}
+		}
+	}
+
 	protected buildBlinkIcon( iconIndex: number, positionX: number, positionY: number ): egret.MovieClip{
 		let mc: egret.MovieClip = Com.addMovieClipAt( this.blinkIconsLayer, MDS.mcFactory, "" + iconIndex, positionX - 128, positionY - 128 );
 		mc.scaleX = 2;

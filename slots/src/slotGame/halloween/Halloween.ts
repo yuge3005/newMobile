@@ -53,7 +53,7 @@ class Halloween extends SlotMachine{
 	public confirmedAndShowMini(){
 		switch( this.tipoBonus ){
 			case 1:
-				this.cauldronContainer = new HalloweenCauldron(this.gameCoins, this.ganho, this.premiosPagosBonus, GameData.currentBet, 50, this.miniGameMCF);
+				this.cauldronContainer = new HalloweenCauldron(this.gameCoins, this.ganho, this.premiosPagosBonus, GameData.currentBet, 5, this.miniGameMCF);
 				// this.cauldronContainer.addEventListener(SlotMachine.BONUS_GAME_WIN, this.showBonusGameWin, this);
 				// this.cauldronContainer.once(SlotMachine.BONUS_GAME_OVER, this.bonusGameOver.bind(this, this.cauldronContainer), this);
 				Com.addObjectAt(this, this.cauldronContainer, 0, 0);
