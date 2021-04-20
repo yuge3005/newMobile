@@ -101,7 +101,7 @@ class HalloweenStrawberry extends egret.DisplayObjectContainer {
             // animation complete callback
             let animatinCompleteCallback = null;
             if (bonus !== 0) {
-                SoundManager.play("sound10_wav");
+                SoundManager.play("bonus_win_wav");
 
                 animatinCompleteCallback = function (strawberry: egret.DisplayObjectContainer, bonus: number) {
                     // bonus text
@@ -120,7 +120,7 @@ class HalloweenStrawberry extends egret.DisplayObjectContainer {
                     this.dispatchEvent(new egret.Event(SlotMachine.BONUS_GAME_WIN, false, false, {bonus: (this.totalBonus + this.ganho)}));
                 }.bind(this, strawberry, bonus);
             } else {
-                SoundManager.play("sound2_wav");
+                SoundManager.play("bonus3_wav");
 
                 animatinCompleteCallback = function () {
                     egret.setTimeout(function () {

@@ -78,6 +78,41 @@
 			"type": "sheet",
 			"name": "halloween_popup_pt_json",
 			"subkeys": "award_bg,collect,header,popup_cauldron,popup_strawberry,start"
+		},
+		{
+			"url": "game/halloween/sound/jumping.wav",
+			"type": "sound",
+			"name": "jumping_wav"
+		},
+		{
+			"url": "game/halloween/sound/bonus3.wav",
+			"type": "sound",
+			"name": "bonus3_wav"
+		},
+		{
+			"url": "game/halloween/sound/straw_end.wav",
+			"type": "sound",
+			"name": "straw_end_wav"
+		},
+		{
+			"url": "game/halloween/sound/bonus_win.wav",
+			"type": "sound",
+			"name": "bonus_win_wav"
+		},
+		{
+			"url": "game/halloween/sound/strawberry.mp3",
+			"type": "sound",
+			"name": "strawberry_mp3"
+		},
+		{
+			"url": "game/halloween/sound/straw_select.wav",
+			"type": "sound",
+			"name": "straw_select_wav"
+		},
+		{
+			"url": "game/halloween/sound/win_bonus.wav",
+			"type": "sound",
+			"name": "win_bonus_wav"
 		}
 	]
 }
