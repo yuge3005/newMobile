@@ -29,8 +29,8 @@ class HalloweenCollectBonus extends GenericPo {
         bonusText.text = Utils.formatCoinsNumber(HalloweenCollectBonus.bonus);
         bonusText.size = 100 - Math.max(bonusText.text.length - 10, 0) * 5;
 
-        // close btn
-        Com.addDownButtonAt(this, "halloween_popup_pt_json.collect", "halloween_popup_pt_json.collect", 869, 888, this.closePopup, true);
+        let bt: TouchDownButton = Com.addDownButtonAt(this, "halloween_popup_pt_json.collect", "halloween_popup_pt_json.collect", 869, 840, this.closePopup, true);
+        bt.x = this.bg.width - bt.width >> 1;
     }
 
     /**
