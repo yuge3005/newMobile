@@ -53,16 +53,15 @@ class Halloween extends SlotMachine{
 	public confirmedAndShowMini(){
 		switch( this.tipoBonus ){
 			case 1:
-				this.cauldronContainer = new HalloweenCauldron(this.gameCoins, this.ganho, this.premiosPagosBonus, GameData.currentBet, 5, this.miniGameMCF);
-				// this.cauldronContainer.addEventListener(SlotMachine.BONUS_GAME_WIN, this.showBonusGameWin, this);
-				// this.cauldronContainer.once(SlotMachine.BONUS_GAME_OVER, this.bonusGameOver.bind(this, this.cauldronContainer), this);
+				this.cauldronContainer = new HalloweenCauldron(this.gameCoins, this.ganho, this.premiosPagosBonus, GameData.currentBet, this.slotIconArea.maxIconNumber, this.miniGameMCF);
+				this.cauldronContainer.addEventListener(SlotMachine.BONUS_GAME_WIN, this.showBonusGameWin, this);
+				this.cauldronContainer.once(SlotMachine.BONUS_GAME_OVER, this.bonusGameOver.bind(this, this.cauldronContainer), this);
 				Com.addObjectAt(this, this.cauldronContainer, 0, 0);
 				break;
 			case 2:
 				this.strawberryContainer = new HalloweenStrawberry(this.gameCoins, this.ganho, this.premiosPagosBonus, this.miniGameMCF);
-				// this.strawberryContainer.addEventListener(SlotMachine.BONUS_GAME_WIN, this.showBonusGameWin, this);
-				// this.strawberryContainer.once(SlotMachine.BONUS_GAME_OVER, this.bonusGameOver.bind(this, this.strawberryContainer), this);
-				Com.addObjectAt(this, this.strawberryContainer, 0, 0); 
+				this.strawberryContainer.once(SlotMachine.BONUS_GAME_OVER, this.bonusGameOver.bind(this, this.strawberryContainer), this);
+				Com.addObjectAt(this, this.strawberryContainer, 0, 0);
 				break;
 			default: throw new Error( "Server data error: mini game id" );
 		}
@@ -70,6 +69,16 @@ class Halloween extends SlotMachine{
 
 	protected startRunning( figuras: Array<number>, figlinhasPremiadas: Array<number>, figurasPremiadas: Array<number> ){
 		this.slotIconArea.startRunning( figuras, figlinhasPremiadas, figurasPremiadas );
+	}
+
+	protected bonusGameOver(bonusGame: egret.DisplayObjectContainer, e: egret.Event): void {
+		HalloweenCollectBonus.bonus = Number(e.data["totalBonus"]);
+		this.tipoBonus = 0;
+		this.showMiniGameConfirmPopup( HalloweenCollectBonus );
+	}
+
+	protected showBonusGameWin(){
+		egret.log( "show halloween mini in mini" );
 	}
 
 /******************************************************************************************************************************************************************/    

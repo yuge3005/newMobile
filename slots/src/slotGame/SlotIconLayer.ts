@@ -7,6 +7,8 @@ class SlotIconLayer extends egret.DisplayObjectContainer{
 	protected blinkIcons: Array<egret.MovieClip>;
 	protected blinkIconsLayer: egret.DisplayObjectContainer;
 
+	public maxIconNumber: number;
+
 	public constructor() {
 		super();
 	}

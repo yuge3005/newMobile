@@ -1,4 +1,3 @@
-
 class HalloweenCauldron extends egret.DisplayObjectContainer {
     private mcf: egret.MovieClipDataFactory;
     private cauldronsContainer: egret.DisplayObjectContainer;
@@ -93,8 +92,7 @@ class HalloweenCauldron extends egret.DisplayObjectContainer {
         Com.addObjectAt(cauldron, defaultAnimation, 0, 527);
 
         cauldron.once(egret.TouchEvent.TOUCH_TAP, function (defaultAnimation: egret.MovieClip, index: number) {
-            // play sound
-            // if (SlotSoundManager.soundOn && this.soundManager) this.soundManager.play("win_bonus_wav", 1);
+            SoundManager.play( "win_bonus_wav" );
 
             // disable mouse events
             for (let i = 0; i < this.cauldronObjectsArray.length; i++) {
@@ -219,7 +217,7 @@ class HalloweenCauldron extends egret.DisplayObjectContainer {
             Com.addObjectAt(this.halloweenBonusContainer, this.halloweenBonusArray[i], 2 + i * 399, 0);
         }
 
-        // this.soundManager.play("jumping_wav", -1);
+        SoundManager.play("jumping_wav");
     }
 
     /**
@@ -241,7 +239,7 @@ class HalloweenCauldron extends egret.DisplayObjectContainer {
         // mouse.setButtonMode(halloweenBonus, true);
         halloweenBonus.once(egret.TouchEvent.TOUCH_TAP, function (defaultAnimation: egret.MovieClip, index: number) {
             // play sound
-            // if (SlotSoundManager.soundOn && this.soundManager) this.soundManager.play("bonus3_wav", 1);
+            SoundManager.play("bonus3_wav");
 
             // disable mouse events
             for (let i = 0; i < this.halloweenBonusArray.length; i++) {

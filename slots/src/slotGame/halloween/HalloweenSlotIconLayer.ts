@@ -1,7 +1,6 @@
 class HalloweenSlotIconLayer extends SlotIconLayer{
 
 	protected runningAnimations: Array<egret.MovieClip>;
-	public maxIconNumber: number;
 
 	public constructor() {
 		super();

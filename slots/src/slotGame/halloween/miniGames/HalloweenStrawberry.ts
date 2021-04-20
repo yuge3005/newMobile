@@ -1,5 +1,3 @@
-
-
 class HalloweenStrawberry extends egret.DisplayObjectContainer {
     private mcf: egret.MovieClipDataFactory;
     private ganho: number;
@@ -56,7 +54,7 @@ class HalloweenStrawberry extends egret.DisplayObjectContainer {
             Com.addObjectAt(this.strawberriesContainer, this.createStrawberry(i), (i % 4) * 280, Math.floor(i / 4) * 250);
         }
 
-        // this.soundManager.play("strawberry_mp3", -1);
+        SoundManager.play("strawberry_mp3");
     }
 
     /**
@@ -103,8 +101,7 @@ class HalloweenStrawberry extends egret.DisplayObjectContainer {
             // animation complete callback
             let animatinCompleteCallback = null;
             if (bonus !== 0) {
-                // play sound
-                // if (SlotSoundManager.soundOn && this.soundManager) this.soundManager.play("sound10_wav", 1);
+                SoundManager.play("sound10_wav");
 
                 animatinCompleteCallback = function (strawberry: egret.DisplayObjectContainer, bonus: number) {
                     // bonus text
@@ -123,12 +120,10 @@ class HalloweenStrawberry extends egret.DisplayObjectContainer {
                     this.dispatchEvent(new egret.Event(SlotMachine.BONUS_GAME_WIN, false, false, {bonus: (this.totalBonus + this.ganho)}));
                 }.bind(this, strawberry, bonus);
             } else {
-                // play sound
-                // if (SlotSoundManager.soundOn && this.soundManager) this.soundManager.play("sound2_wav", 1);
+                SoundManager.play("sound2_wav");
 
                 animatinCompleteCallback = function () {
                     egret.setTimeout(function () {
-                        this.soundManager.stop("strawberry_mp3");
 
                         this.dispatchEvent(new egret.Event(SlotMachine.BONUS_GAME_OVER, false, false, { totalBonus: this.totalBonus }));
                     }, this, 1000);
@@ -137,7 +132,7 @@ class HalloweenStrawberry extends egret.DisplayObjectContainer {
 
             defaultAnimation.once(egret.MovieClipEvent.COMPLETE, animatinCompleteCallback, this);
             defaultAnimation.gotoAndPlay(bonus === 0 ? "endAward": "award", 1);
-            // this.soundManager.play( bonus === 0 ? "straw_end_wav": "straw_selct_wav", 1);
+            SoundManager.play( bonus === 0 ? "straw_end_wav": "straw_selct_wav");
         }.bind(this, strawberry, defaultAnimation), this);
         
         return strawberry;
