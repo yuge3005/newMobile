@@ -221,6 +221,6 @@ class SlotGameMain extends egret.DisplayObjectContainer {
 	}
 
 	protected showMiniConfirm(){
-		this.currentGame.showMiniConfirm();
+		this.currentGame.confirmedAndShowMini();
 	}
 }

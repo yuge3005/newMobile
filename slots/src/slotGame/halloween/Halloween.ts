@@ -50,7 +50,7 @@ class Halloween extends SlotMachine{
 		}
 	}
 
-	protected confirmedAndShowMini(){
+	public confirmedAndShowMini(){
 		switch( this.tipoBonus ){
 			case 1:
 				this.cauldronContainer = new HalloweenCauldron(this.gameCoins, this.ganho, this.premiosPagosBonus, GameData.currentBet, 50, this.miniGameMCF);
