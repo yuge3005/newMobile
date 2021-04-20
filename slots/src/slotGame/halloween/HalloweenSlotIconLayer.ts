@@ -91,6 +91,7 @@ class HalloweenSlotIconLayer extends SlotIconLayer{
 
 	private getSameIconInLine( ruleString: string, iconIdex: number ): Array<number>{
 		let tempBlinkArray: Array<number> = [];
+		let canAny: boolean = iconIdex == 2 || iconIdex == 9;
 		for( let i: number = 0; i < ruleString.length; i++ ){
 			let slotIconNumberIndex: number = parseInt( ruleString.charAt(i), 16 );
 			let slotIcon: SlotIcon = this.icons[ slotIconNumberIndex ];
@@ -99,10 +100,12 @@ class HalloweenSlotIconLayer extends SlotIconLayer{
 			}
 			else{
 				if( tempBlinkArray.length < 3 ){
-					tempBlinkArray.length = 0;
+					if( !canAny ) tempBlinkArray.length = 0;
 					continue;
 				}
-				else break;
+				else{
+					if( !canAny ) break;
+				}
 			}
 		}
 		return tempBlinkArray;
