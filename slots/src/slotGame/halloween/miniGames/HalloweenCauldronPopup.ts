@@ -13,7 +13,8 @@ class HalloweenCauldronPopup extends GenericPo {
 
         super.init();
 
-        Com.addDownButtonAt(this, "halloween_popup_pt_json.start", "halloween_popup_pt_json.start", 432, 586, this.onClose, true);
+        let bt: TouchDownButton = Com.addDownButtonAt(this, "halloween_popup_pt_json.start", "halloween_popup_pt_json.start", 432, 540, this.onClose, true);
+        bt.x = this.bg.width - bt.width >> 1;
     }
 
     protected onClose(): void {

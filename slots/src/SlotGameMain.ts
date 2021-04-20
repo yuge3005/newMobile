@@ -209,8 +209,12 @@ class SlotGameMain extends egret.DisplayObjectContainer {
 	public showMini( event:egret.Event = null ){
 		this.showShadow();
 
-		this.currentPo = new HalloweenCauldronPopup;
-		if (this.currentPo.inited) this.addPhonePo();
-		else this.currentPo.addEventListener( GenericModal.GENERIC_MODAL_LOADED, this.addPhonePo, this );
+		this.currentPo = eval( "new event.data" );
+		if (this.currentPo.inited) this.addSlotPo();
+		else this.currentPo.addEventListener( GenericModal.GENERIC_MODAL_LOADED, this.addSlotPo, this );
+	}
+
+	protected addSlotPo( event:egret.Event = null ){
+		this.addPoFromTo( 0.1, 0.72 );
 	}
 }
