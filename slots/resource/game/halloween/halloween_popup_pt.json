@@ -1,0 +1,7 @@
+{"file":"halloween_popup_pt.png","frames":{
+"award_bg":{"x":0,"y":0,"w":1740,"h":1058,"offX":0,"offY":0,"sourceW":1740,"sourceH":1058},
+"start":{"x":1341,"y":1610,"w":248,"h":82,"offX":0,"offY":0,"sourceW":248,"sourceH":82},
+"collect":{"x":853,"y":1610,"w":486,"h":154,"offX":0,"offY":0,"sourceW":486,"sourceH":154},
+"header":{"x":0,"y":1610,"w":851,"h":142,"offX":71,"offY":11,"sourceW":993,"sourceH":164},
+"popup_cauldron":{"x":0,"y":1060,"w":680,"h":548,"offX":97,"offY":101,"sourceW":868,"sourceH":724},
+"popup_strawberry":{"x":682,"y":1060,"w":680,"h":548,"offX":97,"offY":101,"sourceW":868,"sourceH":724}}}
