@@ -7,6 +7,14 @@
 		{
 			"keys": "halloween_popup_pt_json",
 			"name": "halloweenMinigamePopup"
+		},
+		{
+			"keys": "halloween_popup_pt_json,win_bonus_wav,jumping_wav,bonus3_wav",
+			"name": "halloweenCauldronPopup"
+		},
+		{
+			"keys": "halloween_popup_pt_json,strawberry_mp3,bonus_win_wav,bonus3_wav,straw_end_wav,straw_select_wav",
+			"name": "halloweenStrawberryPopup"
 		}
 	],
 	"resources": [

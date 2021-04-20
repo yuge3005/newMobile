@@ -1,6 +1,6 @@
 class HalloweenCauldronPopup extends GenericPo {
     protected static get classAssetName() {
-        return "halloweenMinigamePopup";
+        return "halloweenCauldronPopup";
     }
 
     constructor() {
