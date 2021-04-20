@@ -8,8 +8,7 @@ class Halloween extends SlotMachine{
 	}
 
 	private miniGameMCF: egret.MovieClipDataFactory;
-    private cauldronContainer: HalloweenCauldron;
-    private strawberryContainer: HalloweenStrawberry;
+    private miniGame: egret.DisplayObject;
 
 	public constructor( assetsPath: string ) {
 			super( "halloween.conf", assetsPath, 46 );
@@ -53,15 +52,15 @@ class Halloween extends SlotMachine{
 	public confirmedAndShowMini(){
 		switch( this.tipoBonus ){
 			case 1:
-				this.cauldronContainer = new HalloweenCauldron(this.gameCoins, this.ganho, this.premiosPagosBonus, GameData.currentBet, this.slotIconArea.maxIconNumber, this.miniGameMCF);
-				this.cauldronContainer.addEventListener(SlotMachine.BONUS_GAME_WIN, this.showBonusGameWin, this);
-				this.cauldronContainer.once(SlotMachine.BONUS_GAME_OVER, this.bonusGameOver.bind(this, this.cauldronContainer), this);
-				Com.addObjectAt(this, this.cauldronContainer, 0, 0);
+				this.miniGame = new HalloweenCauldron(this.gameCoins, this.ganho, this.premiosPagosBonus, GameData.currentBet, this.slotIconArea.maxIconNumber, this.miniGameMCF);
+				this.miniGame.addEventListener(SlotMachine.BONUS_GAME_WIN, this.showBonusGameWin, this);
+				this.miniGame.once(SlotMachine.BONUS_GAME_OVER, this.bonusGameOver.bind(this, this.miniGame), this);
+				Com.addObjectAt(this, this.miniGame, 0, 0);
 				break;
 			case 2:
-				this.strawberryContainer = new HalloweenStrawberry(this.gameCoins, this.ganho, this.premiosPagosBonus, this.miniGameMCF);
-				this.strawberryContainer.once(SlotMachine.BONUS_GAME_OVER, this.bonusGameOver.bind(this, this.strawberryContainer), this);
-				Com.addObjectAt(this, this.strawberryContainer, 0, 0);
+				this.miniGame = new HalloweenStrawberry(this.gameCoins, this.ganho, this.premiosPagosBonus, this.miniGameMCF);
+				this.miniGame.once(SlotMachine.BONUS_GAME_OVER, this.bonusGameOver.bind(this), this);
+				Com.addObjectAt(this, this.miniGame, 0, 0);
 				break;
 			default: throw new Error( "Server data error: mini game id" );
 		}
@@ -71,10 +70,11 @@ class Halloween extends SlotMachine{
 		this.slotIconArea.startRunning( figuras, figlinhasPremiadas, figurasPremiadas );
 	}
 
-	protected bonusGameOver(bonusGame: egret.DisplayObjectContainer, e: egret.Event): void {
+	protected bonusGameOver(e: egret.Event): void {
 		HalloweenCollectBonus.bonus = Number(e.data["totalBonus"]);
 		this.tipoBonus = 0;
-		this.showMiniGameConfirmPopup( HalloweenCollectBonus );
+		if( this.miniGame && this.contains( this.miniGame ) ) this.removeChild( this.miniGame );
+		this.showMiniGameConfirmPopup( HalloweenCollectBonus, true );
 	}
 
 	protected showBonusGameWin(){

@@ -47,6 +47,7 @@ class SlotGameMain extends egret.DisplayObjectContainer {
 		this.currentGame.addEventListener("out_of_coins_game_id", this.showCoinBank, this );
 		this.currentGame.addEventListener("out_of_dinero", this.showChipBank, this );
 		this.currentGame.addEventListener("show_mini", this.showMini, this );
+		this.currentGame.addEventListener("mini_game_end", this.miniGameEnd, this );
 	}
 
 	private addGame(){
@@ -218,6 +219,14 @@ class SlotGameMain extends egret.DisplayObjectContainer {
 		this.addPoFromTo( 0.1, 0.72 );
 
 		this.currentPo.addEventListener( GenericModal.CLOSE_MODAL, this.showMiniConfirm, this );
+	}
+
+	protected miniGameEnd( event:egret.Event = null ){
+		this.showShadow();
+		
+		this.currentPo = eval( "new event.data" );
+		if (this.currentPo.inited) this.addPhonePo();
+		else this.currentPo.addEventListener( GenericModal.GENERIC_MODAL_LOADED, this.addPhonePo, this );
 	}
 
 	protected showMiniConfirm(){

@@ -431,8 +431,8 @@ class SlotMachine extends egret.Sprite {
 		// override
 	}
 
-	protected showMiniGameConfirmPopup( popup: Function ){
-		let ev: egret.Event = new egret.Event( "show_mini" );
+	protected showMiniGameConfirmPopup( popup: Function, isEnd: boolean = false ){
+		let ev: egret.Event = new egret.Event( isEnd ? "mini_game_end" : "show_mini" );
 		ev.data = popup;
 		this.dispatchEvent( ev );
 	}
