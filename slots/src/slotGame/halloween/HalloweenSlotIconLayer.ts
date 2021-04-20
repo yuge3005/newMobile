@@ -1,6 +1,7 @@
 class HalloweenSlotIconLayer extends SlotIconLayer{
 
 	protected runningAnimations: Array<egret.MovieClip>;
+	public maxIconNumber: number;
 
 	public constructor() {
 		super();
@@ -73,18 +74,38 @@ class HalloweenSlotIconLayer extends SlotIconLayer{
 		this.addChild( this.blinkIconsLayer );
 
 		let pts: Object = LineManager.linesDictionary;
+		this.maxIconNumber = 0;
 		for( let i: number = 0; i < this.figlinhas.length; i++ ){
 			let ptIndex: number = this.figlinhas[i];
 			let iconIdex: number = this.figuras[i];
 			let line: LineUI = pts["p"+ptIndex];
-			for( let j: number = 0; j < line.lineRule.length; j++ ){
-				let slotIconNumberIndex: number = parseInt( line.lineRule.charAt(j), 16 );
+			let tempBlinkArray: Array<number> = this.getSameIconInLine( line.lineRule, iconIdex );
+			for( let j: number = 0; j < tempBlinkArray.length; j++ ){
+				let slotIconNumberIndex: number = tempBlinkArray[j];
 				let slotIcon: SlotIcon = this.icons[ slotIconNumberIndex ];
-				if( slotIcon.iconIndex == iconIdex ) {
-					if( !this.blinkIcons[slotIconNumberIndex] ) this.blinkIcons[slotIconNumberIndex] = this.buildBlinkIcon( iconIdex, slotIcon.x, slotIcon.y );
+				if( !this.blinkIcons[tempBlinkArray[j]] ) this.blinkIcons[tempBlinkArray[j]] = this.buildBlinkIcon( iconIdex, slotIcon.x, slotIcon.y );
+			}
+			if( tempBlinkArray.length > this.maxIconNumber ) this.maxIconNumber = tempBlinkArray.length;
+		}
+	}
+
+	private getSameIconInLine( ruleString: string, iconIdex: number ): Array<number>{
+		let tempBlinkArray: Array<number> = [];
+		for( let i: number = 0; i < ruleString.length; i++ ){
+			let slotIconNumberIndex: number = parseInt( ruleString.charAt(i), 16 );
+			let slotIcon: SlotIcon = this.icons[ slotIconNumberIndex ];
+			if( slotIcon.iconIndex == iconIdex ) {
+				tempBlinkArray.push( slotIconNumberIndex );
+			}
+			else{
+				if( tempBlinkArray.length < 3 ){
+					tempBlinkArray.length = 0;
+					continue;
 				}
+				else break;
 			}
 		}
+		return tempBlinkArray;
 	}
 
 	protected buildBlinkIcon( iconIndex: number, positionX: number, positionY: number ): egret.MovieClip{

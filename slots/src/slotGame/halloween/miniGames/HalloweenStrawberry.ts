@@ -137,7 +137,7 @@ class HalloweenStrawberry extends egret.DisplayObjectContainer {
 
             defaultAnimation.once(egret.MovieClipEvent.COMPLETE, animatinCompleteCallback, this);
             defaultAnimation.gotoAndPlay(bonus === 0 ? "endAward": "award", 1);
-            this.soundManager.play( bonus === 0 ? "straw_end_wav": "straw_selct_wav", 1);
+            // this.soundManager.play( bonus === 0 ? "straw_end_wav": "straw_selct_wav", 1);
         }.bind(this, strawberry, defaultAnimation), this);
         
         return strawberry;
