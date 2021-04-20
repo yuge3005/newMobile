@@ -40,18 +40,23 @@ class Halloween extends SlotMachine{
 
 	protected showMiniGame(): void{
 		alert( "paly mini game" );
+		let ev: egret.Event = new egret.Event( "show_mini" );
 		switch( this.tipoBonus ){
 			case 1:
-				this.cauldronContainer = new HalloweenCauldron(this.gameCoins, this.ganho, this.premiosPagosBonus, GameData.currentBet, 50, this.miniGameMCF);
+				// this.cauldronContainer = new HalloweenCauldron(this.gameCoins, this.ganho, this.premiosPagosBonus, GameData.currentBet, 50, this.miniGameMCF);
 				// this.cauldronContainer.addEventListener(SlotMachine.BONUS_GAME_WIN, this.showBonusGameWin, this);
 				// this.cauldronContainer.once(SlotMachine.BONUS_GAME_OVER, this.bonusGameOver.bind(this, this.cauldronContainer), this);
-				Com.addObjectAt(this, this.cauldronContainer, 0, 0);
+				// Com.addObjectAt(this, this.cauldronContainer, 0, 0);
+				ev.data = HalloweenCauldronPopup;
+				this.dispatchEvent( ev );
 				break;
 			case 2:
-				this.strawberryContainer = new HalloweenStrawberry(this.gameCoins, this.ganho, this.premiosPagosBonus, this.miniGameMCF);
+				// this.strawberryContainer = new HalloweenStrawberry(this.gameCoins, this.ganho, this.premiosPagosBonus, this.miniGameMCF);
 				// this.strawberryContainer.addEventListener(SlotMachine.BONUS_GAME_WIN, this.showBonusGameWin, this);
 				// this.strawberryContainer.once(SlotMachine.BONUS_GAME_OVER, this.bonusGameOver.bind(this, this.strawberryContainer), this);
-				Com.addObjectAt(this, this.strawberryContainer, 0, 0); 
+				// Com.addObjectAt(this, this.strawberryContainer, 0, 0); 
+				ev.data = HalloweenStrawberryPopup;
+				this.dispatchEvent( ev );
 				break;
 			default: throw new Error( "Server data error: mini game id" );
 		}

@@ -46,6 +46,7 @@ class SlotGameMain extends egret.DisplayObjectContainer {
 		this.currentGame.addEventListener("showBank", this.showCoinBank, this );
 		this.currentGame.addEventListener("out_of_coins_game_id", this.showCoinBank, this );
 		this.currentGame.addEventListener("out_of_dinero", this.showChipBank, this );
+		this.currentGame.addEventListener("show_mini", this.showMini, this );
 	}
 
 	private addGame(){
@@ -203,5 +204,13 @@ class SlotGameMain extends egret.DisplayObjectContainer {
 	public showCoinBank( event:egret.Event = null ){
 		GlobelSettings.bankOpenType = 0;
 		this.showBank( event );
+	}
+
+	public showMini( event:egret.Event = null ){
+		this.showShadow();
+
+		this.currentPo = new HalloweenCauldronPopup;
+		if (this.currentPo.inited) this.addPhonePo();
+		else this.currentPo.addEventListener( GenericModal.GENERIC_MODAL_LOADED, this.addPhonePo, this );
 	}
 }
