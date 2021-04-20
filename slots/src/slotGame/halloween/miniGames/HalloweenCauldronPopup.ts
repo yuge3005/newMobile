@@ -19,7 +19,5 @@ class HalloweenCauldronPopup extends GenericPo {
 
     protected onClose(): void {
         super.onClose(null);
-
-        
     }
 }

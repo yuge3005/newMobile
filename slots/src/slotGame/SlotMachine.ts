@@ -437,6 +437,10 @@ class SlotMachine extends egret.Sprite {
 		this.dispatchEvent( ev );
 	}
 
+	protected confirmedAndShowMini(){
+		// override
+	}
+
 	protected startRunning( figuras: Array<number>, figlinhasPremiadas: Array<number>, figurasPremiadas: Array<number> ){
 		// override
 	}

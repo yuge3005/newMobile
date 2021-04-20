@@ -216,5 +216,11 @@ class SlotGameMain extends egret.DisplayObjectContainer {
 
 	protected addSlotPo( event:egret.Event = null ){
 		this.addPoFromTo( 0.1, 0.72 );
+
+		this.currentPo.addEventListener( GenericModal.CLOSE_MODAL, this.showMiniConfirm, this );
+	}
+
+	protected showMiniConfirm(){
+		this.currentGame.showMiniConfirm();
 	}
 }

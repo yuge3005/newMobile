@@ -39,25 +39,33 @@ class Halloween extends SlotMachine{
 	}
 
 	protected showMiniGame(): void{
-		alert( "paly mini game" );
 		switch( this.tipoBonus ){
 			case 1:
-				// this.cauldronContainer = new HalloweenCauldron(this.gameCoins, this.ganho, this.premiosPagosBonus, GameData.currentBet, 50, this.miniGameMCF);
-				// this.cauldronContainer.addEventListener(SlotMachine.BONUS_GAME_WIN, this.showBonusGameWin, this);
-				// this.cauldronContainer.once(SlotMachine.BONUS_GAME_OVER, this.bonusGameOver.bind(this, this.cauldronContainer), this);
-				// Com.addObjectAt(this, this.cauldronContainer, 0, 0);
 				this.showMiniGameConfirmPopup( HalloweenCauldronPopup );
 				break;
 			case 2:
-				// this.strawberryContainer = new HalloweenStrawberry(this.gameCoins, this.ganho, this.premiosPagosBonus, this.miniGameMCF);
-				// this.strawberryContainer.addEventListener(SlotMachine.BONUS_GAME_WIN, this.showBonusGameWin, this);
-				// this.strawberryContainer.once(SlotMachine.BONUS_GAME_OVER, this.bonusGameOver.bind(this, this.strawberryContainer), this);
-				// Com.addObjectAt(this, this.strawberryContainer, 0, 0); 
 				this.showMiniGameConfirmPopup( HalloweenStrawberryPopup );
 				break;
 			default: throw new Error( "Server data error: mini game id" );
 		}
-		this.tipoBonus = 0;
+	}
+
+	protected confirmedAndShowMini(){
+		switch( this.tipoBonus ){
+			case 1:
+				this.cauldronContainer = new HalloweenCauldron(this.gameCoins, this.ganho, this.premiosPagosBonus, GameData.currentBet, 50, this.miniGameMCF);
+				// this.cauldronContainer.addEventListener(SlotMachine.BONUS_GAME_WIN, this.showBonusGameWin, this);
+				// this.cauldronContainer.once(SlotMachine.BONUS_GAME_OVER, this.bonusGameOver.bind(this, this.cauldronContainer), this);
+				Com.addObjectAt(this, this.cauldronContainer, 0, 0);
+				break;
+			case 2:
+				this.strawberryContainer = new HalloweenStrawberry(this.gameCoins, this.ganho, this.premiosPagosBonus, this.miniGameMCF);
+				// this.strawberryContainer.addEventListener(SlotMachine.BONUS_GAME_WIN, this.showBonusGameWin, this);
+				// this.strawberryContainer.once(SlotMachine.BONUS_GAME_OVER, this.bonusGameOver.bind(this, this.strawberryContainer), this);
+				Com.addObjectAt(this, this.strawberryContainer, 0, 0); 
+				break;
+			default: throw new Error( "Server data error: mini game id" );
+		}
 	}
 
 	protected startRunning( figuras: Array<number>, figlinhasPremiadas: Array<number>, figurasPremiadas: Array<number> ){
