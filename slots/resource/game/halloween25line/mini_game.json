@@ -1,0 +1,12 @@
+{"file":"mini_game.png","frames":{
+"dice_game_bg_sd":{"x":0,"y":1127,"w":2000,"h":1125,"offX":0,"offY":0,"sourceW":2000,"sourceH":1125},
+"pumpkin":{"x":1807,"y":2254,"w":149,"h":204,"offX":0,"offY":0,"sourceW":149,"sourceH":204},
+"strawberries_bg":{"x":2002,"y":0,"w":2000,"h":1125,"offX":0,"offY":0,"sourceW":2000,"sourceH":1125},
+"wheel_game_bg_sd":{"x":0,"y":0,"w":2000,"h":1125,"offX":0,"offY":0,"sourceW":2000,"sourceH":1125},
+"bonus_multiple":{"x":2002,"y":2252,"w":1403,"h":63,"offX":0,"offY":0,"sourceW":1403,"sourceH":63},
+"bonus_multiple_big":{"x":0,"y":3000,"w":1403,"h":63,"offX":0,"offY":0,"sourceW":1403,"sourceH":63},
+"caldron_game_bg_new":{"x":2002,"y":1127,"w":2000,"h":1123,"offX":0,"offY":0,"sourceW":2000,"sourceH":1125},
+"wheel":{"x":0,"y":2254,"w":746,"h":744,"offX":18,"offY":18,"sourceW":780,"sourceH":780},
+"arrow":{"x":1807,"y":2460,"w":149,"h":90,"offX":0,"offY":0,"sourceW":149,"sourceH":90},
+"btn_start":{"x":1405,"y":2254,"w":199,"h":184,"offX":0,"offY":0,"sourceW":199,"sourceH":184},
+"btn_start_down":{"x":1606,"y":2254,"w":199,"h":184,"offX":0,"offY":0,"sourceW":199,"sourceH":184}}}
