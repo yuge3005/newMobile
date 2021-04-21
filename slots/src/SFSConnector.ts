@@ -187,6 +187,7 @@ class SFSConnector {
             gameData["secondCurrency"] = data.getLong("hard_currency");
             gameData["tipoBonus"] = data.getInt("tipoBonus");
             gameData["posicoesArrayBonus"] = data.getIntArray("posicoesArrayBonus");
+            gameData["ganhoBonus"] = data.getDouble("ganhoBonus");
             gameData["figuras"] = data.getIntArray("figuras");
             gameData["linhasPremiadas"] = data.getIntArray("linhasPremiadas");
             gameData["figurasPremiadas"] = data.getIntArray("figurasPremiadas");

@@ -7,6 +7,9 @@ class Halloween25line extends SlotMachine{
 			return "halloweenAnimation";
 	}
 
+	private posicoesArrayBonus: Array<number>;
+	private ganhoBonus: number;
+
 	public constructor( assetsPath: string ) {
 			super( "halloween25line.conf", assetsPath, 66 );
 
@@ -53,6 +56,13 @@ class Halloween25line extends SlotMachine{
 		}
 	}
 
+	public onPlay( data: Object ){
+		super.onPlay( data );
+
+		this.posicoesArrayBonus = data["posicoesArrayBonus"];
+		this.ganhoBonus = data["ganhoBonus"] + this.ganho;
+	}
+
 	public confirmedAndShowMini(){
 		switch( this.tipoBonus ){
 			case 1:
@@ -66,13 +76,13 @@ class Halloween25line extends SlotMachine{
 				this.miniGame.once(SlotMachine.BONUS_GAME_OVER, this.bonusGameOver.bind(this), this);
 				Com.addObjectAt(this, this.miniGame, 0, 0);
 				break;
-			case 3:
-				this.miniGame = new Halloween25Wheel(posicoesArrayBonus[0], this.ganho, ganhoBonus, this.miniGameMCF);
+			case 5:
+				this.miniGame = new Halloween25Wheel(this.posicoesArrayBonus[0], this.ganho, this.ganhoBonus, this.miniGameMCF);
 				this.miniGame.once(SlotMachine.BONUS_GAME_OVER, this.bonusGameOver.bind(this), this);
 				Com.addObjectAt(this, this.miniGame, 0, 0);
 				break;
-			case 4:
-				this.miniGame = new Halloween25Dice(posicoesArrayBonus[0], this.ganho, ganhoBonus, this.miniGameMCF);
+			case 6:
+				this.miniGame = new Halloween25Dice(this.posicoesArrayBonus[0], this.ganho, this.ganhoBonus, this.miniGameMCF);
 				this.miniGame.once(SlotMachine.BONUS_GAME_OVER, this.bonusGameOver.bind(this), this);
 				Com.addObjectAt(this, this.miniGame, 0, 0);
 				break;

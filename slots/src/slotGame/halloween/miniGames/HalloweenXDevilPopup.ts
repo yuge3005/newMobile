@@ -1,5 +1,9 @@
+class HalloweenXDevilPopup extends GenericPo {
 
-class HalloweenXDevilPopup extends Popup {
+    protected static get classAssetName() {
+        return "halloweenStrawberryPopup";
+    }
+
     public static bet: number;
 
     constructor() {
@@ -7,7 +11,7 @@ class HalloweenXDevilPopup extends Popup {
     }
 
     protected init() {
-        this.bgAssetName = "halloweenx_popup_" + UserDataVo.lang + "_json.popup_devil";
+        this.bgAssetName = "halloweenx_popup_json.popup_devil";
         this.closeButtonAssetName = "";
 
         super.init();
@@ -16,13 +20,13 @@ class HalloweenXDevilPopup extends Popup {
         topLeftText.fontFamily = "Righteous";
         topLeftText.verticalAlign = "middle";
         topLeftText.textColor = 0x54EA55;
-        topLeftText.text = Lanuage.getValue("halloweenX_devil_wheel_text");
+        topLeftText.text = MuLang.getText("halloweenX_devil_wheel_text");
 
         let topRightText = Com.addTextAt(this, 911, 552, 288, 55, 42, false, false);
         topRightText.fontFamily = "Righteous";
         topRightText.verticalAlign = "middle";
         topRightText.textColor = 0x54EA55;
-        topRightText.text = Lanuage.getValue("halloweenX_devil_medal_text");
+        topRightText.text = MuLang.getText("halloweenX_devil_medal_text");
 
         let betText = Com.addTextAt(this, 883, 739, 160, 41, 36, false, false);
         betText.fontFamily = "Righteous";
@@ -34,8 +38,8 @@ class HalloweenXDevilPopup extends Popup {
         bottomText.fontFamily = "Righteous";
         bottomText.verticalAlign = "middle";
         bottomText.textColor = 0x54EA55;
-        bottomText.text = Lanuage.getValue("halloweenX_devil_total_bonus");
+        bottomText.text = MuLang.getText("halloweenX_devil_total_bonus");
 
-        Com.addButtonAt(this, "halloweenx_popup_" + UserDataVo.lang + "_json.play_now", 813, 950, this.onClose, 1.1, 1);
+        Com.addDownButtonAt(this, "halloweenx_popup_json.play_now", "halloweenx_popup_json.play_now", 813, 950, this.onClose, true);
     }
 }

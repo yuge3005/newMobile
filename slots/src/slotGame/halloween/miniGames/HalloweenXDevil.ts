@@ -50,7 +50,7 @@ class HalloweenXDevil extends egret.DisplayObjectContainer {
         Com.addBitmapAt(this, "mini_game_json.devil_bg", 0, 0);
 
         // spin btn
-        Com.addButtonAt(this, "mini_game_json.wheel_button", 1011, 399, this.spin, 1.1, 1);
+        Com.addDownButtonAt(this, "mini_game_json.wheel_button", "mini_game_json.wheel_button", 1011, 399, this.spin, true);
 
         // inner circle
         this.innerCircle = new egret.DisplayObjectContainer();
