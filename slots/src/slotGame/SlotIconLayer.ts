@@ -7,6 +7,8 @@ class SlotIconLayer extends egret.DisplayObjectContainer{
 	protected blinkIcons: Array<egret.MovieClip>;
 	protected blinkIconsLayer: egret.DisplayObjectContainer;
 
+	public maxIconNumber: number;
+
 	public constructor() {
 		super();
 	}
@@ -30,26 +32,7 @@ class SlotIconLayer extends egret.DisplayObjectContainer{
 	}
 
 	protected showBlinkIcons(){
-		if( this.figlinhas.length != this.figuras.length ) throw new Error( "Server data Error: figlinhas" );
-
-		if( this.blinkIcons ) this.clearBlinkIcons();
-		this.blinkIcons = [];
-		if( !this.blinkIconsLayer ) this.blinkIconsLayer = new egret.DisplayObjectContainer;
-		this.addChild( this.blinkIconsLayer );
-
-		let pts: Object = LineManager.linesDictionary;
-		for( let i: number = 0; i < this.figlinhas.length; i++ ){
-			let ptIndex: number = this.figlinhas[i];
-			let iconIdex: number = this.figuras[i];
-			let line: LineUI = pts["p"+ptIndex];
-			for( let j: number = 0; j < line.lineRule.length; j++ ){
-				let slotIconNumberIndex: number = parseInt( line.lineRule.charAt(j), 16 );
-				let slotIcon: SlotIcon = this.icons[ slotIconNumberIndex ];
-				if( slotIcon.iconIndex == iconIdex ) {
-					if( !this.blinkIcons[slotIconNumberIndex] ) this.blinkIcons[slotIconNumberIndex] = this.buildBlinkIcon( iconIdex, slotIcon.x, slotIcon.y );
-				}
-			}
-		}
+		//sub class override
 	}
 
 	protected buildBlinkIcon( iconIndex: number, positionX: number, positionY: number ): egret.MovieClip{

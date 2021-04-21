@@ -12,15 +12,8 @@ class SFSConnector {
     public static changeNumberCallback: Function;
     public static playCallback: Function;
     public static roundOverCallback: Function;
-    public static cancelExtraCallback: Function;
-    public static extraCallback: Function;
     public static jackpotCallbak: Function;
     public static jackpotWinCallbak: Function;
-    public static bonusGameSpinCallback: Function;
-    public static buffHandlerCallback: Function;
-    public static goKartHandlerCallback: Function;
-    public static selectNumberCallback: Function;
-    public static lemonGameCallback: Function;
 
     constructor() {
         SFSConnector.connection = false;
@@ -197,7 +190,7 @@ class SFSConnector {
             gameData["figuras"] = data.getIntArray("figuras");
             gameData["linhasPremiadas"] = data.getIntArray("linhasPremiadas");
             gameData["figurasPremiadas"] = data.getIntArray("figurasPremiadas");
-            gameData["premiosPagos"] = data.getDoubleArray("premiosPagos");
+            gameData["premiosPagosBonus"] = data.getDoubleArray("premiosPagosBonus");
             SFSConnector.playCallback( gameData, data );
         }
         else if( event.cmd == "respostafinaliza" && SFSConnector.roundOverCallback ){
@@ -225,25 +218,14 @@ class SFSConnector {
             SFSConnector.jackpotWinCallbak( gameData );
             return;
         }
-        else if( event.cmd == "bonusGame" && SFSConnector.bonusGameSpinCallback ){
-            var data : any = event.params;
-            var gameData: Object = {};
-            gameData["over"] = data.getBool("over");
-            gameData["prize"] = data.getDouble("prize");
-            gameData["prizeIconIdx"] = data.getUtfStringArray( "prizeIconIdx" );
-            gameData["iconIdx"] = data.getUtfStringArray( "iconIdx" );
-            SFSConnector.bonusGameSpinCallback( gameData );
-            return;
-        }
         else if (event.cmd === "erro") {
             let info = event.params.get("mensagem");
             console.log("----   SFSConnector -> onSfsExtensionResponse[erro]:");
             console.log(info);
 
             if( info == "Saldo insuficiente" ){
-                if( SFSConnector.playCallback || SFSConnector.extraCallback ){
+                if( SFSConnector.playCallback ){
                     let callbackFun: Function = SFSConnector.playCallback;
-                    if( !callbackFun )callbackFun = SFSConnector.extraCallback;
                     callbackFun( null );
                 }
             }

@@ -64,6 +64,52 @@ class HalloweenSlotIconLayer extends SlotIconLayer{
 		if( isLast ) this.showResult();
 	}
 
+	protected showBlinkIcons(){
+		if( this.figlinhas.length != this.figuras.length ) throw new Error( "Server data Error: figlinhas" );
+
+		if( this.blinkIcons ) this.clearBlinkIcons();
+		this.blinkIcons = [];
+		if( !this.blinkIconsLayer ) this.blinkIconsLayer = new egret.DisplayObjectContainer;
+		this.addChild( this.blinkIconsLayer );
+
+		let pts: Object = LineManager.linesDictionary;
+		this.maxIconNumber = 0;
+		for( let i: number = 0; i < this.figlinhas.length; i++ ){
+			let ptIndex: number = this.figlinhas[i];
+			let iconIdex: number = this.figuras[i];
+			let line: LineUI = pts["p"+ptIndex];
+			let tempBlinkArray: Array<number> = this.getSameIconInLine( line.lineRule, iconIdex );
+			for( let j: number = 0; j < tempBlinkArray.length; j++ ){
+				let slotIconNumberIndex: number = tempBlinkArray[j];
+				let slotIcon: SlotIcon = this.icons[ slotIconNumberIndex ];
+				if( !this.blinkIcons[tempBlinkArray[j]] ) this.blinkIcons[tempBlinkArray[j]] = this.buildBlinkIcon( iconIdex, slotIcon.x, slotIcon.y );
+			}
+			if( tempBlinkArray.length > this.maxIconNumber ) this.maxIconNumber = tempBlinkArray.length;
+		}
+	}
+
+	private getSameIconInLine( ruleString: string, iconIdex: number ): Array<number>{
+		let tempBlinkArray: Array<number> = [];
+		let canAny: boolean = iconIdex == 2 || iconIdex == 9;
+		for( let i: number = 0; i < ruleString.length; i++ ){
+			let slotIconNumberIndex: number = parseInt( ruleString.charAt(i), 16 );
+			let slotIcon: SlotIcon = this.icons[ slotIconNumberIndex ];
+			if( slotIcon.iconIndex == iconIdex ) {
+				tempBlinkArray.push( slotIconNumberIndex );
+			}
+			else{
+				if( tempBlinkArray.length < 3 ){
+					if( !canAny ) tempBlinkArray.length = 0;
+					continue;
+				}
+				else{
+					if( !canAny ) break;
+				}
+			}
+		}
+		return tempBlinkArray;
+	}
+
 	protected buildBlinkIcon( iconIndex: number, positionX: number, positionY: number ): egret.MovieClip{
 		let mc: egret.MovieClip = Com.addMovieClipAt( this.blinkIconsLayer, MDS.mcFactory, "" + iconIndex, positionX - 128, positionY - 128 );
 		mc.scaleX = 2;
