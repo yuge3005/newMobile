@@ -43,6 +43,9 @@ class SlotMachine extends egret.Sprite {
 
 	public static inRound: boolean = false;
 
+	protected miniGameMCF: egret.MovieClipDataFactory;
+    protected miniGame: egret.DisplayObject;
+
 	public constructor( gameConfigFile: string, configUrl: string, gameId: number ) {
 		super();
 

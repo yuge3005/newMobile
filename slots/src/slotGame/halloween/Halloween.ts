@@ -7,9 +7,6 @@ class Halloween extends SlotMachine{
 			return "halloweenAnimation";
 	}
 
-	private miniGameMCF: egret.MovieClipDataFactory;
-    private miniGame: egret.DisplayObject;
-
 	public constructor( assetsPath: string ) {
 			super( "halloween.conf", assetsPath, 46 );
 
