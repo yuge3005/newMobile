@@ -45,7 +45,7 @@ class HalloweenX extends SlotMachine{
 				this.showMiniGameConfirmPopup( HalloweenStrawberryPopup );
 				break;
 			case 4:
-				this.showMiniGameConfirmPopup( HalloweenXDevilPopup );
+				this.showMiniGameConfirmPopup( HalloweenXDevilPopup, true );
 				break;
 			default: throw new Error( "Server data error: mini game id" );
 		}
