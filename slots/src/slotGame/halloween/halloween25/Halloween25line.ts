@@ -43,6 +43,12 @@ class Halloween25line extends SlotMachine{
 			case 2:
 				this.showMiniGameConfirmPopup( HalloweenStrawberryPopup );
 				break;
+			case 5:
+				this.showMiniGameConfirmPopup( Halloween25WheelPopup );
+				break;
+			case 6:
+				this.showMiniGameConfirmPopup( Halloween25DicePopup );
+				break;
 			default: throw new Error( "Server data error: mini game id" );
 		}
 	}
@@ -57,6 +63,16 @@ class Halloween25line extends SlotMachine{
 				break;
 			case 2:
 				this.miniGame = new HalloweenStrawberry(this.gameCoins, this.ganho, this.premiosPagosBonus, this.miniGameMCF);
+				this.miniGame.once(SlotMachine.BONUS_GAME_OVER, this.bonusGameOver.bind(this), this);
+				Com.addObjectAt(this, this.miniGame, 0, 0);
+				break;
+			case 3:
+				this.miniGame = new Halloween25Wheel(posicoesArrayBonus[0], this.ganho, ganhoBonus, this.soundManager, this.miniGameMCF);
+				this.miniGame.once(SlotMachine.BONUS_GAME_OVER, this.bonusGameOver.bind(this), this);
+				Com.addObjectAt(this, this.miniGame, 0, 0);
+				break;
+			case 4:
+				this.miniGame = new Halloween25Dice(posicoesArrayBonus[0], this.ganho, ganhoBonus, this.soundManager, this.miniGameMCF);
 				this.miniGame.once(SlotMachine.BONUS_GAME_OVER, this.bonusGameOver.bind(this), this);
 				Com.addObjectAt(this, this.miniGame, 0, 0);
 				break;

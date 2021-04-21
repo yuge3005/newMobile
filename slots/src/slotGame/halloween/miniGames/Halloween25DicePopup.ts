@@ -1,23 +1,20 @@
+class Halloween25DicePopup extends GenericPo {
 
-class Halloween25DicePopup extends Popup {
+    protected static get classAssetName() {
+        return "halloween25DicePopup";
+    }
 
     constructor() {
         super();
     }
 
     protected init() {
-        this.bgAssetName = "halloween25_popup_" + UserDataVo.lang + "_json.popup_dice";
+        this.bgAssetName = "halloween25_popup_pt_json.popup_dice";
         this.closeButtonAssetName = "";
 
         super.init();
 
-        Com.addButtonAt(this, "halloween25_popup_" + UserDataVo.lang + "_json.start", 340, 490, this.closePopup, 1.1, 1);
-    }
-
-    /**
-     * close popup
-     **/
-    private closePopup(): void {
-        super.onClose(null);
+        let bt: TouchDownButton = Com.addDownButtonAt(this, "halloween25_popup_pt_json.start", "halloween25_popup_pt_json.start", 340, 490, this.onClose, true);
+        bt.x = this.bg.width - bt.width >> 1;
     }
 }
