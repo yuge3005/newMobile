@@ -192,6 +192,14 @@ class SFSConnector {
             gameData["linhasPremiadas"] = data.getIntArray("linhasPremiadas");
             gameData["figurasPremiadas"] = data.getIntArray("figurasPremiadas");
             gameData["premiosPagosBonus"] = data.getDoubleArray("premiosPagosBonus");
+            if( gameData["tipoBonus"] == 4 ){
+                gameData["devil"] = {};
+                let modalList = data.getIntArray("modalList");
+                gameData["devil"].medalMultiple = modalList[0];
+                gameData["devil"].innerChange = data.getInt("innerChange");
+                gameData["devil"].outerChange = data.getInt("outterChange");
+                gameData["devil"].lineCount = data.getInt("lineCount");
+            }
             SFSConnector.playCallback( gameData, data );
         }
         else if( event.cmd == "respostafinaliza" && SFSConnector.roundOverCallback ){

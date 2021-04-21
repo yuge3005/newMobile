@@ -7,6 +7,8 @@ class HalloweenX extends SlotMachine{
 			return "halloweenAnimation";
 	}
 
+	private devilData: Object;
+
 	public constructor( assetsPath: string ) {
 			super( "halloweenX.conf", assetsPath, 63 );
 
@@ -42,8 +44,17 @@ class HalloweenX extends SlotMachine{
 			case 2:
 				this.showMiniGameConfirmPopup( HalloweenStrawberryPopup );
 				break;
+			case 4:
+				this.showMiniGameConfirmPopup( HalloweenXDevilPopup, true );
+				break;
 			default: throw new Error( "Server data error: mini game id" );
 		}
+	}
+
+	public onPlay( data: Object ){
+		super.onPlay( data );
+
+		this.devilData = data["devil"];
 	}
 
 	public confirmedAndShowMini(){
@@ -56,6 +67,11 @@ class HalloweenX extends SlotMachine{
 				break;
 			case 2:
 				this.miniGame = new HalloweenStrawberry(this.gameCoins, this.ganho, this.premiosPagosBonus, this.miniGameMCF);
+				this.miniGame.once(SlotMachine.BONUS_GAME_OVER, this.bonusGameOver.bind(this), this);
+				Com.addObjectAt(this, this.miniGame, 0, 0);
+				break;
+			case 4:
+				this.miniGame = new HalloweenXDevil(this.ganho, this.devilData["innerChange"], this.devilData["outerChange"], this.devilData["medalMultiple"], this.devilData["lineCount"], GameData.currentBet);
 				this.miniGame.once(SlotMachine.BONUS_GAME_OVER, this.bonusGameOver.bind(this), this);
 				Com.addObjectAt(this, this.miniGame, 0, 0);
 				break;
