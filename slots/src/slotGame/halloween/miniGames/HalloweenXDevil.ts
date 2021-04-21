@@ -1,5 +1,3 @@
-
-
 class HalloweenXDevil extends egret.DisplayObjectContainer {
     private defaultInnerNumbers: Array<number> = [8, 5, 3, 4, 8, 2, 1, 7, 9, 7, 10, 6];
     private defaultOuterNumbers: Array<number> = [30, 10, 18, 10, 12, 10, 15, 10, 20, 12, 18, 10, 15, 10, 12, 10, 12, 15, 10, 12, 18, 10, 12, 15, 10, 12, 20, 10, 15, 12, 10];

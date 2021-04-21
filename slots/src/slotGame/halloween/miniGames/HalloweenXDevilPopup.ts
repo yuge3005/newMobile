@@ -1,17 +1,15 @@
 class HalloweenXDevilPopup extends GenericPo {
 
     protected static get classAssetName() {
-        return "halloweenStrawberryPopup";
+        return "halloweenXDevilPopup";
     }
-
-    public static bet: number;
 
     constructor() {
         super();
     }
 
     protected init() {
-        this.bgAssetName = "halloweenx_popup_json.popup_devil";
+        this.bgAssetName = "halloweenx_popup_pt_json.popup_devil";
         this.closeButtonAssetName = "";
 
         super.init();
@@ -32,7 +30,7 @@ class HalloweenXDevilPopup extends GenericPo {
         betText.fontFamily = "Righteous";
         betText.textAlign = "left";
         betText.verticalAlign = "middle";
-        betText.text = "" + HalloweenXDevilPopup.bet;
+        betText.text = "" + GameData.currentBet;
 
         let bottomText = Com.addTextAt(this, 561, 790, 462, 55, 42, false, false);
         bottomText.fontFamily = "Righteous";
@@ -40,6 +38,7 @@ class HalloweenXDevilPopup extends GenericPo {
         bottomText.textColor = 0x54EA55;
         bottomText.text = MuLang.getText("halloweenX_devil_total_bonus");
 
-        Com.addDownButtonAt(this, "halloweenx_popup_json.play_now", "halloweenx_popup_json.play_now", 813, 950, this.onClose, true);
+        let bt: TouchDownButton = Com.addDownButtonAt(this, "halloweenx_popup_pt_json.play_now", "halloweenx_popup_pt_json.play_now", 813, 910, this.onClose, true);
+        bt.x = this.bg.width - bt.width >> 1;
     }
 }
