@@ -1,8 +1,28 @@
 {
 	"groups": [
 		{
-			"keys": "halloween25_bg_jpg,halloweenAnimation_png,halloweenAnimation_json,halloween25line_json,halloween25line_conf,halloween_line_json,play_mp3,run_mp3,win_mp3",
+			"keys": "halloween25_bg_jpg,halloweenAnimation_png,halloweenAnimation_json,halloween25line_json,halloween25line_conf,halloween_line_json,play_mp3,run_mp3,win_mp3,mini_game_mcf_png,mini_game_mcf_json,mini_game_json",
 			"name": "halloween25line"
+		},
+		{
+			"keys": "halloween_popup_pt_json",
+			"name": "halloweenMinigamePopup"
+		},
+		{
+			"keys": "halloween_popup_pt_json,win_bonus_wav,jumping_wav,bonus3_wav",
+			"name": "halloweenCauldronPopup"
+		},
+		{
+			"keys": "halloween_popup_pt_json,strawberry_mp3,bonus_win_wav,bonus3_wav,straw_end_wav,straw_select_wav",
+			"name": "halloweenStrawberryPopup"
+		},
+		{
+			"keys": "halloween25_popup_pt_json",
+			"name": "halloween25WheelPopup"
+		},
+		{
+			"keys": "halloween25_popup_pt_json",
+			"name": "halloween25DicePopup"
 		}
 	],
 	"resources": [
@@ -52,6 +72,69 @@
 			"url": "game/halloween/sound/win.mp3",
 			"type": "sound",
 			"name": "win_mp3"
+		},
+		{
+			"url": "game/halloween25line/mini_game_mcf.png",
+			"type": "image",
+			"name": "mini_game_mcf_png"
+		},
+		{
+			"url": "game/halloween25line/mini_game_mcf.json",
+			"type": "json",
+			"name": "mini_game_mcf_json"
+		},
+		{
+			"url": "game/halloween25line/mini_game.json",
+			"type": "sheet",
+			"name": "mini_game_json",
+			"subkeys": "arrow,bonus_multiple,bonus_multiple_big,btn_start,btn_start_down,caldron_game_bg_new,dice_game_bg_sd,pumpkin,strawberries_bg,wheel,wheel_game_bg_sd"
+		},
+		{
+			"url": "game/halloween/halloween_popup_pt.json",
+			"type": "sheet",
+			"name": "halloween_popup_pt_json",
+			"subkeys": "award_bg,collect,header,popup_cauldron,popup_strawberry,start"
+		},
+		{
+			"url": "game/halloween/sound/jumping.wav",
+			"type": "sound",
+			"name": "jumping_wav"
+		},
+		{
+			"url": "game/halloween/sound/bonus3.wav",
+			"type": "sound",
+			"name": "bonus3_wav"
+		},
+		{
+			"url": "game/halloween/sound/straw_end.wav",
+			"type": "sound",
+			"name": "straw_end_wav"
+		},
+		{
+			"url": "game/halloween/sound/bonus_win.wav",
+			"type": "sound",
+			"name": "bonus_win_wav"
+		},
+		{
+			"url": "game/halloween/sound/strawberry.mp3",
+			"type": "sound",
+			"name": "strawberry_mp3"
+		},
+		{
+			"url": "game/halloween/sound/straw_select.wav",
+			"type": "sound",
+			"name": "straw_select_wav"
+		},
+		{
+			"url": "game/halloween/sound/win_bonus.wav",
+			"type": "sound",
+			"name": "win_bonus_wav"
+		},
+		{
+			"url": "game/halloween25line/halloween25_popup_pt.json",
+			"type": "sheet",
+			"name": "halloween25_popup_pt_json",
+			"subkeys": "award_bg,collect,header,popup_cauldron,popup_dice,popup_strawberry,popup_wheel,start"
 		}
 	]
 }

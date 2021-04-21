@@ -8,7 +8,7 @@
 		,"play extra":{"en": "Play Extra Ball", "es":"Bola del juego extra", "pt":"Aperte Bola Extra"}
 		,"win":{ "en":"WIN","es": "GANÕ","pt": "GANHO"}
 		,"jackpot":{"en":"JACKPOT", "es":"JACKPOT", "pt":"ACUMULADO"}
-		,"prize":{"en":"PRIZE","es": "PRÉMIO", "pt":"PRÉMIO"}
+		,"prize":{"en":"prize","es": "premio", "pt":"prêmio"}
 		,"jackpot_tooltip":{"en":"Your current bet does not qualify\nPlease increase your bet to {1}\nand play {2} cards",
 			"es":"Su apuesta actual no cualifica.\nPor favor,aumente su apuesta\npara {1} y juega con {2} tarjetas.", 
 			"pt":"Sua aposta atual não se qualifica.\nPor favor,aumente sua aporta\npara {1} e jogue com {2} cartas."}
@@ -70,4 +70,9 @@
 		,"send":{"en":"Send","pt":"Enviar","es":"Enviar"}
 		,"rate_us_now":{"en":"Rate Us Now!","pt":"Avalie-nos agora!","es":"¡Denos una valoración!"}
 		,"how_to_rate":{"en":"How would you rate doctor bingo?","pt":"Como você classificaria o Doctor Bingo?","es":"¿Cómo valoraría Doctor Bingo?"}
+		,"halloween_25line_dice_text":{"en":"Choose the dice to multiply your Prize:","es":"Elija el dado para multiplicar su Premio:", "pt":"Escolha o dado para multiplicar o seu Prêmio:"}
+		,"halloween_25line_wheel_text":{"en":"LUCKY WHEEL!","pt":"ROLETA DA SORTE!","es":"RULETA DE LA SUERTE!"}
+		,"halloweenX_devil_total_bonus":{"en":"YOUR TOTAL WIN","pt":"Ganhou Total","es":"Premio Total"}
+		,"halloweenX_devil_medal_text":{"en":"Choose a medal","pt":"Escolha uma medalha","es":"Elija medalla"}
+		,"halloweenX_devil_wheel_text":{"en":"Click on the roulette","pt":"Clique na roleta","es":"Pinche en la ruleta"}
 }
