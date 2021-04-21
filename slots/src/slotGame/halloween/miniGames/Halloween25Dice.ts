@@ -6,7 +6,7 @@ class Halloween25Dice extends egret.DisplayObjectContainer {
     private dicesArray: Array<egret.MovieClip>;
     private premioText: egret.TextField;
 
-    constructor(point: number, premio: number, ganho: number, soundManager: SlotSoundManager, mcf: egret.MovieClipDataFactory) {
+    constructor(point: number, premio: number, ganho: number, mcf: egret.MovieClipDataFactory) {
         super();
 
         this.point = point;
@@ -29,7 +29,7 @@ class Halloween25Dice extends egret.DisplayObjectContainer {
         leftBottomText.verticalAlign = "middle";
         leftBottomText.textColor = 0xF1D218;
         leftBottomText.wordWrap = true;
-        leftBottomText.text = Lanuage.getValue("halloween_25line_dice_text");
+        leftBottomText.text = MuLang.getText("halloween_25line_dice_text");
 
         // premio
         this.premioText = Com.addTextAt(this, 1311, 981, 382, 65, 38 - Math.max(premio.toString().length - 9, 0) * 2, false, false);

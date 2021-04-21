@@ -67,12 +67,12 @@ class Halloween25line extends SlotMachine{
 				Com.addObjectAt(this, this.miniGame, 0, 0);
 				break;
 			case 3:
-				this.miniGame = new Halloween25Wheel(posicoesArrayBonus[0], this.ganho, ganhoBonus, this.soundManager, this.miniGameMCF);
+				this.miniGame = new Halloween25Wheel(posicoesArrayBonus[0], this.ganho, ganhoBonus, this.miniGameMCF);
 				this.miniGame.once(SlotMachine.BONUS_GAME_OVER, this.bonusGameOver.bind(this), this);
 				Com.addObjectAt(this, this.miniGame, 0, 0);
 				break;
 			case 4:
-				this.miniGame = new Halloween25Dice(posicoesArrayBonus[0], this.ganho, ganhoBonus, this.soundManager, this.miniGameMCF);
+				this.miniGame = new Halloween25Dice(posicoesArrayBonus[0], this.ganho, ganhoBonus, this.miniGameMCF);
 				this.miniGame.once(SlotMachine.BONUS_GAME_OVER, this.bonusGameOver.bind(this), this);
 				Com.addObjectAt(this, this.miniGame, 0, 0);
 				break;

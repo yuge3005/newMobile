@@ -7,7 +7,7 @@ class Halloween25Wheel extends egret.DisplayObjectContainer {
     private premioText: egret.TextField;
     private spinBtn: TouchDownButton;
 
-    constructor(multiple: number, premio: number, ganho: number, soundManager: SlotSoundManager, mcf: egret.MovieClipDataFactory) {
+    constructor(multiple: number, premio: number, ganho: number, mcf: egret.MovieClipDataFactory) {
         super();
         
         this.multiple = multiple;
@@ -29,7 +29,7 @@ class Halloween25Wheel extends egret.DisplayObjectContainer {
         staticText.bold = true;
         staticText.wordWrap = true;
         staticText.textColor = 0xEDC03F;
-        staticText.text = Lanuage.getValue("halloween_25line_wheel_text");
+        staticText.text = MuLang.getText( "halloween_25line_wheel_text" );
 
         // premio
         this.premioText = Com.addTextAt(this, 1317, 597, 303, 67, 32, false, false);
@@ -43,7 +43,7 @@ class Halloween25Wheel extends egret.DisplayObjectContainer {
         premioStaticText.fontFamily = "Righteous";
         premioStaticText.verticalAlign = "middle";
         premioStaticText.textColor = 0xECD026;
-        premioStaticText.text = Utils.toFirstUpperCase(Lanuage.getValue("prize"));
+        premioStaticText.text = MuLang.getText( "prize", MuLang.CASE_TYPE_CAPITALIZE );
 
         this.spinBtn = Com.addDownButtonAt(this, "mini_game_json.btn_start", "mini_game_json.btn_start_down", 1380, 827, this.spinWheel, true);
     }
