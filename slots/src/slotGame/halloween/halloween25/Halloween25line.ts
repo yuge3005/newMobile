@@ -1,4 +1,4 @@
-class Halloween25line extends SlotMachine{
+class Halloween25line extends HalloweenSuper{
 	protected static get classAssetName(){
 			return "halloween25line";
 	}
@@ -25,17 +25,11 @@ class Halloween25line extends SlotMachine{
 		super.init();
 
 		this.addChildAt( Com.createBitmapByName( "halloween25_bg_jpg" ), 0 );
-
-		let data = RES.getRes( "mini_game_mcf_json" );
-		let tex = RES.getRes( "mini_game_mcf_png" );
-		this.miniGameMCF = new egret.MovieClipDataFactory( data, tex );
 	}
 
 	protected addIcons(){
-		this.slotIconArea = new HalloweenSlotIconLayer();
+		super.addIcons();
 		this.slotIconArea.scaleX = this.slotIconArea.scaleY = 0.9;
-		this.addChild( this.slotIconArea );
-		this.slotIconArea.showIcons( null );
 	}
 
 	protected showMiniGame(): void{
@@ -88,10 +82,6 @@ class Halloween25line extends SlotMachine{
 				break;
 			default: throw new Error( "Server data error: mini game id" );
 		}
-	}
-
-	protected startRunning( figuras: Array<number>, figlinhasPremiadas: Array<number>, figurasPremiadas: Array<number> ){
-		this.slotIconArea.startRunning( figuras, figlinhasPremiadas, figurasPremiadas );
 	}
 
 	protected showBonusGameWin(){
