@@ -94,17 +94,6 @@ class Halloween25line extends SlotMachine{
 		this.slotIconArea.startRunning( figuras, figlinhasPremiadas, figurasPremiadas );
 	}
 
-	protected bonusGameOver(e: egret.Event): void {
-		HalloweenCollectBonus.bonus = Number(e.data["totalBonus"]);
-		this.tipoBonus = 0;
-		if( this.miniGame && this.contains( this.miniGame ) ) this.removeChild( this.miniGame );
-		this.showMiniGameConfirmPopup( HalloweenCollectBonus, true );
-
-		this.gameToolBar.showWinResult( this.ganho + HalloweenCollectBonus.bonus );
-
-		this.sendRoundOverRequest();
-	}
-
 	protected showBonusGameWin(){
 		egret.log( "show halloween mini in mini" );
 	}

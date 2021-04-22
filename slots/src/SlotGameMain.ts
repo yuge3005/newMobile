@@ -227,9 +227,15 @@ class SlotGameMain extends egret.DisplayObjectContainer {
 		this.currentPo = eval( "new event.data" );
 		if (this.currentPo.inited) this.addPhonePo();
 		else this.currentPo.addEventListener( GenericModal.GENERIC_MODAL_LOADED, this.addPhonePo, this );
+
+		this.currentPo.addEventListener( GenericModal.CLOSE_MODAL, this.afterCoinsCollect, this );
 	}
 
 	protected showMiniConfirm(){
 		this.currentGame.confirmedAndShowMini();
+	}
+
+	protected afterCoinsCollect(){
+		this.currentGame.afterCoinsCollect();
 	}
 }
