@@ -149,7 +149,7 @@ class HalloweenXDevil extends egret.DisplayObjectContainer {
         result.once(egret.TouchEvent.TOUCH_TAP, this.showModalResult.bind(this, index), this);
 
         // bg
-        Com.addBitmapAt(result, "mini_game_json.coin_back", 3, 0);
+        // Com.addBitmapAt(result, "mini_game_json.coin_back", 3, 0);
 
         // coin
         let coin = Com.addBitmapAt(result, "mini_game_json.coin_enable", 0, 0);

@@ -446,8 +446,21 @@ class SlotMachine extends egret.Sprite {
 		// override
 	}
 
+	protected bonusGameOver(e: egret.Event): void {
+		HalloweenCollectBonus.bonus = Number(e.data["totalBonus"]);
+		this.tipoBonus = 0;
+		if( this.miniGame && this.contains( this.miniGame ) ) this.removeChild( this.miniGame );
+		this.showMiniGameConfirmPopup( HalloweenCollectBonus, true );
+
+		this.gameToolBar.showWinResult( this.ganho + HalloweenCollectBonus.bonus );
+	}
+
 	protected startRunning( figuras: Array<number>, figlinhasPremiadas: Array<number>, figurasPremiadas: Array<number> ){
 		// override
+	}
+
+	public afterCoinsCollect(){
+		this.sendRoundOverRequest();
 	}
 
 /******************************************************************************************/

@@ -38,5 +38,9 @@ class HalloweenCollectBonus extends GenericPo {
      */
     private closePopup(): void {
         super.onClose(null);
+
+        let flyCoins: FlyingCoins = new FlyingCoins();
+        flyCoins.fly( 10, new egret.Point( 500, 250 ), new egret.Point(350, 520), new egret.Point( 0, 300 ), 0.25, 0.15, 0.5 );
+        this.stage.addChild( flyCoins );
     }
 }

@@ -216,7 +216,8 @@ class SlotGameMain extends egret.DisplayObjectContainer {
 	}
 
 	protected addSlotPo( event:egret.Event = null ){
-		this.addPoFromTo( 0.1, 0.72 );
+		let abnormalSize: boolean = this.currentPo["abnormalSize"];
+		this.addPoFromTo( 0.1, abnormalSize ? 0.48 : 0.72 );
 
 		this.currentPo.addEventListener( GenericModal.CLOSE_MODAL, this.showMiniConfirm, this );
 	}
@@ -227,9 +228,15 @@ class SlotGameMain extends egret.DisplayObjectContainer {
 		this.currentPo = eval( "new event.data" );
 		if (this.currentPo.inited) this.addPhonePo();
 		else this.currentPo.addEventListener( GenericModal.GENERIC_MODAL_LOADED, this.addPhonePo, this );
+
+		this.currentPo.addEventListener( GenericModal.CLOSE_MODAL, this.afterCoinsCollect, this );
 	}
 
 	protected showMiniConfirm(){
 		this.currentGame.confirmedAndShowMini();
+	}
+
+	protected afterCoinsCollect(){
+		this.currentGame.afterCoinsCollect();
 	}
 }

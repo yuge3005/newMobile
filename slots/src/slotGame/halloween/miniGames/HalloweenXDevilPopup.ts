@@ -1,5 +1,7 @@
 class HalloweenXDevilPopup extends GenericPo {
 
+    public abnormalSize: boolean = true;
+
     protected static get classAssetName() {
         return "halloweenXDevilPopup";
     }
