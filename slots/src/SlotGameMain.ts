@@ -216,8 +216,7 @@ class SlotGameMain extends egret.DisplayObjectContainer {
 	}
 
 	protected addSlotPo( event:egret.Event = null ){
-		let className: string = this.currentPo.constructor["name"];
-		let abnormalSize: boolean = eval( "className" ).abnormalSize;
+		let abnormalSize: boolean = this.currentPo["abnormalSize"];
 		this.addPoFromTo( 0.1, abnormalSize ? 0.48 : 0.72 );
 
 		this.currentPo.addEventListener( GenericModal.CLOSE_MODAL, this.showMiniConfirm, this );
