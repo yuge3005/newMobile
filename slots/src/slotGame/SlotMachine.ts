@@ -378,7 +378,12 @@ class SlotMachine extends egret.Sprite {
 		this.updateCredit( data );
 
 		if( data["freeSpin"] != null )this.checkFreeSpin( data["freeSpin"] );
-		this.resetGameToolBarStatus();
+
+		if( !this.gameToolBar.autoPlaying )this.resetGameToolBarStatus();
+		if (this.gameToolBar.autoPlaying){
+			this.gameToolBar.lockAllButtons();
+			this.autoPlayTimeoutId = setTimeout( this.aotoNextRound.bind(this), 1000 );
+		}
 
 		// this.updateNewDatas( data );
 	}
