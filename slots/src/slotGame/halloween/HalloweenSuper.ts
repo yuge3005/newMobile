@@ -1,6 +1,6 @@
 class HalloweenSuper extends SlotMachine{
 	public constructor( gameConfigFile: string, configUrl: string, gameId: number ) {
-		super( "halloween.conf", configUrl, 46 );
+		super( gameConfigFile, configUrl, gameId );
 	}
 
 	protected init(){
