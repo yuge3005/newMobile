@@ -40,7 +40,7 @@ class HalloweenXDevilPopup extends GenericPo {
         bottomText.textColor = 0x54EA55;
         bottomText.text = MuLang.getText("halloweenX_devil_total_bonus");
 
-        let bt: TouchDownButton = Com.addDownButtonAt(this, "halloweenx_popup_pt_json.play_now", "halloweenx_popup_pt_json.play_now", 813, 820, this.onClose, true);
+        let bt: TouchDownButton = Com.addDownButtonAt(this, "halloweenx_popup_pt_json.play_now_" + MuLang.language, "halloweenx_popup_pt_json.play_now_" + MuLang.language, 813, 820, this.onClose, true);
         bt.x = this.bg.width - bt.width >> 1;
     }
 }

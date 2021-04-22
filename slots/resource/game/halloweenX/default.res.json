@@ -130,7 +130,7 @@
 			"url": "game/halloweenX/halloweenx_popup_pt.json",
 			"type": "sheet",
 			"name": "halloweenx_popup_pt_json",
-			"subkeys": "award_bg,collect,header,play_now,popup_cauldron,popup_devil,popup_strawberry,start"
+			"subkeys": "award_bg,collect,header,play_now,play_now_en,play_now_es,play_now_pt,popup_cauldron,popup_devil,popup_strawberry,start"
 		}
 	]
 }
