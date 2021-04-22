@@ -230,7 +230,7 @@ class HalloweenXDevil extends egret.DisplayObjectContainer {
         this.dispatchEvent(new egret.Event(SlotMachine.BONUS_GAME_WIN, false, false, { bonus: totalWin }));
         
         egret.setTimeout(function (bonus: number) {
-            this.dispatchEvent(new egret.Event(SlotMachine.BONUS_GAME_OVER, false, false, { totalBonus: (bonus + this.ganho) }));
+            this.dispatchEvent(new egret.Event(SlotMachine.BONUS_GAME_OVER, false, false, { totalBonus: bonus }));
         }.bind(this, totalWin), this, 2500);
     }
 
