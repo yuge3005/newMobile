@@ -167,7 +167,8 @@ class HalloweenCauldron extends egret.DisplayObjectContainer {
                     this.dispatchEvent(new egret.Event(SlotMachine.BONUS_GAME_OVER, false, false, { totalBonus: bonus }));
                 }.bind(this, this.bonus[0]), this, 2500);
             } else if (bonus === 0) {
-                Com.addBitmapAt(this.cauldronObjectsArray[index], "mini_game_json.pumpkin", 2, -10);
+                let pumpkin: egret.Bitmap = Com.addBitmapAt(this.cauldronObjectsArray[index], "mini_game_json.pumpkin", 2, -10);
+                pumpkin.scaleX = pumpkin.scaleY = 2.66;
 
                 // begin halloween bonus game
                 egret.setTimeout(this.beginHalloweenBonus, this, 2000);
@@ -269,13 +270,13 @@ class HalloweenCauldron extends egret.DisplayObjectContainer {
         for (let i = 0; i < 5; i++) {
             let arrayIndex = Math.floor(Math.random() * bonusArray.length);
             if (i === index) {
-                bonusTexts[i] = Com.addTextAt(this.halloweenBonusArray[i], 117, 131, 172, 235, 90, true, false);
+                bonusTexts[i] = Com.addTextAt(this.halloweenBonusArray[i], 108, 131, 190, 235, 90, true, false);
                 bonusTexts[i].text = targetBonus + "";
 
                 // set bonus text
                 this.bonusText.text = targetBonus + "";
             } else {
-                bonusTexts[i] = Com.addTextAt(this.halloweenBonusArray[i], 117, 131, 172, 235, 90, true, false);
+                bonusTexts[i] = Com.addTextAt(this.halloweenBonusArray[i], 108, 131, 190, 235, 90, true, false);
                 bonusTexts[i].text = bonusArray[arrayIndex] + "";
                 bonusArray.splice(arrayIndex, 1);
             }
