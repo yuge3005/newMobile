@@ -5,5 +5,8 @@
 "collect":{"x":2595,"y":1040,"w":486,"h":154,"offX":0,"offY":0,"sourceW":486,"sourceH":154},
 "header":{"x":1742,"y":1040,"w":851,"h":142,"offX":71,"offY":11,"sourceW":993,"sourceH":164},
 "play_now":{"x":0,"y":1196,"w":314,"h":172,"offX":0,"offY":0,"sourceW":314,"sourceH":172},
+"play_now_pt":{"x":0,"y":1196,"w":314,"h":172,"offX":0,"offY":0,"sourceW":314,"sourceH":172},
+"play_now_es":{"x":315,"y":1196,"w":314,"h":172,"offX":0,"offY":0,"sourceW":314,"sourceH":172},
+"play_now_en":{"x":630,"y":1196,"w":314,"h":172,"offX":0,"offY":0,"sourceW":314,"sourceH":172},
 "popup_cauldron":{"x":3368,"y":550,"w":680,"h":548,"offX":97,"offY":101,"sourceW":868,"sourceH":724},
 "popup_strawberry":{"x":3368,"y":0,"w":680,"h":548,"offX":97,"offY":101,"sourceW":868,"sourceH":724}}}
