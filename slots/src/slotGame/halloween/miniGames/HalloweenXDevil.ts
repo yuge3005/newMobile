@@ -48,7 +48,7 @@ class HalloweenXDevil extends egret.DisplayObjectContainer {
         Com.addBitmapAt(this, "mini_game_json.devil_bg", 0, 0);
 
         // spin btn
-        Com.addDownButtonAt(this, "mini_game_json.wheel_button", "mini_game_json.wheel_button", 1011, 399, this.spin, true);
+        Com.addDownButtonAt(this, "mini_game_json.wheel_button", "mini_game_json.wheel_button", 915, 310, this.spin, true);
 
         // inner circle
         this.innerCircle = new egret.DisplayObjectContainer();
@@ -146,7 +146,7 @@ class HalloweenXDevil extends egret.DisplayObjectContainer {
         result.height = 218;
         result.anchorOffsetX = 113;
         result.touchEnabled = false;
-        result.once(egret.TouchEvent.TOUCH_TAP, this.showModalResult.bind(this, index), this);
+        result.addEventListener(egret.TouchEvent.TOUCH_TAP, this.showModalResult.bind(this, index), this);
 
         // bg
         // Com.addBitmapAt(result, "mini_game_json.coin_back", 3, 0);
@@ -197,6 +197,10 @@ class HalloweenXDevil extends egret.DisplayObjectContainer {
 
         // show multiple
         this.coins[index]["addMedalMultiple"](this.medalMultiple, false);
+
+        for( let i: number = 0; i < this.coins.length; i++ ){
+            this.coins[i].removeEventListener( egret.TouchEvent.TOUCH_TAP, this.showModalResult, this );
+        }
     }
 
     /**
