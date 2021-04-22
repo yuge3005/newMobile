@@ -146,7 +146,8 @@ class HalloweenXDevil extends egret.DisplayObjectContainer {
         result.height = 218;
         result.anchorOffsetX = 113;
         result.touchEnabled = false;
-        result.addEventListener(egret.TouchEvent.TOUCH_TAP, this.showModalResult.bind(this, index), this);
+        result.name = "" + index;
+        result.addEventListener(egret.TouchEvent.TOUCH_TAP, this.showModalResult, this);
 
         // bg
         // Com.addBitmapAt(result, "mini_game_json.coin_back", 3, 0);
@@ -175,8 +176,10 @@ class HalloweenXDevil extends egret.DisplayObjectContainer {
     /**
      * show modal result
      */
-    private showModalResult(index: number): void {
+    private showModalResult( event: egret.TouchEvent ): void {
         this.finger.visible = false;
+
+        let index: number = parseInt( ( event.target as egret.DisplayObject ).name );
 
         let multipleArray = [3, 4, 5, 6, 7];
         multipleArray.splice(multipleArray.indexOf(this.medalMultiple), 1);
@@ -198,7 +201,7 @@ class HalloweenXDevil extends egret.DisplayObjectContainer {
         // show multiple
         this.coins[index]["addMedalMultiple"](this.medalMultiple, false);
 
-        for( let i: number = 0; i < this.coins.length; i++ ){
+        for( let i: number = 0; i < 5; i++ ){
             this.coins[i].removeEventListener( egret.TouchEvent.TOUCH_TAP, this.showModalResult, this );
         }
     }
