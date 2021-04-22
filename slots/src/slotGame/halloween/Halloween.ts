@@ -73,6 +73,8 @@ class Halloween extends SlotMachine{
 		if( this.miniGame && this.contains( this.miniGame ) ) this.removeChild( this.miniGame );
 		this.showMiniGameConfirmPopup( HalloweenCollectBonus, true );
 
+		this.gameToolBar.showWinResult( this.ganho + HalloweenCollectBonus.bonus );
+
 		this.sendRoundOverRequest();
 	}
 
