@@ -46,6 +46,8 @@ class SlotMachine extends egret.Sprite {
 	protected miniGameMCF: egret.MovieClipDataFactory;
     protected miniGame: egret.DisplayObject;
 
+	protected lineTx: TextLabel;
+
 	public constructor( gameConfigFile: string, configUrl: string, gameId: number ) {
 		super();
 
@@ -152,6 +154,10 @@ class SlotMachine extends egret.Sprite {
 		// this.addEventListener("bingo", this.winBingo, this);
 		this.addEventListener( "betChanged", this.onBetChanged, this );
 		// this.tellTounamentCurrentBet();
+	}
+
+	protected setLines(){
+		this.lineTx.setText( "" + LineManager.currentLines );
 	}
 
 	protected addPayTables(){
