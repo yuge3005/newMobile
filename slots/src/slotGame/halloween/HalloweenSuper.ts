@@ -9,6 +9,11 @@ class HalloweenSuper extends SlotMachine{
 		let data = RES.getRes( "mini_game_mcf_json" );
 		let tex = RES.getRes( "mini_game_mcf_png" );
 		this.miniGameMCF = new egret.MovieClipDataFactory( data, tex );
+
+		this.lineTx = Com.addLabelAt( this, 540, 66, 64, 42, 42, true, true );
+		this.lineTx.stroke = 2;
+		this.lineTx.strokeColor = 0x888888;
+		this.setLines();
 	}
 
 	protected addIcons(){
