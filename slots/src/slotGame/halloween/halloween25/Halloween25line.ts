@@ -59,6 +59,7 @@ class Halloween25line extends HalloweenSuper{
 		switch( this.tipoBonus ){
 			case 1:
 			case 2:
+			case 3:
 				super.confirmedAndShowMini();
 				break;
 			case 5:
