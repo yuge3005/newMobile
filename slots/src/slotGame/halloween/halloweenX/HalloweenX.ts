@@ -32,6 +32,7 @@ class HalloweenX extends HalloweenSuper{
 			case 2:
 				super.showMiniGame();
 				break;
+			case 3: this.sendRoundOverRequest(); break;
 			case 4:
 				this.showMiniGameConfirmPopup( HalloweenXDevilPopup );
 				break;
