@@ -30,6 +30,8 @@ class HalloweenSuper extends SlotMachine{
 			case 2:
 				this.showMiniGameConfirmPopup( HalloweenStrawberryPopup );
 				break;
+			case 3: this.sendRoundOverRequest();
+				break;
 			default: throw new Error( "Server data error: mini game id" );
 		}
 	}

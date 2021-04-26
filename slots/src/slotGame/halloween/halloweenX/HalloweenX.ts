@@ -30,9 +30,9 @@ class HalloweenX extends HalloweenSuper{
 		switch( this.tipoBonus ){
 			case 1:
 			case 2:
+			case 3:
 				super.showMiniGame();
 				break;
-			case 3: this.sendRoundOverRequest(); break;
 			case 4:
 				this.showMiniGameConfirmPopup( HalloweenXDevilPopup );
 				break;
