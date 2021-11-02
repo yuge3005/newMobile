@@ -500,10 +500,6 @@ class BingoMachine extends GameUIItem{
 		else if (cmd == GameCommands.changeNumber) {
 			this.currentGame.changeNumberSound();
 			CardManager.clearCardsStatus();
-			if( this.currentGame instanceof V1Game ){
-				this.currentGame.setCardDatasWithNumeros( this.currentGame["getCardsGroup"]( CardManager.groupNumber ), CardManager.groupNumber < 100 ? CardManager.groupNumber + 1 : 1 );
-				return;
-			}
 			this.currentGame.gameToolBar.lockAllButtons();
 			IBingoServer.changeNumberCallback = this.currentGame.onChangeNumber.bind( this.currentGame );
 			GameCard.changeingCard = true;

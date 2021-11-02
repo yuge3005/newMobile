@@ -42,7 +42,7 @@ class Main extends egret.DisplayObjectContainer {
      * Create a game scene
      */
     private createGameScene() {
-        this.showGame( "Showball3", "bin-debug/bingoGames/Showball3.js", "resource/default.res.json" );
+        this.showGame( "Turbo90", "bin-debug/bingoGames/Turbo90.js", "resource/default.res.json" );
 		IBingoServer.serverInit();
     }
 
